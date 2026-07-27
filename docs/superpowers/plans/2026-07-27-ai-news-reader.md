@@ -183,7 +183,7 @@ Expected:
 ```
 总数 97
 { blog: 24, newsletter: 13, podcast: 24, video: 10, community: 3, lab: 11, media: 12 }
-有 seed 的 2
+有 seed 的 5
 字段齐全 true
 ```
 
