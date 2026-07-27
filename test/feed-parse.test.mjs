@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parseFeed } from '../lib/feed-parse.mjs';
 import { htmlToText } from '../lib/html-text.mjs';
+import { itemId } from '../lib/fingerprint.mjs';
 
 const RSS = `<?xml version="1.0"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
@@ -141,4 +142,44 @@ test('【修复】contentHtml 不被二次解码：&amp;lt; 经 htmlToText 后�
   // parseFeed 本身不应把 contentHtml 里的实体解成 "<"（那是两次解码的结果）；
   // 正确的一次解码结果应仍是 "&lt;" 这个字面串，留给 htmlToText 去解码一次。
   assert.equal(htmlToText(items[0].contentHtml), '&lt;');
+});
+
+test('【修复】RSS <link> 文本里的实体被解码', () => {
+  // Substack/WordPress 等站点的 link 常带 ?utm_source=...&utm_medium=... 这种
+  // 多参数查询串，在 XML 里必须转义成 &amp;。processEntities:false 关闭后
+  // 这类 link 若不单独解码，会把坏掉的 "&amp;" 字面量当成链接渲染给用户，
+  // 也会污染 itemId() 的稳定 id 计算。
+  const xml = `<rss version="2.0"><channel><item>
+    <title>T</title>
+    <link>https://e.com/a?x=1&amp;y=2</link>
+    <pubDate>Sat, 26 Jul 2026 18:00:00 GMT</pubDate>
+    <description>desc</description>
+  </item></channel></rss>`;
+  const { items } = parseFeed(xml);
+  assert.equal(items[0].link, 'https://e.com/a?x=1&y=2');
+});
+
+test('【修复】Atom link[href] 属性里的实体被解码', () => {
+  const xml = `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <title>T</title>
+    <link rel="alternate" href="https://www.youtube.com/watch?v=abc&amp;feature=share"/>
+    <published>2026-07-26T12:00:00Z</published>
+    <content type="html">body</content>
+  </entry>
+</feed>`;
+  const { items } = parseFeed(xml);
+  assert.equal(items[0].link, 'https://www.youtube.com/watch?v=abc&feature=share');
+});
+
+test('【修复】link 解码后算出的 itemId 与正确 URL 的 itemId 一致（id 地基不能被 &amp; 污染）', () => {
+  const xml = `<rss version="2.0"><channel><item>
+    <title>T</title>
+    <link>https://e.com/a?x=1&amp;y=2</link>
+    <pubDate>Sat, 26 Jul 2026 18:00:00 GMT</pubDate>
+    <description>desc</description>
+  </item></channel></rss>`;
+  const { items } = parseFeed(xml);
+  assert.equal(itemId(items[0].link), itemId('https://e.com/a?x=1&y=2'));
 });
