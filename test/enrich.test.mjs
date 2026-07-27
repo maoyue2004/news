@@ -60,3 +60,27 @@ test('空输入返回空串', () => {
   assert.equal(extractArticleText(null), '');
   assert.equal(extractArticleText(undefined), '');
 });
+
+test('嵌套 <article>（相关文章/推荐阅读组件）不会导致真正的正文被丢弃', () => {
+  const html = '<article><div><article>广告内容</article></div><p>真正的正文内容。</p></article>';
+  const text = extractArticleText(html);
+  assert.match(text, /真正的正文内容/);
+});
+
+test('嵌套 <main>（同类结构）也不会导致真正的正文被丢弃', () => {
+  const html = '<body><main><div><main>推荐侧栏内容</main></div><p>main 里真正的正文。</p></main></body>';
+  const text = extractArticleText(html);
+  assert.match(text, /main 里真正的正文/);
+});
+
+test('贪婪匹配不会把 </article> 之后的页脚等内容也吸进来', () => {
+  const html = '<article>正文内容。</article><footer>页脚版权信息</footer>';
+  const text = extractArticleText(html);
+  assert.doesNotMatch(text, /页脚/);
+});
+
+test('贪婪匹配在 </article> 处停止，不吸入其后未被判定为噪声的兄弟内容', () => {
+  const html = '<article>正文内容。</article><div class="related">你可能还喜欢：其它文章推荐</div>';
+  const text = extractArticleText(html);
+  assert.doesNotMatch(text, /其它文章推荐/);
+});
