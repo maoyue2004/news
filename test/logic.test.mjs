@@ -131,3 +131,39 @@ test('两者都不成立时不产生任何徽标', () => {
   const html = L.itemBadges(item({ brief: false, thin: false }));
   assert.equal(html, '');
 });
+
+// 以下测试覆盖 safeUrl：条目的 url 一路从远端 RSS feed 流进来，属于不可信数据，
+// esc() 只做 HTML 实体转义，挡不住 javascript:/data: 这类伪协议，必须先过一道
+// 协议白名单。只放行 http/https，其余一律换成 '#'。
+
+test('http 与 https 链接原样放行', () => {
+  assert.equal(L.safeUrl('http://example.com/a'), 'http://example.com/a');
+  assert.equal(L.safeUrl('https://example.com/a?x=1'), 'https://example.com/a?x=1');
+});
+
+test('javascript 伪协议被拦截', () => {
+  assert.equal(L.safeUrl('javascript:alert(1)'), '#');
+});
+
+test('大小写混写的伪协议也被拦截', () => {
+  assert.equal(L.safeUrl('JaVaScRiPt:alert(1)'), '#');
+});
+
+test('带前导空白的伪协议被拦截', () => {
+  assert.equal(L.safeUrl('  javascript:alert(1)'), '#');
+});
+
+test('内嵌制表符/换行的伪协议被拦截（绕过手法）', () => {
+  assert.equal(L.safeUrl('java\tscript:alert(1)'), '#');
+  assert.equal(L.safeUrl('java\nscript:alert(1)'), '#');
+});
+
+test('data 协议被拦截', () => {
+  assert.equal(L.safeUrl('data:text/html,<script>alert(1)</script>'), '#');
+});
+
+test('空值、undefined 与非法字符串一律返回 #', () => {
+  assert.equal(L.safeUrl(''), '#');
+  assert.equal(L.safeUrl(undefined), '#');
+  assert.equal(L.safeUrl('not a url'), '#');
+});

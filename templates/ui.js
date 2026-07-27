@@ -93,7 +93,7 @@
           '<span>' + esc(time) + '</span>' +
           L.itemBadges(it) +
         '</div>' +
-        '<h3 class="item-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.titleZh || it.titleOriginal) + '</a></h3>' +
+        '<h3 class="item-title"><a href="' + esc(L.safeUrl(it.url)) + '" target="_blank" rel="noopener">' + esc(it.titleZh || it.titleOriginal) + '</a></h3>' +
         (it.titleZh ? '<p class="item-orig">原标题 ' + esc(it.titleOriginal) + '</p>' : '') +
         '<p class="item-summary">' + esc(it.summaryZh) + '</p>' +
       '</div>' +
@@ -142,7 +142,7 @@
         ? (st.consecutiveFailures ? '连续失败 ' + st.consecutiveFailures + ' 次：' + esc(st.lastErrorMessage || '') : '正常')
         : esc(s.disabledReason || '未启用');
       return '<tr class="' + (s.enabled ? '' : 'disabled') + '">' +
-        '<td><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a></td>' +
+        '<td><a href="' + esc(L.safeUrl(s.url)) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a></td>' +
         '<td>' + esc(L.TYPE_LABELS[s.type] || s.type) + '</td>' +
         '<td>' + esc(s.lang.toUpperCase()) + '</td>' +
         '<td>' + last + '</td><td>' + note + '</td></tr>';

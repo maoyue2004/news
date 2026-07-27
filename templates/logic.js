@@ -56,6 +56,23 @@
     return out;
   }
 
+  // href 白名单：条目的 url 一路从远端 RSS feed 流进来，属于不可信数据。
+  // 只放行 http/https，其余（javascript:、data:、vbscript:、file: 等，以及
+  // 解析失败的）一律换成 '#'，防止 <a href="..."> 被注入伪协议后点击执行脚本。
+  // 用 new URL() 解析后看 protocol：WHATWG URL 解析规则本身就会剥离输入两端的
+  // C0 控制符/空白、以及内嵌的 tab（\t）、换行（\n）、回车（\r），并把 scheme
+  // 归一化成小写，所以 'JaVaScRiPt:x'、'  javascript:x'、'java\tscript:x'、
+  // 'java\nscript:x' 这些绕过写法解析出来的 protocol 都是规整的 'javascript:'，
+  // 不需要自己再手写剥离逻辑。
+  function safeUrl(url) {
+    try {
+      var u = new URL(url);
+      return (u.protocol === 'http:' || u.protocol === 'https:') ? url : '#';
+    } catch (e) {
+      return '#';
+    }
+  }
+
   function formatDayLabel(dateStr, todayStr) {
     var diff = Math.round((Date.parse(todayStr + 'T00:00:00Z') - Date.parse(dateStr + 'T00:00:00Z')) / 86400000);
     if (diff === 0) return '今天';
@@ -72,5 +89,6 @@
     computeStats: computeStats,
     formatDayLabel: formatDayLabel,
     itemBadges: itemBadges,
+    safeUrl: safeUrl,
   };
 })();
