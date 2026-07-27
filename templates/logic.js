@@ -7,19 +7,32 @@
   };
   var WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
 
+  // 日文件由 Claude 逐条手写，type 字段可能缺失或写错（不在 TYPE_ORDER 里）。
+  // 这类条目不能被静默丢弃 —— 否则 computeStats（在过滤前统计）报的总数会比
+  // 实际渲染出来的条目数多，用户看到顶栏「23 条」但正文只有 20 条，且毫无痕迹。
+  // 统一归进一个「其他」桶，排在已知类型后面。
+  var OTHER_LABEL = '其他';
+
   function groupByType(items) {
     var buckets = {};
+    var otherKey = '__other__';
     items.forEach(function (it) {
-      (buckets[it.type] = buckets[it.type] || []).push(it);
+      var key = TYPE_ORDER.indexOf(it.type) !== -1 ? it.type : otherKey;
+      (buckets[key] = buckets[key] || []).push(it);
     });
-    return TYPE_ORDER
-      .filter(function (t) { return buckets[t] && buckets[t].length; })
-      .map(function (t) {
-        var list = buckets[t].slice().sort(function (a, b) {
-          return Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
-        });
-        return { type: t, label: TYPE_LABELS[t], items: list };
+    function toGroup(t) {
+      var list = buckets[t].slice().sort(function (a, b) {
+        return Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
       });
+      return { type: t, label: t === otherKey ? OTHER_LABEL : TYPE_LABELS[t], items: list };
+    }
+    var groups = TYPE_ORDER
+      .filter(function (t) { return buckets[t] && buckets[t].length; })
+      .map(toGroup);
+    if (buckets[otherKey] && buckets[otherKey].length) {
+      groups.push(toGroup(otherKey));
+    }
+    return groups;
   }
 
   function applyFilter(items, opts) {

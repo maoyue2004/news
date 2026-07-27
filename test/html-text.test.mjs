@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { htmlToText } from '../lib/html-text.mjs';
+import { htmlToText, decodeEntities } from '../lib/html-text.mjs';
 
 test('去掉标签保留文字', () => {
   assert.equal(htmlToText('<p>Hello <b>world</b></p>'), 'Hello world');
@@ -30,6 +30,18 @@ test('空输入返回空串', () => {
   assert.equal(htmlToText(''), '');
   assert.equal(htmlToText(null), '');
   assert.equal(htmlToText(undefined), '');
+});
+
+test('【修复】数字实体不会被二次解码：&amp;lt; 只解一层', () => {
+  assert.equal(decodeEntities('&amp;lt;'), '&lt;');
+});
+
+test('【修复】数字实体不会被二次解码：&amp;#39; 只解一层', () => {
+  assert.equal(decodeEntities('&amp;#39;'), '&#39;');
+});
+
+test('【修复】十六进制数字实体不会被二次解码：&amp;#x3c; 只解一层', () => {
+  assert.equal(decodeEntities('&amp;#x3c;'), '&#x3c;');
 });
 
 test('【修复】截断是码点安全的，emoji 不会被拆分', () => {

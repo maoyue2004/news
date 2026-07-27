@@ -47,6 +47,16 @@ test('构建时裁掉超过 35 天的日文件', () => {
   assert.equal(existsSync(join(root, 'data', '2026-07-27.json')), true);
 });
 
+test('【修复】日文件里的条目缺字段时构建抛错，而不是静默产出残页', () => {
+  const root = fixtureRepo();
+  writeFileSync(join(root, 'data', '2026-07-27.json'), JSON.stringify({
+    date: '2026-07-27', generatedAt: '2026-07-27T00:00:00.000Z',
+    items: [{ id: 'x1', source: 'A', type: 'blog', url: 'https://a.com/1', titleOriginal: 'T', titleZh: '标题', summaryZh: '摘要', publishedAt: '2026-07-27T00:00:00.000Z', brief: false }],
+    errors: [],
+  }));
+  assert.throws(() => buildHtml({ root, today: '2026-07-27' }), /2026-07-27/);
+});
+
 test('构建返回摘要信息供日志使用', () => {
   const root = fixtureRepo();
   const res = buildHtml({ root, today: '2026-07-27' });

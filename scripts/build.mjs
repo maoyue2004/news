@@ -6,6 +6,28 @@ import { loadRecentDays, pruneDayFiles, loadStatus } from '../lib/store.mjs';
 const WINDOW_DAYS = 30;   // 页面内嵌最近多少天
 const KEEP_DAYS = 35;     // data/ 保留多少天
 
+// 日文件由 Claude 逐条手写 229 条 JSON，没有任何校验。字段缺失不会在写 JSON
+// 时报错，只会在页面渲染时才炸（比如 lang 缺失导致 it.lang.toUpperCase() 抛
+// TypeError，整页空白且无提示）。在构建期就把关，缺字段直接 throw 并指出是
+// 哪一天哪一条，让故障停在构建期而不是发布后。
+const REQUIRED_ITEM_FIELDS = [
+  'id', 'source', 'type', 'lang', 'url', 'titleOriginal', 'titleZh', 'summaryZh', 'publishedAt',
+];
+
+function validateDays(days) {
+  for (const day of days) {
+    for (const item of day.items || []) {
+      for (const field of REQUIRED_ITEM_FIELDS) {
+        if (item[field] === undefined || item[field] === null || item[field] === '') {
+          throw new Error(
+            `日文件 ${day.date} 中有一条记录缺少字段 "${field}"（id=${item.id ?? '未知'}, url=${item.url ?? '未知'}）`,
+          );
+        }
+      }
+    }
+  }
+}
+
 function todayInShanghai() {
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -18,6 +40,7 @@ export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
   pruneDayFiles(dataDir, today, KEEP_DAYS);
 
   const days = loadRecentDays(dataDir, today, WINDOW_DAYS);
+  validateDays(days);
   const sources = JSON.parse(readFileSync(join(root, 'sources.json'), 'utf8'));
   const status = loadStatus(dataDir);
 

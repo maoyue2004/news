@@ -47,6 +47,21 @@ test('分组里不出现空类型', () => {
   assert.equal(groups.length, 1);
 });
 
+test('【修复】未知或缺失的 type 归入「其他」桶而不是被丢弃', () => {
+  const groups = L.groupByType([
+    item({ id: '1', type: 'blog' }),
+    item({ id: '2', type: 'weird-unknown-type' }),
+    item({ id: '3', type: undefined }),
+  ]);
+  const totalItems = groups.reduce((n, g) => n + g.items.length, 0);
+  assert.equal(totalItems, 3, '所有条目都应该出现在某个分组里，一条都不能丢');
+  const other = groups.find((g) => g.label === '其他');
+  assert.ok(other, '应该存在一个「其他」分组');
+  assert.deepEqual(other.items.map((i) => i.id).sort(), ['id-2', 'id-3']);
+  // 「其他」排在已知类型分组之后
+  assert.equal(groups[groups.length - 1].label, '其他');
+});
+
 test('每个类型都有中文标签', () => {
   for (const t of L.TYPE_ORDER) {
     assert.equal(typeof L.TYPE_LABELS[t], 'string');

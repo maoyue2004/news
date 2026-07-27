@@ -37,6 +37,22 @@ test('seen 保留刚好 45 天前的条目', () => {
   assert.ok('edge' in loadSeen(d));
 });
 
+test('【修复】损坏的 seen.json 会在控制台留下痕迹，而不是静默丢失', () => {
+  const d = tmp();
+  writeFileSync(join(d, 'seen.json'), '{ 这不是合法 JSON');
+  const originalError = console.error;
+  const calls = [];
+  console.error = (...args) => calls.push(args.join(' '));
+  try {
+    const got = loadSeen(d);
+    assert.deepEqual(got, {});
+  } finally {
+    console.error = originalError;
+  }
+  assert.equal(calls.length, 1);
+  assert.match(calls[0], /seen\.json/);
+});
+
 test('status 记录成功会清零连续失败次数', () => {
   const status = { A: { lastSuccess: null, lastError: '2026-07-26T00:00:00.000Z', lastErrorMessage: 'boom', consecutiveFailures: 3 } };
   recordSuccess(status, 'A', '2026-07-27T00:00:00.000Z');

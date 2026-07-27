@@ -61,7 +61,7 @@
     var html = DATA.days.map(function (d) {
       var unread = d.items.filter(function (it) { return !readSet.has(it.id); }).length;
       var active = state.view.kind === 'day' && state.view.date === d.date;
-      return '<button class="day-btn' + (active ? ' active' : '') + '" data-date="' + d.date + '">' +
+      return '<button class="day-btn' + (active ? ' active' : '') + '" data-date="' + esc(d.date) + '">' +
         '<span>' + esc(L.formatDayLabel(d.date, today)) + '</span>' +
         '<span class="day-count">' + (unread ? '<span class="unread-dot"></span> ' : '') + d.items.length + '</span>' +
         '</button>';
@@ -82,14 +82,14 @@
     var isRead = readSet.has(it.id);
     var isStar = starSet.has(it.id);
     var time = new Date(it.publishedAt).toLocaleString('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-    return '<article class="item' + (isRead ? ' read' : '') + '" data-id="' + it.id + '">' +
+    return '<article class="item' + (isRead ? ' read' : '') + '" data-id="' + esc(it.id) + '">' +
       '<button class="toggle" data-act="read" aria-label="标记已读" aria-pressed="' + isRead + '">' + (isRead ? '☑' : '☐') + '</button>' +
       '<button class="toggle' + (isStar ? ' star-on' : '') + '" data-act="star" aria-label="标星" aria-pressed="' + isStar + '">' + (isStar ? '★' : '☆') + '</button>' +
       '<div class="item-body">' +
         '<div class="item-meta">' +
           '<span class="src">' + esc(it.source) + '</span>' +
           '<span>' + esc(L.TYPE_LABELS[it.type] || it.type) + '</span>' +
-          '<span>' + esc(it.lang.toUpperCase()) + '</span>' +
+          '<span>' + esc((it.lang || '').toUpperCase()) + '</span>' +
           '<span>' + esc(time) + '</span>' +
           L.itemBadges(it) +
         '</div>' +
@@ -144,7 +144,7 @@
       return '<tr class="' + (s.enabled ? '' : 'disabled') + '">' +
         '<td><a href="' + esc(L.safeUrl(s.url)) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a></td>' +
         '<td>' + esc(L.TYPE_LABELS[s.type] || s.type) + '</td>' +
-        '<td>' + esc(s.lang.toUpperCase()) + '</td>' +
+        '<td>' + esc((s.lang || '').toUpperCase()) + '</td>' +
         '<td>' + last + '</td><td>' + note + '</td></tr>';
     }
 
@@ -159,10 +159,24 @@
       disabled.map(row).join('') + '</table></div>' +
       '<div class="errors-note">信源列表以仓库里的 sources.json 为准。要增删信源，直接告诉 Claude，改动次日生效。' +
       '<br>已读与标星存在这台设备的浏览器里，换设备或清缓存会丢失；' +
-      '<button id="export-stars" class="toggle" style="text-decoration:underline">导出收藏</button></div>';
+      '<button id="export-stars" class="toggle" style="text-decoration:underline">导出收藏</button>' +
+      '<button id="import-stars" class="toggle" style="text-decoration:underline">导入收藏</button>' +
+      '<input id="import-stars-file" type="file" accept="application/json" style="display:none">' +
+      '<span id="import-stars-msg"></span></div>';
 
     var btn = document.getElementById('export-stars');
     if (btn) btn.addEventListener('click', exportStars);
+
+    var importBtn = document.getElementById('import-stars');
+    var importFile = document.getElementById('import-stars-file');
+    if (importBtn && importFile) {
+      importBtn.addEventListener('click', function () { importFile.click(); });
+      importFile.addEventListener('change', function () {
+        var file = importFile.files && importFile.files[0];
+        importFile.value = '';
+        if (file) importStars(file);
+      });
+    }
   }
 
   function exportStars() {
@@ -178,6 +192,46 @@
       a.click();
       URL.revokeObjectURL(a.href);
     }
+  }
+
+  // 导入只做并集合并，不覆盖已有标星，也绝不碰 readSet ——
+  // 导出/导入是给标星做备份用的，已读状态不参与备份（见 README「已知限制」）。
+  // 解析失败或格式不对时把提示文字写进按钮旁边的 <span>，不用 alert：
+  // alert 会阻塞 Artifact 的 iframe，把整个页面卡住。
+  function importStars(file) {
+    // render() 会整体重建 #sources-view 的 innerHTML（包括这条消息用的 span），
+    // 所以提示文字必须在 render() 之后，对着重建出来的新节点设置，否则消息
+    // 前脚写进去、后脚就被 render() 冲掉，页面上根本看不见。
+    function setMsg(text) {
+      render();
+      var el = document.getElementById('import-stars-msg');
+      if (el) el.textContent = text;
+    }
+    var reader = new FileReader();
+    reader.onerror = function () { setMsg('读取文件失败'); };
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(String(reader.result));
+      } catch (e) {
+        setMsg('导入失败：不是合法的 JSON 文件');
+        return;
+      }
+      if (!parsed || !Array.isArray(parsed.items)) {
+        setMsg('导入失败：文件格式不对，缺少 items 数组');
+        return;
+      }
+      var added = 0;
+      parsed.items.forEach(function (it) {
+        if (it && typeof it.id === 'string' && it.id && !starSet.has(it.id)) {
+          starSet.add(it.id);
+          added++;
+        }
+      });
+      saveSet(STAR_KEY, starSet);
+      setMsg('已导入 ' + added + ' 条新标星');
+    };
+    reader.readAsText(file);
   }
 
   function render() {

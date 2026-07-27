@@ -42,6 +42,10 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
+/* 原设计里 h1/h2 用内联 base64 的 Fraunces 字体，已经移除：编码后的
+   base64 长度不是 4 的倍数，浏览器判定为损坏数据直接拒绝加载；而且这款
+   字体本身只覆盖拉丁字符集，对本页以中文为主的标题（走下面的中文衬线
+   字体栈）完全不起作用，留着也没有实际价值。 */
 h1, h2 {
   font-family: ui-serif, "Songti SC", "Noto Serif SC", Georgia, serif;
   font-weight: 600;
