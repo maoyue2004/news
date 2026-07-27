@@ -86,6 +86,42 @@
     }
   }
 
+  // 分组标题下的信源分布：统计当前实际展示的条目（调用方已经把筛选/搜索
+  // 应用完了，这里只管数数），按条数降序、条数相同按信源名升序排稳定。
+  // 超过 topN 个信源时，多出来的合并成一条「其他」，放在最后。
+  function sourceBreakdown(items, topN) {
+    topN = topN == null ? 5 : topN;
+    var counts = {};
+    items.forEach(function (it) {
+      counts[it.source] = (counts[it.source] || 0) + 1;
+    });
+    var list = Object.keys(counts).map(function (source) {
+      return { source: source, count: counts[source] };
+    }).sort(function (a, b) {
+      return b.count - a.count || (a.source < b.source ? -1 : a.source > b.source ? 1 : 0);
+    });
+    if (list.length <= topN) return list;
+    var head = list.slice(0, topN);
+    var restCount = list.slice(topN).reduce(function (n, x) { return n + x.count; }, 0);
+    head.push({ source: OTHER_LABEL, count: restCount, isOther: true });
+    return head;
+  }
+
+  // 信源管理页用：今日与最近窗口（days 覆盖的全部天数）里各信源的条数。
+  // days[0] 是最新一天（与 ui.js 里 today 的取法一致），today 只统计它；
+  // window 统计传入的全部 days。days 为空时两者都返回空对象。
+  function countsBySource(days) {
+    var today = {};
+    var windowCounts = {};
+    days.forEach(function (day, idx) {
+      (day.items || []).forEach(function (it) {
+        windowCounts[it.source] = (windowCounts[it.source] || 0) + 1;
+        if (idx === 0) today[it.source] = (today[it.source] || 0) + 1;
+      });
+    });
+    return { today: today, window: windowCounts };
+  }
+
   function formatDayLabel(dateStr, todayStr) {
     var diff = Math.round((Date.parse(todayStr + 'T00:00:00Z') - Date.parse(dateStr + 'T00:00:00Z')) / 86400000);
     if (diff === 0) return '今天';
@@ -100,6 +136,8 @@
     groupByType: groupByType,
     applyFilter: applyFilter,
     computeStats: computeStats,
+    sourceBreakdown: sourceBreakdown,
+    countsBySource: countsBySource,
     formatDayLabel: formatDayLabel,
     itemBadges: itemBadges,
     safeUrl: safeUrl,

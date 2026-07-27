@@ -115,8 +115,12 @@
 
     var groups = L.groupByType(items);
     var html = groups.map(function (g) {
+      var breakdown = L.sourceBreakdown(g.items).map(function (b) {
+        return esc(b.source) + ' ' + b.count;
+      }).join(' · ');
       return '<div class="group-head"><h2>' + esc(g.label) + '</h2>' +
         '<span class="group-count">' + g.items.length + ' 条</span></div>' +
+        '<div class="group-breakdown">' + breakdown + '</div>' +
         g.items.map(itemHtml).join('');
     }).join('');
 
@@ -134,6 +138,7 @@
 
     var enabled = DATA.sources.filter(function (s) { return s.enabled; });
     var disabled = DATA.sources.filter(function (s) { return !s.enabled; });
+    var counts = L.countsBySource(DATA.days);
 
     function row(s) {
       var st = DATA.status[s.name] || {};
@@ -141,21 +146,25 @@
       var note = s.enabled
         ? (st.consecutiveFailures ? '连续失败 ' + st.consecutiveFailures + ' 次：' + esc(st.lastErrorMessage || '') : '正常')
         : esc(s.disabledReason || '未启用');
+      var today = counts.today[s.name] || 0;
+      var win = counts.window[s.name] || 0;
       return '<tr class="' + (s.enabled ? '' : 'disabled') + '">' +
         '<td><a href="' + esc(L.safeUrl(s.url)) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a></td>' +
         '<td>' + esc(L.TYPE_LABELS[s.type] || s.type) + '</td>' +
         '<td>' + esc((s.lang || '').toUpperCase()) + '</td>' +
+        '<td class="num">' + today + '</td>' +
+        '<td class="num">' + win + '</td>' +
         '<td>' + last + '</td><td>' + note + '</td></tr>';
     }
 
     elSources.innerHTML =
       '<div class="group-head"><h2>正在抓取</h2><span class="group-count">' + enabled.length + ' 个</span></div>' +
       '<div class="table-scroll"><table class="sources-table">' +
-      '<tr><th>信源</th><th>类型</th><th>语言</th><th>最近成功</th><th>状态</th></tr>' +
+      '<tr><th>信源</th><th>类型</th><th>语言</th><th>今日</th><th>最近 30 天</th><th>最近成功</th><th>状态</th></tr>' +
       enabled.map(row).join('') + '</table></div>' +
       '<div class="group-head"><h2>未启用</h2><span class="group-count">' + disabled.length + ' 个</span></div>' +
       '<div class="table-scroll"><table class="sources-table">' +
-      '<tr><th>信源</th><th>类型</th><th>语言</th><th>最近成功</th><th>原因</th></tr>' +
+      '<tr><th>信源</th><th>类型</th><th>语言</th><th>今日</th><th>最近 30 天</th><th>最近成功</th><th>原因</th></tr>' +
       disabled.map(row).join('') + '</table></div>' +
       '<div class="errors-note">信源列表以仓库里的 sources.json 为准。要增删信源，直接告诉 Claude，改动次日生效。' +
       '<br>已读与标星存在这台设备的浏览器里，换设备或清缓存会丢失；' +

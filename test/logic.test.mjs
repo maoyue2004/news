@@ -182,3 +182,91 @@ test('空值、undefined 与非法字符串一律返回 #', () => {
   assert.equal(L.safeUrl(undefined), '#');
   assert.equal(L.safeUrl('not a url'), '#');
 });
+
+// 以下测试覆盖 sourceBreakdown：分组标题下面那一行「信源 条数」分布，
+// 统计的是调用方传进来的条目（已经过筛选/搜索），按条数降序、同条数按
+// 信源名升序排，超过 topN 个合并成「其他」放在最后。
+
+test('sourceBreakdown 按条数降序排列', () => {
+  const items = [
+    item({ id: '1', source: 'A' }),
+    item({ id: '2', source: 'B' }),
+    item({ id: '3', source: 'B' }),
+    item({ id: '4', source: 'B' }),
+  ];
+  const out = L.sourceBreakdown(items);
+  assert.deepEqual(out, [{ source: 'B', count: 3 }, { source: 'A', count: 1 }]);
+});
+
+test('sourceBreakdown 条数相同时按信源名升序排列（稳定）', () => {
+  const items = [
+    item({ id: '1', source: 'Zeta' }),
+    item({ id: '2', source: 'Alpha' }),
+    item({ id: '3', source: 'Mid' }),
+  ];
+  const out = L.sourceBreakdown(items);
+  assert.deepEqual(out.map((x) => x.source), ['Alpha', 'Mid', 'Zeta']);
+});
+
+test('sourceBreakdown 超过 topN 时合并「其他」，其 count 等于剩余之和且排在最后', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+    item({ id: '8', source: 'S7' }),
+  ];
+  const out = L.sourceBreakdown(items, 5);
+  assert.equal(out.length, 6);
+  assert.equal(out[out.length - 1].source, '其他');
+  assert.equal(out[out.length - 1].isOther, true);
+  // 7 个信源，S1 有 2 条、其余各 1 条：前 5 名是 S1(2)、S2、S3、S4、S5，
+  // 剩下 S6、S7 各 1 条合并进「其他」，共 2 条。
+  const totalInOther = out[out.length - 1].count;
+  assert.equal(totalInOther, 2);
+});
+
+test('sourceBreakdown 不超过 topN 时不出现「其他」', () => {
+  const items = [
+    item({ id: '1', source: 'A' }),
+    item({ id: '2', source: 'B' }),
+  ];
+  const out = L.sourceBreakdown(items, 5);
+  assert.ok(!out.some((x) => x.isOther));
+  assert.equal(out.length, 2);
+});
+
+test('sourceBreakdown 空数组返回空数组', () => {
+  assert.deepEqual(L.sourceBreakdown([]), []);
+});
+
+// 以下测试覆盖 countsBySource：信源管理页「今日」「最近 30 天」两列。
+// today 只统计 days[0]（最新一天），window 统计传入的全部天数。
+
+test('countsBySource：today 只统计第一天，window 统计全部天', () => {
+  const days = [
+    { date: '2026-07-27', items: [item({ id: '1', source: 'A' }), item({ id: '2', source: 'B' })] },
+    { date: '2026-07-26', items: [item({ id: '3', source: 'A' })] },
+  ];
+  const out = L.countsBySource(days);
+  assert.deepEqual(out.today, { A: 1, B: 1 });
+  assert.deepEqual(out.window, { A: 2, B: 1 });
+});
+
+test('countsBySource：同一信源跨天累加', () => {
+  const days = [
+    { date: '2026-07-27', items: [item({ id: '1', source: 'A' })] },
+    { date: '2026-07-26', items: [item({ id: '2', source: 'A' })] },
+    { date: '2026-07-25', items: [item({ id: '3', source: 'A' })] },
+  ];
+  const out = L.countsBySource(days);
+  assert.equal(out.today.A, 1);
+  assert.equal(out.window.A, 3);
+});
+
+test('countsBySource：空 days 返回两个空对象', () => {
+  assert.deepEqual(L.countsBySource([]), { today: {}, window: {} });
+});

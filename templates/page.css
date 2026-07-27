@@ -121,6 +121,10 @@ main.content { min-width: 0; padding: 16px 24px 60px; }
 .group-head:first-child { margin-top: 0; }
 .group-head h2 { font-size: 15px; margin: 0; }
 .group-head .group-count { font-family: ui-monospace, monospace; font-size: 11.5px; color: var(--muted); }
+.group-breakdown {
+  font-size: 11.5px; color: var(--muted); margin: -4px 0 10px;
+  word-break: break-word;
+}
 
 .item {
   display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: 4px 8px;
@@ -162,6 +166,7 @@ table.sources-table th, table.sources-table td {
   text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); vertical-align: top;
 }
 table.sources-table th { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+table.sources-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
 table.sources-table tr.disabled td { color: var(--muted); }
 .table-scroll { overflow-x: auto; }
 
