@@ -2204,7 +2204,8 @@ import("./lib/render.mjs").then(({ renderPage }) => {
   console.log("已写入 /tmp/reader-check/index.html");
 });
 '
-open /tmp/reader-check/index.html```
+open /tmp/reader-check/index.html
+```
 
 在浏览器里逐项确认（这些是 DOM 交互，单测覆盖不到，必须人眼过一遍）：
 
