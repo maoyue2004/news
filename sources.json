@@ -391,7 +391,7 @@
   {
     "name": "Lex Fridman Podcast",
     "url": "https://lexfridman.com/podcast/",
-    "feed": "https://lexfridman.com/podcast/rss",
+    "feed": "https://lexfridman.com/feed/podcast/",
     "type": "video",
     "lang": "en",
     "enabled": true,
