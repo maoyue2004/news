@@ -1,10 +1,9 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { parseFeed } from '../lib/feed-parse.mjs';
 
-// 部分站点（如 founderpark.net）会拒绝 bot 风格的 UA，实测换成浏览器 UA 才能连上。
-// 这不是为了绕过反爬，只是让正常的 feed 请求不被误伤。
-const UA =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+// 诚实标识自己并留下项目地址，方便站点管理员在需要时联系。
+// 曾试过伪装成浏览器 UA，实测对探测成功率没有任何提升（58/97 无变化），故不值得这么做。
+const UA = 'Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news)';
 const TIMEOUT_MS = 15000;
 
 /** 这些链接指向搜索结果页，本身不是内容站点，不存在 feed。 */
