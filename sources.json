@@ -1,0 +1,880 @@
+[
+  {
+    "name": "Interconnects",
+    "url": "https://www.interconnects.ai/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "seed": true,
+    "enabled": true,
+    "desc": "Nathan Lambert（前 HuggingFace / AI2 研究员）从模型训练一线视角拆解前沿与开源模型，是「研究员写给研究员看」的标杆。"
+  },
+  {
+    "name": "Simon Willison's Weblog",
+    "url": "https://simonwillison.net/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "近乎日更的 LLM 工程实践笔记，工具评测和实操细节又快又准。"
+  },
+  {
+    "name": "Lil'Log",
+    "url": "https://lilianweng.github.io/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Lilian Weng（前 OpenAI 安全负责人）的超长综述式技术长文，引用详尽、体系化极强。"
+  },
+  {
+    "name": "Ahead of AI",
+    "url": "https://sebastianraschka.com/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Sebastian Raschka 从论文到可复现代码，讲透 LLM 训练与微调细节的第一人。"
+  },
+  {
+    "name": "Chip Huyen",
+    "url": "https://huyenchip.com/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "AI 工程化、评估体系与 MLOps 的系统性思考，工业界视角。"
+  },
+  {
+    "name": "Eugene Yan",
+    "url": "https://eugeneyan.com/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "应用型机器学习与 LLM 产品落地的实战笔记，务实不玄乎。"
+  },
+  {
+    "name": "Jason Wei's Blog",
+    "url": "https://www.jasonwei.net/blog",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "OpenAI 研究员，关于 scaling、涌现能力与研究方法论的一手思考。"
+  },
+  {
+    "name": "Andrej Karpathy",
+    "url": "https://karpathy.ai/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "从零构建神经网络的经典教程作者，关于 AI 与研究方法的随笔。"
+  },
+  {
+    "name": "Neel Nanda",
+    "url": "https://www.neelnanda.io/mechanistic-interpretability",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "机制可解释性（mechanistic interpretability）奠基人之一，技术细节拆解硬核。"
+  },
+  {
+    "name": "Transformer Circuits Thread",
+    "url": "https://transformer-circuits.pub/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Anthropic 可解释性团队持续更新的研究帖，硬核第一手，不做营销包装。"
+  },
+  {
+    "name": "Gwern.net",
+    "url": "https://gwern.net/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "独立研究者 Gwern Branwen，长文横跨 scaling law、强化学习与 AI 风险，考据癖式严谨。"
+  },
+  {
+    "name": "The Gradient",
+    "url": "https://thegradient.pub/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "斯坦福 AI 社群背景的杂志式深度文章与访谈。"
+  },
+  {
+    "name": "BAIR Blog",
+    "url": "https://bair.berkeley.edu/blog/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "伯克利 AI 研究院的一手论文解读。"
+  },
+  {
+    "name": "Epoch AI",
+    "url": "https://epoch.ai/blog",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "数据驱动的 AI 趋势研究机构，算力与 scaling 曲线的权威信源。"
+  },
+  {
+    "name": "Thinking Machines Lab — Connectionism",
+    "url": "https://thinkingmachines.ai/blog/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "seed": true,
+    "enabled": true,
+    "desc": "Mira Murati 团队的研究博客，工程细节与研究哲学并重。"
+  },
+  {
+    "name": "Deep (Learning) Focus",
+    "url": "https://cameronrwolfe.substack.com/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Cameron R. Wolfe 逐篇拆解论文的图文 newsletter，适合系统补课。"
+  },
+  {
+    "name": "Yi Tay's Blog",
+    "url": "https://www.yitay.net/blog",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "前 Google Brain / 现 Reka 联创，模型架构与 scaling 内幕视角。"
+  },
+  {
+    "name": "Distill.pub",
+    "url": "https://distill.pub/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "已停更但历史地位极高的可视化论文解读范本，值得回读。"
+  },
+  {
+    "name": "Answer.AI",
+    "url": "https://www.answer.ai/",
+    "feed": null,
+    "type": "blog",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Jeremy Howard（fast.ai 创始人）的新研究小组，专注高效、开源的 AI 研究。"
+  },
+  {
+    "name": "Import AI",
+    "url": "https://jack-clark.net/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Anthropic 联合创始人 Jack Clark 执笔，每周 AI 前沿研究扫描，带安全视角。"
+  },
+  {
+    "name": "Don't Worry About the Vase",
+    "url": "https://thezvi.substack.com/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Zvi Mowshowitz，信息密度最高的每周 AI 新闻综述与独立判断。"
+  },
+  {
+    "name": "The Batch",
+    "url": "https://www.deeplearning.ai/the-batch/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "吴恩达团队出品，研究摘要 + 「吴恩达来信」专栏。"
+  },
+  {
+    "name": "Ben's Bites",
+    "url": "https://bensbites.com/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Ben Tossell 从建设者视角看：新发布到底对你在做的产品意味着什么。"
+  },
+  {
+    "name": "One Useful Thing",
+    "url": "https://www.oneusefulthing.org/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "宾大教授 Ethan Mollick，AI 在工作与教育场景的一手实验记录。"
+  },
+  {
+    "name": "AI Snake Oil",
+    "url": "https://www.aisnakeoil.com/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "普林斯顿学者 Arvind Narayanan & Sayash Kapoor，对 AI 炒作最冷静的祛魅视角。"
+  },
+  {
+    "name": "Exponential View",
+    "url": "https://www.exponentialview.co/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Azeem Azhar，技术与社会交叉的长文分析，偏战略/高管视角。"
+  },
+  {
+    "name": "Stratechery",
+    "url": "https://stratechery.com/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Ben Thompson，科技行业战略分析标杆，近年重仓 AI 叙事。"
+  },
+  {
+    "name": "Platformer",
+    "url": "https://www.platformer.news/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Casey Newton，科技平台政策报道扎实，AI 相关内容常被引用。"
+  },
+  {
+    "name": "AI Supremacy",
+    "url": "https://www.aisupremacy.com/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Michael Spencer，AI 行业趋势与就业影响分析。"
+  },
+  {
+    "name": "The Algorithm",
+    "url": "https://www.technologyreview.com/newsletters/the-algorithm/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "MIT Technology Review 出品的 AI 周报，编辑视角稳健、不追热点。"
+  },
+  {
+    "name": "TLDR AI",
+    "url": "https://tldr.tech/ai",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "每日 5 分钟 AI 资讯速览，适合当日常扫盘用。"
+  },
+  {
+    "name": "The Rundown AI",
+    "url": "https://www.therundown.ai/",
+    "feed": null,
+    "type": "newsletter",
+    "lang": "en",
+    "enabled": true,
+    "desc": "独立 AI 媒体，日更新闻与产品速览，体量很大。"
+  },
+  {
+    "name": "Dwarkesh Podcast",
+    "url": "https://www.dwarkesh.com/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Dwarkesh Patel，2-3 小时超长硬核访谈研究者、创始人与经济学家。"
+  },
+  {
+    "name": "Latent Space",
+    "url": "https://www.latent.space/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Swyx & Alessio，面向 AI 工程师，工程实践与前沿研究并重。"
+  },
+  {
+    "name": "No Priors",
+    "url": "https://www.no-priors.com/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Sarah Guo & Elad Gil，VC 视角访谈顶尖研究者与创始人。"
+  },
+  {
+    "name": "Training Data",
+    "url": "https://trainingdata.pub/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "红杉资本出品，AI 公司创始人与研究者的深度对话。"
+  },
+  {
+    "name": "a16z Podcast",
+    "url": "https://a16z.com/podcasts/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Andreessen Horowitz，覆盖 AI agent、基础设施等前沿方向。"
+  },
+  {
+    "name": "The Cognitive Revolution",
+    "url": "https://www.cognitiverevolution.ai/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Nathan Labenz，高频更新的 AI builder / researcher 访谈。"
+  },
+  {
+    "name": "Practical AI",
+    "url": "https://changelog.com/practicalai",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "面向工程师的实践向 AI 播客，落地细节多。"
+  },
+  {
+    "name": "TWIML AI Podcast",
+    "url": "https://twimlai.com/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "老牌 AI 播客，学术与产业嘉宾兼具，选题稳。"
+  },
+  {
+    "name": "Hard Fork",
+    "url": "https://www.nytimes.com/column/hard-fork",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "NYT 出品，Kevin Roose & Casey Newton，大众向但信息密度不低的科技周播。"
+  },
+  {
+    "name": "BG2 Pod",
+    "url": "https://www.youtube.com/@BG2Pod",
+    "feed": null,
+    "type": "podcast",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Bill Gurley & Brad Gerstner，顶级投资人视角讨论 AI 行业格局。"
+  },
+  {
+    "name": "Lex Fridman Podcast",
+    "url": "https://lexfridman.com/podcast/",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "顶级研究者与创始人的长对话，视频形式，涉猎面广。"
+  },
+  {
+    "name": "Yannic Kilcher",
+    "url": "https://www.youtube.com/@YannicKilcher",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "论文精读 + 代码复现，技术含量高、常带批判视角。"
+  },
+  {
+    "name": "Machine Learning Street Talk",
+    "url": "https://www.youtube.com/@MachineLearningStreetTalk",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "学术嘉宾深度对谈，常有论文一作亲自解读。"
+  },
+  {
+    "name": "Two Minute Papers",
+    "url": "https://www.youtube.com/@TwoMinutePapers",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "几分钟讲清一篇论文的核心结果，适合快速扫描前沿。"
+  },
+  {
+    "name": "AI Explained",
+    "url": "https://www.youtube.com/@aiexplained-official",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "数据驱动的模型能力 / 基准测试长文分析，更新勤快。"
+  },
+  {
+    "name": "Robert Miles AI Safety",
+    "url": "https://www.youtube.com/@RobertMilesAI",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "把对齐问题讲给大众听的最佳科普者。"
+  },
+  {
+    "name": "bycloud",
+    "url": "https://www.youtube.com/@bycloudAI",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "追踪前沿论文的技术向 UP 主风格频道。"
+  },
+  {
+    "name": "3Blue1Brown",
+    "url": "https://www.youtube.com/@3blue1brown",
+    "feed": null,
+    "type": "video",
+    "lang": "en",
+    "enabled": true,
+    "desc": "神经网络 / Transformer 的数学可视化讲解，入门到进阶都受用。"
+  },
+  {
+    "name": "LessWrong",
+    "url": "https://www.lesswrong.com/",
+    "feed": null,
+    "type": "community",
+    "lang": "en",
+    "enabled": true,
+    "desc": "理性主义与 AI 风险讨论的老牌社区，深度长文聚集地。"
+  },
+  {
+    "name": "AI Alignment Forum",
+    "url": "https://www.alignmentforum.org/",
+    "feed": null,
+    "type": "community",
+    "lang": "en",
+    "enabled": true,
+    "desc": "对齐研究者的专业讨论区，LessWrong 的技术分支。"
+  },
+  {
+    "name": "OpenAI",
+    "url": "https://openai.com/news/",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "官方研究与产品发布索引。"
+  },
+  {
+    "name": "Google DeepMind Blog",
+    "url": "https://deepmind.google/discover/blog/",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "AlphaFold、Gemini、AI for Science 等方向的一手文章。"
+  },
+  {
+    "name": "Anthropic Research",
+    "url": "https://www.anthropic.com/research",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Anthropic 的研究索引，安全与能力并重。"
+  },
+  {
+    "name": "Anthropic Alignment Science",
+    "url": "https://alignment.anthropic.com/",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Anthropic 对齐科学团队的技术博客，比公司主页更硬核。"
+  },
+  {
+    "name": "Meta AI Blog",
+    "url": "https://ai.meta.com/blog/",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Llama 系列与 Meta 内部研究的发布地。"
+  },
+  {
+    "name": "Google Research Blog",
+    "url": "https://research.google/blog/",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "Google 研究院整体成果，覆盖面比 DeepMind 博客更宽。"
+  },
+  {
+    "name": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "开源 AI 社区一线动态：新模型、微调方法、基准测试。"
+  },
+  {
+    "name": "Allen Institute for AI (Ai2)",
+    "url": "https://allenai.org/blog",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "非营利研究所，开放模型与数据集方向的扎实工作。"
+  },
+  {
+    "name": "EleutherAI Blog",
+    "url": "https://blog.eleuther.ai/",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "开源大模型研究社区，训练细节公开透明。"
+  },
+  {
+    "name": "Mistral AI News",
+    "url": "https://mistral.ai/news",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "欧洲开源大模型代表队的发布动态。"
+  },
+  {
+    "name": "Cohere Blog",
+    "url": "https://cohere.com/blog",
+    "feed": null,
+    "type": "lab",
+    "lang": "en",
+    "enabled": true,
+    "desc": "企业级 LLM 视角，RAG 与检索方向内容较多。"
+  },
+  {
+    "name": "张小珺Jùn｜商业访谈录",
+    "url": "https://www.youtube.com/@xiaojunpodcast",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "seed": true,
+    "enabled": true,
+    "desc": "2-7 小时超长访谈，覆盖 AI、科技巨头、风险投资与关键人物。"
+  },
+  {
+    "name": "WhynotTV Podcast",
+    "url": "https://www.youtube.com/@whynottv1999",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "seed": true,
+    "enabled": true,
+    "desc": "CMU 机器人 PhD 田陶然主持，硬核技术细节 + 行业访谈，2-4 小时长对话。"
+  },
+  {
+    "name": "42章经",
+    "url": "https://podcasts.apple.com/us/search?term=42%E7%AB%A0%E7%BB%8F",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "投资人曲凯，与 AI 投资人 / 创业者的深度对谈。"
+  },
+  {
+    "name": "硅谷101",
+    "url": "https://podcasts.apple.com/us/search?term=%E7%A1%85%E8%B0%B7101",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "主播泓君，硅谷 AI 公司、人才竞争与资本格局的一线视角。"
+  },
+  {
+    "name": "卫诗婕｜漫谈 Light the Star",
+    "url": "https://podcasts.apple.com/us/search?term=%E5%8D%AB%E8%AF%97%E5%A9%95%E6%BC%AB%E8%B0%88",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "财经记者卫诗婕的深度对话节目。"
+  },
+  {
+    "name": "晚点聊 LateTalk",
+    "url": "https://podcast.latepost.com/",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "晚点团队出品，从模型到应用、技术到商战的年度/专题复盘。"
+  },
+  {
+    "name": "屠龙之术",
+    "url": "https://podcasts.apple.com/us/search?term=%E5%B1%A0%E9%BE%99%E4%B9%8B%E6%9C%AF",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "庄明浩主持，聊投资、商业模式与行业周期。"
+  },
+  {
+    "name": "十字路口 Crossing",
+    "url": "https://podcasts.apple.com/us/search?term=%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3%20Crossing",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "找 AI 时代的活跃实践者聊，技术与人文交叉视角。"
+  },
+  {
+    "name": "AI Odyssey",
+    "url": "https://podcasts.apple.com/us/search?term=AI%20Odyssey",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "聚焦 AI 技术与应用的前沿探索。"
+  },
+  {
+    "name": "OnBoard!",
+    "url": "https://podcasts.apple.com/us/search?term=OnBoard%21",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "主播 Monica，VC 视角看 AI 创业、产品与融资。"
+  },
+  {
+    "name": "AI局内人｜AGI Insider",
+    "url": "https://podcasts.apple.com/us/search?term=AI%E5%B1%80%E5%86%85%E4%BA%BA",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "Founder Park 出品，找产品人、创业者和技术负责人聊真实困境。"
+  },
+  {
+    "name": "原点Talk",
+    "url": "https://podcasts.apple.com/us/search?term=%E5%8E%9F%E7%82%B9Talk",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "至顶科技 x 北京 AI 原点社区，记录 AI 创业者踩坑与解题过程。"
+  },
+  {
+    "name": "乱翻书",
+    "url": "https://podcasts.apple.com/us/search?term=%E4%B9%B1%E7%BF%BB%E4%B9%A6",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "科技考古与行业观察，商业、技术与历史的交叉视角。"
+  },
+  {
+    "name": "What's Next｜科技早知道",
+    "url": "https://podcasts.apple.com/us/search?term=%E7%A7%91%E6%8A%80%E6%97%A9%E7%9F%A5%E9%81%93",
+    "feed": null,
+    "type": "podcast",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "声动活泼出品，全球科技与商业模式变化，AI 是常驻话题。"
+  },
+  {
+    "name": "跟李沐学AI",
+    "url": "https://www.youtube.com/@mu_li",
+    "feed": null,
+    "type": "video",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "李沐（前亚马逊首席科学家），B 站起家的论文逐段精读 + 工程实操，中文技术区标杆。"
+  },
+  {
+    "name": "第四种黑猩猩",
+    "url": "https://www.youtube.com/@thefourthchimp",
+    "feed": null,
+    "type": "video",
+    "lang": "zh",
+    "seed": true,
+    "enabled": true,
+    "desc": "探讨「超级智能是否是第四种黑猩猩」的 AI 科技 UP 主，前沿产品测评与技术向深潜。"
+  },
+  {
+    "name": "数字生命卡兹克",
+    "url": "https://weixin.sogou.com/weixin?type=1&query=%E6%95%B0%E5%AD%97%E7%94%9F%E5%91%BD%E5%8D%A1%E5%85%B9%E5%85%8B",
+    "feed": null,
+    "type": "blog",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "个人博主，大模型 / Agent 一线测评与实验，更新快、动手能力强。"
+  },
+  {
+    "name": "宝玉xp",
+    "url": "https://www.zhihu.com/search?q=%E5%AE%9D%E7%8E%89xp",
+    "feed": null,
+    "type": "blog",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "Prompt 工程方法论个人博主，体系化程度高。"
+  },
+  {
+    "name": "karminski-牙医",
+    "url": "https://www.zhihu.com/search?q=karminski-%E7%89%99%E5%8C%BB",
+    "feed": null,
+    "type": "blog",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "独立做模型横评测评，量化对比、不站队。"
+  },
+  {
+    "name": "海辛Hyacinth",
+    "url": "https://weixin.sogou.com/weixin?type=1&query=%E6%B5%B7%E8%BE%9BHyacinth",
+    "feed": null,
+    "type": "blog",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "AI 与传统手工艺跨界内容创作，视角少见。"
+  },
+  {
+    "name": "归藏的AI工具箱",
+    "url": "https://weixin.sogou.com/weixin?type=1&query=%E5%BD%92%E8%97%8F%E7%9A%84AI%E5%B7%A5%E5%85%B7%E7%AE%B1",
+    "feed": null,
+    "type": "blog",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "效率工具与开源方案测评，动手党向。"
+  },
+  {
+    "name": "机器之心",
+    "url": "https://www.jiqizhixin.com/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "中文AI三大媒体之一，学术会议与论文跟踪解读见长。"
+  },
+  {
+    "name": "量子位",
+    "url": "https://www.qbitai.com/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "中文AI三大媒体之一，前沿资讯速度快、覆盖面广。"
+  },
+  {
+    "name": "新智元",
+    "url": "https://aiera.com.cn/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "中文AI三大媒体之一，更偏重大厂动态与重大事件报道。"
+  },
+  {
+    "name": "晚点LatePost",
+    "url": "https://www.latepost.com/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "深度商业报道，擅长还原大公司决策过程，AI 相关长文质量稳定。"
+  },
+  {
+    "name": "暗涌Waves",
+    "url": "https://anyongwaves.com/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "36氪旗下投资报道账号，聚焦一级市场的钱与人。"
+  },
+  {
+    "name": "海外独角兽",
+    "url": "https://weixin.sogou.com/weixin?type=1&query=%E6%B5%B7%E5%A4%96%E7%8B%AC%E8%A7%92%E5%85%BD",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "海外 AI 公司与趋势的深度研究型内容，行研报告式写法。"
+  },
+  {
+    "name": "甲子光年",
+    "url": "https://www.jazzyear.com/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "产业与投资视角的深度分析，覆盖商业化路径与供应链。"
+  },
+  {
+    "name": "硅星人",
+    "url": "https://www.pingwest.com/channel/35",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "中美 AI 竞争的硅谷一线视角，PingWest 旗下频道。"
+  },
+  {
+    "name": "智东西",
+    "url": "https://www.zhidx.com/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "硬科技与 AI 芯片产业报道，供应链视角强。"
+  },
+  {
+    "name": "AI科技评论",
+    "url": "https://weixin.sogou.com/weixin?type=1&query=AI%E7%A7%91%E6%8A%80%E8%AF%84%E8%AE%BA",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "偏学术会议与论文向的深度技术报道。"
+  },
+  {
+    "name": "少数派",
+    "url": "https://sspai.com/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "数字工具与效率方法社区，AI 工具类测评内容持续增长。"
+  },
+  {
+    "name": "Founder Park",
+    "url": "https://founderpark.net/",
+    "feed": null,
+    "type": "media",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "极客公园孵化的 AGI 时代创业者社区，一手创业案例多。"
+  },
+  {
+    "name": "WaytoAGI 通往AGI之路",
+    "url": "https://www.waytoagi.com/",
+    "feed": null,
+    "type": "community",
+    "lang": "zh",
+    "enabled": true,
+    "desc": "开源公益社区，AI 工具与学习路径合集，适合系统入门。"
+  }
+]
