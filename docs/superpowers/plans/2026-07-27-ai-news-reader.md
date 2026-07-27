@@ -183,7 +183,7 @@ Expected:
 ```
 总数 97
 { blog: 24, newsletter: 13, podcast: 24, video: 10, community: 3, lab: 11, media: 12 }
-有 seed 的 2
+有 seed 的 5
 字段齐全 true
 ```
 
@@ -2204,7 +2204,8 @@ import("./lib/render.mjs").then(({ renderPage }) => {
   console.log("已写入 /tmp/reader-check/index.html");
 });
 '
-open /tmp/reader-check/index.html```
+open /tmp/reader-check/index.html
+```
 
 在浏览器里逐项确认（这些是 DOM 交互，单测覆盖不到，必须人眼过一遍）：
 
