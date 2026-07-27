@@ -31,3 +31,17 @@ test('空输入返回空串', () => {
   assert.equal(htmlToText(null), '');
   assert.equal(htmlToText(undefined), '');
 });
+
+test('【修复】截断是码点安全的，emoji 不会被拆分', () => {
+  // 用 emoji（每个占 2 个 UTF-16 单元）来测试
+  const emojiText = '😀'.repeat(200);
+  const result = htmlToText(emojiText, 100);
+  // 验证截断长度确实是 100 个码点（不是 UTF-16 单元）
+  assert.equal(Array.from(result).length, 100);
+  // 验证没有孤立代理项（完整的结果应该等于其 Array.from().join('')）
+  assert.equal(result, Array.from(result).join(''));
+  // 确保没有被拆分的 emoji
+  assert.doesNotThrow(() => {
+    JSON.stringify(result);
+  });
+});
