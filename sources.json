@@ -10,15 +10,6 @@
     "desc": "Nathan Lambert（前 HuggingFace / AI2 研究员）从模型训练一线视角拆解前沿与开源模型，是「研究员写给研究员看」的标杆。"
   },
   {
-    "name": "Simon Willison's Weblog",
-    "url": "https://simonwillison.net/",
-    "feed": "https://simonwillison.net/atom/everything/",
-    "type": "blog",
-    "lang": "en",
-    "enabled": true,
-    "desc": "近乎日更的 LLM 工程实践笔记，工具评测和实操细节又快又准。"
-  },
-  {
     "name": "Lil'Log",
     "url": "https://lilianweng.github.io/",
     "feed": "https://lilianweng.github.io/index.xml",
