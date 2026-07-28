@@ -292,6 +292,132 @@ test('sourceBreakdown 空数组返回空数组', () => {
   assert.deepEqual(L.sourceBreakdown([]), []);
 });
 
+// 以下测试覆盖 sourceBreakdown 新增的 pinned 参数：被 pin 的信源
+// 永远出现在结果里，不会被并入「其他」。
+
+test('sourceBreakdown pinned 为 undefined 时行为与不传一致', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+    item({ id: '8', source: 'S7' }),
+  ];
+  const withoutPinned = L.sourceBreakdown(items, 5);
+  const withUndefinedPinned = L.sourceBreakdown(items, 5, undefined);
+  assert.deepEqual(withUndefinedPinned, withoutPinned);
+});
+
+test('sourceBreakdown pinned 为 null 时行为与不传一致', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+    item({ id: '8', source: 'S7' }),
+  ];
+  const withoutPinned = L.sourceBreakdown(items, 5);
+  const withNullPinned = L.sourceBreakdown(items, 5, null);
+  assert.deepEqual(withNullPinned, withoutPinned);
+});
+
+test('sourceBreakdown pinned 为空串时行为与不传一致', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+    item({ id: '8', source: 'S7' }),
+  ];
+  const withoutPinned = L.sourceBreakdown(items, 5);
+  const withEmptyStringPinned = L.sourceBreakdown(items, 5, '');
+  assert.deepEqual(withEmptyStringPinned, withoutPinned);
+});
+
+test('sourceBreakdown pin 一个会掉进「其他」的低频源，它单独出现且「其他」计数减少', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+    item({ id: '8', source: 'S7' }),
+  ];
+  const out = L.sourceBreakdown(items, 5, 'S6');
+  // 前 5 名：S1(2), S2(1), S3(1), S4(1), S5(1)
+  // S6 本来在「其他」里，现在被 pin，单独提出来
+  // 「其他」变成只有 S7
+  assert.equal(out.length, 7); // S1, S2, S3, S4, S5, S6, 其他
+  assert.deepEqual(out.map((x) => x.source), ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', '其他']);
+  assert.equal(out.find((x) => x.source === 'S6').count, 1);
+  assert.equal(out.find((x) => x.isOther).count, 1); // 只有 S7 一条
+});
+
+test('sourceBreakdown pin 一个本来就在 topN 里的源，结果不变无重复', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+    item({ id: '8', source: 'S7' }),
+  ];
+  const withoutPin = L.sourceBreakdown(items, 5);
+  const withPin = L.sourceBreakdown(items, 5, 'S1');
+  assert.deepEqual(withPin, withoutPin);
+  // 确认没有重复
+  assert.equal(withPin.filter((x) => x.source === 'S1').length, 1);
+});
+
+test('sourceBreakdown pin 后「其他」变 0 条则不输出「其他」', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+  ];
+  const out = L.sourceBreakdown(items, 5, 'S6');
+  // 前 5 名：S1(2), S2(1), S3(1), S4(1), S5(1)
+  // S6 本来在「其他」里，现在被 pin，单独提出来
+  // 「其他」本来只有 S6，现在 S6 被提出，「其他」变成 0 条，不输出
+  assert.ok(!out.some((x) => x.isOther));
+  assert.deepEqual(out.map((x) => x.source), ['S1', 'S2', 'S3', 'S4', 'S5', 'S6']);
+});
+
+test('sourceBreakdown pin 一个在 items 里不存在的源，不产生 0 条的项', () => {
+  const items = [
+    item({ id: '1', source: 'S1' }),
+    item({ id: '2', source: 'S1' }),
+    item({ id: '3', source: 'S2' }),
+    item({ id: '4', source: 'S3' }),
+    item({ id: '5', source: 'S4' }),
+    item({ id: '6', source: 'S5' }),
+    item({ id: '7', source: 'S6' }),
+    item({ id: '8', source: 'S7' }),
+  ];
+  const out = L.sourceBreakdown(items, 5, 'Nonexistent');
+  const withoutPin = L.sourceBreakdown(items, 5);
+  assert.deepEqual(out, withoutPin);
+  // 确认 Nonexistent 没有出现
+  assert.ok(!out.some((x) => x.source === 'Nonexistent'));
+});
+
 // 以下测试覆盖 countsBySource：信源管理页「今日」「最近 30 天」两列。
 // today 只统计 days[0]（最新一天），window 统计传入的全部天数。
 

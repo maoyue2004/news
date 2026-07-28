@@ -93,8 +93,11 @@
   // 分组标题下的信源分布：统计当前实际展示的条目（调用方已经把筛选/搜索
   // 应用完了，这里只管数数），按条数降序、条数相同按信源名升序排稳定。
   // 超过 topN 个信源时，多出来的合并成一条「其他」，放在最后。
-  function sourceBreakdown(items, topN) {
+  // 如果指定了 pinned（信源名），该信源永远出现在结果里，不会被并入「其他」。
+  function sourceBreakdown(items, topN, pinned) {
     topN = topN == null ? 5 : topN;
+    // 如果 pinned 是 undefined/null/空串，就当作没有 pin
+    pinned = (pinned == null || pinned === '') ? undefined : pinned;
     var counts = {};
     items.forEach(function (it) {
       counts[it.source] = (counts[it.source] || 0) + 1;
@@ -106,8 +109,30 @@
     });
     if (list.length <= topN) return list;
     var head = list.slice(0, topN);
-    var restCount = list.slice(topN).reduce(function (n, x) { return n + x.count; }, 0);
-    head.push({ source: OTHER_LABEL, count: restCount, isOther: true });
+    var rest = list.slice(topN);
+
+    // 检查 pinned 是否在 rest 中（即排名超过topN但存在）
+    var pinnedItem = null;
+    if (pinned) {
+      for (var i = 0; i < rest.length; i++) {
+        if (rest[i].source === pinned) {
+          pinnedItem = rest[i];
+          rest = rest.slice(0, i).concat(rest.slice(i + 1));
+          break;
+        }
+      }
+    }
+
+    if (pinnedItem) {
+      head.push(pinnedItem);
+    }
+
+    // 如果 rest 还有剩余，合并成「其他」
+    if (rest.length > 0) {
+      var restCount = rest.reduce(function (n, x) { return n + x.count; }, 0);
+      head.push({ source: OTHER_LABEL, count: restCount, isOther: true });
+    }
+
     return head;
   }
 

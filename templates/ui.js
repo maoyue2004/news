@@ -147,7 +147,7 @@
 
     var groups = L.groupByType(shownItems);
     var html = groups.map(function (g) {
-      var breakdown = L.sourceBreakdown(baseByType[g.type] || g.items).map(function (b) {
+      var breakdown = L.sourceBreakdown(baseByType[g.type] || g.items, undefined, state.sourceFilter).map(function (b) {
         if (b.isOther) {
           // 「其他」是多个信源的聚合，点了语义不清，不可点击。
           return '<span class="src-chip src-other">' + esc(b.source) + ' ' + b.count + '</span>';
