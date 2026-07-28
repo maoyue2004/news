@@ -35,9 +35,13 @@
     return groups;
   }
 
+  // opts.source：按信源名精确筛选，undefined/null 表示不筛选（与不传这个
+  // 字段的旧调用方完全等价）。和 filter/query 取交集，顺序上先判断 source
+  // 最省事——不匹配就不用再算后面的已读/标星/搜索。
   function applyFilter(items, opts) {
     var q = (opts.query || '').trim().toLowerCase();
     return items.filter(function (it) {
+      if (opts.source != null && it.source !== opts.source) return false;
       if (opts.filter === 'unread' && opts.readSet.has(it.id)) return false;
       if (opts.filter === 'starred' && !opts.starSet.has(it.id)) return false;
       if (!q) return true;

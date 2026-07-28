@@ -91,6 +91,55 @@ test('搜索同时命中中文标题、中文摘要、英文原标题和信源�
   assert.equal(L.applyFilter(items, { ...opts, query: '不存在的词' }).length, 0);
 });
 
+// 以下测试覆盖 applyFilter 新增的 source 选项：分布行里点某个信源名，
+// 只看该信源的条目。undefined/null 表示不筛选，必须和不传这个字段时
+// 行为完全一致（旧调用方、旧测试都不传 source）。
+
+test('source 筛选：只返回该信源的条目', () => {
+  const items = [item({ id: '1', source: 'A' }), item({ id: '2', source: 'B' })];
+  const out = L.applyFilter(items, { filter: 'all', query: '', readSet: new Set(), starSet: new Set(), source: 'A' });
+  assert.deepEqual(out.map((i) => i.id), ['id-1']);
+});
+
+test('source 为 undefined 或 null 时不筛选，行为与不传一致', () => {
+  const items = [item({ id: '1', source: 'A' }), item({ id: '2', source: 'B' })];
+  const opts = { filter: 'all', query: '', readSet: new Set(), starSet: new Set() };
+  const base = L.applyFilter(items, opts).map((i) => i.id);
+  assert.deepEqual(L.applyFilter(items, { ...opts, source: undefined }).map((i) => i.id), base);
+  assert.deepEqual(L.applyFilter(items, { ...opts, source: null }).map((i) => i.id), base);
+});
+
+test('source 与 unread 筛选同时生效，取交集', () => {
+  const items = [
+    item({ id: '1', source: 'A' }),
+    item({ id: '2', source: 'A' }),
+    item({ id: '3', source: 'B' }),
+  ];
+  const out = L.applyFilter(items, {
+    filter: 'unread', query: '', readSet: new Set(['id-1']), starSet: new Set(), source: 'A',
+  });
+  assert.deepEqual(out.map((i) => i.id), ['id-2']);
+});
+
+test('source 与搜索同时生效，取交集', () => {
+  const items = [
+    item({ id: '1', source: 'A', titleOriginal: 'Reward Hacking' }),
+    item({ id: '2', source: 'B', titleOriginal: 'Reward Hacking' }),
+  ];
+  const out = L.applyFilter(items, {
+    filter: 'all', query: 'reward', readSet: new Set(), starSet: new Set(), source: 'A',
+  });
+  assert.deepEqual(out.map((i) => i.id), ['id-1']);
+});
+
+test('source 指定不存在的信源名时返回空数组', () => {
+  const items = [item({ id: '1', source: 'A' })];
+  const out = L.applyFilter(items, {
+    filter: 'all', query: '', readSet: new Set(), starSet: new Set(), source: 'Nonexistent',
+  });
+  assert.deepEqual(out, []);
+});
+
 test('搜索大小写不敏感', () => {
   const items = [item({ titleOriginal: 'Reward Hacking' })];
   const out = L.applyFilter(items, { filter: 'all', query: 'REWARD', readSet: new Set(), starSet: new Set() });

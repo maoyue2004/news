@@ -24,7 +24,9 @@
   var readSet = loadSet(READ_KEY);
   var starSet = loadSet(STAR_KEY);
   var today = DATA.days.length ? DATA.days[0].date : '';
-  var state = { view: today ? { kind: 'day', date: today } : { kind: 'sources' }, filter: 'all', query: '' };
+  // sourceFilter：分布行里点某个信源名后生效的筛选，null 表示不筛选。
+  // 与 filter/query 是正交的两层筛选（见 baseFilteredItems / visibleItems）。
+  var state = { view: today ? { kind: 'day', date: today } : { kind: 'sources' }, filter: 'all', query: '', sourceFilter: null };
 
   var elStats = document.getElementById('stats');
   var elCal = document.getElementById('calendar');
@@ -57,6 +59,22 @@
     return day && day.errors ? day.errors : [];
   }
 
+  // 未读/已标星筛选 + 搜索，但不含信源筛选。分组标题下的分布行永远基于
+  // 这一层算——否则点了某个信源之后，分布行就只剩它自己，没法直接切到
+  // 别的源（这是这个功能最容易做错的地方）。
+  function baseFilteredItems() {
+    return L.applyFilter(currentItems(), {
+      filter: state.filter, query: state.query, readSet: readSet, starSet: starSet,
+    });
+  }
+
+  // 在 baseFilteredItems() 之上再叠加信源筛选，主区实际展示的就是这批。
+  function visibleItems(items) {
+    return state.sourceFilter
+      ? items.filter(function (it) { return it.source === state.sourceFilter; })
+      : items;
+  }
+
   function renderCalendar() {
     var html = DATA.days.map(function (d) {
       var unread = d.items.filter(function (it) { return !readSet.has(it.id); }).length;
@@ -70,12 +88,15 @@
   }
 
   function renderStats() {
-    var s = L.computeStats(currentItems(), readSet, starSet);
+    var s = L.computeStats(visibleItems(baseFilteredItems()), readSet, starSet);
     var label = state.view.kind === 'starred' ? '收藏' :
       state.view.kind === 'sources' ? '' : L.formatDayLabel(state.view.date, today);
-    elStats.innerHTML = label
-      ? label + ' <b>' + s.total + '</b> 条 · 未读 <b>' + s.unread + '</b> · ★ <b>' + s.starred + '</b>'
+    var chip = state.sourceFilter
+      ? ' <button type="button" id="source-filter-chip" class="source-chip">已筛选：' + esc(state.sourceFilter) + ' ×</button>'
       : '';
+    elStats.innerHTML = (label
+      ? label + ' <b>' + s.total + '</b> 条 · 未读 <b>' + s.unread + '</b> · ★ <b>' + s.starred + '</b>'
+      : '') + chip;
   }
 
   function itemHtml(it) {
@@ -104,19 +125,36 @@
     elSources.classList.add('hidden');
     elStream.classList.remove('hidden');
 
-    var items = L.applyFilter(currentItems(), {
-      filter: state.filter, query: state.query, readSet: readSet, starSet: starSet,
-    });
+    // baseItems：未读/已标星 + 搜索之后、还没应用信源筛选的条目，分布行照它算。
+    // shownItems：baseItems 再叠加信源筛选，分组和条目列表照它算。
+    var baseItems = baseFilteredItems();
 
-    if (!items.length) {
+    if (!baseItems.length) {
       elStream.innerHTML = '<div class="empty-state">这里没有内容 — 换个筛选条件或看看别的日期。</div>';
       return;
     }
 
-    var groups = L.groupByType(items);
+    var shownItems = visibleItems(baseItems);
+
+    if (!shownItems.length) {
+      elStream.innerHTML = '<div class="empty-state">这里没有内容 — 换个筛选条件或看看别的日期。</div>';
+      return;
+    }
+
+    // 按类型分好的「全量」条目（未受信源筛选影响），供分布行取数用。
+    var baseByType = {};
+    L.groupByType(baseItems).forEach(function (g) { baseByType[g.type] = g.items; });
+
+    var groups = L.groupByType(shownItems);
     var html = groups.map(function (g) {
-      var breakdown = L.sourceBreakdown(g.items).map(function (b) {
-        return esc(b.source) + ' ' + b.count;
+      var breakdown = L.sourceBreakdown(baseByType[g.type] || g.items).map(function (b) {
+        if (b.isOther) {
+          // 「其他」是多个信源的聚合，点了语义不清，不可点击。
+          return '<span class="src-chip src-other">' + esc(b.source) + ' ' + b.count + '</span>';
+        }
+        var active = b.source === state.sourceFilter;
+        return '<button type="button" class="src-chip src-filter' + (active ? ' active' : '') + '" data-source="' + esc(b.source) + '">' +
+          esc(b.source) + ' ' + b.count + '</button>';
       }).join(' · ');
       return '<div class="group-head"><h2>' + esc(g.label) + '</h2>' +
         '<span class="group-count">' + g.items.length + ' 条</span></div>' +
@@ -257,12 +295,18 @@
     var btn = e.target.closest('.day-btn');
     if (!btn) return;
     state.view = { kind: 'day', date: btn.dataset.date };
+    // 换了日期，之前选的信源在新的一天里可能压根不存在，留着筛选只会
+    // 让用户看到一片空白却摸不着头脑——直接清掉。
+    state.sourceFilter = null;
     render();
   });
 
   document.querySelectorAll('.view-btn').forEach(function (b) {
     b.addEventListener('click', function () {
       state.view = { kind: b.dataset.view };
+      // 切到「★ 收藏」或「信源管理」同理：清掉信源筛选，避免带着一个
+      // 在新视图里对不上号的筛选条件。
+      state.sourceFilter = null;
       render();
     });
   });
@@ -281,7 +325,25 @@
     if (state.view.kind !== 'sources') { renderStream(); renderStats(); }
   });
 
+  elStats.addEventListener('click', function (e) {
+    var chip = e.target.closest('#source-filter-chip');
+    if (!chip) return;
+    state.sourceFilter = null;
+    renderStream();
+    renderStats();
+  });
+
   elStream.addEventListener('click', function (e) {
+    var srcBtn = e.target.closest('.src-filter');
+    if (srcBtn) {
+      var source = srcBtn.dataset.source;
+      // 再点一次同一个信源 = 取消筛选；点别的信源 = 切换过去。
+      state.sourceFilter = state.sourceFilter === source ? null : source;
+      renderStream();
+      renderStats();
+      return;
+    }
+
     var summary = e.target.closest('.item-summary');
     if (summary) { summary.classList.toggle('expanded'); return; }
 

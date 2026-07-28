@@ -125,6 +125,26 @@ main.content { min-width: 0; padding: 16px 24px 60px; }
   font-size: 11.5px; color: var(--muted); margin: -4px 0 10px;
   word-break: break-word;
 }
+/* 分布行里每个信源都是可点的筛选器，点一下只看这个源；再点一次取消。
+   「其他」是多个信源的聚合，点了语义不清，做成不可点的 span。 */
+.group-breakdown .src-chip {
+  font: inherit; font-size: inherit; color: inherit; background: none; border: none;
+  padding: 0; margin: 0;
+}
+.group-breakdown button.src-filter {
+  cursor: pointer; border-radius: 4px; padding: 1px 3px; margin: -1px -3px;
+}
+.group-breakdown button.src-filter:hover { color: var(--accent-strong); background: var(--seed-bg); }
+.group-breakdown button.src-filter.active { color: var(--accent-strong); font-weight: 700; }
+.group-breakdown button.src-filter:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.group-breakdown .src-other { cursor: default; }
+/* 顶部统计区里「已筛选：xxx ×」提示，点它或它的 × 都能清除信源筛选。 */
+.source-chip {
+  font: inherit; font-size: 12px; margin-left: 4px; padding: 2px 9px; border-radius: 999px;
+  border: 1px solid var(--accent); background: var(--seed-bg); color: var(--accent-strong); cursor: pointer;
+}
+.source-chip:hover { background: var(--accent); color: #fff; }
+.source-chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
 
 .item {
   display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: 4px 8px;
