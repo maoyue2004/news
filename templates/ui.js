@@ -205,53 +205,59 @@
       '<tr><th>信源</th><th>类型</th><th>语言</th><th>今日</th><th>最近 30 天</th><th>最近成功</th><th>原因</th></tr>' +
       disabled.map(row).join('') + '</table></div>' +
       '<div class="errors-note">信源列表以仓库里的 sources.json 为准。要增删信源，直接告诉 Claude，改动次日生效。' +
-      '<br>已读与标星存在这台设备的浏览器里，换设备或清缓存会丢失；' +
-      '<button id="export-stars" class="toggle" style="text-decoration:underline">导出收藏</button>' +
-      '<button id="import-stars" class="toggle" style="text-decoration:underline">导入收藏</button>' +
-      '<input id="import-stars-file" type="file" accept="application/json" style="display:none">' +
-      '<span id="import-stars-msg"></span></div>';
+      '<br>已读与标星存在这台设备的浏览器里，换设备或清缓存会丢失。导出一份留作备份，' +
+      '在另一台设备上导入即可搬过去；导入只做并集合并，不会抹掉那台设备上已有的标记。' +
+      '<button id="export-state" class="toggle" style="text-decoration:underline">导出已读与收藏</button>' +
+      '<button id="import-state" class="toggle" style="text-decoration:underline">导入已读与收藏</button>' +
+      '<input id="import-state-file" type="file" accept="application/json" style="display:none">' +
+      '<span id="import-state-msg"></span></div>';
 
-    var btn = document.getElementById('export-stars');
-    if (btn) btn.addEventListener('click', exportStars);
+    var btn = document.getElementById('export-state');
+    if (btn) btn.addEventListener('click', exportState);
 
-    var importBtn = document.getElementById('import-stars');
-    var importFile = document.getElementById('import-stars-file');
+    var importBtn = document.getElementById('import-state');
+    var importFile = document.getElementById('import-state-file');
     if (importBtn && importFile) {
       importBtn.addEventListener('click', function () { importFile.click(); });
       importFile.addEventListener('change', function () {
         var file = importFile.files && importFile.files[0];
         importFile.value = '';
-        if (file) importStars(file);
+        if (file) importState(file);
       });
     }
   }
 
-  function exportStars() {
-    var starred = allItems().filter(function (it) { return starSet.has(it.id); });
-    var payload = JSON.stringify({ exportedAt: new Date().toISOString(), items: starred }, null, 2);
+  function exportState() {
+    var payload = JSON.stringify(
+      L.buildStateExport(allItems(), readSet, starSet, new Date().toISOString()),
+      null,
+      2,
+    );
     if (window.claude && window.claude.downloads) {
-      window.claude.downloads.save({ filename: 'ai-radar-stars.json', data: payload }).catch(function () {});
+      window.claude.downloads.save({ filename: 'ai-radar-state.json', data: payload }).catch(function () {});
     } else {
       var blob = new Blob([payload], { type: 'application/json' });
       var a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = 'ai-radar-stars.json';
+      a.download = 'ai-radar-state.json';
       a.click();
       URL.revokeObjectURL(a.href);
     }
   }
 
-  // 导入只做并集合并，不覆盖已有标星，也绝不碰 readSet ——
-  // 导出/导入是给标星做备份用的，已读状态不参与备份（见 README「已知限制」）。
+  // 导入只做并集合并：已有的标星和已读一条都不会被删。这是刻意的——
+  // 两台设备各读了一部分，合并后两边都算读过，是符合直觉的；反过来
+  // 让导入去删本机的标记，一次误导入就能抹掉几个月的记录，不可逆。
+  //
   // 解析失败或格式不对时把提示文字写进按钮旁边的 <span>，不用 alert：
   // alert 会阻塞 Artifact 的 iframe，把整个页面卡住。
-  function importStars(file) {
+  function importState(file) {
     // render() 会整体重建 #sources-view 的 innerHTML（包括这条消息用的 span），
     // 所以提示文字必须在 render() 之后，对着重建出来的新节点设置，否则消息
     // 前脚写进去、后脚就被 render() 冲掉，页面上根本看不见。
     function setMsg(text) {
       render();
-      var el = document.getElementById('import-stars-msg');
+      var el = document.getElementById('import-state-msg');
       if (el) el.textContent = text;
     }
     var reader = new FileReader();
@@ -264,19 +270,23 @@
         setMsg('导入失败：不是合法的 JSON 文件');
         return;
       }
-      if (!parsed || !Array.isArray(parsed.items)) {
-        setMsg('导入失败：文件格式不对，缺少 items 数组');
+      var result = L.parseStateImport(parsed);
+      if (!result.ok) {
+        setMsg('导入失败：' + result.error);
         return;
       }
-      var added = 0;
-      parsed.items.forEach(function (it) {
-        if (it && typeof it.id === 'string' && it.id && !starSet.has(it.id)) {
-          starSet.add(it.id);
-          added++;
-        }
-      });
+      function mergeInto(set, ids) {
+        var added = 0;
+        ids.forEach(function (id) {
+          if (!set.has(id)) { set.add(id); added++; }
+        });
+        return added;
+      }
+      var starsAdded = mergeInto(starSet, result.starIds);
+      var readAdded = mergeInto(readSet, result.readIds);
       saveSet(STAR_KEY, starSet);
-      setMsg('已导入 ' + added + ' 条新标星');
+      saveSet(READ_KEY, readSet);
+      setMsg('已导入 ' + starsAdded + ' 条新标星、' + readAdded + ' 条新已读');
     };
     reader.readAsText(file);
   }

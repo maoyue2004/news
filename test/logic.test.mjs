@@ -445,3 +445,94 @@ test('countsBySource：同一信源跨天累加', () => {
 test('countsBySource：空 days 返回两个空对象', () => {
   assert.deepEqual(L.countsBySource([]), { today: {}, window: {} });
 });
+
+// 以下测试覆盖 buildStateExport / parseStateImport：信源管理页的
+// 「导出已读与收藏」「导入已读与收藏」。这两个函数是纯的，FileReader
+// 与 DOM 留在 ui.js 里，这里只测数据形状与容错。
+
+test('buildStateExport：导出标星条目全文与已读 id 列表', () => {
+  const items = [item({ id: '1' }), item({ id: '2' }), item({ id: '3' })];
+  const out = L.buildStateExport(
+    items,
+    new Set(['id-1', 'id-3']),
+    new Set(['id-2']),
+    '2026-07-28T00:00:00.000Z',
+  );
+  assert.equal(out.version, 2);
+  assert.equal(out.exportedAt, '2026-07-28T00:00:00.000Z');
+  assert.deepEqual(out.items.map((x) => x.id), ['id-2']);
+  assert.deepEqual(out.read, ['id-1', 'id-3']);
+});
+
+// 已读集合是无损备份：localStorage 里可能留着 30 天窗口之外、页面数据里
+// 已经不存在的条目 id。这些 id 照样要导出——过滤掉就不是备份了。
+test('buildStateExport：已读 id 不受当前条目集合限制，原样导出', () => {
+  const out = L.buildStateExport(
+    [item({ id: '1' })],
+    new Set(['id-1', 'id-已经滚出窗口']),
+    new Set(),
+    '2026-07-28T00:00:00.000Z',
+  );
+  assert.deepEqual(out.read, ['id-1', 'id-已经滚出窗口']);
+  assert.deepEqual(out.items, []);
+});
+
+test('buildStateExport：空状态导出两个空数组', () => {
+  const out = L.buildStateExport([item({ id: '1' })], new Set(), new Set(), 'T');
+  assert.deepEqual(out.items, []);
+  assert.deepEqual(out.read, []);
+});
+
+test('parseStateImport：新版文件同时取出标星与已读', () => {
+  const out = L.parseStateImport({ items: [{ id: 'a' }, { id: 'b' }], read: ['c', 'd'] });
+  assert.equal(out.ok, true);
+  assert.deepEqual(out.starIds, ['a', 'b']);
+  assert.deepEqual(out.readIds, ['c', 'd']);
+});
+
+// 旧版导出文件只有 items 没有 read。必须照常导入标星，已读当作空——
+// 否则用户手上早先导出的备份会直接报错，等于把备份作废了。
+test('parseStateImport：兼容没有 read 字段的旧版文件', () => {
+  const out = L.parseStateImport({ exportedAt: 'T', items: [{ id: 'a' }] });
+  assert.equal(out.ok, true);
+  assert.deepEqual(out.starIds, ['a']);
+  assert.deepEqual(out.readIds, []);
+});
+
+test('parseStateImport：跳过缺 id 或 id 不是字符串的条目', () => {
+  const out = L.parseStateImport({
+    items: [{ id: 'a' }, {}, null, { id: 42 }, { id: '' }, { id: 'b' }],
+    read: ['c', 42, null, '', 'd'],
+  });
+  assert.equal(out.ok, true);
+  assert.deepEqual(out.starIds, ['a', 'b']);
+  assert.deepEqual(out.readIds, ['c', 'd']);
+});
+
+test('parseStateImport：items 不是数组时报错', () => {
+  const out = L.parseStateImport({ items: 'nope' });
+  assert.equal(out.ok, false);
+  assert.match(out.error, /items/);
+});
+
+// read 字段存在却不是数组，说明文件是坏的。这里宁可报错也不静默当成空：
+// 静默会让用户以为已读导入成功了，实际一条都没进去。
+test('parseStateImport：read 存在但不是数组时报错', () => {
+  const out = L.parseStateImport({ items: [], read: { a: 1 } });
+  assert.equal(out.ok, false);
+  assert.match(out.error, /read/);
+});
+
+test('parseStateImport：null 或非对象时报错', () => {
+  assert.equal(L.parseStateImport(null).ok, false);
+  assert.equal(L.parseStateImport('x').ok, false);
+});
+
+test('导出再导入是一次无损往返', () => {
+  const items = [item({ id: '1' }), item({ id: '2' })];
+  const exported = L.buildStateExport(items, new Set(['id-1']), new Set(['id-2']), 'T');
+  const round = L.parseStateImport(JSON.parse(JSON.stringify(exported)));
+  assert.equal(round.ok, true);
+  assert.deepEqual(round.starIds, ['id-2']);
+  assert.deepEqual(round.readIds, ['id-1']);
+});

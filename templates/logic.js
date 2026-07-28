@@ -151,6 +151,51 @@
     return { today: today, window: windowCounts };
   }
 
+  // 导出/导入的数据格式。version 2 起同时带已读（version 1 的文件只有 items）。
+  //
+  // 标星导出条目全文（换设备后能直接看清收藏了什么），已读只导出 id 列表——
+  // 已读动辄上千条，存全文没有意义，而且 id 本身就是 URL 指纹，稳定可比。
+  //
+  // readSet 原样导出，不与 items 取交集：localStorage 里会留着 30 天窗口之外
+  // 已经不在页面数据里的 id，过滤掉就不是无损备份了。
+  var STATE_EXPORT_VERSION = 2;
+
+  function buildStateExport(items, readSet, starSet, exportedAt) {
+    return {
+      exportedAt: exportedAt,
+      version: STATE_EXPORT_VERSION,
+      items: items.filter(function (it) { return starSet.has(it.id); }),
+      read: [].slice.call(readSet ? Array.from(readSet) : []),
+    };
+  }
+
+  function isUsableId(x) {
+    return typeof x === 'string' && x !== '';
+  }
+
+  // 返回 { ok: true, starIds, readIds } 或 { ok: false, error }。
+  // 单条脏数据（缺 id、id 不是字符串）跳过即可，不该让整份文件导入失败；
+  // 但顶层字段类型不对说明文件本身是坏的，报错，不能静默当成空——
+  // 静默会让用户以为导入成功了，实际一条都没进去。
+  function parseStateImport(parsed) {
+    if (!parsed || typeof parsed !== 'object') {
+      return { ok: false, error: '文件格式不对，顶层不是一个对象' };
+    }
+    if (!Array.isArray(parsed.items)) {
+      return { ok: false, error: '文件格式不对，缺少 items 数组' };
+    }
+    // read 缺失是合法的：version 1 的旧备份就没有这个字段。
+    if (parsed.read !== undefined && !Array.isArray(parsed.read)) {
+      return { ok: false, error: '文件格式不对，read 不是数组' };
+    }
+    var starIds = [];
+    parsed.items.forEach(function (it) {
+      if (it && isUsableId(it.id)) starIds.push(it.id);
+    });
+    var readIds = (parsed.read || []).filter(isUsableId);
+    return { ok: true, starIds: starIds, readIds: readIds };
+  }
+
   function formatDayLabel(dateStr, todayStr) {
     var diff = Math.round((Date.parse(todayStr + 'T00:00:00Z') - Date.parse(dateStr + 'T00:00:00Z')) / 86400000);
     if (diff === 0) return '今天';
@@ -167,6 +212,8 @@
     computeStats: computeStats,
     sourceBreakdown: sourceBreakdown,
     countsBySource: countsBySource,
+    buildStateExport: buildStateExport,
+    parseStateImport: parseStateImport,
     formatDayLabel: formatDayLabel,
     itemBadges: itemBadges,
     safeUrl: safeUrl,
