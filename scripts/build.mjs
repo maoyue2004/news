@@ -50,6 +50,26 @@ export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
   mkdirSync(distDir, { recursive: true });
   writeFileSync(join(distDir, 'index.html'), html);
 
+  // Codex Sites expects a Cloudflare Worker entry point. Keep the existing
+  // single-file page unchanged and serve that exact build from the worker.
+  const serverDir = join(distDir, 'server');
+  mkdirSync(serverDir, { recursive: true });
+  const worker = [
+    `const HTML = ${JSON.stringify(html)};`,
+    '',
+    'export default {',
+    '  async fetch(request) {',
+    "    if (request.method !== 'GET' && request.method !== 'HEAD') {",
+    "      return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET, HEAD' } });",
+    '    }',
+    "    const headers = { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-cache' };",
+    "    return new Response(request.method === 'HEAD' ? null : HTML, { headers });",
+    '  },',
+    '};',
+    '',
+  ].join('\n');
+  writeFileSync(join(serverDir, 'index.js'), worker);
+
   return {
     dayCount: days.length,
     itemCount: days.reduce((n, d) => n + d.items.length, 0),
