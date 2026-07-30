@@ -73,6 +73,7 @@ test('包含左栏日历、主区、信源管理三个挂载点', () => {
   assert.match(html, /id="calendar"/);
   assert.match(html, /id="stream"/);
   assert.match(html, /id="sources-view"/);
+  assert.match(html, /id="sync-status"/);
 });
 
 test('产出的 HTML 以 charset 声明开头', () => {

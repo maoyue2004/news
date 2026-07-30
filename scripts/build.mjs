@@ -1,10 +1,13 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import { renderPage } from '../lib/render.mjs';
 import { loadRecentDays, pruneDayFiles, loadStatus } from '../lib/store.mjs';
 
 const WINDOW_DAYS = 30;   // 页面内嵌最近多少天
 const KEEP_DAYS = 35;     // data/ 保留多少天
+const HERE = dirname(fileURLToPath(import.meta.url));
+const WORKER_TEMPLATE = join(HERE, '..', 'templates', 'worker.js');
 
 // 日文件由 Claude 逐条手写 229 条 JSON，没有任何校验。字段缺失不会在写 JSON
 // 时报错，只会在页面渲染时才炸（比如 lang 缺失导致 it.lang.toUpperCase() 抛
@@ -34,6 +37,15 @@ function todayInShanghai() {
   }).format(new Date());
 }
 
+export function buildWorkerSource(html) {
+  const template = readFileSync(WORKER_TEMPLATE, 'utf8');
+  const placeholder = '__AI_NEWS_HTML__';
+  if (!template.includes(placeholder)) {
+    throw new Error(`Worker 模板缺少占位符 ${placeholder}`);
+  }
+  return template.replace(placeholder, JSON.stringify(html));
+}
+
 export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
   const dataDir = join(root, 'data');
 
@@ -51,24 +63,11 @@ export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
   writeFileSync(join(distDir, 'index.html'), html);
 
   // Codex Sites expects a Cloudflare Worker entry point. Keep the existing
-  // single-file page unchanged and serve that exact build from the worker.
+  // single-file page unchanged, add the authenticated sync API, and serve the
+  // exact page build from the worker.
   const serverDir = join(distDir, 'server');
   mkdirSync(serverDir, { recursive: true });
-  const worker = [
-    `const HTML = ${JSON.stringify(html)};`,
-    '',
-    'export default {',
-    '  async fetch(request) {',
-    "    if (request.method !== 'GET' && request.method !== 'HEAD') {",
-    "      return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET, HEAD' } });",
-    '    }',
-    "    const headers = { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-cache' };",
-    "    return new Response(request.method === 'HEAD' ? null : HTML, { headers });",
-    '  },',
-    '};',
-    '',
-  ].join('\n');
-  writeFileSync(join(serverDir, 'index.js'), worker);
+  writeFileSync(join(serverDir, 'index.js'), buildWorkerSource(html));
 
   return {
     dayCount: days.length,

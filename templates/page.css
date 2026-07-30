@@ -68,6 +68,12 @@ header.masthead .stats {
   font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums;
 }
 header.masthead .stats b { color: var(--accent-strong); font-weight: 600; }
+.sync-status {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11.5px; color: var(--muted);
+}
+.sync-status.synced { color: var(--accent-strong); }
+.sync-status.error { color: var(--accent-warm); }
 .toolbar { margin-left: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .filter-group { display: flex; gap: 4px; }
 .filter-group button {
@@ -158,6 +164,7 @@ main.content { min-width: 0; padding: 16px 24px 60px; }
   background: none; border: none; color: var(--muted); border-radius: 4px;
 }
 .toggle:hover { color: var(--accent-strong); }
+.toggle:disabled { opacity: 0.45; cursor: wait; }
 .toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
 .toggle.star-on { color: var(--accent-warm); }
 .item-body { grid-column: 3; min-width: 0; }
