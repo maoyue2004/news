@@ -7,15 +7,30 @@
 
 | 项 | 值 |
 |---|---|
+| 页面（Codex Sites） | `https://ai-news-reader-maoyue.yue14mao.chatgpt.site` |
 | 页面（Artifact） | `https://claude.ai/code/artifact/24e0433d-3c33-4e84-8638-0c663708b9c9` |
 | 仓库 | `https://github.com/maoyue2004/news` — **公开** |
-| 云端定时任务 ID | `trig_0197JM4tvDtBQvjTX3NqHZko` |
-| 云端环境 ID | `env_01E8jVJc8nP9Qx6s1TxW9VQJ`（名称「AI 信源罗盘 · 抓取」） |
-| 运行时间 | 每天 08:00 GMT+8（cron `0 0 * * *` UTC） |
+| Claude Routine ID | `trig_0197JM4tvDtBQvjTX3NqHZko` |
+| Claude 环境 ID | `env_01E8jVJc8nP9Qx6s1TxW9VQJ`（名称「AI 信源罗盘 · 抓取」） |
+| 运行时间 | 每天 08:00 GMT+8 |
 
 管理界面：<https://claude.ai/code/routines>
 
-## 四条必须遵守的配置约束
+## Codex Sites 定时发布
+
+Codex 使用 `CODEX_DAILY.md`，在本地项目模式运行 Scheduled Task。它先把每日数据提交并
+推送 GitHub，再通过 `.openai/hosting.json` 绑定的既有 Sites 项目保存并部署新版本。
+Sites 不会因为 GitHub 有新提交而自动更新，发布步骤不能省略。
+
+必须遵守：
+
+- Claude Routine 与 Codex Scheduled Task 只能启用一个，避免同一时间重复抓取和竞争写入。
+- 使用本地项目模式，不使用隔离 worktree；`seen.json` 和日期文件必须持续留在主分支。
+- 本机需保持开机，ChatGPT 桌面应用需保持运行，并允许任务访问网络和写入项目。
+- 发布时复用 `.openai/hosting.json` 的项目与 D1 绑定，绝不创建同名新 Site。
+- 先测试、构建、提交并推送 GitHub，再发布同一份已提交源码。
+
+## Claude Routine 的四条配置约束
 
 这四条都是踩过坑之后固化下来的，改动前先想清楚。
 
@@ -65,16 +80,16 @@
 
 ## 已经调查过、不要重复走的死路
 
-### 跨设备同步已读/标星：平台目前做不到
+### 跨设备同步已读/标星
 
-| 方案 | 结论 |
-|---|---|
-| 自建后端（KV / Gist / 任意服务） | Artifact 的 CSP 禁止页面访问任意外部主机 |
-| claude.ai 的 GitHub Integration connector | **不是 MCP 工具服务器**，无法调用。它只做仓库选择、文件附加、Project 上下文同步；且从未出现在 routine 的 `mcp_connections` 列表里 |
-| Google Drive MCP | 技术可行，但工具集**只有创建、没有更新和删除**，每次保存都新建文件，会在用户云盘里永久堆垃圾。用户已明确否决 |
+Codex Sites 版本已使用 D1 保存 `reader_state`，主键是
+`(user_email, item_id)`。用户身份只信任 Sites 转发的
+`oai-authenticated-user-email` 请求头，浏览器传入的身份字段一律不用。
+页面首次成功连接时把同一 Sites 域名下的旧 localStorage 状态合并进 D1，之后以服务端状态为准；
+离线变更暂存在 `airadar.pending-sync.v1`，恢复网络后补传。
 
-当前方案是手动导出/导入（无损，合并为并集）。
-如果将来 claude.ai 上线带写能力的 GitHub MCP connector，或 Artifact 放开 CSP，这件事很快能补上。
+Artifact 仍受 CSP 与无服务端存储限制，只能使用本机 localStorage 和手动导出/导入；
+它不会与 Sites 版本自动同步，迁移旧状态需要在 Artifact 导出、再到 Sites 导入一次。
 
 ### 回溯历史内容：收益不足以支撑改动
 
@@ -107,3 +122,5 @@ npm run build                   # 构建 dist/index.html
 node scripts/discover-feeds.mjs # 新增信源后探测 feed 地址（会重写 sources.json）
 node scripts/audit-feeds.mjs    # 体检各源的条目数、新鲜度、有正文占比
 ```
+
+Codex Scheduled Task 的完整提示词与故障保护见 `CODEX_DAILY.md`。

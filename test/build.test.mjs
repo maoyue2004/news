@@ -26,6 +26,7 @@ test('构建产出 dist/index.html', () => {
   const root = fixtureRepo();
   buildHtml({ root, today: '2026-07-27' });
   assert.ok(existsSync(join(root, 'dist', 'index.html')));
+  assert.ok(existsSync(join(root, 'dist', 'server', 'index.js')));
 });
 
 test('产出的页面内嵌了当天数据', () => {
@@ -63,4 +64,14 @@ test('构建返回摘要信息供日志使用', () => {
   assert.equal(res.dayCount, 1);
   assert.equal(res.itemCount, 1);
   assert.ok(res.bytes > 0);
+});
+
+test('Sites Worker 同时包含页面和云端状态接口', () => {
+  const root = fixtureRepo();
+  buildHtml({ root, today: '2026-07-27' });
+  const worker = readFileSync(join(root, 'dist', 'server', 'index.js'), 'utf8');
+  assert.match(worker, /const HTML = /);
+  assert.match(worker, /oai-authenticated-user-email/);
+  assert.match(worker, /reader_state/);
+  assert.doesNotMatch(worker, /__AI_NEWS_HTML__/);
 });

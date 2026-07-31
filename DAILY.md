@@ -1,6 +1,7 @@
-# 每日流程
+# Claude Routine 每日流程
 
-云端 scheduled agent 每天北京时间 08:00 照此执行。每一步失败都要在最终汇报里说明，不要静默跳过。
+Claude Routine 每天北京时间 08:00 照此执行。每一步失败都要在最终汇报里说明，不要静默跳过。
+Codex Scheduled Task 不使用本文件的发布步骤；它应完整执行 `CODEX_DAILY.md`。
 
 ## 1. 抓取
 

@@ -4,6 +4,8 @@
   var DATA = JSON.parse(document.getElementById('reader-data').textContent);
   var READ_KEY = 'airadar.read.v1';
   var STAR_KEY = 'airadar.star.v1';
+  var MIGRATED_KEY = 'airadar.server-sync.v1';
+  var PENDING_KEY = 'airadar.pending-sync.v1';
 
   function loadSet(key) {
     try {
@@ -20,9 +22,28 @@
       /* 隐私模式下写不进去，功能降级为本次会话有效 */
     }
   }
+  function loadPending() {
+    try {
+      var parsed = JSON.parse(localStorage.getItem(PENDING_KEY) || '{}');
+      return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    } catch (e) {
+      return {};
+    }
+  }
+  function savePending() {
+    try {
+      localStorage.setItem(PENDING_KEY, JSON.stringify(pendingChanges));
+    } catch (e) {
+      /* 待同步操作仍保留在内存中，本次会话恢复网络后还可以重试 */
+    }
+  }
 
   var readSet = loadSet(READ_KEY);
   var starSet = loadSet(STAR_KEY);
+  var pendingChanges = loadPending();
+  var syncReady = false;
+  var syncInFlight = null;
+  var retryTimer = null;
   var today = DATA.days.length ? DATA.days[0].date : '';
   // sourceFilter：分布行里点某个信源名后生效的筛选，null 表示不筛选。
   // 与 filter/query 是正交的两层筛选（见 baseFilteredItems / visibleItems）。
@@ -34,6 +55,157 @@
   var elSources = document.getElementById('sources-view');
   var elSearch = document.getElementById('search');
   var elFilters = document.getElementById('filters');
+  var elSync = document.getElementById('sync-status');
+
+  function setSyncStatus(text, kind) {
+    elSync.textContent = text;
+    elSync.className = 'sync-status' + (kind ? ' ' + kind : '');
+  }
+
+  function stateRequest(method, body) {
+    var options = {
+      method: method,
+      credentials: 'same-origin',
+      headers: { accept: 'application/json' },
+    };
+    if (body !== undefined) {
+      options.headers['content-type'] = 'application/json';
+      options.body = JSON.stringify(body);
+    }
+    return fetch('/api/state', options).then(function (response) {
+      return response.json().catch(function () { return {}; }).then(function (payload) {
+        if (!response.ok) throw new Error(payload.error || '云端同步失败');
+        return payload;
+      });
+    });
+  }
+
+  function hasOwn(object, key) {
+    return Object.prototype.hasOwnProperty.call(object, key);
+  }
+
+  function mergePending(change) {
+    var current = pendingChanges[change.id] || {};
+    if (hasOwn(change, 'read')) current.read = change.read;
+    if (hasOwn(change, 'starred')) current.starred = change.starred;
+    pendingChanges[change.id] = current;
+  }
+
+  function queueRemoteChanges(changes) {
+    changes.forEach(mergePending);
+    savePending();
+    if (syncReady) flushPending();
+  }
+
+  function pendingList() {
+    return Object.keys(pendingChanges).map(function (id) {
+      var change = { id: id };
+      if (hasOwn(pendingChanges[id], 'read')) change.read = pendingChanges[id].read;
+      if (hasOwn(pendingChanges[id], 'starred')) change.starred = pendingChanges[id].starred;
+      return change;
+    });
+  }
+
+  function samePatch(current, sent) {
+    return current &&
+      (!hasOwn(sent, 'read') || current.read === sent.read) &&
+      (!hasOwn(sent, 'starred') || current.starred === sent.starred) &&
+      Object.keys(current).length === Object.keys(sent).length - 1;
+  }
+
+  function scheduleRetry() {
+    if (retryTimer) return;
+    retryTimer = setTimeout(function () {
+      retryTimer = null;
+      if (syncReady) flushPending();
+    }, 10000);
+  }
+
+  function flushPending() {
+    if (syncInFlight) return syncInFlight;
+    var snapshot = pendingList();
+    if (!snapshot.length) {
+      setSyncStatus('云端已同步', 'synced');
+      return Promise.resolve();
+    }
+
+    setSyncStatus('云端同步中…', '');
+    var succeeded = false;
+    syncInFlight = Promise.resolve().then(function () {
+      var chain = Promise.resolve();
+      for (var i = 0; i < snapshot.length; i += 200) {
+        (function (chunk) {
+          chain = chain.then(function () {
+            return stateRequest('PUT', { changes: chunk });
+          });
+        })(snapshot.slice(i, i + 200));
+      }
+      return chain;
+    }).then(function () {
+      snapshot.forEach(function (sent) {
+        if (samePatch(pendingChanges[sent.id], sent)) delete pendingChanges[sent.id];
+      });
+      savePending();
+      succeeded = true;
+      setSyncStatus('云端已同步', 'synced');
+    }).catch(function () {
+      setSyncStatus('等待恢复云端同步', 'error');
+      scheduleRetry();
+    }).finally(function () {
+      syncInFlight = null;
+      if (succeeded && Object.keys(pendingChanges).length) flushPending();
+    });
+    return syncInFlight;
+  }
+
+  function addLocalMigration() {
+    var changes = {};
+    readSet.forEach(function (id) {
+      changes[id] = changes[id] || { id: id };
+      if (!hasOwn(pendingChanges[id] || {}, 'read')) changes[id].read = true;
+    });
+    starSet.forEach(function (id) {
+      changes[id] = changes[id] || { id: id };
+      if (!hasOwn(pendingChanges[id] || {}, 'starred')) changes[id].starred = true;
+    });
+    queueRemoteChanges(Object.keys(changes).map(function (id) { return changes[id]; }));
+  }
+
+  function replaceWithRemote(remote) {
+    readSet = new Set(Array.isArray(remote.read) ? remote.read : []);
+    starSet = new Set(Array.isArray(remote.starred) ? remote.starred : []);
+    saveSet(READ_KEY, readSet);
+    saveSet(STAR_KEY, starSet);
+  }
+
+  function initializeSync() {
+    syncReady = false;
+    setSyncStatus('云端同步中…', '');
+    render();
+
+    var remote;
+    return stateRequest('GET').then(function (result) {
+      remote = result;
+      var migrated = false;
+      try { migrated = localStorage.getItem(MIGRATED_KEY) === '1'; } catch (e) {}
+      if (!migrated) addLocalMigration();
+      if (!Object.keys(pendingChanges).length) return;
+      return flushPending().then(function () {
+        if (Object.keys(pendingChanges).length) throw new Error('仍有状态等待同步');
+        return stateRequest('GET').then(function (latest) { remote = latest; });
+      });
+    }).then(function () {
+      replaceWithRemote(remote);
+      try { localStorage.setItem(MIGRATED_KEY, '1'); } catch (e) {}
+      syncReady = true;
+      setSyncStatus('云端已同步', 'synced');
+      render();
+    }).catch(function () {
+      syncReady = true;
+      setSyncStatus('云端暂不可用，记录已保存在本机', 'error');
+      render();
+    });
+  }
 
   function esc(s) {
     return String(s == null ? '' : s)
@@ -102,10 +274,11 @@
   function itemHtml(it) {
     var isRead = readSet.has(it.id);
     var isStar = starSet.has(it.id);
+    var disabled = syncReady ? '' : ' disabled';
     var time = new Date(it.publishedAt).toLocaleString('zh-CN', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
     return '<article class="item' + (isRead ? ' read' : '') + '" data-id="' + esc(it.id) + '">' +
-      '<button class="toggle" data-act="read" aria-label="标记已读" aria-pressed="' + isRead + '">' + (isRead ? '☑' : '☐') + '</button>' +
-      '<button class="toggle' + (isStar ? ' star-on' : '') + '" data-act="star" aria-label="标星" aria-pressed="' + isStar + '">' + (isStar ? '★' : '☆') + '</button>' +
+      '<button class="toggle" data-act="read" aria-label="标记已读" aria-pressed="' + isRead + '"' + disabled + '>' + (isRead ? '☑' : '☐') + '</button>' +
+      '<button class="toggle' + (isStar ? ' star-on' : '') + '" data-act="star" aria-label="标星" aria-pressed="' + isStar + '"' + disabled + '>' + (isStar ? '★' : '☆') + '</button>' +
       '<div class="item-body">' +
         '<div class="item-meta">' +
           '<span class="src">' + esc(it.source) + '</span>' +
@@ -205,8 +378,9 @@
       '<tr><th>信源</th><th>类型</th><th>语言</th><th>今日</th><th>最近 30 天</th><th>最近成功</th><th>原因</th></tr>' +
       disabled.map(row).join('') + '</table></div>' +
       '<div class="errors-note">信源列表以仓库里的 sources.json 为准。要增删信源，直接告诉 Claude，改动次日生效。' +
-      '<br>已读与标星存在这台设备的浏览器里，换设备或清缓存会丢失。导出一份留作备份，' +
-      '在另一台设备上导入即可搬过去；导入只做并集合并，不会抹掉那台设备上已有的标记。' +
+      '<br>已读与收藏会按当前 ChatGPT 登录用户保存到云端，并在不同设备间自动同步。' +
+      '本机仍保留一份缓存，网络暂时不可用时会在恢复后补传。也可以手动导出一份备份；' +
+      '导入只做并集合并，不会抹掉已有标记。' +
       '<button id="export-state" class="toggle" style="text-decoration:underline">导出已读与收藏</button>' +
       '<button id="import-state" class="toggle" style="text-decoration:underline">导入已读与收藏</button>' +
       '<input id="import-state-file" type="file" accept="application/json" style="display:none">' +
@@ -286,7 +460,17 @@
       var readAdded = mergeInto(readSet, result.readIds);
       saveSet(STAR_KEY, starSet);
       saveSet(READ_KEY, readSet);
-      setMsg('已导入 ' + starsAdded + ' 条新标星、' + readAdded + ' 条新已读');
+      var changes = {};
+      result.starIds.forEach(function (id) {
+        changes[id] = changes[id] || { id: id };
+        changes[id].starred = true;
+      });
+      result.readIds.forEach(function (id) {
+        changes[id] = changes[id] || { id: id };
+        changes[id].read = true;
+      });
+      queueRemoteChanges(Object.keys(changes).map(function (id) { return changes[id]; }));
+      setMsg('已导入 ' + starsAdded + ' 条新标星、' + readAdded + ' 条新已读，正在同步到云端');
     };
     reader.readAsText(file);
   }
@@ -358,17 +542,24 @@
     if (summary) { summary.classList.toggle('expanded'); return; }
 
     var btn = e.target.closest('.toggle');
-    if (!btn) return;
+    if (!btn || !syncReady) return;
     var id = btn.closest('.item').dataset.id;
     if (btn.dataset.act === 'read') {
       if (readSet.has(id)) readSet.delete(id); else readSet.add(id);
       saveSet(READ_KEY, readSet);
+      queueRemoteChanges([{ id: id, read: readSet.has(id) }]);
     } else {
       if (starSet.has(id)) starSet.delete(id); else starSet.add(id);
       saveSet(STAR_KEY, starSet);
+      queueRemoteChanges([{ id: id, starred: starSet.has(id) }]);
     }
     render();
   });
 
   render();
+  initializeSync();
+  window.addEventListener('online', function () {
+    if (Object.keys(pendingChanges).length) flushPending();
+    else initializeSync();
+  });
 })();
