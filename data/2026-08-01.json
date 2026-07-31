@@ -45,35 +45,35 @@
   "errors": [
     {
       "source": "屠龙之术",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/834hyx3v9k74\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     },
     {
       "source": "卫诗婕｜漫谈 Light the Star",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/4jjdlpq3khc9\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     },
     {
       "source": "AI Odyssey",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/ljxhjflbvkf7\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     },
     {
       "source": "十字路口 Crossing",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/68fyjknth9hj\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     },
     {
       "source": "乱翻书",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/yxuruh3f9mc4\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     },
     {
       "source": "OnBoard!",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/xxg7ryklkkft\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     },
     {
       "source": "42章经",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/evgg6xle9rdc\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     },
     {
       "source": "AI局内人｜AGI Insider",
-      "message": "Command failed: curl --fail --silent --show-error --location --max-time 20 --user-agent Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news) --header Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */* https://feed.xyzfm.space/jbap8hlxmuev\ncurl: (22) The requested URL returned error: 403\n"
+      "message": "HTTP 403（同域播客托管方限流）"
     }
   ]
 }

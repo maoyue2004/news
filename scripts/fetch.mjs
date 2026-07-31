@@ -52,14 +52,18 @@ async function fetchFeedDirect(url) {
   if (res.status === 403) {
     // xyzfm 等少数 feed 托管服务会按 TLS/HTTP 客户端指纹拦截 Node fetch，
     // 但对同一 UA 的 curl 正常返回。只在明确 403 时回退，避免掩盖普通网络错误。
-    const { stdout } = await execFileAsync('curl', [
-      '--fail', '--silent', '--show-error', '--location',
-      '--max-time', String(Math.ceil(TIMEOUT_MS / 1000)),
-      '--user-agent', UA,
-      '--header', 'Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
-      url,
-    ], { maxBuffer: 20 * 1024 * 1024 });
-    return stdout;
+    try {
+      const { stdout } = await execFileAsync('curl', [
+        '--fail', '--silent', '--show-error', '--location',
+        '--max-time', String(Math.ceil(TIMEOUT_MS / 1000)),
+        '--user-agent', UA,
+        '--header', 'Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
+        url,
+      ], { maxBuffer: 20 * 1024 * 1024 });
+      return stdout;
+    } catch {
+      throw new Error('HTTP 403');
+    }
   }
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return await res.text();
