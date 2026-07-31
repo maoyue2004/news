@@ -6,9 +6,37 @@ import { parseFeed } from '../lib/feed-parse.mjs';
 const UA = 'Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news)';
 const TIMEOUT_MS = 15000;
 
-/** 这些链接指向搜索结果页，本身不是内容站点，不存在 feed。 */
+/** 这些链接指向搜索结果页，且目前没有可查询的开放目录。 */
 export function isUndiscoverable(url) {
-  return /weixin\.sogou\.com|zhihu\.com\/search|podcasts\.apple\.com\/.*\/search/.test(url);
+  return /weixin\.sogou\.com|zhihu\.com\/search/.test(url);
+}
+
+export function appleSearchTerm(url) {
+  try {
+    const u = new URL(url);
+    if (!/podcasts\.apple\.com$/.test(u.hostname) || !/\/search$/.test(u.pathname)) return null;
+    return u.searchParams.get('term');
+  } catch {
+    return null;
+  }
+}
+
+function normalizedPodcastName(name) {
+  return name
+    .toLowerCase()
+    .replace(/\b(?:podcast|the|show)\b/g, '')
+    .replace(/[^\p{Letter}\p{Number}]+/gu, '');
+}
+
+export function podcastMatchScore(sourceName, collectionName) {
+  const source = normalizedPodcastName(sourceName);
+  const collection = normalizedPodcastName(collectionName);
+  if (!source || !collection) return 0;
+  if (source === collection) return 100;
+  if (Math.min(source.length, collection.length) >= 5
+      && (collection.startsWith(source) || source.startsWith(collection))) return 80;
+  if (source.length >= 5 && collection.includes(source)) return 60;
+  return 0;
 }
 
 export function candidateFeedUrls(siteUrl) {
@@ -72,7 +100,55 @@ async function verifyFeed(url) {
   return items.length;
 }
 
+/** Apple 的公开 Search API 会返回节目登记的原始 feedUrl。 */
+async function podcastFeedFromApple(source) {
+  const term = appleSearchTerm(source.url) || source.name;
+  const candidates = [];
+  for (const country of ['cn', 'us']) {
+    const api = new URL('https://itunes.apple.com/search');
+    api.searchParams.set('media', 'podcast');
+    api.searchParams.set('entity', 'podcast');
+    api.searchParams.set('limit', '15');
+    api.searchParams.set('country', country);
+    api.searchParams.set('term', term);
+    const data = JSON.parse(await get(api.toString()));
+    for (const result of data.results ?? []) {
+      if (!result.feedUrl) continue;
+      candidates.push({
+        feed: result.feedUrl,
+        score: podcastMatchScore(source.name, result.collectionName ?? ''),
+      });
+    }
+  }
+  candidates.sort((a, b) => b.score - a.score);
+  for (const candidate of candidates) {
+    if (candidate.score < 60) break;
+    try {
+      await verifyFeed(candidate.feed);
+      return candidate.feed;
+    } catch {
+      /* 目录里也可能残留已经失效的 feed，继续试同名候选。 */
+    }
+  }
+  return null;
+}
+
 async function discoverOne(source) {
+  // 手工适配的 HTML/归档/sitemap 入口不是 XML，discover 脚本不能拿
+  // parseFeed 去误判它；可用性由 fetch 和 audit 通过对应 adapter 检查。
+  if (source.adapter && source.feed) return { feed: source.feed, reason: null };
+
+  // 已配置的 feed 先实抓验证。这样搜索结果页只是 source 展示地址时，
+  // 不会把已经找到的独立 feed 又覆盖成 disabled。
+  if (source.feed) {
+    try {
+      await verifyFeed(source.feed);
+      return { feed: source.feed, reason: null };
+    } catch {
+      /* 旧 feed 失效时继续从目录、网页声明和常见路径重新发现。 */
+    }
+  }
+
   if (isUndiscoverable(source.url)) {
     return { feed: null, reason: '链接指向搜索结果页，不是内容站点，没有可用 feed' };
   }
@@ -85,6 +161,15 @@ async function discoverOne(source) {
     const feed = `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`;
     await verifyFeed(feed);
     return { feed, reason: null };
+  }
+
+  if (source.type === 'podcast' || appleSearchTerm(source.url)) {
+    try {
+      const feed = await podcastFeedFromApple(source);
+      if (feed) return { feed, reason: null };
+    } catch {
+      /* Apple 目录偶发失败时，仍继续走网页声明和常见路径探测。 */
+    }
   }
 
   // 先看站点自己声明的 feed。

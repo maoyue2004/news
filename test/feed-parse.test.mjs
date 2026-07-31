@@ -62,6 +62,14 @@ test('解析 RSS 2.0：没有 content:encoded 时回退到 description', () => {
   assert.equal(items[1].contentHtml, 'Only a description');
 });
 
+test('播客条目没有 link 时回退到 enclosure 音频地址', () => {
+  const xml = `<?xml version="1.0"?><rss><channel><item>
+    <title>Episode</title><guid isPermaLink="false">opaque-id</guid>
+    <enclosure url="https://audio.example/episode.mp3?x=1&amp;y=2" type="audio/mpeg" />
+  </item></channel></rss>`;
+  assert.equal(parseFeed(xml).items[0].link, 'https://audio.example/episode.mp3?x=1&y=2');
+});
+
 test('解析 Atom：link 取 rel=alternate 那一个', () => {
   const { items } = parseFeed(ATOM);
   assert.equal(items.length, 1);

@@ -1,16 +1,25 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { collectFromFeed } from '../lib/collect.mjs';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { collectFromFeed, collectFromItems } from '../lib/collect.mjs';
+import { parseFeed } from '../lib/feed-parse.mjs';
+import { fetchAdapterItems } from '../lib/source-adapters.mjs';
 import { extractArticleText } from '../lib/enrich.mjs';
 import { loadSeen, saveSeen, loadStatus, saveStatus, recordSuccess, recordFailure } from '../lib/store.mjs';
 
 const DATA_DIR = 'data';
 const UA = 'Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news)';
 const TIMEOUT_MS = 20000;
-const CONCURRENCY = 8;
-const ENRICH_CONCURRENCY = 6;
+const CONCURRENCY = Number(process.env.FETCH_CONCURRENCY ?? 8);
+const ENRICH_CONCURRENCY = Number(process.env.ENRICH_CONCURRENCY ?? 6);
 const ENRICH_TIMEOUT_MS = 20000;
 const THIN_THRESHOLD = 200;
 const EXCERPT_CHARS = 2000;
+const execFileAsync = promisify(execFile);
+
+const requestedPublishedDates = new Set(
+  (process.env.PUBLISHED_DATES ?? '').split(',').map((date) => date.trim()).filter(Boolean),
+);
 
 function todayInShanghai() {
   // 定时任务按北京时间跑，日期也要按北京时间算，否则跨零点会错位。
@@ -19,14 +28,48 @@ function todayInShanghai() {
   }).format(new Date());
 }
 
-async function fetchFeed(url) {
+export function dateInShanghai(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(date);
+}
+
+export function filterByPublishedDates(items, dates, fallbackDate) {
+  if (!dates.size) return items;
+  return items.filter((item) => dates.has(item.publishedAt ? dateInShanghai(item.publishedAt) : fallbackDate));
+}
+
+let xyzFeedQueue = Promise.resolve();
+
+async function fetchFeedDirect(url) {
   const res = await fetch(url, {
     headers: { 'user-agent': UA, accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*' },
     redirect: 'follow',
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
+  if (res.status === 403) {
+    // xyzfm 等少数 feed 托管服务会按 TLS/HTTP 客户端指纹拦截 Node fetch，
+    // 但对同一 UA 的 curl 正常返回。只在明确 403 时回退，避免掩盖普通网络错误。
+    const { stdout } = await execFileAsync('curl', [
+      '--fail', '--silent', '--show-error', '--location',
+      '--max-time', String(Math.ceil(TIMEOUT_MS / 1000)),
+      '--user-agent', UA,
+      '--header', 'Accept: application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
+      url,
+    ], { maxBuffer: 20 * 1024 * 1024 });
+    return stdout;
+  }
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return await res.text();
+}
+
+async function fetchFeed(url) {
+  if (new URL(url).hostname !== 'feed.xyzfm.space') return fetchFeedDirect(url);
+  const task = xyzFeedQueue.then(() => fetchFeedDirect(url));
+  xyzFeedQueue = task.catch(() => {});
+  return task;
 }
 
 async function fetchArticleHtml(url) {
@@ -76,6 +119,13 @@ async function main() {
   const today = todayInShanghai();
   const now = new Date().toISOString();
   const seen = loadSeen(DATA_DIR);
+  const collectionSeen = { ...seen };
+  const refetchSeenDate = process.env.REFETCH_SEEN_DATE;
+  if (refetchSeenDate) {
+    for (const [id, seenDate] of Object.entries(collectionSeen)) {
+      if (seenDate === refetchSeenDate) delete collectionSeen[id];
+    }
+  }
   const status = loadStatus(DATA_DIR);
 
   const items = [];
@@ -86,8 +136,25 @@ async function main() {
     await Promise.all(
       batch.map(async (source) => {
         try {
-          const xml = await fetchFeed(source.feed);
-          const got = collectFromFeed({ source, xml, seen, today, now });
+          const body = await fetchFeed(source.feed);
+          const raw = source.adapter
+            ? await fetchAdapterItems({ source, html: body, fetchText: fetchArticleHtml, now })
+            : null;
+          const got = requestedPublishedDates.size
+            ? collectFromItems({
+                source,
+                raw: filterByPublishedDates(
+                  raw ?? parseFeedItems(body),
+                  requestedPublishedDates,
+                  today,
+                ),
+                seen: collectionSeen,
+                today,
+                now,
+              })
+            : source.adapter
+              ? collectFromItems({ source, raw, seen: collectionSeen, today, now })
+              : collectFromFeed({ source, xml: body, seen: collectionSeen, today, now });
           items.push(...got.items);
           recordSuccess(status, source.name, now);
         } catch (err) {
@@ -121,4 +188,9 @@ async function main() {
   }
 }
 
-await main();
+function parseFeedItems(xml) {
+  // 复用 collectFromFeed 的解析入口之外，定向补抓需要先按发布时间筛选原始条目。
+  return parseFeed(xml).items;
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) await main();

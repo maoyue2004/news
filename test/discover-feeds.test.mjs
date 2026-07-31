@@ -1,6 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { candidateFeedUrls, youtubeChannelIdFromHtml, isUndiscoverable } from '../scripts/discover-feeds.mjs';
+import {
+  appleSearchTerm,
+  candidateFeedUrls,
+  isUndiscoverable,
+  podcastMatchScore,
+  youtubeChannelIdFromHtml,
+} from '../scripts/discover-feeds.mjs';
 
 test('生成常见 feed 路径候选', () => {
   const c = candidateFeedUrls('https://example.com/');
@@ -31,9 +37,21 @@ test('提取不到时返回 null', () => {
   assert.equal(youtubeChannelIdFromHtml('<html>nothing</html>'), null);
 });
 
-test('识别出天然没有 feed 的搜索页链接', () => {
+test('识别出目前没有开放目录的搜索页链接', () => {
   assert.ok(isUndiscoverable('https://weixin.sogou.com/weixin?type=1&query=x'));
   assert.ok(isUndiscoverable('https://www.zhihu.com/search?q=x'));
-  assert.ok(isUndiscoverable('https://podcasts.apple.com/us/search?term=x'));
+  assert.equal(isUndiscoverable('https://podcasts.apple.com/us/search?term=x'), false);
   assert.equal(isUndiscoverable('https://simonwillison.net/'), false);
+});
+
+test('从 Apple Podcasts 搜索页取出目录查询词', () => {
+  assert.equal(appleSearchTerm('https://podcasts.apple.com/us/search?term=AI%20Odyssey'), 'AI Odyssey');
+  assert.equal(appleSearchTerm('https://example.com/search?term=x'), null);
+});
+
+test('播客名匹配允许副标题和 Podcast 通用后缀', () => {
+  assert.equal(podcastMatchScore('No Priors', 'No Priors: Artificial Intelligence | Technology | Startups'), 80);
+  assert.equal(podcastMatchScore('a16z Podcast', 'The a16z Show'), 100);
+  assert.equal(podcastMatchScore('原点Talk', '口头拼贴'), 0);
+  assert.equal(podcastMatchScore('Breathe', 'Brea'), 0);
 });

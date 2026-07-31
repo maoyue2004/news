@@ -3,6 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { parseFeed } from '../lib/feed-parse.mjs';
 import { htmlToText } from '../lib/html-text.mjs';
+import { fetchAdapterItems } from '../lib/source-adapters.mjs';
 
 const UA = 'Mozilla/5.0 (compatible; ai-news-reader/1.0; +https://github.com/maoyue2004/news)';
 const CONCURRENCY = 8;
@@ -15,7 +16,22 @@ async function auditOne(source) {
       signal: AbortSignal.timeout(25000),
     });
     if (!res.ok) return { name: source.name, error: `HTTP ${res.status}` };
-    const { items } = parseFeed(await res.text());
+    const body = await res.text();
+    const items = source.adapter
+      ? await fetchAdapterItems({
+          source,
+          html: body,
+          fetchText: async (url) => {
+            const article = await fetch(url, {
+              headers: { 'user-agent': UA, accept: '*/*' },
+              redirect: 'follow',
+              signal: AbortSignal.timeout(25000),
+            });
+            if (!article.ok) throw new Error(`HTTP ${article.status}`);
+            return article.text();
+          },
+        })
+      : parseFeed(body).items;
     const dates = items.map((i) => (i.publishedAt ? Date.parse(i.publishedAt) : NaN)).filter((n) => !Number.isNaN(n));
     const newest = dates.length ? new Date(Math.max(...dates)).toISOString().slice(0, 10) : null;
     const withBody = items.filter((i) => htmlToText(i.contentHtml, 2000).length >= 200).length;
@@ -35,6 +51,7 @@ const sources = JSON.parse(readFileSync('sources.json', 'utf8')).filter((s) => s
 const results = [];
 for (let i = 0; i < sources.length; i += CONCURRENCY) {
   results.push(...(await Promise.all(sources.slice(i, i + CONCURRENCY).map(auditOne))));
+  console.error(`已体检 ${Math.min(i + CONCURRENCY, sources.length)}/${sources.length}`);
 }
 
 const today = Date.now();
