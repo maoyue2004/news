@@ -1707,5 +1707,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "李博杰 Bojie Li",
+    "url": "https://01.me/",
+    "feed": "https://01.me/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "扒 Claude Code 泄露源码讲 Harness Engineering、拆 OpenClaw 权限模型的深度长文，月更。"
   }
 ]

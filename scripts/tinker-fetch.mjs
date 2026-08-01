@@ -49,9 +49,21 @@ async function get(url, { ua = UA, accept = '*/*', timeout = TIMEOUT_MS } = {}) 
 /**
  * 正文补全。规则筛选看的是标题 + 摘要，feed 只给标题时几乎必然误判，
  * 所以这一步要在 triage **之前**做，而不是像信源罗盘那样只为写摘要服务。
+ *
+ * **论坛帖只要 feed 给了内容就不补全。** Discourse / NodeSeek 这类站点的 RSS 里
+ * 本来就是首帖全文，而话题页在浏览器 UA 下返回的是 JS 外壳：没有正文，
+ * 只有主题样式表和一段给爬虫看的声明。补全会拿这堆东西盖掉本来正确的首帖，
+ * 中文占比被拉到 1% 后整条被判为非中文内容毙掉——2026-08-02 那天 linux.do
+ * 26 条全军覆没就是这么来的。
  */
+export function needsEnrich(item, threshold = THIN_THRESHOLD) {
+  if (item.excerpt.length >= threshold) return false;
+  if (item.thread && item.excerpt.length > 0) return false;
+  return true;
+}
+
 async function enrich(items) {
-  const targets = items.filter((it) => it.excerpt.length < THIN_THRESHOLD);
+  const targets = items.filter((it) => needsEnrich(it));
   let ok = 0;
   for (let i = 0; i < targets.length; i += ENRICH_CONCURRENCY) {
     await Promise.all(targets.slice(i, i + ENRICH_CONCURRENCY).map(async (item) => {

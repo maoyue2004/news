@@ -57,3 +57,27 @@ test('【修复】截断是码点安全的，emoji 不会被拆分', () => {
     JSON.stringify(result);
   });
 });
+
+test('【修复】属性值里的 > 不会让去标签提前收尾（linux.do 的响应式样式表）', () => {
+  // 真实形态：Discourse 用 `media="(width >= 40rem)"` 区分桌面/移动样式表。
+  // 旧的 /<[^>]+>/ 在 `>=` 的 `>` 处收尾，把标签后半截当正文吐出来。
+  const html = '<link href="a.css" media="(width >= 40rem)" rel="stylesheet" data-target="chat_desktop" />这才是正文';
+  assert.equal(htmlToText(html), '这才是正文');
+});
+
+test('【修复】正文里的比较符不会吞掉后面的内容', () => {
+  assert.equal(htmlToText('<p>1 < 2 且 3 > 2</p>'), '1 < 2 且 3 > 2');
+});
+
+test('【修复】一直没闭合的 < 当普通字符，不吞掉剩余正文', () => {
+  assert.equal(htmlToText('正文开头 <没有闭合的尖括号和后面的字'), '正文开头 <没有闭合的尖括号和后面的字');
+});
+
+test('【修复】实体转义过的 HTML 解码后会再去一次标签（BestBlogs.dev 的 feed）', () => {
+  const html = '&lt;div style=&quot;font-family: Georgia&quot;&gt;&lt;p&gt;一句话摘要正文&lt;/p&gt;&lt;/div&gt;';
+  assert.equal(htmlToText(html), '一句话摘要正文');
+});
+
+test('第二遍去标签不再解实体：&amp;#39; 仍然只解一层', () => {
+  assert.equal(htmlToText('&amp;#39;<p>x</p>'), '&#39; x');
+});

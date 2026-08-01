@@ -7,6 +7,7 @@ import { collectRaw } from '../lib/tinker/collect.mjs';
 import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate } from '../scripts/tinker-build.mjs';
+import { needsEnrich } from '../scripts/tinker-fetch.mjs';
 
 const src = { name: '测试源', kind: 'blog' };
 const today = '2026-08-01';
@@ -212,4 +213,16 @@ test('buildHtml 产出的页面内嵌数据可解析，且切断了 </script>', 
   assert.equal(parsed.names.tools['claude-code'], 'Claude Code');
   assert.equal(parsed.names.topics['mcp'], 'MCP');
   assert.equal(parsed.names.tools['mcp'], undefined, 'MCP 是话题不是工具，不该出现在工具表里');
+});
+
+test('【修复】论坛帖 feed 已给正文时不再补全（linux.do 话题页只有 JS 外壳）', () => {
+  // Discourse 的 RSS 里就是首帖全文，而话题页在浏览器 UA 下没有正文，
+  // 补全会用样式表碎片盖掉首帖，中文占比被拉到个位数后整条被毙。
+  assert.equal(needsEnrich({ thread: true, excerpt: '首帖正文，比阈值短' }), false);
+  // feed 什么都没给的论坛帖仍然要补全——那时候页面是唯一来源
+  assert.equal(needsEnrich({ thread: true, excerpt: '' }), true);
+  // 非论坛源不受影响
+  assert.equal(needsEnrich({ excerpt: '短摘要' }), true);
+  // 本来就够长的，谁都不补
+  assert.equal(needsEnrich({ excerpt: 'x'.repeat(300) }), false);
 });
