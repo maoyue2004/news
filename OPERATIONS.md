@@ -29,7 +29,8 @@
 | favicon | `🔧`（固定不变） |
 
 折腾志已迁移到与 AI 信源罗盘相同的 Codex Site，页面路径为 `/tinker`。两个页面共用一次
-Sites 部署，但各自的内容、样式和浏览器端交互仍互相独立。旧 Artifact 仅作为迁移前存档。
+Sites 部署和 D1，但折腾志的条目 id 写入时统一加 `tinker:` 前缀，避免两个阅读器的状态串线。
+旧 Artifact 仅作为迁移前存档。
 
 两个 routine 写同一个仓库的不同目录（`data/` vs `tinker/data/`），不会互相覆盖内容，
 但**同时 push 会撞**。改运行时间时务必保持间隔。

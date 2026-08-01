@@ -124,7 +124,7 @@ function makeStorage(seed = {}) {
   };
 }
 
-function runUi(data, storage = makeStorage()) {
+function runUi(data, storage = makeStorage(), fetchImpl = async () => { throw new Error('offline'); }) {
   const { document, byId } = makeDom(JSON.stringify(data));
   const sandbox = {
     document,
@@ -132,6 +132,8 @@ function runUi(data, storage = makeStorage()) {
     matchMedia: () => ({ matches: false }),
     setTimeout: (fn) => fn(),
     clearTimeout: () => {},
+    fetch: fetchImpl,
+    Promise,
     console,
     Date,
     JSON,
@@ -156,6 +158,14 @@ function runUi(data, storage = makeStorage()) {
     search: byId.search,
   };
   return { byId, ...helpers, storage };
+}
+
+function jsonResponse(payload, ok = true) {
+  return { ok, json: async () => payload };
+}
+
+async function settleAsyncUi() {
+  for (let i = 0; i < 8; i += 1) await new Promise((resolve) => setImmediate(resolve));
 }
 
 const day = {
@@ -303,4 +313,70 @@ test('localStorage 不可用时页面照常渲染', () => {
   const ui = runUi(data, hostile);
   assert.equal(ui.entries().length, 2);
   assert.doesNotThrow(() => ui.acts(0).find((b) => b.textContent.includes('收藏')).click());
+});
+
+test('云端状态按折腾志命名空间加载，不混入另一个页面的记录', async () => {
+  const store = makeStorage({ 'tinker.server-sync.v1': '1' });
+  const fetchImpl = async () => jsonResponse({
+    read: ['a', 'tinker:a'],
+    starred: ['unrelated', 'tinker:b'],
+  });
+  const ui = runUi(data, store, fetchImpl);
+  await settleAsyncUi();
+
+  assert.ok(ui.view('未读').textContent.includes('1'));
+  assert.ok(ui.view('收藏').textContent.includes('1'));
+  assert.equal(ui.entries().find((entry) => entry.textContent.includes('第一篇')).dataset.read, 'true');
+});
+
+test('收藏与已读变更使用折腾志命名空间写入云端', async () => {
+  const calls = [];
+  const store = makeStorage({ 'tinker.server-sync.v1': '1' });
+  const fetchImpl = async (url, options) => {
+    calls.push({ url, method: options.method, body: options.body });
+    return options.method === 'GET'
+      ? jsonResponse({ read: [], starred: [] })
+      : jsonResponse({ ok: true, applied: 1 });
+  };
+  const ui = runUi(data, store, fetchImpl);
+  await settleAsyncUi();
+
+  ui.acts(0).find((b) => b.textContent.includes('收藏')).click();
+  ui.acts(0).find((b) => b.textContent.includes('标为已读')).click();
+  await settleAsyncUi();
+
+  const changes = calls
+    .filter((call) => call.method === 'PUT')
+    .flatMap((call) => JSON.parse(call.body).changes);
+  assert.ok(changes.some((change) => change.id === 'tinker:a' && change.starred === true));
+  assert.ok(changes.some((change) => change.id === 'tinker:a' && change.read === true));
+  assert.equal(JSON.parse(store.getItem('tinker.pending-sync.v1')).a, undefined);
+});
+
+test('首次连接会把既有本机状态并入云端', async () => {
+  const calls = [];
+  const remote = { read: [], starred: [] };
+  const store = makeStorage({
+    'tinker.state.v1': JSON.stringify({ read: { a: true }, starred: { b: true } }),
+  });
+  const fetchImpl = async (url, options) => {
+    calls.push({ method: options.method, body: options.body });
+    if (options.method === 'PUT') {
+      for (const change of JSON.parse(options.body).changes) {
+        if (change.read) remote.read.push(change.id);
+        if (change.starred) remote.starred.push(change.id);
+      }
+      return jsonResponse({ ok: true, applied: 2 });
+    }
+    return jsonResponse(remote);
+  };
+  runUi(data, store, fetchImpl);
+  await settleAsyncUi();
+
+  const migrated = calls
+    .filter((call) => call.method === 'PUT')
+    .flatMap((call) => JSON.parse(call.body).changes);
+  assert.ok(migrated.some((change) => change.id === 'tinker:a' && change.read === true));
+  assert.ok(migrated.some((change) => change.id === 'tinker:b' && change.starred === true));
+  assert.equal(store.getItem('tinker.server-sync.v1'), '1');
 });

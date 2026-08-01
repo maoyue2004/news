@@ -6,6 +6,12 @@
   const label = (facet, id) => (names[facet] && names[facet][id]) || id;
   const allItems = flatten(days);
   const state = loadState();
+  const REMOTE_PREFIX = 'tinker:';
+  const MIGRATED_KEY = 'tinker.server-sync.v1';
+  const PENDING_KEY = 'tinker.pending-sync.v1';
+  let pendingChanges = loadPending();
+  let syncReady = false;
+  let syncInFlight = null;
 
   const ui = { view: 'all', tool: null, topic: null, query: '', date: null, panel: false };
 
@@ -16,6 +22,150 @@
     if (text != null) n.textContent = text;
     return n;
   };
+
+  /* ---------- 云端状态 ---------- */
+
+  function hasOwn(object, key) {
+    return Object.prototype.hasOwnProperty.call(object, key);
+  }
+
+  function loadPending() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(PENDING_KEY) || '{}');
+      return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function savePending() {
+    try { localStorage.setItem(PENDING_KEY, JSON.stringify(pendingChanges)); } catch { /* 忽略 */ }
+  }
+
+  function stateRequest(method, body) {
+    const options = {
+      method,
+      credentials: 'same-origin',
+      headers: { accept: 'application/json' },
+    };
+    if (body !== undefined) {
+      options.headers['content-type'] = 'application/json';
+      options.body = JSON.stringify(body);
+    }
+    return Promise.resolve().then(() => fetch('/api/state', options)).then((response) => (
+      response.json().catch(() => ({})).then((payload) => {
+        if (!response.ok) throw new Error(payload.error || '云端同步失败');
+        return payload;
+      })
+    ));
+  }
+
+  function mergePending(id, change) {
+    const current = pendingChanges[id] || {};
+    if (hasOwn(change, 'read')) current.read = change.read;
+    if (hasOwn(change, 'starred')) current.starred = change.starred;
+    pendingChanges[id] = current;
+  }
+
+  function queueRemoteChange(id, change) {
+    mergePending(id, change);
+    savePending();
+    if (syncReady) flushPending();
+  }
+
+  function pendingList() {
+    return Object.keys(pendingChanges).map((localId) => {
+      const change = { localId, id: REMOTE_PREFIX + localId };
+      if (hasOwn(pendingChanges[localId], 'read')) change.read = pendingChanges[localId].read;
+      if (hasOwn(pendingChanges[localId], 'starred')) change.starred = pendingChanges[localId].starred;
+      return change;
+    });
+  }
+
+  function samePatch(current, sent) {
+    return current
+      && (!hasOwn(sent, 'read') || current.read === sent.read)
+      && (!hasOwn(sent, 'starred') || current.starred === sent.starred)
+      && Object.keys(current).length === Object.keys(sent).length - 2;
+  }
+
+  function flushPending() {
+    if (syncInFlight) return syncInFlight;
+    const snapshot = pendingList();
+    if (!snapshot.length) return Promise.resolve();
+
+    let succeeded = false;
+    syncInFlight = Promise.resolve().then(() => {
+      let chain = Promise.resolve();
+      for (let i = 0; i < snapshot.length; i += 200) {
+        const changes = snapshot.slice(i, i + 200).map(({ localId, ...change }) => change);
+        chain = chain.then(() => stateRequest('PUT', { changes }));
+      }
+      return chain;
+    }).then(() => {
+      for (const sent of snapshot) {
+        if (samePatch(pendingChanges[sent.localId], sent)) delete pendingChanges[sent.localId];
+      }
+      savePending();
+      succeeded = true;
+    }).catch(() => {
+      // 保留本机状态与待同步队列；下次操作或刷新时继续补传。
+    }).finally(() => {
+      syncInFlight = null;
+      if (succeeded && Object.keys(pendingChanges).length) flushPending();
+    });
+    return syncInFlight;
+  }
+
+  function addLocalMigration() {
+    for (const id of Object.keys(state.read)) {
+      if (!hasOwn(pendingChanges[id] || {}, 'read')) mergePending(id, { read: true });
+    }
+    for (const id of Object.keys(state.starred)) {
+      if (!hasOwn(pendingChanges[id] || {}, 'starred')) mergePending(id, { starred: true });
+    }
+    savePending();
+  }
+
+  function replaceWithRemote(remote) {
+    state.read = {};
+    state.starred = {};
+    for (const remoteId of Array.isArray(remote.read) ? remote.read : []) {
+      if (remoteId.startsWith(REMOTE_PREFIX)) state.read[remoteId.slice(REMOTE_PREFIX.length)] = true;
+    }
+    for (const remoteId of Array.isArray(remote.starred) ? remote.starred : []) {
+      if (remoteId.startsWith(REMOTE_PREFIX)) state.starred[remoteId.slice(REMOTE_PREFIX.length)] = true;
+    }
+    saveState(state);
+  }
+
+  function initializeSync() {
+    let remote;
+    return stateRequest('GET').then((result) => {
+      remote = result;
+      let migrated = false;
+      try { migrated = localStorage.getItem(MIGRATED_KEY) === '1'; } catch { /* 忽略 */ }
+      if (!migrated) addLocalMigration();
+      if (!Object.keys(pendingChanges).length) return undefined;
+      return flushPending().then(() => {
+        if (Object.keys(pendingChanges).length) throw new Error('仍有状态等待同步');
+        return stateRequest('GET').then((latest) => { remote = latest; });
+      });
+    }).then(() => {
+      replaceWithRemote(remote);
+      try { localStorage.setItem(MIGRATED_KEY, '1'); } catch { /* 忽略 */ }
+      syncReady = true;
+      render();
+    }).catch(() => {
+      syncReady = true;
+    });
+  }
+
+  function setItemState(id, key, value) {
+    if (value) state[key][id] = true; else delete state[key][id];
+    saveState(state);
+    queueRemoteChange(id, { [key === 'read' ? 'read' : 'starred']: value });
+  }
 
   /* ---------- 主题 ---------- */
 
@@ -121,7 +271,7 @@
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     // 点标题即视为已读：这是唯一一个「用户真的去看了」的可靠信号。
-    a.addEventListener('click', () => { state.read[item.id] = true; saveState(state); render(); });
+    a.addEventListener('click', () => { setItemState(item.id, 'read', true); render(); });
     h.append(a);
     main.append(h);
 
@@ -144,13 +294,13 @@
     const star = el('button', 'act', state.starred[item.id] ? '★ 已收藏' : '☆ 收藏');
     star.setAttribute('aria-pressed', String(Boolean(state.starred[item.id])));
     star.addEventListener('click', () => {
-      if (state.starred[item.id]) delete state.starred[item.id]; else state.starred[item.id] = true;
-      saveState(state); render();
+      setItemState(item.id, 'starred', !state.starred[item.id]);
+      render();
     });
     const read = el('button', 'act', state.read[item.id] ? '标为未读' : '标为已读');
     read.addEventListener('click', () => {
-      if (state.read[item.id]) delete state.read[item.id]; else state.read[item.id] = true;
-      saveState(state); render();
+      setItemState(item.id, 'read', !state.read[item.id]);
+      render();
     });
     actions.append(star, read);
     meta.append(actions);
@@ -251,4 +401,5 @@
 
   $('#generated').textContent = `更新于 ${new Date(generatedAt).toLocaleString('zh-CN', { hour12: false })}`;
   render();
+  initializeSync();
 })();
