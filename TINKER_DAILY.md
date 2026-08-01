@@ -80,7 +80,14 @@
   不写「本文介绍了……」这种空话
 - `rating` — 1-5 整数。5 分是「今日精选」，页面会打标，**每天最多给 8 篇 5 分**，
   给多了这个标就没有意义了
-- `tools` — 工具 id 数组，从 `preScore` 旁边的 `tools` 里挑准确的，可增删
+- `tools` — **工具（产品）** id 数组：Claude Code、Codex CLI、Cursor、OpenClaw、Manus 这类
+- `topics` — **话题（概念/实践）** id 数组：MCP、CLAUDE.md、Agent Skills、Vibe Coding、
+  规格驱动开发、Loop Engineering 这类
+
+  两者是页面上两组独立的筛选器，**不要混**。判据很简单：能不能安装、能不能打开？
+  能就是工具，不能就是话题。抓取时会给出候选，评审时按这条判据核一遍再增删——
+  规则匹配会误判（词表里的中文别名曾把「核**心流**程」判成 iFlow）。
+  语料里出现了词表没有的产品或概念，加进 `lib/tinker/vocab.mjs` 的 `TOOLS` / `TOPICS`
 
 **`thin: true` 的条目抓不到正文，只能依据标题判断，绝对不许编造内容、数字或结论。**
 这类条目页面会显示「⚠ 仅标题」。拿不准就直接不收——折腾志不像信源罗盘要求覆盖度，
@@ -97,7 +104,7 @@
   "dailyNote": "<编者按，2-4 句>",
   "items": [ { "id": "", "source": "", "kind": "", "url": "", "titleOriginal": "",
                "titleZh": "", "summaryZh": "", "whyRead": "", "rating": 1,
-               "tools": [], "publishedAt": "", "author": "", "preScore": 0 } ],
+               "tools": [], "topics": [], "publishedAt": "", "author": "", "preScore": 0 } ],
   "reviewed": 0, "dropped": 0, "stats": {}, "errors": []
 }
 ```
@@ -142,8 +149,10 @@
    `node scripts/tinker-probe.mjs --file tinker/candidates.txt`
 4. 探测到 feed、且最新文章在 365 天内的，加进 `tinker/sources.json`
    （`kind: "blog"`，写一句具体的 `desc`，别写「中文技术博客」这种废话）
-5. 顺便看一眼 `lib/tinker/vocab.mjs`：今天的条目里有没有出现词表里没有的 agent 工具名？
-   有就加进 `TOOLS`，并考虑给 `SEARCH_QUERIES` 补一条对应查询
+5. 顺便看一眼 `lib/tinker/vocab.mjs`：今天的条目里有没有出现词表里没有的产品或概念？
+   产品加进 `TOOLS`，概念加进 `TOPICS`，并考虑给 `SEARCH_QUERIES` 补一条对应查询。
+   **加中文别名前先自问它会不会是某个常用词的一段**——中文没有词边界，
+   两个字的别名基本都会误伤（「心流」命中「核心流程」，「扣子」命中「纽扣子」）
 
 另有一条**批量扩源**的路子，效果比搜索引擎好得多（搜索引擎搜个人博客基本无效，
 出来的全是 CSDN / 知乎这类 SEO 平台页）：
