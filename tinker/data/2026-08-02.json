@@ -1,0 +1,57 @@
+{
+  "date": "2026-08-02",
+  "generatedAt": "2026-08-01T17:50:00.000Z",
+  "dailyNote": "创刊后第一个增量日，抓 164 条只入围 9 条，最后收 2 篇。入围名单基本是空转：4 篇产品自荐、1 篇招聘、1 篇讲 Kubernetes Operator 的文章因为词表里把 operator 当成 ChatGPT Agent 的别名被误捞进来。最值得先读的是枫言枫语那篇四模型体感对比——它不跑分，只说自己四家顶配订阅的额度该怎么分、谁扛不住长任务，这种话只有真掏钱天天用的人说得出来。另一篇 Fork Zed 做笔记软件的，好在结尾写的是「还很粗糙，不建议大家尝试」，和当天那几篇求 Star 的正好是两个落点。",
+  "items": [
+    {
+      "id": "d067ce925a9c9757",
+      "source": "枫言枫语",
+      "kind": "blog",
+      "url": "https://justinyan.me/post/6679",
+      "titleOriginal": "主观体感对比 Fable 5 vs Opus 5 vs Codex 5.6 Sol vs Kimi K3",
+      "titleZh": "四家顶配订阅同时在手，他把 Fable 5 / Opus 5 / Codex 5.6 / Kimi K3 排了个序",
+      "summaryZh": "同时养着 Claude、ChatGPT Pro、Kimi 三家顶配订阅后的排序：Fable 5 xHigh 最强，常能一次出可用产出；Opus 5 讨论需求要来回多轮，被降级成 Fable 的 subagent 用；Codex 5.6 Sol 居中但极耐用，本月折算 API 单价冲到 1.4 万美元仍没跑满；Kimi K3 智商接近 Codex，但 5 小时限额触发太快，扛不住长任务。",
+      "whyRead": "不是跑分，是额度怎么分配、谁在长任务上先趴下——只有真掏钱天天用的人写得出。",
+      "rating": 5,
+      "tools": ["codex", "kimi-code"],
+      "topics": ["subagent"],
+      "publishedAt": "2026-07-26T04:18:07.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "c8810b3beea9e5e8",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1229762",
+      "titleOriginal": "Fork Zed editor，做了个自用的笔记软件",
+      "titleZh": "Fork 一份 Zed 做自用笔记软件：代价是 2 周 Codex 额度和一个同步不回去的 dirty fork",
+      "summaryZh": "靠 2 个 Codex Plus 周用量加 10% Cursor Pro 月用量做出雏形。本想复用别人的 API、拿 Zed 的 gpui 写客户端，做着做着和上游有分歧，索性自己重写了 server。两个已知问题写得很实：没有 WYSIWYG，多媒体在编辑器里处理不了；desktop 是 Zed 的 dirty fork，插件体系 hook 不到编辑器层，只能直接改源码，后续同步上游是大问题。",
+      "whyRead": "「vibe 时代一言不合就分叉」的事后账，结尾是「不建议大家尝试」而不是求 Star。",
+      "rating": 4,
+      "tools": ["zed", "codex", "cursor", "hermes"],
+      "topics": ["vibe-coding", "mcp"],
+      "publishedAt": "2026-07-25T10:11:13.000Z",
+      "author": "yuhangch",
+      "preScore": 9
+    }
+  ],
+  "reviewed": 9,
+  "dropped": 7,
+  "stats": {
+    "sources": 157,
+    "fetched": 164,
+    "shortlisted": 9,
+    "rejected": 155,
+    "thin": 22,
+    "enriched": 37,
+    "enrichAttempted": 59,
+    "failedSources": 4
+  },
+  "errors": [
+    { "source": "LearnKu", "message": "HTTP 503" },
+    { "source": "HelloWood", "message": "HTTP 503" },
+    { "source": "zhheo", "message": "HTTP 503" },
+    { "source": "又耳笔记", "message": "HTTP 503" }
+  ]
+}

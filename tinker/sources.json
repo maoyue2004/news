@@ -1259,5 +1259,29 @@
     "kind": "blog",
     "enabled": true,
     "desc": "中文个人博客，低频长文。"
+  },
+  {
+    "name": "OneV's Den",
+    "url": "https://onevcat.com",
+    "feed": "https://onevcat.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "王巍（onevcat），iOS 圈老牌博主，写过《一个半月高强度 Claude Code 使用后感受》这类长篇使用复盘。"
+  },
+  {
+    "name": "SimonAKing",
+    "url": "https://simonaking.com",
+    "feed": "https://simonaking.com/blog/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "前端独立博客，写过「烧了 250 亿 token 后」的 Claude Code 长文，用量和踩坑都写得很细。"
+  },
+  {
+    "name": "Ben 的博客 Dot to Line",
+    "url": "https://benx.ai/blog",
+    "feed": "https://benx.ai/blog/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "个人博客，写 Claude Code 从零上手到实际干活的过程。feed 不带正文，条目要靠正文补全。"
   }
 ]

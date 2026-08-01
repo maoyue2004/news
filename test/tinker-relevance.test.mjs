@@ -204,3 +204,45 @@ test('被占比上限挡下的条目要说明原因，不静默消失', () => {
   assert.equal(shortlist.length + rejected.length, items.length, '总数必须守恒');
   assert.ok(rejected.some((r) => r.reasons.some((x) => x.includes('占比上限'))));
 });
+
+test('operator 不是 ChatGPT Desktop 的别名：它是英文里最常见的技术词之一', () => {
+  // 2026-08-02：9 条入围里 2 条纯粹是被这个别名捞进来的——
+  // 一篇讲 Kubernetes Operator Pattern 和 client-go，一篇正文里全是 operator: 'eq' 的表格列定义。
+  // 和 dia/amp 那类子串误命中不同，operator 本身就是个独立单词，词边界规则拦不住。
+  assert.deepEqual(matchTools('搞懂 Kubernetes Controller, Operator Pattern 和 client-go 的內部機制'), []);
+  assert.deepEqual(matchTools("列定义里写 operator: 'eq' 就能生成筛选条件"), []);
+  // 明确指向产品的写法仍要命中
+  assert.ok(matchTools('用 ChatGPT Agent 跑了一遍报销流程').includes('chatgpt-desktop'));
+});
+
+test('没有薪资数字的招聘帖也要毙掉', () => {
+  // 「招全栈 / AI Native Developer / Go 后端方向」——标题没有 K-K、没有「招聘」二字，
+  // 旧规则整套判据一条都没命中，它带着 claude-code/cursor/copilot 三个工具词进了入围名单。
+  const jd = scoreItem({
+    title: '招全栈 / AI Native Developer / Go 后端方向',
+    excerpt: '团队在用 Claude Code 和 Cursor，熟悉 Copilot 优先，有 agent 实践经验的同学优先。',
+    kind: 'search',
+  });
+  assert.equal(jd.verdict, 'reject');
+  assert.ok(jd.reasons.includes('招聘 / 接单帖'));
+  // 「我招了个 agent 当同事」这种比喻不该被误伤：招字后面没有岗位词
+  const notJd = scoreItem({
+    title: '我用 Claude Code 折腾了一周的工作流',
+    excerpt: '踩了几个坑，记录一下。'.repeat(30),
+    kind: 'blog',
+  });
+  assert.equal(notJd.verdict, 'shortlist');
+});
+
+test('自荐帖的招呼语压在结尾时也要扣分，但比标题/开头轻', () => {
+  // 手册的判据是「落点在哪」，落点字面上就是结尾。
+  // 「古法编程做了个剪映」通篇像折腾文，来体验 / GitHub 求 Star 全在最后一段。
+  const args = { title: '我用古法编程做了一个剪映', kind: 'search' };
+  const body = '没用 Cursor，一行行手写了时间轴、动画系统和滤镜。'.repeat(30);
+  const neutral = scoreItem({ ...args, excerpt: body });
+  const tailPromo = scoreItem({ ...args, excerpt: `${body}\n别光听我说，自己去试试：在线体验、GitHub（求 Star）。` });
+  const headPromo = scoreItem({ ...args, excerpt: `核心功能有：时间轴、动画、滤镜。\n${body}` });
+  assert.ok(tailPromo.score < neutral.score, '结尾的推广语要扣分');
+  assert.ok(tailPromo.reasons.includes('结尾落在推广语上'));
+  assert.ok(headPromo.score < tailPromo.score, '标题/开头的自荐比结尾更能说明落点，扣得更重');
+});
