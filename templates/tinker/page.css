@@ -477,6 +477,7 @@ table.sources th {
 }
 
 table.sources td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+table.sources td.kind { white-space: nowrap; }
 table.sources td.desc { color: var(--ink-mute); font-size: 0.8rem; min-width: 18rem; }
 
 .state {

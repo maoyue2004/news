@@ -175,7 +175,12 @@
     const table = el('table', 'sources');
     const head = el('tr');
     for (const t of ['信源', '类型', '状态', '近 30 天入选', '说明']) head.append(el('th', null, t));
-    table.append(el('thead')).lastChild.append(head);
+    // Element.append() 返回 undefined，不能链式取回刚追加的节点。
+    // 之前写的是 table.append(el('thead')).lastChild.append(head)，直接抛 TypeError，
+    // 整个信源面板从上线起就打不开——而我一次都没点过那个按钮。
+    const thead = el('thead');
+    thead.append(head);
+    table.append(thead);
     const body = el('tbody');
     const kindLabel = { search: '按词搜索', forum: '论坛', aggregator: '聚合', weekly: '周刊', blog: '个人博客' };
     for (const s of [...sources].sort((a, b) => (yields.get(b.name) || 0) - (yields.get(a.name) || 0))) {
@@ -189,7 +194,7 @@
       badge.dataset.s = st.s;
       const stateCell = el('td');
       stateCell.append(badge);
-      tr.append(nameCell, el('td', null, kindLabel[s.kind] || s.kind), stateCell,
+      tr.append(nameCell, el('td', 'kind', kindLabel[s.kind] || s.kind), stateCell,
         el('td', 'num', String(yields.get(s.name) || 0)), el('td', 'desc', s.desc || ''));
       body.append(tr);
     }
