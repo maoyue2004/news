@@ -12,6 +12,12 @@
 
     npm ci --omit=dev
 
+**开工前先完整读 [`tinker/LESSONS.md`](tinker/LESSONS.md)**，再看 `tinker/REVIEW.md`
+最近 3 条。前者是已经被数据验证过的长期结论（踩过的坑、走不通的死路、
+以及「看起来合理但实测是错的」判断），后者是逐日流水。
+不读 LESSONS 的直接后果是重走死路——里面明确列了机械去重、微信公众号、
+知乎/CSDN/博客园搜索这些已经调查过不通的方向。
+
 ## 1. 抓取
 
     npm run tinker:fetch
@@ -209,7 +215,7 @@
 
 ## 6. 自我复盘（不能跳过）
 
-读 `tinker/REVIEW.md` 的最近几条记录，然后往里追加今天这条：
+往 `tinker/REVIEW.md` 追加今天这条（流水账）：
 
 ```
 ## YYYY-MM-DD
@@ -236,6 +242,12 @@
 
 改完跑 `npm test` 确认没弄坏东西。规则改动可以用
 `node scripts/tinker-retriage.mjs` 离线对比效果，不用重新抓取。
+
+**如果今天的结论是长期有效的，把它提炼进 `tinker/LESSONS.md`**——
+判据是「半年后还用得上吗」。逐日数字留在 REVIEW，
+「某条路走不通」「某个判据是错的」这类要进 LESSONS，否则会被流水淹没。
+注意 `lib/html-text.mjs`、`lib/feed-parse.mjs`、`lib/store.mjs` 是和信源罗盘
+**共用**的，动它们要跑全量测试。
 
 ## 7. 提交
 
