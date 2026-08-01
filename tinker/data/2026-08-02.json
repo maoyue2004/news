@@ -1,8 +1,46 @@
 {
   "date": "2026-08-02",
   "generatedAt": "2026-08-01T17:50:00.000Z",
-  "dailyNote": "创刊后第一个增量日，抓 164 条只入围 9 条，最后收 2 篇。入围名单基本是空转：4 篇产品自荐、1 篇招聘、1 篇讲 Kubernetes Operator 的文章因为词表里把 operator 当成 ChatGPT Agent 的别名被误捞进来。最值得先读的是枫言枫语那篇四模型体感对比——它不跑分，只说自己四家顶配订阅的额度该怎么分、谁扛不住长任务，这种话只有真掏钱天天用的人说得出来。另一篇 Fork Zed 做笔记软件的，好在结尾写的是「还很粗糙，不建议大家尝试」，和当天那几篇求 Star 的正好是两个落点。",
+  "dailyNote": "今天两批。上半是清晨自动跑的两篇，下半是我把昨夜攒下的候选补评了一轮。SegmentFault 这个新接的源第一次出货，量不小但杂：27 条候选里有 MonkeyCode 的两篇广告、阿里云数据库软文、「效率飙升 10 倍」这类标题党、下载教程和课程推广，最后只留了 7 篇。另有一篇拆微软效率报告的写得不错，但作者自己没动手，按「得真的动过手」这条线还是拿掉了。最值得先读的是「装了 Hermes Agent 三个月」——凌晨一点半开着三个窗口来回切，问题解决了才想起来「我只是想让 AI 帮我写个周报而已」。",
   "items": [
+    {
+      "id": "8e5520d70124b295",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048025422",
+      "titleOriginal": "两天真实体验，Claude Code+ MiniMax-M3 比 CC+ DeepSeek编程强太多",
+      "titleZh": "账号被封之后：Claude Code 配 MiniMax-M3 比配 DeepSeek 强太多",
+      "summaryZh": "Claude Code 账号彻底被封后作者一路找替代：第一选择 CC + DeepSeek，编程能跑但低级问题不断，编译错误和 yaml 反复出错；中间试过 GitHub Copilot CLI 和 Cursor CLI，都能用但价格比 CC 贵一截，性价比不够；转折点是顺手试了 MiniMax，编程能力有惊喜。两天真实体验的对比。",
+      "whyRead": "被封号之后的替代方案实测，三条路都走过一遍才给的结论。",
+      "rating": 5,
+      "tools": [
+        "claude-code",
+        "copilot-cli",
+        "cursor"
+      ],
+      "topics": [],
+      "publishedAt": "2026-07-14T07:31:31.000Z",
+      "preScore": 12
+    },
+    {
+      "id": "e013d1978427a254",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048068273",
+      "titleOriginal": "装了Hermes Agent三个月，我终于搞明白前端该怎么选了",
+      "titleZh": "装了 Hermes Agent 三个月，我终于搞明白前端该怎么选了",
+      "summaryZh": "凌晨一点半，作者盯着三个同时打开的窗口发呆：左边 Open WebUI 刚生成一张 Mermaid 流程图，中间 Hermes Web 管理端在排查 Skill 调用报错，右边终端滚着 Python 依赖日志。来回切了半小时问题是找到了，但他突然想问自己——我到底在干什么？我只是想让 AI 帮我写个周报而已。文章从这个「装完 Agent 反而不知道该打开哪个界面」的迷茫出发，梳理前端形态该怎么选。",
+      "whyRead": "装完一堆 agent 之后那种「界面太多反而更慢了」的具体样子，很少有人肯写出来。",
+      "rating": 5,
+      "tools": [
+        "hermes"
+      ],
+      "topics": [
+        "skills"
+      ],
+      "publishedAt": "2026-07-23T12:13:45.000Z",
+      "preScore": 9
+    },
     {
       "id": "d067ce925a9c9757",
       "source": "枫言枫语",
@@ -13,11 +51,70 @@
       "summaryZh": "同时养着 Claude、ChatGPT Pro、Kimi 三家顶配订阅后的排序：Fable 5 xHigh 最强，常能一次出可用产出；Opus 5 讨论需求要来回多轮，被降级成 Fable 的 subagent 用；Codex 5.6 Sol 居中但极耐用，本月折算 API 单价冲到 1.4 万美元仍没跑满；Kimi K3 智商接近 Codex，但 5 小时限额触发太快，扛不住长任务。",
       "whyRead": "不是跑分，是额度怎么分配、谁在长任务上先趴下——只有真掏钱天天用的人写得出。",
       "rating": 5,
-      "tools": ["codex", "kimi-code"],
-      "topics": ["subagent"],
+      "tools": [
+        "codex",
+        "kimi-code"
+      ],
+      "topics": [
+        "subagent"
+      ],
       "publishedAt": "2026-07-26T04:18:07.000Z",
       "author": "",
       "preScore": 8
+    },
+    {
+      "id": "86d04b47d691a38c",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048057208",
+      "titleOriginal": "Codex 如何接入 Blender：blender-mcp 完整配置教程",
+      "titleZh": "让 Codex 操控 Blender：blender-mcp 完整配置",
+      "summaryZh": "blender-mcp 是一个开源 MCP 服务器，把 Blender 暴露给支持 MCP 的 AI 工具，让 Codex 这类 agent 能直接操控场景、对象、材质、灯光和摄像机——用自然语言描述一个 3D 场景，然后看着 Blender 自动把它建出来。文章给完整配置流程。",
+      "whyRead": "MCP 的讨论大多围着写代码转，这篇把 agent 接到了建模软件上。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [
+        "mcp"
+      ],
+      "publishedAt": "2026-07-21T06:19:53.000Z",
+      "preScore": 11
+    },
+    {
+      "id": "d22f6eee2c3d7834",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048059347",
+      "titleOriginal": "Claude Code 接入 Grok-4.5",
+      "titleZh": "Claude Code 通过 CCR 接入 Grok-4.5 的配置与避坑",
+      "summaryZh": "作者声明这版文档按他实际验证过的配置写，避开旧版的错误路由和鉴权问题。实际链路是 Claude Code 指向本地 CCR 服务（127.0.0.1:3456），再由 CCR 转发到 xAI 的 Grok。文中给出完整配置和踩过的坑。",
+      "whyRead": "换模型这件事的坑大多在路由和鉴权上，这篇是验证过才写的。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [],
+      "publishedAt": "2026-07-21T12:11:03.000Z",
+      "preScore": 9
+    },
+    {
+      "id": "1228cc5e58d336c6",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7664994459844100137",
+      "titleOriginal": "手把手：在本地部署 OpenAI Codex CLI，接入国产大模型当编程助手",
+      "titleZh": "本地部署 Codex CLI 接入国产大模型：完整踩坑实录",
+      "summaryZh": "在本地 Ubuntu 机器上从零部署 Codex CLI、用国产大模型替代 OpenAI 的过程记录。作者把安装、配置到跑通的每一步和中间踩的坑都写了下来。",
+      "whyRead": "不想用官方模型又想用 Codex 的那条路，有人完整走过一遍。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [],
+      "publishedAt": "2026-07-22T08:57:03.000Z",
+      "author": "AI风向标",
+      "preScore": 11
     },
     {
       "id": "c8810b3beea9e5e8",
@@ -29,15 +126,62 @@
       "summaryZh": "靠 2 个 Codex Plus 周用量加 10% Cursor Pro 月用量做出雏形。本想复用别人的 API、拿 Zed 的 gpui 写客户端，做着做着和上游有分歧，索性自己重写了 server。两个已知问题写得很实：没有 WYSIWYG，多媒体在编辑器里处理不了；desktop 是 Zed 的 dirty fork，插件体系 hook 不到编辑器层，只能直接改源码，后续同步上游是大问题。",
       "whyRead": "「vibe 时代一言不合就分叉」的事后账，结尾是「不建议大家尝试」而不是求 Star。",
       "rating": 4,
-      "tools": ["zed", "codex", "cursor", "hermes"],
-      "topics": ["vibe-coding", "mcp"],
+      "tools": [
+        "zed",
+        "codex",
+        "cursor",
+        "hermes"
+      ],
+      "topics": [
+        "vibe-coding",
+        "mcp"
+      ],
       "publishedAt": "2026-07-25T10:11:13.000Z",
       "author": "yuhangch",
       "preScore": 9
+    },
+    {
+      "id": "42042405ab1d22d9",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048082189",
+      "titleOriginal": "Hermes 多 Agent 完整拆解：五种协作机制、选型边界与踩坑清单",
+      "titleZh": "Hermes 多 Agent 完整拆解：五种协作机制、选型边界与踩坑清单",
+      "summaryZh": "针对 Hermes Agent v0.19.0，把 Nous Research 这套开源自主智能体的多 Agent 能力拆成五种协作机制逐个讲：会话内的 delegate_task 委派、Kanban 编排等，并给出各自的选型边界和踩坑清单。",
+      "whyRead": "多 Agent 协作这件事，少见的按机制逐条拆而不是泛泛谈架构。",
+      "rating": 4,
+      "tools": [
+        "hermes"
+      ],
+      "topics": [
+        "subagent"
+      ],
+      "publishedAt": "2026-07-27T02:31:00.000Z",
+      "preScore": 9
+    },
+    {
+      "id": "b879bbbc90f5f19c",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048088506",
+      "titleOriginal": "Claude Code 2.1.210的Bug给所有Agent开发者提了个醒",
+      "titleZh": "Claude Code 2.1.210 的一个 Bug，给所有 Agent 开发者提了个醒",
+      "summaryZh": "7 月 14-19 日 Claude Code 连发 8 个版本，其中 2.1.210 修了个高危 Bug：worktree 隔离的子代理可以对主 checkout 执行会改动 git 状态的命令——子代理通过 git -C ../ 绕过路径检查，污染主分支，在生产环境可能导致部署事故或代码丢失。修复方案是路径白名单加 realpath 解析加高危命令黑名单，再强制 GIT_DIR 环境变量。",
+      "whyRead": "自己写 agent 框架的人该照着这条检查一遍：沙箱边界靠路径字符串是拦不住的。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "subagent",
+        "hooks"
+      ],
+      "publishedAt": "2026-07-28T09:40:18.000Z",
+      "preScore": 6
     }
   ],
-  "reviewed": 9,
-  "dropped": 7,
+  "reviewed": 36,
+  "dropped": 8,
   "stats": {
     "sources": 157,
     "fetched": 164,
@@ -49,9 +193,21 @@
     "failedSources": 4
   },
   "errors": [
-    { "source": "LearnKu", "message": "HTTP 503" },
-    { "source": "HelloWood", "message": "HTTP 503" },
-    { "source": "zhheo", "message": "HTTP 503" },
-    { "source": "又耳笔记", "message": "HTTP 503" }
+    {
+      "source": "LearnKu",
+      "message": "HTTP 503"
+    },
+    {
+      "source": "HelloWood",
+      "message": "HTTP 503"
+    },
+    {
+      "source": "zhheo",
+      "message": "HTTP 503"
+    },
+    {
+      "source": "又耳笔记",
+      "message": "HTTP 503"
+    }
   ]
 }
