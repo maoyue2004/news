@@ -1,0 +1,44 @@
+[
+  {
+    "feed": "https://wechat2rss.xlab.app/feed/9685937b45fe9c7a526dbc32e4f24ba879a65b9a.xml",
+    "name": "腾讯技术工程",
+    "reason": "大厂官方技术团队号。文章确实像实践文，scoreItem 拦不住，但它是「官方和正式的东西」，正是本项目要排除的。",
+    "date": "2026-08-02"
+  },
+  {
+    "feed": "https://wechat2rss.xlab.app/feed/20bc9c3251b3c4f73d3b53aa1f1ab853d05d4cbc.xml",
+    "name": "小米技术",
+    "reason": "同上，大厂官方技术团队号。",
+    "date": "2026-08-02"
+  },
+  {
+    "feed": "https://wechat2rss.xlab.app/feed/4025ea55575daf8bfd8227e68b28d9638b073267.xml",
+    "name": "字节跳动技术团队",
+    "reason": "同上，大厂官方技术团队号。",
+    "date": "2026-08-02"
+  },
+  {
+    "feed": "https://s.baoyu.io/feed.xml",
+    "name": "宝玉的分享",
+    "reason": "短分享碎片不是文章，且宝玉的主博客 baoyu.io 已收录。",
+    "date": "2026-08-02"
+  },
+  {
+    "feed": "https://www.ximalaya.com/album/52069269.xml",
+    "name": "喜马拉雅专辑",
+    "reason": "音频不是文章。播客闸已能自动拦截，留在这里作为记录。",
+    "date": "2026-08-02"
+  },
+  {
+    "feed": "https://justinyan.me/feed/podcast",
+    "name": "枫言枫语（播客）",
+    "reason": "同一作者的文章 feed 已收录（justinyan.me/feed），这条是播客。",
+    "date": "2026-08-02"
+  },
+  {
+    "feed": "https://feeds.daopub.com/all.xml",
+    "name": "daopub",
+    "reason": "feed 无标题、来源不明，无法判断是谁在写。",
+    "date": "2026-08-02"
+  }
+]

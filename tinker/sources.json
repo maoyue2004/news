@@ -1283,5 +1283,413 @@
     "kind": "blog",
     "enabled": true,
     "desc": "个人博客，写 Claude Code 从零上手到实际干活的过程。feed 不带正文，条目要靠正文补全。"
+  },
+  {
+    "name": "笨方法学写作",
+    "url": "https://www.cnfeat.com/",
+    "feed": "https://www.cnfeat.com/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 3 篇够上收录线。"
+  },
+  {
+    "name": "浦明的博客",
+    "url": "https://puming.zone",
+    "feed": "https://puming.zone/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 5 篇够上收录线。"
+  },
+  {
+    "name": "Nicksxs's Blog",
+    "url": "https://nicksxs.me",
+    "feed": "https://nicksxs.me/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 4 篇够上收录线。"
+  },
+  {
+    "name": "Clark's 尧望 Blog",
+    "url": "https://dongyao.ren",
+    "feed": "https://www.dongyao.ren/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 4 篇够上收录线。"
+  },
+  {
+    "name": "LearnData 开源笔记",
+    "url": "https://newzone.top",
+    "feed": "https://newzone.top/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 3 篇够上收录线。"
+  },
+  {
+    "name": "橙树志",
+    "url": "https://citydatum.cn",
+    "feed": "https://citydatum.cn/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "小陶持续精进",
+    "url": "https://whyya.xyz",
+    "feed": "https://whyya.xyz/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "任霏博客",
+    "url": "https://blog.renfei.net",
+    "feed": "https://blog.renfei.net/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "DGideas' Blog",
+    "url": "https://dgideas.net",
+    "feed": "https://dgideas.net/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "LX blog",
+    "url": "https://blog.liua.us.ci",
+    "feed": "https://blog.liua.us.ci/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "UsubeniFantasy",
+    "url": "https://ssshooter.com",
+    "feed": "https://ssshooter.com/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "謝懿Shine©的AI博客",
+    "url": "https://xieyi.org",
+    "feed": "https://xieyi.org/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "謝懿Shine",
+    "url": "https://futseyi.com",
+    "feed": "https://www.futseyi.com/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线。"
+  },
+  {
+    "name": "刘郎阁",
+    "url": "https://vjo.cc",
+    "feed": "https://vjo.cc/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "7Wate`s Blog",
+    "url": "https://blog.7wate.com",
+    "feed": "https://blog.7wate.com/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "mvread.blog",
+    "url": "https://mvread.blog",
+    "feed": "https://mvread.blog/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "肘子的 Swift 记事本",
+    "url": "https://fatbobman.com",
+    "feed": "https://fatbobman.com/zh/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "smallyu的博客",
+    "url": "https://smallyu.net",
+    "feed": "https://smallyu.net/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "如有乐享",
+    "url": "https://51.ruyo.net",
+    "feed": "https://51.ruyo.net/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Fernweh",
+    "url": "https://blog.wohin.me",
+    "feed": "https://blog.wohin.me/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Mox的笔记库",
+    "url": "https://mocusez.site",
+    "feed": "https://mocusez.site/zh-CN/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "猫涅的技术博客",
+    "url": "https://maonie.top",
+    "feed": "https://www.maonie.top/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Cat in Chinese",
+    "url": "https://chinese.catchen.me",
+    "feed": "http://chinese.catchen.me/feeds/posts/default",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Lenix Blog",
+    "url": "https://blog.p2hp.com",
+    "feed": "https://blog.p2hp.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "张戈博客",
+    "url": "https://zhang.ge",
+    "feed": "https://zhang.ge/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "blog.liuf.net",
+    "url": "https://blog.liuf.net",
+    "feed": "https://blog.liuf.net/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "无名博客",
+    "url": "https://wuminboke.site",
+    "feed": "https://wuminboke.site/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "rss.csdn.net",
+    "url": "https://rss.csdn.net",
+    "feed": "https://rss.csdn.net/yuzhiqiang_1993/rss/map",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "樵夫的小站",
+    "url": "https://geofftools.cn",
+    "feed": "https://geofftools.cn/blog/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "西秦公子",
+    "url": "https://ixiqin.com",
+    "feed": "https://www.ixiqin.com/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "陈看川博客",
+    "url": "https://kanchuan.com",
+    "feed": "https://kanchuan.com/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "东方星痕",
+    "url": "https://ystyle.top",
+    "feed": "https://ystyle.top/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "迷途小书童",
+    "url": "https://xugaoxiang.com",
+    "feed": "https://xugaoxiang.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Mephisto's blog",
+    "url": "https://mephisto.cc",
+    "feed": "https://mephisto.cc/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "逸思杂陈",
+    "url": "https://blog.ponder.work",
+    "feed": "https://blog.ponder.work/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Deepzz's Blog",
+    "url": "https://deepzz.com",
+    "feed": "https://deepzz.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "保罗的小宇宙",
+    "url": "https://paugram.com",
+    "feed": "https://paugram.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "方永、南天紫云",
+    "url": "https://vinoca.org",
+    "feed": "https://www.vinoca.org/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "plus studio",
+    "url": "https://studyinglover.com",
+    "feed": "https://studyinglover.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "zww.me",
+    "url": "https://zww.me",
+    "feed": "https://zww.me/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Neil的自留地",
+    "url": "https://neilmin.com",
+    "feed": "https://neilmin.com/zh/posts/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "敖苛记",
+    "url": "https://blog.kayro.cn",
+    "feed": "https://blog.kayro.cn/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "keggin's blog",
+    "url": "https://keggin.tech",
+    "feed": "https://keggin.tech/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "fenx.work",
+    "url": "https://fenx.work",
+    "feed": "https://fenx.work/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Super Blog",
+    "url": "https://superpung.com",
+    "feed": "https://superpung.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "ChrAlpha 的幻想乡（博客）",
+    "url": "https://blog.ichr.me",
+    "feed": "https://blog.ichr.me/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "blog.loikein.one",
+    "url": "https://blog.loikein.one",
+    "feed": "https://blog.loikein.one/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "酷酷的白",
+    "url": "https://bducds.com",
+    "feed": "https://bducds.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "dyedd.cn",
+    "url": "https://dyedd.cn",
+    "feed": "https://dyedd.cn/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "Kaffa",
+    "url": "https://kaffa.im",
+    "feed": "https://kaffa.im/feeds/all.atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
+  },
+  {
+    "name": "韩小韩博客",
+    "url": "https://vvhan.com",
+    "feed": "https://www.vvhan.com/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 1 篇够上收录线。"
   }
 ]

@@ -1,2070 +1,868 @@
 {
   "date": "2026-08-02",
-  "generatedAt": "2026-08-01T17:44:39.524Z",
+  "generatedAt": "2026-08-01T18:44:19.066Z",
   "queries": [
-    "Cursor 实践",
-    "Gemini CLI 体验",
-    "Copilot CLI 使用",
-    "Windsurf 体验",
-    "Cline 使用",
-    "Aider 使用",
-    "OpenCode 体验",
-    "Zed 编辑器 AI",
-    "Trae 体验",
-    "Kiro 体验",
-    "Qoder 体验",
-    "CodeBuddy 使用"
+    "Claude Code 实践",
+    "Claude Code 踩坑",
+    "Codex CLI 体验",
+    "Cursor 工作流",
+    "AI 编程 踩坑",
+    "agent 编程 心得",
+    "Hermes agent 使用",
+    "MCP 服务器 自己写",
+    "MCP 实践",
+    "MCP 折腾",
+    "vibe coding 实践",
+    "氛围编程 体验",
+    "规格驱动开发 实践",
+    "Loop Engineering",
+    "Context Engineering 实践",
+    "上下文工程 实践",
+    "agent 记忆 方案",
+    "subagent 并行",
+    "git worktree agent",
+    "多个 agent 协作 开发",
+    "agent 并行 开发",
+    "AI 写代码 一个月",
+    "智能体 折腾",
+    "AI 编程 工作流",
+    "AI 编程 成本",
+    "token 消耗 编程",
+    "AI 编程 额度 用完",
+    "AI 写代码 翻车",
+    "agent 失控",
+    "AI 编程 幻觉 踩坑"
   ],
   "stats": {
-    "sources": 157,
-    "fetched": 164,
-    "shortlisted": 9,
-    "rejected": 155,
-    "thin": 22,
-    "enriched": 37,
-    "enrichAttempted": 59,
-    "failedSources": 4
+    "sources": 211,
+    "fetched": 41,
+    "shortlisted": 6,
+    "rejected": 35,
+    "thin": 0,
+    "enriched": 23,
+    "enrichAttempted": 23,
+    "failedSources": 2
   },
   "perSource": {
-    "V2EX 技术节点": 2,
-    "linux.do": 30,
-    "NodeSeek": 20,
-    "Ruby China": 0,
-    "BestBlogs.dev": 28,
-    "小众软件论坛搜索": 1,
+    "LearnKu": 0,
     "少数派": 0,
-    "V2EX 搜索": 55,
-    "掘金搜索": 0,
-    "科技爱好者周刊": 0,
-    "The Will Will Web（保哥）": 0,
-    "黑暗執行緒": 0,
-    "潮流周刊": 0,
-    "ihower": 0,
-    "博客园首页": 5,
+    "V2EX 技术节点": 0,
+    "Ruby China": 0,
+    "NodeSeek": 0,
+    "BestBlogs.dev": 0,
+    "V2EX 搜索": 27,
+    "小众软件论坛搜索": 1,
+    "掘金搜索": 13,
     "小众软件": 0,
     "HelloGitHub": 0,
-    "DecoHack 独立开发者周刊": 0,
+    "博客园首页": 0,
+    "潮流周刊": 0,
+    "黑暗執行緒": 0,
+    "The Will Will Web（保哥）": 0,
+    "科技爱好者周刊": 0,
     "宝玉xp": 0,
-    "Kalan's Blog": 0,
-    "青南 kingname": 0,
+    "ihower": 0,
+    "DecoHack 独立开发者周刊": 0,
+    "Tw93": 0,
+    "云谦 sorrycc 的 doubi": 0,
     "MinglunWu": 0,
-    "israynotarray": 0,
-    "TonyBai": 0,
     "Limboy": 0,
     "鸟窝 Colobu": 0,
+    "青南 kingname": 0,
     "Huli": 0,
-    "云谦 sorrycc 的 doubi": 0,
-    "Tw93": 0,
-    "陈少文": 0,
-    "Randy Lu": 0,
-    "Frost Ming": 0,
-    "rxliuli": 0,
+    "Kalan's Blog": 0,
+    "TonyBai": 0,
+    "israynotarray": 0,
+    "BMPI": 0,
     "catcoding": 0,
     "ArthurChiao": 0,
-    "BMPI": 0,
+    "rxliuli": 0,
+    "Randy Lu": 0,
+    "陈少文": 0,
+    "Frost Ming": 0,
+    "陶叔 taoshu.in": 0,
     "Xuanwo": 0,
     "Cyrus Yip": 0,
-    "陶叔 taoshu.in": 0,
     "Innei": 0,
+    "x-cmd": 0,
     "Finisky Garden": 0,
+    "Alan Imant": 0,
     "qiankunli": 0,
     "LQ's Blog": 0,
     "Pseudoyu": 0,
-    "x-cmd": 0,
     "Owen Young": 0,
-    "Alan Imant": 0,
-    "ursb": 0,
     "luozhiyun": 0,
-    "mazhuang": 0,
-    "Nekomoe": 0,
-    "liruifengv": 0,
-    "Reorx's Forge": 0,
     "Vaayne": 0,
     "Sukka's Blog": 0,
+    "liruifengv": 0,
     "guangzhengli": 0,
+    "mazhuang": 0,
+    "Nekomoe": 0,
+    "Reorx's Forge": 0,
+    "HelloWood": 0,
     "Eric Fu": 0,
     "Laisky": 0,
-    "est": 0,
+    "zhheo": 0,
     "icodeq": 0,
+    "莫尔索": 0,
     "immmmm": 0,
     "yuanchuan": 0,
+    "est": 0,
     "Mobius": 0,
-    "豌豆花下猫 - Python猫": 0,
-    "莫尔索": 0,
-    "Ryan Chen": 0,
     "浮云翩迁之间": 0,
-    "唐巧的博客": 0,
-    "Measure Zero": 0,
-    "Yiran's Blog": 0,
-    "明立非(Mingnify)的博客": 0,
-    "草梅友仁的博客": 0,
-    "icodex - 个人网站": 0,
-    "Android Performance": 0,
-    "雷蒙三十": 0,
+    "豌豆花下猫 - Python猫": 0,
+    "Ryan Chen": 0,
     "远飞闲记": 0,
+    "唐巧的博客": 0,
+    "Android Performance": 0,
+    "icodex - 个人网站": 0,
+    "明立非(Mingnify)的博客": 0,
+    "Measure Zero": 0,
+    "草梅友仁的博客": 0,
+    "Yiran's Blog": 0,
+    "雷蒙三十": 0,
     "创见思考": 0,
-    "翔宇工作流": 0,
-    "Benson": 0,
-    "This cute world": 0,
-    "Mobility": 0,
-    "云原生": 0,
-    "Sekyoro的博客小屋": 0,
     "毛英龙的数字花园": 0,
-    "elmagnifico": 0,
+    "Benson": 0,
+    "翔宇工作流": 0,
+    "云原生": 0,
     "暮冬Z羡慕的博客": 0,
+    "Mobility": 0,
+    "Sekyoro的博客小屋": 0,
+    "This cute world": 0,
     "行运设计师": 0,
-    "Airing's Blog": 0,
-    "年华转瞬": 0,
-    "Dax": 0,
-    "我不是咕咕鸽": 0,
-    "电波障害": 0,
-    "forecho 的独立博客": 0,
-    "XINDOO的博客": 0,
-    "data4fun": 0,
+    "elmagnifico": 0,
     "MacTalk-池建强的随想录": 0,
+    "data4fun": 0,
+    "年华转瞬": 0,
+    "forecho 的独立博客": 0,
+    "我不是咕咕鸽": 0,
+    "Dax": 0,
+    "XINDOO的博客": 0,
+    "电波障害": 0,
     "犀利豆的博客": 0,
-    "明明如月的博客": 0,
-    "王欣的博客": 0,
-    "Peng's Blog": 0,
-    "范叶亮的博客": 0,
-    "TrumanDu 博客": 0,
-    "码农刚子的开发笔记": 0,
-    "Seven's blog": 0,
-    "Luenci的技术博客": 0,
+    "Airing's Blog": 0,
     "Abyss的小屋": 0,
+    "Seven's blog": 0,
+    "TrumanDu 博客": 0,
+    "王欣的博客": 0,
     "RYANUO的博客": 0,
-    "Niracler's Blog": 0,
-    "东东's Blog": 0,
-    "Frytea's Blog": 0,
-    "Jacky's Blog": 0,
-    "Ke's blog": 0,
+    "明明如月的博客": 0,
+    "Peng's Blog": 0,
+    "Luenci的技术博客": 0,
+    "范叶亮的博客": 0,
+    "码农刚子的开发笔记": 0,
     "W4J1e's blog": 0,
-    "ISLAND": 0,
-    "Watermelonabc的Blog": 0,
+    "Frytea's Blog": 0,
+    "东东's Blog": 0,
     "LoRexxar's Blog": 0,
     "SkyWT": 0,
-    "YeungYeah 的乱写地": 0,
-    "Raye's Journey": 0,
-    "Mayx的博客": 0,
-    "Origin": 0,
-    "流动": 0,
-    "粥里有勺糖": 0,
+    "Jacky's Blog": 0,
+    "ISLAND": 0,
+    "Ke's blog": 0,
+    "Watermelonabc的Blog": 0,
+    "Niracler's Blog": 0,
     "iMaeGoo's Blog": 0,
-    "idealclover": 0,
+    "YeungYeah 的乱写地": 0,
+    "又耳笔记": 0,
+    "Mayx的博客": 0,
+    "流动": 0,
+    "Origin": 0,
     "农码生涯 无酒无花": 0,
-    "Amiya的书桌": 0,
-    "Terrarum::异世界丨居正博客": 0,
-    "sjdhome blog": 0,
+    "Raye's Journey": 0,
+    "idealclover": 0,
+    "粥里有勺糖": 0,
     "清羽飞扬": 0,
-    "Kerry的学习笔记": 0,
     "for_the_zero的小站": 0,
-    "轶哥博客": 0,
-    "映屿": 0,
-    "黑羽的个人博客": 0,
     "猿客随笔": 0,
-    "愆伏": 0,
-    "Henry Z's blog": 0,
+    "Kerry的学习笔记": 0,
+    "Terrarum::异世界丨居正博客": 0,
+    "轶哥博客": 0,
+    "Amiya的书桌": 0,
+    "黑羽的个人博客": 0,
+    "sjdhome blog": 0,
+    "映屿": 0,
+    "欧雷流": 0,
     "Laike9m's blog": 0,
     "Rokcso's Blog": 0,
+    "愆伏": 0,
+    "Weishu's Notes": 0,
+    "Henry Z's blog": 0,
+    "杰哥的小笔记": 0,
     "Oragekk's Blog": 0,
     "S T C H E N G": 0,
     "子舒的博客": 0,
-    "欧雷流": 0,
-    "杰哥的小笔记": 0,
-    "Weishu's Notes": 0,
-    "Verne in GitHub": 1,
+    "OneV's Den": 0,
+    "Ben 的博客 Dot to Line": 0,
     "Joway's Blog": 0,
     "无妄当自持": 0,
     "Guyskk 的博客": 0,
-    "電腦玩物": 1,
-    "iT 邦幫忙": 20,
-    "枫言枫语": 1
+    "Verne in GitHub": 0,
+    "枫言枫语": 0,
+    "iT 邦幫忙": 0,
+    "電腦玩物": 0,
+    "SimonAKing": 0,
+    "Clark's 尧望 Blog": 0,
+    "任霏博客": 0,
+    "橙树志": 0,
+    "笨方法学写作": 0,
+    "Nicksxs's Blog": 0,
+    "浦明的博客": 0,
+    "小陶持续精进": 0,
+    "LX blog": 0,
+    "LearnData 开源笔记": 0,
+    "DGideas' Blog": 0,
+    "如有乐享": 0,
+    "7Wate`s Blog": 0,
+    "肘子的 Swift 记事本": 0,
+    "UsubeniFantasy": 0,
+    "Fernweh": 0,
+    "謝懿Shine": 0,
+    "smallyu的博客": 0,
+    "mvread.blog": 0,
+    "謝懿Shine©的AI博客": 0,
+    "刘郎阁": 0,
+    "rss.csdn.net": 0,
+    "Mox的笔记库": 0,
+    "Lenix Blog": 0,
+    "无名博客": 0,
+    "樵夫的小站": 0,
+    "西秦公子": 0,
+    "猫涅的技术博客": 0,
+    "Cat in Chinese": 0,
+    "张戈博客": 0,
+    "blog.liuf.net": 0,
+    "陈看川博客": 0,
+    "方永、南天紫云": 0,
+    "Mephisto's blog": 0,
+    "zww.me": 0,
+    "plus studio": 0,
+    "Deepzz's Blog": 0,
+    "保罗的小宇宙": 0,
+    "逸思杂陈": 0,
+    "迷途小书童": 0,
+    "东方星痕": 0,
+    "dyedd.cn": 0,
+    "敖苛记": 0,
+    "ChrAlpha 的幻想乡（博客）": 0,
+    "Super Blog": 0,
+    "keggin's blog": 0,
+    "Neil的自留地": 0,
+    "酷酷的白": 0,
+    "Kaffa": 0,
+    "blog.loikein.one": 0,
+    "fenx.work": 0,
+    "韩小韩博客": 0
   },
   "shortlist": [
     {
-      "id": "5a302f1a71cdbd3a",
-      "source": "V2EX 搜索",
+      "id": "ab7b5b0010b80eeb",
+      "source": "掘金搜索",
       "kind": "search",
-      "url": "https://www.v2ex.com/t/1229617",
-      "titleOriginal": "开源一个 AI Agent 协作平台：让 GitHub Copilot CLI、Claude Code 等 ACP Agent 在一个团队里协作",
-      "publishedAt": "2026-07-24T09:28:56.000Z",
-      "excerpt": "最近一直在折腾 AI Coding Agent 。 用了 Claude Code 、GitHub Copilot CLI 、Codex 之后，一个最大的痛点就是： Agent 越来越强，但多个 Agent 之间几乎没有协作能力。 现实里的开发通常不是一个人完成的，而是： 架构设计 后端开发 前端开发 Code Review 测试 文档 大家分工合作。 但现在大部分 AI Agent 都还是单兵作战。 于是做了一个开源项目： Agents Chat GitHub： https://github.com/huanyingtianhe/agents-chat 它不是另一个 Chat UI 市面上已经有很多 Chat UI 。 我更想做的是 Agent Team 。 一个团队里可以有很多 Agent ，例如： PM Architect Backend Engineer Frontend Engineer Reviewer DevOps 甚至每个 Agent 都可以连接不同的底层能力： GitHub Copilot CLI Claude Code Codex 任何兼容 ACP （ Agent Client Protocol ）的 Agent Agent 可以互相 @ 、共享上下文、协同完成任务，而不是用户不停复制粘贴。 ACP ，而不是绑定某一家模型 现在很多 Agent 平台都有一个问题： 只能绑定自己的 Runtime 。 我更希望它成为一个开放的平台。 所以项目采用 ACP （ Agent Client Protocol ）作为通信协议。 理论上，只要 Agent 支持 ACP ，就可以加入团队。 这样平台本身不关心： 用的是 Claude GPT Gemini Qwen 还是未来新的 Agent 只负责： Agent 编排 Agent 通信 Team Collaboration 后面准备做什么 目前重点会放在几个方向： 1. Agent Team 一个任务自动拆分： PM ↓ Architect ↓ Backend ↓ Frontend ↓ Reviewer 最后自动汇总。 2. Workflow 不仅是聊天。 而是真正支持： DAG 条件判断 Parallel Human in the Loop 让 Agent 可以完成完整流程。 3. ACP Ecosystem 希望以后可以： 一键接入新的 ACP Agent Agent Marketplace Team Template Skill Library 不同 Agent 可以自由组合。 为什么做这个项目 我觉得未来真正有价值的，不再是： 一个 Agent 。 而是： 一群可以协作的 Agent 。 就像软件开发不会只有一个程序员一样。 Agent 也应该组成 Team ，而不是一个聊天窗口。 项目刚开始，还有很多地方需要完善。 如果大家对下面这些方向感兴趣，欢迎一起讨论： Multi-Agent ACP Agent Workflow Agent Orchestration Agent Team Context Sharing Human in the Loop 也欢迎提 Issue 、PR 或者 Star 支持。 GitHub： https://github.com/huanyingtianhe/agents-chat",
-      "author": "huanyingtianhe",
+      "url": "https://juejin.cn/post/7665361315444195338",
+      "titleOriginal": "告别“屎山”与“幻觉”：从“Vibe Coding”到“胶水编程”的AI协作实践指南",
+      "publishedAt": "2026-07-24T07:55:28.000Z",
+      "excerpt": "告别“屎山”与“幻觉”：从“Vibe Coding”到“胶水编程”的AI协作实践指南 dzhd 2026-07-24 34 阅读12分钟 告别“屎山”与“幻觉”：从“Vibe Coding”到“胶水编程”的AI协作实践指南 引言：当“Vibe Coding”撞上现实的墙 AI 编程助手（如 Cursor, GitHub Copilot, Codex）已经让“用自然语言驱动软件开发”的梦想照进现实。这种充满未来感的开发模式，被海外开发者社区形象地称为 “Vibe Coding” （氛围编程）。 然而，理想很丰满，现实很骨感。许多开发者，尤其是初学者，在初次尝试后往往会遭遇两盆冷水： “幻觉代码”（Hallucination） ：AI 自信满满地生成了一段代码，看起来逻辑严密，但一运行就报错。它可能调用了一个不存在的库函数，或者生成了一个凭空捏造的 API 字段。 “屎山代码”（Legacy Spaghetti） ：代码勉强能跑，但结构混乱不堪。全局变量与局部变量齐飞，业务逻辑与 UI 渲染共一色。你想修改一个小功能，却如同在一座摇摇欲坠的积木塔上抽动关键的一块——无从下手，一碰就碎。 问题出在哪？是我们高估了 AI 的能力，还是低估了软件工程的复杂性？ 答案在于我们与 AI 的 协作方式 。本文将分享一套被验证过的、行之有效的 AI 辅助开发方法论—— 先规划、再胶水、后进化 。它不仅仅是教你写提示词，更是教你如何像一位资深架构师一样，管理、约束并与 AI 这位“超级实习生”高效配搭，写出靠谱、可维护的生产级代码。 一、 核心心法：从“代码搬运工”到“AI架构师” 在与 AI 协作时，我们必须转变角色。我们不再是单纯的“代码搬运工”或“指令输入员”，而是项目的 架构师 和 产品经理 。 核心方法论 ： 规划先行，胶水粘合，自我进化。 我们可以把这个过程想象成建造一栋大楼： 规划先行 ：是建筑设计图和施工蓝图。在打地基前，必须明确要建几层、什么风格、有哪些功能区。对应到开发中，就是 技术栈、功能边界、数据结构和模块拆分 。 胶水粘合 ：施工队不会自己去烧砖、炼钢，他们直接采购国标、高质量的现成建材（开源组件库、成熟 SDK），然后用水泥（胶水代码）将它们牢固地粘合在一起。 自我进化 ：是工程监理机制。通过复盘和反馈，不断优化施工流程，让下一次建造更快、更好。 我们将用一个最经典的 React + TailWind CSS 待办事项（Todo List）应用 作为实战 Demo，贯穿全文，手把手演示这套方法论。 二、 第一步：规划就是一切 —— 如何约束 AI 的“天马行空” 很多开发者拿到需求的第一反应是：“嘿，AI，给我写一个 Todo List 页面。” 这就像对新来的实习生说：“去，把公司的核心业务重构一下。” 没有上下文，没有约束，AI 只能凭借“直觉”猜测，生成“看似正确”的代码。这就是“幻觉”和“屎山”的源头。 解决之道 ： /init（初始化上下文） 。我们必须先强制 AI 理解我们的技术栈、项目规范和业务边界。就像给新员工一本《公司 Java 开发手册》，让他先熟悉环境，再开始工作。 在实战中，我们不是直接让 AI 写代码，而是让它 先输出一份完整的《项目技术规划和功能拆解文档》 。 步骤拆解：如何做一份 AI 友好的规划 阶段一：只做规划，禁止输出任何代码。 以下是我们给 AI 的提示词（Prompt）示例，它包含了一套完整的结构化思维框架： 遵守胶水编程思维：优先使用成熟方案，避免凭空造逻辑。 第一个阶段：只做规划，禁止输出任何代码。 1. **确认技术栈** ： - 前端框架：React 19 (利用 Hooks 管理状态) - UI 方案：TailWind CSS (用于快速样式布局) - 状态管理：useState (当前场景足够，无需引入 Redux/Zustand) 2. **梳理功能边界 (核心：划定范围，防止膨胀)** ： - **包含功能** ：新增待办、删除待办、切换任务完成/未完成状态。 - **明确排除 (Scope Exclusion)** ：不做本地持久化 (localStorage)、不做筛选 (Filter)、不做拖拽排序 (Drag & Drop)。这一步至关重要，能防止 AI 为了“炫技”而擅自添加复杂功能，导致代码臃肿。 3. **拆分模块 (乐高组件思维)** ： - `InputArea` ：输入框组件，负责捕获用户输入并触发添加事件。 - `TodoItem` ：待办条目组件，负责展示单条任务的文本和状态，并处理删除和勾选交互。 - `TodoList` ：列表容器组件，负责渲染所有 `TodoItem` ，并管理列表的整体布局。 4. **定义数据流与数据结构 (从根源杜绝字段幻觉)** ： - 数据结构必须明确，不能由 AI 自行定义（AI 可能会用 `title` 、 `content` 、 `isDone` 等混乱的字段）。 - **统一数据结构** ： ```typescript interface Task { id: string; // 唯一标识，使用 Date.now() + Math.random() 或 uuid text: string; // 任务内容 completed: boolean; // 完成状态 } ``` - **数据流**：`useState<Task[]>` 存储数据数组。`InputArea` 通过 `onAdd` 回调向上传递数据；`TodoItem` 通过 `onDelete` 和 `onToggle` 回调影响父组件的状态。 5. **输出这份完整规划，等待我确认无误后，再分段实现代码。** 深度思考：规划背后的底层逻辑 划定边界 (Scope Definition) ：这是对抗 AI “过度设计”的防火墙。明确的“不做清单”比“要做清单”更重要，它直接扼杀了 AI 因上下文不明确而产生幻觉的土壤。",
+      "author": "dzhd",
       "metrics": {
+        "views": 221,
+        "likes": 9,
         "comments": 0
       },
-      "matchedQuery": "Gemini CLI 体验",
+      "matchedQuery": "AI 编程 幻觉 踩坑",
       "thin": false,
-      "preScore": 12,
+      "preScore": 15,
       "tools": [
-        "claude-code",
-        "copilot-cli",
+        "cursor",
         "copilot"
       ],
-      "topics": [],
-      "preReasons": [
-        "标题命中：claude-code/copilot-cli/copilot",
-        "泛 agent 词 2 个",
-        "正文经验词 2 个"
-      ]
-    },
-    {
-      "id": "9c225823da8b1d19",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1230678",
-      "titleOriginal": "你们都在用 AI，而我用古法编程做了一个剪映",
-      "publishedAt": "2026-07-29T04:33:25.000Z",
-      "excerpt": "# 你们都在用 AI ，而我用古法编程做了一个剪映 最近打开技术社区，满屏都是\"我用 AI 10 分钟做了一个 App\"、\"零代码 AI 开发全栈应用\"。Cursor 、Copilot 、各种 Agent 满天飞，仿佛不聊 AI 都不好意思说自己是程序员。 我偏不。 我用了**纯手工、无添加、古法酿造**的方式，一行一行敲出了一个开源的视频剪辑工具——**无界云剪（ unicut ）**。 ![unicut]( ) ## 为什么做这个？ 视频剪辑工具很多，但现状是： - 剪映功能强大，但闭源，你永远不知道代码里发生了什么 - 大部分在线剪辑工具功能简陋，只能做简单的拼接裁剪 - 没有一款 B/S 架构的剪辑工具能做到真正\"专业级\" 所以我想试试：到底能不能在浏览器里，纯手工打造一个功能对标剪映的开源剪辑工具？ ## 古法编程的成果 经过无数个手工 coding 的日夜，unicut 现在长这样： ### 支持的元素类型 视频、图片、花字、音频、特效、贴纸（ Lottie ）、滤镜、镜头、字幕、二维码、图表（开发中）……该有的都有，还支持插件扩展。 ### 动画系统，手写的 Lottie 动画、转场动画、关键帧动画、元素动画、逐字动画、遮罩动画——每一帧动画逻辑都是我亲手码出来的，没有任何 AI 代笔。 ### 视觉效果 LUT 滤镜、基础滤镜、绿幕抠图、WebGL 特效、叠加模式、缩放旋转位移透明度镜像翻转、视频变速、音频变速、文字效果——全部古法手写。 ### 抠图全家桶 钢笔工具抠图、魔棒抠图、AI 抠图、裁剪抠图。等等，你可能会问：\"不是说古法编程吗，怎么还有 AI 抠图？\" ——AI 功能是产品里的，但代码是我自己写的，这不冲突吧 😄 ### 模板与素材 视频模板、图片素材、花字素材、转场素材、音频素材、贴纸素材、滤镜素材、特效素材，素材库齐全。 ## 产品里确实集成了 AI 虽然代码是古法手写，但产品本身集成了不少 AI 能力： | 功能 | 费用 | | ----------- | -- | | AI 自动识别素材内容 | 免费 | | AI 自动剪辑 | 免费 | | AI 人像分离 | 免费 | | AI 图像变清晰 | 免费 | | AI 涂抹 | 免费 | | AI 抠图 | 免费 | | AI 视频轨迹追踪 | 免费 | | AI 生成字幕 | 收费 | | AI 文字转语音 | 收费 | | AI 自动生成图片 | 收费 | | AI 自动生成视频 | 收费 | 大部分 AI 功能免费开放，毕竟我写代码已经够累了，没必要再让大家为 AI 功能额外掏钱。 ## 时间轴，剪辑的灵魂 手写的时间轴编辑器支持：元素分割裁剪、批量操作、帧图预览 / 音波预览、多轨道编辑、隐藏 / 锁定 / 吸附、时间轴缩放、撤销 / 重做、定格元素、尺寸裁剪、时间裁剪。 说实话，时间轴这块是最难写的，也是最能体现\"古法编程\"含金量的部分。 ## 来体验 别光听我说，自己去试试： - 在线体验： - GitHub （求 Star ）： - Gitee： *** AI 时代，人人都在用 AI 写代码。我选择用最朴素的方式，写一个对得起自己的产品。如果你也喜欢这种\"古法\"精神，欢迎来试试、来 Star 、来提 PR 。",
-      "author": "h5ds",
-      "metrics": {
-        "comments": 1
-      },
-      "matchedQuery": "Zed 编辑器 AI",
-      "thin": false,
-      "preScore": 11,
-      "tools": [
-        "cursor"
+      "topics": [
+        "vibe-coding",
+        "hooks"
       ],
-      "topics": [],
       "preReasons": [
-        "正文命中：cursor",
-        "标题是「我+动作」句式",
-        "标题经验词「我用」",
-        "正文经验词 3 个"
-      ]
-    },
-    {
-      "id": "d9e1a8e3898a0467",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1227414",
-      "titleOriginal": "[分享开源项目] Glint：一个为 Claude Code / Codex 等 AI Agent 设计的 macOS 原生终端",
-      "publishedAt": "2026-07-15T03:50:54.000Z",
-      "excerpt": "现在相信大家肯定同时开着几个 AI Coding Agent ，普通终端当然也能跑，但 Agent 一多，最麻烦的事情逐渐变成了：**它现在在干什么、哪个窗口正在等我、刚才完成的是哪一个任务？** 给大家推荐 **Glint**，一个专门为 AI Agent 工作流设计的 macOS 原生终端，基于广受好评的 Ghostty 加强。 - GitHub：[https://github.com/chenbstack/glint]( https://github.com/chenbstack/glint) - 开源协议：MIT - 系统要求：macOS 14 及以上 - 终端内核基于 [Ghostty]( https://ghostty.org)，界面使用 SwiftUI + AppKit ![Glint 主界面]( ) ## 它和普通终端主要有什么不同？ ### 1. 能看懂每个 Agent 当前的状态 Glint 目前支持： - Claude Code - Codex - OpenCode - Devin CLI 安装对应的本地 Hook 后，Glint 可以按窗格显示 Agent 正在工作、等待权限、已完成或出错等状态，并显示本轮运行时间。 这些状态会汇总到左侧工作区列表。即使同时开了很多项目，也能一眼看到哪个 Agent 还在跑、哪个已经结束、哪个正在等你操作。 还可以按需开启： - Agent 需要权限、完成或出错时显示 Dock 徽标 - Glint 在后台时发送 macOS 原生通知 - 为权限请求、完成和错误分别设置提示音 - 刚完成或等待权限的工作区自动浮到侧边栏前面 - 按 `⌘⇧A` 直接跳到下一个需要你处理的窗格 ![工作区状态一览]( ) 状态上报通过本机 Hook 和本地 Socket 完成，Glint 不接管 Agent 的账号和登录。Claude / Codex 的额度显示也是可选功能，关闭时不会读取相关信息。 ### 2. 工作区、标签页和分屏是围绕 Agent 任务组织的 每个项目可以作为独立工作区存在，工作区里可以继续开多个标签页和分屏窗格。 - `⌘1` 到 `⌘9` 快速切换工作区 - `⌘T` 新建标签页 - `⌘D` / `⌘⇧D` 向右或向下分屏 - 工作区和标签页支持拖动排序、重命名与归档 - 重启后恢复工作区、标签、分屏布局和各窗格目录 - 可选恢复带颜色的终端历史 - 可选按窗格恢复上次的 Agent 会话，不会把多个窗格都错误地接到同一个最近会话 文件夹可以通过 Finder 「打开方式」、拖到 Dock / 侧边栏，或者下面的命令直接变成一个 Glint 工作区： ```bash open -a Glint /path/to/project ``` 同一路径已经打开时会直接切回已有工作区，不会重复创建；如果它已经被归档，也会自动恢复。 ### 3. 内置面向 Git / Worktree 的轻量工作流 Glint 内置了一套比较轻量的 Git Worktree 工作流： - 从现有仓库创建 Worktree 工作区 - 在侧边栏直接看到仓库、分支和工作区状态 - 在 Finder 中定位 Worktree - 完成后通过带确认的操作关闭并移除 Worktree ### 4. 不离开终端就能 Review Agent 的改动 按 `⌘⇧R` 可以打开当前仓库的只读 Review 窗口，目前包括： - Unified / Split 两种 Diff 视图 - 只看改动或查看完整文件 - 忽略空白差异 - 调整上下文行数 - 在改动块之间快速跳转 - Swift 、TypeScript / JavaScript 、Python 、Go 、Rust 、JSON 、YAML 等语法高亮 - 按文件名筛选、隐藏新增文件、按修改时间排序 - 文件右键复制路径、在 Finder 中显示或直接打开 - 在仓库根目录和当前子目录范围之间切换 如果当前窗格连接的是 SSH ，Glint 还能跟随远端 Shell 的当前目录，直接查看远端仓库的改动，操作方式和本地 Review 基本一致。 这个 Review 目前刻意保持只读：适合快速确认 Agent 改了什么，但不会替代 IDE 、完整 Git 客户端或正式 Code Review 平台。 ### 5. 它首先还是一个正常、好用的终端 AI 功能之外，Glint 的终端渲染基于 Ghostty ，也保留了很多日常使用的小功能： - zsh 历史命令行内提示，按 `→` 或 `End` 接受 - 从 Finder 粘贴文件时自动转成完整路径 - `⌘` 点击终端里的文件路径直接打开 - `⌘⇧C` 复制当前目录，`⌘⇧F` 在 Finder 中显示",
-      "author": "defia",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "OpenCode 体验",
-      "thin": false,
-      "preScore": 10,
-      "tools": [
-        "claude-code",
-        "opencode",
-        "devin"
-      ],
-      "topics": [],
-      "preReasons": [
-        "标题命中：claude-code",
+        "标题命中：vibe-coding",
         "泛 agent 词 2 个",
-        "正文经验词 1 个",
+        "标题经验词「实践」",
+        "正文经验词 3 个",
         "论坛长帖"
       ]
     },
     {
-      "id": "c8810b3beea9e5e8",
-      "source": "V2EX 搜索",
+      "id": "6107badfb3e67862",
+      "source": "掘金搜索",
       "kind": "search",
-      "url": "https://www.v2ex.com/t/1229762",
-      "titleOriginal": "Fork Zed editor，做了个自用的笔记软件",
-      "publishedAt": "2026-07-25T10:11:13.000Z",
-      "excerpt": "其实很早之前就有个想法 /t/1083325#reply1 （唯一回复的大哥真的敏锐，WYSIWYG 确实是现在最难搞定的点） 时隔两年，我用了 2 * codex plus 周用量 和 10% cursor pro 月用量给他干出来了一个雏形。 契机是前几天看到 https://github.com/tianma-if/edgeever ，他挺好的，我为啥又要自己 vibe 一个新的呢？ 一、我虽然也做了很多 election/tauri 的工具，但自己真的不喜欢 webview ，因此自己的第一想法是复用用他的 api ，用 zed 的 gpui 做一个客户端，做着做着和上游就有分歧了，于是喜闻乐见的 vibe 时代的一言不合就分叉，重做了一个 server 出来。做的过程中，也想过生态问题，想强兼一下 Joplin ，跟我的赛博工程师聊了几轮发现工作量有点大，就先放在 roadmap 里面吧:)。客观的说 obsidian 的 vim 模式和 zed 的 vim 模式功能都挺强大的，但之所以用 zed 重做只能用偏好和执念来解释吧。 二、说句招笑的之前一直只能接受 markdown file based 的数据管理模式，之前的主力笔记是 Obsidian ，但是说句实在的，不想给官方 sync 付费的情况下，同步的体验还是挺差的，于是想要 cloud 优先的存储，另一方面服务器上有 hermes ，多个服务完全没有运维的压力，这也是一方面考虑吧。 三、也是之前的想法，/t/1199451#reply5 ，第三方服务的 mcp 即使开放也像是在带着镣铐跳舞，而 notes/todos 本身没太多复杂度，自己维护时间/token 成本完全顶的住，并且我认为未来 todos 完成，笔记整理等等完全可以交给 agent 来做，agent 优先的设计也是很有吸引力的。 综上，有了这么个东西，我用着很顺手但实话实说有点个人向，功能也有点畸形 1 、没有 WYSIWYG ，很难想象 2026 年还有这么简陋的笔记，不仅是高亮，多媒体在 editor 目前也没办法处理 2 、desktop 是 zed 的 dirty fork ，因为 zed 现有的插件体系 hook 不到编辑器层，所以所有的定制化编辑器的部分都是直接修改的 zed 源代码，后续同步上游是个大问题 本来就抱着自己用为目标做的，但发现有些问题自己+AI 也解决不了，试探试探有没大佬能帮贡献下（ token ）:P 小字：目前还很粗糙，不建议大家尝试 https://github.com/panda-note/panda-desktop",
-      "author": "yuhangch",
+      "url": "https://juejin.cn/post/7665616004353114163",
+      "titleOriginal": "用胶水编程原则轻松上手 Vibe Coding：告别幻觉与屎山，和 AI 协作写出靠谱代码",
+      "publishedAt": "2026-07-23T16:39:34.000Z",
+      "excerpt": "用胶水编程原则轻松上手 Vibe Coding：告别幻觉与屎山，和 AI 协作写出靠谱代码 mONESY 2026-07-23 22 阅读7分钟 不知道你有没有过这种体验：想用 AI 提效写代码，结果要么生成一堆看起来像模像样的「幻觉代码」，复制粘贴一跑全是报错；要么输出一坨能跑但没法改的「屎山代码」，想加个功能都无从下手。 这篇文章就分享一套可落地的 AI 协作编程方法论，从规划到编码再到迭代，手把手教你避开幻觉和屎山，稳定产出高质量代码。 第一步：规划就是一切，先定规则再动手 很多人用 AI 写代码的第一个坏习惯，就是上来就甩一句「帮我写个 XX 功能」。就像你不会让刚入职的新员工啥都不了解就直接写核心业务代码一样，AI 也需要先熟悉你的技术栈、项目边界和设计规则，否则它只能自由发挥，最后产出自然不可控。 正确的做法是： 第一阶段只做规划，严禁输出任何代码 。你要先强制 AI 和你对齐所有前提，把模糊的需求拆成明确的约束。这份规划会贯穿项目完整周期，成为每一次编码的统一基准。 我们用「React + TailWind 实现任务清单页面」这个最常见的场景举例。 ❌ 新手常见指令（高幻觉风险） 帮我写一个 React 待办清单页面，支持新增、删除任务。 这种指令没有任何边界，AI 可能擅自加上本地存储、拖拽排序、优先级筛选，最后给你一坨远超需求的复杂代码；字段名、组件拆分也全凭 AI 心情，后续你想扩展都费劲。 ✅ 正确的规划指令 plaintext 遵守胶水编程思维：优先使用成熟方案，避免凭空造逻辑。 第一个阶段：只做规划，禁止输出任何代码。 1. 确认技术栈： React 19 + TailWindcss + useState 2. 梳理功能边界 - 支持能力：新增待办、删除待办、切换完成状态 - 明确不做：本地持久化、状态筛选、拖拽排序 3. 拆分模块（乐高组件） 输入框组件、待办条目组件、列表容器组件 4. 定义数据流 useState 存储task数组，数据结构统一为： {id: string, text: string, completed: boolean} 5. 输出这份完整规划，等待我确认无误后，再分段实现代码 规划背后的核心价值 很多人觉得规划是浪费时间，但恰恰是这一步从根源上解决了 AI 编程的绝大多数问题： 划定功能边界 ：防止 AI 擅自加戏，避免需求无限膨胀成屎山 强制模块拆分 ：把大功能拆成独立小组件，代码可读性高，后续审核和修改都有明确抓手 预定义数据结构 ：从根源杜绝字段幻觉 —— 你规定好了字段叫 text，AI 就不会乱生成 title、content 之类的不一致字段 全程可复用 ：每一次后续的 prompt 都可以带上这份规划，保证 AI 输出的一致性 永远记住：规划越清晰，AI 出错的概率就越低。你花 5 分钟写规划，能省下半小时改 bug 的时间。 第二步：胶水编程思维 —— 能拼不造，能抄不写 规划做好之后，就进入编码阶段。这里要引入 Vibe Coding 的核心理念： 胶水编程 。 什么是胶水编程？简单说就是：轮子别人造好，你只做胶水；胶水不生产零件，只联通零件。 AI 最容易出幻觉的地方，就是让它从零实现底层逻辑。比如手写拖拽、手写表单校验、手写复杂动画，这些场景边界 case 极多，AI 很容易写出看起来对、但实际藏着无数 bug 的代码。 而胶水编程的原则就是： 绝不从零自研底层逻辑，优先选择社区长期验证的成熟开源组件，你只需要写模块之间衔接、数据流转的粘合代码 。把 AI 的能力圈限定在「组合与衔接」上，出错的概率会大大降低。 我们还是用待办清单的场景举例，现在要给列表增加拖拽排序功能。 ❌ 错误示范（从零造零件） 帮我写 React 待办清单的拖拽排序功能 这种指令下，AI 大概率会凭空手写一套拖拽逻辑，自己监听鼠标坐标、写排序算法。最后的结果就是代码量巨大，边界情况考虑不全，后续维护极其困难，典型的「看起来很厉害，实则全是坑」。 ✅ 胶水编程正确做法 plaintext 当前需求：给待办列表增加拖拽排序功能。 遵守胶水编程原则：绝不从零自研底层逻辑，优先选择社区长期验证的成熟开源组件。 1. 先选型：React生态成熟的拖拽库，优先选用react-beautiful-dnd 2. 只做粘合工作：不要手写拖拽底层实现，只写现有TodoList组件和拖拽库的衔接代码 3. 输出顺序：先给出安装依赖命令，再输出模块适配、数据流转的粘合代码 两种方式的差距一目了然：前者让 AI 造轮子，幻觉和 bug 不可控；后者让 AI 用现成的成熟轮子，只写少量的衔接逻辑，代码量少、稳定性高，出了问题也很好排查。 胶水编程的本质，是把 AI 从「发明者」变成「组装者」。经过千万人验证的开源库，可靠性远高于 AI 临时生成的手写逻辑，而你要做的，就是指挥 AI 去找到正确的零件，再把它们粘在一起。 第三步：用元方法论让 AI 持续进化 掌握了规划和胶水编程，你已经能稳定产出靠谱的代码了。但想要更进一步，就要建立提示词的迭代闭环，让 AI 的协作能力持续进化。 这个闭环的逻辑很简单： 你给出「阿尔法提示词」：定义工作规范、编码原则、输出格式 AI 按照规范生成结果 你（或 AI 自身）对结果进行打分、判断问题，反向优化提示词规范，生成「欧米茄提示词」 不断循环，让你的 AI 协作规范越来越完善 现在很多 AI 编码工具的记忆模块、项目级上下文、自定义指令架构，本质都是在做这件事：把你每次的修正、偏好沉淀成固定的规则，下次 AI 自动遵循，不用你每次重复强调。 比如你这次发现 AI 总喜欢擅自加功能，就把「严格遵守功能边界，禁止自行新增未规划的能力」加到你的基础规范里；下次发现 AI 总喜欢手写底层逻辑，就把「优先使用成熟开源库，禁止从零实现复杂底层能力」沉淀成规则。 久而久之，你就拥有了一套完全适配你自己开发习惯的 AI 协作规范，每一次写代码都是在给你的「AI 开发",
+      "author": "mONESY",
       "metrics": {
+        "views": 27,
+        "likes": 9,
         "comments": 0
       },
-      "matchedQuery": "Zed 编辑器 AI",
+      "matchedQuery": "AI 编程 幻觉 踩坑",
       "thin": false,
-      "preScore": 9,
-      "tools": [
-        "cursor",
-        "zed",
-        "hermes"
-      ],
+      "preScore": 14,
+      "tools": [],
       "topics": [
-        "mcp"
+        "vibe-coding"
       ],
       "preReasons": [
-        "标题命中：zed",
-        "正文经验词 6 个"
+        "标题命中：vibe-coding",
+        "泛 agent 词 1 个",
+        "标题经验词「上手」",
+        "正文经验词 6 个",
+        "论坛长帖"
       ]
     },
     {
-      "id": "651dcdeb47ef15f6",
-      "source": "博客园首页",
-      "kind": "aggregator",
-      "url": "https://www.cnblogs.com/ai-go-hub/p/22111062",
-      "titleOriginal": "从 PHP 到 AI + Golang，程序员自救转型手记（四十四）：管理员账号管理 - 妙码生花",
-      "publishedAt": "2026-07-31T09:08:00.000Z",
-      "excerpt": "妙码生花 博客园 首页 新随笔 联系 订阅 管理 从 PHP 到 AI + Golang，程序员自救转型手记（四十四）：管理员账号管理 这是一个系列 Blog，作者将以一个 PHP 全栈工程师的身份，利用 AI 工具（claude code、codex、deepseek、豆包等）：从零开始学习 golang 语言，并最终完成 ai-go-admin（ github | gitee ）开源项目的制作，全程记录分享。 在上一期，我们进行了 “前后端数据验证”，本期将完成：管理员账号管理 管理员账号管理 管理员账号管理接口之前已经创建好了，同时受益于基类的极大通用性，准备好的现成的接口有： /admin/auth/admin/list /admin/auth/admin/create /admin/auth/admin/delete /admin/auth/admin/get/pk /admin/auth/admin/update/pk 回到前端，我们可以利用 src\\api\\table.ts 中的 TableManagerAPI 表格API请求函数生成类，一次性生成好请求以上接口的 请求函数 ，如下： const api = new TableManagerAPI('/admin/auth/admin/') ，对应： api.get(pk) api.list(filter) // ...... 但是生成好的 api 实例，不是我们自己使用的，而是直接传递给 表格管家 即可，而初始化表格管家时，最核心的是写好 table.column （列定义数据），代码如下： import PopupForm from './popupForm.vue' import { TableManagerAPI } from '/@/api/table' import { useTableManager } from '/@/hooks/useTableManager' const api = new TableManagerAPI('/admin/auth/admin/') const tableManager = useTableManager({ api, table: { column: [ { type: 'selection', align: 'center', operator: false }, { label: 'ID', prop: 'id', align: 'center', operator: 'eq', width: 70 }, { label: t('auth.admin.username'), prop: 'username', align: 'center', operator: 'eq', quickSearch: true }, { label: t('auth.admin.nickname'), prop: 'nickname', align: 'center', operator: 'LIKE', quickSearch: true }, { label: t('auth.admin.avatar'), prop: 'avatar', align: 'center', render: 'image', operator: false }, { label: t('common.email'), prop: 'email', width: 180, align: 'center', operator: 'LIKE' }, { label: t('common.mobile'), prop: 'mobile', align: 'center', operator: 'LIKE' }, { label: t('common.operate'), align: 'center', width: '100', render: 'buttons', buttons: optButtons, operator: false, }, ], filter: { sort: 'created_at', order: 'desc', }, dblClickNotEditColumn: ['status'], } }) tableManager.getData() 为保证可阅读性，以上代码略有简化，接下来，将 表格管家 实例，传递给 table 组件即可，如下： <template> <div> <TableHeader :manager=\"tableManager\" v-model:com-search=\"tableManager.comSearch\" :buttons=\"['refresh', 'add', 'edit', 'delete', 'comSearch', 'quickSearch', 'columnDisplay']\" /> <Table :manager=\"tableManager\" /> <PopupForm :manager=\"tableManager\" v-model:form-items=\"tableManager.form.items!\" /> </div> </template> 这三个组件所需要的 props ，基本都可以通过 表格管家 实例取得。 此时，如果忽略掉 ./popupForm.vue 的代码，管理员账号管理的功能，最起码是基础的 CRUD 的功能，已经完成了，样子大概是这样的： 是的，增删改查齐备，之所以这么简单，全部是受益前几章的铺垫；接下来就是表格的 新增 / 编辑 表单了，但这更加简单，你基本上可以理解为，使用 el-form + el-form-item 写一个普普通通的表单就行了，绑定值与提交方法等，全部都提前准备好了，且如果需要表单验证，也可以使用 buildValidatorRule 快速生成，示例如下： <template> <!-- 对话框表单 --> ",
-      "thin": false,
-      "preScore": 8,
-      "tools": [
-        "claude-code",
-        "chatgpt-desktop"
-      ],
-      "topics": [
-        "hooks"
-      ],
-      "preReasons": [
-        "正文命中：claude-code/chatgpt-desktop/hooks",
-        "标题经验词「手记」",
-        "正文经验词 4 个"
-      ]
-    },
-    {
-      "id": "041ed0b89e5a2acc",
-      "source": "iT 邦幫忙",
-      "kind": "aggregator",
-      "url": "https://ithelp.ithome.com.tw/articles/10400968?sc=rss.qu",
-      "titleOriginal": "搞懂 Kubernetes Controller, Operator Pattern 和 client-go 的內部機制",
-      "publishedAt": "2026-08-02T00:17:38.000Z",
-      "excerpt": "最近在讀 Kubernetes controller，以下是我的摘要筆記： Operator Pattern 是什麼 Operator Pattern 的核心只有一句話： 持續觀察某個資源的期望狀態（desired state）與實際狀態（actual state），並不斷讓實際狀態趨近期望狀態 這個持續比對修正的迴圈，叫做 reconcile loop 要實作這件事，通常需要兩塊拼圖： CRD（Custom Resource Definition） ：定義一種新的資源類型，讓使用者可以用 kubectl apply 描述我想要什麼 Controller ：一段持續跑在背景的程式，負責監聽這種資源的變化，並執行對應的動作 Operator = Controller + CRD KubeRay 就是最典型的例子：它定義了 RayCluster RayJob RayService 這些 CRD，controller 則負責根據 CR 的 spec 去建立/管理對應的 Pod Argo CD 也是同樣的模式 ，只是它的期望狀態不是寫在 CR 的欄位裡，而是存在 Git repo 的 manifests 中，這就是 GitOps 的核心：把 Git 當作唯一真相來源（single source of truth），而 Argo CD 的 controller 持續比對 Git 內容跟 cluster 實際狀態，發現不一致就同步可以說 GitOps = Operator Pattern + Git 作為期望狀態的來源 要實作一個 Go 語言的 controller，幾乎都會用到官方的 client-go library，它封裝了怎麼跟 kube-apiserver 溝通這件事值得注意的是，client-go 本身 不是 cluster 內建的東西 ，而是你程式裡引用的一個 library；apiserver 對外暴露的其實是標準 REST API，任何語言只要能發對應格式的 HTTP request 都能操作 K8s 資源（Python 有 kubernetes clientJava 有對應 SDK），client-go 只是 Go 語言的官方實作 client-go 的核心架構 下圖是理解 client-go controller 機制最經典的一張圖，整體可以分成上下兩個區塊： (Source: Writing Kubernetes Custom Controllers ) 上半部（client-go 內部） ：Reflector Delta FIFO Informer Indexer，這一整套是 自動化機制 ，你幾乎不用自己動手寫 下半部（Custom Controller） ：Resource Event Handlers Workqueue Process Item Handle Object，這是 你需要實作業務邏輯 的地方 1. Reflector：List & Watch Reflector 是整條流程的起點，負責跟 Kubernetes API Server 要資料它做兩件事： List ：先拿一次全部現有的物件（建立初始狀態） Watch ：之後持續監聽變化（新增/修改/刪除），而不是不斷輪詢（polling） 這個機制讓 controller 能即時得知資源變化，同時不會對 apiserver 造成過大壓力 2. Delta FIFO Queue：不只是緩衝 Reflector 收到的每個變化會被包裝成一個 Delta，放進 Delta FIFO QueueDelta FIFO 做的事情包含： 解耦 (decouple) 生產者與消費者 ：讓 Reflector（收資料）跟 Informer（處理資料）可以用各自的節奏運作,不互相卡住 保證處理順序 (Ordering guarantee) ：FIFO 確保事件按照發生順序被消費，避免先處理了 Delete後處理了 Update這種邏輯錯亂 Deduplication ：如果同一個物件在短時間內連續變化多次，Delta FIFO 會把同一個 key 的多筆 delta 合併，避免 queue 無限膨脹，也避免 controller 處理一堆過時沒意義的中間狀態 支援 resync/re-list ：定期重新同步，確保即使 watch 連線斷過，本地狀態最終還是能跟 apiserver 對齊 3. Informer 與 Indexer：職責分離 Informer 從 Delta FIFO 把物件取出來後，會交給 Indexer 處理，同時把事件分派給 Resource Event Handlers 為什麼 Informer 跟 Indexer 要拆成兩個獨立的元件？ 因為兩者處理的是完全不同性質的問題： Informer Indexer 職責 事件分派(Event Distribution) 儲存與索引(Storage & Indexing) 關心的問題 發生了什麼事要通知誰 資料現在長怎樣怎麼快速查到 存取模式 依序處理事件流(write path) 隨機查詢(read path) 把兩者拆開的好處： Indexer 維護的 thread-safe store 不只服務 Informer，Controller 在後面的 Process Item 階段,可以 直接透過 Indexer reference 查資料 ，完全不需要透過 Informer,彈性更高 兩者可以獨立測試獨立演化，互不干擾 概念上更清楚：Informer 是觀察者模式，Indexer 是快取層 Indexer 把物件存進一個 thread-safe 的本地快取（in-memory cache） ，並建立索引這一步是整個機制最省資源的關鍵： 之後 Controller 查資料是查這份本地快取,不需要每次都打 API Server 4. Resource Event Handlers ",
-      "thin": false,
-      "preScore": 8,
-      "tools": [
-        "chatgpt-desktop"
-      ],
-      "topics": [],
-      "preReasons": [
-        "标题命中：chatgpt-desktop",
-        "正文经验词 2 个"
-      ]
-    },
-    {
-      "id": "d067ce925a9c9757",
-      "source": "枫言枫语",
-      "kind": "blog",
-      "url": "https://justinyan.me/post/6679",
-      "titleOriginal": "主观体感对比 Fable 5 vs Opus 5 vs Codex 5.6 Sol vs Kimi K3",
-      "publishedAt": "2026-07-26T04:18:07.000Z",
-      "excerpt": "近期几个Frontier Models都很给力，实测下来几个Models都能承担日常任务。我目前持有的Subscription plans如下: Claude Codex Max (20x) ChatGPT Pro 20x Kimi Allegretto 实际常用的Models及effort为: Fable 5 xHigh Opus 5 xHigh (or as subagent decide by Fable 5) Codex 5.6 Sol Max Kimi K3 Max 基于上述额度，我的主观体感如下: Fable 5 xHigh: 依然最强（即使它已经被削弱了），无论是讨论需求还是实际执行，它在xHigh的effort下既能oneshot出可用的产出，也能指导更次一级的subagent做出不错的结果。 Opus 5 xHigh: 比Opus 4.8 xHigh要好，可以用来作为Fable的subagent做出不错的执行。但是它用来讨论需求和单独实现不太靠谱，仍然需要多次back and forth才能输出我要的结果，而Fable 5往往一次就能解决问题。所以目前我把它作为Fable 5的小弟来用，可以参考 这里 的做法。 Codex 5.6 Sol Max: 比Opus 5 xHigh要好，但没有Fable 5 xHigh那么强，它介于中间。但是它好处是非常经用。尤其是最近Codex不断reset，根本用不完。我这个月已经把coding plan cost (按API单价换算)冲上$14k了，而它还在reset，完全冲不完。所以当Fable 5被我用完了之后我基本上就用Codex 5.6顶上就足够了。 Kimi K3 Max: 这个model是有点意外的，它的智商不错，虽然没有Fable 5那么聪明，但是可以跟Codex 5.6 Sol Max一比。所以在Claude与Codex都触发limit之后我会用K3来顶上。另外它还有个好处是它少了很多莫名其妙的限制（dddd）。但是，它的Kimi Code不如前两家好用，并且最致命的是它算力不够，5hr limit很快就触发，长任务没跑多久就无了。（当然我用的不是最高档订阅，但群友用了，也表示很快就用完了）所以K3不能作为日常长任务使用。用来做一些短任务还是很不错的。 综上所述，基于我持有的Plans的来说，我目前的主观优先级是: Fable 5 xHigh + Opus 5 subagent Codex 5.6 Sol Max Kimi K3 这三个都不错，我一般会三个同时跑不同的项目。Fable最好用于All in最重要的项目，因为单项目的卡点其实在人，所以消耗不会特别快，目前20x的weekly limit 50%足够。Codex 5.6 Sol Max基本万能而且很耐用，基本啥都能干，虽然不如5.5耐用但也比剩下两家好多了。Kimi K3智商不错但算力不行，要等官方未来升级。 如果说Codex 5.6的追及还在预期之中，那么Kimi K3的出现确实令人意外。这样看来，在Coding领域Anthropic一家独领风骚的时代就快过去了，希望早日看到百家争鸣的时代出现。",
-      "thin": false,
-      "preScore": 8,
-      "tools": [
-        "kimi-code"
-      ],
-      "topics": [
-        "subagent"
-      ],
-      "preReasons": [
-        "正文命中：kimi-code/subagent",
-        "标题经验词「对比」",
-        "正文经验词 4 个"
-      ]
-    },
-    {
-      "id": "c5cbd14fc3e5a7f8",
-      "source": "V2EX 搜索",
+      "id": "3727cee7aee574c5",
+      "source": "掘金搜索",
       "kind": "search",
-      "url": "https://www.v2ex.com/t/1228898",
-      "titleOriginal": "招全栈 / AI Native Developer / Go 后端方向",
-      "publishedAt": "2026-07-21T11:13:53.000Z",
-      "excerpt": "任职要求 熟练掌握 Rust / Go / Python / Next.js 等相关技术栈，具备独立负责模块设计、开发、调试和交付的能力。 欢迎熟练掌握 Java 等主流后端语言、并愿意转向 Go 语言技术栈的优秀工程师。 具备良好的后端工程能力，理解接口设计、服务拆分、并发处理、异常处理、日志追踪、性能优化等常见工程实践。 数据库与中间件 精通 PostgreSQL 或其他主流关系型数据库，具备较强的数据建模、SQL 优化和问题排查能力。 对高并发场景下的 事务隔离级别、锁机制、并发控制、数据一致性 有实战经验。 熟练使用 Redis ，理解缓存、分布式锁、队列、限流等常见使用场景及风险边界。 AI 工程化能力 熟练使用 Claude Code 、Codex 、Cursor 、GitHub Copilot 等 AI 编程工具，能够将 AI 深度融入日常研发流程。 理解 AI 辅助开发的正确使用方式，能够通过清晰的需求拆解、上下文整理、提示词设计和代码审查，提高研发效率与交付质量。 具备 All in AI 的工作理念，愿意主动探索 AI 在需求分析、架构设计、代码生成、重构、测试、文档编写、Code Review 等环节中的应用。 能够判断 AI 生成代码的质量与风险，不盲目信任生成结果，具备必要的人工审查、调试和工程落地能力。 有使用 AI 工具完成真实项目开发、重构、自动化测试、文档生成或工程提效经验者优先。 代码质量 开发态度严谨认真，对代码质量、代码结构、命名规范和排版风格有较高要求。 注重代码可读性、可维护性和可测试性，能够主动进行自测、边界条件验证和问题复盘。 不接受“能跑就行”的开发方式，要求具备工程化思维和长期维护意识。 综合素质 具备良好的网络安全意识，理解常见的防刷、防注入、防篡改、权限控制、接口鉴权等安全实践。 具备良好的文档编写习惯，能够清晰输出技术方案、接口说明、部署说明和问题记录。 具备较强的自驱力和责任心，适合远程协作，能够对结果负责。 薪资待遇与工作模式 薪资：15K-20K RMB / 月 （双休，国家法定均休，13 薪） 工作模式：广州坐班 或 全远程办公 弹性工作制，不以打卡为核心考核标准，更关注实际产出、代码质量和交付结果。 如您对本职位感兴趣，请携带简历投递邮件 请在投递时一并提供以下信息： 1 ，您从哪里了解到我们 2 ，简要的自我介绍（包括相关经验、技术栈和参与过的项目） 3 ，个人最新简历（建议 PDF 格式） Email： Globalhub168@gmail.com",
-      "author": "sunkepie",
+      "url": "https://juejin.cn/post/7665616004353097779",
+      "titleOriginal": "轻松上手 Vibe Coding：别让 AI 写屎山代码，先学会怎么指挥它",
+      "publishedAt": "2026-07-23T16:18:56.000Z",
+      "excerpt": "轻松上手 Vibe Coding：别让 AI 写屎山代码，先学会怎么指挥它 爱吃混沌 2026-07-23 98 阅读11分钟 很多人第一次用 AI 写代码，体验会很割裂。 一开始很爽： 帮我写一个 React 待办清单页面。 AI 很快就吐出一大段代码，看起来组件也有了，按钮也有了，样式也有了。 但一跑，问题来了： 有些代码像真的，但根本跑不起来 有些功能能跑，但逻辑乱成一团 想改一个字段，发现全项目到处都叫不一样 想加一个小功能，结果 AI 又凭空造了一套复杂实现 这时候你会感觉：AI 不是帮你提效，而是在帮你制造新的屎山。 问题不一定是 AI 不行，而是你把它用错了。 Vibe Coding 不是“把需求丢给 AI，然后等它变魔法”。真正靠谱的方式是： 把 AI 当成一个新同事，而不是许愿池。 新同事刚入职，你不会让他第一天就直接改核心业务代码。你会先给他项目背景、技术栈、代码规范、业务边界、模块拆分、数据结构。 AI 也一样。 这篇文章讲的不是“怎么写代码”，而是： 怎么和 AI 协作，写出更靠谱、更可维护的代码。 一、先别急着写代码 新手用 AI 写代码，最容易犯的错误是： 一上来就让 AI 直接实现功能。 比如： 帮我写一个 React 待办清单页面，支持新增、删除任务。 这个 prompt 看起来没问题，但它其实给 AI 留了太多自由发挥空间。 AI 会开始猜： 要不要本地存储？ 要不要接 API？ 要不要筛选任务？ 要不要拖拽排序？ 要不要优先级？ 要不要编辑任务？ 用什么数据结构？ 组件拆成几个？ 你没说清楚的地方，AI 就会自己补。 补得好，是惊喜。 补得不好，就是幻觉代码和屎山代码。 所以 Vibe Coding 的第一条原则是： 不要先写代码，先写规划。 二、规划就是一切 写代码之前，先让 AI 读懂项目。 这一步很像公司新人入职。 你不会让一个刚入职的同事直接上生产环境改代码。你会先告诉他： 我们用什么技术栈 项目目录怎么组织 哪些功能要做 哪些功能不要做 数据结构是什么 组件怎么拆 代码风格是什么 AI 也是一样。 如果你用的是 Codex、Claude Code 这类工具，可以先让它生成或阅读项目规划文件，比如： /init 或者手动让它创建一个 PLAN.md 、 CLOUDE.md 、 TASKS.md 。 这些规划文件的作用是： 给每一次后续 prompt 自动提供上下文和约束。 它不是摆设。 它会让 AI 每次动手之前都知道：这个项目的边界在哪里，哪些事情不能擅自扩展。 三、正确示范：先规划，再编码 假设我们要做一个任务清单页面： 用 React + Tailwind CSS 实现一个待办清单页面。 新手可能会直接说： 帮我写一个 React 待办清单页面，支持新增、删除任务。 更稳的写法应该是： 遵守胶水编程思维：优先使用成熟方案，避免凭空造逻辑。 第一个阶段：只做规划，禁止输出任何代码。 1. 确认技术栈： React 19 + Tailwind CSS + useState 2. 梳理功能边界： - 支持新增待办 - 支持删除待办 - 支持切换完成状态 - 不做本地持久化 - 不做远程 API - 不做筛选 - 不做拖拽排序 3. 拆分模块： - TodoInput：输入框组件 - TodoItem：待办条目组件 - TodoList：列表容器组件 - App：状态管理和整体组装 4. 定义数据流： 使用 useState 存储 tasks 数组。 数据结构固定为： { id, text, completed } 5. 输出完整规划，等待我确认无误后，再分段实现代码。 注意这段 prompt 的关键点： 第一阶段只做规划，禁止输出代码。 这句话很重要。 因为你要先审核 AI 的理解，而不是等它写完 500 行代码再去救火。 四、为什么规划能减少幻觉？ AI 生成烂代码，很多时候不是因为它不会写，而是因为它不知道边界。 比如待办任务的数据结构，如果你不提前规定，AI 可能一会儿写： { id, title, done } 一会儿又写： { id, text, completed } 再过一会儿又变成： { taskId, content, isFinished } 字段一乱，组件之间就开始互相对不上。 所以你要提前规定： { id, text, completed } 这不是细节。 这是项目的“接口契约”。 规划的价值就在这里： 先划定边界，防止 AI 擅自加功能 先拆分模块，防止一坨代码塞进一个文件 先定义数据结构，减少字段幻觉 先审核方案，避免错误方向越写越远 让规划文件贯穿整个开发周期 一句话： 规划不是浪费时间，规划是在给 AI 装护栏。 五、第二步：胶水编程思维 规划解决的是“别乱写”。 胶水编程解决的是“别乱造”。 所谓胶水编程，就是： 能用成熟方案，就不要从零自研底层逻辑；能组装，就不要硬造轮子。 胶水不生产零件。 胶水只负责把零件粘起来。 在 AI 编程里，这个思想非常重要。 因为 AI 最危险的地方之一，就是它很擅长“看起来会写”。 比如你让它写拖拽排序。 它可能真的手写一套： 鼠标监听 坐标计算 元素碰撞 排序算法 拖拽过程样式 边界处理 看起来很厉害。 但拖拽这种东西，边界 case 特别多： 鼠标拖动 触摸屏拖动 键盘可访问性 滚动容器 拖拽过程中列表变化 移动端兼容 动画和焦点管理 如果让 AI 从零手写底层逻辑，很容易出现幻觉 bug。 更稳的方式是： 让 AI 调研成熟库，然后只写粘合代码。 六、错误示范：让 AI 从零造拖拽 比如你这样说： 帮我给 React 待办清单写一个拖拽排序功能。 这个指令太开放了。 AI 可能会自己实现一整套拖拽系统。 问题是： 底层逻辑复杂 边界情况多 代码量膨胀 后续维护困难 出 bug 你很难判断哪里错了 这就是“从零造零件”的风险。 你不是在用 AI 提效，你是在让 AI 替你挖坑。 七、正确示范：",
+      "author": "爱吃混沌",
       "metrics": {
+        "views": 107,
+        "likes": 19,
         "comments": 0
       },
-      "matchedQuery": "Cursor 实践",
+      "matchedQuery": "AI 编程 幻觉 踩坑",
       "thin": false,
-      "preScore": 6,
+      "preScore": 14,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "vibe-coding"
+      ],
+      "preReasons": [
+        "标题命中：vibe-coding",
+        "泛 agent 词 1 个",
+        "标题经验词「上手」",
+        "正文经验词 5 个",
+        "论坛长帖"
+      ]
+    },
+    {
+      "id": "d9662f22aa486401",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7665673175854448682",
+      "titleOriginal": "别让 AI 写屎山代码！Vibe Coding 三步法：规划先行 + 胶水编程 + 自我进化",
+      "publishedAt": "2026-07-23T13:54:33.000Z",
+      "excerpt": "别让 AI 写屎山代码！Vibe Coding 三步法：规划先行 + 胶水编程 + 自我进化 Darling噜啦啦 2026-07-23 10 阅读12分钟 别让 AI 写屎山代码！Vibe Coding 三步法：规划先行 + 胶水编程 + 自我进化 你用 AI 写过代码吗？大概率经历过这两种绝望：要么 AI 生成\"幻觉代码\"——看起来像那么回事，一跑就报错；要么是\"屎山代码\"——能跑，但乱得想改都不知道从哪下手。问题不在 AI，而在你 怎么用它 。本文将介绍一套经过验证的 Vibe Coding 方法论： 规划先行 → 胶水编程 → 自我进化 ，让你从\"AI 代码受害者\"变成\"AI 协作高手\"。 前置知识 有基本的编程经验（任何语言即可） 使用过 AI 编程工具（Cursor / Claude Code / GitHub Copilot 等） 了解前端基础概念（组件、状态管理） 一、AI 写代码的两个极端问题 1.1 幻觉代码 vs 屎山代码 ┌──────────────────────────────────────────────────────────────────┐ │ AI 写代码的两个极端问题 │ │ │ │ 极端 1 ：幻觉代码 │ │ ├── 看起来像那么回事，一跑就报错 │ │ ├── API 不存在、参数编造、逻辑自相矛盾 │ │ └── 原因：AI \"编\" 了它不真正理解的代码 │ │ │ │ 极端 2 ：屎山代码 │ │ ├── 能跑，但乱的想改都不知道从哪下手 │ │ ├── 单文件 2000 行、没有模块化、变量满天飞 │ │ └── 原因：没有规划，AI 想到哪写到哪，功能无限膨胀 │ └──────────────────────────────────────────────────────────────────┘ 这两个问题的 根源都是同一个 ：开发者没有给 AI 足够的约束和指引，直接让它\"自由发挥\"。 1.2 典型的错误姿势 ❌ 错误姿势：上来就让 AI 写代码 用户：帮我写一个 React 代办清单页面，支持新增、删除任务。 AI：好的！我来写一个完整的代办清单... （AI 内心活动） - 要不要本地存储？→ 加一个 localStorage 吧 - 要不要 API 远程存储？→ 再加一个 fetch 请求吧 - 要不要拖拽排序？→ 来一个拖拽库吧 - 要不要优先级标记？→ 加个颜色标签吧 - 要不要分类筛选？→ 加个 tab 切换吧 - ... 结果：一个简单的代办清单，变成了 2000 行的\"全能怪兽\" 这就是没有规划的后果： AI 会擅自扩展功能边界，把简单问题复杂化 。 二、第一步：规划就是一切 2.1 核心原则 不要上来就让 AI 写代码。先强制它读懂你的技术栈和项目规划，让它\"入职培训\"后再干活。 这个原则的本质是： 像管理新员工一样管理 AI 。 新员工入职流程： 第 1 天：阅读公司技术文档、了解业务流程 第 2 天：参加项目规划会，明确职责和边界 第 3 天：开始写代码 AI \"入职\" 流程（应该也一样）： 第 1 步：/init → 让 AI 了解技术栈、项目规范 第 2 步：输出规划文档（.md） → 明确功能边界、模块划分、数据结构 第 3 步：审核规划 → 确认无误后才开始编码 在 Claude Code 中，这个动作就是 /init —— 初始化项目上下文，让 AI 先\"读懂\"你的项目。就像去阿里入职要先读 Java 员工手册一样。 2.2 正确姿势：先规划，再编码 以 React + Tailwind 实现代办清单为例，不要直接说\"帮我写一个代办清单\"，而是 先输出一份规划 Prompt ： 遵守胶水编程思维：优先使用成熟方案，避免凭空造逻辑。 第一阶段：只做规划，禁止输出任何代码。 1. 确认技术栈： React 19 + Tailwind CSS + useState 2. 梳理功能边界： - 新增代办、删除代办、切换完成状态 - 不做本地持久化、筛选、拖拽功能 3. 拆分模块（乐高组件）： - 输入框组件（TodoInput） - 代办条目组件（TodoItem） - 列表容器组件（TodoList） 4. 定义数据流： useState 存储 task 数组 数据结构：{ id, text, completed } 5. 输出这份完整规划，等待我确认无误后，再分段实现代码。 2.3 这份规划为什么有效？ 规划要素 解决什么问题 技术栈确认 防止 AI 用错框架版本或引入不必要的依赖 功能边界 明确\"做什么\"和\"不做做什么\"，防止功能无限膨胀 模块拆分 强制组件化，好读好维护（AI 生成的代码我们都要审核） 数据结构定义 预先规定字段名和类型，从根源减少 AI 字段幻觉 \"禁止输出代码\" 强制 AI 先思考，避免边想边写的混乱 关键细节 ：数据结构中的字段名必须由你来定。比如用 text 还是用 title ，这不是 AI 该决定的事。如果让 AI 自由发挥，它可能这次用 text ，下次用 title ，再下次用 content ——三处不统一就是屎山的开端。 2.4 规划伴随整个开发周期 开发流程： 输出规划 → 审核规划 → 更新规划 → 确认后编码 → 审核 → 更新 │ │ │ │ │ │ ▼ ▼ ▼ ▼ ▼ ▼ 第一版 发现遗漏 修正边界 分段实现 发现问题 迭代优化 规划文档 补充细节 确认无误 代码 修正 规划同步 这份规划文档（.md）将伴随项目的完整开发周期。在 Cursor / Claude Code 等工具中，这份规划会被自动带入每次对话的上下文中（通过 claude.md / .cursorrules 等机制），保持 AI 行为的一致性。 三、第二步：胶水编程思维 3.1 核心原则 能抄不写，能连不造。轮子别人造好，你只做胶水。 什么是\"胶水编程\"？用一个比喻来理解： 传统编程（从零造零件）： ",
+      "author": "Darling噜啦啦",
+      "metrics": {
+        "views": 123,
+        "likes": 11,
+        "comments": 0
+      },
+      "matchedQuery": "AI 编程 幻觉 踩坑",
+      "thin": false,
+      "preScore": 11,
       "tools": [
         "claude-code",
         "cursor",
         "copilot"
       ],
-      "topics": [],
+      "topics": [
+        "claude-md",
+        "vibe-coding"
+      ],
       "preReasons": [
-        "正文命中：claude-code/cursor/copilot",
+        "标题命中：vibe-coding",
         "泛 agent 词 1 个",
-        "正文经验词 4 个"
+        "正文经验词 3 个",
+        "论坛长帖"
       ]
     },
     {
-      "id": "3ffa9a22742fe3f8",
-      "source": "V2EX 搜索",
+      "id": "3747ee0d2e814aa9",
+      "source": "掘金搜索",
       "kind": "search",
-      "url": "https://www.v2ex.com/t/1230485",
-      "titleOriginal": "如何让你的 Agent 子民们共用同一份记忆，还能自动同步🤓👆",
-      "publishedAt": "2026-07-28T09:36:55.000Z",
-      "excerpt": "# 前言 现在 Agent 产品这么多，我一般的习惯是把一个任务同时丢给不同的 Agent （我主要用 Claude Code ，Codex 和 Hermes ），然后让这仨赛马，哪个表现好就继续用哪个 但有时候也避免不了来回切换，所以就会遇到上午在 CC 里花了半小时解释项目为什么使用 SQLite 、接口命名习惯是什么、哪些文件不能动，下午换到 Codex ，又得重新说一遍 memU 就是干这个的，你和 AI 的共同记忆，应该是你自己的资产：看得见、带得走、在任何设备任何 agent 上都是同一份 **Github**： https://github.com/NevaMind-AI/memU **Site**： https://memu.pro/ ### 核心功能有： 1. 跨 Agent ，跨设备同步信息：给你常用的几个 agent 都安上 memU ，这样就能让他们之间互相认识了 2. 极致轻量，极致简单：新 memU 只有接近 500 行代码（原来有 3 万行），所以你可以像安装 skills 一样安装 memU 3. 检索速度快：摒弃了像 mem0 那样的使用向量数据库的解决方案，把记忆都通过.md 文件存储，又快又可读 使用效果 belike：Codex 帮我完成的网站 UI 设计 playbook ，在没有上下文历史的情况下，直接在 hermes 里找到了 Codex 输出的结果： ![]( ) Hermes 回答（之前没提过这个上下文）： ![]( ) ## memU 怎么用 有两种：一种是云端，另一种是本地 云端的使用需要先登录 https://memu.so/quick-start ，拿到 API key ，然后将 API Key 和这个 prompt 一起直接输入给 Agent： ```text 读取 https://raw.githubusercontent.com/NevaMind-AI/MemU/main/SKILL.md ，然后按照里面的指示安装 memU 。 ``` 本地使用的话需要借助 Ollama ，详情见 GitHub README ；国内用户可以通过 OpenAI 兼容接口使用百炼的 text-embedding-v4 ## memU 现在还有一个记忆看板，能看到你的 Memory 里面到底有啥 登录 memu.so ，可以查看已经生成的 memory files ，目前的记忆主要是可读的 Markdown ，更像是属于你自己的 AI Wiki ，可以包含： - 长期偏好； - 已经确认过的技术选择； - Agent 从历史任务中总结出的可复用经验。 ![]( ) 每一份记忆都是可读的，比向量数据库直观多了 ![]( ) ## memU 还有一个类似于 Hermes 的机制，可以定时从对话中抽取 memory ，形成 skills 它会去整体的 log 里面总结（ summarize ）出 skills ，这个 skill 也跟 memory 一样，是无感的 retrieve ，帮助更好地完成任务，默认一小时一次 ## Claude 被封号的站友，可以用我这个方法导出记忆 分两步： #### 1. 先把这个 skills 安装到 codex （或者其他 Agent ）上，这个 skills 是导出你本地 Claudecode 记忆的 ```text --- name: claude-memory-extractor description: This skill should be used when the user wants to \"extract memories\", \"show memories\", \"list memories\", \"export memories\", \"find memories\", or asks about what Claude remembers from previous sessions. version: 1.0.0 --- # Claude Memory Extractor A Skill for extracting all memories that ClaudeCode has recorded during previous work sessions. ## Overview This Skill extracts memories from ClaudeCode's two-level memory system: - **Global Memory**: Stored in `~/.claude/memory/` - **Project Memory**: Stored in `~/.claude/projects/ /mem",
-      "author": "Daniel6606",
+      "url": "https://juejin.cn/post/7665893501925589019",
+      "titleOriginal": "🔥 AI 写代码总翻车？这套实战方法论救了我",
+      "publishedAt": "2026-07-24T05:24:17.000Z",
+      "excerpt": "🔥 AI 写代码总翻车？这套实战方法论救了我 ReBound 2026-07-24 288 阅读15分钟 🔥 AI 写代码总翻车？这套实战方法论救了我 摘要 ：让 AI 写代码，要么\"幻觉代码\"一跑就炸，要么\"屎山代码\"能跑但改不动。本文是我学习 vibe-coding-cn 开源教程后的 个人实践总结 + 踩坑复盘 ，包含 3 个真实项目的对比实验。不是教你写代码，是教你怎么 指挥 AI 写出靠谱的代码 。 📌 透明声明 ：本文方法论框架参考了 vibe-coding-cn 开源教程，但所有实战案例、踩坑记录、对比实验均为个人独立实践。对原教程的部分观点，我也提出了不同看法。 📌 前言：我被 AI 坑了三次 第一次 ：让 Claude 写一个 React 待办清单。我说 帮我写一个 react 待办清单页面 ，它噼里啪啦生成了 500 行单文件代码， title 和 text 字段混着用，能跑，但改不动。 第二次 ：让 AI 写一个 Node.js 爬虫。它凭空捏造了一个 axios.getHTML() 方法——根本不存在的 API。我花了 20 分钟 debug 才发现是幻觉。 第三次 ：做一个电商后台，AI 自己设计了一套权限系统。上线后发现跟公司现有的 SSO 完全对不上，推倒重来。 三次翻车，三个不同的坑： 屎山、幻觉、重复造轮子 。 后来我系统学了一套方法论，重新用正确姿势做了一遍，效果天差地别。这篇文章就是我的 踩坑复盘 + 实战总结 。 🎯 本文适合谁 ✅ 想用 AI 辅助编程但总踩坑的开发者 ✅ 听过 Vibe Coding 但不知道怎么落地的同学 ✅ 用 Cursor / Claude Code / Codex CLI 但效率不高的老手 ✅ 想建立一套 可复用 的 AI 编程工作流的团队 🧠 第一章：搞清底层逻辑再动手 1.1 什么是 Vibe Coding Vibe Coding = 用自然语言驱动，让 AI 生成大部分代码的开发方式。 由计算机科学家 Andrej Karpathy 首次提出。核心主张：先沉浸式做出能跑的东西。 但问题是 ——\"能跑\"和\"能维护\"是两码事。Karpathy 自己也说了，这是适合原型和一次性项目的玩法。如果你想做 长期维护的项目 ，需要一套工程方法论来约束 AI。 1.2 我踩坑后总结的三条铁律 在学任何具体方法之前，先记住这三条，否则你永远在重复踩坑： 铁律 为什么 🛡️ AI 不能自证正确 永远不要让 AI 自己确认自己的输出。凡是能被测试、类型、schema 校验的规则，都应变成 机器门禁 🧩 能复用时不重造 高阶形态不是从零生成代码，而是把已有成熟能力编排成业务系统 📋 先规划再编码 不上来就写代码，先强制 AI 读懂你的技术栈和项目规划 1.3 人机分工：谁干什么 很多人的误区是\"让 AI 干所有事\"。正确的分工是： 你负责：描述意图 → 设定约束 → 验证结果 → 做决策 AI 负责：理解上下文 → 生成计划 → 修改文件 → 整理证据 机器门禁：拦截幻觉 → 拦截糊弄 → 拦截越界 → 强制执行规范 💡 我的实测体会 ：把 AI 当成一个\"能力很强但需要明确指令的新员工\"。你不会让新来的员工直接干活，得让它先熟悉业务流程。AI 也一样——先让它读懂你的项目，再让它动手。 📐 第二章：先规划，再编码——我的 TodoList 实战 2.1 需求 用 React + TailwindCSS 实现一个任务清单页面，支持： ✅ 新增待办 ✅ 删除待办 ✅ 切换完成状态 ✅ 拖拽排序 2.2 ❌ 错误示范（我的第一次翻车） 直接说： 帮我写一个 React 待办清单页面，支持新增、删除任务。 后果 ： AI 把所有逻辑堆在一个 500 行的 App.jsx 里 字段名 title / text / name 混着用 拖拽功能凭空手写一套坐标监听 + 排序算法 想改功能？无从下手 2.3 ✅ 正确示范（先规划，再编码） 第一步：强制规划，禁止输出代码 遵守胶水编程思维：优先使用成熟方案，避免凭空造逻辑。 第一个阶段：只做规划，禁止输出任何代码。 1. 确定技术栈： React 19 + TailwindCSS + useState 2. 梳理功能边界： - 新增待办、删除待办、切换完成状态 - 不做本地持久化、筛选功能 - 拖拽排序使用成熟库 3. 拆分模块（乐高组件）： - TaskInput：输入框组件 - TaskItem：单条待办组件 - TaskList：列表容器组件 4. 定义数据流： useState 存储 tasks 数组 数据结构：{ id, text, completed } 5. 输出完整规划，等待确认后再分段实现代码。 💡 背后逻辑 ： 先划定边界 → 防止 AI 擅自加功能（我的第一次翻车就是没做这步） 强制模块拆分 → 好读好维护 预定义数据结构 → 从根源减少字段幻觉（ text 不能让 AI 自己决定叫 title 还是 name ） 规划文档伴随整个项目周期 2.4 第二步：胶水编程——拖拽排序 现在要加拖拽排序功能。 ❌ 错误指令 ： 帮我写 React 待办清单的拖拽排序功能 AI 很可能凭空手写一套拖拽逻辑，case 覆盖不全，bug 满天飞。 ✅ 正确指令（遵守胶水原则） ： 当前需求：给待办列表增加拖拽排序。 遵守胶水编程原则：绝不从零自研底层逻辑， 优先选择社区长期验证的成熟开源组件。 1. 先调研：React 生态成熟的拖拽库 2. 不要自己手写拖拽底层代码，只做粘合工作 3. 输出顺序：安装依赖命令 → 衔接现有组件 → 只写适配代码 AI 的调研结论 ： react-beautiful-dnd 已被 Atlassian 弃用，且不兼容 React 19。 选用社区维护的 fork @hello-pangea/dnd ，API 完全一致，支持 React 19。 这就是 胶水编程 的精髓：不是自己造拖拽",
+      "author": "ReBound",
       "metrics": {
-        "comments": 0
+        "views": 314,
+        "likes": 13,
+        "comments": 4
       },
-      "matchedQuery": "Copilot CLI 使用",
+      "matchedQuery": "AI 写代码 翻车",
       "thin": false,
-      "preScore": 6,
+      "preScore": 10,
       "tools": [
         "claude-code",
-        "hermes"
+        "codex",
+        "cursor"
       ],
-      "topics": [],
+      "topics": [
+        "vibe-coding"
+      ],
       "preReasons": [
-        "正文命中：claude-code/hermes",
-        "正文经验词 5 个",
+        "正文命中：claude-code/codex/cursor",
+        "泛 agent 词 1 个",
+        "标题经验词「翻车」",
+        "正文经验词 15 个",
+        "论坛长帖"
+      ]
+    },
+    {
+      "id": "534751be27571ca0",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7666657719915724850",
+      "titleOriginal": "告别AI幻觉屎山！3步胶水式Vibe Coding，让AI写出可维护工程代码",
+      "publishedAt": "2026-07-26T16:30:58.000Z",
+      "excerpt": "告别AI幻觉屎山！3步胶水式Vibe Coding，让AI写出可维护工程代码 GuWenyue 2026-07-26 0 阅读7分钟 前言 你是不是也有这种崩溃体验？ 直接丢需求让AI写代码，产出要么是 幻觉伪代码 ，复制运行全报错； 要么逻辑堆砌杂乱无章，后续改需求无从下手，越迭代越像屎山。 很多人误以为Vibe Coding就是“一句话让AI生成页面”，其实完全用错了方式。 本文给你一套标准化协作流程，读完你能学会： 一套前置规划模板，从根源杜绝AI擅自乱加功能、字段幻觉 胶水编程核心思想，少自研底层逻辑，复用成熟开源方案 完整React Todo实战案例，可直接复制复用开发模板 规避90%AI生成代码难维护、频繁报错的踩坑技巧 一、先搞懂：普通直给式写代码，为什么全是坑 新手最常用的AI编码指令： 帮我写一个React代办清单，支持新增、删除任务 这种方式问题集中在3点： 边界失控 ：AI会擅自追加本地存储、筛选、拖拽等额外功能，需求无限膨胀 字段幻觉 ：数据结构随机命名，一会儿title一会儿text，前后变量不统一 底层自研 ：复杂逻辑手写原生实现，边界case覆盖不全，隐藏大量隐性bug 最后产出代码能跑，但无法迭代、难以调试，短期爽，长期深度内耗。 真正的Vibe Coding，核心不是“让AI一次性写完代码”，而是 先定规则、再搭零件、最后粘合 ，把AI当成同事而非一键生成工具。 二、Vibe Coding标准化3步流程（核心干货） 第一步：前置规划先行，禁止AI输出任何代码 核心原则：规划就是一切，先对齐约束再写代码 类比新员工入职：不会上来直接分配开发任务，先要通读手册、熟悉业务规范。AI同理，必须先接收项目完整约束，统一认知。 标准规划模板（直接复制使用） 遵守胶水编程思维：优先使用成熟开源方案，禁止凭空自研底层逻辑。 当前阶段仅输出规划内容，禁止生成任何代码片段。 1. 锁定技术栈（固定不变，全程统一） 2. 明确功能边界：区分【必做】/【不做】，杜绝AI擅自扩展需求 3. 拆分乐高式独立组件，单一职责，方便后续维护 4. 定义全局统一数据结构，固定字段名，杜绝命名幻觉 5. 确认数据流方案、状态管理方式 规划确认无误后，再分段生成对应代码 实战示例：React Todo清单完整规划 遵守胶水编程思维：优先使用成熟方案，避免凭空造逻辑。 当前阶段只输出规划，禁止输出任何代码。 1. 确认技术栈：React 19 + TailwindCSS + useState 原生状态 2. 梳理功能边界 必做：新增待办、删除待办、切换完成状态 不做：本地持久化、筛选分类、拖拽排序、分页 3. 拆分独立组件（乐高拆分） - TodoInput：任务输入框组件 - TodoItem：单条待办条目组件 - TodoList：列表容器父组件 4. 统一数据结构（全局固定，不准修改字段） { id: string | number, // 唯一标识 text: string, // 任务文本 completed: boolean // 完成标记 } 5. 数据流：父组件useState存储tasks数组，子组件通过props接收、触发修改回调 等待我确认这份规划无误后，再分段实现代码 规划带来的收益 锁定功能范围，不会出现AI私自加需求 固定字段命名，彻底解决title/text这类字段幻觉 强制组件拆分，生成代码天然分层，可读性拉满 第二步：胶水编程，只粘合不造轮子 核心定义 胶水：只负责模块衔接、数据流转、适配逻辑； 轮子：成熟开源库、社区验证过的底层能力，全部复用，绝不手写底层实现。 能复用成熟库绝不从零自研，AI只写粘合衔接代码，大幅减少bug与幻觉。 正反案例对比 反面错误示范（自研底层，隐患拉满） 需求：给Todo列表增加拖拽排序 指令：帮我手写拖拽排序完整逻辑，实现上下拖动调换顺序 问题：AI会原生监听鼠标坐标、手写排序算法，大量边界场景缺失，拖拽卡顿、丢失数据。 正面胶水式写法（复用库，仅写粘合代码） 需求：给Todo列表增加拖拽排序 标准指令： 选用社区成熟库react-beautiful-dnd，先输出安装命令 仅编写现有TodoList组件与拖拽库的适配粘合代码 不手写拖拽底层监听、排序算法，复用库内置能力 执行流程： 输出安装依赖 npm install react-beautiful-dnd 仅写组件粘合、数据流转适配代码，底层逻辑全部交给开源库 第三步：元方法持续优化提示词，AI自我迭代 cc/codex这类AI编码工具自带记忆模块，可搭建Harness优化架构： 阿尔法提示词：固定规划模板，规范AI前期梳理流程 欧米噶提示词：代码产出后自动打分，校验维护性、bug概率 循环迭代：根据打分结果优化prompt，长期让AI生成代码质量稳步提升 三、完整可运行实战：胶水式开发React Todo清单 1. 前置规划确认（复制上文规划模板） 2. 安装基础依赖 npm create vite@latest todo-vibe -- --template react cd todo-vibe npm install tailwindcss postcss autoprefixer 3. 分层产出完整代码（AI分段生成，分层清晰） 1）TodoInput 输入子组件 import { useState } from 'react' export default function TodoInput ( { onAddTask } ) { const [text, setText] = useState ( '' ) const submitHandle = ( ) => { if (!text. trim ()) return onAddTask (text) setText ( '' ) } return ( < div className = \"flex gap-2 my-4\" > <",
+      "author": "GuWenyue",
+      "metrics": {
+        "views": 30,
+        "likes": 9,
+        "comments": 0
+      },
+      "matchedQuery": "AI 编程 幻觉 踩坑",
+      "thin": false,
+      "preScore": 10,
+      "tools": [],
+      "topics": [
+        "vibe-coding"
+      ],
+      "preReasons": [
+        "标题命中：vibe-coding",
+        "正文经验词 6 个",
         "论坛长帖"
       ]
     }
   ],
   "rejected": [
     {
-      "id": "9f4bae3b8ad6f900",
-      "source": "V2EX 技术节点",
-      "url": "https://www.v2ex.com/t/1231491#reply0",
-      "title": "macOS 原生终端 Termite 1.10 版本发布",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "e284904c2b54d40f",
-      "source": "V2EX 技术节点",
-      "url": "https://www.v2ex.com/t/1231482#reply8",
-      "title": "[脑洞] 既然编程生产力如此高了，为什么不众程序员协作重建 BAT/TMD 让中心化的平台暴利回归用户实现普惠互联？",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "29d19e18d34c729b",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690135",
-      "title": "【亲测】无限低价Plus直卡绑定方案（2026.8.2-1:30可过）",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "ce23ef9c40b20b45",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690132",
-      "title": "哈基米彻底没救了",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "ebe49eafbda14c14",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690125",
-      "title": "替尔泊肽使用体验",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "453ffb1dc3f69650",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690106",
-      "title": "do 剩余的钱拿来弄 kimi k3,送给大家用",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "b1f480bc96b5b960",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690102",
-      "title": "deepseek v4 flash 实际体验与榜单排名相符吗？主观感觉刷榜了",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "c13ea57adcca8f49",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690099",
-      "title": "有没有支持OpenAI Realtime API的中转站",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "bafd2590cde6e090",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690097",
-      "title": "opencode封号",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "7780deb9ce48311c",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690096",
-      "title": "Ai完整识别视频",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "e18a8e4b5ccc5fa6",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690095",
-      "title": "Linux.do 首页帖子页一键屏蔽用户tampermonkey脚本",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "337a5006f08bf56a",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690094",
-      "title": "tabbit 的 AI tasks 做的到底多垃圾",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "89d94b16faf59fc6",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690091",
-      "title": "请问网盘资源区有百度和夸克之外别的网盘的标签吗？",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "76432f96a66ec8a0",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690090",
-      "title": "有什么插件或软件能用来统计pi的token消耗",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "f68bb8a0f6194f40",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690073",
-      "title": "Monica反代方案求助",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "34e936af5ee1b639",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690069",
-      "title": "为啥我自己的谷歌老号注册的free gpt，在cpa里几乎无法正常使用",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "41795f7037d97447",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690068",
-      "title": "L上做X的佬友多么，不知道为什么我现在发帖子都是50以内的流量，是不是有问题呀我的🪜",
-      "score": 0,
-      "reasons": [
-        "中文占比 2%，低于门槛"
-      ]
-    },
-    {
-      "id": "c980450c86444e7b",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690047",
-      "title": "Mac book air m5 13英寸求推荐",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "94d2fbd780e61703",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690044",
-      "title": "记录一次XIAN鱼低价美版有锁机解锁骗局",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "8763adaf007fce18",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690038",
-      "title": "这种老主机除了搞个小NAS还能做什么",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "58fffe88733d9148",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690037",
-      "title": "有佬分享点家宽流量吗？",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "11a3786794e5bb19",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690017",
-      "title": "关于国模的疑惑🤔",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "16a7671bc94184bb",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690014",
-      "title": "chatpgt破限后吃到2次警告，什么时候会恢复",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "39872a90aceb5ace",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690010",
-      "title": "或许我真的应该去开一个GPT Plus",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "69eade9f09e28408",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690009",
-      "title": "gg引发的惨案，70多天不发帖，归来依旧是3级",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "bff6e5d0b37d160a",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690007",
-      "title": "天马行空之计划/审查模式",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "fdc64eab53a02378",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690004",
-      "title": "关于阿里夜间打折的qwen3.8-max-preview使用疑问",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "58ce8c0aa568a118",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690003",
-      "title": "解锁类原生~",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "fde748b871e4532b",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690002",
-      "title": "codex桌面端五次重连，老办法失效",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "78b52c3b90113c20",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2689998",
-      "title": "A股竞技场，各策略在A股内的收益表现",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "e29fdab12bdaf6e4",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2689997",
-      "title": "解锁类原生（）",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "d9fb4133f4d159d8",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2689996",
-      "title": "佬们，问问关于甲骨文云的问题",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "27d35274de92ed17",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853011-1",
-      "title": "甲骨云注册选哪个区的啊?",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "19feab8e5921f1ff",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853010-1",
-      "title": "+55【收】Zouter JP Tokyo Standard 首发机器",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "3f8876aff68165c3",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853009-1",
-      "title": "溢价300收台zouter jp首发优惠40%的",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "c639274c8f79974b",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853008-1",
-      "title": "bitget Fait24 收12U",
-      "score": 0,
-      "reasons": [
-        "中文占比 10%，低于门槛"
-      ]
-    },
-    {
-      "id": "4b6a02513b801329",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853007-1",
-      "title": "［收］泰国561team优惠码，带价来",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "fa822921d92d7724",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853006-1",
-      "title": "30出 lightlayer SJ-VP04-L 4.9刀/月",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "1a832c8f02bdd566",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853005-1",
-      "title": "【NQ留档】自测留档MegaBox",
-      "score": 0,
-      "reasons": [
-        "中文占比 10%，低于门槛"
-      ]
-    },
-    {
-      "id": "526b709310b18059",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853004-1",
-      "title": "75出 包PUSH VMISS-US.LA.TRI.Basic月付9折",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "d9daaed9e74629f3",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853003-1",
-      "title": "【30出】YT US.LAX.C 续费55.25/月",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "8eec764b6e029df4",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853002-1",
-      "title": "70 包PUSH 收一台VMISS-US.LA.TRI.Basic月付9折",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "cb89d4ca5da028f5",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853001-1",
-      "title": "曝光炒鸡佬之后被人追着在骂。",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "3e1ec890e51b28bf",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853000-1",
-      "title": "【收】lightlayer TW-VG03-A 年付",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "78bf973cd90e0bc6",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852999-1",
-      "title": "[NQ]Frankfurt BGP Global - Standard",
-      "score": 0,
-      "reasons": [
-        "中文占比 9%，低于门槛"
-      ]
-    },
-    {
-      "id": "7204fde6488d01af",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852998-1",
-      "title": "收泰国team邀请码 要求一人一码 30",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "243a613ead66c683",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852997-1",
-      "title": "[NQ]HK BGP Global - Lite",
-      "score": 0,
-      "reasons": [
-        "中文占比 9%，低于门槛"
-      ]
-    },
-    {
-      "id": "86b80d1f01e2fe2b",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852995-1",
-      "title": "亚马逊",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "3973f9605bc255d1",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852994-1",
-      "title": "【TQ】vmiss JP.TKY.TRl.Basic白天测的",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "e28228397aae9f8c",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852993-1",
-      "title": "纯V4机器添加V6出入口",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b6e8e7ff6a358a47",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852992-1",
-      "title": "哪些软件可以TG自动群发消息？",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "18561e089f8bec3f",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-852991-1",
-      "title": "safepal出2刀",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "9e63e9872956ee10",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/f2120be0f5?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "没输光，还想东山再起",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "9ffe750a08d500bc",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/podcast/7033ac692?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "#656.All-in:芯片股暴跌，200 亿美元基金遭追加保证金，前沿实验室：请放慢 AI 发展步伐",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "597a5c73179bc1a3",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/50cd1eb3c5?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "华北电力大学王永利：“十五五”我国核电仍将保持连续、稳定的建设节奏",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "accfb03c70b5b019",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/9770b7c08b?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "中国最被低估的家禽！高硒高蛋白，可惜一直被忽略",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "fc8c7c60f55f4e9d",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/32e568583b?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "李飞飞教机器人摸麻将挤牙膏，AI 终于有「手感」 了",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b9a739bef68662c5",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/48bb7065a3?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "中央考核巡查组专家用脚碰了碰，当场质问：是这么规定的吗？",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "c0c71e39f04ab535",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/7067447667?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "江苏徐州一地试点集中供冷",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "bf972a375fa9f36b",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/12c286ea98?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "台风“白海豚”将迎第三个强度巅峰",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "de0ae2faf79219e1",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/73c21344f6?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "AI 视频进入精细调度模式，小云雀把 Seedance 2.5 玩明白了。",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "6f4ef7378062aeaa",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/2c72b1de4c?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "《八仙》票房破 10 亿：一个很旺自己的玄学，2 个字",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "62adfd1b626bc101",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/969a4b7831?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "超级富豪，正在批量生产婴儿",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "89e878fec244bb28",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/34b46ea9c6?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "对自己越省的女人，越得不到尊重",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "5721bf611928ff80",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/420a2942a9?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "个人贷款新规，今起施行",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "0d4cef2d5ef60753",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/a77cec3b74?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "男子到部队拒不配合查验，推搡哨兵打落核验设备，法院判了",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "87f228954c72cf99",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/0ffa9eb54f?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "再次跟大家介绍魔搭社区的宝藏功能 Notebook！（含福利放送）",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "9de11300e68e2892",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/abb1c2b80e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "不破，不立",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "9afd4e0a84dc12c4",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/f48187b130?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "爸爸得了渐冻症，我不敢告诉父母，自己却整夜失眠，该不该说？丨叶檀回信",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "dc20e79624968987",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/9f23c73ee1?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "从\"满帧\"到\"满分\"：骁龙用\"AI+游戏\"推动下个移动游戏黄金十年",
-      "score": 2,
-      "reasons": [
-        "正文命中：vibe-coding",
-        "正文经验词 1 个",
-        "总分 2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "c752ab7870e4747d",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/b3b92c8eaa?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "超强厄尔尼诺事件正在形成！",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "f34f10862a2095ad",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/53062d4e20?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "完整版| 雷·达里奥最新谈人工智能， 大周期与全球新秩序的重构 | 桥水创始人专访",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "15a46b1a6b772f29",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/c1a8da8c68?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "华为半导体首席科学家罕见露面，谈摩尔定律，点赞 DeepSeek 创始人梁文锋 - 经济观察网 － 专业财经新闻网站",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "6a2f1e7092c42909",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/a32b1fc55d?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "公然破坏军婚，明知对方是军嫂仍与其同居，陈某（1994 年生）获刑！",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "6ace588e7d318cf1",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/412d272053?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "7 月成交近 1.4 万套，北京核心区二手房八成买家选择“老破小” - 经济观察网 － 专业财经新闻网站",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "0660dd8f30e00fb3",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/3068051498?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "B 端见顶、C 端开荒，云厂商抢占地盘 - 经济观察网 － 专业财经新闻网站",
-      "score": -7,
-      "reasons": [
-        "正文命中：cowork",
-        "营销词 2 个：低价/折扣",
-        "总分 -7 低于入围线 6"
-      ]
-    },
-    {
-      "id": "138d4f72e908843e",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/55d459ed5b?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "IJCAI 2026 前瞻：学术「黑洞」消失，AI 研究回归「星群时代」",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "5d15748735a6b318",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/5a92f24809?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "2026 年中：AI 需要新的叙事",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "d3de218e170da055",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/9114d549a9?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "神行者 8 下线，奇瑞捷豹路虎“合资 3.0”开拔 - 经济观察网 － 专业财经新闻网站",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "d008f6928bbe7641",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/bc4c75cf19?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "上半年保险市场运行总体平稳 业务结构持续优化 - 经济观察网 － 专业财经新闻网站",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "61e1b945694d6291",
-      "source": "小众软件论坛搜索",
-      "url": "https://meta.appinn.net/t/topic/88428",
-      "title": "【自荐开源】vlaina - 没错就是那个Catime作者的新作笔记软件",
-      "score": 0,
-      "reasons": [
-        "中文占比 3%，低于门槛"
-      ]
-    },
-    {
-      "id": "81991de6d5217660",
+      "id": "78e1208e4c878c79",
       "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229194",
-      "title": "20k 招全栈/go 后端方向",
-      "score": -1,
-      "reasons": [
-        "正文命中：cursor",
-        "正文经验词 1 个",
-        "论坛短帖（正文 474 字符）",
-        "总分 -1 低于入围线 6"
-      ]
-    },
-    {
-      "id": "9d103f3a3fa416da",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1227553",
-      "title": "[北京 / 上海 / 深圳 / 青岛 / SF] Phinomenon 26Q3 新增岗位：增长 / 测试 / AI / 产品",
-      "score": 2,
-      "reasons": [
-        "正文命中：cursor",
-        "泛 agent 词 1 个",
-        "正文经验词 2 个",
-        "新闻腔 1 个：融资",
-        "总分 2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "a66222d0f78c9cb2",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1227448",
-      "title": "[山东/远程] 诚招全栈 go 后端方向(接受 Java 转 go）",
-      "score": -1,
-      "reasons": [
-        "正文命中：cursor",
-        "正文经验词 1 个",
-        "论坛短帖（正文 433 字符）",
-        "总分 -1 低于入围线 6"
-      ]
-    },
-    {
-      "id": "114a5ff7de4fd378",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1231334",
-      "title": "写了一个 MMPI（明尼苏达多项人格问卷）的测试站，兼谈谈对前端的感想",
+      "url": "https://www.v2ex.com/t/1231448",
+      "title": "V2EX AI Chat 可用模型列表新增 DeepSeek-V4-Flash 0731 版本",
       "score": 4,
-      "reasons": [
-        "正文命中：vibe-coding",
-        "正文经验词 5 个",
-        "总分 4 低于入围线 6"
-      ]
-    },
-    {
-      "id": "ce5c287a538d79c9",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230796",
-      "title": "去年发过的日语解析器 现在大改了一版界面 加入了 DeepSeek 分享给学习日语的伙伴用用",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "7c860f6857bf0ee7",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230293",
-      "title": "▎ Codex 仅官方 2% 的价格， Claude 1 折：我做了一个 AI 中转站 Lumi",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "f7cbc5def408729c",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230087",
-      "title": "我在纠结要不要将我那开源的 Codex 本地小工具也做成 macOS 小组件的形态",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "9b32ed7264d24463",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230027",
-      "title": "[Yukiapi ] 已上线 GPT-5.6 一家稳定平价 Claude/Codex 中转站，新用户注册送 1 刀评论区留 id 送 5 刀额度！",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "0fb6c9ca75a94b3a",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229967",
-      "title": "留一个地方给自己“古法”编程吧",
-      "score": 3,
-      "reasons": [
-        "正文命中：claude-code/codex",
-        "标题经验词「自己」",
-        "正文经验词 3 个",
-        "营销词 1 个：限时",
-        "学术腔 1 个",
-        "论坛长帖",
-        "总分 3 低于入围线 6"
-      ]
-    },
-    {
-      "id": "7105400b7f97c621",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229845",
-      "title": "[base 深圳 10k-20k 14~16 薪] Agent 开发工程师",
-      "score": 0,
-      "reasons": [
-        "招聘 / 接单帖"
-      ]
-    },
-    {
-      "id": "26d56f9d35dbca55",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229777",
-      "title": "[开源]或许是 WindTerm 精神的续作： SSH 客户端 OxideTerm 焕新为原生软件， Windows 空载内存仅 25 MB",
-      "score": 3,
-      "reasons": [
-        "正文命中：zed",
-        "正文经验词 8 个",
-        "新闻腔 1 个：刷屏",
-        "论坛长帖",
-        "总分 3 低于入围线 6"
-      ]
-    },
-    {
-      "id": "cf8ef4170f42281c",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229768",
-      "title": "这是一个带有一点点思考的中转站推广贴（真的是推广🤡）",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "039027a581e23f69",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229680",
-      "title": "做了个 AI API 服务， Claude 低至 2 折，不掺水不注水，注册送额度",
-      "score": 5,
-      "reasons": [
-        "正文命中：claude-code/codex/cursor",
-        "正文经验词 3 个",
-        "总分 5 低于入围线 6"
-      ]
-    },
-    {
-      "id": "f8222b074e1f4e9b",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229576",
-      "title": "想尝试 Claude + Codex + DeepSeek/Qwen/... 协同多子代理，大家目前用的什么方案？",
-      "score": 1,
-      "reasons": [
-        "正文命中：claude-code/codex/opencode",
-        "正文经验词 2 个",
-        "疑似求助 / 提问帖",
-        "总分 1 低于入围线 6"
-      ]
-    },
-    {
-      "id": "9f9a47436e13c6f5",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229491",
-      "title": "[Yukiapi ] 已上线 GPT-5.6 一家稳定平价 Claude/Codex 中转站，新用户注册送 1 刀评论区留 id 送 5 刀额度！",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "c94a98e5e4fb679b",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229324",
-      "title": "[二次发帖] 家宽合租: 88 一个月，补一人上车",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "07987fcf1fd32d12",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230669",
-      "title": "做了个一键保存 网页/视频/X/微博 为 Markdown 的浏览器扩展",
-      "score": -2,
-      "reasons": [
-        "正文命中：mcp",
-        "泛 agent 词 1 个",
-        "营销词 1 个：中转",
-        "总分 -2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "08086870ad75b208",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230596",
-      "title": "我也搞了一个中转，倍率虽不是最低，但是胜在稳定",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "aecf4b3fa296e00a",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230543",
-      "title": "探讨一下比较节省 token 的 coding agent",
-      "score": -2,
-      "reasons": [
-        "正文命中：claude-code/codex/opencode",
-        "泛 agent 词 1 个",
-        "正文经验词 2 个",
-        "营销词 1 个：中转",
-        "论坛短帖（正文 302 字符）",
-        "总分 -2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "a1d9454e0d94550b",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230405",
-      "title": "AiAgent：让团队在受控代码库中借助 Codex CLI 完成改码与 Git 交付",
-      "score": 4,
-      "reasons": [
-        "标题命中：codex",
-        "正文经验词 1 个",
-        "论坛短帖（正文 380 字符）",
-        "总分 4 低于入围线 6"
-      ]
-    },
-    {
-      "id": "ebb8d3c021d1fe4f",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229861",
-      "title": "现在有没有融合 AI Agent 的 SecureCRT、Putty? (类似这样的)",
-      "score": -2,
-      "reasons": [
-        "泛 agent 词 1 个",
-        "论坛短帖（正文 313 字符）",
-        "总分 -2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "65750706396b6ed7",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230103",
-      "title": "# [推广] GLM-5.2 API 小范围测试，赠送 5 元额度，兼容 OpenAI SDK",
-      "score": 3,
-      "reasons": [
-        "正文命中：opencode",
-        "正文经验词 2 个",
-        "总分 3 低于入围线 6"
-      ]
-    },
-    {
-      "id": "a4d2d5d41dbced9b",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1227958",
-      "title": "平时出门基友们用什么远程 AI Coding？",
-      "score": 2,
-      "reasons": [
-        "正文命中：claude-code/opencode/cursor",
-        "正文经验词 4 个",
-        "疑似求助 / 提问帖",
-        "总分 2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "1201f55ca09148e0",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1231250",
-      "title": "做了一个支持行内预测的 Markdown 编辑器，求朋友帮忙测试",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b258325d8e89e356",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230886",
-      "title": "做了一个无需注册就能用的 AI 图片编辑器，想听听大家的意见",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "eebc6d0d352f77c1",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230887",
-      "title": "做了一个无需注册就能用的 AI 图片编辑器，想听听大家的意见",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "2c58a0b7183e4a44",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230657",
-      "title": "终于有可以替代剪映的开源视频工具了！数据全本地，还能用 AI 聊天剪视频",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "fc8fd1ea91a0f648",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230537",
-      "title": "8 个常见图片处理步骤，没有一个能同时在 JPEG 和 PNG 保住 XMP 元数据",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "a2b1c423256bfe72",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230413",
-      "title": "做了个 AI 歌词视频工具 LyricFast：上传歌曲，自动生成逐字同步视频",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "f3d50c07cf02704f",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230237",
-      "title": "Zedis：用 Rust 写的 Redis GUI，以及让 AI 帮忙改界面的一点感想",
-      "score": 4,
-      "reasons": [
-        "正文命中：zed",
-        "正文经验词 4 个",
-        "总分 4 低于入围线 6"
-      ]
-    },
-    {
-      "id": "21d8213622cd14b7",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230186",
-      "title": "找工作之遭遇公司业务调整之再次遭遇公司业务调整",
-      "score": 0,
-      "reasons": [
-        "招聘 / 接单帖"
-      ]
-    },
-    {
-      "id": "2e063e272c4a25d6",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1230037",
-      "title": "做了一个 AI 剧情编辑器",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "f2099de211e4cccc",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229659",
-      "title": "SayScribe AI - 音频转文字的在线工具",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "557200677b141eaf",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229468",
-      "title": "我开源了一个 AI 电子书阅读器，欢迎大家体验",
-      "score": 1,
-      "reasons": [
-        "泛 agent 词 1 个",
-        "标题经验词「体验」",
-        "正文经验词 4 个",
-        "疑似产品自荐帖",
-        "总分 1 低于入围线 6"
-      ]
-    },
-    {
-      "id": "4ba829fc5b79df3e",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229316",
-      "title": "codex pro 用不完，尝试让他做了一个第一人称校园丧尸生存文字跑团游戏 https://sealed-campus-next.vercel.app/",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "753b6f72008587d2",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228932",
-      "title": "[PromptX 极客团队招募] 寻找 5-8 位极客伙伴，在 AI Coding 时代一起做点酷东西！",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "2772603deecbadcb",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228618",
-      "title": "[NanoTab] vibe 了一款 mac 窗口切换工具并分享一下我的窗口管理方案",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b209ea95a06b72c8",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228503",
-      "title": "postman 和 thunder client 的 vscode 插件替代品 volt api client",
-      "score": 4,
-      "reasons": [
-        "正文命中：cursor/trae",
-        "正文经验词 2 个",
-        "总分 4 低于入围线 6"
-      ]
-    },
-    {
-      "id": "2b316c184197376b",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1227813",
-      "title": "关于阿里 AI 的一点疑惑",
-      "score": 0,
-      "reasons": [
-        "正文命中：cursor/trae",
-        "正文经验词 1 个",
-        "论坛短帖（正文 285 字符）",
-        "总分 0 低于入围线 6"
-      ]
-    },
-    {
-      "id": "44cc752a2cfef766",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229242",
-      "title": "芒果 AI - 稳定加速，整站缓存 90%+， GPT 5.6 全站 Pro，包月套餐折中折！ 还有邀请返利！",
-      "score": -8,
-      "reasons": [
-        "正文命中：kiro",
-        "正文经验词 2 个",
-        "营销词 2 个：折扣/限时",
-        "论坛短帖（正文 410 字符）",
-        "总分 -8 低于入围线 6"
-      ]
-    },
-    {
-      "id": "d512c5a4c63393ee",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1229144",
-      "title": "我对比了 8 个 Claude API 中转站，踩了不少坑，总结给你",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "bd11d139f8e23838",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228961",
-      "title": "芒果 AI - 稳定加速，整站缓存 90%+， GPT 5.6 全站 Pro， CC max 上线！包月套餐折中折！ 10 块能有 100 刀额度，约等于几个亿 token ！",
-      "score": -8,
-      "reasons": [
-        "正文命中：kiro",
-        "正文经验词 2 个",
-        "营销词 2 个：折扣/限时",
-        "论坛短帖（正文 439 字符）",
-        "总分 -8 低于入围线 6"
-      ]
-    },
-    {
-      "id": "4ec5a3a2abf5f9a4",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228867",
-      "title": "芒果 AI：愿天下都有便宜稳定的 token 用， 80 元 800 刀包月套餐限时特惠！快来蹬，多开毫无压力",
-      "score": -2,
-      "reasons": [
-        "正文命中：kiro",
-        "正文经验词 1 个",
-        "营销词 1 个：限时",
-        "总分 -2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "2beda07c4896c18d",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228565",
-      "title": "芒果 AI：愿天下都有便宜稳定的 token 用， 80 元 800 刀包月套餐限时特惠",
-      "score": -2,
-      "reasons": [
-        "正文命中：kiro",
-        "正文经验词 1 个",
-        "营销词 1 个：限时",
-        "总分 -2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "bab7033cfcf01c49",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228113",
-      "title": "[memeapi.top API 中转站] 新开了一个 API 中转站，价格实惠，售后稳定，顺便给 v 友们发点小福利，评论 id 后可领试用额度~",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "3e7a4e7debe994ff",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228071",
-      "title": "[tofastcode] 中转站福利来袭， gpt-img2 超分 4k 生图 0.04 codex plus 0.05 拒绝 429 与高延迟! 主打满血稳定的 API 中转，注册即送测试额度",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "b4e9912b55e33106",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228056",
-      "title": "gpt-img2 超分 4k 生图 0.04 codex plus 0.05 拒绝 429 与高延迟! 主打满血稳定的 API 中转，注册即送测试额度(内含 V 友盖楼福利)",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "a58f8f17ab2c9d3d",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1227376",
-      "title": "推广一下自建最开始和朋友自用现在几十用户的一个小中转",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "115a1eaeb208ec8f",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1227003",
-      "title": "新开中转站，超低倍率，来 V 站推广，留言 ID 送 3U 体验额度",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "00045c3250674deb",
-      "source": "博客园首页",
-      "url": "https://www.cnblogs.com/shiningmoon/p/22111758",
-      "title": "Pikachu靶场通关记录（一） - 反对的只剩下月亮",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "61052643ccd3501b",
-      "source": "博客园首页",
-      "url": "https://www.cnblogs.com/h-elden/p/22117242",
-      "title": "[最优化技术] 3-4 最速下降法（梯度法） - H_Elden",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "9354c725fffe0312",
-      "source": "博客园首页",
-      "url": "https://www.cnblogs.com/xiaobaiysf/p/22117003",
-      "title": "倒反天罡！DeepSeek V4-Flash 正式版悄然上线：130亿激活参数，把自家1.6万亿旗舰「以下克上」 - 小白跃升坊",
-      "score": -2,
-      "reasons": [
-        "泛 agent 词 1 个",
-        "正文经验词 4 个",
-        "新闻腔 3 个：官宣/发布会/重磅",
-        "总分 -2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "d8825dbb44b359e5",
-      "source": "博客园首页",
-      "url": "https://www.cnblogs.com/hnzhengfy/p/22085482/NodeMulti-version",
-      "title": "Windows 上同时安装多个 node 版本 - 橙子家",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "11306ddb96774a29",
-      "source": "Verne in GitHub",
-      "url": "https://blog.einverne.info/post/2026/07/chezmoi.html",
-      "title": "chezmoi Go 语言编写的跨平台 dotfiles 管理工具",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b35bb2509e55f993",
-      "source": "電腦玩物",
-      "url": "http://www.playpcesor.com/2026/07/ai-ai.html",
-      "title": "我與 AI 各自需要一套第二大腦：五個層次管理個人筆記、專案資料、AI 記憶與規則",
-      "score": 0,
-      "reasons": [
-        "中文占比 12%，低于门槛"
-      ]
-    },
-    {
-      "id": "c5e6b838840fa902",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400770?sc=rss.qu",
-      "title": "[Day 02] Redis 簡介",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "8ddb2dab9db6c10f",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400975?sc=rss.qu",
-      "title": "Day 02：為什麼要換一種做事方法",
-      "score": 0,
-      "reasons": [
-        "正文命中：mcp",
-        "泛 agent 词 2 个",
-        "正文经验词 1 个",
-        "营销词 1 个：折扣",
-        "总分 0 低于入围线 6"
-      ]
-    },
-    {
-      "id": "81bf69befb9b35de",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400972?sc=rss.qu",
-      "title": "Day 2：GenAI Backend 參考架構把不確定性關進最小的籠子",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "54d51ca04e7d2719",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400969?sc=rss.qu",
-      "title": "做自己職涯的PM - 前言",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "96add01b59b1774c",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400970?sc=rss.qu",
-      "title": "Day 02：打開行情圖只看到一堆紅綠棒子？先把 K 線（OHLCV）拆成熟悉的資料結構",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b9883c7c4a26f2c2",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400836?sc=rss.qu",
-      "title": "Day 02 未來教育核心：因材施教與教育平權",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "122ec887a83d2a76",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400950?sc=rss.qu",
-      "title": "Day 2｜GCP 共同責任模型與 AI Workload 的責任邊界",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "f082afe7843b2d98",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400804?sc=rss.qu",
-      "title": "Day 02 -忒修斯之船客戶要的是什麼？",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "a6f55a6cf6dc6cb8",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400828?sc=rss.qu",
-      "title": "基礎 2. SQL Server 安裝",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "4fa51a463cec4f83",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400783?sc=rss.qu",
-      "title": "Day 2：在 Windows 11 建立單機類生產環境：CRC (OpenShift Local) 安裝與資源配置心法",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "82494eeee8f73ffc",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400889?sc=rss.qu",
-      "title": "UX 那些事-DAY1",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "61d29efcc3f8879e",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400924?sc=rss.qu",
-      "title": "企業端點完美防禦02-防止惡意軟體感染",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "711020fb1bb0c24b",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400942?sc=rss.qu",
-      "title": "Day 01  AI 已經可以快速完成 Demo，但真正進入 Production，問題才正式開始",
-      "score": 3,
-      "reasons": [
-        "泛 agent 词 1 个",
-        "正文经验词 2 个",
-        "总分 3 低于入围线 6"
-      ]
-    },
-    {
-      "id": "39eeb5e524a53175",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400941?sc=rss.qu",
-      "title": "Day 1｜系列開場：為什麼談企業 AI 安全防線要從 GCP Security 談起",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "d0ab49e04ae2cf98",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400938?sc=rss.qu",
-      "title": "DAY 1. 前言我為何要參加鐵人賽：從迷惘到 MVP 的四年心路歷程",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "5e3f1f7626cd17e8",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400936?sc=rss.qu",
-      "title": "Day1前言",
-      "score": 2,
       "reasons": [
         "正文命中：claude-code",
-        "正文经验词 1 个",
-        "总分 2 低于入围线 6"
-      ]
-    },
-    {
-      "id": "855d8b5cb010db50",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400931?sc=rss.qu",
-      "title": "Day 1｜AI 三十秒幫你串好的 API，金鑰在誰手上 ?",
-      "score": 2,
-      "reasons": [
-        "正文命中：claude-code/mcp",
         "泛 agent 词 1 个",
         "正文经验词 2 个",
+        "总分 4 低于入围线 6"
+      ]
+    },
+    {
+      "id": "6bf84197b4723a72",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231445",
+      "title": "使用 openrouter API 报错",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "3c663fe1bfb197b4",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231155",
+      "title": "[开源] 市场研究驾驶舱 —— A 股/港股/美股 + 商品 + 美债 + AI 大模型榜单，一屏实时行情大屏",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "7a781a905bdfca08",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231115",
+      "title": "GLM Coding Plan 编码套餐要更新 V3 涨价了 @_@",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "4f20d9fd9ba81177",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231023",
+      "title": "Codex 有多张重置卡和重置卡即将到期完全是两种心态",
+      "score": 3,
+      "reasons": [
+        "正文命中：mcp",
+        "正文经验词 2 个",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "f837e53057500294",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230775",
+      "title": "为什么 claude 比 codex 省 token?",
+      "score": -2,
+      "reasons": [
+        "正文命中：subagent",
         "疑似求助 / 提问帖",
-        "总分 2 低于入围线 6"
+        "总分 -2 低于入围线 6"
       ]
     },
     {
-      "id": "d3eaee302abe4bbf",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400926?sc=rss.qu",
-      "title": "Day 1 - 為什麼需要架構思維",
+      "id": "98f451af1fdd652b",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230734",
+      "title": "VibeHero: 把你烧的 AI token 变成攻击力",
+      "score": 0,
+      "reasons": [
+        "正文命中：claude-code/opencode/kimi-code",
+        "正文经验词 1 个",
+        "论坛短帖（正文 330 字符）",
+        "总分 0 低于入围线 6"
+      ]
+    },
+    {
+      "id": "b60448cf2cb93bd2",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230666",
+      "title": "Chatgpt Pro 5x 的实际额度有多少？",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "d89fb705ad2d7fb2",
-      "source": "iT 邦幫忙",
-      "url": "https://ithelp.ithome.com.tw/articles/10400782?sc=rss.qu",
-      "title": "[Day 01] 甚麼是遺留系統？為甚麼需要重構？",
+      "id": "2e3d91bdd8fb3830",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230350",
+      "title": "[开源] 在你自己的机器上运行 AI 驱动的浏览器自动化",
+      "score": -5,
+      "reasons": [
+        "正文命中：mcp",
+        "标题经验词「自己」",
+        "正文经验词 2 个",
+        "学术腔 1 个",
+        "疑似产品自荐帖",
+        "论坛短帖（正文 378 字符）",
+        "总分 -5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "fb91f5a2e6f80bc4",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230223",
+      "title": "25 岁, 拿了 N+1, 我该换行吗?",
+      "score": 1,
+      "reasons": [
+        "正文命中：vibe-coding",
+        "正文经验词 4 个",
+        "疑似求助 / 提问帖",
+        "总分 1 低于入围线 6"
+      ]
+    },
+    {
+      "id": "386714237b9a7903",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230146",
+      "title": "刚用 iPhone App 上 apple 授权登录方式注册了一个 claude 账号 不知道能坚持多久",
+      "score": -2,
+      "reasons": [
+        "正文命中：claude-code",
+        "论坛短帖（正文 570 字符）",
+        "总分 -2 低于入围线 6"
+      ]
+    },
+    {
+      "id": "6b4e5f7741e07f79",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231244",
+      "title": "我就好奇问问，有没有昨天猛蹬吧 codex 额度用完，今天等刷新等到现在不舍得用重置卡的人😏",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "703a0882ac8386ae",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231171",
+      "title": "🔥尔信中转·注册就送体验额度·不定时免费抽奖·底价速刷随机空投~！",
+      "score": 0,
+      "reasons": [
+        "标题含卖额度 / 卖账号特征"
+      ]
+    },
+    {
+      "id": "c50c3922e659a1f4",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231148",
+      "title": "额度用完了，没等到官方重置",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "023e7968885ba30e",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231054",
+      "title": "分享一个我用下来最省事的 AI 物体消除工具： PixImagen Remove Object",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "b80ddf1cca888c49",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231052",
+      "title": "送个住宅 IP 福利， chatgpt， codex 等 ai 工具均可用",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "10cc995bf5b61dd3",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231468",
+      "title": "Apple One 马来西亚大杯+Infuse Pro/英区 Qobuz/Misaka 东京西雅图",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "217dcc0a576827c2",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230535",
+      "title": "随手 vibecoding 的做饭小程序《这顿不发愁》，一周被 5000 人用过",
+      "score": 4,
+      "reasons": [
+        "正文命中：vibe-coding",
+        "标题经验词「一周」",
+        "正文经验词 10 个",
+        "结尾落在推广语上",
+        "总分 4 低于入围线 6"
+      ]
+    },
+    {
+      "id": "de566b2db1efe71f",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229561",
+      "title": "一条链接把报价、合同、签字、收款走完，我做的 Pactiamo 今天上 Product Hunt，送 100 份 30 天 Pro 🎁",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "f4d2edcc1abee696",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229372",
+      "title": "海宝云 haibaocloud-阿里云学生优惠与免费试用怎么领？最新低价续费技巧避坑指南",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ed172bfb76dc28d3",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229265",
+      "title": "讨论：我们究竟需要什么样的 Homelab / AI NAS？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "93d5ce71ac545a47",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229157",
+      "title": "AI 视频生成也太好使了，一个入口体验多个图生视频模型",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "c14b0864182fd2c8",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229109",
+      "title": "盖楼送 5 刀，参与免费抽 100 刀！满血 API 中转 0.05x 起， V 友上车",
+      "score": 0,
+      "reasons": [
+        "标题含卖额度 / 卖账号特征"
+      ]
+    },
+    {
+      "id": "9fd88179c4d336fb",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229097",
+      "title": "给 sing-box 提交 XHTTP 实现后 PR 被关闭且账号被 Block，想请教是哪里做错了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "db117c14158d4e36",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229094",
+      "title": "AI 编码怎么选最省钱？按量 token 接入还是直接订阅躺平",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "9ee39ca205ae2aaf",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1228956",
+      "title": "全职带娃 30 天，我被\"给孩子做什么菜\"逼疯了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "db2f91fdcea5f0e1",
+      "source": "小众软件论坛搜索",
+      "url": "https://meta.appinn.net/t/topic/88961",
+      "title": "CloudCone 九周年庆典 VPS 促销活动｜高性价比 SSD VPS 提供商，最低 124 元/年",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "98149e74e14092fc",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7664866308396417051",
+      "title": "个人开发者如何选择合适的免费AI编程工具",
+      "score": 3,
+      "reasons": [
+        "正文命中：cursor/windsurf/trae",
+        "泛 agent 词 1 个",
+        "正文经验词 6 个",
+        "营销词 1 个：免费额度",
+        "论坛长帖",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "f3bf990de5a4f6e5",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7662692153698009123",
+      "title": "AI 写代码，我盯着它翻车的那些瞬间",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5d7706f0675017fc",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7664509208797151270",
+      "title": "低代码只能做单表 CRUD？我们一行代码没写，搭了个完整进销存",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "230635c89db36ad7",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7665893501926244379",
+      "title": "Vibe Coding 方法论：从\"幻觉代码\"到可靠交付的 AI 协作编程指南",
+      "score": 10,
+      "reasons": [
+        "标题命中：vibe-coding",
+        "泛 agent 词 1 个",
+        "正文经验词 2 个",
+        "论坛长帖",
+        "论坛/搜索源已达当日占比上限，未进入人工评审"
+      ]
+    },
+    {
+      "id": "75dc5bd459e622ee",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230183",
+      "title": "蒸馏自己：长文转爆款社媒帖子 Agent SKill 开源",
+      "score": 9,
+      "reasons": [
+        "标题命中：subagent",
+        "标题经验词「自己」",
+        "正文经验词 5 个",
+        "论坛短帖（正文 426 字符）",
+        "论坛/搜索源已达当日占比上限，未进入人工评审"
+      ]
+    },
+    {
+      "id": "a271dea43207645e",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7666354528840712201",
+      "title": "7 个 AI 编程套餐，每天开 7 个标签页查额度？我写了个看板一屏搞定",
+      "score": 8,
+      "reasons": [
+        "正文命中：claude-code/antigravity/kimi-code",
+        "泛 agent 词 1 个",
+        "标题是「我+动作」句式",
+        "标题经验词「搞定」",
+        "正文经验词 6 个",
+        "疑似产品自荐帖",
+        "论坛长帖",
+        "论坛/搜索源已达当日占比上限，未进入人工评审"
+      ]
+    },
+    {
+      "id": "396b085fd0613493",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7666289945599246351",
+      "title": "AI 生成的代码又乱又爱编？试试这套“先规划，再胶水”的三步法",
+      "score": 7,
+      "reasons": [
+        "正文命中：claude-code/cursor/vibe-coding",
+        "泛 agent 词 1 个",
+        "正文经验词 10 个",
+        "论坛长帖",
+        "论坛/搜索源已达当日占比上限，未进入人工评审"
+      ]
+    },
+    {
+      "id": "5caa41bcc0853f22",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7668120030246469670",
+      "title": "Codex 写出的代码能跑却算错钱：我用 3 个测试拆穿一次 AI 编程幻觉",
+      "score": 6,
+      "reasons": [
+        "正文命中：codex",
+        "泛 agent 词 2 个",
+        "标题是「我+动作」句式",
+        "标题经验词「我用」",
+        "正文经验词 3 个",
+        "营销词 2 个：优惠/折扣",
+        "论坛长帖",
+        "论坛/搜索源已达当日占比上限，未进入人工评审"
       ]
     }
   ],
   "errors": [
     {
-      "source": "LearnKu",
-      "message": "HTTP 503"
+      "source": "linux.do",
+      "message": "HTTP 403"
     },
     {
-      "source": "HelloWood",
-      "message": "HTTP 503"
+      "source": "小众软件论坛搜索",
+      "message": "部分查询失败（15/30）",
+      "partial": true
     },
     {
-      "source": "zhheo",
-      "message": "HTTP 503"
-    },
-    {
-      "source": "又耳笔记",
-      "message": "HTTP 503"
+      "source": "ursb",
+      "message": "The operation was aborted due to timeout"
     }
   ]
 }

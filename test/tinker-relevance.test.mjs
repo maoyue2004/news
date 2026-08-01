@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD } from '../lib/tinker/relevance.mjs';
-import { matchTools, matchTopics, matchVocab, queriesForDate, SEARCH_QUERIES, CORE_QUERIES } from '../lib/tinker/vocab.mjs';
+import { matchTools, matchTopics, matchVocab, queriesForDate, rotatingQueries, CORE_QUERIES, TOOLS } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
 
@@ -118,13 +118,29 @@ test('核心词每天都跑，不参与轮转', () => {
   }
 });
 
-test('长尾词轮转，几天内能覆盖全库', () => {
+test('长尾词轮转，两周内能覆盖全池', () => {
   const seen = new Set();
-  for (let d = 1; d <= 7; d += 1) {
-    for (const q of queriesForDate(`2026-08-0${d}`, 24)) seen.add(q);
+  for (let d = 0; d < 14; d += 1) {
+    const date = new Date(Date.UTC(2026, 7, 2 + d)).toISOString().slice(0, 10);
+    for (const q of queriesForDate(date, 30)) seen.add(q);
   }
-  const total = SEARCH_QUERIES.length + CORE_QUERIES.length;
-  assert.ok(seen.size >= total * 0.95, `7 天只覆盖了 ${seen.size}/${total}`);
+  const total = rotatingQueries().length + CORE_QUERIES.length;
+  assert.ok(seen.size >= total * 0.95, `14 天只覆盖了 ${seen.size}/${total}`);
+});
+
+test('查询词从词表自动派生，加了工具就自动有搜索覆盖', () => {
+  // 手写查询和词表会脱节：每加一个工具都得记得同步加查询，漏一个这工具就永远搜不到。
+  const pool = rotatingQueries();
+  for (const id of ['openclaw', 'kimi-code', 'qoder']) {
+    const name = TOOLS.find((t) => t.id === id).name;
+    assert.ok(pool.some((q) => q.startsWith(name)), `${name} 没有派生出查询词`);
+  }
+  // 太泛的名字不派生，否则搜出来全是噪声。
+  // 注意只断言「派生形式」不存在——手写词库里的 'Amp code 体验' 是刻意保留的，
+  // 它带了 code 消歧，和光秃秃的 'Amp 实践' 不是一回事。
+  for (const bad of ['Amp 实践', 'Amp 踩坑', 'Zed 实践', 'Manus 实践']) {
+    assert.ok(!pool.includes(bad), `${bad} 太泛，不该派生`);
+  }
 });
 
 test('查询数不足以容纳核心词时也不报错', () => {

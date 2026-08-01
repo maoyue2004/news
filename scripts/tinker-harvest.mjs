@@ -19,7 +19,7 @@
  *   node scripts/tinker-harvest.mjs --merge            # 直接并入 tinker/sources.json
  *   node scripts/tinker-harvest.mjs --days 180         # 放宽活跃度门槛
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { parseFeed } from '../lib/feed-parse.mjs';
 import { htmlToText } from '../lib/html-text.mjs';
 import { matchVocab } from '../lib/tinker/vocab.mjs';
@@ -53,6 +53,16 @@ const INDEXES = [
   },
 ];
 const SOURCES = 'tinker/sources.json';
+/**
+ * 人工否决过的 feed。
+ *
+ * 没有这份名单时，扩源脚本不记得任何判断，每跑一次就把同样几个源重新提名一遍，
+ * 我就得重新判一遍——实测第二轮里 5 个命中都是上一轮已经否决过的
+ * （腾讯技术工程、小米技术、宝玉的分享……）。
+ * 有些否决理由机器判不出来（「大厂官方号」和个人实践文在文本上分不开），
+ * 所以判断只能靠人做一次，然后记下来。
+ */
+const DENYLIST = 'tinker/denylist.json';
 const CONCURRENCY = Number(process.env.HARVEST_CONCURRENCY ?? 20);
 const TIMEOUT_MS = Number(process.env.HARVEST_TIMEOUT_MS ?? 12000);
 
@@ -217,6 +227,9 @@ for (const r of all) if (!byFeed.has(r.feed)) byFeed.set(r.feed, r);
 const candidates = [...byFeed.values()];
 console.error(`合计 ${all.length} 条，去重后 ${candidates.length} 个候选，开始抓 feed…`);
 
+const denied = existsSync(DENYLIST)
+  ? new Set(JSON.parse(readFileSync(DENYLIST, 'utf8')).map((d) => d.feed))
+  : new Set();
 const current = JSON.parse(readFileSync(SOURCES, 'utf8'));
 const existing = new Set(current.map((s) => s.feed).filter(Boolean));
 /** 同一个博客常有多个 feed 地址（/feed.xml 和 /zh/index.xml），按域名再去一次重。 */
@@ -226,6 +239,7 @@ const results = [];
 for (let i = 0; i < candidates.length; i += CONCURRENCY) {
   await Promise.all(candidates.slice(i, i + CONCURRENCY).map(async (row) => {
     if (existing.has(row.feed) || existingHosts.has(host(row.url))) return;
+    if (denied.has(row.feed)) return;
     if (PODCAST_HOST.test(row.feed)) return;
     let xml;
     try {
