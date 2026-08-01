@@ -162,3 +162,45 @@ test('短中文别名不能是常用词的子串', () => {
   assert.deepEqual(matchTools('纽扣子掉了'), []);
   assert.ok(matchTools('用 iFlow CLI 跑了一下').includes('iflow'));
 });
+
+test('论坛/搜索源整体占比封顶，不只是按单源配额', () => {
+  // 按源配额只防单个源淹没名单；4 个论坛源各拿 8 席合起来仍是 32 席。
+  const mk = (i, source, kind) => ({
+    id: `${source}${i}`, source, kind, url: `https://e.com/${source}${i}`,
+    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(80),
+  });
+  const items = [
+    ...['论坛A', '论坛B', '论坛C', '论坛D'].flatMap((s) => Array.from({ length: 20 }, (_, i) => mk(i, s, 'forum'))),
+    ...Array.from({ length: 10 }, (_, i) => mk(i, `博客${i}`, 'blog')),
+  ];
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  const forums = shortlist.filter((it) => it.kind === 'forum').length;
+  const blogs = shortlist.filter((it) => it.kind === 'blog').length;
+  assert.equal(blogs, 10, '文章型条目一条都不该被挤掉');
+  assert.ok(forums <= 8, `论坛不该超过 40% 占比（10 篇文章对应约 7 条），实际 ${forums}`);
+});
+
+test('博客当天集体没更新时，论坛仍能凑出一个能看的名单', () => {
+  const items = Array.from({ length: 30 }, (_, i) => ({
+    id: `f${i}`, source: '论坛', kind: 'forum', url: `https://e.com/f${i}`,
+    titleOriginal: `我用 Cursor 折腾了第 ${i} 个项目的记录`,
+    excerpt: '踩坑心得，配置工作流。'.repeat(80),
+  }));
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  assert.ok(shortlist.length >= 6, `应有 FORUM_FLOOR 兜底，实际 ${shortlist.length}`);
+});
+
+test('被占比上限挡下的条目要说明原因，不静默消失', () => {
+  const items = [
+    ...Array.from({ length: 30 }, (_, i) => ({
+      id: `f${i}`, source: `论坛${i % 3}`, kind: 'forum', url: `https://e.com/f${i}`,
+      titleOriginal: `我用 Cursor 折腾了第 ${i} 个项目`, excerpt: '踩坑心得。'.repeat(80),
+    })),
+    { id: 'b1', source: '博客', kind: 'blog', url: 'https://e.com/b1',
+      titleOriginal: '我用 Claude Code 折腾了一个项目', excerpt: '踩坑心得。'.repeat(80) },
+  ];
+  const { shortlist, rejected } = triage(items, { cap: 60, quota: 8 });
+  assert.equal(shortlist.length + rejected.length, items.length, '总数必须守恒');
+  assert.ok(rejected.some((r) => r.reasons.some((x) => x.includes('占比上限'))));
+});

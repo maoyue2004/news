@@ -20,6 +20,7 @@
 |---|---|
 | 页面（Artifact） | `https://claude.ai/code/artifact/7a51a27e-9a9d-4b67-bea8-4aee72ac735f` |
 | 执行流程 | `TINKER_DAILY.md` |
+| 周度体检 Routine ID | `trig_01K3gzaE9Gfr2AMy12Lr578J`（每周一 09:00 GMT+8，只改代码与信源，**不发布**） |
 | Claude Routine ID | `trig_01LGMjPzF1qTmLrwdHiDRDoU` |
 | 模型 | `claude-opus-5`（编辑判断是这个产品的全部价值，比罗盘的摘要任务吃力，所以没用 sonnet） |
 | allowed_tools | 比罗盘多了 `WebSearch` / `WebFetch`——每日流程第 5 步要靠它挖新信源 |
