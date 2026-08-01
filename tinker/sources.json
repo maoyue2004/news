@@ -1211,5 +1211,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "中文独立博客，近 20 篇里有 3 篇写到 agent（claude-code/vibe-coding）。"
+  },
+  {
+    "name": "iT 邦幫忙",
+    "url": "https://ithelp.ithome.com.tw",
+    "feed": "https://ithelp.ithome.com.tw/rss/articles",
+    "kind": "aggregator",
+    "enabled": true,
+    "desc": "台湾最大的技术写作平台，繁中个人实践文密度极高（尤其铁人赛的连载）。全站 feed 每次 20 条，主题很杂，靠筛选层挡。"
+  },
+  {
+    "name": "電腦玩物",
+    "url": "https://www.playpcesor.com",
+    "feed": "https://www.playpcesor.com/feeds/posts/default",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "Esor Huang，繁中工具流与效率方法第一人，补 Work Agent 那一侧。近 15 篇里 3 篇够上收录线。"
   }
 ]
