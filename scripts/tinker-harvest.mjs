@@ -77,7 +77,7 @@ const ONLY = flag('index', null);
 const TECH_TAGS = /编程|技术|开发|前端|后端|运维|开源|AI|机器学习|数据|算法|安全|效率|工具|极客|Linux|云计算|架构/i;
 
 /** OPML：只认 xmlUrl 属性。 */
-function parseOpml(text) {
+export function parseOpml(text) {
   const out = [];
   for (const m of text.matchAll(/<outline\b[^>]*>/g)) {
     const tag = m[0];
@@ -96,7 +96,19 @@ function parseOpml(text) {
  */
 const FEED_LIKE = /\/(feed|rss|atom)(\.(xml|json))?\/?$|\.(xml|atom)$|\/feed\/|\/rss\//i;
 
-function parseMarkdown(text) {
+/**
+ * 播客 / 音频源。用户要的是文章，音频进来只会占名额还没法读。
+ * 靠 URL 认已知播客托管，靠 <enclosure type="audio/*"> 认通用情况——
+ * 实测两者都需要：ximalaya 的专辑 URL 看不出是音频，
+ * 而 justinyan.me/feed/podcast 这种自建的又不在托管名单里。
+ */
+export const PODCAST_HOST = /ximalaya\.com|xiaoyuzhoufm\.com|fireside\.fm|typlog\.io|anchor\.fm|buzzsprout|libsyn|podbean|feed\.xyzfm|\/podcast/i;
+
+export function looksLikeAudio(xml) {
+  return /<enclosure[^>]+type=["']audio\//i.test(xml) || /<itunes:/i.test(xml);
+}
+
+export function parseMarkdown(text) {
   const seen = new Set();
   const out = [];
   for (const m of text.matchAll(/https?:\/\/[^\s"'<>)\]]+/g)) {
@@ -184,6 +196,9 @@ function evaluate(xml) {
   };
 }
 
+if (import.meta.url !== `file://${process.argv[1]}`) {
+  // 被 import（测试）时只暴露解析函数，不跑抓取。
+} else {
 const all = [];
 for (const idx of INDEXES) {
   if (ONLY && idx.id !== ONLY) continue;
@@ -211,6 +226,7 @@ const results = [];
 for (let i = 0; i < candidates.length; i += CONCURRENCY) {
   await Promise.all(candidates.slice(i, i + CONCURRENCY).map(async (row) => {
     if (existing.has(row.feed) || existingHosts.has(host(row.url))) return;
+    if (PODCAST_HOST.test(row.feed)) return;
     let xml;
     try {
       xml = await get(row.feed, UA);
@@ -218,6 +234,7 @@ for (let i = 0; i < candidates.length; i += CONCURRENCY) {
       if (!/HTTP (403|429)/.test(err.message)) return;
       try { xml = await get(row.feed, BROWSER_UA); } catch { return; }
     }
+    if (looksLikeAudio(xml)) return;
     try {
       const verdict = evaluate(xml);
       // 索引里的人工标注常年失修，feed 自己声明的标题更可信。
@@ -238,13 +255,24 @@ for (const r of results) {
 }
 
 if (MERGE) {
+  // 去重集合必须在**写入时**重算。只信启动时那份的话，
+  // 同一个脚本跑两次就会把同一批源追加两次——实测踩过，
+  // 12 个源各进了两遍。周更体检会反复跑这个脚本，这里必须幂等。
   const sources = JSON.parse(readFileSync(SOURCES, 'utf8'));
+  const haveFeed = new Set(sources.map((x) => x.feed).filter(Boolean));
+  const haveHost = new Set(sources.filter((x) => x.url).map((x) => host(x.url)));
+  let added = 0;
   for (const r of results) {
+    if (haveFeed.has(r.feed) || haveHost.has(host(r.url))) continue;
+    haveFeed.add(r.feed);
+    haveHost.add(host(r.url));
+    added += 1;
     sources.push({
       name: r.name, url: r.url, feed: r.feed, kind: 'blog', enabled: true,
       desc: `中文独立博客，近 20 篇里有 ${r.hitPosts} 篇够上收录线${r.tools.length ? `（${r.tools.slice(0, 4).join('/')}）` : ''}。`,
     });
   }
   writeFileSync(SOURCES, JSON.stringify(sources, null, 2) + '\n');
-  console.log(`\n已并入 ${SOURCES}，现共 ${sources.length} 个源`);
+  console.log(`\n已并入 ${added} 个（跳过 ${results.length - added} 个重复），现共 ${sources.length} 个源`);
+}
 }

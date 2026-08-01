@@ -158,12 +158,17 @@
 出来的全是 CSDN / 知乎这类 SEO 平台页）：
 
     node scripts/tinker-harvest.mjs               # 只看结果
-    node scripts/tinker-harvest.mjs --merge       # 直接并入 sources.json
+    node scripts/tinker-harvest.mjs --merge       # 确认过命中列表之后再并入
     node scripts/tinker-harvest.mjs --min-hits 2 --days 180   # 放宽门槛
 
 它同时吃四个社区维护的索引（CSV / OPML / Markdown 格式各异），筛出
 「近期活跃 + 不是媒体节奏 + 近 20 篇里至少 2 篇能过收录线」的 feed。
 判据直接调用系统自己的 `scoreItem()`，和日常筛选完全一致。
+
+**`--merge` 之前必须先看一遍命中列表，不要图快直接合。**
+有一类源机器判不出来：大厂官方技术号（腾讯技术工程、小米技术这种，
+通过 wechat2rss 的 feed 进来）写的文章确实像实践文，`scoreItem()` 拦不住，
+但它们是「官方和正式的东西」，正是这个项目要排除的。只能靠人扫一眼标题。
 
 **准入标准严，留存标准松，两者不要混用。**
 2026-08-02 拿新标准回审上一轮自动加入的 84 个源，只有 39 个还够格；

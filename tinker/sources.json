@@ -1227,5 +1227,37 @@
     "kind": "blog",
     "enabled": true,
     "desc": "Esor Huang，繁中工具流与效率方法第一人，补 Work Agent 那一侧。近 15 篇里 3 篇够上收录线。"
+  },
+  {
+    "name": "Verne in GitHub",
+    "url": "https://einverne.github.io/atom.xml",
+    "feed": "https://einverne.github.io/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，agent 工具链实测密集，近 20 篇里 7 篇够上收录线。"
+  },
+  {
+    "name": "无妄当自持",
+    "url": "https://www.insidentally.com/atom.xml",
+    "feed": "https://www.insidentally.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文个人博客，产量低但 agent 相关的比例高。"
+  },
+  {
+    "name": "枫言枫语",
+    "url": "https://justinyan.me/feed",
+    "feed": "https://justinyan.me/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文个人博客，写工具与工作流改造。"
+  },
+  {
+    "name": "Guyskk 的博客",
+    "url": "https://blog.guyskk.com/feed.xml",
+    "feed": "https://blog.guyskk.com/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文个人博客，低频长文。"
   }
 ]
