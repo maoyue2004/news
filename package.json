@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "test": "node --test",
     "fetch": "node scripts/fetch.mjs",
-    "build": "node scripts/build.mjs"
+    "build": "node scripts/build.mjs",
+    "tinker:fetch": "node scripts/tinker-fetch.mjs",
+    "tinker:build": "node scripts/tinker-build.mjs",
+    "tinker:retriage": "node scripts/tinker-retriage.mjs",
+    "tinker:probe": "node scripts/tinker-probe.mjs"
   },
   "dependencies": {
     "fast-xml-parser": "^4.5.0"

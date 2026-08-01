@@ -14,6 +14,18 @@
 | Claude 环境 ID | `env_01E8jVJc8nP9Qx6s1TxW9VQJ`（名称「AI 信源罗盘 · 抓取」） |
 | 运行时间 | 每天 08:00 GMT+8 |
 
+### Agent 折腾志（第二个系统）
+
+| 项 | 值 |
+|---|---|
+| 页面（Artifact） | `https://claude.ai/code/artifact/7a51a27e-9a9d-4b67-bea8-4aee72ac735f` |
+| 执行流程 | `TINKER_DAILY.md` |
+| 运行时间 | 每天 06:00 GMT+8（**刻意排在罗盘 08:00 之前两小时**，避免两个 routine 同时 push 同一个仓库） |
+| favicon | `🔧`（固定不变） |
+
+两个 routine 写同一个仓库的不同目录（`data/` vs `tinker/data/`），不会互相覆盖内容，
+但**同时 push 会撞**。改运行时间时务必保持间隔。
+
 管理界面：<https://claude.ai/code/routines>
 
 ## Codex Sites 定时发布

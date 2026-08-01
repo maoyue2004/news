@@ -1,0 +1,189 @@
+[
+  {
+    "name": "掘金搜索",
+    "url": "https://juejin.cn",
+    "search": "juejin",
+    "kind": "search",
+    "enabled": true,
+    "limit": 20,
+    "desc": "中文开发者写实践文的最大集散地。匿名搜索接口按词捞，是命中率最高的一路。"
+  },
+  {
+    "name": "V2EX 搜索",
+    "url": "https://www.v2ex.com",
+    "search": "v2ex",
+    "kind": "search",
+    "enabled": true,
+    "limit": 20,
+    "desc": "通过社区维护的 sov2ex 索引全站搜。V2EX 的 agent 讨论口语化、第一人称，但夹杂大量拼车贴，靠反向词过滤。"
+  },
+  {
+    "name": "小众软件论坛搜索",
+    "url": "https://meta.appinn.net",
+    "search": "discourse",
+    "origin": "https://meta.appinn.net",
+    "kind": "search",
+    "enabled": true,
+    "limit": 20,
+    "desc": "Appinn 的 Discourse 论坛，桌面工具折腾氛围浓，覆盖 Work Agent 那一侧。"
+  },
+
+  {
+    "name": "linux.do",
+    "url": "https://linux.do",
+    "feed": "https://linux.do/latest.rss",
+    "kind": "forum",
+    "browserUa": true,
+    "enabled": true,
+    "desc": "中文 AI 工具折腾密度最高的论坛。站点在 Cloudflare 后面，云端抓取会间歇性失败，属预期内。"
+  },
+  {
+    "name": "NodeSeek",
+    "url": "https://www.nodeseek.com",
+    "feed": "https://www.nodeseek.com/rss.xml",
+    "kind": "forum",
+    "enabled": true,
+    "desc": "折腾向中文论坛，自建、脚本、AI 工具话题多。"
+  },
+  {
+    "name": "V2EX 技术节点",
+    "url": "https://www.v2ex.com/go/programmer",
+    "feed": "https://www.v2ex.com/feed/tab/tech.xml",
+    "kind": "forum",
+    "enabled": true,
+    "desc": "V2EX 技术标签页 feed，补搜索索引的延迟。"
+  },
+  {
+    "name": "Ruby China",
+    "url": "https://ruby-china.org",
+    "feed": "https://ruby-china.org/topics/feed",
+    "kind": "forum",
+    "enabled": true,
+    "desc": "老牌中文技术社区，近年不少 AI 编程工作流长贴。"
+  },
+  {
+    "name": "LearnKu",
+    "url": "https://learnku.com",
+    "feed": "https://learnku.com/feed",
+    "kind": "forum",
+    "enabled": true,
+    "desc": "PHP/Laravel 起家的中文社区，覆盖另一批不上掘金的开发者。"
+  },
+
+  {
+    "name": "BestBlogs.dev",
+    "url": "https://www.bestblogs.dev",
+    "feed": "https://www.bestblogs.dev/zh/feeds/rss",
+    "kind": "aggregator",
+    "enabled": true,
+    "desc": "中文技术文章精选站，本身就在做质量筛选，等于借了一层人工过滤。"
+  },
+  {
+    "name": "少数派",
+    "url": "https://sspai.com",
+    "feed": "https://sspai.com/feed",
+    "kind": "aggregator",
+    "enabled": true,
+    "desc": "效率工具与工作流的中文大本营，Work Agent 类实践的主要来源。"
+  },
+  {
+    "name": "小众软件",
+    "url": "https://www.appinn.com",
+    "feed": "https://www.appinn.com/feed/",
+    "kind": "aggregator",
+    "enabled": true,
+    "desc": "桌面工具评测，偶有 agent 类客户端的第一手上手记。"
+  },
+  {
+    "name": "博客园首页",
+    "url": "https://www.cnblogs.com",
+    "feed": "https://feed.cnblogs.com/blog/sitehome/rss",
+    "kind": "aggregator",
+    "enabled": true,
+    "desc": "覆盖不写掘金的那批（尤其 .NET / Java）开发者。"
+  },
+  {
+    "name": "科技爱好者周刊",
+    "url": "https://www.ruanyifeng.com/blog/",
+    "feed": "https://feeds.feedburner.com/ruanyifeng",
+    "kind": "weekly",
+    "enabled": true,
+    "desc": "阮一峰周刊，条目里常带中文个人实践文的链接。"
+  },
+  {
+    "name": "潮流周刊",
+    "url": "https://weekly.tw93.fun",
+    "feed": "https://weekly.tw93.fun/rss.xml",
+    "kind": "weekly",
+    "enabled": true,
+    "desc": "Tw93 的周刊，选题偏折腾与独立开发。"
+  },
+  {
+    "name": "HelloGitHub",
+    "url": "https://hellogithub.com",
+    "feed": "https://hellogithub.com/rss",
+    "kind": "weekly",
+    "enabled": true,
+    "desc": "中文开源项目月刊，agent 类工具的中文首曝常在这里。"
+  },
+  {
+    "name": "DecoHack 独立开发者周刊",
+    "url": "https://decohack.com",
+    "feed": "https://decohack.com/feed/",
+    "kind": "weekly",
+    "enabled": true,
+    "desc": "独立开发者视角，AI 工具怎么用在真实产品里。"
+  },
+
+  { "name": "宝玉xp", "url": "https://baoyu.io", "feed": "https://baoyu.io/feed.xml", "kind": "blog", "enabled": true, "desc": "中文圈写 AI 编程实践最勤的人之一，提示词与 agent 用法的第一手记录。" },
+  { "name": "黑暗執行緒", "url": "https://blog.darkthread.net", "feed": "https://blog.darkthread.net/feed/rss/", "kind": "blog", "enabled": true, "desc": "台湾高产技术部落客，几乎日更，Copilot / Claude Code 实测写得极细。" },
+  { "name": "The Will Will Web（保哥）", "url": "https://blog.miniasp.com", "feed": "https://feeds.feedburner.com/TheWillWillWeb", "kind": "blog", "enabled": true, "desc": "保哥的长篇实操文，AI 编程工具配置讲到每一个开关。" },
+  { "name": "ihower", "url": "https://ihower.tw", "feed": "https://ihower.tw/blog/feed", "kind": "blog", "enabled": true, "desc": "陈仲肯，中文 LLM/agent 工程实践的系统性写作者。" },
+  { "name": "Huli", "url": "https://blog.huli.tw", "feed": "https://blog.huli.tw/atom.xml", "kind": "blog", "enabled": true, "desc": "台湾前端，长文写得清楚，常复盘自己的开发流程改造。" },
+  { "name": "Kalan's Blog", "url": "https://blog.kalan.dev", "feed": "https://blog.kalan.dev/rss.xml", "kind": "blog", "enabled": true, "desc": "在日台湾工程师，工具链与工作流折腾记录。" },
+  { "name": "israynotarray", "url": "https://israynotarray.com", "feed": "https://israynotarray.com/atom.xml", "kind": "blog", "enabled": true, "desc": "台湾前端，写作口语化，踩坑记录多。" },
+  { "name": "MinglunWu", "url": "https://minglunwu.com", "feed": "https://minglunwu.com/index.xml", "kind": "blog", "enabled": true, "desc": "台湾后端，个人开发流程的实践札记。" },
+  { "name": "TonyBai", "url": "https://tonybai.com", "feed": "https://tonybai.com/index.xml", "kind": "blog", "enabled": true, "desc": "Go 圈老牌博主，近年密集写 AI coding agent 的真实使用体验。" },
+  { "name": "鸟窝 Colobu", "url": "https://colobu.com", "feed": "https://colobu.com/atom.xml", "kind": "blog", "enabled": true, "desc": "Go/基础设施，也写 agent 工具链上手。" },
+  { "name": "Limboy", "url": "https://limboy.me", "feed": "https://limboy.me/index.xml", "kind": "blog", "enabled": true, "desc": "长期折腾各类效率与 AI 工具，第一人称写得好看。" },
+  { "name": "云谦 sorrycc 的 doubi", "url": "https://blog.douchi.space", "feed": "https://blog.douchi.space/index.xml", "kind": "blog", "enabled": true, "desc": "更新勤，AI 工具与开发流程实验记录。" },
+  { "name": "Tw93", "url": "https://tw93.fun", "feed": "https://tw93.fun/feed.xml", "kind": "blog", "enabled": true, "desc": "Pake 作者，独立开发与工具折腾。" },
+  { "name": "青南 kingname", "url": "https://www.kingname.info", "feed": "https://www.kingname.info/atom.xml", "kind": "blog", "enabled": true, "desc": "Python/爬虫出身，写了不少 Claude Code 与 MCP 的实操。" },
+  { "name": "Frost Ming", "url": "https://frostming.com", "feed": "https://frostming.com/feed.xml", "kind": "blog", "enabled": true, "desc": "PDM 作者，工具链视角的 AI 编程记录。" },
+  { "name": "陶叔 taoshu.in", "url": "https://taoshu.in", "feed": "https://taoshu.in/feed.xml", "kind": "blog", "enabled": true, "desc": "中文长文，写自己怎么把 AI 塞进日常开发。" },
+  { "name": "rxliuli", "url": "https://blog.rxliuli.com", "feed": "https://blog.rxliuli.com/atom.xml", "kind": "blog", "enabled": true, "desc": "独立开发者，工具与自动化折腾。" },
+  { "name": "Cyrus Yip", "url": "https://cyrusyip.org", "feed": "https://cyrusyip.org/index.xml", "kind": "blog", "enabled": true, "desc": "更新频繁的中文技术笔记，命令行工具折腾多。" },
+  { "name": "陈少文", "url": "https://www.chenshaowen.com", "feed": "https://www.chenshaowen.com/atom.xml", "kind": "blog", "enabled": true, "desc": "云原生与工具实践的中文长期写作者。" },
+  { "name": "BMPI", "url": "https://www.bmpi.dev", "feed": "https://www.bmpi.dev/index.xml", "kind": "blog", "enabled": true, "desc": "Bo 的中文长文，独立开发与 AI 工具的深度实践。" },
+  { "name": "Randy Lu", "url": "https://lutaonan.com", "feed": "https://lutaonan.com/rss.xml", "kind": "blog", "enabled": true, "desc": "文字有个人味，写工具也写心态。" },
+  { "name": "ArthurChiao", "url": "https://arthurchiao.art", "feed": "https://arthurchiao.art/feed", "kind": "blog", "enabled": true, "desc": "基础设施方向的中文写作，偶尔写 agent 工程。" },
+  { "name": "Xuanwo", "url": "https://xuanwo.io", "feed": "https://xuanwo.io/index.xml", "kind": "blog", "enabled": true, "desc": "OpenDAL 作者，中文写开源与工具实践。" },
+  { "name": "catcoding", "url": "https://catcoding.me", "feed": "https://catcoding.me/atom.xml", "kind": "blog", "enabled": true, "desc": "中文技术随笔，工程实践与工具。" },
+  { "name": "x-cmd", "url": "https://x-cmd.com/blog/", "feed": "https://x-cmd.com/feed.xml", "kind": "blog", "enabled": true, "desc": "命令行工具项目的中文博客，更新极勤，CLI 生态覆盖广。" },
+  { "name": "Owen Young", "url": "https://www.owenyoung.com", "feed": "https://www.owenyoung.com/feed", "kind": "blog", "enabled": true, "desc": "中文独立开发与自动化折腾。" },
+  { "name": "Innei", "url": "https://innei.in", "feed": "https://innei.in/feed", "kind": "blog", "enabled": true, "desc": "前端独立开发者，写自建与工具改造。" },
+  { "name": "Alan Imant", "url": "https://blog.imalan.cn", "feed": "https://blog.imalan.cn/feed/index.xml", "kind": "blog", "enabled": true, "desc": "中文技术与折腾笔记。" },
+  { "name": "Finisky Garden", "url": "https://finisky.github.io", "feed": "https://finisky.github.io/rss", "kind": "blog", "enabled": true, "desc": "中文自建与工具折腾记录。" },
+  { "name": "qiankunli", "url": "https://qiankunli.github.io", "feed": "https://qiankunli.github.io/feed.xml", "kind": "blog", "enabled": true, "desc": "中文长文，近年集中写 agent 架构与实践。" },
+  { "name": "Pseudoyu", "url": "https://www.pseudoyu.com", "feed": "https://www.pseudoyu.com/feed.xml", "kind": "blog", "enabled": true, "desc": "中文技术与生活记录，工具链折腾。" },
+  { "name": "ursb", "url": "https://blog.ursb.me", "feed": "https://blog.ursb.me/blog/feed.xml", "kind": "blog", "enabled": true, "desc": "中文独立开发者博客。" },
+  { "name": "LQ's Blog", "url": "https://lqhl.me", "feed": "https://lqhl.me/index.xml", "kind": "blog", "enabled": true, "desc": "中文技术笔记，AI 工程方向。" },
+  { "name": "luozhiyun", "url": "https://www.luozhiyun.com", "feed": "https://www.luozhiyun.com/feed", "kind": "blog", "enabled": true, "desc": "中文后端深度长文。" },
+  { "name": "Reorx's Forge", "url": "https://reorx.com", "feed": "https://reorx.com/feed.xml", "kind": "blog", "enabled": true, "desc": "中文工具折腾老手，写法很有个人风格。" },
+  { "name": "Eric Fu", "url": "https://ericfu.me", "feed": "https://ericfu.me/atom.xml", "kind": "blog", "enabled": true, "desc": "数据库方向中文长文，偶写工具实践。" },
+  { "name": "Sukka's Blog", "url": "https://blog.skk.moe", "feed": "https://blog.skk.moe/atom.xml", "kind": "blog", "enabled": true, "desc": "前端工程化中文长文，工具链细节多。" },
+  { "name": "HelloWood", "url": "https://blog.hellowood.dev", "feed": "https://blog.hellowood.dev/index.xml", "kind": "blog", "enabled": true, "desc": "中文技术博客，更新量大。" },
+  { "name": "Nekomoe", "url": "https://nekomoe.xyz", "feed": "https://nekomoe.xyz/atom.xml", "kind": "blog", "enabled": true, "desc": "中文折腾向个人博客。" },
+  { "name": "Vaayne", "url": "https://vaayne.com", "feed": "https://vaayne.com/index.xml", "kind": "blog", "enabled": true, "desc": "中文 AI 工具与自建实践。" },
+  { "name": "Laisky", "url": "https://blog.laisky.com", "feed": "https://blog.laisky.com/rss/", "kind": "blog", "enabled": true, "desc": "中文技术长文，自建 AI 服务折腾。" },
+  { "name": "liruifengv", "url": "https://liruifengv.com", "feed": "https://liruifengv.com/rss.xml", "kind": "blog", "enabled": true, "desc": "中文前端与 AI 工具折腾。" },
+  { "name": "guangzhengli", "url": "https://guangzhengli.com", "feed": "https://guangzhengli.com/rss.xml", "kind": "blog", "enabled": true, "desc": "中文技术写作，AI 编程与知识管理。" },
+  { "name": "mazhuang", "url": "https://mazhuang.org", "feed": "https://mazhuang.org/feed.xml", "kind": "blog", "enabled": true, "desc": "中文技术随笔。" },
+  { "name": "icodeq", "url": "https://icodeq.com", "feed": "https://icodeq.com/feed.xml", "kind": "blog", "enabled": true, "desc": "中文独立开发记录。" },
+  { "name": "immmmm", "url": "https://immmmm.com", "feed": "https://immmmm.com/feed", "kind": "blog", "enabled": true, "desc": "中文个人博客，工具与生活折腾。" },
+  { "name": "Ryan Chen", "url": "https://ryanc.cc", "feed": "https://ryanc.cc/feed.xml", "kind": "blog", "enabled": true, "desc": "中文个人博客。" },
+  { "name": "yuanchuan", "url": "https://yuanchuan.dev", "feed": "https://yuanchuan.dev/feed.xml", "kind": "blog", "enabled": true, "desc": "中文创意编程博客。" },
+  { "name": "zhheo", "url": "https://blog.zhheo.com", "feed": "https://blog.zhheo.com/rss.xml", "kind": "blog", "enabled": true, "desc": "中文设计与工具折腾。" },
+  { "name": "est", "url": "https://blog.est.im", "feed": "https://feeds.feedburner.com/initiative", "kind": "blog", "enabled": true, "desc": "老牌中文技术博客，短平快的折腾记录。" },
+  { "name": "Mobius", "url": "https://mobius.blog", "feed": "https://mobius.blog/feed/", "kind": "blog", "enabled": true, "desc": "中文个人博客，更新勤。" }
+]

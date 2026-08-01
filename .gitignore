@@ -1,3 +1,7 @@
 node_modules/
 data/_pending.json
 .DS_Store
+
+# 折腾志：补全后未筛选的原始快照，体积大且每天重生成，只用于本地调规则
+tinker/data/_raw.json
+tinker/data/_decisions.json

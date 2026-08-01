@@ -1,0 +1,116 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD } from '../lib/tinker/relevance.mjs';
+import { matchTools, queriesForDate, SEARCH_QUERIES } from '../lib/tinker/vocab.mjs';
+
+const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
+
+test('cjkRatio 只数汉字，忽略空白', () => {
+  assert.equal(cjkRatio('   '), 0);
+  assert.equal(cjkRatio('abcd'), 0);
+  assert.ok(cjkRatio('我用 Claude Code 折腾了一天') > 0.4);
+});
+
+test('英文内容被语言门槛挡掉', () => {
+  const r = scoreItem({ title: 'How I use Claude Code every day', excerpt: 'I tried it for a week and here is what I learned about the workflow.' });
+  assert.equal(r.verdict, 'reject');
+  assert.match(r.reasons[0], /中文占比/);
+});
+
+test('没有任何 agent 相关词的中文文章不入围', () => {
+  assert.equal(pass('我折腾了三天终于把家里的 NAS 装好了', '踩了很多坑，记录一下配置过程和心得体会。'), false);
+});
+
+test('标题带工具名的第一人称实践稳定入围', () => {
+  assert.ok(pass('我把 Claude Code 的 statusline 整理成了一个可版本化仓库', '踩了几个坑，记录配置过程。'));
+  assert.ok(pass('用 Cursor 重写工作流一个月后的复盘', '实测下来有几个地方不如预期。'));
+});
+
+test('招聘帖直接毙掉，即使命中工具词', () => {
+  const r = scoreItem({
+    title: '全栈工程师 AI Agent + Web3 远程全职 45-50K',
+    excerpt: '我们在用 Claude Code 和 Cursor，欢迎有实践经验的同学，薪资 45-50K。',
+  });
+  assert.equal(r.verdict, 'reject');
+  assert.equal(r.reasons[0], '招聘 / 接单帖');
+});
+
+test('卖额度 / 拼车帖直接毙掉', () => {
+  for (const title of [
+    '自建 Cursor / Claude Code 中转接入服务，欢迎压测',
+    'Claude Code 拼车，长期稳定',
+    'Claude API 官方价 1.9 折起，新用户免费领 10 美元额度',
+  ]) {
+    assert.equal(scoreItem({ title, excerpt: '我自己用了很久，实测很稳定。' }).verdict, 'reject', title);
+  }
+});
+
+test('短工具名按词边界匹配，不吃子串', () => {
+  // dia / amp / zed 是踩过的真实误命中：diagram、example、realized
+  assert.deepEqual(matchTools('让中文 ASCII diagram 图表对齐'), []);
+  assert.deepEqual(matchTools('for example, this is fine'), []);
+  assert.deepEqual(matchTools('I realized something'), []);
+  // 中英混排仍然要能命中
+  assert.ok(matchTools('用Zed写代码的体验').includes('zed'));
+  assert.ok(matchTools('试了下 Amp 这个 agent').includes('amp'));
+});
+
+test('新闻腔会被扣分，纯发布公告不入围', () => {
+  const r = scoreItem({
+    title: 'MCP 协议迎来史上最大更新，Claude 率先适配支持',
+    excerpt: '官方正式发布 2026-07-28 规范，据悉这是协议诞生以来改动最激进的一次，重磅升级。',
+  });
+  assert.equal(r.verdict, 'reject');
+});
+
+test('求助帖被扣分', () => {
+  const withQ = scoreItem({ title: '求教 Claude Code 怎么配置代理？', excerpt: '我折腾了半天没搞定，实践中一直报错。' });
+  const withoutQ = scoreItem({ title: 'Claude Code 配置代理的折腾记录', excerpt: '我折腾了半天没搞定，实践中一直报错。' });
+  assert.ok(withQ.score < withoutQ.score);
+});
+
+test('triage 按源配额裁剪，防止单一源淹没名单', () => {
+  const mk = (i, source) => ({
+    id: `id${i}`, source, url: `https://e.com/${i}`,
+    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。',
+  });
+  const items = [
+    ...Array.from({ length: 30 }, (_, i) => mk(i, '论坛')),
+    ...Array.from({ length: 3 }, (_, i) => mk(100 + i, '博客')),
+  ];
+  const { shortlist } = triage(items, { cap: 10, quota: 4 });
+  const forum = shortlist.filter((it) => it.source === '论坛').length;
+  const blog = shortlist.filter((it) => it.source === '博客').length;
+  assert.equal(blog, 3, '博客源的 3 条都该保住');
+  assert.ok(forum <= 7, `论坛不该超过配额+补齐，实际 ${forum}`);
+  assert.equal(shortlist.length, 10);
+});
+
+test('triage 把没进名单的 passed 条目也记进 rejected，不静默丢失', () => {
+  const items = Array.from({ length: 12 }, (_, i) => ({
+    id: `id${i}`, source: `源${i}`, url: `https://e.com/${i}`,
+    titleOriginal: `我用 Cursor 折腾了第 ${i} 个项目`,
+    excerpt: '踩坑记录，配置心得。',
+  }));
+  const { shortlist, rejected } = triage(items, { cap: 5, quota: 2 });
+  assert.equal(shortlist.length, 5);
+  assert.equal(shortlist.length + rejected.length, items.length);
+  assert.ok(rejected.some((r) => r.reasons.includes('超出当日入围上限，未进入人工评审')));
+});
+
+test('入围线是常量而不是魔数，改动会被测试看见', () => {
+  assert.equal(SHORTLIST_THRESHOLD, 6);
+});
+
+test('查询词按天轮转，一周内能覆盖全库', () => {
+  const seen = new Set();
+  for (let d = 1; d <= 7; d += 1) {
+    for (const q of queriesForDate(`2026-08-0${d}`, 12)) seen.add(q);
+  }
+  assert.ok(seen.size >= SEARCH_QUERIES.length * 0.9, `7 天只覆盖了 ${seen.size}/${SEARCH_QUERIES.length}`);
+});
+
+test('同一天的查询词切片是稳定的', () => {
+  assert.deepEqual(queriesForDate('2026-08-01', 12), queriesForDate('2026-08-01', 12));
+});
