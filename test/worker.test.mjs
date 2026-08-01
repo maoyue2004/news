@@ -61,8 +61,8 @@ class MockD1 {
 }
 
 let moduleId = 0;
-async function createWorker(html = '<h1>AI 信源罗盘</h1>') {
-  const source = buildWorkerSource(html);
+async function createWorker(html = '<h1>AI 信源罗盘</h1>', tinkerHtml = null) {
+  const source = buildWorkerSource(html, tinkerHtml);
   const encoded = Buffer.from(`${source}\n// ${moduleId++}`).toString('base64');
   return (await import(`data:text/javascript;base64,${encoded}`)).default;
 }
@@ -158,4 +158,13 @@ test('非 API 路径继续返回原页面', async () => {
   const response = await worker.fetch(request('/'), { DB: new MockD1() });
   assert.equal(response.status, 200);
   assert.equal(await response.text(), '<h1>原页面</h1>');
+});
+
+test('折腾志路径返回迁移后的原页面', async () => {
+  const worker = await createWorker('<h1>AI 信源罗盘</h1>', '<h1>Agent 折腾志</h1>');
+  for (const path of ['/tinker', '/tinker/', '/tinker.html']) {
+    const response = await worker.fetch(request(path), { DB: new MockD1() });
+    assert.equal(response.status, 200);
+    assert.equal(await response.text(), '<h1>Agent 折腾志</h1>');
+  }
 });

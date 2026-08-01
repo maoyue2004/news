@@ -1,4 +1,5 @@
 const HTML = __AI_NEWS_HTML__;
+const TINKER_HTML = __TINKER_HTML__;
 
 const CREATE_READER_STATE_TABLE = `
 CREATE TABLE IF NOT EXISTS reader_state (
@@ -151,6 +152,16 @@ const worker = {
         console.error('reader state request failed', error);
         return json({ error: 'Unable to sync reading state right now.' }, 500);
       }
+    }
+
+    if (url.pathname === '/tinker' || url.pathname === '/tinker/' || url.pathname === '/tinker.html') {
+      if (!TINKER_HTML) return new Response('Not Found', { status: 404 });
+      return new Response(request.method === 'HEAD' ? null : TINKER_HTML, {
+        headers: {
+          'content-type': 'text/html; charset=utf-8',
+          'cache-control': 'no-cache',
+        },
+      });
     }
 
     if (request.method !== 'GET' && request.method !== 'HEAD') {

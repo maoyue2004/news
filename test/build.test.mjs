@@ -74,4 +74,5 @@ test('Sites Worker 同时包含页面和云端状态接口', () => {
   assert.match(worker, /oai-authenticated-user-email/);
   assert.match(worker, /reader_state/);
   assert.doesNotMatch(worker, /__AI_NEWS_HTML__/);
+  assert.doesNotMatch(worker, /__TINKER_HTML__/);
 });

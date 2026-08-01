@@ -1,7 +1,7 @@
 # Agent 折腾志
 
 每天从中文互联网里筛出 **Code / Work Agent 的个人折腾经验文章**，写中文摘要和推荐理由，
-发布到 <https://claude.ai/code/artifact/7a51a27e-9a9d-4b67-bea8-4aee72ac735f>。
+发布到 <https://ai-news-reader-maoyue.yue14mao.chatgpt.site/tinker>。
 
 和同仓库的「AI 信源罗盘」是两个独立系统：罗盘要的是**覆盖度**（AI 领域每天发生了什么），
 折腾志要的是**筛选力**（谁真的动手用了 agent，写了什么值得抄的东西）。
@@ -82,3 +82,4 @@ Discourse 还要 `origin`。
 - **知乎、小红书没覆盖**，都需要登录态
 - 掘金搜索每天只跑 12 个查询词（词库 50 条，四天多轮一遍），避免打爆接口
 - 页面的已读/收藏存在浏览器 localStorage，不跨设备同步
+- 原 Artifact 与 Codex Site 域名不同，浏览器不会自动迁移旧的已读/收藏状态

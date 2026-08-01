@@ -6,7 +6,7 @@ URL 指纹和存储层，其余互不相干：
 | | 目标 | 入口 | 页面 |
 |---|---|---|---|
 | **AI 信源罗盘** | 覆盖度：AI 领域每天发生了什么 | `DAILY.md` / `CODEX_DAILY.md` | [Artifact](https://claude.ai/code/artifact/24e0433d-3c33-4e84-8638-0c663708b9c9) |
-| **Agent 折腾志** | 筛选力：谁真的动手用了 agent | `TINKER_DAILY.md`、[`tinker/README.md`](tinker/README.md) | [Artifact](https://claude.ai/code/artifact/7a51a27e-9a9d-4b67-bea8-4aee72ac735f) |
+| **Agent 折腾志** | 筛选力：谁真的动手用了 agent | `TINKER_DAILY.md`、[`tinker/README.md`](tinker/README.md) | [Codex Site](https://ai-news-reader-maoyue.yue14mao.chatgpt.site/tinker) |
 
 下面是信源罗盘的说明；折腾志见 [`tinker/README.md`](tinker/README.md)。
 

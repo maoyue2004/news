@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { renderPage } from '../lib/render.mjs';
 import { loadRecentDays, pruneDayFiles, loadStatus } from '../lib/store.mjs';
+import { buildHtml as buildTinkerHtml } from './tinker-build.mjs';
 
 const WINDOW_DAYS = 30;   // 页面内嵌最近多少天
 const KEEP_DAYS = 35;     // data/ 保留多少天
@@ -37,13 +38,17 @@ function todayInShanghai() {
   }).format(new Date());
 }
 
-export function buildWorkerSource(html) {
+export function buildWorkerSource(html, tinkerHtml = null) {
   const template = readFileSync(WORKER_TEMPLATE, 'utf8');
-  const placeholder = '__AI_NEWS_HTML__';
-  if (!template.includes(placeholder)) {
-    throw new Error(`Worker 模板缺少占位符 ${placeholder}`);
+  const placeholders = ['__AI_NEWS_HTML__', '__TINKER_HTML__'];
+  for (const placeholder of placeholders) {
+    if (!template.includes(placeholder)) {
+      throw new Error(`Worker 模板缺少占位符 ${placeholder}`);
+    }
   }
-  return template.replace(placeholder, JSON.stringify(html));
+  return template
+    .replace('__AI_NEWS_HTML__', JSON.stringify(html))
+    .replace('__TINKER_HTML__', JSON.stringify(tinkerHtml));
 }
 
 export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
@@ -62,12 +67,23 @@ export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
   mkdirSync(distDir, { recursive: true });
   writeFileSync(join(distDir, 'index.html'), html);
 
+  // 两个日更系统共用一个 Codex Site。折腾志仍由它自己的渲染器产出，
+  // 因此迁移到 /tinker 时页面结构、样式和交互与原 Artifact 完全一致。
+  let tinkerHtml = null;
+  try {
+    readFileSync(join(root, 'tinker', 'sources.json'));
+    buildTinkerHtml({ root, today });
+    tinkerHtml = readFileSync(join(distDir, 'tinker.html'), 'utf8');
+  } catch (error) {
+    if (error && error.code !== 'ENOENT') throw error;
+  }
+
   // Codex Sites expects a Cloudflare Worker entry point. Keep the existing
   // single-file page unchanged, add the authenticated sync API, and serve the
   // exact page build from the worker.
   const serverDir = join(distDir, 'server');
   mkdirSync(serverDir, { recursive: true });
-  writeFileSync(join(serverDir, 'index.js'), buildWorkerSource(html));
+  writeFileSync(join(serverDir, 'index.js'), buildWorkerSource(html, tinkerHtml));
 
   return {
     dayCount: days.length,

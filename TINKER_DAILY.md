@@ -1,6 +1,11 @@
 # Agent 折腾志 · 每日流程
 
-云端 routine 每天北京时间 06:00 照此执行。**每一步失败都要在最终汇报里说明，不要静默跳过。**
+Codex Scheduled Task 每天北京时间 06:00 照此执行。任务提示词只需要写：
+
+> 读仓库根目录的 TINKER_DAILY.md，严格执行全部步骤。发布阶段显式使用 sites-building 和 sites-hosting，更新现有 Site，绝对不要创建新 Site。
+
+**每一步失败都要在最终汇报里说明，不要静默跳过。**Claude Routine 与 Codex Scheduled Task
+不能同时启用，否则会重复抓取并竞争写入 `seen.json`；启用本任务前先暂停旧 Routine。
 
 这个项目要收的东西只有一种：**中文的、个人的、真的动过手的 Code / Work Agent 折腾记录**。
 不收新闻、不收官方文档、不收论文、不收产品发布稿、不收「我做了个 X 求 Star」的纯自荐、
@@ -146,23 +151,32 @@
 
 ## 3. 构建
 
-    npm run tinker:build
+    npm test
+    npm run build
 
-产出 `dist/tinker.html`。构建期会校验字段，缺字段或 rating 不是 1-5 会直接报错并指出是哪条。
+必须同时产出 `dist/index.html`、`dist/tinker.html` 和 `dist/server/index.js`。完整构建会把
+折腾志原页面原样挂到 Site 的 `/tinker` 路径；构建期会校验字段，缺字段或 rating 不是 1-5
+会直接报错并指出是哪条。构建失败时不得提交或发布。
 
-## 4. 发布
+## 4. 提交 GitHub
 
-用 Artifact 工具发布 `dist/tinker.html`：
+只提交本次每日运行产生的预期变更。提交信息：
 
-- `url`: `https://claude.ai/code/artifact/7a51a27e-9a9d-4b67-bea8-4aee72ac735f`
-- `favicon`: `🔧`（固定不变）
+    折腾志 <date>：收录 <K> 篇
 
-**`url` 必须传**，漏传会新建一个 artifact 而不是更新原来那个，用户收藏的链接直接作废。
-`capabilities` 不要传，省略会沿用已存储的声明。
+执行 `git push origin main`。若推送失败，停止发布并汇报；否则下一天可能重复收录。
 
-若当前环境没有 Artifact 工具，跳过并在汇报里明说「已构建但未发布」，不要假装发布成功。
+## 5. 发布现有 Codex Site
 
-## 5. 挖新信源（不能跳过）
+显式使用 `sites-building` 与 `sites-hosting`：
+
+1. 读取 `.openai/hosting.json` 并复用其中的 `project_id`；绝对不要创建新 Site。
+2. 保留现有 D1 绑定、AI 信源罗盘首页和当前访问范围。
+3. 用已经测试并提交的同一份源码保存一个新 Sites 版本并部署。
+4. 轮询到部署成功或失败；失败时说明错误，不要声称已发布。
+5. 成功后确认生产地址的 `/tinker` 路径可访问。
+
+## 6. 挖新信源（不能跳过）
 
 这个系统的天花板由信源决定，而中文长尾博客是挖不完的。**每次运行都要做这一步。**
 
@@ -213,7 +227,7 @@
 连续找不到新东西时，换搜索语言（试试用工具的英文名搜中文页面）、换平台
 （Discourse 论坛、中文 newsletter 平台、GitHub 中文 awesome 仓库的友链）。
 
-## 6. 自我复盘（不能跳过）
+## 7. 自我复盘（不能跳过）
 
 往 `tinker/REVIEW.md` 追加今天这条（流水账）：
 
@@ -249,16 +263,6 @@
 注意 `lib/html-text.mjs`、`lib/feed-parse.mjs`、`lib/store.mjs` 是和信源罗盘
 **共用**的，动它们要跑全量测试。
 
-## 7. 提交
-
-    npm test
-    git add -A
-    git commit -m "折腾志 <date>：收录 <K> 篇"
-    git push
-
-**务必 push**，否则当天数据丢失。更糟的是 `seen.json` 不更新，第二天会把今天的内容
-当新的重复收一遍。
-
 ## 8. 汇报
 
 一段话说明：
@@ -266,7 +270,8 @@
 - 抓了多少、入围多少、收录多少，收录率
 - 今天最值得读的一两篇是什么，为什么
 - 毙掉的主要是哪类
-- 新加了什么信源 / 词条（第 5 步）
-- 做了什么改进（第 6 步）
+- 新加了什么信源 / 词条（第 6 步）
+- 做了什么改进（第 7 步）
 - 抓取失败的源，有没有连续失败 ≥7 天的（点名）
-- 是否成功发布
+- 测试、构建与 GitHub 推送是否成功
+- Codex Site 是否发布成功及生产链接
