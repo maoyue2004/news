@@ -9,10 +9,13 @@ const DATA_DIR = 'tinker/data';
 const pending = JSON.parse(readFileSync(`${DATA_DIR}/_pending.json`, 'utf8'));
 const decisions = JSON.parse(readFileSync(process.argv[2], 'utf8'));
 
+// 按 url 索引而不是名单位置：规则一改名单顺序就变，用位置索引会把评语套到别的文章上，
+// 而且不会报错——这个坑踩过一次，代价是整期内容对不上。
+const byUrl = new Map(pending.shortlist.map((it) => [it.url, it]));
 const items = [];
-for (const [key, d] of Object.entries(decisions.picks)) {
-  const src = pending.shortlist[Number(key)];
-  if (!src) throw new Error(`入围名单里没有第 ${key} 条`);
+for (const [url, d] of Object.entries(decisions.picks)) {
+  const src = byUrl.get(url);
+  if (!src) throw new Error(`入围名单里没有这条：${url}`);
   if (d.drop) continue;
   items.push({
     id: src.id,

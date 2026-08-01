@@ -18,8 +18,8 @@
   "stats": {
     "sources": 67,
     "fetched": 445,
-    "shortlisted": 42,
-    "rejected": 403,
+    "shortlisted": 37,
+    "rejected": 408,
     "thin": 17,
     "enriched": 113,
     "enrichAttempted": 130,
@@ -119,56 +119,6 @@
       ]
     },
     {
-      "id": "184c0795cf3645bf",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1231186",
-      "titleOriginal": "我用 cursor 写代码制作产品宣传视频",
-      "publishedAt": "2026-07-31T03:40:39.000Z",
-      "excerpt": "昨天我使用 cursor 写代码制作了一个产品宣传视频，我感觉效果很不错，搭配 gpt5.6 生成: [![demo]( )]( https://img.linkedinspeak.net/renderlab-promo.mp4) 原网站： https://renderlabai.art/ 我知道你们都用了 codex 、claude code ，但也有很多人像我一样用的是 cursor 淘宝上有很多人还卖的插件，卖积分，我之前在淘宝上买的 cursor 插件，claude 模型简直降智的厉害，一个小 bug 半天修复不好。 目前我使用的是自己搭建的中转，自建的号池，搭配开源插件 cursorbyok ，不会用的可以在这使用： https://aisaasgo.org/zh/docs#cursor-byok claude 模型、gpt 5.6 、gpt image 2 模型都可以使用，欢迎体验。",
-      "author": "maomaolkd",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Claude Code 心得",
-      "thin": false,
-      "preScore": 12,
-      "tools": [
-        "cursor",
-        "claude-code"
-      ],
-      "preReasons": [
-        "标题工具：cursor",
-        "标题是「我+动作」句式",
-        "标题经验词「我用」",
-        "正文经验词 4 个",
-        "营销词 1 个：中转"
-      ]
-    },
-    {
-      "id": "bc11957f93500789",
-      "source": "小众软件论坛搜索",
-      "kind": "search",
-      "url": "https://meta.appinn.net/t/topic/88675",
-      "titleOriginal": "TokRepo：把 AI 技能、MCP 配置和提示词做成可审阅的安装流程",
-      "publishedAt": "2026-07-23T13:09:21.099Z",
-      "excerpt": "软件名称 TokRepo 应用平台 Web；另提供 CLI 与 MCP 接入（npm 包） 推荐类型 第三方推荐。本文根据官网、公开清单、GitHub 与 npm 资料整理；我不是 TokRepo 团队成员，也没有安装或运行它。 一句简介 把技能、提示词、MCP 配置和脚本做成可搜索、核验、先生成安装计划、再由代理执行的资产库。 应用简介 AI 编码工具里的技能、提示词、MCP 配置和工作流，常常散落在仓库、文档与聊天记录中。TokRepo 想把这些内容放进同一个注册表，并同时提供网页、CLI、MCP 和机器可读入口。 它比较值得看的地方，不只是“能搜到什么”，而是把搜索、详情、验证、安...",
-      "metrics": {
-        "comments": 1
-      },
-      "matchedQuery": "Claude Code 配置",
-      "thin": false,
-      "preScore": 12,
-      "tools": [
-        "mcp"
-      ],
-      "preReasons": [
-        "标题工具：mcp",
-        "标题经验词「配置」",
-        "正文经验词 3 个"
-      ]
-    },
-    {
       "id": "940732536c36eef9",
       "source": "掘金搜索",
       "kind": "search",
@@ -184,14 +134,15 @@
       },
       "matchedQuery": "Codex CLI 体验",
       "thin": false,
-      "preScore": 12,
+      "preScore": 13,
       "tools": [
         "codex"
       ],
       "preReasons": [
         "标题工具：codex",
         "标题经验词「体验」",
-        "正文经验词 6 个"
+        "正文经验词 6 个",
+        "论坛长帖"
       ]
     },
     {
@@ -240,57 +191,6 @@
       ]
     },
     {
-      "id": "ed3c2e096e817049",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1231096",
-      "titleOriginal": "memU：给 Claude Code、OpenClaw、Hermes 装上共享 memory 层",
-      "publishedAt": "2026-07-30T15:16:42.000Z",
-      "excerpt": "hihi 朋友们，我是 memU 团队的工程师 今天想给大家分享一个我们一直在打磨的开源项目：memU ，**一个面向个人开发者和极客的轻量级 Agent 记忆层**。说人话就是：**给你常用的几个 Agent 装上同一个大脑，让它们之间互相认识。** 定位和 mem0 ，Zep ，Letta （原 MemGPT ）差不多，都是 AI 记忆层的赛道，但我们走了和他们完全不同的路：我们摒弃了传统的记忆框架的臃肿，把代码从 3 万行缩短到了 500 行，只要会用 Agent 的人都可一行 prompt 以轻松部署 GitHub：github.com/NevaMind-AI/memU （求个 Star ～⭐） 官网：memu.pro ## 一、为什么做这件事 现在用 AI Agent 干活的人越来越多：用 Claude Code 写代码、Cursor 改前端、Hermes 跑 cron job 自动化任务；但用过一段时间，绝大多数人都会撞上同一堵墙：**记忆孤岛。** 每个 Agent 都是独立的会话。早上用 Claude Code 配好的项目环境，下午切到 Cursor 又要重新讲一遍。台式机上调教好的偏好设置，换到 macbook 上一切归零 市面上不是没有记忆方案，但要么太重（ Docker + 向量数据库 + 多阶段 LLM Pipeline ），要么只绑死在一个工具上（比如只能给 Claude 用）。 我们想要的是一个能让所有 Agent 都接入、部署足够轻、数据自己能掌控的记忆层。 **这就是今天的 memU 。** ## 二、就三个功能，没有第四个 ### ① 跨 Agent 、跨设备共享记忆 Claude Code 、Codex 、Cursor 、Hermes 、OpenClaw 全部共用同一层记忆库。上午在台式机用 Claude Code 学到的项目上下文，下午笔记本上的 Cursor 直接就能检索到。 ![]( ) ### ② 极致轻量的架构 新版的 memU 核心大约 500 行代码（旧版有 3 万行） 删掉的是什么？ 多阶段 LLM 提取链、查询改写器、重排器、自定义 Prompt 模板库 为什么能删？ 因为现在的 Agent 本身就是高级推理模型，不需要一个外部 Harness 替它做思考。 Agent 负责思考，memU 只做存储和检索 ### ③ 检索速度快，数据可读 检索只做一次向量计算，不需要额外调 LLM 。 500 行核心带来的直接好处：每轮检索零额外 LLM 调用，p95 延迟不到 35ms 。 所有记忆以纯 Markdown 文件存储在本地。你可以用 VS Code 打开、用 grep 搜索、用 Git 备份。不是黑盒向量数据库。 ![]( ) ## 三、直接亮数据：检索路径对比 不是砍功能换性能，是**把不该 memory 层做的事还给了 Agent 本身。** | 指标 | 旧版 memU （ 3 万行） | 新版 memU （ 500 行） | |------|---------------------|---------------------| | 检索额外 LLM 调用 | 每轮 2–4 次 | 0 次 | | 检索延迟（ P95 ） | ~1,200 ms | < 35 ms | | 每轮 Token 额外开销 | ~850 tokens | ~120 tokens | ## 四、怎么安装 **不需要配 Docker ，不需要起服务，不需要装额外的数据库。** 先到官网 https://memu.so/quick-start 拿到你的 API Key ，然后带着这个 API key 一起，把下面这段 Prompt 发给 Agent 就行： ``` read https://raw.githubusercontent.com/NevaMind-AI/MemU/main/SKILL.md and follow it to install memU. ``` Agent 读到这条 Skill 规范后，会自动完成配置。支持本地模式（完全离线）和云端同步模式（多机同步）。 ## 五、坦白说几句 距离「完美」还有多远，先把几件事说清楚： 1. 还在早期：Dashboard 支持浏览、编辑、删除记忆，但还不算完整的可视化管理后台。 2. 依赖 Agent 自身能力：如果宿主 Agent 的指令遵循能力较弱，记忆提取质量会受影响。这不是 MemU 能代劳的 3. 检索依赖 Embedding 模型：本地模式需要配置一个 Embedding API （ OpenAI / Ollama 等），不是完全零配置。 ## 六、谁用谁爽 多 Agent 用户：同时用 Claude Code + Curso",
-      "author": "Daniel6606",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Claude Code 心得",
-      "thin": false,
-      "preScore": 10,
-      "tools": [
-        "claude-code",
-        "cursor"
-      ],
-      "preReasons": [
-        "标题工具：claude-code",
-        "泛 agent 词 1 个",
-        "正文经验词 3 个"
-      ]
-    },
-    {
-      "id": "74aadd1cbad09df8",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1230998",
-      "titleOriginal": "我把小米电视遥控器变成了 Mac 的无线语音输入按钮",
-      "publishedAt": "2026-07-30T07:30:02.000Z",
-      "excerpt": "最近 Vibe Coding 时总觉得语音输入差一步：Mac 在桌上，麦克风要凑过去说；手机语音又得来回切。 使用 DJI Mic mini 发现缺按键，使用专业麦克风又要开关机和按键盘触发语音输入，无法自定义。 最后发现不到 100 块的小米蓝牙遥控器 2 Pro 能完美解决我的问题。 1. 自带电池，续航长，USB Type-C 充电，不担心没电 2. 没有灯光，完全无感 3. 可以拿到嘴边说话 4. 价格超便宜，比任何硬件都便宜，再便宜可能就是有线麦克风了 写了个小 App 「无线麦」——把小米蓝牙遥控器 2 Pro 变成 Mac 的无线麦克风。 现在的使用方式是： 1. 遥控器放手边 2. 光标点到任意输入框 3. 按住语音键说话，松开结束 豆包输入法、AI 对话、写代码、写文档都能用 顺手还把方向、确认、返回、主页、音量等按键做成了可自定义的 Mac 控制器：切应用、调音量、播放暂停，或者直接打开 Codex 、Cursor 、Xcode 等。 它不是“把遥控器模拟成键盘”那么简单，语音会通过蓝牙接入 Mac 的回环音频设备；默认不上传、不保存语音内容。 开源地址： https://github.com/HD838A/remote-mic-app 有同款遥控器和 Mac 的朋友，欢迎试试，也很想听听你们会拿它来做什么。 ![]( )",
-      "author": "ichanne",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Cursor 使用心得",
-      "thin": false,
-      "preScore": 10,
-      "tools": [
-        "cursor",
-        "vibe-coding"
-      ],
-      "preReasons": [
-        "正文工具：cursor/vibe-coding",
-        "标题是「我+动作」句式",
-        "标题经验词「我把」",
-        "正文经验词 1 个"
-      ]
-    },
-    {
       "id": "73e10b4751f2baaf",
       "source": "掘金搜索",
       "kind": "search",
@@ -306,37 +206,15 @@
       },
       "matchedQuery": "CLAUDE.md",
       "thin": false,
-      "preScore": 10,
+      "preScore": 11,
       "tools": [
         "claude-code",
         "claude-md"
       ],
       "preReasons": [
         "标题工具：claude-code/claude-md",
-        "正文经验词 5 个"
-      ]
-    },
-    {
-      "id": "82026fbe87c4ae57",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1231245",
-      "titleOriginal": "用 Claude Code 抢了一个还没发售的游戏的 wiki 站，上线 4 天开始出数据了",
-      "publishedAt": "2026-07-31T06:56:38.000Z",
-      "excerpt": "分享一个正在跑的小实验：盯上了一个 8 月 10 号进 Early Access 的 Steam 游戏 Pax Autocratica ，趁它的搜索词还没人做，注册了精确匹配域名做了个第三方 wiki/攻略站。 站： https://paxautocraticawiki.com 技术栈很轻：Astro Starlight + Cloudflare Pages 免费层，34 个页面全静态，从选词到上线大概两天，全程 Claude Code 干活。 几个有意思的点： - 这游戏有个免费序章已经能玩，所以内容可以实测验证，不像同类抢跑站全靠洗通稿 - 上线第 3 天被 Google Safe Browsing 误判成\"欺骗性网页\"（新域名+游戏关键词共现，撞了假下载站的分类器画像），整改+申诉 2 天摘掉了 - 今天 GSC 数据：核心词 \"pax autocratica wiki\" 已经排第 1 ，累计点击刚过 10 - 今天还发现官方一周前悄悄公布了价格，而我们站之前一直在\"辟谣\"这个价格无出处——抢新词站的事实基线会过期，这个坑值得记 赌的是 8/10 发售当天的搜索量爆发。变现走 AdSense 。有做过类似\"抢新词\"站的 v 友欢迎交流。",
-      "author": "sutree900",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Claude Code 心得",
-      "thin": false,
-      "preScore": 9,
-      "tools": [
-        "claude-code"
-      ],
-      "preReasons": [
-        "标题工具：claude-code",
-        "正文经验词 3 个"
+        "正文经验词 5 个",
+        "论坛长帖"
       ]
     },
     {
@@ -353,14 +231,15 @@
       },
       "matchedQuery": "AGENTS.md",
       "thin": false,
-      "preScore": 9,
+      "preScore": 10,
       "tools": [
         "vibe-coding",
         "agents-md"
       ],
       "preReasons": [
         "标题工具：vibe-coding",
-        "正文经验词 4 个"
+        "正文经验词 4 个",
+        "论坛长帖"
       ]
     },
     {
@@ -377,7 +256,7 @@
       },
       "matchedQuery": "Cursor 使用心得",
       "thin": false,
-      "preScore": 9,
+      "preScore": 10,
       "tools": [
         "mcp",
         "claude-code",
@@ -386,36 +265,8 @@
       ],
       "preReasons": [
         "标题工具：mcp",
-        "正文经验词 3 个"
-      ]
-    },
-    {
-      "id": "11451feb78e4bf5d",
-      "source": "小众软件论坛搜索",
-      "kind": "search",
-      "url": "https://meta.appinn.net/t/topic/88763",
-      "titleOriginal": "〖开发者自荐〗Somvia：把 Apple 健康数据接入兼容 MCP 的 AI 客户端",
-      "publishedAt": "2026-07-25T09:10:06.699Z",
-      "excerpt": "软件名称 Somvia 应用平台 iPhone（需要 iOS 18.0 或以上） 推荐类型 〖开发者自荐〗 一句简介 把你选择的 Apple「健康」数据接到 Claude、Codex、Hermes、OpenClaw 等支持 MCP 的客户端里。 应用简介 我平时会用 Claude、Codex 和 Hermes 处理不少事情。它们能读代码、看网页、调用各种工具，但我想让它们看看 iPhone 里的 Apple「健康」数据时，就没那么顺手了。 睡眠、HRV、静息心率、步数和训练记录都在「健康」里。偶尔问一次，截几张图发给 Agent 也能用；但只要想比较最近一周、一个月，或者连续分析每次训练...",
-      "metrics": {
-        "comments": 1
-      },
-      "tags": [
-        {
-          "id": 110,
-          "name": "ios",
-          "slug": "ios"
-        }
-      ],
-      "matchedQuery": "Codex CLI 使用",
-      "thin": false,
-      "preScore": 9,
-      "tools": [
-        "mcp"
-      ],
-      "preReasons": [
-        "标题工具：mcp",
-        "正文经验词 3 个"
+        "正文经验词 3 个",
+        "论坛长帖"
       ]
     },
     {
@@ -432,13 +283,72 @@
       },
       "matchedQuery": "Cursor 使用心得",
       "thin": false,
-      "preScore": 9,
+      "preScore": 10,
       "tools": [
         "cursor"
       ],
       "preReasons": [
         "标题工具：cursor",
-        "正文经验词 5 个"
+        "正文经验词 5 个",
+        "论坛长帖"
+      ]
+    },
+    {
+      "id": "184c0795cf3645bf",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1231186",
+      "titleOriginal": "我用 cursor 写代码制作产品宣传视频",
+      "publishedAt": "2026-07-31T03:40:39.000Z",
+      "excerpt": "昨天我使用 cursor 写代码制作了一个产品宣传视频，我感觉效果很不错，搭配 gpt5.6 生成: [![demo]( )]( https://img.linkedinspeak.net/renderlab-promo.mp4) 原网站： https://renderlabai.art/ 我知道你们都用了 codex 、claude code ，但也有很多人像我一样用的是 cursor 淘宝上有很多人还卖的插件，卖积分，我之前在淘宝上买的 cursor 插件，claude 模型简直降智的厉害，一个小 bug 半天修复不好。 目前我使用的是自己搭建的中转，自建的号池，搭配开源插件 cursorbyok ，不会用的可以在这使用： https://aisaasgo.org/zh/docs#cursor-byok claude 模型、gpt 5.6 、gpt image 2 模型都可以使用，欢迎体验。",
+      "author": "maomaolkd",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Claude Code 心得",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "cursor",
+        "claude-code"
+      ],
+      "preReasons": [
+        "标题工具：cursor",
+        "标题是「我+动作」句式",
+        "标题经验词「我用」",
+        "正文经验词 4 个",
+        "营销词 1 个：中转",
+        "论坛短帖（正文 403 字符）"
+      ]
+    },
+    {
+      "id": "9dfff7fb6ffd4efd",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1230827",
+      "titleOriginal": "我的 Agent 使用心路历程",
+      "publishedAt": "2026-07-29T12:45:44.000Z",
+      "excerpt": "小龙虾火了之后我开始用 agent ，但没真正用过小龙虾和 Hermes 。第一个上手的是 [NanoClaw]( https://github.com/nanocoai/nanoclaw/)，它的特色是代码量少、主要逻辑读得懂，我用起来安心些。后来弃用了，它的多通道和容器化对我没必要，只增加复杂度。 NanoClaw 跑在 claude-agent-sdk 上。然后我知道了 Claude Code 跟 Claude Desktop 也跑在同一套东西上。后来又知道 Codex 和 OpenCode 也各有自己的 agent SDK 。各家细节不同，但负责的东西是同一批： ``` Agent SDK ├── Session 管理 ├── 模型调用 ├── Agent Loop ├── 工具调用 ├── 文件和 Shell ├── 权限审批 ├── 流式事件 └── 上下文管理 ``` OpenClaw 和 Hermes 也是各自造了一个类似的东西。看明白这一层之后，我对「换一个 agent 客户端」这件事就没什么执念了，下面那层大同小异，区别在于外面那层怎么给你用。 ## 一、从 TUI 开始 放弃 NanoClaw 之后我就直接用 Claude Code 和 OpenCode 。一开始很朴素：在某个项目目录下敲 `claude` 或 `opencode`，起个 TUI 就开始干活。 然后我写了一些 skills ，给它调用我这台电脑的能力：用我的浏览器、用 ffmpeg 剪视频、把 markdown 转成 PDF 。到这一步它已经不只是个写代码的东西了。 ## 二、把 agent 本身变成一个项目 接着为了方便管理，我把 `AGENTS.md`、`CLAUDE.md`、`.opencode/`、`.claude/`、skills 全部收进一个固定的文件夹，我叫它 **agent-workspace**。以后我在这个 workspace 里跑 `claude` 或 `opencode`。 然后我在 workspace 里放了一个 `./notes` 文件夹。每轮对话中有需要的时候，就让它把东西写进去 —— 一次调研的结果、一次讨论的结论。 慢慢地我大部分工作都从这个 workspace 出发。哪怕要开发维护我自己的个人项目，我也是在这里说一句「去 `../xxx` 把什么什么做了」。 工作目录从「项目」挪到了「我」。项目变成了它去访问的对象。 ## 三、把 agent 从电脑里放出来 后来我知道，本地跑 `opencode` 时除了 TUI ，它同时会拉起一个 server ，也就是一个 headless 的 agent runtime 。然后我发现了 [opencode-telegram-bot]( https://github.com/grinev/opencode-telegram-bot)。 于是我在 workspace 上跑 `opencode serve`，把这个 bot 指向那个 server ，就能在手机上用 Telegram 控制我的 agent 了。session 是互通的：我在电脑前干到一半的活，离开电脑后可以在 Telegram 上接着干。 ## 四、笔记本 再后来我开始让它记录我的想法、管理我的待办。网上看到一篇文章想存下来，也直接让 agent 存进那个笔记文件夹。 为了让它管好这个笔记本，我定了几条规则和几个 skill 。比如我说「记下来 xxx 」： - 内容是给我以后看的 → `notes/brain-dump/`，逐字保存，不做摘要 - 内容是给 agent 看的跨 session 操作性事实 → `notes/memory/`，一个主题一个文件 我也用了 Andrej Karpathy 那套 LLM wiki 的方法论：我说「 ingest 某个链接」，它会读完，然后走一遍归纳总结的流程，落到 `notes/knowledge/` 里。 再后来我把 `notes` 挪进了一个 GitHub 私有库，作为独立的 repo checkout 在 workspace 里。Agent 每次改完笔记，就 commit 。 ## 五、`user.md` 和 `todos.md` 又后来我加了 `user.md` 和 `todos.md`。 **`user.md`** 是 agent 对我的认识，我自己维护，不让它改。分几节： - **goals** —— 几条我的大目标，一年内不太会变的那种目标 - **shortcomings** —— 我自己承认的毛病，例如思维分散不闭环 - **don't let me** —— 一张反清单，写清楚哪些行为是逃避，例如捣鼓某个样式捣鼓一小时，而不是去推广项目 *",
+      "author": "sumtsui",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "CLAUDE.md",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "claude-code",
+        "opencode",
+        "claude-desktop",
+        "agents-md",
+        "claude-md",
+        "agent-sdk"
+      ],
+      "preReasons": [
+        "正文工具：claude-code/opencode/claude-desktop",
+        "标题经验词「我的」",
+        "正文经验词 8 个",
+        "论坛长帖"
       ]
     },
     {
@@ -463,6 +373,30 @@
       "preReasons": [
         "标题工具：mcp",
         "正文经验词 4 个"
+      ]
+    },
+    {
+      "id": "bc11957f93500789",
+      "source": "小众软件论坛搜索",
+      "kind": "search",
+      "url": "https://meta.appinn.net/t/topic/88675",
+      "titleOriginal": "TokRepo：把 AI 技能、MCP 配置和提示词做成可审阅的安装流程",
+      "publishedAt": "2026-07-23T13:09:21.099Z",
+      "excerpt": "软件名称 TokRepo 应用平台 Web；另提供 CLI 与 MCP 接入（npm 包） 推荐类型 第三方推荐。本文根据官网、公开清单、GitHub 与 npm 资料整理；我不是 TokRepo 团队成员，也没有安装或运行它。 一句简介 把技能、提示词、MCP 配置和脚本做成可搜索、核验、先生成安装计划、再由代理执行的资产库。 应用简介 AI 编码工具里的技能、提示词、MCP 配置和工作流，常常散落在仓库、文档与聊天记录中。TokRepo 想把这些内容放进同一个注册表，并同时提供网页、CLI、MCP 和机器可读入口。 它比较值得看的地方，不只是“能搜到什么”，而是把搜索、详情、验证、安...",
+      "metrics": {
+        "comments": 1
+      },
+      "matchedQuery": "Claude Code 配置",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "mcp"
+      ],
+      "preReasons": [
+        "标题工具：mcp",
+        "标题经验词「配置」",
+        "正文经验词 3 个",
+        "论坛短帖（正文 300 字符）"
       ]
     },
     {
@@ -505,35 +439,6 @@
       ]
     },
     {
-      "id": "9dfff7fb6ffd4efd",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1230827",
-      "titleOriginal": "我的 Agent 使用心路历程",
-      "publishedAt": "2026-07-29T12:45:44.000Z",
-      "excerpt": "小龙虾火了之后我开始用 agent ，但没真正用过小龙虾和 Hermes 。第一个上手的是 [NanoClaw]( https://github.com/nanocoai/nanoclaw/)，它的特色是代码量少、主要逻辑读得懂，我用起来安心些。后来弃用了，它的多通道和容器化对我没必要，只增加复杂度。 NanoClaw 跑在 claude-agent-sdk 上。然后我知道了 Claude Code 跟 Claude Desktop 也跑在同一套东西上。后来又知道 Codex 和 OpenCode 也各有自己的 agent SDK 。各家细节不同，但负责的东西是同一批： ``` Agent SDK ├── Session 管理 ├── 模型调用 ├── Agent Loop ├── 工具调用 ├── 文件和 Shell ├── 权限审批 ├── 流式事件 └── 上下文管理 ``` OpenClaw 和 Hermes 也是各自造了一个类似的东西。看明白这一层之后，我对「换一个 agent 客户端」这件事就没什么执念了，下面那层大同小异，区别在于外面那层怎么给你用。 ## 一、从 TUI 开始 放弃 NanoClaw 之后我就直接用 Claude Code 和 OpenCode 。一开始很朴素：在某个项目目录下敲 `claude` 或 `opencode`，起个 TUI 就开始干活。 然后我写了一些 skills ，给它调用我这台电脑的能力：用我的浏览器、用 ffmpeg 剪视频、把 markdown 转成 PDF 。到这一步它已经不只是个写代码的东西了。 ## 二、把 agent 本身变成一个项目 接着为了方便管理，我把 `AGENTS.md`、`CLAUDE.md`、`.opencode/`、`.claude/`、skills 全部收进一个固定的文件夹，我叫它 **agent-workspace**。以后我在这个 workspace 里跑 `claude` 或 `opencode`。 然后我在 workspace 里放了一个 `./notes` 文件夹。每轮对话中有需要的时候，就让它把东西写进去 —— 一次调研的结果、一次讨论的结论。 慢慢地我大部分工作都从这个 workspace 出发。哪怕要开发维护我自己的个人项目，我也是在这里说一句「去 `../xxx` 把什么什么做了」。 工作目录从「项目」挪到了「我」。项目变成了它去访问的对象。 ## 三、把 agent 从电脑里放出来 后来我知道，本地跑 `opencode` 时除了 TUI ，它同时会拉起一个 server ，也就是一个 headless 的 agent runtime 。然后我发现了 [opencode-telegram-bot]( https://github.com/grinev/opencode-telegram-bot)。 于是我在 workspace 上跑 `opencode serve`，把这个 bot 指向那个 server ，就能在手机上用 Telegram 控制我的 agent 了。session 是互通的：我在电脑前干到一半的活，离开电脑后可以在 Telegram 上接着干。 ## 四、笔记本 再后来我开始让它记录我的想法、管理我的待办。网上看到一篇文章想存下来，也直接让 agent 存进那个笔记文件夹。 为了让它管好这个笔记本，我定了几条规则和几个 skill 。比如我说「记下来 xxx 」： - 内容是给我以后看的 → `notes/brain-dump/`，逐字保存，不做摘要 - 内容是给 agent 看的跨 session 操作性事实 → `notes/memory/`，一个主题一个文件 我也用了 Andrej Karpathy 那套 LLM wiki 的方法论：我说「 ingest 某个链接」，它会读完，然后走一遍归纳总结的流程，落到 `notes/knowledge/` 里。 再后来我把 `notes` 挪进了一个 GitHub 私有库，作为独立的 repo checkout 在 workspace 里。Agent 每次改完笔记，就 commit 。 ## 五、`user.md` 和 `todos.md` 又后来我加了 `user.md` 和 `todos.md`。 **`user.md`** 是 agent 对我的认识，我自己维护，不让它改。分几节： - **goals** —— 几条我的大目标，一年内不太会变的那种目标 - **shortcomings** —— 我自己承认的毛病，例如思维分散不闭环 - **don't let me** —— 一张反清单，写清楚哪些行为是逃避，例如捣鼓某个样式捣鼓一小时，而不是去推广项目 *",
-      "author": "sumtsui",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "CLAUDE.md",
-      "thin": false,
-      "preScore": 8,
-      "tools": [
-        "claude-code",
-        "opencode",
-        "claude-desktop",
-        "agents-md",
-        "claude-md",
-        "agent-sdk"
-      ],
-      "preReasons": [
-        "正文工具：claude-code/opencode/claude-desktop",
-        "标题经验词「我的」",
-        "正文经验词 8 个"
-      ]
-    },
-    {
       "id": "7af67e1ae2f839fe",
       "source": "V2EX 搜索",
       "kind": "search",
@@ -556,31 +461,6 @@
         "正文工具：codex/agents-md",
         "标题经验词「总结」",
         "正文经验词 3 个"
-      ]
-    },
-    {
-      "id": "41fc2fc1616f700c",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1230809",
-      "titleOriginal": "跨 Agent、跨设备的一个记忆外挂（当 Claude 被封之后的记忆迁移工具，你值得拥有",
-      "publishedAt": "2026-07-29T10:34:39.000Z",
-      "excerpt": "memU 2.0 已上线。 这次最值得体验的是，memU 的个人记忆现在可以跨 Agent 、跨设备使用。 无论你在 Codex 、Claude Code 、Cursor 、Openclaw 之间切换，还是换一台设备，都能继续使用同一份上下文和知识。 接入也更简单：把 memU 的 Skill 链接交给常用 Agent 即可；之后记忆沉淀和检索会在后台自动进行，Dashboard 也能查看和管理自己的记忆。 另外，memU 依然保持轻量、开源，核心记忆逻辑约 500 行代码，方便开发者按自己的工作流定制。 欢迎现在试试新版本（完全免费）： https://memu.so/（在 Quick start 里面复制代码粘贴给 Agent 即可使用，非常丝滑～） 开源版本本地部署也是完全没问题的呢，请到 readme 了解详情： https://github.com/NevaMind-AI/memU",
-      "author": "Koimiao",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Codex CLI 体验",
-      "thin": false,
-      "preScore": 8,
-      "tools": [
-        "claude-code",
-        "cursor"
-      ],
-      "preReasons": [
-        "正文工具：claude-code/cursor",
-        "标题经验词「迁移」",
-        "正文经验词 4 个"
       ]
     },
     {
@@ -654,33 +534,6 @@
       "preReasons": [
         "标题工具：cursor",
         "正文经验词 2 个"
-      ]
-    },
-    {
-      "id": "ec4f352d37cb6f7d",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1227522",
-      "titleOriginal": "[送会员] 一个小工具，让 AI 全自动帮你运营自媒体，用你自己电脑发内容",
-      "publishedAt": "2026-07-15T09:32:36.000Z",
-      "excerpt": "现在用 AI 创作内容很简单，但**分发**经常还是得手动粘贴、加标签、微调格式。虽然有一些开源工具，但普遍缺少维护，或者差点东西，成功率低，**没法真正自动化**。 现在很多 AI 其实都能直接操作浏览器，理论上慢慢点也能发布，但**很慢、很费 token**，遇到复杂弹窗还可能卡住很久。 所以我单独抽时间做了 **PublishPort**，本质上就是把大量自动化工作做了封装： - **尽量减少 AI 的执行步骤**，少踩坑，发布更稳更可靠； - **直接复用你浏览器里已有的登录状态**，不用找 cookie ，登录就在你常用的浏览器里完成； - 开箱即用，非常简单。 ## 不只是发布 除了发内容，还加了很方便的交互和统计能力： - **看数据**：AI 直接查历史发布内容的数据，据此决定后续的内容方向； - **管互动**：看评论、回复评论、看私信、回复私信…… 真正让 AI 作为账号作者，**把账号数据做起来**。 这样能玩的花样就多了。比如独立开发者可以用来： - 自动做 GEO ； - 评论区运营获客； - 把博客一键同步到其他平台； - 甚至直接撒手，让 AI 自己选题养号赚钱。 ## 设计得很薄，随处接入 它本身设计得比较薄，**对外只提供一个 MCP**，可以直接接入 Claude 、Codex 以及各种支持 MCP 的 AI ，配合定时任务就能**无人值守自动运行**。 而且**支持远程**：MCP 可以接入远端的 AI 客户端，无论是 Cursor 、Manus 、NeoDrop ，还是你已有的工作流（比如 Coze ）——**一次设置，一台 Mac mini 就能持续发内容**。 ## 已经支持哪些平台 已累计支持 **50 多个平台**，热门的基本都在： > **小红书 · 知乎 · 微博 · 掘金 · CSDN · 哔哩哔哩 · 抖音 · X （ Twitter ）· 领英 · Reddit** 除此之外还有公众号、头条、百家号、雪球、豆瓣、Medium 、Hacker News 等等。 ## 现状 - 部分平台还没充分测试，仍在持续维护优化，更多查询/发布能力也在慢慢加； - **Mac 、Windows 、Linux 都有包**。 > ⚠️ 一点提醒：现在很多平台都有 AI 内容检测，建议先把内容质量调好再发。 官网： https://www.publishport.app/ 欢迎大家下载体验，**留下邮箱送 1 个月会员！**",
-      "author": "wearzdk",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Cursor 工作流",
-      "thin": false,
-      "preScore": 8,
-      "tools": [
-        "cursor",
-        "manus",
-        "coze",
-        "mcp"
-      ],
-      "preReasons": [
-        "正文工具：cursor/manus/coze",
-        "标题经验词「自己」",
-        "正文经验词 5 个"
       ]
     },
     {
@@ -809,31 +662,6 @@
       ]
     },
     {
-      "id": "aab1cbbc1480579c",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1231354",
-      "titleOriginal": "做了一个 Neovim 里的 AI 编程 Agent 前端 pi2.nvim，开源求交流",
-      "publishedAt": "2026-07-31T15:49:42.000Z",
-      "excerpt": "## 背景 一直在用 [pi coding agent]( https://pi.dev) 做日常开发，它是一个极简的终端 AI 编程 agent （类似 Claude Code / Codex CLI ，但更轻量、可定制）。上游有个 Neovim 前端 [alex35mil/pi.nvim]( https://github.com/alex35mil/pi.nvim)，我在上面加了不少自己需要的功能，越加越多，最后独立成了 [pi2.nvim]( https://github.com/zgs225/pi2.nvim)（π²），MIT 开源。 > 声明：pi2.nvim 是 alex35mil/pi.nvim 的 fork ，基础架构（ RPC 桥接、chat 布局、diff review 、session 管理）全部来自上游，在此致谢。本文只聊 fork 新增的部分。 ## 演示 Agent 读文件 → 编辑 → 验证，带实时流式输出和 `:PiTree` 会话树导航： ![demo]( ) ## 相比上游多了什么 - **直接 bash 模式（`!cmd`）**：在 prompt 里 `!` 开头跑 shell ，输出流式进可折叠块，自动加入上下文 - **`:PiTree` 会话树导航**：跳回会话任意历史节点，可选摘要放弃的分支、重新编辑 prompt 发送（相当于 pi TUI 的 `/tree`） - **Per-tab 模型锁定**：一个 tab 切模型不会污染其它 tab 的新会话 - **图片附件压缩**：Retina 截图发送前自动缩放（ sips / magick / ffmpeg 自动探测），避免几 MB 的 PNG 吃 token - **剪贴板图片自动附加**、readline 风格 prompt 历史、未发送草稿持久化 - **双击 ` ` 中断**、prompt 状态栏（ spinner / 队列 / 中断提示，永远不滚走） - **`gf` 打开光标下路径**、`grep`/`find` 结果进 quickfix 、左侧面板、pi 改文件自动 reload buffer - 可选 `render-markdown.nvim` 渲染引擎 ## 安装 需要 Neovim 0.10+ 和 `pi` 在 PATH 里。lazy.nvim 配置见 README： https://github.com/zgs225/pi2.nvim#installation ## 为什么发这里 项目刚发了 v1.0.0 ，功能基本稳定但肯定还有粗糙的地方。想听听大家的使用体验——哪些功能有用、哪些设计反直觉、缺什么关键能力。欢迎 issue / PR / 评论区聊。 GitHub： https://github.com/zgs225/pi2.nvim",
-      "author": "yuez",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Claude Code 心得",
-      "thin": false,
-      "preScore": 7,
-      "tools": [
-        "claude-code",
-        "codex"
-      ],
-      "preReasons": [
-        "正文工具：claude-code/codex",
-        "泛 agent 词 3 个",
-        "正文经验词 4 个"
-      ]
-    },
-    {
       "id": "43e6b1cfa130344e",
       "source": "V2EX 搜索",
       "kind": "search",
@@ -856,6 +684,60 @@
         "正文工具：agents-md/spec-driven",
         "标题经验词「实践」",
         "正文经验词 2 个"
+      ]
+    },
+    {
+      "id": "2e45e22d433b8ee3",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1229795",
+      "titleOriginal": "CLI、MCP、Skills 同时在场 —— 从 8 个 Agent 源码看到的",
+      "publishedAt": "2026-07-25T14:42:36.000Z",
+      "excerpt": "> 学写公众号 2026 年 7 月 25 日 --- 作为 Codex 、Claude Code 或者 OpenClaw 、Hermes 等 Agent 的用户，你应该每天都在跟 Skills 、MCP 、CLI 这些概念打交道，可能也随时能看到一些媒体文章，讨论谁更好、该怎么选、该怎么配。 过去一年半，这样的讨论经历了好几波，好在今年初开始有一些相对客观的表达，尝试说明 MCP 、Skills 、CLI 各自的特点和定位。不过，这些讨论大多停留在定性层面： > - **2024.11–2025.5**：Anthropic 发布 MCP ，Cursor 、OpenAI 、Google 、微软相继接入，国内 BAT 全线跟进，一些媒体称之为\"AI 的 HTTP 协议\" > - **2025.10–12**：Anthropic 推出 Skills ，\"渐进式披露\"\"按需加载\"\"token 开销远低于 MCP\"成为新的关注点 > - **2026.1–3**：OpenClaw 作者 Peter Steinberger 指出 CLI 天然适配 Agent ； 3 月 Perplexity CTO 宣布内部从 MCP 转向 CLI ，YC 掌门 Garry Tan 公开指出 MCP 的上下文膨胀问题，国内开发者社区随之展开讨论 —— 也就是这个时候，CLI 这个大家每天都在用的东西，被重新放进了\"Agent 扩展能力\"的讨论框架里 不知道你会不会好奇：在你使用的真实的 Agent 环境里 —— CLI 、MCP 、Skills 这些都算是标准的扩展能力同时存在同时可用 —— Agent 究竟会怎么协调它们的？谁先谁后？谁管谁？是不是谁会更好、谁会替代谁？我们尝试从 8 个常见的 Agent 的源码入手 —— Codex 、Gemini CLI 、Kimi Code 、MiMo Code 、OpenClaw 、Hermes 、OpenCode 、ClaudeCode （排名不分先后） —— 把一个问题拆成四个递进的子问题来验证：**当 CLI 、MCP 、Skills 同时在一个 Agent 里，面对同一个需求时，它们到底怎么分工、谁覆盖谁、谁管谁。** --- ## 调研样本 | 来源 | Agent | 代码仓库 | 代码版本 | |---|---|---|---| | GitHub 官方 repo | Codex （ OpenAI ） | `github.com/openai/codex` | `4c43465` (2026-07-25) | | GitHub 官方 repo | Gemini CLI （ Google ） | `github.com/google-gemini/gemini-cli` | `3818efb` (2026-07-24) | | GitHub 官方 repo | Kimi Code （月之暗面） | `github.com/MoonshotAI/kimi-code` | `c497af6` (2026-07-25) | | GitHub 官方 repo | MiMo Code （基于 OpenCode ） | `github.com/XiaomiMiMo/MiMo-Code` | `29321aa` (2026-07-25) | | GitHub 官方 repo | OpenCode | `github.com/anomalyco/opencode` | `0a6637e` (2026-07-25) | | GitHub 官方 repo | OpenClaw | `github.com/openclaw/openclaw` | `6e604438` (2026-07-25) | | GitHub 官方 repo | Hermes （ NousResearch ） | `github.com/NousResearch/hermes-agent` | `760112a` (2026-07-25) | | GitHub | ClaudeCode （ Anthropic ） | 早期泄露版本 | `a99de1b` (2026-03-31) | > MiMo Code 基于 OpenCode fork ，两个仓库有直接可比性。下文会在分析中标注哪些设计来自 OpenCode 原有代码，哪些是 MiMo Code 独立添加的。 --- ## 一、问：工具池里，谁覆盖谁？ 当一个 CLI 工具和 MCP 工具都能做同一件事，Agent 的实现代码怎么处理冲突？ 这是一个纯代码层的问题，不看 prompt ，不看模型意图，就看工具注册表。 ### Codex：核心工具名保留 **Codex** 把所有工具 —— S",
+      "author": "Loocor",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "AGENTS.md",
+      "thin": false,
+      "preScore": 7,
+      "tools": [
+        "mcp",
+        "claude-code",
+        "gemini-cli",
+        "opencode",
+        "cursor"
+      ],
+      "preReasons": [
+        "标题工具：mcp",
+        "论坛长帖"
+      ]
+    },
+    {
+      "id": "74aadd1cbad09df8",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1230998",
+      "titleOriginal": "我把小米电视遥控器变成了 Mac 的无线语音输入按钮",
+      "publishedAt": "2026-07-30T07:30:02.000Z",
+      "excerpt": "最近 Vibe Coding 时总觉得语音输入差一步：Mac 在桌上，麦克风要凑过去说；手机语音又得来回切。 使用 DJI Mic mini 发现缺按键，使用专业麦克风又要开关机和按键盘触发语音输入，无法自定义。 最后发现不到 100 块的小米蓝牙遥控器 2 Pro 能完美解决我的问题。 1. 自带电池，续航长，USB Type-C 充电，不担心没电 2. 没有灯光，完全无感 3. 可以拿到嘴边说话 4. 价格超便宜，比任何硬件都便宜，再便宜可能就是有线麦克风了 写了个小 App 「无线麦」——把小米蓝牙遥控器 2 Pro 变成 Mac 的无线麦克风。 现在的使用方式是： 1. 遥控器放手边 2. 光标点到任意输入框 3. 按住语音键说话，松开结束 豆包输入法、AI 对话、写代码、写文档都能用 顺手还把方向、确认、返回、主页、音量等按键做成了可自定义的 Mac 控制器：切应用、调音量、播放暂停，或者直接打开 Codex 、Cursor 、Xcode 等。 它不是“把遥控器模拟成键盘”那么简单，语音会通过蓝牙接入 Mac 的回环音频设备；默认不上传、不保存语音内容。 开源地址： https://github.com/HD838A/remote-mic-app 有同款遥控器和 Mac 的朋友，欢迎试试，也很想听听你们会拿它来做什么。 ![]( )",
+      "author": "ichanne",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Cursor 使用心得",
+      "thin": false,
+      "preScore": 7,
+      "tools": [
+        "cursor",
+        "vibe-coding"
+      ],
+      "preReasons": [
+        "正文工具：cursor/vibe-coding",
+        "标题是「我+动作」句式",
+        "标题经验词「我把」",
+        "正文经验词 1 个",
+        "论坛短帖（正文 580 字符）"
       ]
     },
     {
@@ -885,24 +767,30 @@
       ]
     },
     {
-      "id": "3f6d7c4e39cd6c83",
-      "source": "小众软件论坛搜索",
+      "id": "94c0cff453a68a43",
+      "source": "V2EX 搜索",
       "kind": "search",
-      "url": "https://meta.appinn.net/t/topic/88448",
-      "titleOriginal": "OpenMarkdown - 支持 CLI / MCP，你和 AI 一起编辑 Markdown 文件",
-      "publishedAt": "2026-07-19T09:28:32.450Z",
-      "excerpt": "原始链接在： https://www.appinn.com/openmarkdown/ OpenMarkdown – 支持 CLI / MCP，你和 AI 一起编辑 Markdown 文件 - 小众软件 OpenMarkdown 不是开源软件。它是一款支持 MCP 的 Markdown 编辑器，可以让你和 AI 一起编辑 .md 文档。@ https://www.appinn.com/openmarkdown/ Appinn 第一次见以 Open 为开头的软件名称，但不是开源软件。不过它是一款免费软件，目前仅有 macOS 端。 OpenMarkdown 的最大特色是 CLI/MCP 支...",
+      "url": "https://www.v2ex.com/t/1228405",
+      "titleOriginal": "分享一个小创意，用 Agent 处理工作交接的问题",
+      "publishedAt": "2026-07-19T13:54:35.000Z",
+      "excerpt": "工作久了，真是什么样的工作交接都能见到。以前光景好，我遇到过不少很 nice 的大佬，交接文档写得超级全，让人看了就能感觉出工作能力很强，拿到也能直接上手。 但近来行情不好，奇葩事件也就越来越多了。有些粗糙的，最后往往就收到一个网盘链接，里面是几十份文档、几个 Notion 页面，文件名看起来还很像：「最终版」「最终确认版」「最新最终版」。 一问呢就说资料都在，可接手的人肯定一脸懵逼：平时到底看哪份？ 现在的情况就更麻烦了。很多人每天都在用自己的 AI 助手。一个 Agent 跟着项目跑了大半年，读过 PRD 、客户记录、研究报告，也处理过一堆零碎问题。人一走，账号一关，这...这就没了？不应该吧？ 因为我们不是大厂，没那么完备的细则，所以工作交接还是很重要的。但直接把 AI 账号交给接手人？我是不太建议。 一来，聊天里可能混着私人对话、个人习惯、客户信息，还有各种本地缓存。接手一个项目，没道理连前任一整年的聊天记录一起接管。 二来，更别说聊天记录还会过期。三个月前问过「退款政策按哪版执行」，当时的回答也许没问题，今天再翻出来，未必还能用。 所以这个新兴的 AI 助手，又该怎么交接呢？ 我的办法是这样的：先把公司真正需要留下的东西单独拿出来。 正式 PRD 、合同、产品规则、研究报告、决策记录——这些归公司维护。个人提示词、聊天历史、说话习惯——这些留在原来的账号里。 至少，先把「工作资料」和「个人使用痕迹」拆开。 然后就是工作资料的处理问题了。 如果只是把它们打包进网盘，那兜兜转转还是会回到第一步：「文件都给你了。」接手人还是得自己找当前版本，自己对表格口径。想用 AI 帮忙查，又得把文件重新传一遍。 一点也不方便。 我估计是没几个人有这个耐心重新看的，普遍都是扔进网盘以后就束之高阁，然后开始自己倒腾摸索了，重复造轮子这一步少不了。 最后是人和工具都换了，资料却还在原地，谁也用不顺，交接了跟没交接一样。 所以这里，我会借助一个常用的文档解析和记忆工具 Knowhere ，来解析这些资料。Knowhere 是复杂、脏乱文档和 AI Agent 之间的 Memory Layer ，把 PDF 、Word 、Excel 、图片丢进去，它会把文档拆成章节、表格、引用，整理成 AI 能查、能追问、还能带回原文出处的资料，确保 AI 真能读懂这些文件； 在解析时，Knowhere 会用树形结构算法恢复文档里的章节关系，重建文档层级，同时对图片和表格做 OCR 和结构化处理，保留来源路径，形成可跨文档导航的记忆图谱。 对交接来说，这很关键。 正式资料可以沉淀在公司维护的文档库里，文件解析之后，章节、表格、引用都会留着，不跟着某个人的账号走，也不被某个工具绑住。后面换人、换工具，照样能查，查的还是同一批资料。 现在，Knowhere 还加上了 MCP 功能，方便外部工具的调用。 比如前任习惯用 TRAE ，接手人习惯用 Codex 。两边连的是同一个知识空间，查到的还是那批 PRD 、合同和研究报告。AI 回答时，还能把对应章节和原文一并带回来。 接手人不需要登录前任的账号，也不用把几十份文件重新喂一遍。换成 Cursor 、Codex ，或其他支持 MCP 的客户端，资料都还在公司这边。 只需要一句简单的提问，比方说：「客户退款按哪份政策执行？」 Agent 就可以把当前文件、对应章节和原文一起返回了。哪份资料还没入库，它也能马上看出来，再回去补。 Knowhere 能把解析后的项目文档，提供给不同 AI 工具查询。 当然，Knowhere 不会把前任脑子里的判断自动保存下来。没整理、没入库的临时想法，人走以后照样会丢。 所以交接单也得跟着改一改。除了网盘链接，最好再写清楚： - 哪些资料已经进了公司知识空间 - 当前以哪一版为准 - 后面谁负责更新 - 接手人能看哪些内容 这样交完之后，接手人可以直接在自己的 AI 工具里查同一批资料，不必再从「最新最终版」开始猜了。 感兴趣的可以尝试一下： - 官网体验： https://knowhereto.ai/?utm_source=v2ex - 开源仓库： https://github.com/Ontos-AI/knowhere - MCP 文档： https://docs.knowhereto.ai/mcp?utm_source=v2ex",
+      "author": "cs1707",
       "metrics": {
-        "comments": 1
+        "comments": 0
       },
-      "matchedQuery": "Codex CLI 使用",
+      "matchedQuery": "Cursor 规则",
       "thin": false,
-      "preScore": 6,
+      "preScore": 7,
       "tools": [
+        "cursor",
+        "trae",
         "mcp"
       ],
       "preReasons": [
-        "标题工具：mcp"
+        "正文工具：cursor/trae/mcp",
+        "泛 agent 词 1 个",
+        "正文经验词 6 个",
+        "论坛长帖"
       ]
     },
     {
@@ -989,14 +877,65 @@
       ]
     },
     {
-      "id": "81dcd45e57558a12",
+      "id": "82026fbe87c4ae57",
       "source": "V2EX 搜索",
       "kind": "search",
-      "url": "https://www.v2ex.com/t/1228685",
-      "titleOriginal": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？",
-      "publishedAt": "2026-07-20T16:59:58.000Z",
-      "excerpt": "重度用 Claude Code + Codex 大半年，~/.claude/projects 和 ~/.codex 里躺了几百个 session ，全是当时一起踩坑、定方案、改 bug 的过程。问题是这些几乎再也不会被翻出来——换台机器、换个工具、开个类似的新项目，之前和 agent 一起搞明白的东西就锁死在旧的 JSONL 里了。 现在主流的\"记忆\"方案（ CLAUDE.md 、各种 memory MCP ）解决的是\"下次别忘\"，但我想说的是另一个问题：**积累下来的那部分**，怎么变成能带走、能复用的资产。 想问问大家真实的做法（不是假设，是你实际干过的）： 1. 你有没有真的翻回旧 session 去捞过东西？在找什么，花了多久？ 2. 换新机器 / 换到第二个工具（ Codex 、Cursor ）时，你实际带过去了什么？就一个 CLAUDE.md ？还是啥都没带？ 3. 有没有人试过把旧 session 蒸馏成能复用的东西（ skill 、文档、prompt 模板）？坚持下来了，还是太麻烦放弃了？ 我自己在折腾这个方向（在做个本地小工具），更想先确认一件事：是不是只有我觉得，几个月的 agent 使用记录，其实是被我们白白扔掉的资产。",
-      "author": "Kamiimeteor",
+      "url": "https://www.v2ex.com/t/1231245",
+      "titleOriginal": "用 Claude Code 抢了一个还没发售的游戏的 wiki 站，上线 4 天开始出数据了",
+      "publishedAt": "2026-07-31T06:56:38.000Z",
+      "excerpt": "分享一个正在跑的小实验：盯上了一个 8 月 10 号进 Early Access 的 Steam 游戏 Pax Autocratica ，趁它的搜索词还没人做，注册了精确匹配域名做了个第三方 wiki/攻略站。 站： https://paxautocraticawiki.com 技术栈很轻：Astro Starlight + Cloudflare Pages 免费层，34 个页面全静态，从选词到上线大概两天，全程 Claude Code 干活。 几个有意思的点： - 这游戏有个免费序章已经能玩，所以内容可以实测验证，不像同类抢跑站全靠洗通稿 - 上线第 3 天被 Google Safe Browsing 误判成\"欺骗性网页\"（新域名+游戏关键词共现，撞了假下载站的分类器画像），整改+申诉 2 天摘掉了 - 今天 GSC 数据：核心词 \"pax autocratica wiki\" 已经排第 1 ，累计点击刚过 10 - 今天还发现官方一周前悄悄公布了价格，而我们站之前一直在\"辟谣\"这个价格无出处——抢新词站的事实基线会过期，这个坑值得记 赌的是 8/10 发售当天的搜索量爆发。变现走 AdSense 。有做过类似\"抢新词\"站的 v 友欢迎交流。",
+      "author": "sutree900",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Claude Code 心得",
+      "thin": false,
+      "preScore": 6,
+      "tools": [
+        "claude-code"
+      ],
+      "preReasons": [
+        "标题工具：claude-code",
+        "正文经验词 3 个",
+        "论坛短帖（正文 529 字符）"
+      ]
+    },
+    {
+      "id": "c001498a6652b82d",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1231121",
+      "titleOriginal": "别再买 AI 课了，我做了个免费网站比任何课程都值",
+      "publishedAt": "2026-07-31T00:49:31.000Z",
+      "excerpt": "![image-20260730175633212]( ) 月底了，发现 AI API 额度还剩一大截。不做点什么就亏了，我寻思做个什么工具站吧。 最近一直在看 Claude Code 的系统提示词，于是我花了一些时间做了个网站，把这些提示词的演变做成了可视化时间线。 然后我发现，这玩意比任何 AI 课程都值。 > 地址: https://prompt529650.xyz ![image-20260730175233554]( ) ## 我为什么觉得课程不靠谱 我身边有不少人花几百块甚至上千块买 AI 课程。打开任何一个平台搜 Claude Code 教程，标价 199 、299 、999 的课一堆。点进去一看，教的东西大同小异，怎么配环境、怎么写 CLAUDE.md 、怎么用 slash command 。 我看完就一个感觉，这些课都在教\"怎么用\"，从来不告诉你\"为什么这样设计\"。 但我翻了 Claude Code 的系统提示词演变之后，发现真正值钱的东西全在\"为什么\"里。Anthropic 的工程师为什么把记忆系统从简单指南升级成结构化数据库？为什么把 Monitor 工具设计成\"stdout 就是事件流\"而不是自己造一套新系统？为什么某次更新一口气砍掉 300 行规则，行为反而没退化？ 这些问题的答案，全写在系统提示词的每次变更里。而且全部免费。 ## 我翻了 376 个版本，最让我吃惊的三件事 我不想把这篇文章写成版本变更日志。如果你感兴趣，自己去 ( https://prompt529650.xyz) 翻。但有三个节点，我觉得值得单独拿出来说。 **第一个，Claude Code 的记忆系统居然是后加的。** 我一开始以为 Claude Code 从第一天就有记忆管理。结果翻到 v1.0.0 的提示词，里面干干净净，就是告诉模型怎么说话、怎么拒绝、怎么帮你写代码。没有记忆系统，没有工具链管理，什么都没有。就是一个对话框。 记忆系统是后来才一点点加上去的，到 v2.1.83 才真正成体系。而且 Anthropic 的做法跟很多人想的不一样，他们不是把什么都记住，而是专门定义了\"什么不该记\"。我在自己的项目里写 CLAUDE.md 时就犯过这个错，恨不得把所有上下文全塞进去，结果模型注意力反而被稀释了。有节制地记录，比什么都记有效得多。 **第二个，Claude Code 从\"你问我答\"变成了\"我帮你盯着\"。** v2.1.122 引入了 Monitor 和 Schedule 功能。这不是加了个工具那么简单，整个交互范式变了。Claude Code 之前就是你问它才动，有了 Monitor 之后，它可以盯着进程输出、监听文件变更、在特定时间自动执行任务。 Monitor 的设计哲学很有意思，它没有自己造一套事件系统，而是把 stdout/stderr 重新定义为事件流。任何脚本只要会打印，就能变成事件源。这个抽象极其务实，我在其他项目里也借鉴了这个思路。 **第三个，精简才是真正的进步。** v2.1.187 砍掉了大约 300 行旧规则和 JSON Schema 示例。我第一反应是这不是功能退化吗？但仔细看才发现，Claude Code 的行为完全没有退化。 AI 分析里有一句话点到了要害，Claude Code 在从\"提示词里塞完整 API 文档\"转向\"更精炼的意图级指令\"。冗长的说明被删掉但行为没退化，说明那份说明早就该精简了。 这对我自己写 prompt 也有启发。我写的系统提示词经常越写越长，恨不得把每个细节都写进去。但 Anthropic 的经验告诉我，写了两百行的提示词，可能一百五十行都是多余的。 ## 为什么免费的比花钱的值 回到开头的问题。 199 块的课程教配置环境，这里让看到 Anthropic 工程师每一天在想什么。课程有截止日期，有录播时长限制，有讲师的个人理解偏差。系统提示词的演变记录没有这些限制，它就是原始的一手资料，自己读、自己判断、自己得出结论。 全部免费开放。这不是某个博主的个人见解，是 Anthropic 团队用实际行动给出的答案。 Claude Code 从一份\"请保持简洁\"的使用说明，演化成支持记忆管理、事件流感知、定时任务、权限治理的完整操作系统。这个演化过程本身就是最好的教材。 顺便说一句，这个站也是 AI 做的。月底额度没用完，顺手做了个展示 AI 进化史的工具站。如果也有没用完的 AI 额度，不如也做个什么。毕竟学 AI 最好的方式，就是用 AI 做东西。",
+      "author": "JustW",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Claude Code 心得",
+      "thin": false,
+      "preScore": 6,
+      "tools": [
+        "claude-code",
+        "claude-md"
+      ],
+      "preReasons": [
+        "正文工具：claude-code/claude-md",
+        "标题是「我+动作」句式",
+        "正文经验词 6 个",
+        "营销词 1 个：课程",
+        "论坛长帖"
+      ]
+    },
+    {
+      "id": "03cbf69d4e005a21",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1228533",
+      "titleOriginal": "Claude Code 子代理风暴大家是怎么规避的？",
+      "publishedAt": "2026-07-20T05:20:32.000Z",
+      "excerpt": "Home Sign Up Sign In • 请不要在回答技术问题时复制粘贴 AI 生成的内容 V2EX › 程序员 Claude Code 子代理风暴大家是怎么规避的？ f5a599 · Jul 20 · 2315 views Claude Code 只限制了递归子代理最大深度 5 ，有时候会拉起上百个子代理，大家是怎么规避的呢？ CLAUDE.md 里声明一个 Agent Policy 有效吗？ 合理的子代理配置各位怎么看？ 子代理 风暴 规避 16 replies • 2026-07-21 10:25:11 +08:00 1 skuuhui Jul 20 有个 hook 。搜下 PreToolUse 。 2 v2gba Jul 20 dynamic workflow 里设置 limit? 3 Grapevine Jul 20 有没有什么文档完整介绍 subagent 机制的？比如递归的逻辑是什么样的 4 llllk Jul 20 绷不住了，昨天给我拉起了 1000 多个子代理，存储就占了 100G 5 f5a599 OP Jul 20 @ Grapevine 目前看是 claude code 定义了 general purpose / explore / plan 等几个内置 Agent ，subagent 又可以递归派生 subagents ，只限制了递归深度为 5 ，所以某些场景下会直接派生上百个子代理 6 HangoX Jul 20 是怎么做到的？我没遇到过，接入的是 claude 模型？ 7 cheng6563 Jul 20 加全局提示词： 运行 subagent 时，需要提示它不要继续运行 subagent 。避免 subagent 套娃。 8 loveumozart Jul 20 子代理的创建、结束这种管理应该依赖 DAG 任务，非必要不创建 subagent ，这不应该是通过配置解决的，应该是通过持久化的任务来解决的啊，你是什么场景遇到的？ 9 f5a599 OP Jul 20 @ loveumozart CC 从 v2.1.172 开始 subagent 可以生成自己的 subagents ，深度上限为五级（固定且不可配置）。很容易遇见，比如老项目的审计，内置的 Explore 代理会递归派生。 10 f5a599 OP Jul 20 @ HangoX claude 和 chatgpt 的都会 11 loveumozart Jul 20 @ f5a599 #9 claude code 这块真是瞎搞啊。。。codex 这边递归深度默认好像是 2 ，并发也有限制，你可以试试告诉 claude code 让它自己改配置，理论上这些都是注入式可配的，如果没法解决问题的话，推荐使用我说的方式，你的审计也先让它不执行，先列计划 markdown 保存在本地，你 review 完复杂度再让它进行，至少你能对深度和并发度心里有数 12 alexluo1 PRO Jul 20 前几天给我拉了 50 多个 fable5 subagents ，给我吓尿了 13 noahhhh Jul 20 via Android 你们是不是用了 Ultra Code ，怎么会拉那么多子代理 14 Jensond Jul 20 目前好像无解啊，尤其是切换高级模型时候，会抛弃记忆触发多子代理和 worflow 15 jqtmviyu Jul 21 用旧版呗.天天追着更新, 你见过卖 tokens 的说他们更新是为了减少消耗吗? 16 HangoX Jul 21 gpt56-sol 我遇到过，但是 claude 模型没有遇到过那么猛，可能和你提示词有关系，gpt56-sol 一次给我来 10 个 agent 我都懵逼了 @ f5a599 About · Help · Advertise · Blog · API · FAQ · Solana · 2827 Online Highest 6679 · Select Language 创意工作者们的社区 World is powered by solitude VERSION: 3.9.8.5 · 50ms · UTC 14:15 · PVG 22:15 · LAX 07:15 · JFK 10:15 ♥ Do have faith in what you're doing. ❯",
+      "author": "f5a599",
       "metrics": {
         "comments": 0
       },
@@ -1005,25 +944,25 @@
       "preScore": 6,
       "tools": [
         "claude-code",
-        "cursor",
-        "mcp",
+        "subagent",
         "claude-md"
       ],
       "preReasons": [
         "标题工具：claude-code",
-        "正文经验词 7 个",
-        "疑似求助 / 提问帖"
+        "正文经验词 2 个",
+        "疑似求助 / 提问帖",
+        "论坛长帖"
       ]
     },
     {
-      "id": "2e45e22d433b8ee3",
+      "id": "0ccc2f0d53dbbeb8",
       "source": "V2EX 搜索",
       "kind": "search",
-      "url": "https://www.v2ex.com/t/1229795",
-      "titleOriginal": "CLI、MCP、Skills 同时在场 —— 从 8 个 Agent 源码看到的",
-      "publishedAt": "2026-07-25T14:42:36.000Z",
-      "excerpt": "> 学写公众号 2026 年 7 月 25 日 --- 作为 Codex 、Claude Code 或者 OpenClaw 、Hermes 等 Agent 的用户，你应该每天都在跟 Skills 、MCP 、CLI 这些概念打交道，可能也随时能看到一些媒体文章，讨论谁更好、该怎么选、该怎么配。 过去一年半，这样的讨论经历了好几波，好在今年初开始有一些相对客观的表达，尝试说明 MCP 、Skills 、CLI 各自的特点和定位。不过，这些讨论大多停留在定性层面： > - **2024.11–2025.5**：Anthropic 发布 MCP ，Cursor 、OpenAI 、Google 、微软相继接入，国内 BAT 全线跟进，一些媒体称之为\"AI 的 HTTP 协议\" > - **2025.10–12**：Anthropic 推出 Skills ，\"渐进式披露\"\"按需加载\"\"token 开销远低于 MCP\"成为新的关注点 > - **2026.1–3**：OpenClaw 作者 Peter Steinberger 指出 CLI 天然适配 Agent ； 3 月 Perplexity CTO 宣布内部从 MCP 转向 CLI ，YC 掌门 Garry Tan 公开指出 MCP 的上下文膨胀问题，国内开发者社区随之展开讨论 —— 也就是这个时候，CLI 这个大家每天都在用的东西，被重新放进了\"Agent 扩展能力\"的讨论框架里 不知道你会不会好奇：在你使用的真实的 Agent 环境里 —— CLI 、MCP 、Skills 这些都算是标准的扩展能力同时存在同时可用 —— Agent 究竟会怎么协调它们的？谁先谁后？谁管谁？是不是谁会更好、谁会替代谁？我们尝试从 8 个常见的 Agent 的源码入手 —— Codex 、Gemini CLI 、Kimi Code 、MiMo Code 、OpenClaw 、Hermes 、OpenCode 、ClaudeCode （排名不分先后） —— 把一个问题拆成四个递进的子问题来验证：**当 CLI 、MCP 、Skills 同时在一个 Agent 里，面对同一个需求时，它们到底怎么分工、谁覆盖谁、谁管谁。** --- ## 调研样本 | 来源 | Agent | 代码仓库 | 代码版本 | |---|---|---|---| | GitHub 官方 repo | Codex （ OpenAI ） | `github.com/openai/codex` | `4c43465` (2026-07-25) | | GitHub 官方 repo | Gemini CLI （ Google ） | `github.com/google-gemini/gemini-cli` | `3818efb` (2026-07-24) | | GitHub 官方 repo | Kimi Code （月之暗面） | `github.com/MoonshotAI/kimi-code` | `c497af6` (2026-07-25) | | GitHub 官方 repo | MiMo Code （基于 OpenCode ） | `github.com/XiaomiMiMo/MiMo-Code` | `29321aa` (2026-07-25) | | GitHub 官方 repo | OpenCode | `github.com/anomalyco/opencode` | `0a6637e` (2026-07-25) | | GitHub 官方 repo | OpenClaw | `github.com/openclaw/openclaw` | `6e604438` (2026-07-25) | | GitHub 官方 repo | Hermes （ NousResearch ） | `github.com/NousResearch/hermes-agent` | `760112a` (2026-07-25) | | GitHub | ClaudeCode （ Anthropic ） | 早期泄露版本 | `a99de1b` (2026-03-31) | > MiMo Code 基于 OpenCode fork ，两个仓库有直接可比性。下文会在分析中标注哪些设计来自 OpenCode 原有代码，哪些是 MiMo Code 独立添加的。 --- ## 一、问：工具池里，谁覆盖谁？ 当一个 CLI 工具和 MCP 工具都能做同一件事，Agent 的实现代码怎么处理冲突？ 这是一个纯代码层的问题，不看 prompt ，不看模型意图，就看工具注册表。 ### Codex：核心工具名保留 **Codex** 把所有工具 —— S",
-      "author": "Loocor",
+      "url": "https://www.v2ex.com/t/1226643",
+      "titleOriginal": "专科大二，喜欢底层开发(?)，但有点迷茫想听听建议...",
+      "publishedAt": "2026-07-11T21:07:03.000Z",
+      "excerpt": "我是专科 大二的学生，因为比赛拿奖有个专业课免试资格，所以升本能去本省计算机专业里最好的本科 本来是留校实习的，但因为种种问题（没有处理这种事的经验），现在被流放到市场了。 我现在感觉到 AI Agent 对 CRUD 写胶水真没什么意思了，我个人很喜欢计算机，10 年前就注册了 Github ，最早是用 Java 写一些 Android 小应用发到当时的酷安市场，几 w 的下载量，谈不上厉害，但那时候的我也挺开心的。 之后接触 Webdev ，最开始 Vue->Go ，到现在 AI agent 最喜欢的 Nextjs+tailwindcss 我感觉应用层变来变去，你很难在其中找到一个属于自己的位置，我最早接触 Webdev 的时候 jQuery+PHP 特别火，现在已经查无此人了 去年 25 年 7 月，我开始接触嵌入式，我做了一个智能车 项目的详细可以看我写的一篇博客文章：[https://lycois.org/cn/blog/2025/rasp-robot-car/cn]( https://lycois.org/cn/blog/2025/rasp-robot-car/cn) ![]( https://lycois.org/_astro/raspcar.C2biH41I_1yU3Ay.webp) 当时我没有用 AI Agent 写代码，真的就是闷头学，但其实只学了点皮毛懂点嵌入式基础的通信协议，GPIO, I2C, SPI ，串口通信什么的，学了点 gdb 调试，懂了什么是 CPU 中断，CPU 时钟， 再学学调 PID ，看了看增量式 PID ，位置式 PID 。 然后让 AI agnet 用 Nextjs 搓了个可视化的控制面板，控制面板与树莓派用 WebSocket 连了一下，用 mjpg 图传。 然后在电脑搭了个简单的中间曾，用 YoloV8 去做目标检测，整个流程就变得稍稍有点复杂：STM32->树莓派 -> YoloV8 flask -> Nextjs 整个项目耗资 800¥，我的感受是在资源极度限制的情况下，其实也很有意思。 但我没有往模电数电继续深入。因为我通过这两三个月的体验，感受到了嵌入式软件是一个很封闭的行业，我理解的是很多事情都是在不同的芯片厂商的基础上去做有限度的开发。但 FPGA/DSP 的那些就感觉不一样，我也不太懂。硬件学了一下焊接，会焊引脚，感觉做硬件不适合我。有想复刻的硬件项目发现要贴片，我也谈不上喜欢就不想搞了。 现在老师帮我申报了几千块，我买了 Astra pro 深度相机，更 NB 的车架，买了个镭神 N10p 雷达，准备玩玩 ROS SLAM 什么的，做做自动规划的东西。 现在我在学 C 和 Rust ，正在用 C+SDL 手搓一个带 GUI 的 markdown editor ，用 Rust 做一个 SSG ，两个都要自己实现 markdown parser ，或许在实现同样的功能时，我能更好的感受到 Rust 的 Ownership 和内存安全的意义。 而且我找到了一个很好的学习方式（ AI 虽然让 Webdev 完蛋了，但对 Self-study 特别友好）。 我会跟 Codex 说：我是 C 语言新手，请你指导我完成 xxx 项目，实现各个功能时尽量不引入第三方库，当我遇到问题时不要直接告诉我答案，而是应该引导我去自己发现答案，请你根据此约束生成一个 AGENTS.md 到现在，我已经做出了一个还没有 Markdown 渲染但可以正常用的 text editor ！的确挺有意思的。可能我还是喜欢深入一点？但我也知道我现在学的还是很浅层的，继续往下深入可能学得会比较痛苦，我会心存敬畏的。 我最终的目标是在 AI 的帮助下，写一个 compiler + RISC-V OS kernel 。 计算机是我的爱好。 但将爱好作为不得不做的工作，并试图从爱好中谋取经济价值，是一件相当痛苦的事。 现在大三这一年实习也不知道去哪里，因为我只想要一点工资用作日常 tokens 的开销，并且想将自己的大部分时间分配给我的学习上。 跟我要好的老师建议我升本后去考研，我也不知道我要不要卷 408... 现在其实也不知道未来该干什么了。虽然现在打代码也挺开心的，但是抬起头却又感觉有点迷茫。 对了，我的英语很好，高考虽然考得很烂，但是英语 120+。很多功劳都来自于读技术文档。 最近在看 tsoding 的 twich 直播，现在我也刻意地录英语视频，去讲一些我新学到的知识。视频也不发出去，只当是一种自言自语吧。 其实整篇文章零零散散，我就想听听各位的建议： 以我的情况，升本以后是否应该准备 408 考研？ 大三这一年要找实习吗，还是尽量保留时间打基础 我未来的就业方向应该是怎么样的？ 问题有点幼稚",
+      "author": "numbsooo",
       "metrics": {
         "comments": 0
       },
@@ -1031,62 +970,13 @@
       "thin": false,
       "preScore": 6,
       "tools": [
-        "mcp",
-        "claude-code",
-        "gemini-cli",
-        "opencode",
-        "cursor"
+        "agents-md"
       ],
       "preReasons": [
-        "标题工具：mcp"
-      ]
-    },
-    {
-      "id": "148249420857dac7",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1230778",
-      "titleOriginal": "Cursor Pro 账号余额都用完了为啥还可以使用 Auto 模式，且计费是 Free，不是很懂这个计费方式",
-      "publishedAt": "2026-07-29T09:06:19.000Z",
-      "excerpt": "Home Sign Up Sign In V2EX › Cursor Cursor Pro 账号余额都用完了为啥还可以使用 Auto 模式，且计费是 Free，不是很懂这个计费方式 KingCloser · Jul 29 · 474 views 计费 余额 auto 1 replies • 2026-07-29 17:12:11 +08:00 1 ala2008 Jul 29 就让你用一会而已。。 About · Help · Advertise · Blog · API · FAQ · Solana · 2827 Online Highest 6679 · Select Language 创意工作者们的社区 World is powered by solitude VERSION: 3.9.8.5 · 26ms · UTC 14:15 · PVG 22:15 · LAX 07:15 · JFK 10:15 ♥ Do have faith in what you're doing. ❯",
-      "author": "KingCloser",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Cursor 使用心得",
-      "thin": false,
-      "preScore": 6,
-      "tools": [
-        "cursor"
-      ],
-      "preReasons": [
-        "标题工具：cursor"
-      ]
-    },
-    {
-      "id": "94c0cff453a68a43",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1228405",
-      "titleOriginal": "分享一个小创意，用 Agent 处理工作交接的问题",
-      "publishedAt": "2026-07-19T13:54:35.000Z",
-      "excerpt": "工作久了，真是什么样的工作交接都能见到。以前光景好，我遇到过不少很 nice 的大佬，交接文档写得超级全，让人看了就能感觉出工作能力很强，拿到也能直接上手。 但近来行情不好，奇葩事件也就越来越多了。有些粗糙的，最后往往就收到一个网盘链接，里面是几十份文档、几个 Notion 页面，文件名看起来还很像：「最终版」「最终确认版」「最新最终版」。 一问呢就说资料都在，可接手的人肯定一脸懵逼：平时到底看哪份？ 现在的情况就更麻烦了。很多人每天都在用自己的 AI 助手。一个 Agent 跟着项目跑了大半年，读过 PRD 、客户记录、研究报告，也处理过一堆零碎问题。人一走，账号一关，这...这就没了？不应该吧？ 因为我们不是大厂，没那么完备的细则，所以工作交接还是很重要的。但直接把 AI 账号交给接手人？我是不太建议。 一来，聊天里可能混着私人对话、个人习惯、客户信息，还有各种本地缓存。接手一个项目，没道理连前任一整年的聊天记录一起接管。 二来，更别说聊天记录还会过期。三个月前问过「退款政策按哪版执行」，当时的回答也许没问题，今天再翻出来，未必还能用。 所以这个新兴的 AI 助手，又该怎么交接呢？ 我的办法是这样的：先把公司真正需要留下的东西单独拿出来。 正式 PRD 、合同、产品规则、研究报告、决策记录——这些归公司维护。个人提示词、聊天历史、说话习惯——这些留在原来的账号里。 至少，先把「工作资料」和「个人使用痕迹」拆开。 然后就是工作资料的处理问题了。 如果只是把它们打包进网盘，那兜兜转转还是会回到第一步：「文件都给你了。」接手人还是得自己找当前版本，自己对表格口径。想用 AI 帮忙查，又得把文件重新传一遍。 一点也不方便。 我估计是没几个人有这个耐心重新看的，普遍都是扔进网盘以后就束之高阁，然后开始自己倒腾摸索了，重复造轮子这一步少不了。 最后是人和工具都换了，资料却还在原地，谁也用不顺，交接了跟没交接一样。 所以这里，我会借助一个常用的文档解析和记忆工具 Knowhere ，来解析这些资料。Knowhere 是复杂、脏乱文档和 AI Agent 之间的 Memory Layer ，把 PDF 、Word 、Excel 、图片丢进去，它会把文档拆成章节、表格、引用，整理成 AI 能查、能追问、还能带回原文出处的资料，确保 AI 真能读懂这些文件； 在解析时，Knowhere 会用树形结构算法恢复文档里的章节关系，重建文档层级，同时对图片和表格做 OCR 和结构化处理，保留来源路径，形成可跨文档导航的记忆图谱。 对交接来说，这很关键。 正式资料可以沉淀在公司维护的文档库里，文件解析之后，章节、表格、引用都会留着，不跟着某个人的账号走，也不被某个工具绑住。后面换人、换工具，照样能查，查的还是同一批资料。 现在，Knowhere 还加上了 MCP 功能，方便外部工具的调用。 比如前任习惯用 TRAE ，接手人习惯用 Codex 。两边连的是同一个知识空间，查到的还是那批 PRD 、合同和研究报告。AI 回答时，还能把对应章节和原文一并带回来。 接手人不需要登录前任的账号，也不用把几十份文件重新喂一遍。换成 Cursor 、Codex ，或其他支持 MCP 的客户端，资料都还在公司这边。 只需要一句简单的提问，比方说：「客户退款按哪份政策执行？」 Agent 就可以把当前文件、对应章节和原文一起返回了。哪份资料还没入库，它也能马上看出来，再回去补。 Knowhere 能把解析后的项目文档，提供给不同 AI 工具查询。 当然，Knowhere 不会把前任脑子里的判断自动保存下来。没整理、没入库的临时想法，人走以后照样会丢。 所以交接单也得跟着改一改。除了网盘链接，最好再写清楚： - 哪些资料已经进了公司知识空间 - 当前以哪一版为准 - 后面谁负责更新 - 接手人能看哪些内容 这样交完之后，接手人可以直接在自己的 AI 工具里查同一批资料，不必再从「最新最终版」开始猜了。 感兴趣的可以尝试一下： - 官网体验： https://knowhereto.ai/?utm_source=v2ex - 开源仓库： https://github.com/Ontos-AI/knowhere - MCP 文档： https://docs.knowhereto.ai/mcp?utm_source=v2ex",
-      "author": "cs1707",
-      "metrics": {
-        "comments": 0
-      },
-      "matchedQuery": "Cursor 规则",
-      "thin": false,
-      "preScore": 6,
-      "tools": [
-        "cursor",
-        "trae",
-        "mcp"
-      ],
-      "preReasons": [
-        "正文工具：cursor/trae/mcp",
+        "正文工具：agents-md",
         "泛 agent 词 1 个",
-        "正文经验词 6 个"
+        "正文经验词 4 个",
+        "论坛长帖"
       ]
     }
   ],
@@ -1096,11 +986,12 @@
       "source": "V2EX 技术节点",
       "url": "https://www.v2ex.com/t/1231290#reply88",
       "title": "大家每个月在 AI 工具上花多少钱？我算了下已经 500 -1000 多了",
-      "score": 3,
+      "score": 0,
       "reasons": [
         "泛 agent 词 1 个",
         "正文经验词 2 个",
-        "总分 3 低于入围线 6"
+        "论坛短帖（正文 329 字符）",
+        "总分 0 低于入围线 6"
       ]
     },
     {
@@ -1118,13 +1009,14 @@
       "source": "V2EX 技术节点",
       "url": "https://www.v2ex.com/t/1231381#reply48",
       "title": "在 DeepSeek 官方 Harness 没有出来之前，用什么 Agent 更好？",
-      "score": -2,
+      "score": -1,
       "reasons": [
         "正文工具：claude-code/opencode/qoder",
         "正文经验词 4 个",
         "疑似求助 / 提问帖",
         "营销词 1 个：白嫖",
-        "总分 -2 低于入围线 6"
+        "论坛长帖",
+        "总分 -1 低于入围线 6"
       ]
     },
     {
@@ -1172,12 +1064,13 @@
       "source": "V2EX 技术节点",
       "url": "https://www.v2ex.com/t/1231255#reply94",
       "title": "最新的 deepseek-v4-flash 正式版真的有这么强吗？",
-      "score": 1,
+      "score": 2,
       "reasons": [
         "正文工具：opencode",
         "正文经验词 5 个",
         "疑似求助 / 提问帖",
-        "总分 1 低于入围线 6"
+        "论坛长帖",
+        "总分 2 低于入围线 6"
       ]
     },
     {
@@ -1225,11 +1118,12 @@
       "source": "V2EX 技术节点",
       "url": "https://www.v2ex.com/t/1231400#reply22",
       "title": "Codex 重置， 2026.08.01 11:30",
-      "score": 4,
+      "score": 5,
       "reasons": [
         "正文工具：codex/claude-desktop",
         "正文经验词 2 个",
-        "总分 4 低于入围线 6"
+        "论坛长帖",
+        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -1333,11 +1227,12 @@
       "source": "V2EX 技术节点",
       "url": "https://www.v2ex.com/t/1231266#reply24",
       "title": "求 OpenAI Atlas 浏览器替代品",
-      "score": 4,
+      "score": 5,
       "reasons": [
         "正文工具：dia",
         "正文经验词 7 个",
-        "总分 4 低于入围线 6"
+        "论坛长帖",
+        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -1408,11 +1303,12 @@
       "source": "V2EX 技术节点",
       "url": "https://www.v2ex.com/t/1231024#reply151",
       "title": "低代码真的有前景吗",
-      "score": 4,
+      "score": 1,
       "reasons": [
         "正文工具：vibe-coding",
         "正文经验词 3 个",
-        "总分 4 低于入围线 6"
+        "论坛短帖（正文 386 字符）",
+        "总分 1 低于入围线 6"
       ]
     },
     {
@@ -1460,7 +1356,7 @@
       "source": "V2EX 技术节点",
       "url": "https://www.v2ex.com/t/1231212#reply26",
       "title": "从零学习 AI Agent，先学原理还是直接上框架？",
-      "score": 1,
+      "score": -2,
       "reasons": [
         "正文工具：mcp",
         "泛 agent 词 1 个",
@@ -1468,7 +1364,8 @@
         "正文经验词 5 个",
         "疑似求助 / 提问帖",
         "营销词 1 个：课程",
-        "总分 1 低于入围线 6"
+        "论坛短帖（正文 454 字符）",
+        "总分 -2 低于入围线 6"
       ]
     },
     {
@@ -1716,12 +1613,13 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1231467",
       "title": "在什么用量下使用官方 DeepSeek API (V4 Flash 模型) 比 Claude Pro $20 划算呢？",
-      "score": 1,
+      "score": -2,
       "reasons": [
         "正文工具：claude-code/opencode",
         "正文经验词 2 个",
         "疑似求助 / 提问帖",
-        "总分 1 低于入围线 6"
+        "论坛短帖（正文 397 字符）",
+        "总分 -2 低于入围线 6"
       ]
     },
     {
@@ -1747,6 +1645,20 @@
       "score": 0,
       "reasons": [
         "标题含卖额度 / 卖账号特征"
+      ]
+    },
+    {
+      "id": "aab1cbbc1480579c",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231354",
+      "title": "做了一个 Neovim 里的 AI 编程 Agent 前端 pi2.nvim，开源求交流",
+      "score": 1,
+      "reasons": [
+        "正文工具：claude-code/codex",
+        "泛 agent 词 3 个",
+        "正文经验词 4 个",
+        "疑似产品自荐帖",
+        "总分 1 低于入围线 6"
       ]
     },
     {
@@ -1776,12 +1688,13 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1231308",
       "title": "ti agent, 量化分析和交易的 AI Harness",
-      "score": 5,
+      "score": 2,
       "reasons": [
         "正文工具：claude-code",
         "泛 agent 词 1 个",
         "正文经验词 3 个",
-        "总分 5 低于入围线 6"
+        "论坛短帖（正文 373 字符）",
+        "总分 2 低于入围线 6"
       ]
     },
     {
@@ -1789,11 +1702,12 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1231283",
       "title": "现在已经可以让 ai 写代码，创建惊艳的产品宣传视频了",
-      "score": -2,
+      "score": -5,
       "reasons": [
         "正文工具：claude-code/cursor",
         "营销词 1 个：中转",
-        "总分 -2 低于入围线 6"
+        "论坛短帖（正文 280 字符）",
+        "总分 -5 低于入围线 6"
       ]
     },
     {
@@ -1801,13 +1715,14 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1231197",
       "title": "AI 写的 HTML 越来越多，版本该怎么管理？我的答案是 Gist",
-      "score": 4,
+      "score": 5,
       "reasons": [
         "正文工具：claude-code/mcp/skills",
         "标题经验词「我的」",
         "正文经验词 7 个",
         "营销词 1 个：白嫖",
-        "总分 4 低于入围线 6"
+        "论坛长帖",
+        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -1815,13 +1730,14 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1231158",
       "title": "大家怎么管理 AGENTS.md、CLAUDE.md，以及不同 Agent 之间的记忆？",
-      "score": 1,
+      "score": -2,
       "reasons": [
         "标题工具：agents-md/claude-md",
         "正文经验词 1 个",
         "疑似求助 / 提问帖",
         "营销词 1 个：免费额度",
-        "总分 1 低于入围线 6"
+        "论坛短帖（正文 474 字符）",
+        "总分 -2 低于入围线 6"
       ]
     },
     {
@@ -1832,20 +1748,6 @@
       "score": 0,
       "reasons": [
         "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "c001498a6652b82d",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1231121",
-      "title": "别再买 AI 课了，我做了个免费网站比任何课程都值",
-      "score": 5,
-      "reasons": [
-        "正文工具：claude-code/claude-md",
-        "标题是「我+动作」句式",
-        "正文经验词 6 个",
-        "营销词 1 个：课程",
-        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -1871,6 +1773,21 @@
         "正文经验词 1 个",
         "营销词 2 个：拼车/合租",
         "总分 -6 低于入围线 6"
+      ]
+    },
+    {
+      "id": "ed3c2e096e817049",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231096",
+      "title": "memU：给 Claude Code、OpenClaw、Hermes 装上共享 memory 层",
+      "score": 5,
+      "reasons": [
+        "标题工具：claude-code",
+        "泛 agent 词 1 个",
+        "正文经验词 3 个",
+        "疑似产品自荐帖",
+        "论坛长帖",
+        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -1961,16 +1878,17 @@
       ]
     },
     {
-      "id": "03cbf69d4e005a21",
+      "id": "81dcd45e57558a12",
       "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1228533",
-      "title": "Claude Code 子代理风暴大家是怎么规避的？",
-      "score": 5,
+      "url": "https://www.v2ex.com/t/1228685",
+      "title": "大家用 Claude Code / Codex 攒了几个月的\"经验\"，最后都去哪了？",
+      "score": 3,
       "reasons": [
         "标题工具：claude-code",
-        "正文经验词 2 个",
+        "正文经验词 7 个",
         "疑似求助 / 提问帖",
-        "总分 5 低于入围线 6"
+        "论坛短帖（正文 529 字符）",
+        "总分 3 低于入围线 6"
       ]
     },
     {
@@ -2086,10 +2004,11 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1231097",
       "title": "gpt 5.6-sol 在 web chat 中 无法输出 \"yieldTimeMs\" : 30000",
-      "score": 1,
+      "score": -2,
       "reasons": [
         "正文工具：codex",
-        "总分 1 低于入围线 6"
+        "论坛短帖（正文 303 字符）",
+        "总分 -2 低于入围线 6"
       ]
     },
     {
@@ -2167,6 +2086,21 @@
       ]
     },
     {
+      "id": "41fc2fc1616f700c",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230809",
+      "title": "跨 Agent、跨设备的一个记忆外挂（当 Claude 被封之后的记忆迁移工具，你值得拥有",
+      "score": -1,
+      "reasons": [
+        "正文工具：claude-code/cursor",
+        "标题经验词「迁移」",
+        "正文经验词 4 个",
+        "疑似产品自荐帖",
+        "论坛短帖（正文 401 字符）",
+        "总分 -1 低于入围线 6"
+      ]
+    },
+    {
       "id": "e05e6850e7c9d20a",
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1230806",
@@ -2203,13 +2137,14 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1227871",
       "title": "LeAgent：开源全栈 Agent",
-      "score": 4,
+      "score": 5,
       "reasons": [
         "正文工具：subagent/agent-sdk",
         "泛 agent 词 1 个",
         "正文经验词 4 个",
         "学术腔 1 个",
-        "总分 4 低于入围线 6"
+        "论坛长帖",
+        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -2223,19 +2158,6 @@
         "泛 agent 词 1 个",
         "正文经验词 1 个",
         "总分 3 低于入围线 6"
-      ]
-    },
-    {
-      "id": "0ccc2f0d53dbbeb8",
-      "source": "V2EX 搜索",
-      "url": "https://www.v2ex.com/t/1226643",
-      "title": "专科大二，喜欢底层开发(?)，但有点迷茫想听听建议...",
-      "score": 5,
-      "reasons": [
-        "正文工具：agents-md",
-        "泛 agent 词 1 个",
-        "正文经验词 4 个",
-        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -2296,17 +2218,30 @@
       ]
     },
     {
+      "id": "148249420857dac7",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230778",
+      "title": "Cursor Pro 账号余额都用完了为啥还可以使用 Auto 模式，且计费是 Free，不是很懂这个计费方式",
+      "score": 3,
+      "reasons": [
+        "标题工具：cursor",
+        "论坛短帖（正文 449 字符）",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
       "id": "a646215883fabc1e",
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1230516",
       "title": "远程（AI agent 方向）-AI 工程师、后端工程师、开发者关系工程师",
-      "score": 3,
+      "score": 4,
       "reasons": [
         "正文工具：claude-code/cursor/skills",
         "泛 agent 词 3 个",
         "正文经验词 6 个",
         "营销词 1 个：招聘",
-        "总分 3 低于入围线 6"
+        "论坛长帖",
+        "总分 4 低于入围线 6"
       ]
     },
     {
@@ -2314,12 +2249,13 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1230367",
       "title": "智友社回馈 V 站新老客户，抽送第 4 波 28 个智友社的 智友社的 Leonardo Ai 稳定特殊渠道月卡独享成品号（8500 积分，视频图像 Ai，支持 seedance2.0）",
-      "score": -4,
+      "score": -3,
       "reasons": [
         "正文工具：cursor",
         "正文经验词 5 个",
         "营销词 2 个：中转/优惠",
-        "总分 -4 低于入围线 6"
+        "论坛长帖",
+        "总分 -3 低于入围线 6"
       ]
     },
     {
@@ -2327,12 +2263,13 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1230316",
       "title": "有没有一个多显示器多工作区自动恢复窗口布局的 macOS 程序？",
-      "score": -1,
+      "score": -4,
       "reasons": [
         "正文工具：cursor",
         "正文经验词 1 个",
         "疑似求助 / 提问帖",
-        "总分 -1 低于入围线 6"
+        "论坛短帖（正文 375 字符）",
+        "总分 -4 低于入围线 6"
       ]
     },
     {
@@ -2362,13 +2299,14 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1229092",
       "title": "一篇 AI Coding 生态发展的自省记述",
-      "score": 4,
+      "score": 5,
       "reasons": [
         "正文工具：claude-code/cursor/vibe-coding",
         "泛 agent 词 1 个",
         "正文经验词 7 个",
         "新闻腔 1 个：刷屏",
-        "总分 4 低于入围线 6"
+        "论坛长帖",
+        "总分 5 低于入围线 6"
       ]
     },
     {
@@ -2392,6 +2330,20 @@
       ]
     },
     {
+      "id": "ec4f352d37cb6f7d",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1227522",
+      "title": "[送会员] 一个小工具，让 AI 全自动帮你运营自媒体，用你自己电脑发内容",
+      "score": 2,
+      "reasons": [
+        "正文工具：cursor/manus/coze",
+        "标题经验词「自己」",
+        "正文经验词 5 个",
+        "疑似产品自荐帖",
+        "总分 2 低于入围线 6"
+      ]
+    },
+    {
       "id": "83ff11940a8a5719",
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1227429",
@@ -2406,13 +2358,14 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1227254",
       "title": "大家的 Cursor 500 次请求套餐还续订吗？",
-      "score": 2,
+      "score": 3,
       "reasons": [
         "标题工具：cursor",
         "正文经验词 4 个",
         "疑似求助 / 提问帖",
         "营销词 1 个：中转",
-        "总分 2 低于入围线 6"
+        "论坛长帖",
+        "总分 3 低于入围线 6"
       ]
     },
     {
@@ -2420,13 +2373,14 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1227173",
       "title": "我们正在组建 Agent Computer 核心自研团队。",
-      "score": 2,
+      "score": 3,
       "reasons": [
         "正文工具：cursor/mcp",
         "泛 agent 词 1 个",
         "正文经验词 5 个",
         "营销词 1 个：招聘",
-        "总分 2 低于入围线 6"
+        "论坛长帖",
+        "总分 3 低于入围线 6"
       ]
     },
     {
@@ -2434,13 +2388,14 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1226904",
       "title": "[经验分享] 搭建稳定先进的 AI 环境",
-      "score": 3,
+      "score": 4,
       "reasons": [
         "正文工具：cursor",
         "标题经验词「搭建」",
         "正文经验词 4 个",
         "新闻腔 2 个：季度/收购",
-        "总分 3 低于入围线 6"
+        "论坛长帖",
+        "总分 4 低于入围线 6"
       ]
     },
     {
@@ -2448,7 +2403,7 @@
       "source": "V2EX 搜索",
       "url": "https://www.v2ex.com/t/1226545",
       "title": "VeryCapture 2.0 发布：做了 5 年的截图工具，这次大版本升级了什么？",
-      "score": -7,
+      "score": -6,
       "reasons": [
         "正文工具：cursor",
         "正文经验词 5 个",
@@ -2456,7 +2411,8 @@
         "营销词 1 个：广告",
         "新闻腔 1 个：正式发布",
         "学术腔 1 个",
-        "总分 -7 低于入围线 6"
+        "论坛长帖",
+        "总分 -6 低于入围线 6"
       ]
     },
     {
@@ -2484,11 +2440,13 @@
       "source": "小众软件论坛搜索",
       "url": "https://meta.appinn.net/t/topic/89135",
       "title": "EVA——linux从未如此简单",
-      "score": 2,
+      "score": -7,
       "reasons": [
         "正文工具：claude-code",
         "泛 agent 词 1 个",
-        "总分 2 低于入围线 6"
+        "疑似产品自荐帖",
+        "论坛短帖（正文 300 字符）",
+        "总分 -7 低于入围线 6"
       ]
     },
     {
@@ -2516,11 +2474,12 @@
       "source": "小众软件论坛搜索",
       "url": "https://meta.appinn.net/t/topic/88118",
       "title": "QQ 邮箱发布 AI 专用邮箱：Agent Mail，每人可抢注两个地址[内测]",
-      "score": 2,
+      "score": -1,
       "reasons": [
         "正文工具：claude-code",
         "泛 agent 词 1 个",
-        "总分 2 低于入围线 6"
+        "论坛短帖（正文 300 字符）",
+        "总分 -1 低于入围线 6"
       ]
     },
     {
@@ -2538,10 +2497,38 @@
       "source": "小众软件论坛搜索",
       "url": "https://meta.appinn.net/t/topic/88984",
       "title": "【开发者自荐】Linkly AI Clipper：把网页存为 Agent 友好的 Markdown",
-      "score": 1,
+      "score": -8,
       "reasons": [
         "泛 agent 词 1 个",
-        "总分 1 低于入围线 6"
+        "疑似产品自荐帖",
+        "论坛短帖（正文 300 字符）",
+        "总分 -8 低于入围线 6"
+      ]
+    },
+    {
+      "id": "3f6d7c4e39cd6c83",
+      "source": "小众软件论坛搜索",
+      "url": "https://meta.appinn.net/t/topic/88448",
+      "title": "OpenMarkdown - 支持 CLI / MCP，你和 AI 一起编辑 Markdown 文件",
+      "score": 3,
+      "reasons": [
+        "标题工具：mcp",
+        "论坛短帖（正文 300 字符）",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "11451feb78e4bf5d",
+      "source": "小众软件论坛搜索",
+      "url": "https://meta.appinn.net/t/topic/88763",
+      "title": "〖开发者自荐〗Somvia：把 Apple 健康数据接入兼容 MCP 的 AI 客户端",
+      "score": 0,
+      "reasons": [
+        "标题工具：mcp",
+        "正文经验词 3 个",
+        "疑似产品自荐帖",
+        "论坛短帖（正文 300 字符）",
+        "总分 0 低于入围线 6"
       ]
     },
     {
@@ -2549,11 +2536,12 @@
       "source": "小众软件论坛搜索",
       "url": "https://meta.appinn.net/t/topic/88171",
       "title": "为什么在 2026 年，Agent 更适合 Heredoc 式执行，而非 REPL 式交互",
-      "score": 3,
+      "score": 0,
       "reasons": [
         "泛 agent 词 2 个",
         "正文经验词 1 个",
-        "总分 3 低于入围线 6"
+        "论坛短帖（正文 300 字符）",
+        "总分 0 低于入围线 6"
       ]
     },
     {

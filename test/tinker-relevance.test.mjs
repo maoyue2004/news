@@ -114,3 +114,23 @@ test('查询词按天轮转，一周内能覆盖全库', () => {
 test('同一天的查询词切片是稳定的', () => {
   assert.deepEqual(queriesForDate('2026-08-01', 12), queriesForDate('2026-08-01', 12));
 });
+
+test('产品自荐帖被重扣，真折腾长文不受影响', () => {
+  const promo = scoreItem({
+    title: '做了一个 Neovim 里的 AI 编程 Agent 前端 pi2.nvim，开源求交流',
+    excerpt: '一直在用 Claude Code 做日常开发，我把它做成了插件，欢迎试用，求个 Star。',
+    kind: 'forum',
+  });
+  assert.equal(promo.verdict, 'reject');
+  assert.ok(promo.reasons.includes('疑似产品自荐帖'));
+});
+
+test('论坛短帖扣分，但长度不是硬门槛', () => {
+  const args = { title: '我把 Claude Code 的 statusline 折腾成了可版本化仓库', excerpt: '踩坑记录。' };
+  const short = scoreItem({ ...args, kind: 'forum' });
+  const long = scoreItem({ ...args, excerpt: '踩坑记录。'.repeat(400), kind: 'forum' });
+  const blog = scoreItem({ ...args, kind: 'blog' });
+  assert.ok(short.score < blog.score, '论坛短帖该比同内容的博客文低分');
+  assert.ok(long.score > short.score, '论坛长帖该比短帖高分');
+  assert.equal(short.verdict, 'shortlist', '够强的短帖仍要能入围，长度只是减分项');
+});
