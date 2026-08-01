@@ -20,6 +20,9 @@
 |---|---|
 | 页面（Artifact） | `https://claude.ai/code/artifact/7a51a27e-9a9d-4b67-bea8-4aee72ac735f` |
 | 执行流程 | `TINKER_DAILY.md` |
+| Claude Routine ID | `trig_01LGMjPzF1qTmLrwdHiDRDoU` |
+| 模型 | `claude-opus-5`（编辑判断是这个产品的全部价值，比罗盘的摘要任务吃力，所以没用 sonnet） |
+| allowed_tools | 比罗盘多了 `WebSearch` / `WebFetch`——每日流程第 5 步要靠它挖新信源 |
 | 运行时间 | 每天 06:00 GMT+8（**刻意排在罗盘 08:00 之前两小时**，避免两个 routine 同时 push 同一个仓库） |
 | favicon | `🔧`（固定不变） |
 
