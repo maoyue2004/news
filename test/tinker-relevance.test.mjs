@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD } from '../lib/tinker/relevance.mjs';
-import { matchTools, matchTopics, matchVocab, queriesForDate, SEARCH_QUERIES } from '../lib/tinker/vocab.mjs';
+import { matchTools, matchTopics, matchVocab, queriesForDate, SEARCH_QUERIES, CORE_QUERIES } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
 
@@ -109,12 +109,27 @@ test('入围线是常量而不是魔数，改动会被测试看见', () => {
   assert.equal(SHORTLIST_THRESHOLD, 6);
 });
 
-test('查询词按天轮转，一周内能覆盖全库', () => {
+test('核心词每天都跑，不参与轮转', () => {
+  // 轮转的毛病是把「常年高产」和「碰运气」的词一视同仁，
+  // 「Claude Code 实践」隔几天才轮到一次就是白白漏掉。
+  for (const date of ['2026-08-02', '2026-08-05', '2026-09-17']) {
+    const q = queriesForDate(date, 24);
+    for (const core of CORE_QUERIES) assert.ok(q.includes(core), `${date} 少了核心词 ${core}`);
+  }
+});
+
+test('长尾词轮转，几天内能覆盖全库', () => {
   const seen = new Set();
   for (let d = 1; d <= 7; d += 1) {
-    for (const q of queriesForDate(`2026-08-0${d}`, 12)) seen.add(q);
+    for (const q of queriesForDate(`2026-08-0${d}`, 24)) seen.add(q);
   }
-  assert.ok(seen.size >= SEARCH_QUERIES.length * 0.9, `7 天只覆盖了 ${seen.size}/${SEARCH_QUERIES.length}`);
+  const total = SEARCH_QUERIES.length + CORE_QUERIES.length;
+  assert.ok(seen.size >= total * 0.95, `7 天只覆盖了 ${seen.size}/${total}`);
+});
+
+test('查询数不足以容纳核心词时也不报错', () => {
+  const q = queriesForDate('2026-08-02', 3);
+  assert.equal(q.length, CORE_QUERIES.length, '核心词不该被截断');
 });
 
 test('同一天的查询词切片是稳定的', () => {

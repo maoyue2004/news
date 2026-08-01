@@ -13,7 +13,14 @@ const DATA_DIR = 'tinker/data';
 const TIMEOUT_MS = 20000;
 const CONCURRENCY = Number(process.env.TINKER_CONCURRENCY ?? 10);
 const ENRICH_CONCURRENCY = 5;
-const QUERIES_PER_DAY = Number(process.env.TINKER_QUERIES ?? 12);
+/**
+ * 每天跑多少个搜索查询。
+ *
+ * 12 → 24 是 2026-08-02 调的：博客月更，日更的量其实全靠平台搜索撑着，
+ * 而 12 个查询只覆盖 50 条词库的四分之一，四天才轮一遍。
+ * 翻倍后两天轮遍全库，平台侧的日供给直接翻倍，代价只是每轮多几十次接口调用。
+ */
+const QUERIES_PER_DAY = Number(process.env.TINKER_QUERIES ?? 24);
 const THIN_THRESHOLD = 250;
 const EXCERPT_CHARS = 2500;
 /** LLM 环节一次能认真读完的上限。超过这个数，质量判断会退化成走过场。 */
