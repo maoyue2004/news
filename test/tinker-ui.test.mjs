@@ -113,11 +113,22 @@ function makeDom(dataJson) {
   return { document, byId };
 }
 
-function runUi(data) {
+/** 会真的存东西的 localStorage 桩，用来验「刷新后已读/收藏还在」。 */
+function makeStorage(seed = {}) {
+  const map = new Map(Object.entries(seed));
+  return {
+    map,
+    getItem: (k) => (map.has(k) ? map.get(k) : null),
+    setItem: (k, v) => map.set(k, String(v)),
+    removeItem: (k) => map.delete(k),
+  };
+}
+
+function runUi(data, storage = makeStorage()) {
   const { document, byId } = makeDom(JSON.stringify(data));
   const sandbox = {
     document,
-    localStorage: { getItem: () => null, setItem: () => {}, removeItem: () => {} },
+    localStorage: storage,
     matchMedia: () => ({ matches: false }),
     setTimeout: (fn) => fn(),
     clearTimeout: () => {},
@@ -135,7 +146,16 @@ function runUi(data) {
   sandbox.window = sandbox;
   const code = `${readFileSync('templates/tinker/logic.js', 'utf8')}\n${readFileSync('templates/tinker/ui.js', 'utf8')}`;
   vm.runInNewContext(code, sandbox, { filename: 'tinker-page.js' });
-  return byId;
+  // 每次交互后 render() 会重建 DOM，所以这些取节点的助手必须现查，
+  // 不能缓存引用——这一点在真实浏览器里也一样。
+  const helpers = {
+    entries: () => byId.stream.findAll((x) => x.classList.has('entry')),
+    view: (t) => byId.views.findAll((x) => x.tagName === 'BUTTON').find((x) => x.textContent.includes(t)),
+    chip: (facet, i = 0) => byId[facet].findAll((x) => x.classList.has('chip'))[i],
+    acts: (i = 0) => helpers.entries()[i].findAll((x) => x.classList.has('act')),
+    search: byId.search,
+  };
+  return { byId, ...helpers, storage };
 }
 
 const day = {
@@ -167,7 +187,7 @@ const data = {
 };
 
 test('页面能渲染出条目、推荐理由和两种标签', () => {
-  const byId = runUi(data);
+  const { byId } = runUi(data);
   const text = byId.stream.textContent;
   assert.ok(text.includes('第一篇'), '标题要出现');
   assert.ok(text.includes('值得读的理由'), 'whyRead 要出现');
@@ -181,7 +201,7 @@ test('页面能渲染出条目、推荐理由和两种标签', () => {
 });
 
 test('侧栏把工具和话题渲染成两组独立筛选器', () => {
-  const byId = runUi(data);
+  const { byId } = runUi(data);
   assert.ok(byId.tools.textContent.includes('Claude Code'));
   assert.ok(byId.tools.textContent.includes('Cursor'));
   assert.ok(byId.topics.textContent.includes('MCP'));
@@ -190,7 +210,7 @@ test('侧栏把工具和话题渲染成两组独立筛选器', () => {
 
 test('信源面板能打开并渲染出表格与健康度', () => {
   // 这条就是为那个 bug 写的：面板曾经一点就抛 TypeError，整块打不开。
-  const byId = runUi(data);
+  const { byId } = runUi(data);
   const btn = byId.views.findAll((n) => n.tagName === 'BUTTON')
     .find((n) => n.textContent.includes('信源与健康度'));
   assert.ok(btn, '侧栏要有信源入口');
@@ -209,7 +229,7 @@ test('信源面板能打开并渲染出表格与健康度', () => {
 });
 
 test('再点一次信源入口会切回条目流', () => {
-  const byId = runUi(data);
+  const { byId } = runUi(data);
   const btn = byId.views.findAll((n) => n.tagName === 'BUTTON')
     .find((n) => n.textContent.includes('信源与健康度'));
   btn.click();
@@ -218,4 +238,69 @@ test('再点一次信源入口会切回条目流', () => {
   btn2.click();
   assert.equal(byId.stream.classList.has('hidden'), false);
   assert.equal(byId.panel.classList.has('hidden'), true);
+});
+
+test('搜索能收窄列表，无结果时给空状态', () => {
+  const ui = runUi(data);
+  assert.equal(ui.entries().length, 2);
+
+  ui.search.value = '第一篇';
+  for (const fn of ui.search.listeners.input ?? []) fn();
+  assert.equal(ui.entries().length, 1, '搜索标题要能命中');
+
+  ui.search.value = '一个绝不存在的词';
+  for (const fn of ui.search.listeners.input ?? []) fn();
+  assert.equal(ui.entries().length, 0);
+  assert.ok(ui.byId.stream.textContent.includes('还没有内容'), '空结果要有说明，不能只是一片空白');
+});
+
+test('工具与话题两组筛选可以叠加', () => {
+  const ui = runUi(data);
+  ui.chip('tools').click();                       // Claude Code → 只剩第一篇
+  assert.equal(ui.entries().length, 1);
+  ui.byId.tools.findAll((x) => x.getAttribute('aria-pressed') === 'true')[0].click();
+  assert.equal(ui.entries().length, 2, '再点一次要取消');
+
+  ui.chip('topics').click();                      // MCP → 也只剩第一篇
+  assert.equal(ui.entries().length, 1);
+});
+
+test('收藏与已读会写进 localStorage，刷新后还在', () => {
+  const store = makeStorage();
+  const ui = runUi(data, store);
+
+  ui.acts(0).find((b) => b.textContent.includes('收藏')).click();
+  ui.acts(0).find((b) => b.textContent.includes('标为已读')).click();
+  assert.ok(ui.view('收藏').textContent.includes('1'));
+  assert.ok(ui.view('未读').textContent.includes('1'), '两篇里读了一篇，未读该剩 1');
+
+  // 用同一份 storage 再跑一次，等价于刷新页面
+  const again = runUi(data, store);
+  assert.ok(again.view('收藏').textContent.includes('1'), '收藏要能跨刷新保留');
+  assert.ok(again.view('未读').textContent.includes('1'), '已读要能跨刷新保留');
+  assert.equal(again.entries()[0].dataset.read, 'true');
+});
+
+test('收藏视图和未读视图各自只显示对应条目', () => {
+  const ui = runUi(data);
+  ui.acts(0).find((b) => b.textContent.includes('收藏')).click();
+  ui.view('收藏').click();
+  assert.equal(ui.entries().length, 1);
+
+  ui.view('全部').click();
+  ui.acts(0).find((b) => b.textContent.includes('标为已读')).click();
+  ui.view('未读').click();
+  assert.equal(ui.entries().length, 1, '已读的那篇不该出现在未读视图');
+});
+
+test('localStorage 不可用时页面照常渲染', () => {
+  // 隐私模式下 getItem/setItem 会抛。状态存不下没关系，页面不能白屏。
+  const hostile = {
+    getItem: () => { throw new Error('denied'); },
+    setItem: () => { throw new Error('denied'); },
+    removeItem: () => { throw new Error('denied'); },
+  };
+  const ui = runUi(data, hostile);
+  assert.equal(ui.entries().length, 2);
+  assert.doesNotThrow(() => ui.acts(0).find((b) => b.textContent.includes('收藏')).click());
 });
