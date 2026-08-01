@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD } from '../lib/tinker/relevance.mjs';
-import { matchTools, queriesForDate, SEARCH_QUERIES } from '../lib/tinker/vocab.mjs';
+import { matchTools, matchTopics, matchVocab, queriesForDate, SEARCH_QUERIES } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
 
@@ -139,4 +139,26 @@ test('论坛短帖扣分，但长度不是硬门槛', () => {
   assert.ok(short.score < blog.score, '论坛短帖该比同内容的博客文低分');
   assert.ok(long.score > short.score, '论坛长帖该比短帖高分');
   assert.equal(short.verdict, 'shortlist', '够强的短帖仍要能入围，长度只是减分项');
+});
+
+test('工具和话题分属两个维度，互不混入', () => {
+  // 「按工具」这个筛选器里出现 MCP / CLAUDE.md / Vibe Coding 是分类错误：它们是概念不是产品。
+  assert.deepEqual(matchTools('我给项目写了 CLAUDE.md，还配了几个 MCP 服务'), []);
+  assert.deepEqual(matchTopics('我给项目写了 CLAUDE.md，还配了几个 MCP 服务').sort(), ['claude-md', 'mcp']);
+  const v = matchVocab('用 Claude Code 配 MCP');
+  assert.deepEqual(v.tools, ['claude-code']);
+  assert.deepEqual(v.topics, ['mcp']);
+});
+
+test('打分时工具和话题等价：只提概念也算命中主题', () => {
+  const r = scoreItem({ title: '我把 AGENTS.md 重写了一遍的折腾记录', excerpt: '踩坑心得。', kind: 'blog' });
+  assert.equal(r.verdict, 'shortlist');
+  assert.deepEqual(r.topics, ['agents-md']);
+});
+
+test('短中文别名不能是常用词的子串', () => {
+  // 「心流」曾作为 iFlow 的别名，命中了「核心流程」；中文没有词边界，规则拦不住，只能不加。
+  assert.deepEqual(matchTools('它的核心流程是四步'), []);
+  assert.deepEqual(matchTools('纽扣子掉了'), []);
+  assert.ok(matchTools('用 iFlow CLI 跑了一下').includes('iflow'));
 });

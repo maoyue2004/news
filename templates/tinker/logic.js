@@ -29,11 +29,14 @@ function flatten(days) {
   return out;
 }
 
-/** 统计每个工具标签下有多少条目，用来在侧栏显示数量并隐藏空标签。 */
-function toolCounts(items) {
+/**
+ * 统计某一维度（tools / topics）下每个标签有多少条目。
+ * 工具和话题分开统计，因为它们在侧栏是两组独立的筛选器。
+ */
+function facetCounts(items, facet) {
   const counts = new Map();
   for (const item of items) {
-    for (const tool of item.tools || []) counts.set(tool, (counts.get(tool) || 0) + 1);
+    for (const id of item[facet] || []) counts.set(id, (counts.get(id) || 0) + 1);
   }
   return [...counts.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1));
 }
@@ -49,10 +52,11 @@ function matchesQuery(item, query) {
  * @param {object} opts view: all|unread|starred, tool: 工具 id 或 null, date: 日期或 null
  */
 function filterItems(items, opts, state) {
-  const { view = 'all', tool = null, query = '', date = null } = opts || {};
+  const { view = 'all', tool = null, topic = null, query = '', date = null } = opts || {};
   return items.filter((item) => {
     if (date && item.date !== date) return false;
     if (tool && !(item.tools || []).includes(tool)) return false;
+    if (topic && !(item.topics || []).includes(topic)) return false;
     if (view === 'unread' && state.read[item.id]) return false;
     if (view === 'starred' && !state.starred[item.id]) return false;
     return !query || matchesQuery(item, query);
@@ -75,5 +79,5 @@ function lastNDates(latest, n) {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { flatten, toolCounts, filterItems, matchesQuery, sourceState, lastNDates };
+  module.exports = { flatten, facetCounts, filterItems, matchesQuery, sourceState, lastNDates };
 }

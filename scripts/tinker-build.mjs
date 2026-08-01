@@ -11,7 +11,7 @@ const KEEP_DAYS = 40;
  * 日文件是 LLM 逐条手写的 JSON，没有任何写入期校验。字段缺失不会在写文件时报错，
  * 只会在浏览器里炸成一个白页且无提示。在构建期挡住，并指出是哪天哪一条。
  */
-const REQUIRED = ['id', 'source', 'url', 'titleZh', 'summaryZh', 'whyRead', 'rating', 'tools', 'publishedAt'];
+const REQUIRED = ['id', 'source', 'url', 'titleZh', 'summaryZh', 'whyRead', 'rating', 'publishedAt'];
 
 export function validate(days) {
   for (const day of days) {
@@ -25,8 +25,10 @@ export function validate(days) {
       if (!Number.isInteger(item.rating) || item.rating < 1 || item.rating > 5) {
         throw new Error(`${day.date} 的 rating 必须是 1-5 的整数，实际是 ${JSON.stringify(item.rating)}（${item.url}）`);
       }
-      if (!Array.isArray(item.tools)) {
-        throw new Error(`${day.date} 的 tools 必须是数组（${item.url}）`);
+      for (const facet of ['tools', 'topics']) {
+        if (item[facet] !== undefined && !Array.isArray(item[facet])) {
+          throw new Error(`${day.date} 的 ${facet} 必须是数组（${item.url}）`);
+        }
       }
     }
   }

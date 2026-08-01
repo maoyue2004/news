@@ -241,7 +241,14 @@ button {
 
 .chip[aria-pressed="true"] .count { color: var(--accent); }
 
-.tool-list { max-height: 15rem; overflow-y: auto; }
+.tag-list { max-height: 13rem; overflow-y: auto; }
+
+.rail-empty { margin: 0; padding: 0.2rem 0.5rem; font-size: 0.8rem; color: var(--ink-mute); }
+
+/* 话题不是工具，视觉上也要分开：话题用方括号包住，像个标记而不是产品名。 */
+#topics .chip .label::before { content: "["; color: var(--ink-mute); }
+#topics .chip .label::after { content: "]"; color: var(--ink-mute); }
+#topics .chip .label { font-family: var(--mono); font-size: 0.78rem; }
 
 .calendar {
   display: grid;
@@ -407,6 +414,14 @@ button {
   color: var(--ink-soft);
 }
 
+/* 条目上的话题标签：虚线框，和实线的工具标签区分 */
+.topic-tag {
+  padding: 0.05rem 0.35rem;
+  border: 1px dashed var(--line);
+  border-radius: 2px;
+  color: var(--ink-mute);
+}
+
 .thin-flag { color: var(--signal); }
 
 .entry-actions { display: flex; gap: 0.6rem; margin-left: auto; }
@@ -481,7 +496,7 @@ table.sources td.desc { color: var(--ink-mute); font-size: 0.8rem; min-width: 18
 @media (max-width: 860px) {
   .frame { grid-template-columns: 1fr; gap: 1.5rem; }
   .rail { position: static; max-height: none; padding-top: 1.25rem; }
-  .tool-list { max-height: 9rem; }
+  .tag-list { max-height: 9rem; }
   .entry { grid-template-columns: 1fr; gap: 0.5rem; }
   .entry-gutter { flex-direction: row; align-items: center; gap: 0.6rem; }
 }

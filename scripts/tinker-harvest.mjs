@@ -20,7 +20,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { parseFeed } from '../lib/feed-parse.mjs';
 import { htmlToText } from '../lib/html-text.mjs';
-import { matchTools, SOFT_TERMS } from '../lib/tinker/vocab.mjs';
+import { matchVocab, SOFT_TERMS } from '../lib/tinker/vocab.mjs';
 import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
 
 const INDEX_URL = 'https://raw.githubusercontent.com/timqian/chinese-independent-blogs/master/blogs-original.csv';
@@ -83,7 +83,8 @@ function evaluate(xml) {
   const tools = new Set();
   for (const it of items.slice(0, 20)) {
     const text = `${it.title ?? ''}\n${htmlToText(it.contentHtml ?? '', 3000)}`;
-    const t = matchTools(text);
+    const v = matchVocab(text);
+    const t = [...v.tools, ...v.topics];
     const soft = SOFT_TERMS.some((s) => text.toLowerCase().includes(s));
     if (t.length || soft) {
       hitPosts += 1;

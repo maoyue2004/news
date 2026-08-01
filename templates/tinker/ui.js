@@ -2,11 +2,12 @@
 
 (function () {
   const data = JSON.parse(document.getElementById('tinker-data').textContent);
-  const { days, sources, status, toolNames, generatedAt } = data;
+  const { days, sources, status, names, generatedAt } = data;
+  const label = (facet, id) => (names[facet] && names[facet][id]) || id;
   const allItems = flatten(days);
   const state = loadState();
 
-  const ui = { view: 'all', tool: null, query: '', date: null, panel: false };
+  const ui = { view: 'all', tool: null, topic: null, query: '', date: null, panel: false };
 
   const $ = (sel) => document.querySelector(sel);
   const el = (tag, cls, text) => {
@@ -54,14 +55,23 @@
     src.addEventListener('click', () => { ui.panel = !ui.panel; render(); });
     views.append(src);
 
-    const tools = $('#tools');
-    tools.textContent = '';
-    for (const [id, count] of toolCounts(allItems).slice(0, 24)) {
-      const b = el('button', 'chip');
-      b.append(el('span', null, toolNames[id] || id), el('span', 'count', String(count)));
-      b.setAttribute('aria-pressed', String(ui.tool === id));
-      b.addEventListener('click', () => { ui.tool = ui.tool === id ? null : id; ui.panel = false; render(); });
-      tools.append(b);
+    // 工具和话题是两组独立筛选器，可以叠加（比如「Claude Code」+「MCP」）。
+    for (const facet of ['tools', 'topics']) {
+      const box = $(`#${facet}`);
+      box.textContent = '';
+      const key = facet === 'tools' ? 'tool' : 'topic';
+      const rows = facetCounts(allItems, facet).slice(0, 20);
+      if (!rows.length) {
+        box.append(el('p', 'rail-empty', '本期没有'));
+        continue;
+      }
+      for (const [id, count] of rows) {
+        const b = el('button', 'chip');
+        b.append(el('span', 'label', label(facet, id)), el('span', 'count', String(count)));
+        b.setAttribute('aria-pressed', String(ui[key] === id));
+        b.addEventListener('click', () => { ui[key] = ui[key] === id ? null : id; ui.panel = false; render(); });
+        box.append(b);
+      }
     }
 
     const cal = $('#calendar');
@@ -122,7 +132,8 @@
     meta.append(el('span', null, item.source));
     if (item.author) { meta.append(el('span', 'sep', '·'), el('span', null, item.author)); }
     meta.append(el('span', 'sep', '·'), el('span', null, (item.publishedAt || item.date || '').slice(0, 10)));
-    for (const t of item.tools || []) meta.append(el('span', 'tool-tag', toolNames[t] || t));
+    for (const t of item.tools || []) meta.append(el('span', 'tool-tag', label('tools', t)));
+    for (const t of item.topics || []) meta.append(el('span', 'topic-tag', label('topics', t)));
     if (item.thin) {
       const f = el('span', 'thin-flag', '⚠ 仅标题');
       f.title = '抓不到正文，摘要只依据标题撰写';
@@ -215,7 +226,7 @@
       const head = el('div', 'day-head');
       head.append(el('h2', 'day-date', date), el('span', 'day-count', `${items.length} 篇`));
       stream.append(head);
-      if (day && day.dailyNote && !ui.tool && !ui.query) {
+      if (day && day.dailyNote && !ui.tool && !ui.topic && !ui.query) {
         const note = el('p', 'day-note');
         note.append(el('strong', null, '编者按　'), document.createTextNode(day.dailyNote));
         stream.append(note);

@@ -178,5 +178,7 @@ test('buildHtml 产出的页面内嵌数据可解析，且切断了 </script>', 
   const json = /<script type="application\/json" id="tinker-data">([\s\S]*?)<\/script>/.exec(html)[1];
   const parsed = JSON.parse(json.replace(/\\u003c/g, '<').replace(/\\u003e/g, '>'));
   assert.equal(parsed.days[0].items[0].titleZh, '标题');
-  assert.equal(parsed.toolNames['claude-code'], 'Claude Code');
+  assert.equal(parsed.names.tools['claude-code'], 'Claude Code');
+  assert.equal(parsed.names.topics['mcp'], 'MCP');
+  assert.equal(parsed.names.tools['mcp'], undefined, 'MCP 是话题不是工具，不该出现在工具表里');
 });

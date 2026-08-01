@@ -15,14 +15,19 @@
       "rating": 5,
       "tools": [
         "claude-code",
-        "opencode",
-        "codex",
         "claude-desktop",
-        "agent-sdk"
+        "codex",
+        "hermes",
+        "nanoclaw",
+        "openclaw",
+        "opencode"
       ],
       "publishedAt": "2026-07-29T12:45:44.000Z",
       "author": "sumtsui",
-      "preScore": 9
+      "preScore": 9,
+      "topics": [
+        "agent-sdk"
+      ]
     },
     {
       "id": "2e45e22d433b8ee3",
@@ -35,16 +40,20 @@
       "whyRead": "同类话题里少有的源码级横向对比，不是又一篇「三者区别是什么」。",
       "rating": 5,
       "tools": [
-        "mcp",
-        "skills",
         "claude-code",
         "codex",
-        "opencode",
-        "gemini-cli"
+        "gemini-cli",
+        "hermes",
+        "openclaw",
+        "opencode"
       ],
       "publishedAt": "2026-07-25T14:42:36.000Z",
       "author": "Loocor",
-      "preScore": 7
+      "preScore": 7,
+      "topics": [
+        "mcp",
+        "skills"
+      ]
     },
     {
       "id": "be9dbc2659827468",
@@ -60,7 +69,8 @@
         "claude-code"
       ],
       "publishedAt": "2026-07-23T16:00:00.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": []
     },
     {
       "id": "f1911aa1dbc80392",
@@ -73,11 +83,13 @@
       "whyRead": "agent 陷进沉没成本时长什么样，这篇写得比任何「局限性」总结都具体。",
       "rating": 5,
       "tools": [
-        "claude-code",
-        "mcp"
+        "claude-code"
       ],
       "publishedAt": "2026-07-20T15:00:00.000Z",
-      "preScore": 8
+      "preScore": 8,
+      "topics": [
+        "mcp"
+      ]
     },
     {
       "id": "dd0baac597d40845",
@@ -92,11 +104,14 @@
       "tools": [
         "claude-code",
         "codex",
-        "skills",
-        "claude-md"
+        "kimi-code"
       ],
       "publishedAt": "2026-07-19T14:09:09.000Z",
-      "preScore": 6
+      "preScore": 6,
+      "topics": [
+        "skills",
+        "claude-md"
+      ]
     },
     {
       "id": "2e7d3b4c47a68b17",
@@ -110,12 +125,14 @@
       "rating": 5,
       "tools": [
         "claude-code",
-        "codex",
-        "spec-driven"
+        "codex"
       ],
       "publishedAt": "2026-07-17T06:10:53.000Z",
       "author": "echoVic",
-      "preScore": 8
+      "preScore": 8,
+      "topics": [
+        "spec-driven"
+      ]
     },
     {
       "id": "abb00c7d558574c6",
@@ -129,10 +146,13 @@
       "rating": 5,
       "tools": [
         "claude-code",
-        "claude-md"
+        "claudian"
       ],
       "publishedAt": "2026-07-15T21:23:41.000Z",
-      "preScore": 12
+      "preScore": 12,
+      "topics": [
+        "claude-md"
+      ]
     },
     {
       "id": "0c36841c8d82d17f",
@@ -145,11 +165,13 @@
       "whyRead": "一个流传很广的省 token 说法被拿去实测，结果差了近八倍。",
       "rating": 5,
       "tools": [
-        "claude-code",
-        "skills"
+        "claude-code"
       ],
       "publishedAt": "2026-07-12T00:00:00.000Z",
-      "preScore": 6
+      "preScore": 6,
+      "topics": [
+        "skills"
+      ]
     },
     {
       "id": "de81c7d074cb514a",
@@ -166,7 +188,8 @@
         "codex"
       ],
       "publishedAt": "2026-08-01T09:42:00.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": []
     },
     {
       "id": "ba1b2f7d65c2ba3e",
@@ -178,11 +201,12 @@
       "summaryZh": "作者一直想给博客加个终端版入口，去年嫌麻烦鸽了，上个月全程跟 AI 聊天写代码给捣鼓了出来。现在能在浏览器里用 WASM 版 Linux 内核访问博客，是真的 busybox + shell + wget，能 cat 文章、看评论、联网。他给上游提了 issue 作者第二天就修了，后来又做了个轻量 JS 版让手机也能跑。AI 写了设备驱动、网络网关和交互脚本。",
       "whyRead": "「去年嫌麻烦鸽了，今年 AI 帮我做完了」——很多人的 2026 都是这个剧本。",
       "rating": 4,
-      "tools": [
-        "vibe-coding"
-      ],
+      "tools": [],
       "publishedAt": "2026-07-31T16:08:58.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": [
+        "vibe-coding"
+      ]
     },
     {
       "id": "4c3f2e85ae245286",
@@ -199,7 +223,8 @@
       ],
       "publishedAt": "2026-07-31T13:43:50.000Z",
       "author": "ichanne",
-      "preScore": 16
+      "preScore": 16,
+      "topics": []
     },
     {
       "id": "82026fbe87c4ae57",
@@ -216,7 +241,8 @@
       ],
       "publishedAt": "2026-07-31T06:56:38.000Z",
       "author": "sutree900",
-      "preScore": 6
+      "preScore": 6,
+      "topics": []
     },
     {
       "id": "1739914059371bc7",
@@ -229,13 +255,15 @@
       "whyRead": "规格驱动开发喊了很久，这是一个结构讲得足够具体、能照着搭的实现。",
       "rating": 4,
       "tools": [
-        "spec-driven",
         "claude-code",
         "cursor",
         "gemini-cli"
       ],
       "publishedAt": "2026-07-31T00:00:00.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": [
+        "spec-driven"
+      ]
     },
     {
       "id": "7c60d31a70d1bcd8",
@@ -253,7 +281,8 @@
         "codex"
       ],
       "publishedAt": "2026-07-29T16:00:00.000Z",
-      "preScore": 12
+      "preScore": 12,
+      "topics": []
     },
     {
       "id": "9b49a7456614794e",
@@ -270,7 +299,8 @@
       ],
       "publishedAt": "2026-07-29T13:45:58.000Z",
       "author": "xdlkc",
-      "preScore": 10
+      "preScore": 10,
+      "topics": []
     },
     {
       "id": "4b5ce4655dab1d79",
@@ -286,7 +316,8 @@
         "claude-code"
       ],
       "publishedAt": "2026-07-28T22:22:00.000Z",
-      "preScore": 9
+      "preScore": 9,
+      "topics": []
     },
     {
       "id": "e6944ebdd9631613",
@@ -302,7 +333,8 @@
         "claude-code"
       ],
       "publishedAt": "2026-07-27T02:18:28.000Z",
-      "preScore": 6
+      "preScore": 6,
+      "topics": []
     },
     {
       "id": "511aede7e1cd79c7",
@@ -318,7 +350,8 @@
         "opencode"
       ],
       "publishedAt": "2026-07-26T11:00:26.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": []
     },
     {
       "id": "418da908f6aea21a",
@@ -335,7 +368,8 @@
         "claude-code"
       ],
       "publishedAt": "2026-07-22T00:00:00.000Z",
-      "preScore": 8
+      "preScore": 8,
+      "topics": []
     },
     {
       "id": "2269b337541a08d2",
@@ -351,7 +385,8 @@
         "claude-code"
       ],
       "publishedAt": "2026-07-19T21:00:00.000Z",
-      "preScore": 12
+      "preScore": 12,
+      "topics": []
     },
     {
       "id": "d16b0b080681fc98",
@@ -368,7 +403,8 @@
         "chatgpt-desktop"
       ],
       "publishedAt": "2026-07-19T16:00:00.000Z",
-      "preScore": 6
+      "preScore": 6,
+      "topics": []
     },
     {
       "id": "f7fcbbf6411dd598",
@@ -384,7 +420,11 @@
         "claude-code"
       ],
       "publishedAt": "2026-07-19T13:26:48.000Z",
-      "preScore": 6
+      "preScore": 6,
+      "topics": [
+        "context-engineering",
+        "loop-engineering"
+      ]
     },
     {
       "id": "17f25f2f8d28bf37",
@@ -403,7 +443,8 @@
         "zed"
       ],
       "publishedAt": "2026-07-18T23:00:00.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": []
     },
     {
       "id": "18dbe6ba6efcf93c",
@@ -415,11 +456,12 @@
       "summaryZh": "作者描述自己的日常：早上刷 Hacker News 开五个标签，中午逛 GitHub 再开几个，晚上浏览器里躺着八十多个标签，每一篇都「回头要看」所以不敢关。于是做了 TabQueue，把标签页变成有序的阅读队列，支持一键收纳、按域名分组、逐个消化、自动归档。",
       "whyRead": "一个真实的个人痒点，从难受到做出东西的完整过程。",
       "rating": 4,
-      "tools": [
-        "iflow"
-      ],
+      "tools": [],
       "publishedAt": "2026-07-17T23:00:00.000Z",
-      "preScore": 8
+      "preScore": 8,
+      "topics": [
+        "vibe-coding"
+      ]
     },
     {
       "id": "4e1132033b2efa45",
@@ -432,11 +474,13 @@
       "whyRead": "两套 Skills 到底该选哪个，这篇把定位、机制、工作流都摊开了。",
       "rating": 4,
       "tools": [
-        "skills",
         "claude-code"
       ],
       "publishedAt": "2026-07-17T18:00:00.000Z",
-      "preScore": 13
+      "preScore": 13,
+      "topics": [
+        "skills"
+      ]
     },
     {
       "id": "60c39618403a8a5f",
@@ -448,15 +492,16 @@
       "summaryZh": "因为各家 Agent 都有额度和时间限制，同一个项目往往要跨多个 Agent 开发。于是同一个 Skill 要在 .github 放一份、.claude 放一份、各家自己约定的根目录和入口文件再放几份，改一处要同步好几个地方。作者进一步指出问题的根子：有些资源本来是外部资源，却被各家按私有结构复制进了项目。",
       "whyRead": "多 Agent 并用的人都在忍这件事，这篇把它说清楚了。",
       "rating": 4,
-      "tools": [
+      "tools": [],
+      "publishedAt": "2026-07-17T06:29:06.000Z",
+      "author": "bearbest",
+      "preScore": 8,
+      "topics": [
         "mcp",
         "skills",
         "agents-md",
         "claude-md"
-      ],
-      "publishedAt": "2026-07-17T06:29:06.000Z",
-      "author": "bearbest",
-      "preScore": 8
+      ]
     },
     {
       "id": "0a16a0110c9063ba",
@@ -469,11 +514,13 @@
       "whyRead": "多 agent 运行时怎么收敛到一套契约，这是带六周真实提交数据的复盘。",
       "rating": 4,
       "tools": [
-        "skills",
         "claude-code"
       ],
       "publishedAt": "2026-07-16T16:00:00.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": [
+        "skills"
+      ]
     },
     {
       "id": "9c4bdfe597204a8d",
@@ -485,11 +532,12 @@
       "summaryZh": "作者和做投标的用户一起梳理 AI 招投标流程，总结出六个坑：把「生成完成」当成「标书完成」、盯标只做关键词推送、让一个 Agent 从读标做到查标、做了大纲没做响应矩阵、把标书检查做成全文润色、每个项目都从头教一遍。一位电力行业投标负责人说他们的招标文件动不动上百页，过去光梳理要求就要几天；改成先让 Agent 把每条需要响应的内容列出来再进入写作和报价后，容易遗漏的资质响应明显少了。作者的建议是从零开始的话先做标书检查。",
       "whyRead": "非编程的 Work Agent 落地案例，六个坑每个都长着真实业务的形状。",
       "rating": 4,
-      "tools": [
-        "agents-md"
-      ],
+      "tools": [],
       "publishedAt": "2026-07-16T14:19:29.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": [
+        "agents-md"
+      ]
     },
     {
       "id": "02f2b826933e487c",
@@ -502,13 +550,15 @@
       "whyRead": "「让电脑记得我今天干了什么」这件事，隐私优先的那条路走得通吗。",
       "rating": 4,
       "tools": [
-        "mcp",
         "cursor",
         "cline",
         "claude-desktop"
       ],
       "publishedAt": "2026-07-15T16:00:00.000Z",
-      "preScore": 6
+      "preScore": 6,
+      "topics": [
+        "mcp"
+      ]
     },
     {
       "id": "de2633c8121be343",
@@ -520,11 +570,12 @@
       "summaryZh": "作者用了一阵 Typeless，口述变文字做得顺滑，但攒下两个疙瘩：转录历史锁在云端没有统一导出，以及他把「拍西艾」改回 PCI、「马乏凯泰」改回玛伐凯泰改了一次又一次，工具一次也没记住。于是想自己做一个，调研一圈发现已经有人造好了——CapsWriter-Offline，六千多星，识别全程在本地，拔掉网线照常工作。准的道理在于 Qwen3-ASR 的解码器本身是个 1.7B 语言模型，边听声学特征边写通顺的话，标点自带、中英夹杂不乱，再配音素级热词表。",
       "whyRead": "「订阅照付、数据归人、个性化无从谈起」——换成本地方案的完整心路。",
       "rating": 4,
-      "tools": [
-        "vibe-coding"
-      ],
+      "tools": [],
       "publishedAt": "2026-07-15T13:29:57.000Z",
-      "preScore": 7
+      "preScore": 7,
+      "topics": [
+        "vibe-coding"
+      ]
     },
     {
       "id": "73e10b4751f2baaf",
@@ -537,12 +588,14 @@
       "whyRead": "把 CLAUDE.md 从「写了但不知道有没有用」讲成了一件有成本、有杠杆的事。",
       "rating": 4,
       "tools": [
-        "claude-code",
-        "claude-md"
+        "claude-code"
       ],
       "publishedAt": "2026-07-14T00:02:34.000Z",
       "author": "用户71387422900",
-      "preScore": 11
+      "preScore": 11,
+      "topics": [
+        "claude-md"
+      ]
     }
   ],
   "reviewed": 56,
