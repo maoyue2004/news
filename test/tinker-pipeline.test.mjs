@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, cpSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { collectRaw } from '../lib/tinker/collect.mjs';
-import { searchJuejin, searchV2ex, searchDiscourse } from '../lib/tinker/search-adapters.mjs';
+import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate } from '../scripts/tinker-build.mjs';
 
@@ -111,6 +111,37 @@ test('搜索接口返回 HTML 挑战页时按失败处理，而不是「搜到 0
   try {
     await assert.rejects(() => searchV2ex('x'), /不是 JSON/);
   } finally { restore(); }
+});
+
+test('searchSegmentFault 从 __NEXT_DATA__ 取结果，跳过非文章类型', async () => {
+  const payload = {
+    props: { pageProps: { initialState: { search: { result: { rows: [
+      { type: 'article', contents: { title: '标题', url: '/a/1190000047730945', excerpt: '摘要', created: 1777166221, comments: 3, votes: 5 } },
+      { type: 'question', contents: { title: '提问', url: '/q/123', created: 1777166221 } },
+    ] } } } } },
+  };
+  const original = globalThis.fetch;
+  globalThis.fetch = async () => ({
+    ok: true, status: 200,
+    text: async () => `<script id="__NEXT_DATA__" type="application/json">${JSON.stringify(payload)}</script>`,
+  });
+  try {
+    const items = await searchSegmentFault('Claude Code');
+    assert.equal(items.length, 1, '只收 article 类型');
+    assert.equal(items[0].link, 'https://segmentfault.com/a/1190000047730945');
+    assert.equal(items[0].publishedAt, new Date(1777166221 * 1000).toISOString());
+    assert.equal(items[0].metrics.votes, 5);
+  } finally { globalThis.fetch = original; }
+});
+
+test('searchSegmentFault 在页面结构变了时抛错，而不是当成搜到 0 条', async () => {
+  // 它靠的是 Next.js 的内嵌数据，改版就会失效——必须报错，
+  // 否则会被记成「今天没人写这个主题」，静默少一个源。
+  const original = globalThis.fetch;
+  globalThis.fetch = async () => ({ ok: true, status: 200, text: async () => '<html>改版了</html>' });
+  try {
+    await assert.rejects(() => searchSegmentFault('x'), /__NEXT_DATA__/);
+  } finally { globalThis.fetch = original; }
 });
 
 /* ---- 探测器 ---- */

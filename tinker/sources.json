@@ -28,6 +28,15 @@
     "desc": "Appinn 的 Discourse 论坛，桌面工具折腾氛围浓，覆盖 Work Agent 那一侧。"
   },
   {
+    "name": "SegmentFault 搜索",
+    "url": "https://segmentfault.com",
+    "search": "segmentfault",
+    "kind": "search",
+    "enabled": true,
+    "limit": 20,
+    "desc": "思否，覆盖一批不写掘金的中文开发者。搜索页是服务端渲染，解析 __NEXT_DATA__ 取结果。"
+  },
+  {
     "name": "linux.do",
     "url": "https://linux.do",
     "feed": "https://linux.do/latest.rss",
