@@ -34,6 +34,29 @@ export function validate(days) {
   }
 }
 
+/**
+ * 一个把成品页塞进窄 iframe 的预览页。
+ *
+ * 为什么需要它：浏览器窗口 resize 在这套工具链下不生效（试过，innerWidth 不变），
+ * 而 iframe 有自己的视口，媒体查询会按 iframe 宽度生效——这是能真正看到
+ * 手机布局的最省事办法。第一次这么看就发现了问题：
+ * 手机上整条侧栏排在内容前面，要划过一屏半筛选器才见到第一篇文章。
+ * 每次构建都产出它，让「顺手看一眼窄屏」成为习惯而不是额外动作。
+ */
+function responsiveHarness() {
+  const v = Date.now();
+  const frame = (w, label) => `<figure><figcaption>${label}</figcaption>`
+    + `<iframe src="tinker.html?v=${v}" width="${w}" height="820" title="${label}"></iframe></figure>`;
+  return `<!doctype html><meta charset="utf-8"><title>折腾志 · 响应式预览</title>
+<style>body{margin:0;background:#333;display:flex;gap:16px;padding:12px;
+font:12px system-ui,sans-serif;color:#fff;align-items:flex-start}
+figure{margin:0}figcaption{padding:4px 0}iframe{border:0;background:#fff}</style>
+${frame(390, '390 × 820（手机）')}
+${frame(768, '768 × 820（平板）')}
+${frame(1180, '1180 × 820（桌面）')}
+`;
+}
+
 function todayInShanghai() {
   return new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -53,6 +76,7 @@ export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
   const out = join(root, 'dist', 'tinker.html');
   mkdirSync(join(root, 'dist'), { recursive: true });
   writeFileSync(out, html);
+  writeFileSync(join(root, 'dist', 'responsive.html'), responsiveHarness());
 
   return {
     dayCount: days.length,

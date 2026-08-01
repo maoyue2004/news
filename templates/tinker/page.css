@@ -29,6 +29,7 @@
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
 
+  --rule: #191d1b;
   --rail: 232px;
   --gutter: 3.25rem;
   --radius: 3px;
@@ -49,6 +50,7 @@
     --signal: #e79a4d;
     --signal-soft: #33251440;
     --danger: #e0796c;
+    --rule: #39423d;
   }
 }
 
@@ -67,6 +69,7 @@
   --signal: #e79a4d;
   --signal-soft: #33251440;
   --danger: #e0796c;
+  --rule: #39423d;
 }
 
 :root[data-theme="light"] {
@@ -83,6 +86,7 @@
   --signal: #b35c07;
   --signal-soft: #f6e6d2;
   --danger: #a63328;
+  --rule: #191d1b;
 }
 
 * { box-sizing: border-box; }
@@ -130,7 +134,8 @@ button {
   align-items: baseline;
   gap: 0.75rem 1.25rem;
   padding: 2.5rem 0 1.25rem;
-  border-bottom: 2px solid var(--ink);
+  /* 暗色下 --ink 接近纯白，2px 实线会变成一条很吵的亮带，压到中性描边色。 */
+  border-bottom: 2px solid var(--rule);
 }
 
 .wordmark {
@@ -496,7 +501,12 @@ table.sources td.desc { color: var(--ink-mute); font-size: 0.8rem; min-width: 18
 
 @media (max-width: 860px) {
   .frame { grid-template-columns: 1fr; gap: 1.5rem; }
-  .rail { position: static; max-height: none; padding-top: 1.25rem; }
+  /* 手机上先看文章，再看筛选器。
+   * 不换序的话要先划过搜索框、四个视图、二十多个工具标签和日历，
+   * 约一屏半的筛选器之后才见到第一篇文章——而手机上绝大多数人是来扫今天有什么的。 */
+  .content { order: -1; padding-top: 1.25rem; }
+  .rail { position: static; max-height: none; padding-top: 0; border-top: 1px solid var(--line); }
+  .rail-label { padding-top: 0.5rem; }
   .tag-list { max-height: 9rem; }
   .entry { grid-template-columns: 1fr; gap: 0.5rem; }
   .entry-gutter { flex-direction: row; align-items: center; gap: 0.6rem; }
