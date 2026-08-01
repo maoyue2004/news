@@ -156,7 +156,7 @@ test('产品自荐帖被重扣，真折腾长文不受影响', () => {
   const promo = scoreItem({
     title: '做了一个 Neovim 里的 AI 编程 Agent 前端 pi2.nvim，开源求交流',
     excerpt: '一直在用 Claude Code 做日常开发，我把它做成了插件，欢迎试用，求个 Star。',
-    kind: 'forum',
+    thread: true,
   });
   assert.equal(promo.verdict, 'reject');
   assert.ok(promo.reasons.includes('疑似产品自荐帖'));
@@ -164,9 +164,9 @@ test('产品自荐帖被重扣，真折腾长文不受影响', () => {
 
 test('论坛短帖扣分，但长度不是硬门槛', () => {
   const args = { title: '我把 Claude Code 的 statusline 折腾成了可版本化仓库', excerpt: '踩坑记录。' };
-  const short = scoreItem({ ...args, kind: 'forum' });
-  const long = scoreItem({ ...args, excerpt: '踩坑记录。'.repeat(400), kind: 'forum' });
-  const blog = scoreItem({ ...args, kind: 'blog' });
+  const short = scoreItem({ ...args, thread: true });
+  const long = scoreItem({ ...args, excerpt: '踩坑记录。'.repeat(400), thread: true });
+  const blog = scoreItem({ ...args, thread: false });
   assert.ok(short.score < blog.score, '论坛短帖该比同内容的博客文低分');
   assert.ok(long.score > short.score, '论坛长帖该比短帖高分');
   assert.equal(short.verdict, 'shortlist', '够强的短帖仍要能入围，长度只是减分项');
@@ -196,25 +196,25 @@ test('短中文别名不能是常用词的子串', () => {
 
 test('论坛/搜索源整体占比封顶，不只是按单源配额', () => {
   // 按源配额只防单个源淹没名单；4 个论坛源各拿 8 席合起来仍是 32 席。
-  const mk = (i, source, kind) => ({
-    id: `${source}${i}`, source, kind, url: `https://e.com/${source}${i}`,
+  const mk = (i, source, thread) => ({
+    id: `${source}${i}`, source, thread, url: `https://e.com/${source}${i}`,
     titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
     excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(80),
   });
   const items = [
-    ...['论坛A', '论坛B', '论坛C', '论坛D'].flatMap((s) => Array.from({ length: 20 }, (_, i) => mk(i, s, 'forum'))),
-    ...Array.from({ length: 10 }, (_, i) => mk(i, `博客${i}`, 'blog')),
+    ...['论坛A', '论坛B', '论坛C', '论坛D'].flatMap((s) => Array.from({ length: 20 }, (_, i) => mk(i, s, true))),
+    ...Array.from({ length: 10 }, (_, i) => mk(i, `博客${i}`, false)),
   ];
   const { shortlist } = triage(items, { cap: 60, quota: 8 });
-  const forums = shortlist.filter((it) => it.kind === 'forum').length;
-  const blogs = shortlist.filter((it) => it.kind === 'blog').length;
+  const forums = shortlist.filter((it) => it.thread).length;
+  const blogs = shortlist.filter((it) => !it.thread).length;
   assert.equal(blogs, 10, '文章型条目一条都不该被挤掉');
   assert.ok(forums <= 8, `论坛不该超过 40% 占比（10 篇文章对应约 7 条），实际 ${forums}`);
 });
 
 test('博客当天集体没更新时，论坛仍能凑出一个能看的名单', () => {
   const items = Array.from({ length: 30 }, (_, i) => ({
-    id: `f${i}`, source: '论坛', kind: 'forum', url: `https://e.com/f${i}`,
+    id: `f${i}`, source: '论坛', thread: true, url: `https://e.com/f${i}`,
     titleOriginal: `我用 Cursor 折腾了第 ${i} 个项目的记录`,
     excerpt: '踩坑心得，配置工作流。'.repeat(80),
   }));
@@ -225,10 +225,10 @@ test('博客当天集体没更新时，论坛仍能凑出一个能看的名单',
 test('被占比上限挡下的条目要说明原因，不静默消失', () => {
   const items = [
     ...Array.from({ length: 30 }, (_, i) => ({
-      id: `f${i}`, source: `论坛${i % 3}`, kind: 'forum', url: `https://e.com/f${i}`,
+      id: `f${i}`, source: `论坛${i % 3}`, thread: true, url: `https://e.com/f${i}`,
       titleOriginal: `我用 Cursor 折腾了第 ${i} 个项目`, excerpt: '踩坑心得。'.repeat(80),
     })),
-    { id: 'b1', source: '博客', kind: 'blog', url: 'https://e.com/b1',
+    { id: 'b1', source: '博客', url: 'https://e.com/b1',
       titleOriginal: '我用 Claude Code 折腾了一个项目', excerpt: '踩坑心得。'.repeat(80) },
   ];
   const { shortlist, rejected } = triage(items, { cap: 60, quota: 8 });
@@ -276,4 +276,17 @@ test('自荐帖的招呼语压在结尾时也要扣分，但比标题/开头轻'
   assert.ok(tailPromo.score < neutral.score, '结尾的推广语要扣分');
   assert.ok(tailPromo.reasons.includes('结尾落在推广语上'));
   assert.ok(headPromo.score < tailPromo.score, '标题/开头的自荐比结尾更能说明落点，扣得更重');
+});
+
+test('搜索源返回文章时不受论坛占比约束', () => {
+  // kind 描述「怎么抓」，thread 描述「抓到什么」。掘金搜索和 V2EX 搜索的 kind
+  // 都是 search，但前者返回文章、后者返回论坛帖，只有后者该被压。
+  const mk = (i, source, thread) => ({
+    id: `${source}${i}`, source, thread, url: `https://e.com/${source}${i}`,
+    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(80),
+  });
+  const items = Array.from({ length: 25 }, (_, i) => mk(i, '掘金搜索', false));
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  assert.ok(shortlist.length >= 20, `文章型搜索源不该被占比上限压到 ${shortlist.length}`);
 });

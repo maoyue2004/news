@@ -15,7 +15,8 @@
     "kind": "search",
     "enabled": true,
     "limit": 20,
-    "desc": "通过社区维护的 sov2ex 索引全站搜。V2EX 的 agent 讨论口语化、第一人称，但夹杂大量拼车贴，靠反向词过滤。"
+    "desc": "通过社区维护的 sov2ex 索引全站搜。V2EX 的 agent 讨论口语化、第一人称，但夹杂大量拼车贴，靠反向词过滤。",
+    "thread": true
   },
   {
     "name": "小众软件论坛搜索",
@@ -25,7 +26,8 @@
     "kind": "search",
     "enabled": true,
     "limit": 20,
-    "desc": "Appinn 的 Discourse 论坛，桌面工具折腾氛围浓，覆盖 Work Agent 那一侧。"
+    "desc": "Appinn 的 Discourse 论坛，桌面工具折腾氛围浓，覆盖 Work Agent 那一侧。",
+    "thread": true
   },
   {
     "name": "SegmentFault 搜索",
@@ -43,7 +45,8 @@
     "kind": "forum",
     "browserUa": true,
     "enabled": true,
-    "desc": "中文 AI 工具折腾密度最高的论坛。站点在 Cloudflare 后面，云端抓取会间歇性失败，属预期内。"
+    "desc": "中文 AI 工具折腾密度最高的论坛。站点在 Cloudflare 后面，云端抓取会间歇性失败，属预期内。",
+    "thread": true
   },
   {
     "name": "NodeSeek",
@@ -51,7 +54,8 @@
     "feed": "https://www.nodeseek.com/rss.xml",
     "kind": "forum",
     "enabled": true,
-    "desc": "折腾向中文论坛，自建、脚本、AI 工具话题多。"
+    "desc": "折腾向中文论坛，自建、脚本、AI 工具话题多。",
+    "thread": true
   },
   {
     "name": "V2EX 技术节点",
@@ -59,7 +63,8 @@
     "feed": "https://www.v2ex.com/feed/tab/tech.xml",
     "kind": "forum",
     "enabled": true,
-    "desc": "V2EX 技术标签页 feed，补搜索索引的延迟。"
+    "desc": "V2EX 技术标签页 feed，补搜索索引的延迟。",
+    "thread": true
   },
   {
     "name": "Ruby China",
@@ -67,7 +72,8 @@
     "feed": "https://ruby-china.org/topics/feed",
     "kind": "forum",
     "enabled": true,
-    "desc": "老牌中文技术社区，近年不少 AI 编程工作流长贴。"
+    "desc": "老牌中文技术社区，近年不少 AI 编程工作流长贴。",
+    "thread": true
   },
   {
     "name": "LearnKu",
@@ -75,7 +81,8 @@
     "feed": "https://learnku.com/feed",
     "kind": "forum",
     "enabled": true,
-    "desc": "PHP/Laravel 起家的中文社区，覆盖另一批不上掘金的开发者。"
+    "desc": "PHP/Laravel 起家的中文社区，覆盖另一批不上掘金的开发者。",
+    "thread": true
   },
   {
     "name": "BestBlogs.dev",
