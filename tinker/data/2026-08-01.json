@@ -1,42 +1,8 @@
 {
   "date": "2026-08-01",
   "generatedAt": "2026-08-01T14:38:38.279Z",
-  "dailyNote": "创刊号。这批是最近三周的存货，之后每天只推新的。挑的时候有条硬线：作者得真的动过手，而且得写成一篇东西。所以「我做了个产品，求 Star」被整类拿掉了——它和真折腾长得像，区别在于落点是让你去用它，而不是告诉你他踩了什么坑。留下的都有具体数字、具体坑、具体后果：880 次提交换来 18 万行 Rust、号称省 65% token 实测只有 8.5%、新域名上线第三天被 Google 判成钓鱼站。",
+  "dailyNote": "创刊号，收的是最近三周的存货。挑的硬线是：作者得真的动过手，而且得写成一篇东西——「我做了个产品，求 Star」整类拿掉了，它和真折腾长得像，区别在落点是让你去用它还是告诉你他踩了什么坑。今天临时扩了一轮源：从中文独立博客索引里筛出 84 个近期真写过 agent 的个人博客，本期后半段基本都来自它们。最值得先读的是「我的 AI 助手疯了，30 分钟停不下来」——agent 陷进沉没成本时长什么样，写得比任何局限性总结都具体。",
   "items": [
-    {
-      "id": "4c3f2e85ae245286",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1231338",
-      "titleOriginal": "我把 Claude Code 的 statusline 和主题配置整理成了一个可版本化仓库",
-      "titleZh": "把 Claude Code 的 statusline 和主题配置做成一个可版本化的仓库",
-      "summaryZh": "作者的痛点很具体：对话一长交代过的任务就滚出视野，目录、worktree、分支、Git 状态散在不同命令里，主题改完没法同步回滚。于是把 statusline 和主题抽成独立仓库 claude-code-config，让状态栏常驻显示最近一条指令、当前 worktree 和分支、conflict/stash/modified/staged 的计数，以及模型和用量。",
-      "whyRead": "配置即代码这件事在 Claude Code 上到底怎么落地，这是一份能直接抄的答案。",
-      "rating": 5,
-      "tools": [
-        "claude-code"
-      ],
-      "publishedAt": "2026-07-31T13:43:50.000Z",
-      "author": "ichanne",
-      "preScore": 16
-    },
-    {
-      "id": "82026fbe87c4ae57",
-      "source": "V2EX 搜索",
-      "kind": "search",
-      "url": "https://www.v2ex.com/t/1231245",
-      "titleOriginal": "用 Claude Code 抢了一个还没发售的游戏的 wiki 站，上线 4 天开始出数据了",
-      "titleZh": "用 Claude Code 抢注了一个还没发售的游戏的 wiki 站，上线四天开始出数据",
-      "summaryZh": "盯上一款 8 月 10 号进 Early Access 的 Steam 游戏，趁搜索词还没人做，注册精确匹配域名做第三方攻略站。Astro Starlight + Cloudflare Pages 免费层，34 个全静态页面，从选词到上线约两天，全程 Claude Code 干活。游戏有免费序章可实测，内容不靠洗通稿；上线第三天被 Google Safe Browsing 误判成欺骗性网页，作者把新域名加游戏关键词撞上假下载站分类器的过程也写了。",
-      "whyRead": "从选词、建站到被搜索引擎误伤，一条完整的实验链路，连翻车都记下来了。",
-      "rating": 5,
-      "tools": [
-        "claude-code"
-      ],
-      "publishedAt": "2026-07-31T06:56:38.000Z",
-      "author": "sutree900",
-      "preScore": 6
-    },
     {
       "id": "9dfff7fb6ffd4efd",
       "source": "V2EX 搜索",
@@ -81,20 +47,56 @@
       "preScore": 7
     },
     {
-      "id": "2269b337541a08d2",
-      "source": "TonyBai",
+      "id": "be9dbc2659827468",
+      "source": "sjdhome blog",
       "kind": "blog",
-      "url": "https://tonybai.com/2026/07/20/introducing-cc-session-migrate/",
-      "titleOriginal": "我开源了 cc-session-migrate ：让 Claude Code 会话在多台机器之间自由迁移",
-      "titleZh": "我开源了 cc-session-migrate：让 Claude Code 会话在多台机器之间搬家",
-      "summaryZh": "Claude Code 的会话存在本地 ~/.claude/，换台机器 claude --resume 就是 No sessions found，上午在 MacBook 上理清的架构下午到服务器就断了。作者用 Go 写了 csm，做三件事：跨机器拉取会话并能无缝续接、把多个开发节点当集群管理、自动备份到 S3。直接 scp 整个目录会覆盖别的机器上的会话，这是它要解决的。",
-      "whyRead": "多机开发的人几乎都撞过这堵墙，而这是少见的把它真正做成工具的。",
+      "url": "https://sjdhome.com/posts/tmux-agent-watch/",
+      "titleOriginal": "借鉴 Herdr，让 Claude 从头到尾写出一个 tmux AI Agent 监控器",
+      "titleZh": "让 Claude 从头到尾写出一个 tmux 的 AI Agent 监控器",
+      "summaryZh": "作者 tmux 里常年开着好几个 agent：一个 session 在改 bug，一个在整理笔记，还有一个跑长任务。人可以去干别的，但得隔一会儿把窗口挨个切一遍，看谁跑完了、谁卡在权限确认框上。他先试过 Stop hook 发系统通知、让 agent 往 IRC 发消息，都不解决本质问题——他要的是当前状况，而通知只反映某个时间点的状况。",
+      "whyRead": "并行开多个 agent 之后必然撞上的问题，以及一个想清楚了才动手的解法。",
       "rating": 5,
       "tools": [
         "claude-code"
       ],
-      "publishedAt": "2026-07-19T21:00:00.000Z",
-      "preScore": 12
+      "publishedAt": "2026-07-23T16:00:00.000Z",
+      "preScore": 7
+    },
+    {
+      "id": "f1911aa1dbc80392",
+      "source": "毛英龙的数字花园",
+      "kind": "blog",
+      "url": "https://blog.rnm.gv.uy/2026/07/20/ai-agent-sunk-cost-trap/",
+      "titleOriginal": "我的 AI 助手疯了，30 分钟停不下来",
+      "titleZh": "我的 AI 助手疯了，30 分钟停不下来",
+      "summaryZh": "起因很小：有道云笔记 CLI 有个 bug 会把报错堆栈写进笔记。助手 2 分钟定位根因、5 分钟加了防御层，问题本已解决。然后它说「我想从根本上解决这个 CLI 的不稳定性」——提议用纯 Python 写 MCP SSE 客户端直连私有协议，20 分钟写了 12K 代码，POST 超时、换 URL 404、换 header 还是超时。正常人此时该换路，它的选择是再加三个方案：抓包分析、逆向 Web API、反编译客户端。",
+      "whyRead": "agent 陷进沉没成本时长什么样，这篇写得比任何「局限性」总结都具体。",
+      "rating": 5,
+      "tools": [
+        "claude-code",
+        "mcp"
+      ],
+      "publishedAt": "2026-07-20T15:00:00.000Z",
+      "preScore": 8
+    },
+    {
+      "id": "dd0baac597d40845",
+      "source": "创见思考",
+      "kind": "blog",
+      "url": "https://www.fengcan.net/ai-memory-sole-writer/",
+      "titleOriginal": "给 AI 管记忆的第二课：一个人怎么当三家智能体的唯一写入者",
+      "titleZh": "给 AI 管记忆的第二课：一个人怎么当三家智能体的唯一写入者",
+      "summaryZh": "上一篇的铁律是「记忆只能有一本账」，但退场的那几家并没有死，仍在干活、仍会发现值得记住的事实。作者日常用三个编程智能体：Claude Code 主力干重活写记忆，Codex 跑独立小任务，Kimi Code 是新买的。三家各有各的指令文件格式和技能加载路径。这一轮解决的是一套核心指令怎么同步、技能包怎么不走样、新发现怎么回流到唯一那本账——落地方案是一个 canonical 目录放 Dropbox 跨设备同步，生成四份产物。",
+      "whyRead": "多 agent 并用的记忆管理，作者说「坑的形状比结论本身更值钱」，确实如此。",
+      "rating": 5,
+      "tools": [
+        "claude-code",
+        "codex",
+        "skills",
+        "claude-md"
+      ],
+      "publishedAt": "2026-07-19T14:09:09.000Z",
+      "preScore": 6
     },
     {
       "id": "2e7d3b4c47a68b17",
@@ -116,22 +118,21 @@
       "preScore": 8
     },
     {
-      "id": "73e10b4751f2baaf",
-      "source": "掘金搜索",
-      "kind": "search",
-      "url": "https://juejin.cn/post/7661303393304313866",
-      "titleOriginal": "深入 Claude Code 的 CLAUDE.md",
-      "titleZh": "深入 Claude Code 的 CLAUDE.md：它不是 README，是常驻上下文",
-      "summaryZh": "文章纠正一个常见误会：CLAUDE.md 看着像文档，实际是每个会话都要装进上下文窗口的常驻内存。由此推出两条结论——它是杠杆率最高的提示词界面，写对一行「测试用 pnpm test」能省掉后面无数次纠正；同时它也在持续吃 token，所以不该当成什么都往里塞的说明书。",
-      "whyRead": "把 CLAUDE.md 从「写了但不知道有没有用」讲成了一件有成本、有杠杆的事。",
+      "id": "abb00c7d558574c6",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/07/15/obsidian-as-ide/",
+      "titleOriginal": "使用 Obsidian 作为 AI 时代的 IDE：Karpathy「Wiki as Codebase」的落地实践——Claudian、CLAUDE.md 与 Vault Lint",
+      "titleZh": "把 Obsidian 当 AI 时代的 IDE：Karpathy「Wiki as Codebase」的落地实践",
+      "summaryZh": "作者把 Karpathy 那句「Obsidian is the IDE, LLM is the programmer, wiki is the codebase」真的落了地：Obsidian 加 Claudian 插件，vault 根目录放 CLAUDE.md schema，把设计决策、AI 对话历史、DB schema、跨服务上下文都沉淀成可以 Lint 的知识网络。文末给了一次跨度两周、15 个决策、13 个 commit 的重构实战，外加两条能直接扔给 Claudian 的 Vault Lint prompt。",
+      "whyRead": "「上下文该放哪」这个问题，这是我见过最完整的一套答案，而且带实战数据。",
       "rating": 5,
       "tools": [
         "claude-code",
         "claude-md"
       ],
-      "publishedAt": "2026-07-14T00:02:34.000Z",
-      "author": "用户71387422900",
-      "preScore": 11
+      "publishedAt": "2026-07-15T21:23:41.000Z",
+      "preScore": 12
     },
     {
       "id": "0c36841c8d82d17f",
@@ -184,6 +185,40 @@
       "preScore": 7
     },
     {
+      "id": "4c3f2e85ae245286",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1231338",
+      "titleOriginal": "我把 Claude Code 的 statusline 和主题配置整理成了一个可版本化仓库",
+      "titleZh": "把 Claude Code 的 statusline 和主题配置做成一个可版本化的仓库",
+      "summaryZh": "作者的痛点很具体：对话一长交代过的任务就滚出视野，目录、worktree、分支、Git 状态散在不同命令里，主题改完没法同步回滚。于是把 statusline 和主题抽成独立仓库 claude-code-config，让状态栏常驻显示最近一条指令、当前 worktree 和分支、conflict/stash/modified/staged 的计数，以及模型和用量。",
+      "whyRead": "配置即代码这件事在 Claude Code 上到底怎么落地，这是一份能直接抄的答案。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-31T13:43:50.000Z",
+      "author": "ichanne",
+      "preScore": 16
+    },
+    {
+      "id": "82026fbe87c4ae57",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1231245",
+      "titleOriginal": "用 Claude Code 抢了一个还没发售的游戏的 wiki 站，上线 4 天开始出数据了",
+      "titleZh": "用 Claude Code 抢注了一个还没发售的游戏的 wiki 站，上线四天开始出数据",
+      "summaryZh": "盯上一款 8 月 10 号进 Early Access 的 Steam 游戏，趁搜索词还没人做，注册精确匹配域名做第三方攻略站。Astro Starlight + Cloudflare Pages 免费层，34 个全静态页面，从选词到上线约两天，全程 Claude Code 干活。游戏有免费序章可实测，内容不靠洗通稿；上线第三天被 Google Safe Browsing 误判成欺骗性网页，作者把新域名加游戏关键词撞上假下载站分类器的过程也写了。",
+      "whyRead": "从选词、建站到被搜索引擎误伤，一条完整的实验链路，连翻车都记下来了。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-31T06:56:38.000Z",
+      "author": "sutree900",
+      "preScore": 6
+    },
+    {
       "id": "1739914059371bc7",
       "source": "陈少文",
       "kind": "blog",
@@ -203,6 +238,24 @@
       "preScore": 7
     },
     {
+      "id": "7c60d31a70d1bcd8",
+      "source": "elmagnifico",
+      "kind": "blog",
+      "url": "https://elmagnifico.tech/2026/07/30/Agent-IDE-Compare/",
+      "titleOriginal": "Cursor、Claude、Codex深度体验、对比",
+      "titleZh": "Cursor、Claude、Codex 深度体验与对比",
+      "summaryZh": "作者把三个工具都用了一遍做横向对比。Cursor 用得最多，理解和使用门槛以程序员为基准，但默认套餐上下文只有 260K 而别人都 1M+，大需求容易跑过，好在内置了压缩上下文和长期记忆会自动衔接。作者的判断是 Cursor 没有 Claude 和 Codex 激进，更偏向为已有工程和程序员协作服务，对现有工作流改动小，适合循序渐进切到 agent 工作流；它想主推的 Agent 模式反而对既有工程不如 IDE 模式好用。",
+      "whyRead": "三家横评里少见的、带具体参数和使用倾向判断的一篇。",
+      "rating": 4,
+      "tools": [
+        "cursor",
+        "claude-code",
+        "codex"
+      ],
+      "publishedAt": "2026-07-29T16:00:00.000Z",
+      "preScore": 12
+    },
+    {
       "id": "9b49a7456614794e",
       "source": "V2EX 搜索",
       "kind": "search",
@@ -220,6 +273,22 @@
       "preScore": 10
     },
     {
+      "id": "4b5ce4655dab1d79",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/07/28/claude-code-tools-ask-user-question/",
+      "titleOriginal": "Claude Code Tools 研究系列（一）—— AskUserQuestion：把「AI 提问」变成结构化交互原语",
+      "titleZh": "Claude Code Tools 研究系列（一）：AskUserQuestion 把提问变成结构化交互原语",
+      "summaryZh": "作者之前用 Java 写过一个乞丐版 Claude Code，觉得它的 tools 设计得非常精巧，于是打算逐个研究。开篇聊 AskUserQuestion——它不是让模型输出一段问题字符串等回复，而是把问题渲染成交互式选择面板。解决的核心问题是人机对齐效率：用户从打字回答变成点选项，响应时间大幅缩短；模型拿到的是明确枚举值，不用再解析自然语言，歧义也就收敛了。",
+      "whyRead": "从「自己实现过一遍」的视角拆 Claude Code 的工具设计，角度很少见。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-28T22:22:00.000Z",
+      "preScore": 9
+    },
+    {
       "id": "e6944ebdd9631613",
       "source": "israynotarray",
       "kind": "blog",
@@ -233,6 +302,88 @@
         "claude-code"
       ],
       "publishedAt": "2026-07-27T02:18:28.000Z",
+      "preScore": 6
+    },
+    {
+      "id": "511aede7e1cd79c7",
+      "source": "又耳笔记",
+      "kind": "blog",
+      "url": "https://youerning.top/post/opencode/opencode-sharing/",
+      "titleOriginal": "AI 编程助手的'不务正业' — OpenCode 免费额度与自定义 Agent 实战",
+      "titleZh": "OpenCode 的两个「不务正业」用法：免费额度和自定义 Agent",
+      "summaryZh": "作者装 OpenCode 本来是为了写代码，用了几个月发现最惊喜的反而是两个不务正业的用法。一是免费额度慷慨到不登录也有免费模型，200K 上下文对服务器运维绰绰有余；二是它的 Agent 机制让他自定义了一个只会搜索的 agent，某种程度上能代替搜索引擎。文中也给了接自己 API Key 和订阅 Go 计划的选择。",
+      "whyRead": "把编程 agent 拿去干运维和搜索，是那种用出来才知道的路子。",
+      "rating": 4,
+      "tools": [
+        "opencode"
+      ],
+      "publishedAt": "2026-07-26T11:00:26.000Z",
+      "preScore": 7
+    },
+    {
+      "id": "418da908f6aea21a",
+      "source": "ISLAND",
+      "kind": "blog",
+      "url": "https://youngxhui.top/2026/07/opencodex-third-party-models/",
+      "titleOriginal": "opencodex：让 Codex 和 Claude Code 跑在任意 LLM 上",
+      "titleZh": "opencodex：让 Codex 和 Claude Code 跑在任意 LLM 上",
+      "summaryZh": "opencodex 是个本地代理，把 Codex 的 Responses API 翻译成任意 LLM provider 的协议。装完三行命令就能让 Codex CLI、Codex App、SDK 改道用 Claude、Gemini、DeepSeek、Grok、GLM、Qwen 甚至本地 Ollama，Claude Code 那边同样可以换任意模型，不用等官方支持。streaming、tool 调用、reasoning token、图片生成都双向工作，默认透传原有登录，随时可以再加别的模型。",
+      "whyRead": "被官方模型绑定这件事，有人写了个代理层直接绕过去了。",
+      "rating": 4,
+      "tools": [
+        "codex",
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-22T00:00:00.000Z",
+      "preScore": 8
+    },
+    {
+      "id": "2269b337541a08d2",
+      "source": "TonyBai",
+      "kind": "blog",
+      "url": "https://tonybai.com/2026/07/20/introducing-cc-session-migrate/",
+      "titleOriginal": "我开源了 cc-session-migrate ：让 Claude Code 会话在多台机器之间自由迁移",
+      "titleZh": "我开源了 cc-session-migrate：让 Claude Code 会话在多台机器之间搬家",
+      "summaryZh": "Claude Code 的会话存在本地 ~/.claude/，换台机器 claude --resume 就是 No sessions found，上午在 MacBook 上理清的架构下午到服务器就断了。作者用 Go 写了 csm，做三件事：跨机器拉取会话并能无缝续接、把多个开发节点当集群管理、自动备份到 S3。直接 scp 整个目录会覆盖别的机器上的会话，这是它要解决的。",
+      "whyRead": "多机开发的人几乎都撞过这堵墙，而这是少见的把它真正做成工具的。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-19T21:00:00.000Z",
+      "preScore": 12
+    },
+    {
+      "id": "d16b0b080681fc98",
+      "source": "明立非(Mingnify)的博客",
+      "kind": "blog",
+      "url": "https://mingnify.com/zh/blog/p/chat-work-codex-differences-use-cases/",
+      "titleOriginal": "Chat、Work、Codex 的区别和使用场景",
+      "titleZh": "Chat、Work、Codex 的区别和使用场景",
+      "summaryZh": "ChatGPT 和 Codex 合并后界面里出现了 Chat、Work、Codex 三种模式。作者给了一个最小定位：Chat 是对话和思考入口，适合提问讨论探索；Work 是知识工作和非编程任务的 Agent，适合整理资料、处理文档、产出方案；Codex 是项目和本地环境里的 Agent，围绕文件、代码、终端和验证推进任务。按工作方式可分成对话式 AI 和 AI Agent 两类，这个划分也顺带解释了为什么会有 Work 模式、额度怎么算、记录为什么有时同步有时不同步。",
+      "whyRead": "三个模式到底该用哪个，官方没讲清楚的部分这篇讲清楚了。",
+      "rating": 4,
+      "tools": [
+        "codex",
+        "chatgpt-desktop"
+      ],
+      "publishedAt": "2026-07-19T16:00:00.000Z",
+      "preScore": 6
+    },
+    {
+      "id": "f7fcbbf6411dd598",
+      "source": "XINDOO的博客",
+      "kind": "blog",
+      "url": "https://zxs.io/article/2201",
+      "titleOriginal": "浅谈 Loop Engineering 与组织运作的相似性",
+      "titleZh": "浅谈 Loop Engineering 与组织运作的相似性",
+      "summaryZh": "作者的一句话结论是：所谓 Loop Engineering，其实是把组织管理的老规律用 AI 时代的新语言重新说了一遍。他先梳理造词速度——Prompt Engineering 的思维链、少样本刚练熟，Context Engineering 就来了，重点从怎么写提示词变成怎么往上下文里塞对的东西；Context 还没玩明白 Harness 又成了高频词；现在又冒出 Loop Engineering。而且这次是几路一线同时在提：Claude Code 负责人 Boris Cherny 说自己已经不写 Prompt 而是写 Loop，Karpathy 反复强调必须把自己从 Loop 的执行过程里移出去。",
+      "whyRead": "对着满天飞的新词，有人把它翻译回了你本来就懂的东西。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-19T13:26:48.000Z",
       "preScore": 6
     },
     {
@@ -271,6 +422,23 @@
       "preScore": 8
     },
     {
+      "id": "4e1132033b2efa45",
+      "source": "RYANUO的博客",
+      "kind": "blog",
+      "url": "https://ryanuo.cc/posts/grill-me-vs-superpowers",
+      "titleOriginal": "grill-me vs Superpowers：两种 Agent Skills 路线的全面对比",
+      "titleZh": "grill-me vs Superpowers：两条 Agent Skills 路线的全面对比",
+      "summaryZh": "Agent Skills 生态里绕不开的两个名字：Matt Pocock 的 grill-me 和 obra 的 Superpowers。很多人当成二选一，作者认为更准确的说法是它们在「动手前对齐」这件事上重叠，但产品形态、强制程度、覆盖生命周期差别很大。grill-me 是一组审讯式规划 skill，核心问题是「你真的想清楚了吗」，输出的是共享理解、默认可以不落盘；Superpowers 是一整套软件工程方法论加可组合 skills，核心问题是「如何按纪律从想法走到可合并分支」，输出的是设计文档到计划的完整链条。",
+      "whyRead": "两套 Skills 到底该选哪个，这篇把定位、机制、工作流都摊开了。",
+      "rating": 4,
+      "tools": [
+        "skills",
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-17T18:00:00.000Z",
+      "preScore": 13
+    },
+    {
       "id": "60c39618403a8a5f",
       "source": "V2EX 搜索",
       "kind": "search",
@@ -291,6 +459,39 @@
       "preScore": 8
     },
     {
+      "id": "0a16a0110c9063ba",
+      "source": "Android Performance",
+      "kind": "blog",
+      "url": "https://androidperformance.com/2026/07/17/SmartPerfetto-Six-Week-Update/",
+      "titleOriginal": "SmartPerfetto 2026.06.04-07.17 六周更新复盘：从 v1.0.28 到 v1.1.1",
+      "titleZh": "SmartPerfetto 六周更新复盘：150 个提交、13 个版本",
+      "summaryZh": "作者复盘自己的项目从 v1.0.28 到 v1.1.1 这六周，合入约 150 个提交、发布 13 个版本。上一篇的主线是把四条 Agent 运行时都跑通，这六周的主线是把四条运行时收敛到同一套契约之下，同时在分析体验、场景知识、公共生态三个方向扩展。文中用仓库内约定的统计命令给出了可量化的前后对比指标。",
+      "whyRead": "多 agent 运行时怎么收敛到一套契约，这是带六周真实提交数据的复盘。",
+      "rating": 4,
+      "tools": [
+        "skills",
+        "claude-code"
+      ],
+      "publishedAt": "2026-07-16T16:00:00.000Z",
+      "preScore": 7
+    },
+    {
+      "id": "9c4bdfe597204a8d",
+      "source": "轶哥博客",
+      "kind": "blog",
+      "url": "https://www.wyr.me/post/764",
+      "titleOriginal": "AI写标书踩过的那些坑",
+      "titleZh": "AI 写标书踩过的那些坑",
+      "summaryZh": "作者和做投标的用户一起梳理 AI 招投标流程，总结出六个坑：把「生成完成」当成「标书完成」、盯标只做关键词推送、让一个 Agent 从读标做到查标、做了大纲没做响应矩阵、把标书检查做成全文润色、每个项目都从头教一遍。一位电力行业投标负责人说他们的招标文件动不动上百页，过去光梳理要求就要几天；改成先让 Agent 把每条需要响应的内容列出来再进入写作和报价后，容易遗漏的资质响应明显少了。作者的建议是从零开始的话先做标书检查。",
+      "whyRead": "非编程的 Work Agent 落地案例，六个坑每个都长着真实业务的形状。",
+      "rating": 4,
+      "tools": [
+        "agents-md"
+      ],
+      "publishedAt": "2026-07-16T14:19:29.000Z",
+      "preScore": 7
+    },
+    {
       "id": "02f2b826933e487c",
       "source": "zhheo",
       "kind": "blog",
@@ -308,9 +509,43 @@
       ],
       "publishedAt": "2026-07-15T16:00:00.000Z",
       "preScore": 6
+    },
+    {
+      "id": "de2633c8121be343",
+      "source": "创见思考",
+      "kind": "blog",
+      "url": "https://www.fengcan.net/teach-dictation-my-terms/",
+      "titleOriginal": "让听写工具学会我的术语",
+      "titleZh": "让听写工具学会我的术语",
+      "summaryZh": "作者用了一阵 Typeless，口述变文字做得顺滑，但攒下两个疙瘩：转录历史锁在云端没有统一导出，以及他把「拍西艾」改回 PCI、「马乏凯泰」改回玛伐凯泰改了一次又一次，工具一次也没记住。于是想自己做一个，调研一圈发现已经有人造好了——CapsWriter-Offline，六千多星，识别全程在本地，拔掉网线照常工作。准的道理在于 Qwen3-ASR 的解码器本身是个 1.7B 语言模型，边听声学特征边写通顺的话，标点自带、中英夹杂不乱，再配音素级热词表。",
+      "whyRead": "「订阅照付、数据归人、个性化无从谈起」——换成本地方案的完整心路。",
+      "rating": 4,
+      "tools": [
+        "vibe-coding"
+      ],
+      "publishedAt": "2026-07-15T13:29:57.000Z",
+      "preScore": 7
+    },
+    {
+      "id": "73e10b4751f2baaf",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7661303393304313866",
+      "titleOriginal": "深入 Claude Code 的 CLAUDE.md",
+      "titleZh": "深入 Claude Code 的 CLAUDE.md：它不是 README，是常驻上下文",
+      "summaryZh": "文章纠正一个常见误会：CLAUDE.md 看着像文档，实际是每个会话都要装进上下文窗口的常驻内存。由此推出两条结论——它是杠杆率最高的提示词界面，写对一行「测试用 pnpm test」能省掉后面无数次纠正；同时它也在持续吃 token，所以不该当成什么都往里塞的说明书。",
+      "whyRead": "把 CLAUDE.md 从「写了但不知道有没有用」讲成了一件有成本、有杠杆的事。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "claude-md"
+      ],
+      "publishedAt": "2026-07-14T00:02:34.000Z",
+      "author": "用户71387422900",
+      "preScore": 11
     }
   ],
-  "reviewed": 37,
+  "reviewed": 56,
   "dropped": 20,
   "stats": {
     "sources": 67,

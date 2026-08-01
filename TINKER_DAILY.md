@@ -145,6 +145,17 @@
 5. 顺便看一眼 `lib/tinker/vocab.mjs`：今天的条目里有没有出现词表里没有的 agent 工具名？
    有就加进 `TOOLS`，并考虑给 `SEARCH_QUERIES` 补一条对应查询
 
+另有一条**批量扩源**的路子，效果比搜索引擎好得多（搜索引擎搜个人博客基本无效，
+出来的全是 CSDN / 知乎这类 SEO 平台页）：
+
+    node scripts/tinker-harvest.mjs               # 只看结果
+    node scripts/tinker-harvest.mjs --merge       # 直接并入 sources.json
+    node scripts/tinker-harvest.mjs --min-hits 2 --days 180   # 放宽门槛
+
+它从 timqian/chinese-independent-blogs（1400+ 个中文独立博客，全带 RSS）里，
+筛出「近期活跃 + 近 20 篇里至少 N 篇真写过 agent」的博客。创刊那天靠它一次加了 84 个源。
+索引会持续更新，**每隔一两周重跑一次**是划算的；日常单个补漏用 tinker-probe.mjs。
+
 **每次至少要新增 1 个源或 1 个词条。** 一个都没加，说明这一步没有认真做。
 连续找不到新东西时，换搜索语言（试试用工具的英文名搜中文页面）、换平台
 （Discourse 论坛、中文 newsletter 平台、GitHub 中文 awesome 仓库的友链）。

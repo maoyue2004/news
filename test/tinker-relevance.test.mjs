@@ -55,6 +55,12 @@ test('短工具名按词边界匹配，不吃子串', () => {
   assert.ok(matchTools('试了下 Amp 这个 agent').includes('amp'));
 });
 
+test('HTML 实体 &amp; 不能被当成 Amp', () => {
+  // feed 正文里 &amp; 遍地都是，前后都不是拉丁字母，纯词边界规则拦不住。
+  assert.deepEqual(matchTools('查询参数 a&amp;b 拼接'), []);
+  assert.deepEqual(matchTools('see &amp;lt; here'), []);
+});
+
 test('新闻腔会被扣分，纯发布公告不入围', () => {
   const r = scoreItem({
     title: 'MCP 协议迎来史上最大更新，Claude 率先适配支持',

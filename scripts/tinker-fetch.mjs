@@ -11,7 +11,7 @@ import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
 const SOURCES = 'tinker/sources.json';
 const DATA_DIR = 'tinker/data';
 const TIMEOUT_MS = 20000;
-const CONCURRENCY = Number(process.env.TINKER_CONCURRENCY ?? 6);
+const CONCURRENCY = Number(process.env.TINKER_CONCURRENCY ?? 10);
 const ENRICH_CONCURRENCY = 5;
 const QUERIES_PER_DAY = Number(process.env.TINKER_QUERIES ?? 12);
 const THIN_THRESHOLD = 250;
