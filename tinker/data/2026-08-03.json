@@ -1,0 +1,52 @@
+{
+  "date": "2026-08-03",
+  "generatedAt": "2026-08-03T06:20:00.000Z",
+  "dailyNote": "今天入围 19 条，收得下的只有 2 条，因为名单被两种「连载」灌满了：SegmentFault 上一套《OpenCode 源码详解》系列教程一天占了 5 席，自称「内容核实自 opencode.ai/docs 和 DeepWiki」——那不是读源码，是转述文档；iT 邦幫忙的铁人赛 Day1/Day2/Day3 又是一批入门介绍。剩下的大头是产品自荐：Octo、多 agent 编排平台、上下文压缩插件，都写得不难看，但落点都在「让你去用它」。留下的两篇正好是反面：一篇把 Claude Code 的 session 到底存在哪两类文件里扒开了讲，一篇为了让 Mac 在 agent 干活时别睡觉写了心跳加看门狗。先读 Mac 那篇，它最像这个栏目该有的样子——问题很小，解法很实在，跑了一个多月。",
+  "items": [
+    {
+      "id": "6a78af357422ee00",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "url": "https://www.v2ex.com/t/1231529#reply6",
+      "titleOriginal": "写了两个脚本， Claude Code 干活时 Mac 不睡觉（合盖也行），干完自动恢复睡眠",
+      "titleZh": "写了两个脚本：Claude Code 干活时 Mac 不睡觉，干完自动恢复睡眠",
+      "summaryZh": "作者跑长任务时离开电脑，回来发现 Mac 睡着了、任务卡在半截；直接开 caffeinate 又会在任务做完后继续耗电，还不能合盖。于是用两个脚本解决：心跳挂在 Claude Code 的 hooks 上，提交 prompt 和每次工具调用后 touch 一个会话状态文件，回合结束删掉，多开窗口互不干扰；看门狗做成 LaunchAgent 常驻，每 20 秒查一次，有活跃会话且 CPU 不过热就 pmset disablesleep 1，否则翻回 0。状态文件 30 分钟不刷新按孤儿清掉，所以 Claude 崩了或终端被关也不会把机器永远钉住。已经跑了一个多月。",
+      "whyRead": "不是「装个 Amphetamine」这种答案——他把「机器该不该醒着」绑到了 agent 的真实回合状态上，连崩溃和过热的退路都留了。",
+      "rating": 4,
+      "tools": ["claude-code"],
+      "topics": ["hooks"],
+      "publishedAt": "2026-08-02T05:43:40.000Z",
+      "author": "",
+      "preScore": 6
+    },
+    {
+      "id": "8ff2bd6a68cce466",
+      "source": "TonyBai",
+      "kind": "blog",
+      "url": "https://tonybai.com/2026/08/02/ccsa-claude-code-session-alias-tool/",
+      "titleOriginal": "ccsa：给 Claude Code 的 session 起个人类可记的名字，一键 resume",
+      "titleZh": "ccsa：给 Claude Code 的 session 起个人类可记的名字，一键 resume",
+      "summaryZh": "多线并行时每条线各开一个 session，隔天回来只剩一串 UUID 认不出谁是谁。作者顺着这个痛点把 Claude Code 的 session 机制扒了一遍：活跃 session 的注册表在 ~/.claude/sessions/<pid>.json，转录按项目存在 ~/.claude/projects/<编码路径>/<sessionId>.jsonl；原生的 --name 只能启动时设、--resume 的 picker 只列当前目录、--continue 只接最近一条，缺的正是「事后、跨项目、语义化」这一格。他写的 ccsa 就补这一格：维护别名到 UUID 的映射，恢复时解析回 UUID 再交给 claude；set 不带 --id 会先扫活跃 session、没有再回落到历史转录。",
+      "whyRead": "工具装不装两说，前半篇把 Claude Code 的 session 到底存成哪两类文件、三个原生参数各卡在哪讲清楚了——这部分不装也能拿走。",
+      "rating": 4,
+      "tools": ["claude-code"],
+      "topics": [],
+      "publishedAt": "2026-08-01T23:15:00.000Z",
+      "author": "",
+      "preScore": 9
+    }
+  ],
+  "reviewed": 19,
+  "dropped": 17,
+  "stats": {
+    "sources": 213,
+    "fetched": 271,
+    "shortlisted": 19,
+    "rejected": 252,
+    "thin": 66,
+    "enriched": 36,
+    "enrichAttempted": 41,
+    "failedSources": 8
+  },
+  "errors": []
+}

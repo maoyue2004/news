@@ -172,6 +172,33 @@ test('论坛短帖扣分，但长度不是硬门槛', () => {
   assert.equal(short.verdict, 'shortlist', '够强的短帖仍要能入围，长度只是减分项');
 });
 
+test('连载章节体标题被扣分，正文里提到章节的正常文章不受影响', () => {
+  // 2026-08-03：SegmentFault 的《OpenCode 源码详解》一天占了 5 席，收录 0 条。
+  const chapter = scoreItem({
+    title: '第27章 与同类项目的横向对比',
+    excerpt: '《OpenCode 源码详解》系列教程。本文对比 OpenCode 与 Claude Code、Cursor、Crush 的定位差异，'
+      + '内容核实自 opencode.ai/docs 及 DeepWiki 架构说明。'.repeat(20),
+  });
+  assert.ok(chapter.reasons.includes('连载章节体标题'));
+  assert.equal(chapter.verdict, 'reject');
+
+  const day = scoreItem({ title: 'Day 03：先搞懂三種角色', excerpt: '介紹 Claude Code CLI 的基本用法。' });
+  assert.ok(day.reasons.includes('连载章节体标题'));
+
+  // 编号必须在标题开头才算：正文/句中提到章节的是正常写法。
+  const normal = scoreItem({
+    title: '用 Claude Code 重写了书稿的第 3 章，踩了三个坑',
+    excerpt: '我让它读完前两章再动手，结果它把注释也一起改了。'.repeat(20),
+  });
+  assert.ok(!normal.reasons.includes('连载章节体标题'));
+});
+
+test('ACP 只认带限定词的写法，阿里云 ACP 认证不该命中', () => {
+  // 和「心流 → 核心流程」同类：中文语料里裸 ACP 压倒性指阿里云认证。
+  assert.deepEqual(matchTopics('我考了阿里云 ACP 认证，备考三个月'), []);
+  assert.deepEqual(matchTopics('把 opencode acp 接进 Zed 试了试'), ['acp']);
+});
+
 test('工具和话题分属两个维度，互不混入', () => {
   // 「按工具」这个筛选器里出现 MCP / CLAUDE.md / Vibe Coding 是分类错误：它们是概念不是产品。
   assert.deepEqual(matchTools('我给项目写了 CLAUDE.md，还配了几个 MCP 服务'), []);

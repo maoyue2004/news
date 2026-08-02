@@ -1,6 +1,6 @@
 {
-  "date": "2026-08-02",
-  "generatedAt": "2026-08-01T22:01:38.779Z",
+  "date": "2026-08-03",
+  "generatedAt": "2026-08-02T22:07:32.770Z",
   "queries": [
     "Claude Code 实践",
     "Claude Code 踩坑",
@@ -8,1106 +8,2177 @@
     "Cursor 工作流",
     "AI 编程 踩坑",
     "agent 编程 心得",
-    "Hermes agent 使用",
-    "MCP 服务器 自己写",
-    "MCP 实践",
-    "MCP 折腾",
-    "vibe coding 实践",
-    "氛围编程 体验",
-    "规格驱动开发 实践",
-    "Loop Engineering",
-    "Context Engineering 实践",
-    "上下文工程 实践",
-    "agent 记忆 方案",
-    "subagent 并行",
-    "git worktree agent",
-    "多个 agent 协作 开发",
-    "agent 并行 开发",
-    "AI 写代码 一个月",
-    "智能体 折腾",
-    "AI 编程 工作流",
-    "AI 编程 成本",
-    "token 消耗 编程",
-    "AI 编程 额度 用完",
-    "AI 写代码 翻车",
-    "agent 失控",
-    "AI 编程 幻觉 踩坑"
+    "Codex CLI 实践",
+    "Codex CLI 踩坑",
+    "Gemini CLI 实践",
+    "Gemini CLI 踩坑",
+    "Copilot CLI 实践",
+    "Copilot CLI 踩坑",
+    "Copilot CLI 体验",
+    "Aider 实践",
+    "Aider 踩坑",
+    "Aider 体验",
+    "OpenCode 实践",
+    "OpenCode 踩坑",
+    "Factory Droid 实践",
+    "Factory Droid 踩坑",
+    "Factory Droid 体验",
+    "iFlow CLI 实践",
+    "iFlow CLI 踩坑",
+    "iFlow CLI 体验",
+    "Qwen Code 实践",
+    "Qwen Code 踩坑",
+    "Qwen Code 体验",
+    "OpenHands 实践",
+    "OpenHands 踩坑"
   ],
   "stats": {
-    "sources": 212,
-    "fetched": 89,
-    "shortlisted": 1,
-    "rejected": 88,
-    "thin": 23,
-    "enriched": 22,
-    "enrichAttempted": 45,
-    "failedSources": 12
+    "sources": 213,
+    "fetched": 271,
+    "shortlisted": 19,
+    "rejected": 252,
+    "thin": 66,
+    "enriched": 36,
+    "enrichAttempted": 41,
+    "failedSources": 8
   },
   "perSource": {
-    "linux.do": 26,
-    "V2EX 技术节点": 0,
+    "linux.do": 30,
+    "V2EX 技术节点": 17,
     "Ruby China": 0,
     "NodeSeek": 20,
-    "BestBlogs.dev": 36,
+    "BestBlogs.dev": 100,
     "LearnKu": 0,
     "小众软件论坛搜索": 0,
-    "V2EX 搜索": 0,
-    "掘金搜索": 4,
-    "SegmentFault 搜索": 1,
-    "潮流周刊": 0,
-    "小众软件": 0,
-    "HelloGitHub": 0,
-    "少数派": 0,
-    "黑暗執行緒": 0,
-    "博客园首页": 0,
-    "DecoHack 独立开发者周刊": 0,
-    "宝玉xp": 0,
+    "V2EX 搜索": 38,
+    "SegmentFault 搜索": 15,
+    "掘金搜索": 3,
     "The Will Will Web（保哥）": 0,
-    "israynotarray": 0,
+    "黑暗執行緒": 1,
+    "潮流周刊": 1,
+    "HelloGitHub": 0,
+    "少数派": 1,
+    "小众软件": 1,
+    "宝玉xp": 0,
+    "博客园首页": 15,
+    "科技爱好者周刊": 0,
+    "DecoHack 独立开发者周刊": 1,
     "Tw93": 0,
     "MinglunWu": 0,
-    "鸟窝 Colobu": 0,
-    "Huli": 0,
-    "云谦 sorrycc 的 doubi": 0,
-    "TonyBai": 0,
-    "Limboy": 0,
     "Kalan's Blog": 0,
+    "云谦 sorrycc 的 doubi": 0,
     "ihower": 0,
+    "TonyBai": 2,
+    "israynotarray": 0,
+    "Limboy": 1,
+    "Huli": 0,
+    "鸟窝 Colobu": 0,
     "rxliuli": 0,
-    "ArthurChiao": 0,
-    "陈少文": 0,
-    "青南 kingname": 0,
+    "Frost Ming": 0,
+    "BMPI": 0,
     "Cyrus Yip": 0,
     "Xuanwo": 0,
-    "Randy Lu": 0,
-    "Frost Ming": 0,
+    "ArthurChiao": 0,
+    "青南 kingname": 0,
     "陶叔 taoshu.in": 0,
-    "BMPI": 0,
+    "Randy Lu": 0,
+    "陈少文": 0,
     "catcoding": 0,
-    "qiankunli": 0,
-    "Pseudoyu": 0,
     "Innei": 0,
+    "Pseudoyu": 0,
+    "qiankunli": 0,
+    "Finisky Garden": 0,
     "LQ's Blog": 0,
     "Owen Young": 0,
-    "Finisky Garden": 0,
-    "Alan Imant": 0,
-    "x-cmd": 2,
+    "x-cmd": 1,
     "ursb": 0,
-    "liruifengv": 0,
-    "Reorx's Forge": 0,
+    "Alan Imant": 0,
+    "Sukka's Blog": 1,
     "Vaayne": 0,
-    "Sukka's Blog": 0,
+    "Reorx's Forge": 0,
+    "Nekomoe": 0,
     "guangzhengli": 0,
+    "luozhiyun": 0,
     "Eric Fu": 0,
     "Laisky": 0,
-    "luozhiyun": 0,
-    "Nekomoe": 0,
-    "icodeq": 0,
+    "liruifengv": 0,
+    "est": 0,
     "yuanchuan": 0,
     "immmmm": 0,
-    "Mobius": 0,
     "mazhuang": 0,
-    "豌豆花下猫 - Python猫": 0,
     "zhheo": 0,
-    "浮云翩迁之间": 0,
+    "Mobius": 1,
+    "豌豆花下猫 - Python猫": 0,
     "Ryan Chen": 0,
+    "icodeq": 0,
+    "浮云翩迁之间": 0,
     "明立非(Mingnify)的博客": 0,
-    "Yiran's Blog": 0,
-    "icodex - 个人网站": 0,
-    "Measure Zero": 0,
-    "草梅友仁的博客": 0,
+    "icodex - 个人网站": 2,
     "莫尔索": 0,
+    "草梅友仁的博客": 0,
     "唐巧的博客": 0,
-    "Android Performance": 0,
-    "创见思考": 0,
+    "Measure Zero": 0,
+    "Yiran's Blog": 0,
+    "创见思考": 1,
     "雷蒙三十": 0,
-    "This cute world": 0,
+    "Android Performance": 0,
     "Benson": 0,
     "暮冬Z羡慕的博客": 0,
+    "This cute world": 0,
+    "Mobility": 0,
+    "Sekyoro的博客小屋": 0,
     "翔宇工作流": 0,
     "行运设计师": 0,
     "elmagnifico": 0,
-    "毛英龙的数字花园": 0,
-    "Sekyoro的博客小屋": 0,
     "远飞闲记": 0,
-    "年华转瞬": 0,
-    "data4fun": 0,
-    "我不是咕咕鸽": 0,
-    "Dax": 0,
-    "电波障害": 0,
+    "毛英龙的数字花园": 0,
     "云原生": 0,
+    "Dax": 0,
+    "年华转瞬": 0,
+    "我不是咕咕鸽": 0,
+    "data4fun": 0,
+    "电波障害": 0,
     "XINDOO的博客": 0,
-    "MacTalk-池建强的随想录": 0,
     "Airing's Blog": 0,
+    "MacTalk-池建强的随想录": 0,
     "犀利豆的博客": 0,
-    "Luenci的技术博客": 0,
+    "王欣的博客": 0,
     "明明如月的博客": 0,
     "forecho 的独立博客": 0,
-    "Peng's Blog": 0,
-    "Abyss的小屋": 0,
-    "范叶亮的博客": 0,
-    "码农刚子的开发笔记": 0,
-    "王欣的博客": 0,
+    "Luenci的技术博客": 0,
     "RYANUO的博客": 0,
+    "Peng's Blog": 0,
+    "码农刚子的开发笔记": 0,
+    "范叶亮的博客": 0,
     "Seven's blog": 0,
+    "Niracler's Blog": 0,
     "东东's Blog": 0,
     "TrumanDu 博客": 0,
-    "ISLAND": 0,
-    "Niracler's Blog": 0,
-    "Frytea's Blog": 0,
     "Ke's blog": 0,
-    "LoRexxar's Blog": 0,
+    "ISLAND": 0,
+    "Frytea's Blog": 0,
+    "W4J1e's blog": 0,
+    "Watermelonabc的Blog": 0,
     "YeungYeah 的乱写地": 0,
     "Jacky's Blog": 0,
-    "Mayx的博客": 0,
-    "流动": 0,
-    "idealclover": 0,
-    "iMaeGoo's Blog": 0,
     "Origin": 0,
     "Raye's Journey": 0,
     "农码生涯 无酒无花": 0,
+    "iMaeGoo's Blog": 0,
+    "Mayx的博客": 0,
+    "流动": 0,
     "粥里有勺糖": 0,
-    "Amiya的书桌": 0,
+    "sjdhome blog": 0,
+    "for_the_zero的小站": 0,
+    "清羽飞扬": 0,
     "又耳笔记": 0,
-    "Kerry的学习笔记": 0,
     "映屿": 0,
     "猿客随笔": 0,
-    "清羽飞扬": 0,
-    "for_the_zero的小站": 0,
-    "sjdhome blog": 0,
+    "Kerry的学习笔记": 0,
     "黑羽的个人博客": 0,
+    "Amiya的书桌": 1,
     "轶哥博客": 0,
-    "Terrarum::异世界丨居正博客": 0,
-    "愆伏": 0,
-    "Laike9m's blog": 0,
+    "杰哥的小笔记": 0,
     "Weishu's Notes": 0,
+    "Laike9m's blog": 0,
     "Henry Z's blog": 0,
-    "Oragekk's Blog": 0,
+    "愆伏": 0,
     "S T C H E N G": 0,
     "欧雷流": 0,
     "子舒的博客": 0,
-    "杰哥的小笔记": 0,
+    "Oragekk's Blog": 0,
+    "Terrarum::异世界丨居正博客": 0,
+    "Guyskk 的博客": 0,
+    "Rokcso's Blog": 0,
+    "无妄当自持": 0,
+    "電腦玩物": 0,
     "Verne in GitHub": 0,
     "Joway's Blog": 0,
-    "電腦玩物": 0,
     "SimonAKing": 0,
-    "iT 邦幫忙": 0,
     "枫言枫语": 0,
+    "iT 邦幫忙": 20,
     "OneV's Den": 0,
-    "无妄当自持": 0,
-    "Rokcso's Blog": 0,
-    "Guyskk 的博客": 0,
-    "Nicksxs's Blog": 0,
-    "小陶持续精进": 0,
-    "LearnData 开源笔记": 0,
     "Ben 的博客 Dot to Line": 0,
+    "Nicksxs's Blog": 1,
+    "浦明的博客": 0,
+    "小陶持续精进": 0,
+    "Clark's 尧望 Blog": 0,
     "笨方法学写作": 0,
     "任霏博客": 0,
-    "橙树志": 0,
+    "LearnData 开源笔记": 0,
     "DGideas' Blog": 0,
-    "mvread.blog": 0,
-    "謝懿Shine": 0,
-    "謝懿Shine©的AI博客": 0,
-    "smallyu的博客": 0,
+    "橙树志": 0,
     "UsubeniFantasy": 0,
-    "LX blog": 0,
-    "如有乐享": 0,
+    "謝懿Shine©的AI博客": 0,
     "7Wate`s Blog": 0,
+    "謝懿Shine": 0,
+    "mvread.blog": 0,
+    "smallyu的博客": 1,
     "肘子的 Swift 记事本": 0,
     "刘郎阁": 0,
-    "猫涅的技术博客": 0,
-    "Fernweh": 0,
+    "LX blog": 0,
+    "如有乐享": 0,
     "Cat in Chinese": 0,
-    "Lenix Blog": 0,
+    "猫涅的技术博客": 0,
     "Mox的笔记库": 0,
-    "blog.liuf.net": 0,
-    "rss.csdn.net": 0,
+    "Fernweh": 0,
+    "Lenix Blog": 0,
     "无名博客": 0,
+    "rss.csdn.net": 0,
     "张戈博客": 0,
-    "方永、南天紫云": 0,
-    "陈看川博客": 0,
-    "西秦公子": 0,
+    "blog.liuf.net": 0,
     "Mephisto's blog": 0,
-    "逸思杂陈": 0,
     "迷途小书童": 0,
+    "陈看川博客": 0,
+    "逸思杂陈": 0,
+    "西秦公子": 0,
+    "保罗的小宇宙": 0,
+    "方永、南天紫云": 0,
     "Deepzz's Blog": 0,
     "plus studio": 0,
-    "Super Blog": 0,
     "ChrAlpha 的幻想乡（博客）": 0,
+    "keggin's blog": 0,
+    "酷酷的白": 0,
+    "blog.loikein.one": 0,
     "Neil的自留地": 0,
     "zww.me": 0,
-    "fenx.work": 0,
     "敖苛记": 0,
-    "blog.loikein.one": 0,
     "dyedd.cn": 0,
-    "酷酷的白": 0,
-    "keggin's blog": 0,
-    "Kaffa": 0,
-    "韩小韩博客": 0
+    "fenx.work": 0,
+    "Super Blog": 0,
+    "李博杰 Bojie Li": 0,
+    "Kaffa": 0
   },
   "shortlist": [
     {
-      "id": "bca34985a9a99450",
+      "id": "6f4081258dc533fa",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "thread": true,
+      "url": "https://www.v2ex.com/t/1228101",
+      "titleOriginal": "为什么到今天我又做了一个开源 Agent",
+      "publishedAt": "2026-07-17T11:39:29.000Z",
+      "excerpt": "认识 Octo —— 一个用 Go 从零打造的强大个人 Agent 。 - **34 个内置 Tool ，20 个精挑细选的默认 Skill**，支持 Claude Code 式的 Loop 、动态 Workflow 、Codex 式的 Goal 、Record & Replay 。 - **8 个规划的用户界面，已实现 7 个**（ CLI 、Web 、桌面、IM 、VS Code 、Obsidian 、Go SDK ），只剩移动端即将上线。 - **极致的简洁交互、周密的防护、坚固的稳定性**，只求成为最省心的个人 Agent 。 无论你用的是什么操作系统，无论你对 AI Agent 了解多少，Octo 希望做到让你 **10 分钟上手、1 天熟悉、1 周成为最佳帮手**。 安装就是一行命令，不依赖 Node 、Python 、Ruby——下载即用： > `curl -fsSL https://octo-agent.dev/install.sh | sh` > `octo config` --- ### 不是要超越谁，而是做好自己 我知道个人开发的 Agent 不可能在绝对性能上超过 Codex 这种顶级模型厂商的闭源 Agent ，也知道不可能在声量上超过 WorkBuddy 这种顶级大厂砸钱推的产品。所以 Octo 不跟谁比，只想成为 **最易用、最安全、最注重隐私的开源 Agent**。 --- ### 那为什么还要做？ 两个原因。 第一，坦白说，我对现在「 CC 写代码 + OpenClaw 做日常助手」这种分裂模式很不满意。两个工具，两套配置，两种体验——明明它们本质上是一回事。这种不满意贯穿了 Octo 的每一个设计决策。 第二，我第一次深度使用 Claude Code 的时候，受到了巨大的震撼。一个 AI 在终端里自如地读写文件、执行命令、思考、纠错，像一名真正的工程师一样工作。我迫切地想搞懂这一切背后是怎么运行的——而了解一个系统最好的方式，就是从零实现一个。 在 AI 效率的加持下，这件事真的发生了。 --- ### 磨刀不误砍柴工 Octo 前期一直在打磨核心功能，那些略显噱头的东西一直放着没动。现在差不多了，Agent Team 、Multiple Agent 马上就来。 写代码这件事 AI 已经帮了大忙，产品力更多取决于 **品味**。但真正决定成败的，还是和用户的 **交流**。 --- ### 一些取舍：为什么市面上的 Agent 那么难用 无论 Claude Code 还是 Codex ，它们总是把 Chat 、Coding 、Work 拆成不同的界面。但 Octo 认为，这三种形态本质上都是 **一种会话**——用户不该费心思决定现在该用哪一个。Octo 只有一种。 同样，Octo 不区分 Coding Agent 和 General Agent 。一个通用的个人助手，当然应该会写代码、会做 PPT ，没必要分开。 **MCP 支持也做得比较扎实。** 支持 stdio 、Streamable HTTP 、HTTP OAuth 三种类型的 MCP Server ，并且内置了 **Tool Search** 机制——配置再多的 MCP 工具也不用担心撑爆上下文，模型按需按名查找调用，不会一股脑全塞进去。 --- ### 隐私和安全的底线 现在流行的 Agent 大多内置了各式各样的遥测。Claude Code 甚至被发现通过系统提示词里的隐形 Unicode 标记**悄悄识别中国用户**——[Anthropic 工程师后来在 X 上承认了这个\"实验\"]( https://x.com/trq212/status/2072079729331777817)，技术细节可以看[这篇拆解]( https://www.cnblogs.com/gdutxiaoxu/p/21039392)。 Octo **没有任何遥测数据**，不会把任何信息发到远程服务器。除了模型调用本身——如果你有能力，完全可以使用本地模型，两种协议和任何兼容端点都能接。 还有一个安全问题：现在模型说发疯就发疯，万一把你数据删了怎么办？ Octo 确保你的数据始终能恢复——`rm`、覆盖写入、程序化删除全部先进回收站，14 天内随时找回。 那些流行一时的 General Agent ，用 Node 、Python 开发，源码直接装到用户本地，Agent 自己就能把自己改挂。挂了又得熬夜修。Octo 用 Go 开发，**Agent 没法在本地改代码**，改配置也有 Hook 保护。改错了？旧配置随时恢复，稳如泰山。甚至用户主动让 Agent 去杀 Octo Serve 服务，都不行——除非你手动关闭应用。 **更进一步，Octo 内置了 OS",
+      "author": "leihaibo1992",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "iFlow CLI 体验",
+      "thin": false,
+      "preScore": 12,
+      "tools": [
+        "claude-code",
+        "openclaw",
+        "cowork",
+        "obsidian"
+      ],
+      "topics": [
+        "mcp"
+      ],
+      "preReasons": [
+        "正文命中：claude-code/openclaw/cowork",
+        "泛 agent 词 2 个",
+        "标题是「我+动作」句式",
+        "正文经验词 5 个",
+        "论坛长帖"
+      ]
+    },
+    {
+      "id": "887161ad9dec6c77",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048094490",
+      "titleOriginal": "2026年Claude Code跨协议模型聚合技术指南：从协议壁垒到统一调度的工程化路径",
+      "publishedAt": "2026-07-30T02:09:22.000Z",
+      "excerpt": "2026年，AI编程工具链的演进已进入深水区。Anthropic推出的终端智能体Claude Code，凭借深度代码理解、文件系统操作和工具调用能力，正被越来越多技术团队纳入日常研发流水线。然而，当团队希望将阿里通义千问Qwen系列模型（如Qwen3.6-Plus、Qwen-Coder等）接入Claude Code时，一个典型的工程难题便会浮现—— 协议不匹配 。 Claude Code原生基于Anthropic Messages API协议通信，而Qwen系列模型通常遵循OpenAI兼容的Chat Completions接口规范。两者在消息结构、参数定义、流式响应格式乃至工具调用（Function Calling / Tool Use）规范上均存在显著差异。这种协议层面的鸿沟，使得开发者无法直接将Qwen模型作为Claude Code的后端引擎使用。 本文将系统拆解Claude Code与Qwen模型结合的技术路径，从协议兼容、服务可靠性、成本治理、企业级管理等多个维度展开分析，为技术决策者提供可量化的选型依据。 一、跨协议调用的工程挑战 将Qwen接入Claude Code，开发者面临的具体障碍包括： 消息格式差异 ：Claude Code使用Anthropic的 messages 结构（包含 role 、 content 等字段），而Qwen的接口遵循OpenAI的 chat/completions 格式，两者在字段映射上存在结构差异。 流式响应机制不一致 ：Claude Code依赖特定的流式响应格式支撑实时代码补全与交互，Qwen的流式实现与Anthropic协议并非完全匹配。 工具调用规范不同 ：Claude Code深度依赖工具调用能力，但其实现方式（Tool Use）与OpenAI或Qwen的原生工具调用（Function Calling）规则存在差异。 上下文管理策略差异 ：Claude Code针对长上下文对话设有专属Token管理机制，直接对接Qwen可能导致上下文窗口利用率下降。 对于技术团队而言，直接修改Claude Code源码或自行编写适配层意味着高昂的研发投入与持续的维护负担。 二、三种接入路径的工程对比 为直观呈现不同接入路径的优劣，下表从多个关键维度进行系统比较： 评估维度 直接修改Claude Code源码 自建API适配层 使用星链4SAPI 前期开发成本 极高（需深入理解两种协议） 中高（需持续投入维护） 极低（零适配，即配即用） 长期维护负担 高（协议更新需同步改造） 高（需追踪各模型版本变化） 低（平台自动处理协议变更） 协议覆盖范围 有限（仅适配已处理过的协议） 需自行扩展兼容性 全面（OpenAI/Anthropic/Gemini三协议原生兼容） 服务稳定性 依赖自身架构抗风险能力 依赖自身架构抗风险能力 SLA 99.99%高可用保障 并发处理能力 受限于技术实现与资源 受限于技术实现与资源 并发峰值1.2M+ RPM 费用透明度 需手动统计日志 需手动统计日志 提供完整调用明细（输入/输出/缓存Tokens） 企业级管理 需自行开发账号/权限/审计系统 需自行开发 内建子账号/用量限额/发票 模型选择灵活性 仅能使用单一模型系列 有限模型 220+已上架模型可选 工具兼容性 需自行适配Claude Code等工具 需自行适配 全面兼容Claude Code、Cursor等主流工具 从对比中可见，星链4SAPI在开发效率、维护成本、稳定性、成本控制、企业级功能等方面均具备明显优势。 三、协议自动转换：零配置接入的核心能力 星链4SAPI最突出的技术特点是其 多协议原生兼容 能力。平台同时支持OpenAI、Anthropic、Gemini三套接口体系。这意味着开发者无需对Claude Code做任何配置变更，只需将API端点指向星链4SAPI，即可让Qwen模型正常工作。 具体的技术实现包括： 协议自动映射 ：当Claude Code以Anthropic Messages API协议发送请求时，星链4SAPI在网关层自动将其转换为Qwen模型支持的OpenAI Chat Completions格式。这一转换对上层业务完全透明。 参数智能化适配 ：不同模型对 temperature 、 top_p 、 max_tokens 等参数的处理方式各异。星链4SAPI内置针对数百个已上架模型的参数优化策略，确保每个模型在其最佳配置下运行。 工具调用跨协议转换 ：针对Claude Code中的工具调用（Tool Use）场景，平台实现跨模型的工具调用协议转换，确保Qwen模型能正确解析和执行工具指令。 流式响应一致性 ：星链4SAPI将Qwen的流式响应格式统一转换为Anthropic协议兼容的格式，保障Claude Code的实时交互体验不受影响。 这种零适配特性对开发团队的实际价值显著——接入后，Claude Code调用Qwen模型的响应时间与调用原生Claude模型基本一致。对于已使用Claude Code、Cursor、Codex等工具的开发者，星链4SAPI能够实现“一次配置，多模型切换”的工程体验。 四、服务稳定性：高可用SLA与并发保障 对于生产环境而言，服务稳定性是选择API聚合平台的首要考量因素。星链4SAPI将 企业级生产环境 作为核心定位，在稳定性方面投入了多项措施： API可用性 ：承诺SLA 99.99%，在主流聚合平台中处于最高梯队 并发峰值 ：1.2M+ RPM（每分钟请求数），能够支撑大规模并发场景 全球平均延迟 ：24ms，保障实时交互体验 智能调度系统 ：平台内置智能路由算法，根据各模型的实时负载、响应延迟、成功率等指标自动分配请求，避免单点过载 官方通道接入 ：所有模型均通过100%官方API接入，而非逆向或非官方接口。这避免了因逆向接口被限制导致的突发服务中断，确保长期稳定 在实测中，星链4SAPI的智能调度系统能在单点故障后快",
+      "metrics": {
+        "comments": 0,
+        "votes": 0
+      },
+      "matchedQuery": "Qwen Code 实践",
+      "thin": false,
+      "preScore": 11,
+      "tools": [
+        "claude-code",
+        "cursor"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：claude-code",
+        "泛 agent 词 2 个",
+        "正文经验词 6 个"
+      ]
+    },
+    {
+      "id": "1fd696071c0a50a6",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/shanyou/p/22144007",
+      "titleOriginal": "MCP 第五版 × OpenClaw.NET：从协议升级到生态编排 - 张善友",
+      "publishedAt": "2026-08-02T04:06:00.000Z",
+      "excerpt": "自由、创新、研究、探索 .NET AINative Development/dotnet智能原生应用开发 博客园 首页 新随笔 管理 MCP 第五版 × OpenClaw.NET：从协议升级到生态编排 MCP 第五版做了一件很\"Unix 哲学\"的事：把核心协议做得尽可能小，把扩展能力做得尽可能标准。 副标题 ：当 MCP 从\"AI 的 USB\"变成\"Agent 里的迷你 SaaS\"，OpenClaw.NET 如何成为那个 SaaS 的编排操作系统？ 基于 MCP 2026-07-28 第五版规范与 OpenClaw.NET PR #196（csharp-sdk v2.0 升级）的深度解读 引言：一次协议升级，一次部署范式的迁移 2026 年 7 月 28 日，MCP 协议发布第五版。最醒目的变化是 会话从协议层被彻底删除 ——MCP 从一个有状态的双向协议，变成了无状态的请求-响应协议。 这意味着什么？ 远程 MCP Server 可以像普通 HTTP 服务一样部署到 Serverless、边缘节点或 Kubernetes 网关可以直接通过 Mcp-Method 和 Mcp-Name 请求头路由， 无需解析 JSON body 跨调用的状态不再藏在连接里，而是通过 显式业务句柄 在工具参数中传递 服务端反向请求客户端的能力，被 MRTR（多轮往返请求） 替代 与此同时，OpenClaw.NET 在 PR #196 中完成了向 csharp-sdk v2.0 的升级，全面拥抱 Streamable HTTP、协议协商（ server/discover ）、MCP Apps 代理端点、Tasks 扩展以及 JSON Schema 2020-12。 这篇文章要做的，不是重复协议文档，而是回答一个问题： 当 MCP 第五版让单个 Server 变得像迷你 SaaS 时，OpenClaw.NET 如何成为这些 SaaS 的编排操作系统？ 一、第五版核心变革：从\"连接即状态\"到\"请求即自包含\" 1.1 无状态核心：协议层的彻底解耦 旧协议（有状态） 第五版（无状态） 对 OpenClaw.NET 的影响 initialize/initialized 握手 每个请求自包含协议版本与能力 Gateway 无需维护连接生命周期 Mcp-Session-Id 粘性会话 移除协议层会话 支持轮询负载均衡，天然适配 K8s 服务端内存保存客户端状态 状态外置到数据库/缓存 与 MetaSkill 显式状态管理哲学一致 HTTP+SSE 长连接 Streamable HTTP 请求-响应 与现有 HTTP 基础设施完全兼容 关键洞察 ：无状态化不是削弱 MCP，而是把它从\"需要特殊照顾的协议\"变成\"可以标准运维的服务\"。这对 OpenClaw.NET 的 Gateway 层是重大利好——网关规则可以大幅简化。 1.2 显式业务句柄：状态属于业务，不属于连接 第五版删除了协议会话后，跨调用状态（如浏览器实例、购物车、审批流程）通过 显式句柄 传递： 第一次调用: create_browser → 返回 browser_id 后续调用: open_page(browser_id) → click(browser_id) → screenshot(browser_id) 这与 OpenClaw.NET 的 MetaSkill DAG 设计理念高度契合： MetaSkill 的工作流节点之间本就通过 显式参数 传递状态 工具调用的 browser_id 本质上就是 DAG 边上的一个数据令牌（Token） 状态生命周期由业务定义，可以跨实例、跨工具、甚至跨 Agent 传递 1.3 MRTR：连接可以断，流程不会丢 旧协议中，服务端可以主动请求客户端（如要求用户确认删除）。这依赖持续连接，在无状态架构下无法工作。 第五版引入 MRTR（Multi Round-Trip Requests） ： 客户端发起工具调用 服务端返回 input_required 客户端收集用户确认/参数 客户端携带 inputResponses + requestState 重新发起原始请求 任意服务端实例 继续完成任务 这与 OpenClaw.NET Harness 引擎 的\"中断-恢复\"机制天然互补： Harness 可以将 input_required 状态持久化到任务存储 用户响应后，Harness 重新调度任务到任意 Worker 实例 真正实现\"连接断、流程在、状态不丢\" 二、PR #196 升级路径：OpenClaw.NET 的 MCP 2.0 实践 PR #196 不是简单的 SDK 版本升级，而是一次面向生产环境的架构对齐。以下是关键实现与第五版规范的映射： 2.1 Streamable HTTP 与协议协商 // OpenClawHttpClient 中的协议协商 // 1. 优先尝试 server/discover // 2. 404 或 -32601 时回退到 initialize // 3. 捕获协商版本，后续请求复用 对应第五版 ： 移除了硬编码的 2025-03-26 版本回退 支持从 McpDiscoverRequest 的 _meta 信封中读取协议版本 每个请求携带 Mcp-Method 和 Mcp-Name 请求头 2.2 网关层路由：从 JSON 解析到请求头识别 // SendMcpAsync 中注入 Streamable HTTP 请求头 Mcp-Method: tools/call Mcp-Name: search Mcp-Protocol-Version: 2026-07-28 生产价值 ： API Gateway、WAF、限流器可以直接根据请求头判断调用方法 无需解析 JSON-RPC body，大幅降低网关 CPU 开销 与 OpenClaw.NET 现有的 Gateway 路由体系无缝集成 2.3 MCP App",
+      "thin": false,
+      "preScore": 10,
+      "tools": [
+        "openclaw"
+      ],
+      "topics": [
+        "mcp"
+      ],
+      "preReasons": [
+        "标题命中：openclaw/mcp",
+        "正文经验词 3 个"
+      ]
+    },
+    {
+      "id": "5506d02bfac439a1",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048099102",
+      "titleOriginal": "第27章 与同类项目的横向对比",
+      "publishedAt": "2026-07-31T01:30:39.000Z",
+      "excerpt": "《OpenCode 源码详解》系列教程 · 第九部分：生态位与选型对比（收尾） 本文件覆盖系列目录第九部分全部两章：第27章\"与同类项目的横向对比\"、第28章\"项目现状与未来演进\"，共 6 节，是本系列的收尾部分。内容核实自多篇 2026 年公开评测、GitHub 仓库公开信息及前面各部分已交叉验证过的数据。 ⚠️ 本章开篇必须先纠正一个重要认知 ：查证 27.3 节\"OpenCode vs Crush\"的过程中，发现一个此前几部分没有触及、但很关键的事实—— Crush 真正的血缘关系，和本系列第一部分曾经提到过的 opencode-ai/opencode （当时被判定为\"无关的小众项目\"）紧密相连 ，而不是本系列分析对象 sst/opencode 的延续。这个关系必须先讲清楚，才能正确理解 27.3 节的对比。 第27章 与同类项目的横向对比 27.1 OpenCode vs Pi：重型开箱即用 vs 极简可扩展的路线对比 综合前面各部分内容，两者的路线分歧点很清晰： 维度 Pi OpenCode 内核大小 极简，默认仅4个工具 相对完整，内置双主 Agent + 三个 Subagent + LSP + MCP 原生集成 扩展哲学 一切能力（含 MCP、子代理编排）都推给三层生态（Extensions/Skills/Packages） 内置能力已经比较完整， @opencode-ai/plugin 更多是深度定制的补充手段 安全模型 官方明确不提供内置权限系统，需要自己容器化加固 内置 permission 精细化权限体系（ edit / bash / mcp / task 各自可控），配合官方 Enterprise 方案的集中管控 客户端形态 主要是终端 + 编程接口，无独立桌面应用/IDE 扩展生态 Client/Server 架构支撑起 TUI、桌面应用、多个 IDE 扩展 定位取向 \"把决定权交还给使用者\"的减法路线，适合愿意自己动手拼装的重度定制用户 \"开箱即用但依然开源可扩展\"的中间路线，适合想要完整体验、又不想被单一厂商锁定的团队 一句话总结：如果你想要的是\"一个几乎空白的画布，自己决定要往上面加什么\"，Pi 更合适；如果你想要的是\"一个功能已经比较齐全、同时保留深度定制空间\"的开源方案，OpenCode 更合适。 27.2 OpenCode vs Claude Code / Cursor：开源 Provider 无关 vs 商业闭源单一模型的取舍 维度 Claude Code Cursor OpenCode 开源程度 闭源 闭源 开源（MIT） Provider 覆盖 仅 Anthropic 多模型但产品本身闭源 75+ 家，Provider 无关 模型优化程度 与 Anthropic 模型深度绑定优化、agentic 循环质量更紧密 IDE 内联体验打磨精细 LSP 集成带来真实的代码智能，但存在\"更全但更慢\"的真实权衡（第四、六部分已用真实评测数据展开） 计费模式 订阅制托管 订阅制 BYOK 为主 ，也提供 Zen/Go 两个可选托管服务 厂商锁定风险 高（第三部分记录的订阅登录下架事件就是真实案例） 中 低 ——即便某个 Provider 出现类似限制，Provider 抽象层理论上可以换一家继续用 一份来自真实生产实践的中肯评价（第26部分引用过的 innFactory 复盘）值得在这里再次强调： 同一个底层模型下，OpenCode 和 Claude Code 的代码质量相当 ，核心差异不在\"谁更聪明\"，而在于开源可审计、无厂商锁定、可自托管这几个\"工程治理\"层面的取舍。 27.3 OpenCode vs Crush（重要辨析：Crush 并非 sst/opencode 的延续） 这是本部分查证中发现的一个关键事实，必须先纠正认知再展开对比： Crush 真正的血缘关系 ：Crush 由 Kujtim Hoxha （一位独立开发者）创建，他最初把这个项目也叫做 \"Open Code\" ，发布在 opencode-ai/opencode 这个仓库下——也就是本系列第一部分提到过的、和 sst/opencode 代码历史完全独立、只是撞名 的那个 Go 语言项目。后来 Hoxha 加入了 Charm 团队 （以 Bubble Tea、Glamour、Gum、Glow、Lazygit 等广受好评的终端 UI 工具闻名），项目正式改名为 Crush ，以彻底避免和 sst/opencode 的命名混淆。目前 opencode-ai/opencode 仓库的 README 里明确写着： \"The project has continued under the name Crush... Early Development Notice: This project is in early development and is not yet ready for production use.\" （项目已在 Crush 名下延续，且明确标注早期开发阶段、尚不适合生产使用）。 也就是说： Crush 不是本系列分析对象 sst/opencode 的延伸或竞品分叉，而是那个\"撞名但无关\"的另一个项目的正式延续 。两条产品线彼此独立发展至今。 维度 Crush OpenCode（ sst/opencode ） 血缘 opencode-ai/opencode （Hoxha 原项目）的正式延续，现由 Charm 团队开发 sst/opencode ，SST/Anomaly 团队独立开发，与 Crush 无代码血缘关系 License FSL-1.1-MIT （Functional Source License，发布满两年后自动转为 MIT，不是一开始就完全宽松） MIT （从始至终） 规模 约 2.5万 星标量级 约 14.7万-18万+ 星标量级（不同时间点口径不同，断层领先） 特色卖点 跨平台覆盖",
+      "metrics": {
+        "comments": 0,
+        "votes": 0
+      },
+      "matchedQuery": "OpenCode 实践",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "claude-code",
+        "opencode",
+        "crush",
+        "cursor"
+      ],
+      "topics": [
+        "mcp",
+        "subagent"
+      ],
+      "preReasons": [
+        "正文命中：claude-code/opencode/crush",
+        "泛 agent 词 1 个",
+        "标题经验词「对比」",
+        "正文经验词 8 个"
+      ]
+    },
+    {
+      "id": "dc915464c01a677f",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048067018",
+      "titleOriginal": "第1章 OpenCode 是什么",
+      "publishedAt": "2026-07-23T07:00:17.000Z",
+      "excerpt": "《OpenCode 源码详解》系列教程 · 第一部分：项目认知与全局导览 本文件覆盖系列目录第一部分全部三章：第1章\"OpenCode 是什么\"、第2章\"仓库全局地图\"、第3章\"环境搭建与快速上手\"，共 14 节。内容核实自 opencode.ai/docs 、GitHub 仓库公开信息及 DeepWiki 架构说明。分析对象是 github.com/sst/opencode （现属 anomalyco 组织）， 不涉及 另一个同名但无关的 opencode-ai/opencode 项目。 第1章 OpenCode 是什么 1.1 项目定位：终端原生的开源 AI 编码 Agent，Provider 无关 OpenCode 官方定位很直接： 一个开源的 AI 编码 Agent，可以在终端（TUI + CLI）里用，同时提供桌面应用和 IDE 扩展作为附加界面 。 它和很多同类产品最大的不同在于\"Provider 无关\"这个设计前提：不绑定任何一家模型厂商，你可以用自己的 API Key 接入 Anthropic、OpenAI、Google、以及大量其他服务商，也可以完全跑本地模型。 维度 OpenCode 的立场 模型来源 Bring Your Own Key——费用取决于你连接的模型/Provider，OpenCode 本身不收费 部署形态 终端 TUI 为主，同时有 CLI 非交互模式、桌面应用、IDE 扩展 协议 MIT，代码完全开源可审计 面向新手的默认建议 官方文档推荐新手直接用 OpenCode Zen （一套精选、针对编码场景优化的托管模型服务），免去自己申请一堆 Provider API Key 的门槛 1.2 品牌与组织沿革：SST → Anomaly Innovations，仓库路径变化历史 这是了解这个项目前必须知道的一段历史： 项目最初由 SST（Serverless Stack）团队 发起，SST 本身是一个专注于 AWS Serverless 基础设施的知名开源框架团队，仓库路径是 github.com/sst/opencode 随着项目发展，维护方过渡到 Anomaly Innovations ，社区里逐渐用 anomalyco/opencode 指代当前的组织归属 sst/opencode 这个仓库路径本身并没有消失 ，它依然是主仓库地址；\"SST → Anomaly\"更多是团队/组织身份的演进，而不是仓库搬家 📌 这段历史直接影响到你在网上搜索资料时的判断——不同时间点发布的文章可能分别称呼这个项目为\"SST 的 OpenCode\"或\"Anomaly 的 OpenCode\"，指的是同一个项目在不同阶段的说法，不是两个不同的东西。 1.3 与 Claude Code / Cursor / Aider 等同类工具的定位对比 维度 Claude Code Cursor Aider OpenCode 开源程度 闭源 闭源 开源 开源（MIT） 模型绑定 绑定 Anthropic 多模型但产品闭源 支持多家但功能相对聚焦\"改代码\" Provider 无关，75+ 家 计费模式 订阅制 订阅制 BYO Key BYO Key，自己控制成本 核心形态 终端 CLI 独立编辑器 终端 CLI，Git 原生提交 终端 TUI + 桌面 + IDE 扩展，client/server 架构 权限/协作模型 内置 Plan Mode IDE 内联审阅 直接改文件+自动提交 内置 build/plan 双模式 一句话总结：OpenCode 想做的是\"开源、Provider 无关版本的 Claude Code\"，这也是它自己在社区语境里最常被拿来对比的对象。 1.4 开源信息：MIT 协议、维护团队、社区规模现状 项 情况 协议 MIT 仓库地址 github.com/sst/opencode 维护方 Anomaly Innovations（原 SST 团队） 社区规模 2026 年公开报道中反复出现的量级是\"数百万级月活开发者\"，Star 数在 2026 年年中已经是开源编码 Agent 类目里最高的项目之一 📌 具体的 Star 数字、月活数字会随时间持续变化，不同媒体报道口径也不完全一致（这在开源项目的公开报道里很常见），本系列不会把某个时间点截图式的数字当成一成不变的\"标准答案\"，重点讲清楚项目本身的架构和使用方式。 1.5 命名去重声明：与 opencode-ai/opencode 的无关性说明 ⚠️ 这一节是本系列 必须提前讲清楚 的内容，不是可选项。 GitHub 上存在另一个仓库 opencode-ai/opencode ，和本系列分析的 sst/opencode 是两个完全不同、互不相关的代码库 。 sst/opencode 官方 issue 区里，维护者本人明确回复过关于这两个仓库关系的提问，确认二者代码历史完全独立，没有派生关系。 仓库 与本系列的关系 sst/opencode （ anomalyco/opencode ） ✅ 本系列分析对象，2026 年开发者说\"OpenCode\"时普遍指的就是这个 opencode-ai/opencode ❌ 不涉及，是一个更早、规模小得多的独立 Go 项目，只是恰好同名 之所以要反复强调这一点，是因为网络上确实存在把两者特性混着写的评测文章（比如把某个仓库的技术栈细节错误地安在另一个仓库的 Star 数量上）。本系列全程只依据 sst/opencode 的官方文档站（opencode.ai/docs）和仓库真实结构展开，遇到无法确认出处的说法一律不采信。",
+      "metrics": {
+        "comments": 0,
+        "votes": 0
+      },
+      "matchedQuery": "OpenCode 实践",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "claude-code",
+        "aider",
+        "opencode",
+        "cursor"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：opencode",
+        "正文经验词 5 个"
+      ]
+    },
+    {
+      "id": "89ab6bd98a4bd24f",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048066654",
+      "titleOriginal": "《OpenCode 源码详解》系列教程 ",
+      "publishedAt": "2026-07-23T06:20:45.000Z",
+      "excerpt": "分析对象： github.com/sst/opencode （现属 anomalyco 组织，即 anomalyco/opencode ） 定位说明：这是 2026 年开发者说\"OpenCode\"时普遍指的那个项目，~170k+ star，MIT 协议，由 SST 团队（现 Anomaly Innovations）打造 ⚠️ 命名易混淆提醒： opencode-ai/opencode 是另一个 完全无关 的更早期 Go 单体项目，本系列不涉及，官方 issue 中维护者自己也确认两者无关联 📌 开篇必须先说清楚的几件事 两次品牌变更 ：项目最初以 sst/opencode 起步（SST/Serverless Stack 团队），随后维护方过渡到 Anomaly Innovations，仓库路径也随之变化——这段历史会影响文档链接、Docker 镜像引用等，第1章会讲清楚。 2026年1月的 Anthropic 争议 ：OpenCode 曾支持用 Claude Pro/Max 订阅登录，之后 Anthropic 出手要求下架该登录方式；2026年1月16日起转为支持 GitHub Copilot 订阅（Pro/Pro+/Business/Enterprise）的 device-code 登录流程。这段现状需要在生态与合规章节如实说明，不回避。 技术栈变更 ：项目历史上有过技术栈调整（社区资料显示核心实现语言经历了从早期版本到当前 TypeScript+Bun 的演进），具体版本对应关系以仓库实际 commit 历史和 Release Note 为准，系列展开时逐章核实，不凭博客二手转述下结论。 命名去重原则 ：全系列自始至终只针对 sst/opencode / anomalyco/opencode 这一个代码库，遇到\"另一个 opencode\"相关的第三方资料一律不采信、不混用。 第一部分：项目认知与全局导览 第1章 OpenCode 是什么 1.1 项目定位：终端原生的开源 AI 编码 Agent，Provider 无关 1.2 品牌与组织沿革：SST → Anomaly Innovations，仓库路径变化历史 1.3 与 Claude Code / Cursor / Aider 等同类工具的定位对比 1.4 开源信息：MIT 协议、维护团队、社区规模现状 1.5 命名去重声明：与 opencode-ai/opencode 的无关性说明 第2章 仓库全局地图 2.1 Monorepo 顶层结构总览 2.2 packages/opencode ：核心服务端包 2.3 packages/sdk/js ：官方 JS/TS SDK 2.4 官方 Go SDK（ sst/opencode-sdk-go ，Stainless 生成）在生态中的角色 2.5 客户端家族总览：TUI / 桌面应用（Electron/Tauri）/ IDE 扩展（VS Code、Zed）/ Web 文档站 第3章 环境搭建与快速上手 3.1 多渠道安装方式对比（curl 脚本 / npm / bun / pnpm / yarn / scoop / choco / brew / paru / mise / nix） 3.2 首次启动与鉴权：API Key 方式 vs /connect 订阅登录（GitHub Copilot 设备码流程） 3.3 基础命令速览： opencode 、 -p 单次提问模式、 -f json 输出、 -d 调试模式、 -c 指定工作目录 3.4 内置双 Agent 模式初体验： build （默认，全权限）与 plan （只读分析）， Tab / /plan 切换 第二部分：客户端-服务端核心架构 第4章 Client-Server 架构总览 4.1 为什么做成客户端-服务端分离（本地跑服务端、远程/移动端驱动客户端的设计动机） 4.2 统一 SDK 抽象层 vs Agent Client Protocol（ACP）两条客户端接入路径 4.3 ACP 在 Zed 编辑器集成中的具体角色 4.4 架构图与代码实体的映射关系解读 第5章 服务端核心：会话与状态管理 5.1 会话（Session）数据模型与持久化存储 5.2 多会话并行支持的实现机制 5.3 文件改动追踪（File Change Tracking）与可视化 第6章 TUI 客户端详解 6.1 TUI 的交互设计与键盘驱动体验 6.2 服务端断连后会话保持在线的机制 6.3 Vim 风格编辑器与外部编辑器唤起支持 第7章 桌面应用与 IDE 扩展 7.1 Electron/Tauri 桌面客户端架构 7.2 VS Code 扩展的实现方式 7.3 Zed 扩展与 ACP 协议的对接细节 第三部分：模型与 Provider 层 第8章 Provider 无关抽象层 8.1 统一 Provider 抽象设计：如何屏蔽 20+～75+ 家模型服务商差异 8.2 models.dev 统一模型元数据服务的作用 8.3 Provider 配置：内置 Provider vs 自定义 OpenAI 兼容端点接入 第9章 官方托管服务：OpenCode Zen 与 OpenCode Go 9.1 两者的定位区别（按量付费托管 LLM 接入服务） 9.2 与\"Bring Your Own Key\"模式的关系和取舍 第10章 订阅登录集成 10.1 GitHub Copilot 订阅登录： /connect 设备码流程详解 10.2 历史上的 Claude Pro/Max 登录及其下架始末（2026年1月 Anthropic 争议） 10.3 这段历史对\"Provider 无关\"设计理念的现实检验 第四部分：Agent 与工具体系 第11章 内置双 Agent 模式源码走读 11.1 build Agent：全权限开发模式的工具授权范围 11.2 plan Agent：只读分",
+      "metrics": {
+        "comments": 0,
+        "votes": 0
+      },
+      "matchedQuery": "OpenCode 实践",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "claude-code",
+        "aider",
+        "opencode",
+        "cursor",
+        "zed",
+        "copilot"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：opencode",
+        "正文经验词 6 个"
+      ]
+    },
+    {
+      "id": "bbcd96e6238e82a3",
       "source": "掘金搜索",
       "kind": "search",
-      "url": "https://juejin.cn/post/7666824111320006671",
-      "titleOriginal": "AI Agent 记忆系统：短期记忆、长期记忆与记忆演化机制",
-      "publishedAt": "2026-07-27T07:54:23.000Z",
-      "excerpt": "AI Agent 记忆系统：短期记忆、长期记忆与记忆演化机制 目录 为什么 Agent 需要记忆系统 记忆的分类框架：从认知科学到工程实现 短期记忆的工程实现 长期记忆的工程实现 记忆演化机制：写入之",
-      "author": "Solis",
+      "url": "https://juejin.cn/post/7661502161270734857",
+      "titleOriginal": "两天真实体验，Claude Code+ MiniMax-M3 比 CC+ DeepSeek编程强太多",
+      "publishedAt": "2026-07-14T07:25:58.000Z",
+      "excerpt": "Claude Code 账号彻底被封之后，一直在寻找替代方案。 第一选择是 CC + DeepSeek，编程能跑，但低级问题不断——编译错误、yaml 反复出错。这段经历之前专门写过：《Claude",
+      "author": "JEECG低代码平台",
       "metrics": {
-        "views": 34,
+        "views": 46,
         "likes": 0,
         "comments": 0
       },
-      "matchedQuery": "agent 记忆 方案",
+      "matchedQuery": "Copilot CLI 踩坑",
       "thin": true,
-      "preScore": 7,
-      "tools": [],
+      "preScore": 9,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：claude-code",
+        "标题经验词「体验」"
+      ]
+    },
+    {
+      "id": "8ff2bd6a68cce466",
+      "source": "TonyBai",
+      "kind": "blog",
+      "url": "https://tonybai.com/2026/08/02/ccsa-claude-code-session-alias-tool/",
+      "titleOriginal": "ccsa：给 Claude Code 的 session 起个人类可记的名字，一键 resume",
+      "publishedAt": "2026-08-01T23:15:00.000Z",
+      "excerpt": "本文永久链接 – https://tonybai.com/2026/08/02/ccsa-claude-code-session-alias-tool 你有没有过这样的时刻：打开终端想 resume 昨天的某个 Claude Code session，却在 --resume 的列表里翻来翻去，最后干脆重开一个——于是好不容易攒下的上下文，又得从头喂一遍。 大家好，我是Tony Bai。 假设你同时在推进三条线：一个前端鉴权改造、一个后端 API 重构、一份技术调研。按最佳实践，每条线各开一个 Claude Code session，让上下文保持聚焦、互不污染。 头几天还好。可等你退出、隔天回来想接着干的时候，问题来了： session ID 是一串 UUID（ 198d4193-3a16-4051-8dfa-a9dac573c933 ），你根本记不住哪条线对应哪个； claude --resume 不带参数倒是弹个 picker，但它 只列当前目录 下的 session，你在 backend-api 目录里看不到 frontend-auth 那条； claude --name xxx 只能在 启动时 设名，事后想起要改个名？没门； 自动派生的名字（像 multi-agent-d5 ）也看不出具体在干嘛。 于是你只能要么重开 session 重喂上下文，要么把几个 UUID 存进备忘录贴来贴去。这件事很小，但每天都在发生。 Claude Code 的 session 机制，速览 为了说清痛点从哪来，先补一句背景。Claude Code 用 session 保留工作记忆，本地存成两类文件： ~/.claude/sessions/<pid>.json —— 活跃 session 的注册表（含 sessionId、cwd、name、status）； ~/.claude/projects/<编码路径>/<sessionId>.jsonl —— 按项目存的 session 转录。 原生 CLI 给了三个相关能力：启动时 --name 命名、 --resume <uuid> 恢复、 --continue 续上当前目录最近一个。能力都有，但都卡在\" 要么事前、要么局部 \"——偏偏我们最缺的是\"事后、跨项目、语义化\"的别名。 ccsa 登场 cc-session-alias （命令名 ccsa ）就是来填这个空白的。一句话定位： 它不替代 claude --resume ，只替你维护\"别名 → UUID\"的映射，并在恢复时把别名解析回 UUID 再交给 claude 。 它是个单二进制的 Go CLI，零运行时依赖、无 CGO、约 4MB， go install github.com/bigwhite/cc-session-alias@latest 即装即用。 五分钟上手 装好之后，最常见的链路长这样： # 在某项目目录下，给当前最近活跃的 session 起个名 ccsa set agent-evolution # 跨项目一览（短 ID + 项目名 + 创建日期） ccsa list # 看详情和存活态 ccsa info agent-evolution # 一键 resume，还能透传参数给 claude ccsa r agent-evolution --model fable ccsa set 不带 --id 时，会自动发现当前工作目录最近的 session——它做了双层扫描：先扫活跃的 sessions/*.json ，没有再 fallback 到历史转录 projects/<编码路径>/*.jsonl 。所以你不需要手动去找 UUID。 恢复 session 有三种姿势，任选其一： ccsa r <alias> —— 最短，进程直接被 claude --resume <uuid> 替换； claude --resume <alias> —— 装个可选 shell wrapper 后，原生命令也透明支持别名（UUID 格式零开销透传，不认识的原样丢给 claude）； claude --resume $(ccsa get <alias>) —— 不装 wrapper，显式管道组合，最稳。 顺带还有 ccsa rename 、 ccsa rm 、 ccsa prune （清理指向已消失 session 的过期别名）和 ccsa info 显示的存活态—— active (idle) / active (busy) / exited / gone ，一眼看出这条 session 还在不在。 几个值得一提的小设计 不展开实现，只点三个让我觉得\"这工具想清楚了\"的地方： 一是双轨 resume。 ccsa r 走进程替换（ syscall.Exec ），没有多一层进程包装、TTY 控制干净；shell wrapper 则走 shell 函数拦截，对 UUID 输入零侵入。两条路独立工作，按你的习惯选。 二是存储很克制。 别名就存成一个 JSON： ~/.cc-session-alias/aliases.json ，目录 0700、文件 0600，写入走 tmp+rename 原子替换，文件坏了自动备份成 .bak 再起空表。人类可读可手改，没有数据库、没有后台进程。 三是 shell wrapper 的边界感。 它 只 拦截 --resume / -r 的第一个参数，且只在参数不是 UUID 格式时才去解析；其它任何 claude 用法（ claude -p 、 claude --continue 、无参数等）一概不碰。装上之后你既有的肌肉记忆完全不受影响。 谁适合用 Claude Code 多线并行的重度用户 ：收益最直接，别名表一建，resume 不再翻列表。 常在不同项目目录间跳的开发者 ： ccsa list 给你一个跨项目的全局视图， --project 还能按项目过滤。 喜欢把上下文管理做得干净的人 ：每个 se",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：claude-code",
+        "正文经验词 5 个"
+      ]
+    },
+    {
+      "id": "f787576eb1410a43",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "thread": true,
+      "url": "https://www.v2ex.com/t/1229970",
+      "titleOriginal": "写了一份 Claude Code 使用笔记，从踩坑到能用顺手",
+      "publishedAt": "2026-07-26T15:23:22.000Z",
+      "excerpt": "用 Claude Code 一段时间后，把踩过的坑整理成一篇笔记，能输出才是真的学到了。 一些容易踩坑的点也都有讲到：上下文什么时候该 /compact 、什么时候该开新对话； MCP 配置的几个常用命令；权限系统四种模式实际怎么切换更顺手。 另外写了一小节给不写代码的人看，运营、内容岗其实也能用自然语言让它处理文件、整理资料。 东西放这了： https://www.yuque.com/juennn/tnmoif/lmdlencynbqvq9vt 欢迎指正，理解有误或者有更好做法都直说，希望一起交流！",
+      "author": "june6868",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Aider 踩坑",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "claude-code"
+      ],
       "topics": [
-        "agent-memory"
+        "mcp"
       ],
       "preReasons": [
-        "标题命中：agent-memory",
-        "泛 agent 词 1 个"
+        "标题命中：claude-code",
+        "标题经验词「踩坑」",
+        "正文经验词 3 个",
+        "论坛短帖（正文 253 字符）"
+      ]
+    },
+    {
+      "id": "b027557332d661e7",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "thread": true,
+      "url": "https://www.v2ex.com/t/1230398",
+      "titleOriginal": "Claude Code 真的能替代 VS Code 吗？用了一个月的真实感受",
+      "publishedAt": "2026-07-28T04:36:17.000Z",
+      "excerpt": "最近转向 Claude Code 有一个月了。说实话，刚开始被营销号吹得很虎，以为能完全替代 VS Code ，结果用起来发现还是有坑的。 写简单功能的时候确实快，就靠 Prompt 一下就出代码。但调试的时候就傻了，错误信息还是得靠自己看 Terminal ，AI 反而插不上手。而且有时候给的代码看着没问题，等到上线了才暴雷。 最大的问题是我现在工作流彻底变了。从前是\"我写代码\"，现在是\"我指挥 AI 写代码\"。偶尔还要 Review 它的垃圾输出。有时候挺烦的，但又回不到以前的模式了。 其实我挺想问问各位，是不是都这样用的？有没有人最后放弃了 Claude Code 回归 VS Code ？或者有更高明的用法我没想到？",
+      "author": "yaobawu66",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Qwen Code 踩坑",
+      "thin": false,
+      "preScore": 9,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：claude-code",
+        "标题经验词「一个月」",
+        "正文经验词 7 个",
+        "论坛短帖（正文 315 字符）"
+      ]
+    },
+    {
+      "id": "44cd2a83d14bd625",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048099094",
+      "titleOriginal": "第26章 企业采用案例与生产实践",
+      "publishedAt": "2026-07-31T01:29:24.000Z",
+      "excerpt": "第26章 企业采用案例与生产实践 26.1 已知企业采用情况 OpenCode Enterprise 是官方正式提供的企业方案，核心卖点是\"确保代码和数据永不离开你的基础设施\"，具体通过两个机制实现： 集中式配置 （对应第五部分讲过的托管配置层级，配合企业自己的 SSO） 内部 AI Gateway 集成 ——把模型调用路由到企业自己管控的网关，而不是直接连公网 Provider 官方明确的数据处理承诺： OpenCode 本身不存储任何代码或上下文数据 ，所有处理要么在本地完成，要么通过直接 API 调用发给你选择的 AI Provider——这意味着\"是否安全\"很大程度上取决于你信不信任你所连接的那个 Provider（或者你自己的内部网关）。 唯一的例外是第六部分讲过的 /share 功能 ：一旦启用，对话数据会被发送到 opencode.ai 用于托管分享页面（通过 CDN 边缘节点缓存），官方自己建议企业试用阶段 直接禁用这个功能 （呼应第19章讲过的 \"share\": \"disabled\" 配置）。 计费模式： 按坐席（per-seat） 收费；如果企业使用自己的 LLM 网关，OpenCode 不额外收取 token 费用 。产出的代码完全归企业所有，没有许可限制或所有权主张。 公开报道确认的真实企业案例 ： Cloudflare 被多篇独立报道公开提及为 OpenCode 的早期企业客户之一，用于内部开发工作流；另有 DACH 地区（德语区）咨询公司 innFactory 公开分享了他们在企业客户项目里实际使用 OpenCode 的经验总结（见 26.2）。 增长与生态数据 （截至公开报道的时间点，数字会持续变化，不作为一成不变的结论）：2026年4月时仓库星标数约 14.7万，月活开发者约 650万，同期增长速度约为 Claude Code 的 4.5 倍；开源贡献者约 500 人；上线 5 个月内，通过 OpenCode Zen 托管服务已实现\"年化数百万美元\"量级的收入；2026年1月出现过一次两周内新增 1.8万星标的增长高峰，报道称部分原因是 \"社区对某些闭源编码 Agent 访问限制的不满\" ——这与第三部分第10章记录的 Anthropic 订阅登录争议时间点高度吻合，可以理解为同一事件在不同维度（用户流失/OpenCode 用户增长）上的两面。 26.2 生产环境下的 Provider 选型与合规注意事项 合规友好的自托管路径 ：对数据敏感的受监管行业（金融、医疗等），一个真实可行的组合是\" OpenCode 作为客户端 + 自托管开源模型作为推理引擎 \"——比如 OpenCode 搭配本地部署的 Gemma 系列模型（通过 Ollama/LM Studio/llama.cpp），运行在企业自己掌控的 GPU 主机上。这种组合的合规卖点很直接：prompt 和代码完全不出内网，license 通常是 Apache 2.0 这类宽松协议，审计链路也更清晰——这条路径的价值主张几乎就是第26.1节\"OpenCode Enterprise\"官方方案的一个开源自建版本。 来自真实生产实践的经验总结 （引用 innFactory 一篇实际项目复盘）： 维度 真实反馈 代码质量 用同一个底层模型时，OpenCode 产出质量和 Claude Code 相当 ，但换来了更高的灵活性和控制力（不绑定单一厂商） 核心价值主张 开源、社区驱动，没有厂商锁定，企业完全掌控数据，可按需自托管 真实局限（不回避） 面对\"数十年历史的遗留代码、复杂依赖关系、高度领域专属知识\"的超复杂企业系统，OpenCode（以及同类工具） 还做不到完全自主理解和修改 ，人类专家依然不可或缺；不过在文档撰写、定向重构、执行边界清晰的子任务上依然能提供扎实帮助 学习曲线 团队采用不能低估学习成本——开发者需要学会有效地和 AI 沟通、写好 prompt、批判性评估输出结果，这需要时间、培训和\"愿意重新审视既有工作方式\"的意愿 已知的风险点 （同样来自公开报道，生产环境评估时应纳入考虑，而不是只看增长数字）： 风险类别 具体情况 发版稳定性 Hacker News 等开发者社区里持续存在的技术抱怨：团队的发布节奏有时快过充分测试的节奏，导致出现回归问题和不稳定情况 资源占用 有报道指出终端界面的内存占用达到 1GB 以上，相比更轻量的同类工具显得偏重 早期安全问题 安全研究者在早期版本里发现过若干问题，包括 默认从远程 URL 拉取配置 （呼应第五部分/第四部分讲过的 .well-known/opencode 远程配置机制——这项设计本身是为了方便企业下发默认配置，但也意味着如果不谨慎处理来源可信度，理论上存在被利用的风险面）、以及鉴权流程中潜在的远程代码执行风险点 生产环境落地建议汇总 ：企业试用阶段禁用 /share ；评估自托管方案时明确数据合规边界；关注版本更新节奏，重要生产环境建议锁定经过内部验证的版本而不是自动追新（呼应第六部分 19.2 讲过的 autoupdate: \"notify\" 折中策略）；对涉及远程配置拉取的机制（ .well-known/opencode ）要明确其来源可信链条；不要神化工具能力，超复杂遗留系统场景务必保留人类专家把关。",
+      "metrics": {
+        "comments": 0,
+        "votes": 0
+      },
+      "matchedQuery": "OpenCode 实践",
+      "thin": false,
+      "preScore": 8,
+      "tools": [
+        "claude-code",
+        "opencode"
+      ],
+      "topics": [],
+      "preReasons": [
+        "正文命中：claude-code/opencode",
+        "标题经验词「实践」",
+        "正文经验词 9 个"
+      ]
+    },
+    {
+      "id": "207bb1ba80917e29",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048074303",
+      "titleOriginal": "第9章 官方托管服务：OpenCode Zen 与 OpenCode Go",
+      "publishedAt": "2026-07-25T03:03:26.000Z",
+      "excerpt": "第9章 官方托管服务：OpenCode Zen 与 OpenCode Go 9.1 两者的定位区别 OpenCode 官方维护着两个可选的 第一方托管网关服务 ，它们在系统里的身份就是\"两个标准 Provider\"，不是什么特殊内置能力： 服务 定位 计费模式 模型来源 OpenCode Zen 按性能基准精选、测试过的模型集合，来自 OpenAI/Anthropic/Google 等多家厂商 按量付费（pay-as-you-go） 官方按\"编码 Agent 任务的性能基准\"筛选出来的模型，比如 claude-sonnet-5 （100万 token 上下文，输入$2/输出$10每百万token）等 OpenCode Go 低成本订阅制，提供对热门开源编码模型的稳定访问 固定月费：首月 $5，之后 $10/月 Kimi K2/K3、GLM-5.2、Qwen3、MiniMax M3、MiMo 等约 12 款开源模型，托管在美国/欧盟/新加坡多地区 两者共享同一套鉴权基础设施：真实的接入路径是\"先登录 OpenCode Zen 账号，再订阅 Go 计划，拿到同一个 API Key\"。 OpenCode Go 的几个值得注意的真实细节 ： 每个工作区 只能有一名成员 订阅 Go 计划 用量限制以 美元价值 计算，而不是固定的请求次数——具体能跑多少次请求取决于你用的是哪个模型 限额是 5小时滚动重置 的 如果你的 Zen 账户还有余额，可以开启\"Use balance\"选项，在触及 Go 限额后继续用 Zen 余额付费使用 Go 的 API 端点是 标准 OpenAI 兼容格式 （ https://opencode.ai/zen/go/v1/chat/completions ），这意味着 不局限于在 OpenCode 里用 ——只要是支持自定义 OpenAI 兼容端点的工具（文档里点名提到了 Hermes Agent、OpenClaw、Pi Agent、Mastra、Agno 等），都可以直接把 Go 当成一个通用的模型网关来用 配置里模型 ID 的书写格式是 opencode-go/<model-id> ，比如 Kimi K3 对应 opencode-go/kimi-k3 服务商遵循 零留存策略 （zero-retention），代码不会被用于模型训练——这一点对处理专有代码的开发者比较关键 9.2 与 BYOK 模式的关系和取舍 Zen 和 Go 都是完全可选的 ，官方原话是\"它和 OpenCode 里任何其他 Provider 的工作方式完全一样，是否使用完全可选（completely optional）\"。也就是说，自带 API Key（BYOK，Bring Your Own Key）依然是默认且最基础的使用方式，Zen/Go 只是官方额外提供的两条\"降低接入门槛\"的托管路径。 新手接入的官方推荐路径 ： 在 TUI 里运行 /connect 选择 OpenCode Zen 跳转到 opencode.ai/auth 完成登录、绑定账单信息、复制 API Key 粘贴回 TUI 完成鉴权 运行 /models 查看官方推荐的模型列表 Go vs 类似的模型聚合服务（如 OpenRouter）该怎么选 ，是一个真实存在的成本权衡：OpenRouter 是按量付费的聚合器（充值后按实际用量扣费），Go 是固定月费+用量上限的订阅制——如果你的 token 消耗量大，Go 通常更划算；如果消耗量很小，按量付费的聚合器可能反而更便宜。Go 的另一个差异化优势是包含了一些不在 OpenRouter 上架的模型。",
+      "metrics": {
+        "comments": 0,
+        "votes": 0
+      },
+      "matchedQuery": "OpenCode 实践",
+      "thin": false,
+      "preScore": 8,
+      "tools": [
+        "opencode",
+        "openclaw",
+        "hermes"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：opencode",
+        "正文经验词 2 个"
+      ]
+    },
+    {
+      "id": "dd0a702497824e9f",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "thread": true,
+      "url": "https://www.v2ex.com/t/1227532",
+      "titleOriginal": "分享一个自己做的本地多 agent 编排工具，让一个 agent 调度一群 Agent 干活",
+      "publishedAt": "2026-07-15T09:48:42.000Z",
+      "excerpt": "起因是想让两个 agent 互相讨论，看能不能讨论出更好的方案。于是就做了一个简易的版本，让两个 agent 间互相协作，比如一个是规划方，一个是执行方。用户下单 Prompt，两个 agent 收到干活。两个 agent 可以有多轮的回答，这叫做 session。 后面发现自己 prompt 写不好，干脆就让 agent 来写了，让 agent 写好 prompt，指挥一个执行 agent 干活，这叫做 task，一般只有一轮。 再后面想做个工作流，用户自定义步骤，每个步骤都可以指定一个 agent 去干，这叫 workflow。 现在平台就这三种形式。 有几个亮点： 1.用户可以通过网页 UI 或者让 AI 通过 HTTP API 去驱动本地 agent 干活：创建 agents、分派任务、运行 workflows、handoff 失败任务等所有操作。 2.Claude Code、Codex、Gemini CLI 和 OpenCode 会自动发现、自动配置并自动验证；其他 agent 可注册为 custom CLI agent。 3.用户可以暂停、恢复、插入反馈、审批工作流步骤，并在修改上游后重跑下游。 4.运行中、失败或停止的任务可交给另一个 ready agent 继续；运行中的任务会先自动停止，并带上上一轮输出尾部和可用的 git 工作区状态。（这个场景是我的 agent 跑着跑着突然没额度了，就想着切换另外一个 agent 继续跑） 欢迎感兴趣的朋友安装试用，github 链接： https://github.com/fusae/passiton",
+      "author": "fusae",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Gemini CLI 实践",
+      "thin": false,
+      "preScore": 8,
+      "tools": [
+        "claude-code",
+        "gemini-cli",
+        "opencode"
+      ],
+      "topics": [],
+      "preReasons": [
+        "正文命中：claude-code/gemini-cli/opencode",
+        "标题经验词「自己」",
+        "正文经验词 5 个"
+      ]
+    },
+    {
+      "id": "36064056f0682787",
+      "source": "BestBlogs.dev",
+      "kind": "aggregator",
+      "url": "https://www.bestblogs.dev/status/2083907669597827562?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "titleOriginal": "Monet：把 Claude Code 会话集中到桌面工作台",
+      "publishedAt": "2026-08-02T13:28:00.000Z",
+      "excerpt": "📌 一句话摘要 Geek 分享 Monet，一个把终端里的 Claude Code 会话集中进行浏览、搜索和并行指挥的桌面工作台，支持权限审批、赛马模式和模型切换。 📝 详细摘要 Monet 将分散在终端窗口中的 Claude Code 会话整合到桌面工作台，支持并行会话、权限审批卡片、赛马模式对比多个模型，并可在会话进行中切换渠道与模型而不丢上下文。对重度使用 Claude Code 的开发者有实用价值，GitHub 链接已附。 📊 文章信息 AI 初评： 81 来源： Geek(@geekbb) 作者： Geek 分类： 人工智能 语言： 中文 阅读时间： 1 分钟 字数： 131 标签： Claude Code , AI Coding , Agent 工作台 , 并行会话 , 效率工具 阅读推文",
+      "thin": false,
+      "preScore": 7,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：claude-code",
+        "正文经验词 1 个"
+      ]
+    },
+    {
+      "id": "1a73e8f3af10bc1a",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048088562",
+      "titleOriginal": "网页设计实战：GPT-5.6信息密度与Fable 5交互体验对比",
+      "publishedAt": "2026-07-28T09:55:17.000Z",
+      "excerpt": "网页设计实战：GPT-5.6信息密度与Fable 5交互体验对比 做网页设计，选错模型，结果可能天差地别。GPT-5.6和Claude Fable 5在这个领域完全不是一个路数——一个像 擅长信息架构的工程师 ，一个像 懂用户体验的设计师 。实战下来，两者分工清晰得就像用错了工具。 核心测评：网页设计能力对比 在 11ai.xyz 的网页生成实测中，我们分别用两款模型生成“贪吃蛇”游戏和“待办事项”应用，差异非常明显。 对比维度 GPT-5.6 Sol Claude Fable 5 设计风格 信息密度高、结构化、偏工程化布局 UI细腻、视觉精致、动效流畅 代码质量 功能完整，逻辑清晰 代码可读性极佳，命名优雅，利于维护 交互体验 基础交互完整，但视觉细节较粗糙 交互反馈丰富 ，悬停、过渡、响应式打磨到位 交付效率 首次交付 9-10分钟 ，2轮修复 17-20分钟，3-4轮修复 前端基准得分 Aider多语言基准 75.2% 73.9% Token消耗 高效 ，输出精准，不废话 偏多，多次追问补充样式细节 实测结论 ：GPT-5.6 Sol强在 信息架构和功能实现 ——能快速搭建结构完整、逻辑严密的网页，适合数据展示、后台面板、工具型页面。Claude Fable 5强在 视觉打磨和交互体验 ——生成的页面更美观、动效更细腻，适合品牌官网、产品落地页、原型设计。 亮点总结 GPT-5.6 Sol的“信息密度”优势 ：生成的网页信息层级清晰、结构严谨。在Aider多语言基准中以 75.2% 领先Fable 5的73.9%。实测中交付速度约 9-10分钟 ，Token消耗极低，适合需要快速验证信息架构的场景。 Claude Fable 5的“交互体验”优势 ：代码整洁度、UI细节打磨是独门优势。实测中生成的“待办事项”应用悬停动效、色彩渐变、响应式布局明显优于GPT。更像一个懂设计的前端工程师。 两者差距的本质 ：GPT把网页当“功能页面”做，Fable把网页当“产品界面”做。需求不同，答案不同。 使用建议 需要快速搭出结构清晰、逻辑严密的功能型页面（后台、工具页、信息面板），优先GPT-5.6 Sol 。 需要打磨视觉体验、做产品原型、品牌官网，Claude Fable 5更合适 。最佳实践：先用GPT-5.6 Sol搭框架和逻辑，再用Fable 5做UI精调和交互润色。 常见问答（FAQ） 问：前端新手应该优先用哪个？ 答：新手建议从 Claude Fable 5 开始——它生成的代码更规范、更易懂、命名优雅，有助于培养良好的编码习惯和审美。 问：GPT-5.6能做好看的页面吗？ 答：能，但需要大量人工引导和精调。它的默认输出偏向“工程师风格”——功能完整但视觉朴素。 问：两个模型能配合用吗？ 答： 这就是最佳方案 。GPT搭框架，Fable做UI润色。实测中两阶段协作的页面质量显著高于单模型通吃。",
+      "metrics": {
+        "comments": 0,
+        "votes": 0
+      },
+      "matchedQuery": "Aider 实践",
+      "thin": false,
+      "preScore": 7,
+      "tools": [
+        "aider"
+      ],
+      "topics": [],
+      "preReasons": [
+        "正文命中：aider",
+        "标题经验词「体验」",
+        "正文经验词 6 个"
+      ]
+    },
+    {
+      "id": "dc8710e8bdaf135f",
+      "source": "iT 邦幫忙",
+      "kind": "aggregator",
+      "url": "https://ithelp.ithome.com.tw/articles/10401083?sc=rss.qu",
+      "titleOriginal": "Day2什麼是 Claude Code CLI？功能介紹與特色",
+      "publishedAt": "2026-08-02T22:45:52.000Z",
+      "excerpt": "如果你已經使用過 ChatGPTClaude 或 GitHub Copilot，那麼 Claude Code CLI 可以說是把 AI 從聊天視窗帶進終端機（Terminal）的工具 Claude Code CLI 是 Anthropic 推出的命令列介面（Command Line Interface），讓開發者可以直接在本機專案中與 Claude AI 協作，不需要頻繁切換到瀏覽器它能理解整個程式碼專案的結構，協助撰寫程式修改功能除錯重構產生測試，甚至分析程式碼之間的相依關係，大幅提升開發效率 與一般 AI 聊天最大的不同，在於 Claude Code CLI 可以直接存取目前的專案目錄，閱讀多個檔案並根據上下文完成任務例如，你可以輸入新增會員登入功能修正這個 API 的錯誤或幫我重構這段程式，Claude 就會分析相關檔案並提出修改建議，甚至直接產生程式碼變更 Claude Code CLI 的幾個特色包括： 理解整個專案 ：不只看單一檔案，而是能分析整體架構與檔案關聯 自然語言操作 ：直接用中文或英文描述需求，不需要記住複雜指令 支援多種程式語言 ：例如 PythonJavaScriptTypeScriptJavaGoRust 等 協助除錯與重構 ：快速找出問題原因，並提供更乾淨更容易維護的程式碼 提升開發效率 ：將重複性的撰寫測試與文件整理工作交給 AI 處理，讓開發者更專注於設計與邏輯 簡單來說，Claude Code CLI 就像是一位駐守在終端機中的 AI 程式設計夥伴它不只是回答問題，而是能真正參與開發流程，協助完成各種程式設計任務 下一篇，我們將介紹 Claude Code CLI 的核心運作原理 ，帶你一步步開始使用這位 AI 開發助手",
+      "thin": false,
+      "preScore": 6,
+      "tools": [
+        "claude-code",
+        "copilot"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：claude-code"
+      ]
+    },
+    {
+      "id": "6a78af357422ee00",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "thread": true,
+      "url": "https://www.v2ex.com/t/1231529#reply6",
+      "titleOriginal": "写了两个脚本， Claude Code 干活时 Mac 不睡觉（合盖也行），干完自动恢复睡眠",
+      "publishedAt": "2026-08-02T05:43:40.000Z",
+      "excerpt": "我经常用 Claude Code 跑长任务，然后离开一会，回来发现 Mac 睡着了，任务还没做完。后来，我就跑下 caffeinate 让它一直醒着，但有时候出去比较长时间，任务做完了还在一直耗电，而且不能合盖，在外面咖啡厅办公就不是很适合。我希望能够 Claude 干活时醒着（可以合盖），干完活正常 sleep 。有个软件 Amphetamine 是 ok 的，但太重了。 于是写了两个小脚本，cc 帮忙写的，心跳 + 看门狗： - 心跳：挂在 cc 的 hooks 上，提交 prompt 和每次工具调用后 touch 一个会话状态文件，回合结束删掉。文件新鲜 = 正在干活，多开几个窗口互不干扰。 - 看门狗：LaunchAgent 常驻，每 20 秒看一眼，如果有活跃会话且 CPU 不过热，就 `pmset -a disablesleep 1`，合盖也不睡；否则翻回 0 ，恢复正常睡眠。 状态文件 30 分钟没刷新就按孤儿清掉，所以 Claude 崩了、终端直接关了，机器也不会被永远钉住不睡。过热时看门狗会主动放行睡眠。 跑了一个多月，还挺稳定的。任务跑着的时候可以随时走开，回来时要么它还在干，要么任务结束，该睡就睡，省电。 脚本、安装步骤、已知边界（比如后台命令的盲区）都在 gist 里： https://gist.github.com/whitefoxx/3579ba4370bdc82eacb0e7ab1f29057b 好奇大家跑长任务是怎么处理睡眠这事的？",
+      "thin": false,
+      "preScore": 6,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "hooks"
+      ],
+      "preReasons": [
+        "标题命中：claude-code"
+      ]
+    },
+    {
+      "id": "26f71b0c125528a7",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "thread": true,
+      "url": "https://www.v2ex.com/t/1231578",
+      "titleOriginal": "如果模型支持 5 亿 token 上下文会怎么样？ opencode-acp 超长会话上下文压缩插件， pai-acp pi agents",
+      "publishedAt": "2026-08-02T14:59:01.000Z",
+      "excerpt": "这个插件用一句话就能说明白是什么，简单说，他是 opencode 上目前最新先进（可能也是所有 agents 最先进）的上下文压缩插件，他支持： 1. 超长会话：实测最低支持 5 亿 token 级别上下文不丢关键信息，持续工作数日不换窗口。 2. 极省 token：20w 上下文足够，按需使用上下文，绝大多数情况下上下文都维持在 10w 左右，对于 100w 上下文模型，长期工作实测省 5 倍 token 。 好，接下来详细介绍这个插件如何实现以上能力的。 # 压缩哲学 1. 模型在任何时候不能知道总上下文大小。（模型不再懒于压缩） 2. 一些压缩都服务于当前上下文任务。（模型有权拒绝压缩，或者少量压缩） 3. 只有可压缩的内容出现才提示模型压缩。（防止过度压缩） 4. 最近 N 条消息永远保留。（防止模型漂移） 5. 分段压缩，N 级蒸馏压缩。（蒸馏自己过去自己的记忆，逐渐遗忘而不是断崖式忘却）。 6. 上下文永远不删除，只隐藏。（日后模型可以找回记忆） # 工作原理 不同于传统上下文压缩插件，等会话满了（比如 80%）再着手压缩。ACP 会基于一个`增长节点`触发上下文压缩，对于 100w 上下文模型这个数值是 5w token 。然后模型会收到一个注入（用户不可见），告诉模型应该压缩，如何压缩。 注意，ACP 不会让模型压缩所有内容，而是： 1. 压缩过去一段时间增长的，现在大概率不再使用，尤其是工具调用，大量日志，冗余文件。 2. 小范围压缩，而不是过去所有内容全部压缩。 不会压缩： 1. 最近在使用的 5 条消息 2. 最后 1 条用户消息。 防止模型压缩后漂移。 模型可以选择压缩还是拒绝压缩。实际测试 90%情况模型会选择压缩，10%左右会延后压缩。模型为了上下文工作质量和节省上下文会做自主出这个选择。 长久工作后，上下文大概长这个样子： ``` 压缩块 b1 1000token 000001 ～ 000030 扫描代码，理解用户需求... 压缩块 b2 1200token 000031 ～ 000080 分析问题，定位 bug 原因... 压缩块 b3 2100token 000081 ～ 000150 问题已经修复，修复方案... ... 010000 ～ 010200 未压缩，可能使用中 010201 ～ 010400 未压缩，当前会话，使用中 ``` 压缩块具体内容我有一个冗长的约束，经过俩月调试这个约束确认给出来的质量非常高。参考[How To Compress]( https://github.com/ranxianglei/context-compress-algorithms/blob/master/src/prompts/compression-rules.ts#L25) . ## 三级压缩 压缩块永远保留，上下文会逐级增长，虽然增长缓慢。根据经验测试，压缩消息比例：平均`58：1`。也就是原始消息 5w token,压缩后 900 token 左右。 这样经过长久迭代，会话达到数亿 token 后，比如 5 亿 token 后，压缩块可能也满 5w token 了。 为了防止这种泄漏，会触发`t2 压缩`。 t2 压缩后，5w token 会降低到 5000 到 1w token 左右。 久而久之，t2 也满 5w 了，就会触发 t3 压缩。 经过测算， ```mermaid stateDiagram-v2 Raw --> Tier1 : compress （约每 7 轮） Tier1 --> Tier2 : distill （约每 250 轮） Tier2 --> Tier3 : condense （约每 2500 轮） Tier1 --> Raw : decompress Tier2 --> Raw : decompress （递归） Tier3 --> Raw : decompress （递归） Tier1 --> GC_Truncated : GC （ 100% 上下文） ``` **会话容量** — 一个会话从空 → T1 → T2 → T3 → 上下文极限，总共可以处理多少 token （真实校准：500 次 API 调用/天，~9.6K 新 token/调用，T1=45x/T2=10x/T3=3x ）： | 上下文上限 | 1 个月 | 3 个月 | 到极限 | 极限时间 | |-----------|--------|--------|--------|---------| | 1M | 19 亿 tok | 105 亿 tok | **689 亿 tok** | 第 259 天（~8.6 月） | | 400K | 19 亿 tok | 103 亿 tok | **103 亿",
+      "author": "ranxianglei",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Claude Code 实践",
+      "thin": false,
+      "preScore": 6,
+      "tools": [
+        "opencode"
+      ],
+      "topics": [],
+      "preReasons": [
+        "标题命中：opencode",
+        "正文经验词 3 个",
+        "营销词 1 个：限时",
+        "论坛长帖"
+      ]
+    },
+    {
+      "id": "b1744716285c2184",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "thread": true,
+      "url": "https://www.v2ex.com/t/1231556",
+      "titleOriginal": "[远程工作/项目外包]-老板炒币破产跑路-急需远程工作或项目外包",
+      "publishedAt": "2026-08-02T11:32:57.000Z",
+      "excerpt": "# 兄弟姐妹们，江湖告急啊！ 新工作才做不久，老板炒币破产跑路了，房贷压力山大啊，现在急需一份远程工作，或者项目外包也可以。 本人不碰 web3 以及各种灰产（单纯个人风险偏好）。 ## 个人情况 我 20 年大学毕业，至今已有 6 年+的工作和商业项目经验，主要技术方向是 Python 后端和 TS 全栈，其他方向借助 AI 也有一战之力。 自己平时也接外包做，主要方向是网站和小程序，其他方向可以商量。 关于我的技术方向、项目情况以及外包细节，可以查看我的个人站点： https://www.wx-work.com/ ，里面有更加详细的介绍。 这是我的邮箱：wx-work@outlook.com ，也可以通过我个人站点内的其他联系方式联系我，谢谢。 ## 关于工作经历 - 既有基于 Python Odoo 的企业级模块设计经验。 - 也有使用 Next.js + Hono 构建现代 Web 应用的实践经验。 - 熟悉跨团队、跨技术栈的协作模式。 - 将 Claude Code 、Codex 、Cursor 等 AI 编程工具融入日常开发流程，持续提升开发与交付效率。 ## 关于外包 - 主要做网站和小程序，小而精。 - 经验丰富，报价合理。 - 专业正直，诚信友善。 ## 技术栈 - Python 后端：Python 、Odoo 、Flask 、PostgreSQL 、Redis 等。 - TS 全栈：TypeScript 、Next.js 、Hono 、Tailwind CSS 、Drizzle 、PostgreSQL 、Better Auth 等。 - AI：Claude Code 、Codex 、Cursor 等。",
+      "author": "musray",
+      "metrics": {
+        "comments": 0
+      },
+      "matchedQuery": "Claude Code 实践",
+      "thin": false,
+      "preScore": 6,
+      "tools": [
+        "claude-code",
+        "cursor"
+      ],
+      "topics": [],
+      "preReasons": [
+        "正文命中：claude-code/cursor",
+        "泛 agent 词 1 个",
+        "正文经验词 3 个"
       ]
     }
   ],
   "rejected": [
     {
-      "id": "490aa5c850c2bb43",
+      "id": "7b418f73b1e2e5ac",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690335",
-      "title": "刚撸的plus，导入cpa不让用？",
-      "score": 0,
+      "url": "https://linux.do/t/topic/2693889",
+      "title": "kimi k3做网站有什么建议吗佬",
+      "score": -2,
       "reasons": [
-        "中文占比 7%，低于门槛"
+        "正文命中：kimi-code",
+        "论坛短帖（正文 247 字符）",
+        "总分 -2 低于入围线 6"
       ]
     },
     {
-      "id": "4225bbd31e580b57",
+      "id": "ffcf072414e965cd",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690327",
-      "title": "需要新开codex账号，个人使用，求靠谱的接码的实体卡和开通方案",
+      "url": "https://linux.do/t/topic/2693884",
+      "title": "【Giffgaff WiFiCalling】成功拉到了，但是我已经被封了",
       "score": 0,
       "reasons": [
-        "中文占比 1%，低于门槛"
+        "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "def31b6af63b9827",
+      "id": "101c366a179402f4",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690325",
-      "title": "Tibo 这算不算佐证了 Google 内部的大公司病?",
-      "score": 0,
+      "url": "https://linux.do/t/topic/2693877",
+      "title": "致敬全世界最尊重人权的a➗",
+      "score": -2,
       "reasons": [
-        "中文占比 1%，低于门槛"
+        "正文命中：claude-desktop",
+        "论坛短帖（正文 107 字符）",
+        "总分 -2 低于入围线 6"
       ]
     },
     {
-      "id": "ad8cc755f86cd543",
+      "id": "df343e2bfd5164b3",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690324",
-      "title": "神人5.6sol，想了一个问juice的新话术",
+      "url": "https://linux.do/t/topic/2693862",
+      "title": "ChatGPT 降智到 GPT-5.5-mini 了，有没有解决办法？切换节点也没用",
       "score": 0,
       "reasons": [
-        "中文占比 1%，低于门槛"
+        "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "6a3c0723c6e4b60a",
+      "id": "f36de5d0a091989b",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690319",
-      "title": "kimi k3 能力确实有所下降",
+      "url": "https://linux.do/t/topic/2693855",
+      "title": "2026.8.3GPT封号潮又来了吗",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1fa60d0141fd349e",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693842",
+      "title": "【boom了2分钟，正常了】各位能打开DS官网的服务状态么",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "b565dca242d3175d",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693840",
+      "title": "gpt web是记忆功能的 记得导出",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "cdf5bcdd5f346871",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693838",
+      "title": "请问supergrok heavy额度大概是普通的几倍？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "6195baff2cbd7af4",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693805",
+      "title": "Coding的时候，请先注意好自己",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "588ddbe139867cb0",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693803",
+      "title": "最近claude普号疯狂封号啊，怎么办",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "f7608bbc902d7e85",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693802",
+      "title": "今天中午12点gpt额度还会重置吗？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "e94932d4eac6a568",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693800",
+      "title": "云酒馆更新免费gemini api 快来使用",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "095348c9afab2bb4",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693796",
+      "title": "四川宜宾珙县又地震了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "647deac780af2d83",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693787",
+      "title": "2块钱6瓶牢大!谁能忍住不买",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "99a1d6d92d4d3fd4",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693779",
+      "title": "Opencode官方真tm无耻啊",
       "score": 4,
       "reasons": [
-        "正文命中：opencode",
-        "正文经验词 4 个",
+        "标题命中：opencode",
+        "正文经验词 1 个",
+        "论坛短帖（正文 148 字符）",
         "总分 4 低于入围线 6"
       ]
     },
     {
-      "id": "5896109e89a885f6",
+      "id": "b52f4841be508702",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690316",
-      "title": "深夜工作，以为用的是kimi k3，结果发现是deepseek，莫名其妙地好用",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "e9b1ddb956d2cc9d",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690301",
-      "title": "opus 5居然调侃程序员。",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "ad87b23871f164e2",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690288",
-      "title": "佬们 波尔2c4g的容器机子有什么用啊 开的时候选错了 4台闲置不知道干嘛",
-      "score": 0,
-      "reasons": [
-        "中文占比 2%，低于门槛"
-      ]
-    },
-    {
-      "id": "9a301e15b3ee3126",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690286",
-      "title": "【求助】把自己的项目给辅导员用，会留下隐患吗",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "a83bb921b4973b83",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690278",
-      "title": "【浏览器】chrome浏览器垂直侧边栏，无法记住固定网址，无法同步",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "bfeab9d4f21ed594",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690277",
-      "title": "终于不再有token焦虑了，deepseek YYDS",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "c1440ab08a465db4",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690270",
-      "title": "便宜零点三刀加拿大虚拟卡，亲测可注册电报",
+      "url": "https://linux.do/t/topic/2693778",
+      "title": "「不行呀，我洗澡水弄的到处都是」",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "ab3ae71076d279a9",
+      "id": "044e3b0bfa1142b9",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690264",
-      "title": "天才、普通人与二十一年来的感触",
+      "url": "https://linux.do/t/topic/2693777",
+      "title": "voxi的WiFicalling问题",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "60ca43b060cd0447",
+      "id": "558ae98a56843157",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690252",
-      "title": "（注册Claude账号测试）肉身在美+家宽+真实美国实体手机号+3年谷歌账号注册",
-      "score": 0,
-      "reasons": [
-        "中文占比 2%，低于门槛"
-      ]
-    },
-    {
-      "id": "3b61c3c0ed7ebfc3",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690251",
-      "title": "准备下一个项目就是动态家宽IP 和 家宽IP订阅节点 看看有多少需要要的，完成后送CDK",
-      "score": 0,
-      "reasons": [
-        "中文占比 2%，低于门槛"
-      ]
-    },
-    {
-      "id": "035fd39033e882cb",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690250",
-      "title": "opencode 有没有低价获取的方式",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "8d3c41ae230a2521",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690244",
-      "title": "5.6 subagent 用 sol low 还是 luna max？",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "0ee4a82bbab84e9a",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690241",
-      "title": "「星系列prompt」王牌翻译家! 融合了新理解的全新翻译提示词 专注于英文转中文",
+      "url": "https://linux.do/t/topic/2693772",
+      "title": "为什么我卡在三级验证的47天一星期了",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "015600c6f354d4f8",
+      "id": "6d44c29b6a974c2b",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690228",
-      "title": "谷歌邮箱加载超慢",
-      "score": 0,
-      "reasons": [
-        "中文占比 0%，低于门槛"
-      ]
-    },
-    {
-      "id": "b9397a500285b692",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690223",
-      "title": "参考 Deepseek v4 斩杀线图制作的动态网站",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "94d2a1411f74ff1c",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690211",
-      "title": "谁说这本地模型没用了，这本地模型可救大命了 :laughing:",
+      "url": "https://linux.do/t/topic/2693771",
+      "title": "为何b站翻译如此诡异？",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "49e3974c6ad8d3b2",
+      "id": "84bfe760f396d1d3",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690202",
-      "title": "哇塞这个grok4.5降智降出新高度",
+      "url": "https://linux.do/t/topic/2693770",
+      "title": "QQ飞车找cp不看实力 看人品:某男和女友分手后，竟然认不出来女友了",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "cf9c298c018b54a6",
+      "id": "73f87c451a6dfc92",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690196",
-      "title": "现在这个时间帖子发布频率降低了",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "a4a563b4803e4a97",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690186",
-      "title": "为什么没人用我的渠道？想换点积分",
-      "score": 0,
-      "reasons": [
-        "中文占比 1%，低于门槛"
-      ]
-    },
-    {
-      "id": "d5b5115ecb94033f",
-      "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690185",
-      "title": "将Luna设为子代理执行任务",
+      "url": "https://linux.do/t/topic/2693768",
+      "title": "想问下佬友们，最近有没有什么比较好玩的项目",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "a442cdc99da88c70",
+      "id": "2ff491160cda8aad",
       "source": "linux.do",
-      "url": "https://linux.do/t/topic/2690178",
-      "title": "open ai开始风控严格，新注册用了动态住宅跟指纹浏览器导入CPA立马风控",
+      "url": "https://linux.do/t/topic/2693761",
+      "title": "【公益站】关于哈基米3.6的使用",
       "score": 0,
       "reasons": [
-        "中文占比 1%，低于门槛"
+        "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "b3aa69bb4dc55a30",
+      "id": "f37b4937f7c829c5",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693760",
+      "title": "霍，哈基米给晴天整了个双语歌词|一只榴莲:喂我花生",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "c600dd0ce8e47471",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693754",
+      "title": "ds:家人们觉得我还能完成这次任务吗？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "fad9f0767e834ce7",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693749",
+      "title": "Grok的月限额好像免费重置了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "d46004b769ea7f37",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693743",
+      "title": "微信公众号文章怎么让Hermes或者Claw阅读总结？",
+      "score": 3,
+      "reasons": [
+        "标题命中：hermes",
+        "标题经验词「总结」",
+        "疑似求助 / 提问帖",
+        "论坛短帖（正文 104 字符）",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "29c15f6c818aed5c",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693726",
+      "title": "分享一款iOS多账号管理与网页应用多开工具",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "9b2ba27842cdd244",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693725",
+      "title": "孩子能不能打？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "9c9101100a8f99f6",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693718",
+      "title": "【黑与白福利站】更新完成，系统赠送$18888.00",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "dc7fb49b2a6f1ac8",
+      "source": "linux.do",
+      "url": "https://linux.do/t/topic/2693707",
+      "title": "实际开发任务测下来 deepseek v4 flash表现还是一般",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "44be5304a3b320bb",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231591#reply2",
+      "title": "中专站号池的疑惑",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "049918754d6dfaec",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231528#reply48",
+      "title": "似乎开源项目作者不知道/不想利用 AI 来加速自己的开发？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "b8e82802636c5901",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231509#reply64",
+      "title": "请教：除了 api 直连，有没有更便宜也保质量的办法可以用 deepseek-v4-flash？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "92622918ee8d1814",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231587#reply0",
+      "title": "历时 29 天， 145 个用户， 306 亿 token 调用量！",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "9ec8ae979d6f34cb",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231536#reply12",
+      "title": "除了刷 leetcode, 平时大家还会古法编程吗？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "824baff0318d8e4d",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231567#reply4",
+      "title": "根本不会 go 语言，做了个给微信 clawbot 发消息的机器人",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "bec7e4abd9f7813f",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231558#reply14",
+      "title": "冒险岛 083 网页版",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "344a77fc1899f470",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231574#reply1",
+      "title": "做了一个可以分步查看魔尺折叠过程的网页工具",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "9a6ae29444f0e8fb",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231572#reply0",
+      "title": "macOS 原生终端 Termite 1.12 版本发布-新增巡航模式",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ff04bb428bab1728",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231499#reply23",
+      "title": "codex 现在怎么这么慢了，用的 sol 中、高都很慢",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "18efabeba7b4f0dd",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231545#reply18",
+      "title": "Clash 的规则集现在都怎么选？ rule-provider 感觉不够用了？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "8d3b8fa4662cdf8b",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231550#reply5",
+      "title": "发现我的 gpt 账号有个免费试用 Plus",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "c416b8a440a27034",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231518#reply10",
+      "title": "Google Play 订阅的 GPT20 X 封号后退款成功，不过客服说这次是破例",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "7bd9b819b1cbd842",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231537#reply0",
+      "title": "win 系统下 codexcli 在 vscode 启动的终端中无法通过滚轮查看消息记录的修复开源分支",
+      "score": -5,
+      "reasons": [
+        "正文命中：cursor",
+        "标题经验词「记录」",
+        "疑似产品自荐帖",
+        "论坛短帖（正文 592 字符）",
+        "总分 -5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "1fcdec5ef5f59fdf",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1229705#reply43",
+      "title": "你有做不好工作怪梯子的时候吗",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "dd57507d1dd6ad2f",
+      "source": "V2EX 技术节点",
+      "url": "https://www.v2ex.com/t/1231199#reply12",
+      "title": "GTP 免费试用-付款未获批准",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ff9ec1d588996428",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853095-1",
-      "title": "CloudCone机器又挂了",
+      "url": "https://www.nodeseek.com/post-854497-1",
+      "title": "gpt提示: 你已达到此对话的长度上限，你可以开始新聊天以继续对话。",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "dd963594755dc725",
+      "id": "c0f55920682723b1",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853094-1",
-      "title": "收一台正价咸鱼云 sjc.p1.micro",
+      "url": "https://www.nodeseek.com/post-854496-1",
+      "title": "大家现在新号开claude还需要手机号验证吗？",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "96f7504fccc3e13c",
+      "id": "d72cd235179e288b",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853093-1",
-      "title": "亚太中转",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "1b86872034ca1abc",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853092-1",
-      "title": "krak消费问题",
+      "url": "https://www.nodeseek.com/post-854495-1",
+      "title": "妙妙屋好用吗",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "5772a28b5dcb9654",
+      "id": "b6681b63a43832ab",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853091-1",
-      "title": "海妖 10￡ 要求怎么完成?发错分区了，不好意思",
+      "url": "https://www.nodeseek.com/post-854494-1",
+      "title": "plasma 买 gpt 20x pro 的返现问题",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "ad97fb55af583cbe",
+      "id": "36836e59dc1e6c7b",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853090-1",
-      "title": "即时通讯源码拼车 开团开团！ 5人团差4人",
-      "score": 0,
-      "reasons": [
-        "标题含卖额度 / 卖账号特征"
-      ]
-    },
-    {
-      "id": "94f9c0efbb48387a",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853089-1",
-      "title": "panstar.ai JP Lite 1核 1024M 10G 0.99刀",
-      "score": 0,
-      "reasons": [
-        "中文占比 2%，低于门槛"
-      ]
-    },
-    {
-      "id": "c1d7b76ef9ea5926",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853088-1",
-      "title": "收bage uk de 两刀机",
+      "url": "https://www.nodeseek.com/post-854493-1",
+      "title": "有用玻利维亚区成功开play pass的吗？",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "57c4dcfa9c455851",
+      "id": "9750628c641138e4",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853087-1",
-      "title": "需要新开codex账号，个人使用，求靠谱的接码的实体卡和开通方案",
+      "url": "https://www.nodeseek.com/post-854492-1",
+      "title": "甲骨文新加坡  一发入魂  日常操作",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "d99a7bafc4ad7d08",
+      "id": "ab7413d5c2fc5d1f",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853086-1",
-      "title": "早安各位……我是真能熬夜🫩",
+      "url": "https://www.nodeseek.com/post-854491-1",
+      "title": "现在菲区还能0元购吗？bin卡怎么搞啊",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "594184c3f1d4ea8b",
+      "id": "29c386e00893a1bd",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853085-1",
-      "title": "85出TEAM席位，质保一个月",
+      "url": "https://www.nodeseek.com/post-854490-1",
+      "title": "在审查和修复PR上的问题",
+      "score": -2,
+      "reasons": [
+        "正文命中：claude-code",
+        "论坛短帖（正文 80 字符）",
+        "总分 -2 低于入围线 6"
+      ]
+    },
+    {
+      "id": "81b095e72eb6d717",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854489-1",
+      "title": "求告知荫云是哪家主机",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "f6ea0ffdf529263a",
+      "id": "e8d19b7f7c9e2c79",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853084-1",
-      "title": "准备买个se3外版",
+      "url": "https://www.nodeseek.com/post-854488-1",
+      "title": "经常Cloudflare人机验证服务加载失败",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "b8f3873404762f1c",
+      "id": "c4b8d24fc50fa73b",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853083-1",
-      "title": "n26 转账到krak没事吧？",
+      "url": "https://www.nodeseek.com/post-854487-1",
+      "title": "收一个 VMISS-US.LA.TRI.Basic 月 9折",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "51d4c9509d5186a6",
+      "id": "ccb3d939f0ebd686",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853081-1",
-      "title": "［收］泰国561team优惠码，带价来",
+      "url": "https://www.nodeseek.com/post-854486-1",
+      "title": "项目结束，有偿转让一台OVH RISE-L | AMD RYZEN 9 9950X CA区 $177续费",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "e49e9c8db9b5f535",
+      "id": "6e661c9e1502e37f",
       "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853080-1",
-      "title": "收一台vmiss 1c1g",
-      "score": 0,
-      "reasons": [
-        "中文占比 4%，低于门槛"
-      ]
-    },
-    {
-      "id": "86e02f2fa9d1af4d",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853079-1",
-      "title": "（收）每台288 收Datawave 618A HK和TW款",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "f5a758aef57b5575",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853078-1",
-      "title": "气笑了，nat小鸡设置端口转发 的灵异事件",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "485582b7e4fb5979",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853077-1",
-      "title": "转让一台1c1g vmiss",
-      "score": 0,
-      "reasons": [
-        "中文占比 3%，低于门槛"
-      ]
-    },
-    {
-      "id": "a6816105b53669b4",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853076-1",
-      "title": "IOS26开启WIFI-Calling教程，最好不要升级 ",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "c3176197f91fb1ff",
-      "source": "NodeSeek",
-      "url": "https://www.nodeseek.com/post-853075-1",
-      "title": "终于找到了个不买netcup美东鸡的理由",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b3ae5c80fddf0a2c",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/status/2083639136250916926?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "关于模型 Compact 频率与上下文处理的技术讨论",
+      "url": "https://www.nodeseek.com/post-854485-1",
+      "title": "有没有一些设计精美的网页参考",
       "score": 0,
       "reasons": [
         "中文占比 6%，低于门槛"
       ]
     },
     {
-      "id": "9ab9f4bcf15fef26",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/status/2083628609298645065?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "对 AI 测试 SVG 能力反映智能水平的质疑",
-      "score": 0,
-      "reasons": [
-        "中文占比 7%，低于门槛"
-      ]
-    },
-    {
-      "id": "16e695aafdec2e7f",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/status/2083620982338486614?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "Codex 任务连续性优化的补充说明",
-      "score": 0,
-      "reasons": [
-        "中文占比 4%，低于门槛"
-      ]
-    },
-    {
-      "id": "f2afd3b1a1d766be",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/status/2083620270959480931?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "Codex 上下文管理优化：handoff 与 /compact 技巧分享",
-      "score": 0,
-      "reasons": [
-        "中文占比 6%，低于门槛"
-      ]
-    },
-    {
-      "id": "f1bf68d99b7103b9",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/72ec10e009?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "桃花运的概率",
+      "id": "6243851b4431f8be",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854484-1",
+      "title": "求教 YouTube Premium 尼日利亚区iOS订阅姿势",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "34df802f669a114c",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/2337c7ca3a?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "【夜读】10 件成本很低，但能快速恢复心力的小事",
+      "id": "58d9912e4f24aad6",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854483-1",
+      "title": "【开源】一款强大的隐私防泄漏代理软件Nyxelen(8.3日更新)",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "5bfe492e89d2a219",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/de12f4b629?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "普通投资者，相比机构，最大的投资优势是什么？ | 螺丝钉带你读书",
+      "id": "7c5fe741c145f4cb",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854482-1",
+      "title": "买个youtube个人会员，非家庭",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "bae4965a098b3cfa",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/9c5e599c33?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "选主动基金时为何要偏好风格稳定、不漂移的基金经理？｜投资小知识",
+      "id": "e98ecaa5b1782308",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854481-1",
+      "title": "我都6级了 但是还是不会用nat 不知道怎么拉线路ss2022 是不是很蠢",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "80509cc4bd2dfdda",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/6474eaa26d?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "每日钉一下（港股红利和 A 股红利有什么区别呢？）",
+      "id": "d1f50e3b1035c4b5",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854479-1",
+      "title": "[TQ + NQ 留档] ISIF US.LAX-B.1C0G-COP",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "1d7dc8285b5d528d",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/7d31279e0d?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "“发现好多大学生不懂邮件礼仪”上热搜！网友：强烈建议纳入课程！",
-      "score": 0,
-      "reasons": [
-        "中文占比 15%，低于门槛"
-      ]
-    },
-    {
-      "id": "d2d103b319788353",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/a6c19570fd?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "软件工程、设计、PM 都在变，AI 机会藏在无聊行业丨 Silicon Valley Girl",
+      "id": "1f8fc30580680f3d",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854478-1",
+      "title": "好像发现个抽奖号 ",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "69a39a4477e3efa0",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/be5c20edb7?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "看《奥德赛》之前，重温《奥本海默》",
+      "id": "9c4536ca5bf59047",
+      "source": "NodeSeek",
+      "url": "https://www.nodeseek.com/post-854477-1",
+      "title": "貌似红包卡无法热点共享流量了",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "f04821fa351dcb56",
+      "id": "3d2ee00d1e44e538",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/b2b0075e8f?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "诺兰：为什么我必须拍《奥本海默》",
+      "url": "https://www.bestblogs.dev/podcast/393d41373?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "「热爱一个行业 15 年的理由是什么？」｜对谈汪天凡：我要投真正的快乐、投最纯的愿景、投人性的光辉【公路播客】",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "2babf12896d7e0c8",
+      "id": "2d62b264baa18628",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/dfe6cca732?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "原油，瞬间拉升！特朗普，最新发声！美驻以大使馆发布安全警告",
+      "url": "https://www.bestblogs.dev/article/faf33a86e2?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "AI 营销龙头实控人拟入主欣天科技，明起复牌",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "6fd42a14930edc42",
+      "id": "9bcf9afb7152b54b",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/15c0d57e11?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "【财闻联播】多家品牌金饰价格下调！新势力车企 7 月交付数据公布",
+      "url": "https://www.bestblogs.dev/article/e3dc8b0562?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "即梦 Seedance 2.5 上新：SOTA 性能再进阶，游戏开发圈也“心动”了",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "55654b1c19dda460",
+      "id": "ef338e33cdd3620b",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/82863b1a17?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "超强厄尔尼诺事件正在形成！",
+      "url": "https://www.bestblogs.dev/article/cddb5a4532?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "一度消失的宝可梦游戏，时隔 20 年重现天日",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "674bf8c2a942f8d2",
+      "id": "a080f003c87904c2",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/2bfcd9724d?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "为了让药物更快上市，他们在蒙大拿州绕开了 FDA",
-      "score": 0,
+      "url": "https://www.bestblogs.dev/article/aa8deb6d1f?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "吴恩达最新开源 AI 同事，在 Github 爆火了！",
+      "score": 2,
       "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "51cb86e85e0f9ac3",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/d5a956748d?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "亚马逊：AWS 发飙，亚马逊终于追上大部队了！",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "bf125904affd569a",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/e92cd57a0a?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "Coinbase：币价 “退潮” 再探底，还能等到政策东风吗？",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "85d59e239b0742c1",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/a67a8f99c1?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "ARM：大厂 “收手”，天价估值先 “降温”?",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "09d094ee52b262d6",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/0eb96b5fab?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "「天线宝宝」机器人上门做保洁，200 元/小时，纯·人工·智能",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "3c564dc49234f8a8",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/27e4bd9129?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "获奖之后，王虹最想感谢的人",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "b5f2da50ff5244c8",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/e770088ec2?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "美联储，突传大消息！沃什：考虑减少会议次数",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "5835276311007f6a",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/d00f8879e5?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "首个月交付 10 万辆新势力品牌出现！",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "e1dee634935f8003",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/2903dd66cb?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "奥特曼也逃不过刷 TikTok 上瘾，Sora 背后最抓马的一段来了",
-      "score": 4,
-      "reasons": [
+        "正文命中：mcp",
         "泛 agent 词 1 个",
-        "正文经验词 3 个",
-        "总分 4 低于入围线 6"
+        "正文经验词 2 个",
+        "新闻腔 1 个：爆火",
+        "总分 2 低于入围线 6"
       ]
     },
     {
-      "id": "809b658d7abc1760",
+      "id": "888d1c77bf875c20",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/8c42834897?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "要想和家里人关系顺，一定记住：对父母，只尽孝，少共情；对配偶，不一味求爱，要求陪伴；对子女，只养育，别苛求他报恩！",
+      "url": "https://www.bestblogs.dev/status/2083924885064282616?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "外媒预测 GLM 5.5 八月发布",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "62b8df04c16c24d0",
+      "id": "3a62c7d2f58995ae",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/f422881923?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "《财经》APEC 观察｜APEC“中国年”7 月进展：成都“数字周”收官，深圳林业会议达成共识",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "1369ede038ef47e2",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/832939bb91?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "8700 亿强平！韩国狂欢后剩“一地鸡毛”",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "18801358411c969a",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/56c1cca09b?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "React 中文周刊 #287 - Octane：编译式的 React 编程模型，TanStack 弃用 RSC",
-      "score": 0,
-      "reasons": [
-        "中文占比 13%，低于门槛"
-      ]
-    },
-    {
-      "id": "8540565f39a613e5",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/04b5552b44?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "AI 电力荒下的新铲子",
-      "score": 0,
-      "reasons": [
-        "没有命中任何 agent 相关词"
-      ]
-    },
-    {
-      "id": "25372ed51c556ec0",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/b91ec796ce?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "AI 应用板块爆发，这一次不一样？",
-      "score": -1,
+      "url": "https://www.bestblogs.dev/article/2c7abbf5e0?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "小跑回来上钟",
+      "score": 2,
       "reasons": [
         "泛 agent 词 1 个",
         "正文经验词 1 个",
-        "疑似求助 / 提问帖",
-        "总分 -1 低于入围线 6"
+        "总分 2 低于入围线 6"
       ]
     },
     {
-      "id": "5f1d052eaedf4271",
+      "id": "1a8dbe9487caa497",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/c230b4e2bb?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "最惨烈的 7 月，4600 亿猛攻这三类 ETF！",
+      "url": "https://www.bestblogs.dev/article/a1f48bb9c8?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "下周，准备打新“光”和“芯”！",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "906f05dac14c67d9",
+      "id": "acbe4cd1816f7011",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/547387c7bb?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "大涨 30%！万亿存储巨头，周末利好！韩国芯片出口，猛增 179%",
-      "score": -1,
-      "reasons": [
-        "泛 agent 词 1 个",
-        "新闻腔 1 个：财报",
-        "总分 -1 低于入围线 6"
-      ]
-    },
-    {
-      "id": "95ddadd8f7cc6329",
-      "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/f0aca1bd96?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "私募最新调研路线曝光！7 月调研近 1500 次，电子板块“霸榜”，光芯片、光模块成焦点",
+      "url": "https://www.bestblogs.dev/article/851dd9b6c6?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "中央编办批复同意，新机构在京组建成立：正司级，内设 32 个部门；领导班子、主要职责等公布",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "98c6a375ac9964cb",
+      "id": "a3c982894af50e4e",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/565dc6f4bd?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "记者实探 ChinaJoy：重磅新品游戏集中亮相，玩家排队试玩",
+      "url": "https://www.bestblogs.dev/article/37fad71a10?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "600801，公告重要跨国收购！拟收购菲律宾一企业，总价或超 8 亿美元",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "e69c07b5633e51b5",
+      "id": "78161bdde8c3f622",
       "source": "BestBlogs.dev",
-      "url": "https://www.bestblogs.dev/article/53cd49e074?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
-      "title": "国际足联宣布放弃新商业提案",
+      "url": "https://www.bestblogs.dev/status/2083919902348554733?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "高效多模型 Debug 流程：不恋战、用 /handoff 交接、并行修 Bug",
+      "score": 4,
+      "reasons": [
+        "泛 agent 词 2 个",
+        "正文经验词 2 个",
+        "总分 4 低于入围线 6"
+      ]
+    },
+    {
+      "id": "b7e992f5d047b8de",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/217ec84c4d?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "微信一项能力升级！关键时刻能救命",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "cff0a2a4a4811467",
-      "source": "掘金搜索",
-      "url": "https://juejin.cn/post/7661062882848784393",
-      "title": "飞书多Agent群聊通信：让多个AI在同一个群里自动协作",
+      "id": "7bcf351d51149316",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/72c2d84001?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "国产 AI 包揽全球前五！主力加仓 AI 应用，赛道 8 月金股曝光",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "df1539ef21d6189b",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/c453862f93?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "ETF 周报：年内第二次低吸的机会已确认？文末有福利！",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "90649f3b570a4dac",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/67c10f503c?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "厄尔尼诺“冲击波”，抵达 A 股铜企",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "6d3b275fe0ec028c",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/591e078abe?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "［8 月 2 日］美股指数估值数据（人民币升值，对我们投资有什么影响？）",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5ce2c89d0753f63e",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/9528328354?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "中证全指是什么，覆盖哪些股票？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "8a6117b9e3068b8a",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/b84e4c0511?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "每日钉一下（牛市新股 IPO 提升，对投资有什么影响？）",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "37a746e7af976d7a",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/17c314b3fb?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "山姆·奥特曼最新访谈：别把时间浪费在自己根本不擅长的事上",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "737a38303755dd17",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/5397f0b0a6?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "三国鼎立，为何是司马家笑到最后？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "855a9102515cf709",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/0055bde8fa?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "一 A 股公司，旗下公司仓库起火",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5bbbb5496df26398",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083908172360872156?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "RSTGameTranslation：游戏画面实时 OCR 翻译工具",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "909eff5124873484",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/0de125b4b9?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "近 120 万辆特斯拉，遭调查",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "d7501f506ff2f300",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/a24df01acf?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "听劝！这类菜一定要少吃，真的可能致癌！",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "0fc54c11c45dbd78",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/771afe15af?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "【夜读】人与人相处，最舒服的 3 种状态",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "63aeab6db95d5bae",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/7afed71ddd?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "广东发布公共文化服务、哲学社会科学、国际传播领域“三个 500”，为高水平推进文化强省建设提供示范引领",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1a6b66026f494d63",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083898601105977677?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "实测 Luna Max：与 Sol Medium 差距明显，更适合作为 Sub Agents",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "562021b9460de769",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/59851f6307?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "你以为周末补觉是“还债”？其实是在伤害身体（附调整方法）",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "3fac0033f2fdfaa6",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083895333827092801?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "DeepSeek-V4-Pro 成悬在众模型头上的达摩克利斯之剑",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "cbda44972e48783f",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/0a6f623898?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "山东青岛一仓库起火 正全力扑救",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "a72422a5c661bc23",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/6344d08da0?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "17 岁女生在公厕发现一个文件袋，打开后直接报警！老爸：她这样做一点不意外",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1bbcbaf294116ef9",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/688bb4796a?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "“飞行二大队 20 分钟覆灭耻辱记”，为什么一直挂在楼道里？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "580aa196e5251c2d",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/13b6180044?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "挣钱？赚钱？攒钱？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "82107300a76d631f",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/508c92d9a8?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "一个人内心强大的标志：风大收伞、买单离场、愿赌服输",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "38c2dcb275f0899a",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/30cb7b2768?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "吃着碗里的，看着锅里的，想着田里的",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "bbc59a4fc8b09499",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/8d2b1f01f4?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "只是 27 块饭钱，这对货车司机夫妇却惦记了 13 天",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "285752791e745ed0",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/c61b632e0b?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "华侨系案追踪：余增云亲属被警方控制，“二号人物”杨宇潇被美移民局拘留",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "4915b4d8103aa0c3",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083886399586222358?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "前端设计技巧：提升界面高级感的量化规则",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "6b59bf373bd2c40d",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/8125b20896?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "老炮的消亡",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "f1c1cfd0f7d95524",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/42c2df8633?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "如何衡量人生的成败？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "f22d36a610570c72",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/fa795b9165?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "独自受苦有一样巨大的好处",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "54dba619a02d7880",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/89d4450a7b?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "手机玩游戏不够爽？这事儿终于有人管管了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "df002144279074ea",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/68077f2c25?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "景区网红游乐项目暗藏大安全隐患",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "a7a9a5b07d24f597",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/8dab492b9a?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "特朗普发声后，伊朗火速回应",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "2a6d1ecebf97828e",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/d66f02bcff?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "一天之内，5 万非法移民涌入西班牙领土",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "0545344cafead316",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/0663bbc354?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "伊朗：重开霍尔木兹海峡计划纯属谣言",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "abed061ae592fb8f",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083878482724131001?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "AI 效率软件创业窗口收窄：除细分垂类外基本是大厂地盘",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ad0c4a94036b1009",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/67fba94c2e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "东方甄选前 CEO 组队带货首播，实时热度超过与辉同行",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "fa9f7b86a2a3c874",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083876804448981174?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "柯洁与围棋界的 AGI：一场提前到来的无力感",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "8e0489915e1141e0",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/88712366b8?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "男子因“大盘鸡放土豆”报警？民警回应",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "dcab1f3a6e10462a",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/9bd40f35d5?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "我飞行员强势回应外军：I just want to fight（我只想战斗）",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "3f6683df6f8b3b85",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/7c4c0868b6?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "你的白日梦也许更懂你？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1a1545de37a07543",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/1a218c6aae?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "8 月巴黎 | 我们把神经美学，做成了一套完整课程，还请来了它的奠基人",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "b04674b61b28a26c",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/61650e0941?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "装修、物业费可提取公积金！10 万亿账户迎来全面激活",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "0534f88203e678ec",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/97aff45cf1?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "微信升级地震预警能力，关键时刻能保命！",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "44c2d16f5d1dbe62",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/1ea05b4635?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "贝森特悄悄“救市”？被“忽略”的大事：美日韩联合干预，美财政部“罕见”下场",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "fadc7aaaf18578fa",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/e253e144d6?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "高盛：7 月砸穿拥挤交易，美股牛市没断，但更难做了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ede38e1ec9299fa2",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/c78ae3e87e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "大婚前夜爆仓，“AI 股神”婚礼仍照常举行",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1980fbe5ec8c92f9",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/8340761386?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "一周重磅日程：美国非农与中国 CPI、SpaceX 首份财报+解禁、AMD 闪迪财报",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "a22362b08536b4ea",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083872185744277601?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "Mectrics：原生 macOS 菜单栏监控工具",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "25f3d82f3eac12ba",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/a063f2ebd9?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "PCB 概念股，净利润大增 15 倍",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "af8ff8a7863005a1",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/21ebc89114?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "用这种杯子喝水的人，可能在喝细菌！",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "39e6a8913c8f8fba",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083868402322686239?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "“教人赚钱比赚钱更赚钱”：对中国式先学后干现象的观察",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "29fbbad50a5b8494",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/f22f36111f?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "美国华盛顿州进入紧急状态",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "a0c9e132a2a943f8",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/66731b39af?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "约 5 万人涌入！西班牙飞地成欧洲移民危机焦点",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "87615fcc429f57c0",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/9b7ef27e6a?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "CF40 研究 | 周期分化，约束各异：美国、欧洲与中国——宏观经济动态与结构性改革",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "526d3688ca37c036",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/38b73f3e8e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "公积金，将有新变化",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "2b13213c650c988e",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/9cb2b328cc?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "看！我钓的“巨物”！你能认出这是什么鱼吗？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "0ec6f52a96ebf0c7",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/2ca1889507?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "亚马孙古代文明可能曾有 300 万人口",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "522793bb5e73418f",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/9c61f02169?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "看清一个人最快最有效的方式：2 个字",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "21c9fdc2b122f97e",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/ac4c588a5c?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "我飞行员强势回应外军：I just want to fight！（我只想战斗）",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "dc23accf65341159",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/fcecd5ef84?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "中信证券：A 股调整基本结束，8 月修复可期",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "b17347baf3facdda",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/92d2781123?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "“二姐”的电话号码，就是全岛人的“120”",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "7cf54f6950ba51aa",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/6e026fac8e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "新能源入市一年考，光伏投资何处去",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "4f7a2f556670d85e",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/c130ef6907?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "DeepSeek，V4 系列迎重大升级",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "6779540345798c67",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/3ec660a136?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "OpenAI 全新 AI 模型 Astra 曝光，主打多智能体长周期任务协同；总投资超 1700 亿元，我国新核准 8 台核电机组",
       "score": 3,
       "reasons": [
         "泛 agent 词 1 个",
@@ -1116,98 +2187,1229 @@
       ]
     },
     {
-      "id": "28d858df26d0b104",
-      "source": "掘金搜索",
-      "url": "https://juejin.cn/post/7662660243382157352",
-      "title": "Grok Build 额度用完怎么办？SuperGrok 周额度、重置时间与续用方式",
+      "id": "f42af3c7e795949e",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083858059311620255?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "用“拿来主义”跑专家 Skill：可能是当前用 AI 提效的最快路径",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "b73803acd5c9bf94",
-      "source": "掘金搜索",
-      "url": "https://juejin.cn/post/7661505897453142051",
-      "title": "TokenFaucet",
-      "score": 2,
+      "id": "502adc706858067f",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/05728caecd?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "男子到部队拒不配合查验，推搡哨兵打落核验设备，法院判了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5aafce37c469787f",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/cb82e954e3?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "王虹专访：90 后数学家，逆流而上",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "493627eb40b6cde9",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083856128820285553?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "警惕中文圈私信诈骗：假冒 AI 公司商单利用 X 登录",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "0e5e47315542b244",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083855703979278636?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "LLMs‑local：本地大模型全生态资源清单",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5e531875c34d6a13",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/fb55052199?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "家纺第一股，突袭锂电！",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "a77b6664cfd767e3",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/aad72c7ab3?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "41 分钟卷走 7000 万美元比特币，Coldcard 漏洞被指牵涉其中",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "7cf8679251c4aaa4",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/2d7aab36de?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "俄罗斯黑客劫持酒店 Wi-Fi 门户窃取 Microsoft 365 令牌",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "982e23f48e028191",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/78cea3170a?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "每周 PDF 资源：微软威胁防护；契约锁 RCE 分析；TCP 四次挥手",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "43c884ad32fe1d53",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/status/2083853059764142510?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "DJOneHub：macOS 上使用大疆 4G 模块",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "64278d4836df82ce",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/d393513ed8?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "小米多款手机涨价，店员：昨晚接到调价通知",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "9b81359feaabf458",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/82e09ebe9f?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "“发现好多大学生不懂邮件礼仪”上热搜，网友建议纳入课程，北大等此前已发布实操指南",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "d3590e72f1829a8d",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/3e7dc6f57d?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "我飞行员强势回应外军：I just want to fight！（我只想战斗）",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5222b1390398c667",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/324d2006fb?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "你的公积金，将有新变化！",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "7c03a84a0177549c",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/23f58815d4?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "八大任务重点！央行下半年这么干",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "a95107399cfef8af",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/1bc85b00f2?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "近 120 万辆特斯拉汽车，遭调查",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "7b8fcdc561722b6d",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/eede847fda?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "幼儿喝凉水吃冰西瓜后，高烧 4 天，一天排便 10 多次！医生提醒：近期高发",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "4a620d29a781e7f4",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/5af706d16f?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "DeepSeek 预测：未来三年，普通家庭升值最快的 3 项资产，越早布局越好",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "962e0763a3296173",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/8f4696468c?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "摆脱年龄焦虑最好的方式",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "7f4e13bfc99351ce",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/7a122141d6?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "微信新功能上线！不过，希望你永远用不上",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "25ad92182ce90c56",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/e3a375d16e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "中信证券：调整基本结束，8 月修复可期",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "2e199b6d45a593ab",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/743f62153b?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "DeepSeek 这次，真的把大模型价格打穿了。  V4 Flash 正式版刚发布，性能暴涨，价格却几乎趴在地板上。我看完只想说一句，梁圣牛逼！  先...",
+      "score": -7,
+      "reasons": [
+        "泛 agent 词 1 个",
+        "营销词 2 个：低价/折扣",
+        "总分 -7 低于入围线 6"
+      ]
+    },
+    {
+      "id": "da434a45c86aab0a",
+      "source": "BestBlogs.dev",
+      "url": "https://www.bestblogs.dev/article/8defae83ef?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+      "title": "WRC 九冠王惊魂一撞！奥吉尔芬兰站高速翻车",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ff01f8617116f0dd",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231532",
+      "title": "写了一个 agent 赌财报网站，看哪个 agent 猜的最准",
+      "score": 0,
+      "reasons": [
+        "正文命中：claude-code/gemini-cli",
+        "正文经验词 3 个",
+        "新闻腔 1 个：财报",
+        "论坛短帖（正文 529 字符）",
+        "总分 0 低于入围线 6"
+      ]
+    },
+    {
+      "id": "f249889615121422",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231520",
+      "title": "[macOS] CoolRun：一个从金价监控慢慢长出来的菜单栏工具箱",
+      "score": 5,
+      "reasons": [
+        "正文命中：claude-code",
+        "正文经验词 3 个",
+        "论坛长帖",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "e53fa99b8a29e9e1",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231511",
+      "title": "在 Claude code 里用 gpt 什么效果",
+      "score": 3,
+      "reasons": [
+        "标题命中：claude-code",
+        "论坛短帖（正文 44 字符）",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "a4295f5b4fcd0192",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231501",
+      "title": "做了个 AI API 聚合，一个 Key 用所有模型，想听听大家意见",
+      "score": 0,
       "reasons": [
         "正文命中：claude-code/cursor",
+        "正文经验词 1 个",
+        "论坛短帖（正文 507 字符）",
+        "总分 0 低于入围线 6"
+      ]
+    },
+    {
+      "id": "dd5c7f9ad66a2e95",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231498",
+      "title": "独立开发一年半,一个丑工具月流水 4700,说说这一路的坑",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "30e052f10ef95285",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231559",
+      "title": "联想 天津 直招 急聘 又来了",
+      "score": 5,
+      "reasons": [
         "泛 agent 词 1 个",
-        "正文经验词 4 个",
-        "营销词 1 个：折扣",
+        "正文经验词 3 个",
+        "论坛长帖",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "4c45d1429321f970",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230569",
+      "title": "想问一下做广告素材的话，那个模型最实用",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "22b571b19c04457a",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1228892",
+      "title": "远程资深后端工程师 / 后端技术专家（Go+ PHP / AI 效能方向）30-60K",
+      "score": 5,
+      "reasons": [
+        "正文命中：copilot",
+        "泛 agent 词 1 个",
+        "正文经验词 3 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "77f98fae5568596d",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1228291",
+      "title": "[Rewrite Bun in MC++] 7 天 20+万行代码 C++26 模块化, 重写 Bun 行为艺术复刻, 已能真实运行顶级开源 Web 框架项目",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "faa728d791685bbf",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1227635",
+      "title": "Yukiapi 一家稳定平价 Claude/Codex 中转站，新用户注册送 1 刀评论区留 id 送 5 刀额度！",
+      "score": 0,
+      "reasons": [
+        "标题含卖额度 / 卖账号特征"
+      ]
+    },
+    {
+      "id": "9cecc4d755d22663",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1227024",
+      "title": "为什么在 2026 年， Agent 更适合 Heredoc 式执行，而非 REPL 式交互？",
+      "score": 1,
+      "reasons": [
+        "泛 agent 词 2 个",
+        "正文经验词 3 个",
+        "疑似求助 / 提问帖",
+        "学术腔 1 个",
+        "论坛长帖",
+        "总分 1 低于入围线 6"
+      ]
+    },
+    {
+      "id": "d918e6d2e297420d",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1226876",
+      "title": "推一下自己不到 100 用户的小中转站",
+      "score": 0,
+      "reasons": [
+        "标题含卖额度 / 卖账号特征"
+      ]
+    },
+    {
+      "id": "96eb6b77ef673824",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230447",
+      "title": "每 3 个月给阿里 CDN 换一次证书，我终于受不了了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "bd1bc93dc8beabc8",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230338",
+      "title": "2026 年大家还在用 Jenkins 吗？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "cf3ab3d83d5d4a89",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230328",
+      "title": "想开发一款 macOS 安卓模拟器，大家觉得这个方向有哪些坑？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5ab05e1cbabd3242",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230239",
+      "title": "做了个反应速度测试站， 5 个工具+17 个小游戏，求各位帮忙看看",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "3facf889f52d3a43",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229531",
+      "title": "怎么会有 Kiro 这么难用的 Agent 啊？",
+      "score": 1,
+      "reasons": [
+        "标题命中：kiro",
+        "泛 agent 词 1 个",
+        "正文经验词 2 个",
+        "疑似求助 / 提问帖",
+        "新闻腔 1 个：重磅",
+        "论坛短帖（正文 577 字符）",
+        "总分 1 低于入围线 6"
+      ]
+    },
+    {
+      "id": "f635bb98c74b0500",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1228707",
+      "title": "做了一个完全本地的语音转文字工具，不想只做一个 Whisper GUI",
+      "score": 3,
+      "reasons": [
+        "正文命中：vibe-coding",
+        "正文经验词 8 个",
+        "学术腔 1 个",
+        "论坛长帖",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "5385942dc33c4356",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229992",
+      "title": "不跳就锁——用心率广播实现人走锁屏",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ee41ac9a0ee6d3d2",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1229997",
+      "title": "Code Agent 的 edit 工具有没有在生成阶段就防幻觉的方案？还是只能靠 post-edit 检查",
+      "score": 5,
+      "reasons": [
+        "正文命中：claude-code/aider/cline",
+        "正文经验词 5 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "e9cf202c024e1ec9",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230262",
+      "title": "推荐 Factory Droid 的服务",
+      "score": 1,
+      "reasons": [
+        "标题命中：droid",
+        "正文经验词 2 个",
+        "营销词 1 个：中转",
+        "论坛短帖（正文 214 字符）",
+        "总分 1 低于入围线 6"
+      ]
+    },
+    {
+      "id": "9c0619b37180ad1f",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1228432",
+      "title": "CMake 模板管理 CLI 分享",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "4a4eff666f22ba31",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1227314",
+      "title": "我做了一个数字佛堂「净心道场」· 程序写累了，可以随时进来静心五分钟～",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "f266d009c9504936",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231470",
+      "title": "领赛博鸡蛋了！又一个大厂（基元律动）可以领 Token 了 注册送 68 元。",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "31f4e59d84ac3a2a",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230049",
+      "title": "[求职] Web 全栈开发工程师/前端开发工程师",
+      "score": 0,
+      "reasons": [
+        "招聘 / 接单帖"
+      ]
+    },
+    {
+      "id": "7d54b7379291fdde",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1231234",
+      "title": "邮箱注册就送 500mb 住宅流量 静态住宅等于 2 刀/月 美国机房 1 刀/月起",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "e5e10935aafc5884",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230949",
+      "title": "无套路 注册就送 0.5g 住宅流量 静态住宅等于 2 刀/月 美国机房 1 刀/月起",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "28e8005104d2189f",
+      "source": "V2EX 搜索",
+      "url": "https://www.v2ex.com/t/1230944",
+      "title": "Claude API 企业级接入方案，新用户赠 10 美元体验额度",
+      "score": -1,
+      "reasons": [
+        "正文命中：claude-code",
+        "标题经验词「体验」",
+        "正文经验词 2 个",
+        "营销词 1 个：中转",
+        "论坛短帖（正文 272 字符）",
+        "总分 -1 低于入围线 6"
+      ]
+    },
+    {
+      "id": "fc9270379766a340",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048082444",
+      "title": "Codex Windows 避坑指南：从安装到沙箱报错的完整排查手册",
+      "score": 3,
+      "reasons": [
+        "正文命中：codex",
+        "标题经验词「避坑」",
+        "正文经验词 3 个",
+        "营销词 1 个：限时",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "cb355fed74d28c0b",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048104567",
+      "title": "webman-skill: 给 AI 编码助手装上webman专业知识",
+      "score": 0,
+      "reasons": [
+        "中文占比 14%，低于门槛"
+      ]
+    },
+    {
+      "id": "0551a796e9bb49e6",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048094299",
+      "title": "第24章 自定义扩展与生态位",
+      "score": 5,
+      "reasons": [
+        "正文命中：claude-code/opencode/mcp",
+        "正文经验词 3 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "15b3449039ed28ff",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048067024",
+      "title": "第2章 仓库全局地图",
+      "score": 3,
+      "reasons": [
+        "正文命中：opencode/zed",
+        "正文经验词 1 个",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "c9994573c796b881",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048074287",
+      "title": "第8章 Provider 无关抽象层",
+      "score": 3,
+      "reasons": [
+        "正文命中：opencode",
+        "正文经验词 2 个",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "f7cf4361cdc818a9",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048037686",
+      "title": "【2026实测】F-Droid下载、安装、国内源配置一篇搞定（附官网安装包）",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "6032a918860282df",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048094486",
+      "title": " AI大模型API聚合平台选型指南：星链4SAPI如何打通Claude Code与Qwen实现跨协议模型调用",
+      "score": -2,
+      "reasons": [
+        "标题命中：claude-code",
+        "泛 agent 词 1 个",
+        "正文经验词 6 个",
+        "营销词 3 个：中转/优惠/折扣",
+        "总分 -2 低于入围线 6"
+      ]
+    },
+    {
+      "id": "5a154f399aa20701",
+      "source": "SegmentFault 搜索",
+      "url": "https://segmentfault.com/a/1190000048090495",
+      "title": "AI大模型API聚合平台非线智能API：打通Claude Code与Qwen实现跨协议模型聚合",
+      "score": -2,
+      "reasons": [
+        "标题命中：claude-code",
+        "泛 agent 词 1 个",
+        "正文经验词 6 个",
+        "营销词 3 个：中转/优惠/折扣",
+        "总分 -2 低于入围线 6"
+      ]
+    },
+    {
+      "id": "cb0e6e8813613b21",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7663518564784226313",
+      "title": "MaaS 平台踩坑记：你记住的模型名，可能明天就没了",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "41581c36fe849ef8",
+      "source": "掘金搜索",
+      "url": "https://juejin.cn/post/7665367969494040630",
+      "title": "FastAPI 多模型接入实战：DeepSeek + Qwen 踩坑与代码",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "30fab47583a074e7",
+      "source": "黑暗執行緒",
+      "url": "https://blog.darkthread.net/blog/dtmf-dialer-n-decoder/",
+      "title": "電話撥號 DTMF 訊號模擬與識別",
+      "score": 2,
+      "reasons": [
+        "正文命中：cursor",
+        "正文经验词 1 个",
         "总分 2 低于入围线 6"
       ]
     },
     {
-      "id": "3b7e4d16e84950ae",
-      "source": "SegmentFault 搜索",
-      "url": "https://segmentfault.com/a/1190000048029180",
-      "title": "GPT-5.6 能力边界工程实测：优势与短板全解析",
+      "id": "27fa50f86677cea0",
+      "source": "潮流周刊",
+      "url": "https://weekly.tw93.fun/posts/276/",
+      "title": "第276期 - 树和建筑",
       "score": 0,
       "reasons": [
         "没有命中任何 agent 相关词"
       ]
     },
     {
-      "id": "4f4f863605bff769",
+      "id": "d3d0310a69e0c704",
+      "source": "少数派",
+      "url": "https://sspai.com/post/112843",
+      "title": "从拉萨到雅鲁藏布江大峡谷，我的春日西藏游记",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "76035eb8a0245608",
+      "source": "小众软件",
+      "url": "https://www.appinn.com/installerx-revived/",
+      "title": "InstallerX Revived – 支持降级安装，现代安卓 APK 安装器",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1de94cfc74bb554c",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/didispace/p/22156370",
+      "title": "Octafuse Gateway 2.1 发布：不只管大模型，Agent 的每一次工具调用也都管起来！ - 程序猿DD",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "e824df9fdd370647",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/Chorgri/p/22156221",
+      "title": "Windows系统应用弹窗自动点否？问题可能出在WPS - Chorgri",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "f9f8bbc790c9b49b",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/DSchenzi/p/22156094",
+      "title": "【渗透测试】HTB Season 11 Cohort 全过程WP - dynasty_chenzi",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "80a5e7b958512cd7",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/noear/p/22155227",
+      "title": "Solon 的 10 种 HTTP 服务器：改一行依赖，换一个引擎 - 带刺的坐椅",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1e49f2b7956116af",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/zh94/p/22154720",
+      "title": "AI 时代的“HTML 时刻”：一个被严重低估的知识标准 OKF - 贾克斯的平行世界",
+      "score": 5,
+      "reasons": [
+        "正文命中：mcp/skills/harness",
+        "正文经验词 3 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "74f19b780ae2cd10",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/wyt1/p/22152982",
+      "title": "拓扑排序：有向无环图的排队艺术 - _wyt001",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "c19498d029d6db8d",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/yaolin1228/p/22152664",
+      "title": "给大模型装的马鞍，该松一松了，从删除 superpower 开始 - 张居斜",
+      "score": 5,
+      "reasons": [
+        "正文命中：claude-code/claude-md/hooks",
+        "正文经验词 4 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "ba06bdbc356a0f82",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/zhennann/p/22150499/vue-object-oriented-zova-beginner-mental-model",
+      "title": "不必把 Vue3 写成“麻花”：从状态碎片到对象协作，重新理解 Zova 的前端心智模型 - 濮水大叔",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "b92a692cf9fbbcf9",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/goodhacker/p/22148759",
+      "title": "一个项目带你入门AI应用开发05 - bamb00",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "506ca7ce59ef5906",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/Ahoo-Wang/p/22147913/ai-ddd-business-value",
+      "title": "AI 越强，代码越便宜：真正值钱的是 DDD 背后的业务模型 - Ahoo-Wang",
+      "score": 0,
+      "reasons": [
+        "正文命中：context-engineering",
+        "正文经验词 4 个",
+        "营销词 1 个：优惠",
+        "总分 0 低于入围线 6"
+      ]
+    },
+    {
+      "id": "3296196cb6676492",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/lianngkyle/p/22146997",
+      "title": "驾驭AI Coding：用Graphify为AI编程助手装上代码图谱引擎 - 良凯尔",
+      "score": 5,
+      "reasons": [
+        "正文命中：claude-code/opencode",
+        "泛 agent 词 2 个",
+        "正文经验词 1 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "d1ffb23a00c3a25e",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/lincats/p/22088847",
+      "title": "Caveman vs Ponytail：AI 编程圈\"懒人哲学\"两大门派正面交锋 - AI钉子铺",
+      "score": 2,
+      "reasons": [
+        "正文命中：claude-code",
+        "泛 agent 词 1 个",
+        "总分 2 低于入围线 6"
+      ]
+    },
+    {
+      "id": "7956239e17e3ff15",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/uniqueDong/p/22145413",
+      "title": "为什么你的知识库越用越笨？不是没更新，是你少做了这三件事 - 码哥字节",
+      "score": 2,
+      "reasons": [
+        "正文命中：mcp",
+        "正文经验词 12 个",
+        "新闻腔 1 个：季度",
+        "总分 2 低于入围线 6"
+      ]
+    },
+    {
+      "id": "d956490ca74724d4",
+      "source": "博客园首页",
+      "url": "https://www.cnblogs.com/wackysoft/p/22144512",
+      "title": ".NET工控开发：一个被低估的赛道 - Wackysoft",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "3473a31fab8a93f8",
+      "source": "DecoHack 独立开发者周刊",
+      "url": "https://decohack.com/producthunt-daily-2026-08-02/",
+      "title": "PH今日热榜 | 2026-08-02",
+      "score": 5,
+      "reasons": [
+        "正文命中：claude-code/codex",
+        "正文经验词 5 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "d95ca501eb21bcce",
+      "source": "TonyBai",
+      "url": "https://tonybai.com/2026/08/02/google-agent-scaling-science-multi-agent-myth/",
+      "title": "谷歌重磅论文：多智能体不是万能药！260组实验实测出AI 智能体的第一条“缩放定律”",
+      "score": 5,
+      "reasons": [
+        "正文命中：subagent",
+        "泛 agent 词 2 个",
+        "标题经验词「实测」",
+        "正文经验词 5 个",
+        "新闻腔 1 个：重磅",
+        "学术腔 1 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "e1b82241031796b7",
+      "source": "Limboy",
+      "url": "https://limboy.me/posts/social-media-and-cigarettes",
+      "title": "社交媒体与香烟",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "c3b6231f4514a62e",
       "source": "x-cmd",
-      "url": "https://x-cmd.com/blog/260802/",
-      "title": "[260802] When AI Agents Start Operating Linux: Why Classic Commands Need to Be Redesigned?",
+      "url": "https://x-cmd.com/blog/260803/",
+      "title": "[260803] A 13-Year-Old Server Running a 26B Model: AI Is Redefining Hardware Value",
       "score": 0,
       "reasons": [
         "中文占比 0%，低于门槛"
       ]
     },
     {
-      "id": "bbfe71cde614605b",
-      "source": "x-cmd",
-      "url": "https://x-cmd.com/blog/260801/",
-      "title": "[260801] Don't Blame the AI for Underperforming—90% of People Misdefine the Task at the Very First Step",
+      "id": "3c4781fa29a9800d",
+      "source": "Sukka's Blog",
+      "url": "https://blog.skk.moe/post/pppoe-half-bridge/",
+      "title": "有催人跑的意思 —— 使用 PPPoE 半桥帮助 UniFi 网关突破性能瓶颈",
       "score": 0,
       "reasons": [
-        "中文占比 0%，低于门槛"
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "618a794d6729bcd4",
+      "source": "Mobius",
+      "url": "https://mobius.blog/2026/08/02/25253/",
+      "title": "≡ 006｜这一周莫比乌斯环转到了哪里？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "0a6d640565e2d673",
+      "source": "icodex - 个人网站",
+      "url": "https://icodex.me/pnpm-v11-native-release-management",
+      "title": "pnpm monorepo 新的发版机制",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "e51edbe1ce36ef77",
+      "source": "icodex - 个人网站",
+      "url": "https://icodex.me/fe-ai-tech-weekly-2026-08-02",
+      "title": "2026-08-02-前端与AI技术周报",
+      "score": 3,
+      "reasons": [
+        "正文命中：cursor",
+        "正文经验词 2 个",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "66ca8413a3d0e70b",
+      "source": "创见思考",
+      "url": "https://www.fengcan.net/personal-software-copyright/",
+      "title": "给自己的小工具登了个记——个人软著申请流水账",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1e02f11763877409",
+      "source": "Amiya的书桌",
+      "url": "https://blog.sayori.org/posts/creaters-confidence-circle/",
+      "title": "创作者的自信心循环——深陷其中的我们",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "328927c724fb5cd6",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401137?sc=rss.qu",
+      "title": "Day 3：你看到的狀態，不是系統正在做的事CRC 上三個事後查不到的故障",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "375471a5df259e7b",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401085?sc=rss.qu",
+      "title": "Day 01｜我很會解題，卻還不會確認題目",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "4fef788f7b9e9cfc",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10400779?sc=rss.qu",
+      "title": "[Day 03] 專案初始化",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "1139714b6fcebb3b",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401127?sc=rss.qu",
+      "title": "Day 02｜知識工作包含哪五個關鍵步驟？FUDAT 框架完整解析",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "ad70f0f8e97f4746",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10400921?sc=rss.qu",
+      "title": "Day 1｜模型動不了，那你能動什麼：AI Engineering 四層地圖",
+      "score": 4,
+      "reasons": [
+        "正文命中：claude-code/loop-engineering/context-engineering",
+        "正文经验词 2 个",
+        "总分 4 低于入围线 6"
+      ]
+    },
+    {
+      "id": "2f2fc815d7f392ca",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401016?sc=rss.qu",
+      "title": "Day 2｜為什麼是 PawPal？第一次加入團隊專案",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "e23330256471c55e",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10400976?sc=rss.qu",
+      "title": "Day 03：先搞懂三種角色",
+      "score": 5,
+      "reasons": [
+        "正文命中：mcp",
+        "泛 agent 词 2 个",
+        "正文经验词 2 个",
+        "总分 5 低于入围线 6"
+      ]
+    },
+    {
+      "id": "6c813851c03d3679",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401099?sc=rss.qu",
+      "title": "Day 03 -點石成金改變軟體的四種理由",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "aaa3fb8fda020f4a",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401107?sc=rss.qu",
+      "title": "Day 3｜Organization Policy：為 AI 專案設計護欄",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "74bafc15d9c998d1",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401095?sc=rss.qu",
+      "title": "已經會 React／Vue，為什麼還要看 Astro？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "63d5fac3c3ad0605",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10400837?sc=rss.qu",
+      "title": "Day 03 Build on Google AI：教育場景的工具盤概覽",
+      "score": 3,
+      "reasons": [
+        "泛 agent 词 1 个",
+        "正文经验词 2 个",
+        "总分 3 低于入围线 6"
+      ]
+    },
+    {
+      "id": "bfe616d00a0628b9",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401092?sc=rss.qu",
+      "title": "Day 2｜先別急著寫程式：我如何把AI 女友夢翻成可以驗收的需求",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "5c6e1bf423134228",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401093?sc=rss.qu",
+      "title": "Day 03：想抓一年份的行情資料，卻被 API 限流擋下來？別用 API，先把官方資料包整包載下來",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "07b290660a766efb",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401069?sc=rss.qu",
+      "title": "Day 03 - 第一個 API 請求",
+      "score": 4,
+      "reasons": [
+        "正文命中：claude-code/vibe-coding",
+        "正文经验词 2 个",
+        "总分 4 低于入围线 6"
+      ]
+    },
+    {
+      "id": "75640deea6fafa3f",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10400934?sc=rss.qu",
+      "title": "企業端點完美防禦03-選擇防毒軟體",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "3a44c0370694c98e",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10400909?sc=rss.qu",
+      "title": "UX那些事-DAY2",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "b32a609b7f17d6d3",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401077?sc=rss.qu",
+      "title": "Day 02  如果 AI Demo 已經可以跑了，下一步到底需要什麼，才能真正走進 Production？",
+      "score": 1,
+      "reasons": [
+        "泛 agent 词 1 个",
+        "正文经验词 3 个",
+        "疑似求助 / 提问帖",
+        "总分 1 低于入围线 6"
+      ]
+    },
+    {
+      "id": "c909a8c344b274f6",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401070?sc=rss.qu",
+      "title": "AI 黑魔法（01）：AI 為什麼會成為攻擊目標？",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
+      ]
+    },
+    {
+      "id": "9e1c390985327b62",
+      "source": "iT 邦幫忙",
+      "url": "https://ithelp.ithome.com.tw/articles/10401084?sc=rss.qu",
+      "title": "DAY1：認識 ChatGPT 與 Codex：AI 開發新搭檔",
+      "score": 4,
+      "reasons": [
+        "正文命中：claude-code",
+        "泛 agent 词 1 个",
+        "正文经验词 2 个",
+        "总分 4 低于入围线 6"
+      ]
+    },
+    {
+      "id": "7c7800dd0985ae9a",
+      "source": "Nicksxs's Blog",
+      "url": "https://nicksxs.me/2026/08/02/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%AD%E8%BE%93%E5%87%BA%E8%BF%9B%E5%BA%A6%E6%9D%A1/",
+      "title": "如何在命令行中输出进度条",
+      "score": 2,
+      "reasons": [
+        "正文命中：claude-code/opencode",
+        "总分 2 低于入围线 6"
+      ]
+    },
+    {
+      "id": "74c2c7a272a93d75",
+      "source": "smallyu的博客",
+      "url": "https://smallyu.net/2026/08/03/PySonar2%E5%A6%82%E4%BD%95%E5%B8%AE%E5%8A%A9AI%E8%8A%82%E7%9C%81Token/",
+      "title": "PySonar2 如何帮助 AI 节省 Token",
+      "score": 0,
+      "reasons": [
+        "没有命中任何 agent 相关词"
       ]
     }
   ],
   "errors": [
     {
       "source": "小众软件论坛搜索",
-      "message": "部分查询失败（15/30）",
+      "message": "部分查询失败（14/29）",
       "partial": true
-    },
-    {
-      "source": "掘金搜索",
-      "message": "部分查询失败（1/30）",
-      "partial": true
-    },
-    {
-      "source": "SegmentFault 搜索",
-      "message": "部分查询失败（2/30）",
-      "partial": true
-    },
-    {
-      "source": "科技爱好者周刊",
-      "message": "HTTP 503"
     },
     {
       "source": "HelloWood",
       "message": "HTTP 503"
     },
     {
-      "source": "est",
+      "source": "Abyss的小屋",
       "message": "HTTP 503"
     },
     {
-      "source": "Mobility",
-      "message": "HTTP 503"
-    },
-    {
-      "source": "Watermelonabc的Blog",
-      "message": "HTTP 503"
-    },
-    {
-      "source": "W4J1e's blog",
+      "source": "LoRexxar's Blog",
       "message": "HTTP 503"
     },
     {
@@ -1215,11 +3417,7 @@
       "message": "HTTP 503"
     },
     {
-      "source": "浦明的博客",
-      "message": "HTTP 503"
-    },
-    {
-      "source": "Clark's 尧望 Blog",
+      "source": "idealclover",
       "message": "HTTP 503"
     },
     {
@@ -1231,8 +3429,8 @@
       "message": "HTTP 503"
     },
     {
-      "source": "保罗的小宇宙",
-      "message": "The operation was aborted due to timeout"
+      "source": "韩小韩博客",
+      "message": "HTTP 503"
     }
   ]
 }
