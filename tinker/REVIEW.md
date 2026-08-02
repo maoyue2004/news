@@ -679,8 +679,32 @@ ACP 实践），探测 4 个候选站，**一个都没加**，理由记下来免
 
 搜索结果里其余全是 opencodecn.com / learnopencode.com / claudecn.com 这类
 文档镜像站和 SEO 页——LESSONS 里「搜索引擎搜个人博客基本无效」第三次被验证。
-`tinker-harvest.mjs` 这轮跑了 20 分钟没出结果（社区索引拉取超时），本轮没并入新源，
-源数仍是 213。
+
+**同一轮里 `tinker-harvest.mjs` 的对照又一次压倒性**：它扫了 2986 个候选 feed，
+命中 19 个，人工过一遍后并入 3 个，源数 213 → 216。
+搜索引擎 4 组查询 = 0，社区索引一轮 = 3，第三次得到同样的结论。
+
+并入的 3 个（`--merge` 前逐个看过标题）：
+
+- **Phodal 黄峰达** — 本轮最大的收获。AutoDev / UnitMesh 作者，周更全原创：
+  「长程验证：AI Agent 长任务的收敛机制」「任务自适应 Harness：从 Trace 到多 Coding Agent
+  的协作记忆」「Piece：将 Coding Agent 的局部构建反馈提速 10x」。
+  中文圈把 agent 工程写到这个深度的没几个人。
+- **Wayne 的技术博客** — 7/20 够格，本轮最高分。有真东西（Harness Engineering 笔记、
+  面向 Agent 友好的 CLI 开发建议），也有「Awesome AI Prompts 收集手册」这类盘点，
+  质量参差，desc 里写明了。带【笔记】【工具】前缀的个人笔记站，不是农场形状。
+- **福强说** — 3/20，混合型：「How I manage Codex context files」
+  「claude code with qwen3.5 via ollama」是真动手，但半数篇幅在写电影和读书。
+
+否掉的 16 个，两类：**聚合 feed 冒充个人博客**（hacpai.com 是链滴的板块 feed、
+api.xgo.ing 是个来源不可追溯的 RSS 网关 user feed）；**agent 内容只是随笔评论**——
+胡涂说（hutusi.com）是很好的个人博客，1 天前还在更，但它的 agent 篇目是
+「当心流量别被 Agent 都吃了」「当 AI 构建自己」这种感想，和今天毙掉的「马鞍」同类，
+按同一把尺子否掉。其余 13 个都是 100 天以上没更新且只有 2/20 够格。
+
+**顺带修正一条流程习惯**：harvest 跑满 20 分钟没有任何输出时我以为它挂了，
+先按「本轮没并入新源」收了尾。它其实只是把进度全缓冲在最后一次性吐出来
+（2986 个 feed，实际跑了约 35 分钟）。以后不要按「多久没出字」判断它死没死。
 
 **本次改动 2**：词表加两个话题。
 `acp`（Agent Client Protocol，Zed 发起、OpenCode/JetBrains/Neovim 在接）——

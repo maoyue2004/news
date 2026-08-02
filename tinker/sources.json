@@ -1715,5 +1715,29 @@
     "kind": "blog",
     "enabled": true,
     "desc": "扒 Claude Code 泄露源码讲 Harness Engineering、拆 OpenClaw 权限模型的深度长文，月更。"
+  },
+  {
+    "name": "Phodal 黄峰达",
+    "url": "https://www.phodal.com/",
+    "feed": "https://www.phodal.com/blog/feeds/rss/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "AutoDev / UnitMesh 作者，周更 agent 工程原创：长程验证的收敛机制、任务自适应 Harness、把 Coding Agent 的局部构建反馈提速 10x。"
+  },
+  {
+    "name": "Wayne 的技术博客",
+    "url": "https://blog.michealwayne.cn/",
+    "feed": "https://blog.michealwayne.cn/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "前端工程师的技术笔记站，近 20 篇里 7 篇够收录线：Harness Engineering 笔记、面向 Agent 友好的 CLI 开发建议、大模型缓存的 Prompt 工程。也写工具盘点，质量参差。"
+  },
+  {
+    "name": "福强说",
+    "url": "https://afoo.me/",
+    "feed": "https://afoo.me/feeds.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "架构师的个人博客，agent 内容是真动手的那类：怎么管 Codex 的 context 文件、Claude Code 接 ollama 上的 qwen3.5、Token 经济学。选题很杂，半数与 agent 无关。"
   }
 ]
