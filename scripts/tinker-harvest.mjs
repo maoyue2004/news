@@ -227,19 +227,28 @@ for (const r of all) if (!byFeed.has(r.feed)) byFeed.set(r.feed, r);
 const candidates = [...byFeed.values()];
 console.error(`合计 ${all.length} 条，去重后 ${candidates.length} 个候选，开始抓 feed…`);
 
-const denied = existsSync(DENYLIST)
-  ? new Set(JSON.parse(readFileSync(DENYLIST, 'utf8')).map((d) => d.feed))
-  : new Set();
-const current = JSON.parse(readFileSync(SOURCES, 'utf8'));
-const existing = new Set(current.map((s) => s.feed).filter(Boolean));
 /** 同一个博客常有多个 feed 地址（/feed.xml 和 /zh/index.xml），按域名再去一次重。 */
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
+const denylist = existsSync(DENYLIST) ? JSON.parse(readFileSync(DENYLIST, 'utf8')) : [];
+const denied = new Set(denylist.map((d) => d.feed));
+/**
+ * 否决也要按域名生效，不能只认那一条 feed URL。
+ *
+ * api.xgo.ing 这类 RSS 网关每个用户一条 `/rss/user/<hash>`，2026-08-03 否掉的是
+ * `.../user/5b632b7f…`，2026-08-04 harvest 拿着 `.../user/665fc884…` 又提名了一次——
+ * 同一个站能生成无限条互不相同的 URL，逐条记 denylist 永远追不上。
+ * 例外是 wechat2rss 这种一个域名下挂着几百个互不相干的公众号的聚合网关：
+ * 那里否的是某个号，不是整个域名，所以按 `scope: "feed"` 标出来单独放行。
+ */
+const deniedHosts = new Set(denylist.filter((d) => d.scope !== 'feed').map((d) => host(d.feed)));
+const current = JSON.parse(readFileSync(SOURCES, 'utf8'));
+const existing = new Set(current.map((s) => s.feed).filter(Boolean));
 const existingHosts = new Set(current.filter((s) => s.url).map((s) => host(s.url)));
 const results = [];
 for (let i = 0; i < candidates.length; i += CONCURRENCY) {
   await Promise.all(candidates.slice(i, i + CONCURRENCY).map(async (row) => {
     if (existing.has(row.feed) || existingHosts.has(host(row.url))) return;
-    if (denied.has(row.feed)) return;
+    if (denied.has(row.feed) || deniedHosts.has(host(row.feed))) return;
     if (PODCAST_HOST.test(row.feed)) return;
     let xml;
     try {

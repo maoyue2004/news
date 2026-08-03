@@ -1755,5 +1755,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "中文独立博客，近 20 篇里有 3 篇够上收录线（mcp/hooks）。主线是 OpenWrt、组网、代理这类折腾，agent 密度不高但「Codex 从 Mac 远连 Windows，绕过 pwsh 走 WSL sshd」正中靶心。"
+  },
+  {
+    "name": "开飞机的老张",
+    "url": "https://kaifeiji.cc/",
+    "feed": "https://kaifeiji.cc/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文个人博客，agent 篇目是第一人称实践：《Openspec 使用心得》《AGENTS.md》《Openclaw和博客》。更新很慢（近 20 篇跨 991 天，最近一篇 139 天前），留着的成本只是每天一次请求。混着 JS 旧笔记和随笔，不是农场形状。"
   }
 ]

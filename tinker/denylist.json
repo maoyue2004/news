@@ -3,19 +3,22 @@
     "feed": "https://wechat2rss.xlab.app/feed/9685937b45fe9c7a526dbc32e4f24ba879a65b9a.xml",
     "name": "腾讯技术工程",
     "reason": "大厂官方技术团队号。文章确实像实践文，scoreItem 拦不住，但它是「官方和正式的东西」，正是本项目要排除的。",
-    "date": "2026-08-02"
+    "date": "2026-08-02",
+    "scope": "feed"
   },
   {
     "feed": "https://wechat2rss.xlab.app/feed/20bc9c3251b3c4f73d3b53aa1f1ab853d05d4cbc.xml",
     "name": "小米技术",
     "reason": "同上，大厂官方技术团队号。",
-    "date": "2026-08-02"
+    "date": "2026-08-02",
+    "scope": "feed"
   },
   {
     "feed": "https://wechat2rss.xlab.app/feed/4025ea55575daf8bfd8227e68b28d9638b073267.xml",
     "name": "字节跳动技术团队",
     "reason": "同上，大厂官方技术团队号。",
-    "date": "2026-08-02"
+    "date": "2026-08-02",
+    "scope": "feed"
   },
   {
     "feed": "https://s.baoyu.io/feed.xml",
@@ -32,8 +35,9 @@
   {
     "feed": "https://justinyan.me/feed/podcast",
     "name": "枫言枫语（播客）",
-    "reason": "同一作者的文章 feed 已收录（justinyan.me/feed），这条是播客。",
-    "date": "2026-08-02"
+    "reason": "同一作者的文章 feed 已收录（justinyan.me/feed），这条是播客。（否的是这条播客 feed，不是 justinyan.me 这个域名）",
+    "date": "2026-08-02",
+    "scope": "feed"
   },
   {
     "feed": "https://feeds.daopub.com/all.xml",
@@ -75,6 +79,24 @@
     "feed": "https://www.hubwiz.com/blog/rss/",
     "name": "汇智网 hubwiz",
     "reason": "商业教程/培训平台，日更媒体节奏。内容是工具上手教程而不是个人折腾，严准入标准不进。",
+    "date": "2026-08-04"
+  },
+  {
+    "feed": "https://www.cheshirex.com/feed",
+    "name": "柴郡猫 cheshirex",
+    "reason": "薅羊毛/白嫖账号站（领皮肤、免费云服务器、ChatGPT K12-Team 账号绕过手机验证），正是手册说的卖额度卖账号那一类。",
+    "date": "2026-08-04"
+  },
+  {
+    "feed": "https://www.wangdu.site/feed",
+    "name": "文武科技柜",
+    "reason": "工具推荐 + 保姆级教程站，混着免费服务器薅羊毛内容，不是个人折腾记录。",
+    "date": "2026-08-04"
+  },
+  {
+    "feed": "https://www.piglei.com/feeds/latest/",
+    "name": "Python 工匠 piglei",
+    "reason": "很好的个人博客，但 agent 篇目是「AI 编程是一种框架」「简明行为指南」这类观点文，作者自己没动手。和否掉胡涂说、宝玉观点文同一把尺子。",
     "date": "2026-08-04"
   }
 ]
