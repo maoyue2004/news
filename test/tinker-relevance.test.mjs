@@ -292,6 +292,36 @@ test('没有薪资数字的招聘帖也要毙掉', () => {
   assert.equal(notJd.verdict, 'shortlist');
 });
 
+test('单边薪资的招聘帖要毙掉，但 token / 上下文的数字区间不能误伤', () => {
+  // 2026-08-03 的 rejected 里这两条各拿 5 分，离入围线只差 1 分。
+  // 「30-60K」只在末尾标单位，旧正则要求两边都带 K，整条漏掉。
+  const salary = scoreItem({
+    title: '远程资深后端工程师 / 后端技术专家（Go+ PHP / AI 效能方向）30-60K',
+    excerpt: '团队在用 Copilot，有 agent 经验优先，我们已经跑了一年多的实践。'.repeat(8),
+    thread: true,
+  });
+  assert.equal(salary.verdict, 'reject');
+  assert.ok(salary.reasons.includes('招聘 / 接单帖'));
+  // 「直招 急聘」整条标题里一个岗位词都没有，靠招聘词组命中
+  const noRole = scoreItem({
+    title: '联想 天津 直招 急聘 又来了',
+    excerpt: '有 AI 编程方向的坑位，我们自己也在折腾 agent，记录一下。'.repeat(8),
+    thread: true,
+  });
+  assert.ok(noRole.reasons.includes('招聘 / 接单帖'));
+
+  // 关键的反面：JOB 是硬毙，代价不对称。把左边的 K 直接改成可选会无声毙掉这类标题，
+  // 而它们恰恰是这个项目最想收的。所以松薪资形状必须和岗位词同时出现才生效。
+  for (const title of [
+    '用 Claude Code 把上下文从 5-10K token 压到 2K，实测踩坑记录',
+    'Claude Code 折腾记：8-32K 上下文窗口实测体验',
+    '我把 Codex 的 token 从 10-20W 降下来的折腾过程',
+  ]) {
+    const r = scoreItem({ title, excerpt: '记录一下我的配置和工作流，踩了几个坑。'.repeat(20) });
+    assert.equal(r.verdict, 'shortlist', `不该被判成招聘帖：${title}`);
+  }
+});
+
 test('自荐帖的招呼语压在结尾时也要扣分，但比标题/开头轻', () => {
   // 手册的判据是「落点在哪」，落点字面上就是结尾。
   // 「古法编程做了个剪映」通篇像折腾文，来体验 / GitHub 求 Star 全在最后一段。
@@ -316,4 +346,21 @@ test('搜索源返回文章时不受论坛占比约束', () => {
   const items = Array.from({ length: 25 }, (_, i) => mk(i, '掘金搜索', false));
   const { shortlist } = triage(items, { cap: 60, quota: 8 });
   assert.ok(shortlist.length >= 20, `文章型搜索源不该被占比上限压到 ${shortlist.length}`);
+});
+
+test('裸 codex 要命中，但 Claude / Qwen / Kimi 这些模型名不给它们的 CLI 条目加裸别名', () => {
+  // 2026-08-03 体检发现的最大漏网：语料里 21 次提到 Codex，只有 2 次被认出来，
+  // 因为条目名是「Codex CLI」而别名里没有裸词。
+  assert.ok(matchTools('Cursor、Claude、Codex 深度体验与对比').includes('codex'));
+  assert.ok(matchTools('分享一下我现在的 codex 子 agent 配置').includes('codex'));
+  // 词边界仍然管用
+  assert.deepEqual(matchTools('the codexes in the medieval library'), []);
+  // 反面：裸「Claude」是模型名，不该被当成 Claude Code / Desktop / Cowork
+  const bare = matchTools('我用 Claude 帮我改了篇稿子');
+  for (const id of ['claude-code', 'claude-desktop', 'cowork']) assert.ok(!bare.includes(id), id);
+});
+
+test('Superpowers 只认复数，单数是普通英文词', () => {
+  assert.ok(matchTools('装了 obra 的 Superpowers 之后，agent 终于肯先查 skill').includes('superpowers'));
+  assert.deepEqual(matchTools('大模型是每个开发者的 superpower'), []);
 });

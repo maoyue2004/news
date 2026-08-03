@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { extractArticleText } from '../lib/enrich.mjs';
-import { loadSeen, saveSeen, loadStatus, saveStatus, recordSuccess, recordFailure } from '../lib/store.mjs';
+import {
+  loadSeen, saveSeen, loadStatus, saveStatus, recordSuccess, recordFailure,
+  loadQueryYield, saveQueryYield, recordQueryYield,
+} from '../lib/store.mjs';
 import { collectFeed, collectRaw } from '../lib/tinker/collect.mjs';
 import { fetchSearchItems, isSearchSource } from '../lib/tinker/search-adapters.mjs';
 import { triage } from '../lib/tinker/relevance.mjs';
@@ -25,6 +28,26 @@ const THIN_THRESHOLD = 250;
 const EXCERPT_CHARS = 2500;
 /** LLM 环节一次能认真读完的上限。超过这个数，质量判断会退化成走过场。 */
 const SHORTLIST_CAP = Number(process.env.TINKER_SHORTLIST_CAP ?? 60);
+
+/**
+ * 只重放、不落任何共享状态。`TINKER_DRYRUN=1` 打开。
+ *
+ * 为什么需要它：调规则要用 `_raw.json`，而 `_raw.json` 不进 git（体积大、每天变）。
+ * 也就是说**在一个新容器里根本没有 `_raw.json`**——周更体检每次都在新容器里跑，
+ * 于是「跑 tinker-retriage 查误杀」这件事写在手册里，实际上一次都执行不了。
+ * 2026-08-03 那轮就是这么卡住的：只能拿committed 的 `_pending.json` 里
+ * 252 条**不带正文**的 rejected 凑合，改完规则无法离线验证。
+ *
+ * 但直接补跑一次 `tinker-fetch` 会犯 LESSONS 里记着的那个错：
+ * 它把当天的条目写进共享的 `seen.json`，等于把云端日更那轮的原料吃掉。
+ * 所以 dry-run 要同时做到三件事：
+ *   1. **读**的时候忽略 seen——否则日更刚跑完，重放只会拿到零条；
+ *      忽略之后拿到的是完整的 21 天窗口，正是查误杀需要的样本量。
+ *   2. **写**的时候不碰 seen，不碰 status（否则会刷新 lastSuccess，
+ *      把一个正在死掉的源伪装成健康的），也不碰 _pending（日更那轮还要用）。
+ *   3. 只产出 `_raw.json`，给 `tinker-retriage.mjs` 用。
+ */
+const DRYRUN = process.env.TINKER_DRYRUN === '1';
 
 function todayInShanghai() {
   return new Intl.DateTimeFormat('en-CA', {
@@ -90,9 +113,10 @@ async function main() {
   const sources = all.filter((s) => s.enabled);
   const today = todayInShanghai();
   const now = new Date().toISOString();
-  const seen = loadSeen(DATA_DIR);
+  const seen = DRYRUN ? {} : loadSeen(DATA_DIR);
   const status = loadStatus(DATA_DIR);
   const queries = queriesForDate(today, QUERIES_PER_DAY);
+  if (DRYRUN) console.error('DRYRUN：忽略 seen、只写 _raw.json，不动 seen / status / _pending');
 
   const items = [];
   const errors = [];
@@ -142,6 +166,12 @@ async function main() {
 
   const { shortlist, rejected } = triage(unique, { cap: SHORTLIST_CAP });
 
+  if (DRYRUN) {
+    console.log(`\n${today}（DRYRUN）：抓到 ${unique.length} 条，规则入围 ${shortlist.length} 条，筛掉 ${rejected.length} 条`);
+    console.log(`已写 ${DATA_DIR}/_raw.json，现在可以跑 node scripts/tinker-retriage.mjs`);
+    return;
+  }
+
   // 只有真正写进 _pending 的才记 seen。被规则毙掉的也要记——
   // 否则每天都会把同一批噪声重新抓一遍、重新扣一遍分。
   for (const it of unique) seen[it.id] = today;
@@ -169,6 +199,14 @@ async function main() {
   saveSeen(DATA_DIR, seen, today);
   saveStatus(DATA_DIR, status);
 
+  const inShortlist = new Set(shortlist.map((it) => it.id));
+  saveQueryYield(DATA_DIR, recordQueryYield(
+    loadQueryYield(DATA_DIR),
+    queries,
+    unique.filter((it) => it.matchedQuery).map((it) => ({ query: it.matchedQuery, shortlisted: inShortlist.has(it.id) })),
+    today,
+  ));
+
   const s = { fetched: unique.length, shortlisted: shortlist.length, rejected: rejected.length };
   console.log(`\n${today}：抓到 ${s.fetched} 条，规则入围 ${s.shortlisted} 条，筛掉 ${s.rejected} 条`);
   console.log(`正文补全：尝试 ${attempted}，成功 ${enriched}`);
@@ -184,6 +222,16 @@ async function main() {
   }
   const zero = Object.entries(perSource).filter(([, n]) => n === 0).map(([n]) => n);
   if (zero.length) console.log(`\n本次零产出的源（${zero.length}）：${zero.join('、')}`);
+
+  // 跑够 5 轮还一条都没入围的查询词——周更体检据此换词。轮转池一周才转一圈，
+  // 所以门槛按「跑过几次」而不是「过了几天」算。
+  const barren = Object.entries(loadQueryYield(DATA_DIR))
+    .filter(([, v]) => v.runs >= 5 && v.shortlisted === 0)
+    .sort((a, b) => b[1].runs - a[1].runs);
+  if (barren.length) {
+    console.log(`\n跑够 5 轮仍零入围的查询词（${barren.length}）：`);
+    for (const [q, v] of barren.slice(0, 20)) console.log(`  ${q} — ${v.runs} 轮，捞回 ${v.items} 条，入围 0`);
+  }
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) await main();

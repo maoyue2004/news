@@ -1739,5 +1739,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "架构师的个人博客，agent 内容是真动手的那类：怎么管 Codex 的 context 文件、Claude Code 接 ollama 上的 qwen3.5、Token 经济学。选题很杂，半数与 agent 无关。"
+  },
+  {
+    "name": "ICDYCT我能你也行",
+    "url": "https://zelikk.blogspot.com/",
+    "feed": "https://zelikk.blogspot.com/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 2 篇够上收录线（hermes）。把 Hermes Agent 架在 1G/2G 内存 VPS 上的一手部署记录，按内存分档给四套做法，是真动手不是转述。"
+  },
+  {
+    "name": "李寒的小窝",
+    "url": "https://lihan3238.github.io/",
+    "feed": "https://lihan3238.github.io/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中文独立博客，近 20 篇里有 3 篇够上收录线（mcp/hooks）。主线是 OpenWrt、组网、代理这类折腾，agent 密度不高但「Codex 从 Mac 远连 Windows，绕过 pwsh 走 WSL sshd」正中靶心。"
   }
 ]

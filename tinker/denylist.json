@@ -40,5 +40,35 @@
     "name": "daopub",
     "reason": "feed 无标题、来源不明，无法判断是谁在写。",
     "date": "2026-08-02"
+  },
+  {
+    "feed": "https://hutusi.com/feed.xml",
+    "name": "胡涂说",
+    "reason": "很好的个人博客，但 agent 篇目是「当心流量别被 Agent 都吃了」这类随笔评论，作者自己没动手。2026-08-03 已在 REVIEW 里否过，但当时没记进这里，今天又被重新提名——正是 LESSONS 说的那个后果。",
+    "date": "2026-08-03"
+  },
+  {
+    "feed": "https://api.xgo.ing/rss/user/5b632b7fba274f62928cdcc9d3db4c5e",
+    "name": "api.xgo.ing",
+    "reason": "来源不可追溯的 RSS 网关 user feed，不是某个人的博客。2026-08-03 已否过，补记。",
+    "date": "2026-08-03"
+  },
+  {
+    "feed": "https://hacpai.com/rss/domain/play.xml",
+    "name": "hacpai.com",
+    "reason": "链滴的板块聚合 feed 冒充个人博客。2026-08-03 已否过，补记。",
+    "date": "2026-08-03"
+  },
+  {
+    "feed": "https://rowkey.cn/atom.xml",
+    "name": "后端技术杂谈",
+    "reason": "6/20 够格，OpenClaw 系列看着诱人，但抽查《OpenClaw 架构剖析》通篇是「（和官方架构一致）」的官方架构转述，没有一处自己踩的坑；其余是「从管人到管系统行为：AI时代技术管理者的全新认知框架」这类分析师口吻的观点文。和 2026-08-03 否掉 zhaozhiming（转述文档）用的是同一把尺子。",
+    "date": "2026-08-03"
+  },
+  {
+    "feed": "https://blog.vadxq.com/atom.xml",
+    "name": "清竹茶馆博客",
+    "reason": "101 天没更，20 篇跨 1878 天（五年）。内容是「读完 DeepSeek-V4 技术报告」「Vercel收购NuxtLabs」「颠覆传统搜索！全球AI搜索工具正在攻城略地」这类新闻评论，外加「免费平替Claude-Code：深度解析与实践指南」这种 SEO 指南形状。",
+    "date": "2026-08-03"
   }
 ]

@@ -34,6 +34,9 @@ Codex Scheduled Task 每天北京时间 06:00 照此执行。任务提示词只�
 - `stats` / `perSource` / `errors` / `queries`
 
 同时写 `tinker/data/_raw.json`（不进 git），是补全正文后、筛选前的完整快照。
+以及 `tinker/data/query-yield.json`（**要提交**）——每个查询词跑过几轮、捞回多少条、
+入围多少条的累计账。轮转池一周才转一圈，只有累计才能看出哪个词是真的长期零产出；
+跑够 5 轮仍零入围的词会在抓取结束时打印出来，周更体检据此换词。
 
 **如果大多数源返回同一种错误**（尤其全是 403），先 `curl -sI https://www.google.com` 判断是不是
 环境网络策略问题。如果是环境问题：**不要提交 status.json 的失败计数，也不要写空的日期文件**，

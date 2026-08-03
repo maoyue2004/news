@@ -7,6 +7,7 @@ import {
   loadSeen, saveSeen, loadStatus, saveStatus,
   recordSuccess, recordFailure,
   saveDay, loadRecentDays, pruneDayFiles,
+  loadQueryYield, saveQueryYield, recordQueryYield,
 } from '../lib/store.mjs';
 
 function tmp() {
@@ -110,4 +111,38 @@ test('pruneDayFiles 不碰 seen.json 和 status.json', () => {
   pruneDayFiles(d, '2026-07-27', 35);
   assert.equal(existsSync(join(d, 'seen.json')), true);
   assert.equal(existsSync(join(d, 'status.json')), true);
+});
+
+test('查询词产出按轮累计，跨天叠加', () => {
+  const d = tmp();
+  let y = recordQueryYield(loadQueryYield(d), ['MCP 实践', 'Kiro 体验'], [
+    { query: 'MCP 实践', shortlisted: true },
+    { query: 'MCP 实践', shortlisted: false },
+    { query: 'Kiro 体验', shortlisted: false },
+  ], '2026-08-03');
+  saveQueryYield(d, y);
+
+  y = recordQueryYield(loadQueryYield(d), ['MCP 实践'], [
+    { query: 'MCP 实践', shortlisted: false },
+  ], '2026-08-04');
+  saveQueryYield(d, y);
+
+  const got = loadQueryYield(d);
+  assert.deepEqual(got['MCP 实践'], {
+    runs: 2, items: 3, shortlisted: 1, lastRun: '2026-08-04', lastShortlist: '2026-08-03',
+  });
+  // 第二天没轮到 Kiro，它的历史原样保留，runs 不涨
+  assert.equal(got['Kiro 体验'].runs, 1);
+  assert.equal(got['Kiro 体验'].lastShortlist, null);
+});
+
+test('没轮到的查询词捞回的条目不计入统计', () => {
+  // 轮转切片换过之后，_raw 里可能还留着上一版查询词的条目。
+  // 给它们建条目会凭空造出「runs 0 但 items 5」的记录，污染零产出判断。
+  const d = tmp();
+  const y = recordQueryYield({}, ['MCP 实践'], [
+    { query: '已经换掉的老词', shortlisted: true },
+  ], '2026-08-03');
+  assert.deepEqual(Object.keys(y), ['MCP 实践']);
+  assert.equal(y['MCP 实践'].items, 0);
 });

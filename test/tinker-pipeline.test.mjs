@@ -77,6 +77,22 @@ test('searchJuejin 把 ctime 秒级时间戳转成 ISO，并拼出文章链接',
   } finally { restore(); }
 });
 
+test('searchJuejin 必须按最新排序，不能用综合排序', async () => {
+  // sort_type=0（综合）返回的是历史高热文章：2026-08-03 实测「Claude Code 踩坑」
+  // 20 条里 21 天窗口内 0 条，最新一条是 6-19，整批被下游的时间窗丢掉。
+  // 这曾让一整批派生查询词看起来「长期零产出」，实际是排序参数选错了。
+  let seen = null;
+  const original = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    seen = String(url);
+    return { ok: true, status: 200, text: async () => JSON.stringify({ err_no: 0, data: [] }) };
+  };
+  try {
+    await searchJuejin('Claude Code 踩坑');
+    assert.match(seen, /sort_type=1(&|$)/);
+  } finally { globalThis.fetch = original; }
+});
+
 test('searchJuejin 在 err_no 非零时抛错，不静默返回空', async () => {
   const restore = stubFetch({ err_no: 403, err_msg: 'forbidden', data: [] });
   try {

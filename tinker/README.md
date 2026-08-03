@@ -31,7 +31,8 @@ feed 源（个人博客/周刊/论坛）┐
 
 - `sources.json` — 信源，**唯一真相源**。分 `feed` 型和 `search` 型两类
 - `candidates.txt` — 待探测的候选站点，探测通过的手动并进 sources.json
-- `data/` — `seen.json` 去重、`status.json` 各源健康度、`YYYY-MM-DD.json` 每天收录的条目
+- `data/` — `seen.json` 去重、`status.json` 各源健康度、`query-yield.json` 每个查询词的累计产出、
+  `YYYY-MM-DD.json` 每天收录的条目
 - `REVIEW.md` — 每日复盘。**接手前先读它**，里面记着试过什么、判断错过什么
 - `../TINKER_DAILY.md` — 云端 routine 的完整执行流程
 
@@ -60,6 +61,15 @@ feed 源（个人博客/周刊/论坛）┐
     node scripts/tinker-retriage.mjs            # 重放筛选，看入围名单
     node scripts/tinker-retriage.mjs --rejected # 看被毙的高分条目，查误杀
     node scripts/tinker-retriage.mjs --write    # 把重筛结果写回 _pending.json
+
+上面三条都吃 `data/_raw.json`，而它**不进 git**（体积大、每天变）。
+所以在一个新克隆的仓库里（周更体检每次都是）它不存在，得先造一份：
+
+    TINKER_DRYRUN=1 node scripts/tinker-fetch.mjs
+
+dry-run 忽略 `seen`（否则日更刚跑完，重放只剩零条；忽略之后拿到的是完整
+21 天窗口），且**不写** seen / status / _pending——不会吃掉云端日更那轮的原料。
+它只产出 `_raw.json`。
 
 ## 增删信源
 
