@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD } from '../lib/tinker/relevance.mjs';
+import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD, QUOTA_RELAX } from '../lib/tinker/relevance.mjs';
 import { matchTools, matchTopics, matchVocab, queriesForDate, rotatingQueries, CORE_QUERIES, TOOLS } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
@@ -335,17 +335,50 @@ test('自荐帖的招呼语压在结尾时也要扣分，但比标题/开头轻'
   assert.ok(headPromo.score < tailPromo.score, '标题/开头的自荐比结尾更能说明落点，扣得更重');
 });
 
+const mkItem = (i, source, thread) => ({
+  id: `${source}${i}`, source, thread, url: `https://e.com/${source}${i}`,
+  titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+  excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(80),
+});
+
 test('搜索源返回文章时不受论坛占比约束', () => {
   // kind 描述「怎么抓」，thread 描述「抓到什么」。掘金搜索和 V2EX 搜索的 kind
   // 都是 search，但前者返回文章、后者返回论坛帖，只有后者该被压。
-  const mk = (i, source, thread) => ({
-    id: `${source}${i}`, source, thread, url: `https://e.com/${source}${i}`,
-    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
-    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(80),
-  });
-  const items = Array.from({ length: 25 }, (_, i) => mk(i, '掘金搜索', false));
+  const items = Array.from({ length: 25 }, (_, i) => mkItem(i, `掘金搜索${i % 3}`, false));
   const { shortlist } = triage(items, { cap: 60, quota: 8 });
   assert.ok(shortlist.length >= 20, `文章型搜索源不该被占比上限压到 ${shortlist.length}`);
+  assert.ok(shortlist.every((it) => !it.thread));
+});
+
+test('补位轮不能无视按源配额，一个源不该整个吃下名单', () => {
+  // 2026-08-04：补位轮完全不看 used，掘金搜索一家在 60 席里拿了 45 席（配额是 8），
+  // 当天名单八成是同一个内容农场的「X 平替方案有哪些」横评稿，
+  // 而当天分数最高的那条在名单外。补位放宽到 quota * QUOTA_RELAX 为止。
+  const items = [
+    ...Array.from({ length: 50 }, (_, i) => mkItem(i, '内容农场', false)),
+    ...Array.from({ length: 4 }, (_, i) => mkItem(i, `博客${i}`, false)),
+  ];
+  const { shortlist, rejected } = triage(items, { cap: 60, quota: 8 });
+  const farm = shortlist.filter((it) => it.source === '内容农场').length;
+  assert.equal(farm, 8 * QUOTA_RELAX, `高产源最多拿 quota*QUOTA_RELAX 席，实际 ${farm}`);
+  assert.equal(shortlist.filter((it) => it.source !== '内容农场').length, 4, '别的源一条都不该被挤掉');
+  // 名单因此比 cap 短，这是要的结果：入围名单是评审预算，不是必须填满的额度。
+  assert.ok(shortlist.length < 60);
+  assert.equal(shortlist.length + rejected.length, items.length, '总数必须守恒');
+});
+
+test('论坛占比是预留席位，文章供给充足时也要留给论坛', () => {
+  // 2026-08-04：文章先按 cap 取满后 `cap - takenArticles.length` 恒为 0，
+  // FORUM_SHARE 在文章够多的日子里等于没写——当天 16 分（全场最高）的
+  // V2EX 帖被判「已达占比上限」，而名单被掘金的横评农场文占满。
+  const items = [
+    ...Array.from({ length: 80 }, (_, i) => mkItem(i, `博客${i}`, false)),
+    ...Array.from({ length: 10 }, (_, i) => mkItem(i, '论坛', true)),
+  ];
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  const forums = shortlist.filter((it) => it.thread).length;
+  assert.ok(forums > 0, '文章供给充足时论坛也不该归零');
+  assert.ok(forums <= Math.round(60 * 0.4), `论坛仍不该超过占比上限，实际 ${forums}`);
 });
 
 test('裸 codex 要命中，但 Claude / Qwen / Kimi 这些模型名不给它们的 CLI 条目加裸别名', () => {
