@@ -98,5 +98,42 @@
     "name": "Python 工匠 piglei",
     "reason": "很好的个人博客，但 agent 篇目是「AI 编程是一种框架」「简明行为指南」这类观点文，作者自己没动手。和否掉胡涂说、宝玉观点文同一把尺子。",
     "date": "2026-08-04"
+  },
+  {
+    "feed": "https://quaily.com/lyric/feed/atom",
+    "name": "Lyric",
+    "reason": "2026-08-04 harvest 已否：143 天没更、近 20 篇跨 424 天，agent 命中集中在旧文。写在 REVIEW 里不算数，今天原样被第二次提名，补记。",
+    "date": "2026-08-05",
+    "scope": "feed"
+  },
+  {
+    "feed": "https://haydenbi.com/feed.xml",
+    "name": "HaydenBi",
+    "reason": "2026-08-04 harvest 已否：147 天没更，只有 openclaw 一个工具命中。同上，补记。",
+    "date": "2026-08-05"
+  },
+  {
+    "feed": "https://blog.twelveeee.top/rss.xml",
+    "name": "十二的编程笔记",
+    "reason": "2026-08-04 harvest 已否：174 天没更、近 20 篇跨 626 天。同上，补记。",
+    "date": "2026-08-05"
+  },
+  {
+    "feed": "https://godruoyi.com/rss.xml",
+    "name": "godruoyi.com",
+    "reason": "2026-08-04 harvest 已否：139 天没更、近 20 篇跨 1088 天，命中的是 zed/cursor/windsurf 的旧文。同上，补记。",
+    "date": "2026-08-05"
+  },
+  {
+    "feed": "https://glumes.com/index.xml",
+    "name": "音视频开发进阶",
+    "reason": "2026-08-04 harvest 已否：144 天没更、近 20 篇跨 1280 天，只有 cursor 一个命中，主题是音视频不是 agent。同上，补记。",
+    "date": "2026-08-05"
+  },
+  {
+    "feed": "http://luolei.org/feed/",
+    "name": "罗磊的独立博客 / luolei.org",
+    "reason": "2026-08-04 harvest 已否：148 天没更。另外它以 /feed 和 /feed/ 两条 URL 被重复提名，按域名否才拦得住——这正是 api.xgo.ing 那次的同一个形状。",
+    "date": "2026-08-05"
   }
 ]

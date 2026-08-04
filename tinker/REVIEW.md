@@ -1190,3 +1190,36 @@ CSDN、知乎、菜鸟教程、SEO 站。LESSONS 那条第六次被验证。
 - 掘金 16 席进 2 条（能读到正文的 3 条里进了 2 条）。比例其实不差，
   之前记的「掘金席位再压」这个念头先按下。
 - linux.do 观察期第 4 天，仍然 1 条入围 0 条收录，且「换入口」已被证伪。
+
+### harvest 这一轮（补记）：7 个命中，**全部是昨天否过的**，新源 0
+
+`node scripts/tinker-harvest.mjs --min-hits 2 --days 180`，扫 2986 个 feed，
+命中 7 个：Lyric、HaydenBi、十二的编程笔记、godruoyi.com、音视频开发进阶、
+罗磊的独立博客（两条 URL 同一个站）。**一个新的都没有**——这 7 条昨天
+（2026-08-04）harvest 那轮就命中过、就在 REVIEW 里逐个否掉了（理由都是
+「139–174 天没更、只有 1–2 个工具命中的旧文」），但**没有落进 `denylist.json`**，
+于是今天原样又被提名了一遍。
+
+这是 LESSONS 里那条「否决理由写进 denylist.json，写在 REVIEW 里不算数」
+**第三次**被踩：8-02 记过一次、8-03 因为 hutusi / api.xgo.ing 又记过一次，
+昨天自己在 REVIEW 里写下这条教训的同一轮里，仍然只把否决理由写在了 REVIEW 里。
+说明「写完 REVIEW 顺手落 denylist」不是一条能靠记性执行的规矩。
+
+**本次改动 3：把这 6 个站补进 `denylist.json`**（22 条）。两处细节：
+
+- `luolei.org` 以 `http://luolei.org/feed/` 和 `http://luolei.org/feed` 两条 URL
+  被同时提名——**又是 api.xgo.ing 那个形状**（同一个站生成多条互不相同的 URL）。
+  按域名否才拦得住，所以不给它 `scope: "feed"`。
+- `Lyric` 给了 `scope: "feed"`：`quaily.com` 是 newsletter 托管平台，
+  一个域名下挂着无数互不相干的作者，和 wechat2rss 同类，不能否整个域名。
+
+验证：7 条（含 luolei 两种写法）全部被拦；反向检查
+`wechat2rss.xlab.app/feed/<新号>` 和 `justinyan.me/feed`（枫言枫语的文章 feed，
+否的只是它的播客 feed）仍然放行。
+
+**边际产出曲线：19 → 12 → 7 → 实际新增 0。** 同样四个索引连着扫第四次，
+而这一轮的 7 个命中**全部**是上一轮的落选者。这四个索引（timqian / blogcn /
+top-rss / awesome-rss，2986 个 feed）可以认为**已经榨干了**。
+落盘 denylist 之后下一轮应该会命中 0 个——如果确实是 0，那就是硬证据：
+再跑同样的 harvest 没有意义，该找第五个索引或换发现渠道。
+**这是下一次运行该验的第一件事。**
