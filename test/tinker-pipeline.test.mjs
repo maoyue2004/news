@@ -7,7 +7,7 @@ import { collectRaw } from '../lib/tinker/collect.mjs';
 import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate } from '../scripts/tinker-build.mjs';
-import { needsEnrich } from '../scripts/tinker-fetch.mjs';
+import { needsEnrich, enrich } from '../scripts/tinker-fetch.mjs';
 
 const src = { name: '测试源', kind: 'blog' };
 const today = '2026-08-01';
@@ -241,4 +241,52 @@ test('【修复】论坛帖 feed 已给正文时不再补全（linux.do 话题�
   assert.equal(needsEnrich({ excerpt: '短摘要' }), true);
   // 本来就够长的，谁都不补
   assert.equal(needsEnrich({ excerpt: 'x'.repeat(300) }), false);
+});
+
+test('【修复】补全失败要重试一轮：掘金限流页是 HTTP 200，第二次要就给', async () => {
+  // 2026-08-05：掘金文章页在补全阶段返回 `200 + x-tt-system-error: 3` 的
+  // 2397 字节错误页，换任何 UA 都一样，是服务端限流不是反爬。当轮 16 条掘金
+  // 入围条目全部 thin（=评审那一步一律不许收），隔几分钟重放救回 9 条。
+  const body = '<html><body><article>' + '这是一篇真正的正文内容。'.repeat(40) + '</article></body></html>';
+  const throttled = '<html><body>Please wait...</body></html>';
+  const hits = new Map();
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    const n = (hits.get(url) ?? 0) + 1;
+    hits.set(url, n);
+    // 第一次限流、第二次给正文——正是实测到的行为
+    return new Response(n === 1 ? throttled : body, { status: 200 });
+  };
+  try {
+    const items = [
+      { url: 'https://juejin.cn/post/1', excerpt: '短', thin: true },
+      { url: 'https://juejin.cn/post/2', excerpt: '短', thin: true },
+    ];
+    const res = await enrich(items, { retryDelayMs: 0 });
+    assert.equal(res.attempted, 2);
+    assert.equal(res.retryAttempted, 2, '第一轮全军覆没，两条都该进重试');
+    assert.equal(res.retried, 2, '第二轮该把两条都救回来');
+    assert.equal(res.enriched, 2);
+    assert.ok(items.every((it) => it.thin === false), '救回来之后不能再标 thin');
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test('补全第一轮就成功的条目不会被重试第二次（重试要克制，别把限流打得更死）', async () => {
+  const body = '<html><body><article>' + '正文内容足够长。'.repeat(60) + '</article></body></html>';
+  const hits = new Map();
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    hits.set(url, (hits.get(url) ?? 0) + 1);
+    return new Response(body, { status: 200 });
+  };
+  try {
+    const items = [{ url: 'https://example.com/a', excerpt: '短', thin: true }];
+    const res = await enrich(items, { retryDelayMs: 0 });
+    assert.equal(res.retryAttempted, 0);
+    assert.equal(hits.get('https://example.com/a'), 1, '只该请求一次');
+  } finally {
+    globalThis.fetch = realFetch;
+  }
 });

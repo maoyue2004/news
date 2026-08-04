@@ -16,6 +16,10 @@ const DATA_DIR = 'tinker/data';
 const TIMEOUT_MS = 20000;
 const CONCURRENCY = Number(process.env.TINKER_CONCURRENCY ?? 10);
 const ENRICH_CONCURRENCY = 5;
+/** 补全第二轮开始前的等待。见 `enrich()` 的注释：限流窗口没过就重试等于白跑。 */
+const ENRICH_RETRY_DELAY_MS = Number(process.env.TINKER_ENRICH_RETRY_DELAY_MS ?? 60000);
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 /**
  * 每天跑多少个搜索查询。
  *
@@ -85,11 +89,10 @@ export function needsEnrich(item, threshold = THIN_THRESHOLD) {
   return true;
 }
 
-async function enrich(items) {
-  const targets = items.filter((it) => needsEnrich(it));
+async function enrichPass(targets, concurrency) {
   let ok = 0;
-  for (let i = 0; i < targets.length; i += ENRICH_CONCURRENCY) {
-    await Promise.all(targets.slice(i, i + ENRICH_CONCURRENCY).map(async (item) => {
+  for (let i = 0; i < targets.length; i += concurrency) {
+    await Promise.all(targets.slice(i, i + concurrency).map(async (item) => {
       const before = item.excerpt.length;
       try {
         const html = await get(item.url, { ua: BROWSER_UA, accept: 'text/html,*/*' });
@@ -104,8 +107,39 @@ async function enrich(items) {
       }
     }));
   }
+  return ok;
+}
+
+/**
+ * 正文补全，两轮。
+ *
+ * **补全失败不都是反爬，有很大一部分是限流，隔一会儿再要就给。**
+ * 2026-08-05 查出来的：掘金文章页在补全阶段返回的不是挑战页，是
+ * `HTTP 200 + x-tt-system-error: 3` 的 2397 字节错误页——换 UA（Googlebot /
+ * curl / 完整 Chrome）拿到的字节数一模一样，说明和身份无关，是服务端在限流。
+ * 当轮 16 条掘金入围条目全部 thin，隔几分钟按 4 秒间隔重放，**9 条拿到了完整正文**，
+ * 其中两条当天就收录了。单轮补全等于把最大供给源的一半正文白白丢掉，
+ * 而 thin 条目在评审那一步是**不许收**的（只有标题，写摘要就成了编造），
+ * 所以丢的不是摘要质量，是收录资格。
+ *
+ * **重试必须克制。** 同一轮里我接着按 3.5 秒、9 秒间隔又跑了两遍，
+ * 两遍都是 0 收获——限流被打得更死了。所以只补一轮，先等 `ENRICH_RETRY_DELAY_MS`
+ * 让限流窗口过去，并且用一半的并发。
+ */
+export async function enrich(items, { retryDelayMs = ENRICH_RETRY_DELAY_MS } = {}) {
+  const targets = items.filter((it) => needsEnrich(it));
+  let ok = await enrichPass(targets, ENRICH_CONCURRENCY);
+
+  const retry = targets.filter((it) => it.excerpt.length < THIN_THRESHOLD);
+  let retried = 0;
+  if (retry.length) {
+    await sleep(retryDelayMs);
+    retried = await enrichPass(retry, Math.max(1, Math.floor(ENRICH_CONCURRENCY / 2)));
+    ok += retried;
+  }
+
   for (const it of items) it.thin = it.excerpt.length < THIN_THRESHOLD;
-  return { attempted: targets.length, enriched: ok };
+  return { attempted: targets.length, enriched: ok, retryAttempted: retry.length, retried };
 }
 
 async function main() {
@@ -156,7 +190,7 @@ async function main() {
   for (const it of items) if (!byId.has(it.id)) byId.set(it.id, it);
   const unique = [...byId.values()];
 
-  const { attempted, enriched } = await enrich(unique);
+  const { attempted, enriched, retryAttempted, retried } = await enrich(unique);
 
   mkdirSync(DATA_DIR, { recursive: true });
   // 补全后、筛选前的完整快照。规则要长期调，每次改完都重抓一遍要两分半钟、
@@ -189,6 +223,8 @@ async function main() {
       thin: unique.filter((it) => it.thin).length,
       enriched,
       enrichAttempted: attempted,
+      enrichRetryAttempted: retryAttempted,
+      enrichRetried: retried,
       failedSources: errors.filter((e) => !e.partial).length,
     },
     perSource,
@@ -209,7 +245,7 @@ async function main() {
 
   const s = { fetched: unique.length, shortlisted: shortlist.length, rejected: rejected.length };
   console.log(`\n${today}：抓到 ${s.fetched} 条，规则入围 ${s.shortlisted} 条，筛掉 ${s.rejected} 条`);
-  console.log(`正文补全：尝试 ${attempted}，成功 ${enriched}`);
+  console.log(`正文补全：尝试 ${attempted}，成功 ${enriched}（第二轮重试 ${retryAttempted} 条，救回 ${retried} 条）`);
   console.log(`今日查询词（${queries.length}）：${queries.join('、')}`);
   if (errors.length) {
     console.log(`\n抓取失败 ${errors.length} 个源：`);
