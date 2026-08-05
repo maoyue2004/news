@@ -51,6 +51,19 @@ const INDEXES = [
     url: 'https://raw.githubusercontent.com/xiangyugongzuoliu/awesome-rss-feeds-list/main/LIST.md',
     parse: parseMarkdown,
   },
+  /**
+   * 第五个索引，2026-08-06 加。
+   *
+   * 前四个已经榨干了：同样 2986 个 feed 连扫四轮，命中数 19 → 12 → 7 → 0（第四轮的
+   * 7 个全部是第三轮的落选者）。LESSONS 写着「别再跑同样的 harvest，去找第五个索引」，
+   * 这就是那第五个：1328 条 feed 的单文件 OPML，格式和 blogcn 一样，直接复用 parseOpml。
+   * 重叠肯定有（都是中文博客圈），但去重和 denylist 都在下游，白扫的成本只是几分钟。
+   */
+  {
+    id: 'lotosbin',
+    url: 'https://raw.githubusercontent.com/lotosbin/opml-list/master/data/feed.opml',
+    parse: parseOpml,
+  },
 ];
 const SOURCES = 'tinker/sources.json';
 /**

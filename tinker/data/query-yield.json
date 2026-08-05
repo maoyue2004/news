@@ -1,135 +1,135 @@
 {
   "Claude Code 实践": {
-    "runs": 2,
-    "items": 32,
-    "shortlisted": 12,
-    "lastRun": "2026-08-05",
-    "lastShortlist": "2026-08-05"
+    "runs": 3,
+    "items": 40,
+    "shortlisted": 15,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "Claude Code 踩坑": {
-    "runs": 2,
-    "items": 18,
-    "shortlisted": 6,
-    "lastRun": "2026-08-05",
-    "lastShortlist": "2026-08-05"
+    "runs": 3,
+    "items": 20,
+    "shortlisted": 7,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "Codex CLI 体验": {
-    "runs": 2,
-    "items": 19,
-    "shortlisted": 2,
-    "lastRun": "2026-08-05",
-    "lastShortlist": "2026-08-05"
+    "runs": 3,
+    "items": 21,
+    "shortlisted": 3,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "Cursor 工作流": {
-    "runs": 2,
-    "items": 19,
-    "shortlisted": 6,
-    "lastRun": "2026-08-05",
-    "lastShortlist": "2026-08-05"
+    "runs": 3,
+    "items": 24,
+    "shortlisted": 8,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "AI 编程 踩坑": {
-    "runs": 2,
-    "items": 27,
-    "shortlisted": 0,
-    "lastRun": "2026-08-05",
-    "lastShortlist": null
+    "runs": 3,
+    "items": 32,
+    "shortlisted": 1,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "agent 编程 心得": {
-    "runs": 2,
-    "items": 17,
+    "runs": 3,
+    "items": 19,
     "shortlisted": 1,
-    "lastRun": "2026-08-05",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-05"
   },
   "Augment Code 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 8,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": null
   },
   "Augment Code 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": null
   },
   "Trae 实践": {
-    "runs": 1,
-    "items": 18,
-    "shortlisted": 4,
-    "lastRun": "2026-08-04",
-    "lastShortlist": "2026-08-04"
+    "runs": 2,
+    "items": 23,
+    "shortlisted": 8,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "Trae 踩坑": {
-    "runs": 1,
-    "items": 9,
-    "shortlisted": 4,
-    "lastRun": "2026-08-04",
-    "lastShortlist": "2026-08-04"
+    "runs": 2,
+    "items": 14,
+    "shortlisted": 7,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "Kiro 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 1,
     "shortlisted": 1,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-04"
   },
   "Kiro 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 3,
     "shortlisted": 1,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-04"
   },
   "Qoder 实践": {
-    "runs": 1,
-    "items": 4,
+    "runs": 2,
+    "items": 5,
     "shortlisted": 4,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-04"
   },
   "Qoder 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 5,
     "shortlisted": 1,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-04"
   },
   "CodeBuddy 实践": {
-    "runs": 1,
-    "items": 16,
-    "shortlisted": 7,
-    "lastRun": "2026-08-04",
-    "lastShortlist": "2026-08-04"
+    "runs": 2,
+    "items": 18,
+    "shortlisted": 8,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
   },
   "CodeBuddy 踩坑": {
-    "runs": 1,
-    "items": 4,
+    "runs": 2,
+    "items": 5,
     "shortlisted": 1,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-04"
   },
   "CodeBuddy 体验": {
-    "runs": 1,
-    "items": 10,
+    "runs": 2,
+    "items": 11,
     "shortlisted": 4,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-04"
   },
   "通义灵码 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 3,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": null
   },
   "通义灵码 踩坑": {
-    "runs": 1,
-    "items": 7,
+    "runs": 2,
+    "items": 10,
     "shortlisted": 1,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "lastShortlist": "2026-08-04"
   },
   "文心快码 实践": {
@@ -376,5 +376,82 @@
     "shortlisted": 4,
     "lastRun": "2026-08-05",
     "lastShortlist": "2026-08-05"
+  },
+  "Cline 体验": {
+    "runs": 1,
+    "items": 5,
+    "shortlisted": 1,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
+  },
+  "Roo Code 实践": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-06",
+    "lastShortlist": null
+  },
+  "Roo Code 踩坑": {
+    "runs": 1,
+    "items": 15,
+    "shortlisted": 2,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
+  },
+  "Roo Code 体验": {
+    "runs": 1,
+    "items": 3,
+    "shortlisted": 1,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
+  },
+  "Kilo Code 实践": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-06",
+    "lastShortlist": null
+  },
+  "Kilo Code 踩坑": {
+    "runs": 1,
+    "items": 2,
+    "shortlisted": 1,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
+  },
+  "Kilo Code 体验": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-06",
+    "lastShortlist": null
+  },
+  "Continue.dev 实践": {
+    "runs": 1,
+    "items": 20,
+    "shortlisted": 1,
+    "lastRun": "2026-08-06",
+    "lastShortlist": "2026-08-06"
+  },
+  "Continue.dev 踩坑": {
+    "runs": 1,
+    "items": 18,
+    "shortlisted": 0,
+    "lastRun": "2026-08-06",
+    "lastShortlist": null
+  },
+  "Continue.dev 体验": {
+    "runs": 1,
+    "items": 3,
+    "shortlisted": 0,
+    "lastRun": "2026-08-06",
+    "lastShortlist": null
+  },
+  "Augment Code 实践": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-06",
+    "lastShortlist": null
   }
 }

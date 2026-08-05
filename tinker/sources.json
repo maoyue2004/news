@@ -1763,5 +1763,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "中文个人博客，agent 篇目是第一人称实践：《Openspec 使用心得》《AGENTS.md》《Openclaw和博客》。更新很慢（近 20 篇跨 991 天，最近一篇 139 天前），留着的成本只是每天一次请求。混着 JS 旧笔记和随笔，不是农场形状。"
+  },
+  {
+    "name": "程沛权 - 养了三只猫",
+    "url": "https://chengpeiquan.com",
+    "feed": "https://chengpeiquan.com/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "前端工程师的个人博客，写了十年（近 20 篇跨 1494 天），近期有 Cursor / Vibe Coding 的实践与工具链排错记录。"
   }
 ]

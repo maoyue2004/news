@@ -7,7 +7,7 @@ import { collectRaw } from '../lib/tinker/collect.mjs';
 import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate } from '../scripts/tinker-build.mjs';
-import { needsEnrich, enrich } from '../scripts/tinker-fetch.mjs';
+import { needsEnrich, enrich, fetchAllSources } from '../scripts/tinker-fetch.mjs';
 
 const src = { name: '测试源', kind: 'blog' };
 const today = '2026-08-01';
@@ -289,4 +289,48 @@ test('补全第一轮就成功的条目不会被重试第二次（重试要克�
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+test('【修复】抓取的 transient 503 要重试一轮，不能直接记成源失败', async () => {
+  // 2026-08-06：当天 7 个「失败源」里 6 个其实是活的，503 来自出口代理
+  // （x-deny-reason: resolve_failed，正文自称 transient）。而 SkyWT / 东方星痕
+  // 已经因此连续 5 天记为失败，再过两天就会被点名停用。
+  const sources = [{ name: '活的' }, { name: '抖了一下' }, { name: '真死了' }];
+  const seen = new Map();
+  const fetchOne = async (source) => {
+    const n = (seen.get(source.name) ?? 0) + 1;
+    seen.set(source.name, n);
+    if (source.name === '活的') return [{ id: 'a' }];
+    if (source.name === '真死了') throw new Error('HTTP 404');
+    if (n === 1) throw new Error('HTTP 503');
+    return [{ id: 'b' }];
+  };
+
+  const ok = [];
+  const res = await fetchAllSources({
+    sources, fetchOne, concurrency: 3, retryDelayMs: 0, log: () => {},
+    onSuccess: (source, got) => ok.push([source.name, got.length]),
+  });
+
+  assert.equal(res.retryAttempted, 1, '只有 503 那个该进第二轮');
+  assert.equal(res.retried, 1, '第二轮该把它救回来');
+  assert.deepEqual(res.failed.map((f) => f.source.name), ['真死了']);
+  assert.deepEqual(ok.sort(), [['抖了一下', 1], ['活的', 1]], '救回来的条目要真的进入结果');
+  assert.equal(seen.get('真死了'), 1, 'HTTP 404 是站点的明确答复，不该重试');
+  assert.equal(seen.get('活的'), 1, '第一轮就成功的不该被重试');
+});
+
+test('抓取重试只补一轮：第二轮还失败就认了，不再往下打', async () => {
+  const hits = new Map();
+  const fetchOne = async (source) => {
+    hits.set(source.name, (hits.get(source.name) ?? 0) + 1);
+    throw new Error('HTTP 503');
+  };
+  const res = await fetchAllSources({
+    sources: [{ name: '一直 503' }], fetchOne, concurrency: 2, retryDelayMs: 0,
+    log: () => {}, onSuccess: () => {},
+  });
+  assert.equal(hits.get('一直 503'), 2, '总共只该请求两次');
+  assert.equal(res.retried, 0);
+  assert.deepEqual(res.failed.map((f) => f.message), ['HTTP 503']);
 });

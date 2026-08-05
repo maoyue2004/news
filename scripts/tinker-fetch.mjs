@@ -18,6 +18,29 @@ const CONCURRENCY = Number(process.env.TINKER_CONCURRENCY ?? 10);
 const ENRICH_CONCURRENCY = 5;
 /** 补全第二轮开始前的等待。见 `enrich()` 的注释：限流窗口没过就重试等于白跑。 */
 const ENRICH_RETRY_DELAY_MS = Number(process.env.TINKER_ENRICH_RETRY_DELAY_MS ?? 60000);
+/** 抓取第二轮开始前的等待。见 `RETRYABLE_FETCH_ERROR` 的注释。 */
+const FEED_RETRY_DELAY_MS = Number(process.env.TINKER_FEED_RETRY_DELAY_MS ?? 20000);
+
+/**
+ * 值得重试一次的抓取失败。
+ *
+ * 2026-08-06 查出来的：当天 7 个「失败源」里有 **6 个其实是活的**，
+ * 503 不是站点给的，是本环境出口代理给的——响应体只有 48 字节，
+ * 带 `x-deny-reason: resolve_failed`，正文写着
+ * "DNS resolution failed (transient resolver error)"，
+ * 代理自己都说了这是 transient。另一种是上游 TLS 被 reset。
+ * 而 `get()` 只把 `res.status` 拼成 `HTTP 503` 抛出去，
+ * 上层无从分辨「站点死了」和「出口抖了一下」，一律记进 consecutiveFailures。
+ *
+ * 后果不是少抓一天，是**误判源的死活**：SkyWT / 东方星痕 / 樵夫的小站
+ * 已经连续 5 天记为失败、距离「连续 ≥7 天点名停用」只剩两天，
+ * 而当天手动重放，SkyWT 和 东方星痕 立刻 200，三轮都稳定 200。
+ * 差一点就按代理噪声把健康的博客停掉了。
+ *
+ * 判据只认**网络类**失败（5xx / 超时 / 连接失败）。404、403、410 不重试：
+ * 那是站点的明确答复，重试改变不了，而且 403 已经有 UA 回退兜着。
+ */
+const RETRYABLE_FETCH_ERROR = /HTTP (50[0234])|fetch failed|timeout|aborted|ECONNRESET|socket hang up/i;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 /**
@@ -142,6 +165,48 @@ export async function enrich(items, { retryDelayMs = ENRICH_RETRY_DELAY_MS } = {
   return { attempted: targets.length, enriched: ok, retryAttempted: retry.length, retried };
 }
 
+/**
+ * 抓一遍所有源，网络类失败的等一会儿再补一轮。
+ *
+ * 分两轮的理由见 `RETRYABLE_FETCH_ERROR`：出口代理的 transient 503 会被
+ * 原样记成源失败，而源的死活判断（连续 ≥7 天点名停用）就建在这个计数上。
+ * 形状和 `enrich()` 的第二轮一致：**等一会儿、并发减半、只补一轮**。
+ *
+ * 成功的通过 `onSuccess` 当场交出去（status 要立刻记，不然重试轮会覆盖），
+ * 失败的攒着，两轮都没拿到才交回调用方去记 failure。
+ */
+export async function fetchAllSources({
+  sources, fetchOne, concurrency = 10, retryDelayMs = 20000, onSuccess, log = console.error,
+}) {
+  const pass = async (list, limit, progress) => {
+    const failed = [];
+    for (let i = 0; i < list.length; i += limit) {
+      await Promise.all(list.slice(i, i + limit).map(async (source) => {
+        try {
+          onSuccess(source, await fetchOne(source));
+        } catch (err) {
+          failed.push({ source, message: err.message });
+        }
+      }));
+      if (progress) log(`已抓取 ${Math.min(i + limit, list.length)}/${list.length}`);
+    }
+    return failed;
+  };
+
+  const firstRound = await pass(sources, concurrency, true);
+  const retryable = firstRound.filter((f) => RETRYABLE_FETCH_ERROR.test(f.message));
+  if (!retryable.length) return { failed: firstRound, retryAttempted: 0, retried: 0 };
+
+  log(`\n抓取第二轮：${retryable.length} 个源等 ${Math.round(retryDelayMs / 1000)} 秒后重试`);
+  await sleep(retryDelayMs);
+  const again = await pass(retryable.map((f) => f.source), Math.max(1, Math.floor(concurrency / 2)), false);
+  return {
+    failed: [...firstRound.filter((f) => !RETRYABLE_FETCH_ERROR.test(f.message)), ...again],
+    retryAttempted: retryable.length,
+    retried: retryable.length - again.length,
+  };
+}
+
 async function main() {
   const all = JSON.parse(readFileSync(SOURCES, 'utf8'));
   const sources = all.filter((s) => s.enabled);
@@ -155,34 +220,42 @@ async function main() {
   const items = [];
   const errors = [];
   const perSource = {};
+  /** 搜索源的「部分查询失败」按源名存，重试后覆盖，避免同一个源记两条。 */
+  const partials = new Map();
 
-  for (let i = 0; i < sources.length; i += CONCURRENCY) {
-    await Promise.all(sources.slice(i, i + CONCURRENCY).map(async (source) => {
-      try {
-        let got;
-        if (isSearchSource(source)) {
-          const { items: raw, failures } = await fetchSearchItems({
-            source, queries, ua: BROWSER_UA, afterDate: daysAgo(today, 21),
-          });
-          got = collectRaw({ source, raw, seen, today, now });
-          if (failures.length) errors.push({ source: source.name, message: `部分查询失败（${failures.length}/${queries.length}）`, partial: true });
-        } else {
-          const xml = await get(source.feed, {
-            ua: source.browserUa ? BROWSER_UA : UA,
-            accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
-          });
-          got = collectFeed({ source, xml, seen, today, now });
-        }
-        items.push(...got);
-        perSource[source.name] = got.length;
-        recordSuccess(status, source.name, now);
-      } catch (err) {
-        errors.push({ source: source.name, message: err.message });
-        recordFailure(status, source.name, now, err.message);
-      }
-    }));
-    console.error(`已抓取 ${Math.min(i + CONCURRENCY, sources.length)}/${sources.length}`);
+  const fetchOne = async (source) => {
+    if (isSearchSource(source)) {
+      const { items: raw, failures } = await fetchSearchItems({
+        source, queries, ua: BROWSER_UA, afterDate: daysAgo(today, 21),
+      });
+      if (failures.length) partials.set(source.name, { source: source.name, message: `部分查询失败（${failures.length}/${queries.length}）`, partial: true });
+      else partials.delete(source.name);
+      return collectRaw({ source, raw, seen, today, now });
+    }
+    const xml = await get(source.feed, {
+      ua: source.browserUa ? BROWSER_UA : UA,
+      accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*',
+    });
+    return collectFeed({ source, xml, seen, today, now });
+  };
+
+  const { failed, retryAttempted: feedRetryAttempted, retried: feedRetried } = await fetchAllSources({
+    sources,
+    fetchOne,
+    concurrency: CONCURRENCY,
+    retryDelayMs: FEED_RETRY_DELAY_MS,
+    onSuccess: (source, got) => {
+      items.push(...got);
+      perSource[source.name] = got.length;
+      recordSuccess(status, source.name, now);
+    },
+  });
+  // 只有两轮都没拿到的才算这个源今天失败了。
+  for (const f of failed) {
+    errors.push({ source: f.source.name, message: f.message });
+    recordFailure(status, f.source.name, now, f.message);
   }
+  errors.push(...partials.values());
 
   // 同一篇文章会同时出现在博客 feed 和掘金搜索里。itemId 基于归一化 URL，
   // 跨源天然去重；这里只需处理同一次运行内的碰撞。
@@ -226,6 +299,8 @@ async function main() {
       enrichRetryAttempted: retryAttempted,
       enrichRetried: retried,
       failedSources: errors.filter((e) => !e.partial).length,
+      feedRetryAttempted: feedRetryAttempted,
+      feedRetried,
     },
     perSource,
     shortlist,
@@ -246,6 +321,7 @@ async function main() {
   const s = { fetched: unique.length, shortlisted: shortlist.length, rejected: rejected.length };
   console.log(`\n${today}：抓到 ${s.fetched} 条，规则入围 ${s.shortlisted} 条，筛掉 ${s.rejected} 条`);
   console.log(`正文补全：尝试 ${attempted}，成功 ${enriched}（第二轮重试 ${retryAttempted} 条，救回 ${retried} 条）`);
+  if (feedRetryAttempted) console.log(`抓取重试：${feedRetryAttempted} 个源，救回 ${feedRetried} 个`);
   console.log(`今日查询词（${queries.length}）：${queries.join('、')}`);
   if (errors.length) {
     console.log(`\n抓取失败 ${errors.length} 个源：`);
