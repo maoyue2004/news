@@ -320,17 +320,40 @@ test('【修复】抓取的 transient 503 要重试一轮，不能直接记成�
   assert.equal(seen.get('活的'), 1, '第一轮就成功的不该被重试');
 });
 
-test('抓取重试只补一轮：第二轮还失败就认了，不再往下打', async () => {
+test('抓取重试补满轮次就认了，不再往下打', async () => {
   const hits = new Map();
   const fetchOne = async (source) => {
     hits.set(source.name, (hits.get(source.name) ?? 0) + 1);
     throw new Error('HTTP 503');
   };
   const res = await fetchAllSources({
-    sources: [{ name: '一直 503' }], fetchOne, concurrency: 2, retryDelayMs: 0,
+    sources: [{ name: '一直 503' }], fetchOne, concurrency: 2, retryDelayMs: 0, retryRounds: 2,
     log: () => {}, onSuccess: () => {},
   });
-  assert.equal(hits.get('一直 503'), 2, '总共只该请求两次');
+  assert.equal(hits.get('一直 503'), 3, '第一轮 + 两轮补抓，总共三次');
   assert.equal(res.retried, 0);
   assert.deepEqual(res.failed.map((f) => f.message), ['HTTP 503']);
+});
+
+// 2026-08-07：东方星痕的真实形状——首页 200，240KB 的 atom.xml 连着 curl 三次，
+// 前两次 Connection reset by peer，第三次 200。三次只隔几秒，所以不是
+// 「抖动窗口比重试间隔长」，是每次连接独立地有概率被 reset。一轮补抓救不回它，
+// 它因此连续 6 天记为失败，还有一天就会被当噪声点名停用。
+test('抓取重试：前两次都被 reset、第三次才通的源要能救回来', async () => {
+  const hits = new Map();
+  const fetchOne = async (source) => {
+    const n = (hits.get(source.name) ?? 0) + 1;
+    hits.set(source.name, n);
+    if (n < 3) throw new Error('Recv failure: ECONNRESET');
+    return [{ id: 'late' }];
+  };
+  const ok = [];
+  const res = await fetchAllSources({
+    sources: [{ name: '大 feed 被 reset' }], fetchOne, concurrency: 2, retryDelayMs: 0, retryRounds: 2,
+    log: () => {}, onSuccess: (source, got) => ok.push([source.name, got.length]),
+  });
+  assert.equal(hits.get('大 feed 被 reset'), 3);
+  assert.equal(res.retried, 1, '第三轮救回来了');
+  assert.deepEqual(res.failed, [], '不该再记 failure');
+  assert.deepEqual(ok, [['大 feed 被 reset', 1]], '救回来的条目要真的进入结果');
 });

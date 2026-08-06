@@ -166,17 +166,29 @@ export async function enrich(items, { retryDelayMs = ENRICH_RETRY_DELAY_MS } = {
 }
 
 /**
- * 抓一遍所有源，网络类失败的等一会儿再补一轮。
+ * 抓一遍所有源，网络类失败的等一会儿再补几轮。
  *
- * 分两轮的理由见 `RETRYABLE_FETCH_ERROR`：出口代理的 transient 503 会被
+ * 补轮的理由见 `RETRYABLE_FETCH_ERROR`：出口代理的 transient 503 会被
  * 原样记成源失败，而源的死活判断（连续 ≥7 天点名停用）就建在这个计数上。
- * 形状和 `enrich()` 的第二轮一致：**等一会儿、并发减半、只补一轮**。
+ *
+ * **2026-08-07：一轮不够。** 昨天上线「补一轮」之后，东方星痕当天仍然记了失败，
+ * 今天是连续第 6 天——而手动验证它是**活的**：`ystyle.top` 首页 200，
+ * `atom.xml`（240KB）连着 curl 三次，第一次 `Connection reset by peer`、
+ * 第二次同样、**第三次 200**。三次之间只隔几秒，也就是说不是「代理抖动窗口比 20 秒长」
+ * （昨天留的两个假设之一），而是**每一次连接独立地有一定概率被 reset**，
+ * 大 feed 传输时间长、命中概率更高。这种情况下拉长间隔没用，加次数才有用。
+ * 对照：樵夫的小站首页和 feed 都是连接失败，重试多少轮都不会回来——它是真死。
+ *
+ * 所以改成最多 `retryRounds` 轮（默认 2 轮补抓，合计 3 次机会），
+ * 每轮只重试**上一轮仍然失败**的源，代价随轮次迅速收敛
+ * （今天第一轮失败 10 个，第二轮剩 3 个，第三轮只会碰这 3 个）。
+ * 其余形状不变：等一会儿、并发减半、只重试网络类失败。
  *
  * 成功的通过 `onSuccess` 当场交出去（status 要立刻记，不然重试轮会覆盖），
- * 失败的攒着，两轮都没拿到才交回调用方去记 failure。
+ * 失败的攒着，所有轮次都没拿到才交回调用方去记 failure。
  */
 export async function fetchAllSources({
-  sources, fetchOne, concurrency = 10, retryDelayMs = 20000, onSuccess, log = console.error,
+  sources, fetchOne, concurrency = 10, retryDelayMs = 20000, retryRounds = 2, onSuccess, log = console.error,
 }) {
   const pass = async (list, limit, progress) => {
     const failed = [];
@@ -194,16 +206,20 @@ export async function fetchAllSources({
   };
 
   const firstRound = await pass(sources, concurrency, true);
-  const retryable = firstRound.filter((f) => RETRYABLE_FETCH_ERROR.test(f.message));
-  if (!retryable.length) return { failed: firstRound, retryAttempted: 0, retried: 0 };
+  const dead = firstRound.filter((f) => !RETRYABLE_FETCH_ERROR.test(f.message));
+  let pending = firstRound.filter((f) => RETRYABLE_FETCH_ERROR.test(f.message));
+  const retryAttempted = pending.length;
+  if (!pending.length) return { failed: firstRound, retryAttempted: 0, retried: 0 };
 
-  log(`\n抓取第二轮：${retryable.length} 个源等 ${Math.round(retryDelayMs / 1000)} 秒后重试`);
-  await sleep(retryDelayMs);
-  const again = await pass(retryable.map((f) => f.source), Math.max(1, Math.floor(concurrency / 2)), false);
+  for (let round = 2; round <= retryRounds + 1 && pending.length; round += 1) {
+    log(`\n抓取第 ${round} 轮：${pending.length} 个源等 ${Math.round(retryDelayMs / 1000)} 秒后重试`);
+    await sleep(retryDelayMs);
+    pending = await pass(pending.map((f) => f.source), Math.max(1, Math.floor(concurrency / 2)), false);
+  }
   return {
-    failed: [...firstRound.filter((f) => !RETRYABLE_FETCH_ERROR.test(f.message)), ...again],
-    retryAttempted: retryable.length,
-    retried: retryable.length - again.length,
+    failed: [...dead, ...pending],
+    retryAttempted,
+    retried: retryAttempted - pending.length,
   };
 }
 

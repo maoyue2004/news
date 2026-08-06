@@ -1,0 +1,77 @@
+{
+  "date": "2026-08-07",
+  "generatedAt": "2026-08-06T22:40:00.000Z",
+  "dailyNote": "今天入围只有 22 条，是创刊以来最短的一天，掘金那波推广稿换了个马甲还在——「Cursor 平替」「Copilot 替代品」「团队编程效率」三条同一个模板，落点全在同一个 IDE 上。所以只收了 3 篇，都是 4 分。先读 V2EX 那条僵尸进程：现象离奇（浏览器闪退、终端开不了），根因具体到 dylib，是今天唯一一条能当场对照自己机器验证的坑。犀利豆的 Read 拆解和产品经理那篇 PRD 技能包，一个讲 agent 怎么感知磁盘，一个讲怎么把团队规范塞进 skill，都是有来历的细节。",
+  "items": [
+    {
+      "id": "7a078e8edb2ef622",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "url": "https://www.v2ex.com/t/1232581#reply0",
+      "titleOriginal": "chatgpt(codex)桌面端僵尸进程",
+      "titleZh": "Codex 桌面端在 macOS 13.6 上泄漏僵尸进程，10 分钟从 500 涨到 900",
+      "summaryZh": "一条真实故障记录。作者升级 codex 后系统频繁崩溃，浏览器闪退、终端打不开并报 forkpty: Resource temporarily unavailable，重启才恢复。根因是 ChatGPT 主 app 标的最低版本为 macOS 12.0 能正常启动，但它内含的 SkyComputerUseService（com.openai.sky.CUAService）按 macOS 14.4 构建，在 13.6 上因缺 libswiftObservation.dylib 一启动就崩，而 app 不停重试，每次失败留下一个 defunct。作者用 ps aux | wc -l 实测，10 分钟内进程数从 500 涨到 900 多。",
+      "whyRead": "浏览器闪退、终端开不了、forkpty 报资源不足，罪魁祸首是 ChatGPT 桌面端里一个为新系统编译的 helper 在无限重启——不升级系统的话，别让 Codex/Computer Use 页面长时间开着。",
+      "rating": 4,
+      "tools": ["codex", "chatgpt-desktop"],
+      "topics": [],
+      "publishedAt": "2026-08-06T15:02:56.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "86769776e01299c0",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/08/06/claude-code-tools-read/",
+      "titleOriginal": "Claude Code Tools 研究系列（五）—— Read：感知外部世界的唯一合规通道",
+      "titleZh": "Claude Code 工具拆解（五）：Read 为什么是 agent 感知磁盘的唯一通道",
+      "summaryZh": "系列第五篇，按「作用 / 触发条件 / 输入输出 / 边界」四层拆 Read。讲清了几件容易被忽略的事：只吃绝对路径，返回带行号加 tab 前缀，好让人和模型对同一套坐标；默认只读前 2000 行，大文件靠 offset + limit 分页，PDF 超过 10 页必须指定 pages 且每次最多 20 页；图片走视觉通道而不是文本。最有用的是两条负面清单——Edit 之后不必再 Read 一遍确认，harness 已经追踪了状态；列目录和搜关键词该交给 Glob 和 Grep。",
+      "whyRead": "拆出一条反直觉的规矩：改完文件再 Read 一遍「确认改对了」是纯浪费，因为 harness 层已经替 Claude 记住了状态。",
+      "rating": 4,
+      "tools": ["claude-code"],
+      "topics": ["harness", "context-engineering"],
+      "publishedAt": "2026-08-06T10:00:00.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "8979aa9d2256c06d",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7670476094258249764",
+      "titleOriginal": "产品经理的 Claude Code 技能包实战（一）：用技能包写 PRD，为什么小而精胜过大而全",
+      "titleZh": "产品经理把 PRD 规范做成 Claude Code 技能包：踩过的坑全在排版上",
+      "summaryZh": "一个产品经理把「写 PRD」做成 Claude Code 技能包的实录。核心设计是两步走且禁止跳步：先出 Markdown 预览、确认后才生成 Word，因为早期直接出 Word，结构错了改起来极痛苦。几条硬规则都有来历——标题必须「动词 + 名词」是被研发吐槽逼出来的，升级点以整个功能模块为粒度是为了防止 AI 把功能拆得稀碎。排版校验也写进了技能包：生成后要检查 document.xml 里没有字面量 ####、每个有序列表有独立的 w:num 定义，否则编号会全局连号。",
+      "whyRead": "把团队约定固化成 skill 之后，作者发现最费劲的不是写规范，是 Markdown 转 Word 那些不报错的翻车。",
+      "rating": 4,
+      "tools": ["claude-code"],
+      "topics": ["skills"],
+      "publishedAt": "2026-08-06T02:01:09.000Z",
+      "author": "AI工具人PM产品经理",
+      "preScore": 9
+    }
+  ],
+  "reviewed": 22,
+  "dropped": 19,
+  "stats": {
+    "sources": 220,
+    "fetched": 300,
+    "shortlisted": 22,
+    "rejected": 278,
+    "thin": 91,
+    "enriched": 48,
+    "enrichAttempted": 60,
+    "enrichRetryAttempted": 19,
+    "enrichRetried": 7,
+    "failedSources": 3,
+    "feedRetryAttempted": 10,
+    "feedRetried": 7
+  },
+  "errors": [
+    { "source": "东方星痕", "message": "HTTP 503" },
+    { "source": "樵夫的小站", "message": "HTTP 503" },
+    { "source": "Deepzz's Blog", "message": "The operation was aborted due to timeout" },
+    { "source": "小众软件论坛搜索", "message": "部分查询失败（15/30）" }
+  ]
+}

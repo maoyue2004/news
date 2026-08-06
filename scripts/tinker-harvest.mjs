@@ -64,6 +64,20 @@ const INDEXES = [
     url: 'https://raw.githubusercontent.com/lotosbin/opml-list/master/data/feed.opml',
     parse: parseOpml,
   },
+  /**
+   * 第六个索引，2026-08-07 加。shidenggui/bloghub（独立博客导航站的后端数据）。
+   *
+   * 和 timqian 同一份 CSV 表头（Introduction, Address, RSS feed, tags, Ignore），
+   * 直接复用 parseCsv。376 条 feed，和 timqian 的 1331 条比对过：
+   * **重叠 223 条，净新增 153 条**——不算多，但它是另一拨人按另一套标准挑的
+   * （收录标准写着「原创内容，有一定比例的非技术内容」，偏向真人博客而非技术媒体），
+   * 正是 LESSONS 说的「扩源缺的是名录」那类增量。
+   */
+  {
+    id: 'bloghub',
+    url: 'https://raw.githubusercontent.com/shidenggui/bloghub/master/backend/assets/blogs-original.csv',
+    parse: parseCsv,
+  },
 ];
 const SOURCES = 'tinker/sources.json';
 /**
