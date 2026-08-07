@@ -90,7 +90,8 @@
     "feed": "https://www.bestblogs.dev/zh/feeds/rss",
     "kind": "aggregator",
     "enabled": true,
-    "desc": "中文技术文章精选站，本身就在做质量筛选，等于借了一层人工过滤。"
+    "desc": "中文技术文章精选站。落地页是站方生成的 AI 摘要而不是作者原文，整源不进评审名单；留着是为了从它的落选条目里看出该去接哪个原文源。",
+    "summaryPage": true
   },
   {
     "name": "少数派",

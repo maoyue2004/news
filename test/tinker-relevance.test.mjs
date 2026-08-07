@@ -397,3 +397,37 @@ test('Superpowers 只认复数，单数是普通英文词', () => {
   assert.ok(matchTools('装了 obra 的 Superpowers 之后，agent 终于肯先查 skill').includes('superpowers'));
   assert.deepEqual(matchTools('大模型是每个开发者的 superpower'), []);
 });
+
+test('聚合站 AI 摘要页整源不进名单，但照常打分并留在 rejected 里', () => {
+  // BestBlogs.dev 那类源：条目本身分数很高（它就是在筛 agent 好文），
+  // 但落地页是站方生成的摘要而不是作者原文，评审那一步一律不收。
+  // 创刊 7 天它天天有 2-3 条占着名单席位，累计收录 0 条。
+  const mk = (i, extra = {}) => ({
+    id: `id${i}`, source: '摘要站', url: `https://e.com/${i}`,
+    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。',
+    ...extra,
+  });
+  const items = [
+    ...Array.from({ length: 3 }, (_, i) => mk(i, { summaryPage: true })),
+    ...Array.from({ length: 2 }, (_, i) => mk(100 + i)),
+  ];
+  const { shortlist, rejected } = triage(items, { cap: 60, quota: 8 });
+
+  assert.equal(shortlist.length, 2, '只有非摘要页的两条进名单');
+  assert.ok(shortlist.every((it) => !it.summaryPage));
+  const dropped = rejected.filter((r) => r.reasons.includes('聚合站 AI 摘要页，按编辑规则整类不收'));
+  assert.equal(dropped.length, 3, '三条摘要页都要留痕，不能静默丢失');
+  // 分数要留着：高分的落选条目正是「该去接哪个原文源」的线索。
+  assert.ok(dropped.every((r) => r.score >= SHORTLIST_THRESHOLD), '毙掉也要带上原本的分数');
+});
+
+test('summaryPage 是源级开关，没标的源不受影响', () => {
+  const items = Array.from({ length: 2 }, (_, i) => ({
+    id: `id${i}`, source: '普通博客', url: `https://e.com/${i}`,
+    titleOriginal: `我用 Codex 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。',
+  }));
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  assert.equal(shortlist.length, 2);
+});

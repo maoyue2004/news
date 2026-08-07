@@ -1,0 +1,59 @@
+{
+  "date": "2026-08-08",
+  "generatedAt": "2026-08-07T22:30:00.000Z",
+  "dailyNote": "今天 37 条入围里有 18 条是掘金抓不到正文的「仅标题」条目——补全重试跑了 95 条，一条都没救回来，等于四成评审预算花在了按规矩本来就不能收的东西上。剩下 19 条全文里，产品自荐、聚合站摘要页、发布稿加起来占了 13 条。所以只收 2 篇，都是 4 分。犀利豆那篇拆 Edit 的值得先读：它把「必须先 Read 过才能 Edit」「old_string 不唯一就报错」这几条 runtime 硬拦截讲清楚了，是 harness 层的机制而不是 schema 层的约束，能解释你平时撞到的一类报错。linux.do 那条是观察期第 7 天头一次出现的技术帖，五段配置 diff 把 openclaw 的运行时换成 codex 的，照着抄就能跑。今天最可惜的落选是 iT 邦幫忙那个一人维运付费服务的 30 天连载——Day 1 是破题，肉全在「Day 23 细讲」里，按昨天毙掉金融指标平台连载序章的同一把尺子，等 Day 4 起的十个正式站事故再收。",
+  "items": [
+    {
+      "id": "6bfb79286bf5d951",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/08/07/claude-code-tools-edit/",
+      "titleOriginal": "Claude Code Tools 研究系列（六）—— Edit：精准字符串替换",
+      "titleZh": "拆 Claude Code 的 Edit：四条 runtime 硬拦截，和它们各自在防什么",
+      "summaryZh": "系列第六篇，讲 Edit 工具的设计约束而不是用法。作者列出 runtime 层（不是 schema 层）的四道硬拦截：没 Read 过就 Edit 直接报错、old_string 匹配到多处报错除非显式 replace_all、匹配不上报错、old_string 等于 new_string 报错。并给出反例推演：只有 Write 时改一个 600 行文件里的 4 处函数名，要把全文在 tool call 里传两遍，还会把 agent 记忆里的旧版本覆盖到磁盘、吞掉你在另一个编辑器里的改动。文末点明 Read 输出的行号前缀正是 Edit 的必要过滤，以及作者自己的保守偏差——不确定就 Read。",
+      "whyRead": "你撞到的 Edit 报错多半不是模型笨，是 harness 在硬拦——这篇把四条拦截规则和它们各自防的事故一一对上了。",
+      "rating": 4,
+      "tools": ["claude-code"],
+      "topics": ["harness"],
+      "publishedAt": "2026-08-07T10:00:00.000Z",
+      "author": "",
+      "preScore": 12
+    },
+    {
+      "id": "832ff8b857953aec",
+      "source": "linux.do",
+      "kind": "forum",
+      "url": "https://linux.do/t/topic/2721715",
+      "titleOriginal": "将openclaw的运行时切换到codex并且接入deepseek v4 flash，你见到的将是套着龙虾壳的codex",
+      "titleZh": "把 openclaw 的运行时换成 codex 的：五处配置 diff，接 DeepSeek V4 Flash",
+      "summaryZh": "openclaw 被 OpenAI 收编后带了个官方 codex 运行时，但默认要登录 GPT 账号才能用。作者让 codex 读了自己的配置文件和代码，找出只改几行就能复用 codex 配置的路子：openclaw.json 里给 codex 加 homeScope: user 和排除 exec/process 两个动态工具，模型 id 必须带 codex/ 前缀，再到 ~/.codex/models.json 把 deepseek-v4-flash 的 tool_mode 从 null 改成 direct，最后按需改消息路由。切完两边共享同一套 harness，openclaw 里的对话在 codex CLI 和桌面端都看得见。作者的结论是指令遵循和多回合能力比 openclaw 原来基于 pi 的 harness 强。",
+      "whyRead": "五段可以直接抄的配置 diff，把两个 agent 的 harness 接在一起——附带说清了「模型 id 必须带 codex/ 前缀」这种抄错就不通的细节。",
+      "rating": 4,
+      "tools": ["codex", "openclaw"],
+      "topics": ["harness"],
+      "publishedAt": "2026-08-07T17:41:54.000Z",
+      "author": "",
+      "preScore": 10
+    }
+  ],
+  "reviewed": 37,
+  "dropped": 35,
+  "stats": {
+    "sources": 220,
+    "fetched": 387,
+    "shortlisted": 37,
+    "rejected": 350,
+    "thin": 167,
+    "enriched": 31,
+    "enrichAttempted": 126,
+    "enrichRetryAttempted": 95,
+    "enrichRetried": 0,
+    "failedSources": 1,
+    "feedRetryAttempted": 6,
+    "feedRetried": 6
+  },
+  "errors": [
+    { "source": "酷酷的白", "error": "HTTP 403" },
+    { "source": "小众软件论坛搜索", "error": "部分查询失败（15/30）" }
+  ]
+}

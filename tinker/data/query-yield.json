@@ -1,45 +1,45 @@
 {
   "Claude Code 实践": {
-    "runs": 4,
-    "items": 46,
-    "shortlisted": 19,
-    "lastRun": "2026-08-07",
-    "lastShortlist": "2026-08-07"
+    "runs": 5,
+    "items": 58,
+    "shortlisted": 23,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
   },
   "Claude Code 踩坑": {
-    "runs": 4,
-    "items": 25,
+    "runs": 5,
+    "items": 28,
     "shortlisted": 10,
-    "lastRun": "2026-08-07",
+    "lastRun": "2026-08-08",
     "lastShortlist": "2026-08-07"
   },
   "Codex CLI 体验": {
-    "runs": 4,
-    "items": 26,
-    "shortlisted": 4,
-    "lastRun": "2026-08-07",
-    "lastShortlist": "2026-08-07"
+    "runs": 5,
+    "items": 29,
+    "shortlisted": 5,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
   },
   "Cursor 工作流": {
-    "runs": 4,
-    "items": 24,
+    "runs": 5,
+    "items": 25,
     "shortlisted": 8,
-    "lastRun": "2026-08-07",
+    "lastRun": "2026-08-08",
     "lastShortlist": "2026-08-06"
   },
   "AI 编程 踩坑": {
-    "runs": 4,
-    "items": 37,
-    "shortlisted": 1,
-    "lastRun": "2026-08-07",
-    "lastShortlist": "2026-08-06"
+    "runs": 5,
+    "items": 43,
+    "shortlisted": 2,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
   },
   "agent 编程 心得": {
-    "runs": 4,
-    "items": 21,
-    "shortlisted": 1,
-    "lastRun": "2026-08-07",
-    "lastShortlist": "2026-08-05"
+    "runs": 5,
+    "items": 23,
+    "shortlisted": 2,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
   },
   "Augment Code 踩坑": {
     "runs": 3,
@@ -168,87 +168,87 @@
     "lastShortlist": null
   },
   "MarsCode 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Antigravity 实践": {
-    "runs": 1,
-    "items": 3,
+    "runs": 2,
+    "items": 4,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Antigravity 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Devin 实践": {
-    "runs": 1,
-    "items": 2,
+    "runs": 2,
+    "items": 3,
     "shortlisted": 1,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-08",
     "lastShortlist": "2026-08-04"
   },
   "Devin 踩坑": {
-    "runs": 1,
-    "items": 4,
+    "runs": 2,
+    "items": 6,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Warp 实践": {
-    "runs": 1,
-    "items": 3,
+    "runs": 2,
+    "items": 5,
     "shortlisted": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Flowith 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-05",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Flowith 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-05",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Skywork 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 1,
     "shortlisted": 1,
-    "lastRun": "2026-08-05",
+    "lastRun": "2026-08-08",
     "lastShortlist": "2026-08-05"
   },
   "Skywork 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-05",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Skywork 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-05",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Genspark 实践": {
-    "runs": 1,
-    "items": 2,
+    "runs": 2,
+    "items": 4,
     "shortlisted": 0,
-    "lastRun": "2026-08-05",
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   },
   "Genspark 踩坑": {
@@ -452,6 +452,90 @@
     "items": 0,
     "shortlisted": 0,
     "lastRun": "2026-08-07",
+    "lastShortlist": null
+  },
+  "Grok Build 实践": {
+    "runs": 1,
+    "items": 23,
+    "shortlisted": 4,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
+  },
+  "Grok Build 踩坑": {
+    "runs": 1,
+    "items": 3,
+    "shortlisted": 0,
+    "lastRun": "2026-08-08",
+    "lastShortlist": null
+  },
+  "Grok Build 体验": {
+    "runs": 1,
+    "items": 9,
+    "shortlisted": 0,
+    "lastRun": "2026-08-08",
+    "lastShortlist": null
+  },
+  "Warp 踩坑": {
+    "runs": 1,
+    "items": 4,
+    "shortlisted": 0,
+    "lastRun": "2026-08-08",
+    "lastShortlist": null
+  },
+  "Warp 体验": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-08",
+    "lastShortlist": null
+  },
+  "Claude Desktop 实践": {
+    "runs": 1,
+    "items": 19,
+    "shortlisted": 7,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
+  },
+  "Claude Desktop 踩坑": {
+    "runs": 1,
+    "items": 5,
+    "shortlisted": 1,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
+  },
+  "Claude Desktop 体验": {
+    "runs": 1,
+    "items": 8,
+    "shortlisted": 1,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
+  },
+  "ChatGPT Desktop 实践": {
+    "runs": 1,
+    "items": 11,
+    "shortlisted": 2,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
+  },
+  "ChatGPT Desktop 踩坑": {
+    "runs": 1,
+    "items": 7,
+    "shortlisted": 0,
+    "lastRun": "2026-08-08",
+    "lastShortlist": null
+  },
+  "ChatGPT Desktop 体验": {
+    "runs": 1,
+    "items": 12,
+    "shortlisted": 1,
+    "lastRun": "2026-08-08",
+    "lastShortlist": "2026-08-08"
+  },
+  "Flowith 实践": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-08",
     "lastShortlist": null
   }
 }
