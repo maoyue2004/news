@@ -1667,7 +1667,39 @@ LESSONS 写着「停用之后它们再也不会被抓，错误无法自我纠正
 bloghub 是另一拨人按另一套标准（「原创内容，有一定比例的非技术内容」）
 挑的 376 条，和 timqian 只重叠 223、净新增 153，本该是最有增量的一批。
 
-`--index lotosbin`（1331 条，至今没被人审过）正在后台跑，结果见下一轮。
+### lotosbin 终于被人审了一遍：7 个命中，收 5 毙 2
+
+`--index lotosbin`（1331 条，8-06 接进来后**一直没人看过**）跑完约 55 分钟，
+7 个命中。和 bloghub 的 0 命中形成对照——同一天同样的判据，
+说明 0 不是判据太严，是 bloghub 那批真的没有。
+
+**收 5 个**：
+
+| 源 | 够格 | 收的理由 |
+|---|---|---|
+| jax - 走在路上 | 4/20 | 自己做 agent 周边并写过程：Coding Agent 用量统计 App、Agent 客户端 TurboClaw、让 AI 改页面的 Chrome 插件 |
+| 东评西就 | 3/20 | GEO 鉴证 skill、拿 Manus 额度肝博客站，密度低但都是一手 |
+| 浅时光博客 | 3/20 | 「Codex 被曝日志写盘 Bug 后我做了一次本地自查和止血」这类事故复盘 |
+| SKYue | 3/20 | 「一个月 Vibe Coding：我写了什么，又学到了什么」、自己开发并复盘 Obsidian 插件 |
+| 如鱼饮水 | 2/20 | 用 Vibe Coding 写 VSCode 插件 / Python 版 pdf2svg 这类小而完整的自造工具 |
+
+浅时光那条是有保留的：近 14 篇里 12 篇是「GitHub 热门项目周刊」，
+榜单会被新闻腔权重挡掉，但每天多一次 HTTP 请求换那种事故复盘，划算。
+
+**毙 2 个，已经当场写进 `denylist.json`**（LESSONS 里这一脚踩过三次，
+这次是翻命中列表时逐条落盘，不是写复盘时补）：
+
+- **山月**：唯一命中的 topic 是 mcp，而那两条一条是「WordPress/MCP Adapter
+  安装与维护指南」、一条是「在 Windows 通过 LM Studio 使用 Zotero MCP」——
+  站点主题是自建服务运维（WordPress / Bookwyrm / Gitea / GnuCash），不是 coding agent。
+- **Teach Talk**：这个差点收了。选题极对口（「通过工程化的 Harness 改进 Deep Agent」
+  「构建 Claude Code 的经验教训：Prompt 缓存就是一切」「不要再构建多 Agent 了」），
+  `scoreItem()` 完全拦不住。抓了一篇一看，**整站是翻译站**——正文是
+  Improving Deep Agents with harness engineering 的中译，文末标了原文出处，
+  本人补充只有一段译者评注（讲他那个让 Claude Code 24 小时不停编程的 morty 项目，
+  写得还不错）。撞「翻译或转载国外文章而无本人补充」那条。
+  **要发布的单位是文章，而文章是译文。**已写进 LESSONS：
+  这是继大厂官方号之后第二类「机器判不出、只能人扫一眼」的源。
 
 ### 白探测了一次少数派
 

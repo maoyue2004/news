@@ -1772,5 +1772,45 @@
     "kind": "blog",
     "enabled": true,
     "desc": "前端工程师的个人博客，写了十年（近 20 篇跨 1494 天），近期有 Cursor / Vibe Coding 的实践与工具链排错记录。"
+  },
+  {
+    "name": "jax - 走在路上",
+    "url": "https://cdjax.com",
+    "feed": "https://cdjax.com/?feed=rss2",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "自己写 agent 周边工具的个人博客：Coding Agent 用量统计 App、Agent 客户端 TurboClaw、让 AI 改页面的 Chrome 插件，都是本人做本人写。月更偏慢，掺生活随笔。"
+  },
+  {
+    "name": "东评西就",
+    "url": "https://dongjunke.cn",
+    "feed": "https://dongjunke.cn/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "个人随笔博客，agent 那部分是真动手：写过 GEO 鉴证 skill、拿 Manus 额度肝博客站、开源别人的打假思维。密度低但都是一手。"
+  },
+  {
+    "name": "浅时光博客",
+    "url": "https://www.dqzboy.com",
+    "feed": "https://www.dqzboy.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "运维向个人博客。主力产出是每周的「GitHub 热门项目周刊」（榜单，基本会被规则挡掉），值钱的是偶发的事故复盘，如「Codex 被曝日志写盘 Bug 后我做了一次本地自查和止血」。"
+  },
+  {
+    "name": "SKYue",
+    "url": "https://www.skyue.com",
+    "feed": "https://www.skyue.com/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "Typecho / Obsidian 折腾者。写过「一个月 Vibe Coding：我写了什么，又学到了什么」和 Claude Code + DeepSeek 使用体验，自己开发并复盘过 Obsidian 发布插件。"
+  },
+  {
+    "name": "如鱼饮水",
+    "url": "https://wangjiezhe.com",
+    "feed": "https://wangjiezhe.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "数学竞赛题解 + LaTeX/Neovim 折腾的混合博客。agent 那部分是「用 Vibe Coding 写一个 VSCode 插件 / Python 版 pdf2svg」这类小而完整的自造工具。"
   }
 ]

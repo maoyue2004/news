@@ -135,5 +135,17 @@
     "name": "罗磊的独立博客 / luolei.org",
     "reason": "2026-08-04 harvest 已否：148 天没更。另外它以 /feed 和 /feed/ 两条 URL 被重复提名，按域名否才拦得住——这正是 api.xgo.ing 那次的同一个形状。",
     "date": "2026-08-05"
+  },
+  {
+    "feed": "https://sanguok.com/feed/",
+    "name": "山月 / sanguok.com",
+    "reason": "2026-08-08 lotosbin 首次审：2/20 够格但唯一命中的 topic 是 mcp，而那两条一条是「WordPress/MCP Adapter 安装与维护指南」、一条是「在 Windows 通过 LM Studio 使用 Zotero MCP」——站点主题是自建服务运维（WordPress / Bookwyrm / Gitea / GnuCash），不是 coding agent 实践。近 20 篇跨 818 天、75 天没更。",
+    "date": "2026-08-08"
+  },
+  {
+    "feed": "https://www.ttalk.im/rss.xml",
+    "name": "Teach Talk / ttalk.im",
+    "reason": "2026-08-08 lotosbin 首次审：选题极对口（Agent Harness、构建 Claude Code 的经验教训、不要再构建多 Agent），但**整站是翻译站**——抽查「通过工程化的 Harness 改进 Deep Agent」，正文是 Improving Deep Agents with harness engineering 的中译，文末标了原文出处，作者补充只有一段译者评注。正文不是本人写的，撞「翻译或转载国外文章」那条。译者评注质量不错，但要发布的单位是文章，文章是译文。另：122 天没更。",
+    "date": "2026-08-08"
   }
 ]
