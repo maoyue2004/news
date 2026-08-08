@@ -112,6 +112,38 @@ export function needsEnrich(item, threshold = THIN_THRESHOLD) {
   return true;
 }
 
+/**
+ * 论坛话题页要先切到**首帖容器**再抽正文，抽整页等于把导航、页脚和所有回复
+ * 都算成作者写的东西。
+ *
+ * 2026-08-09 查出来的。当天 20 条入围里 V2EX 占 5 条，其中三条的首帖正文实测是
+ * **空的**——「codex 20260808 重置了」0 字符、「所以买 codex pro 是没有意义的吗」
+ * 0 字符、「Codex for oss 过了…求大佬们支招」17 字符（V2EX 首帖为空时页面里
+ * 连 `topic_content` 这个 div 都不生成）。但它们的 excerpt 分别是 711 / 1305 / 793
+ * 字符，全部越过了 `relevance.mjs` 里「论坛短帖（<600 字符）扣 3 分」那道闸，
+ * 还从回复区白捡了「正文经验词 3 个」的加分，最后以 7-9 分占掉三个评审席位。
+ *
+ * 也就是说那条短帖闸写得没错，只是**在 V2EX 上从来没有量到过正确的字符串**：
+ * 页面固定 chrome 就有三百多字符，回复再垫几百，任何一个纯标题帖都能凑过 600。
+ * 这和 `FORUM_SHARE` 那次是同一类问题——规则本身合理，喂给它的输入却来自
+ * 「怎么抓」而不是「抓到什么」。
+ *
+ * 对照组（同一天、同一个源）：`/t/1232641`「opencode go 套餐怎么样」首帖 1237 字符，
+ * 切完是 1237，说明切的是首帖不是把长帖也切没了。
+ *
+ * 返回值三态，调用方要分清：
+ * - `null` —— 这个站没有切法，按老路子抽整页
+ * - `''`   —— 有切法且**确认首帖为空**，正文就是没有，不许拿整页顶上
+ * - 字符串 —— 首帖 HTML
+ */
+export function threadBodyHtml(url, html) {
+  let host;
+  try { host = new URL(url).hostname; } catch { return null; }
+  if (!/(^|\.)v2ex\.com$/.test(host)) return null;
+  const m = html.match(/<div class="topic_content">([\s\S]*?)<\/div>\s*<\/div>/);
+  return m ? m[1] : '';
+}
+
 async function enrichPass(targets, concurrency) {
   let ok = 0;
   for (let i = 0; i < targets.length; i += concurrency) {
@@ -119,7 +151,9 @@ async function enrichPass(targets, concurrency) {
       const before = item.excerpt.length;
       try {
         const html = await get(item.url, { ua: BROWSER_UA, accept: 'text/html,*/*' });
-        const text = extractArticleText(html, EXCERPT_CHARS);
+        const scoped = item.thread ? threadBodyHtml(item.url, html) : null;
+        const text = scoped === null ? extractArticleText(html, EXCERPT_CHARS)
+          : extractArticleText(scoped, EXCERPT_CHARS);
         if (text.length >= THIN_THRESHOLD && text.length >= before * 2) {
           item.excerpt = text;
           ok += 1;

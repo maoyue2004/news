@@ -1,0 +1,89 @@
+{
+  "date": "2026-08-09",
+  "generatedAt": "2026-08-08T22:30:00.000Z",
+  "dailyNote": "今天入围只有 20 条，是创刊以来最短的一份名单，而且成分很差：5 条掘金全是抓不到正文的「仅标题」，V2EX 那 5 条全是「codex 今天重置了没」「pro 降智是不是 IP 问题」这类几十字的闲聊，linux.do 两条一条求建议一条完全跑题。只收 3 篇，都是 4 分。先读博客园沫丶雨悠那篇：它把 agent 的项目约束明确劈成「强制层」和「引导层」——git hook 门禁、编译、测试是不可绕过的，wiki 和 AGENTS.md 只是提高守规概率——然后给出一条原则：能下沉到强制层的，绝不留在引导层。这是今天唯一一条能直接改你明天怎么配项目的东西。犀利豆的 Write 是系列第七篇，接着昨天的 Edit 讲「唯一能新建文件」和「能覆盖任何文件」这对张力。三国梦回那篇是纯粹的安装折腾，价值在一个很多人还不知道的事实：独立的 Codex 桌面应用今年 7 月已经没了。毙掉的大头是自家产品的升级公告——doiito 那篇 Gliding Horse 写了几千字机制和 Rust 代码，技术含量不低，但落点是文末的开源仓库链接，按同一把尺子归自荐。",
+  "items": [
+    {
+      "id": "8189707d00c5b4cc",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/grey-wolf/p/22342600",
+      "titleOriginal": "windows安装codex desktop和cc-switch，接deepseek v4 flash - 三国梦回",
+      "titleZh": "Windows 上把 Codex 桌面版装起来接 DeepSeek：独立的 Codex Desktop 已经没有了",
+      "summaryZh": "作者在公司用了一阵 codex，回家想在 Windows 上也装一套，记录了整个过程。第一个幺蛾子是今年 7 月起不再有独立的 Codex Desktop 应用，功能并进了新版 ChatGPT 桌面客户端，靠标签切换 Chat / Work / Codex 三种模式，而且只通过 Microsoft Store 分发，官网下下来的 exe 只是个几百兆内容的下载壳。登录那一关会卡在手机号验证上，绕法是不登 OpenAI 账号，直接跑 DeepSeek 官方那行 PowerShell 脚本改 ~/.codex/config.toml，或者用 cc-switch 图形化改。文末给出配好之后 config.toml 该长什么样，关键是 wire_api 要填 responses。",
+      "whyRead": "如果你还在找「Codex Desktop 官方下载」——那个应用今年 7 月就并进 ChatGPT 客户端了，这篇是目前少见把 Windows 这条路完整走通的记录。",
+      "rating": 4,
+      "tools": [
+        "codex",
+        "chatgpt-desktop",
+        "cc-switch"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-08T15:20:00.000Z",
+      "author": "",
+      "preScore": 9
+    },
+    {
+      "id": "8396b18eaffc3c21",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/08/08/claude-code-tools-write/",
+      "titleOriginal": "Claude Code Tools 研究系列（七）—— Write：创建与全量重写的边界",
+      "titleZh": "拆 Claude Code 的 Write：唯一能新建文件的工具，也是唯一能盖掉任何文件的",
+      "summaryZh": "系列第七篇，接着上一篇的 Edit 讲它的兄弟工具。作者的切入点是 Write 自身的张力——它既是必需的（Edit 建不了新文件），又是危险的（没有 old_string 那道匹配安全网，写错也不报错），整套 prompt 都在处理这个张力。runtime 侧和 Edit 共用同一套 harness 追踪：文件已存在时本次会话没 Read 过就直接拒绝，父目录不存在也拒绝。文中用「600 行文件改 4 处函数名」这个反例推演硬用 Write 的五种后果：token 浪费、破坏面失控、diff 难审、并发覆盖、误写无提示，最后给出一条判据——新内容多就 Write，抄旧内容多就 Edit。",
+      "whyRead": "「改动占文件 80% 以上就该整体重写」这条经验，这里第一次有了明确的成本推演，而不是凭手感。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "harness"
+      ],
+      "publishedAt": "2026-08-08T10:00:00.000Z",
+      "author": "",
+      "preScore": 9
+    },
+    {
+      "id": "9bfd16cb702fa0d0",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/corgic-lf-fblog/p/22314961",
+      "titleOriginal": "AI编程工程实践心得 - 沫丶雨悠",
+      "titleZh": "把 agent 的项目约束劈成强制层和引导层：一份用出来的门禁清单",
+      "summaryZh": "作者用 codex / Kimi K3 / DeepSeek 做了一段真实项目后，把踩到的问题和对策列成了一份清单。最核心的一条是把约束分层：git hook 门禁、编译检查、测试用例、CI 静态分析属于强制层，不可绕过；wiki、AGENTS.md、提示词、SDD 文档属于引导层，只能提高模型守规的概率。原则是能下沉到强制层的绝不留在引导层。具体手段包括给「同一问题修复超过 N 轮不收敛」设跑偏熔断、提交前用脚本检查 SDD 的 workflow-state 是否停在中间态否则不予提交，以及按成本分工——高质量模型做设计与审查、低成本模型编码。文中也点名 AI 会改测试用例强行通过而不是修 bug，所以人工审查节点不能省。",
+      "whyRead": "多数「AI 编程规范」文章停在写 AGENTS.md，这篇直接说那一层只是概率问题，真正管用的约束得下沉到 commit 拦得住的地方。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [
+        "agents-md",
+        "spec-driven",
+        "skills",
+        "mcp"
+      ],
+      "publishedAt": "2026-08-08T09:56:00.000Z",
+      "author": "",
+      "preScore": 10
+    }
+  ],
+  "reviewed": 20,
+  "dropped": 17,
+  "stats": {
+    "sources": 225,
+    "fetched": 275,
+    "shortlisted": 20,
+    "rejected": 255,
+    "thin": 74,
+    "enriched": 34,
+    "enrichAttempted": 49,
+    "enrichRetryAttempted": 15,
+    "enrichRetried": 0,
+    "failedSources": 0,
+    "feedRetryAttempted": 4,
+    "feedRetried": 4
+  },
+  "errors": [
+    { "source": "小众软件论坛搜索", "error": "部分查询失败（15/30）" }
+  ]
+}

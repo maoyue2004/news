@@ -7,7 +7,7 @@ import { collectRaw } from '../lib/tinker/collect.mjs';
 import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate } from '../scripts/tinker-build.mjs';
-import { needsEnrich, enrich, fetchAllSources } from '../scripts/tinker-fetch.mjs';
+import { needsEnrich, enrich, fetchAllSources, threadBodyHtml } from '../scripts/tinker-fetch.mjs';
 
 const src = { name: '测试源', kind: 'blog' };
 const today = '2026-08-01';
@@ -241,6 +241,31 @@ test('【修复】论坛帖 feed 已给正文时不再补全（linux.do 话题�
   assert.equal(needsEnrich({ excerpt: '短摘要' }), true);
   // 本来就够长的，谁都不补
   assert.equal(needsEnrich({ excerpt: 'x'.repeat(300) }), false);
+});
+
+test('【修复】V2EX 话题页只抽首帖，不把导航和回复算成正文', () => {
+  // 2026-08-09：当天三条 V2EX 入围帖的首帖正文实测是 0 / 0 / 17 字符，
+  // 但整页抽出来是 711 / 1305 / 793 字符，全部越过了「论坛短帖 <600 扣 3 分」那道闸，
+  // 还从回复区白捡「正文经验词」的加分，以 7-9 分占掉三个评审席位。
+  const chrome = 'Home Sign Up Sign In V2EX › OpenAI ';
+  const replies = '1 someone 8h ago 本来就是今天重置啊 2 other 7h ago 我的也是今天重置 '.repeat(6);
+  const footer = ' About · Help · Advertise · Blog · API · FAQ · 912 Online 创意工作者们的社区 ';
+
+  // 首帖为空时 V2EX 连 topic_content 这个 div 都不生成 —— 必须得到 ''，不是 null
+  const empty = `<html><body>${chrome}<div class="box">${replies}</div>${footer}</body></html>`;
+  assert.equal(threadBodyHtml('https://www.v2ex.com/t/1232951', empty), '');
+
+  // 首帖有内容时只切出首帖，回复和 chrome 都不要
+  const body = '感觉 opencode go 首月套餐 $5 很诱人，但是不知道具体效果怎么样呢？';
+  const full = `<html><body>${chrome}<div class="topic_content">${body}</div></div>${replies}${footer}</body></html>`;
+  const scoped = threadBodyHtml('https://www.v2ex.com/t/1232641', full);
+  assert.equal(scoped, body, '切出来的应当正好是首帖');
+  assert.ok(!scoped.includes('本来就是今天重置啊'), '回复不能混进首帖');
+  assert.ok(!scoped.includes('创意工作者们的社区'), '页脚不能混进首帖');
+
+  // 没有切法的站返回 null，走原来的整页抽取，行为不变
+  assert.equal(threadBodyHtml('https://linux.do/t/topic/2725432', full), null);
+  assert.equal(threadBodyHtml('不是个 URL', full), null);
 });
 
 test('【修复】补全失败要重试一轮：掘金限流页是 HTTP 200，第二次要就给', async () => {
