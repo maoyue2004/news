@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD, QUOTA_RELAX } from '../lib/tinker/relevance.mjs';
+import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD, QUOTA_RELAX, THIN_FLOOR } from '../lib/tinker/relevance.mjs';
 import { matchTools, matchTopics, matchVocab, queriesForDate, rotatingQueries, CORE_QUERIES, TOOLS } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
@@ -430,4 +430,54 @@ test('summaryPage 是源级开关，没标的源不受影响', () => {
   }));
   const { shortlist } = triage(items, { cap: 60, quota: 8 });
   assert.equal(shortlist.length, 2);
+});
+
+test('抓不到正文的条目按名额封顶，不吃掉能读的席位', () => {
+  // 2026-08-10：掘金一波 TRAE Work 投稿全部补全失败，22 席里 13 席是打不开的标题。
+  // thin 席位创刊以来 54 → 收录 2（3.7%），非 thin 148 → 收录 31（21%）。
+  const mk = (i, thin) => ({
+    id: `${thin ? 't' : 'r'}${i}`, source: thin ? '搜索源' : `博客${i}`,
+    url: `https://e.com/${thin ? 't' : 'r'}${i}`,
+    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
+    ...(thin ? { thin: true } : {}),
+  });
+  const items = [
+    ...Array.from({ length: 20 }, (_, i) => mk(i, true)),
+    ...Array.from({ length: 12 }, (_, i) => mk(i, false)),
+  ];
+  const { shortlist, rejected } = triage(items, { cap: 60, quota: 8 });
+
+  const thinIn = shortlist.filter((it) => it.thin).length;
+  assert.equal(shortlist.length - thinIn, 12, '能读的条目一条都不该被挤掉');
+  assert.equal(thinIn, 4, '12 条能读的对应 25% 占比 = 4 席 thin');
+  assert.equal(shortlist.length + rejected.length, items.length, '总数必须守恒');
+  assert.ok(
+    rejected.filter((r) => r.reasons.some((x) => x.includes('抓不到正文的条目已达当日名额'))).length === 16,
+    '被名额挡下的 thin 条目要留痕，不静默消失',
+  );
+});
+
+test('全天供给都抓不到正文时仍留 THIN_FLOOR 席，不至于整天空转', () => {
+  const items = Array.from({ length: 10 }, (_, i) => ({
+    id: `t${i}`, source: '搜索源', thin: true, url: `https://e.com/t${i}`,
+    titleOriginal: `我用 Codex 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
+  }));
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  assert.equal(shortlist.length, THIN_FLOOR, `能读的一条都没有时按地板给席位，实际 ${shortlist.length}`);
+});
+
+test('thin 名额切在配额之前，腾出的席位让能读的条目补进来', () => {
+  // 顺序很关键：先切 thin 再分配额，被单源配额挤出去的能读条目才补得回来。
+  const mk = (i, thin) => ({
+    id: `${thin ? 't' : 'r'}${i}`, source: '掘金搜索', url: `https://e.com/${thin ? 't' : 'r'}${i}`,
+    titleOriginal: `我用 Cursor 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
+    ...(thin ? { thin: true } : {}),
+  });
+  // 同一个源：14 条 thin + 6 条能读，配额 8、放宽到 16。
+  const items = [...Array.from({ length: 14 }, (_, i) => mk(i, true)), ...Array.from({ length: 6 }, (_, i) => mk(i, false))];
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  assert.equal(shortlist.filter((it) => !it.thin).length, 6, '6 条能读的全部进名单');
 });

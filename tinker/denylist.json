@@ -147,5 +147,11 @@
     "name": "Teach Talk / ttalk.im",
     "reason": "2026-08-08 lotosbin 首次审：选题极对口（Agent Harness、构建 Claude Code 的经验教训、不要再构建多 Agent），但**整站是翻译站**——抽查「通过工程化的 Harness 改进 Deep Agent」，正文是 Improving Deep Agents with harness engineering 的中译，文末标了原文出处，作者补充只有一段译者评注。正文不是本人写的，撞「翻译或转载国外文章」那条。译者评注质量不错，但要发布的单位是文章，文章是译文。另：122 天没更。",
     "date": "2026-08-08"
+  },
+  {
+    "feed": "https://www.80aj.com/feed",
+    "name": "80aj",
+    "reason": "自动化资讯改写站，不是个人博客。20 篇跨度不到 6 小时，同一秒内连发三条（18:13:44/45/46），标题清一色「引发争议：」「研究称」「开发者反馈：」的通稿腔，内容是英文社区帖的中译摘要。撞 --min-span 那条闸（媒体节奏），也撞「翻译或转载国外文章而无本人补充」。",
+    "date": "2026-08-10"
   }
 ]

@@ -1,0 +1,75 @@
+{
+  "date": "2026-08-10",
+  "generatedAt": "2026-08-09T22:40:00.000Z",
+  "dailyNote": "今天先读 V2EX 那条删库：出门前给 Windows 上的 Codex 开了 full access，回来 C 盘 D 盘没了，两三百 G。楼主把 codex 记录和 Win32_Process 的真实命令行对出来了，问题不在模型判断，在 PowerShell 把参数递给 wsl.exe 时吃掉了内层双引号——本该删临时目录的那句，删的是根。另外两篇是正经的手艺活：Phodal 讲插件里的 Skill 怎么当软件资产维护，fenx 记第一款 iOS App 的全程。毙掉的绝大部分是掘金那波 TRAE Work / WorkBuddy 投稿，十几条全都抓不到正文，只剩一个标题。",
+  "items": [
+    {
+      "id": "4b43f77e5db268ad",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "url": "https://www.v2ex.com/t/1233011#reply46",
+      "titleOriginal": "Codex 把我电脑文件都删了",
+      "titleZh": "给 Codex 开了 full access，回来时 C 盘 D 盘已经空了",
+      "summaryZh": "出门前让 Codex 自己去验证项目脚本，开了 full access，回来发现两三百 G、上百万个文件被删光，除了被进程占用的都没了，用的是 gpt-5.6-sol xhigh fast。楼主拿 Claude Code 反查 codex 记录，找到那条经 wsl.exe 执行的命令：本意是删掉 mktemp -d 建的临时目录，但 Win32_Process 记下的操作系统层真实命令行里，$d 两侧的双引号已经不见了——PowerShell 把参数传给原生 exe 时没有转义内层引号。而那句 find 前面刚好是 cd /。",
+      "whyRead": "不是「AI 可能会乱删东西」的泛泛警告，是一条能对到命令行的因果链：引号在 PowerShell 传参那一层丢掉，前一句又把工作目录切到了根。",
+      "rating": 5,
+      "tools": ["codex", "claude-code"],
+      "topics": [],
+      "publishedAt": "2026-08-09T02:56:23.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "df34c4406eb7dfa2",
+      "source": "Phodal 黄峰达",
+      "kind": "blog",
+      "url": "https://www.phodal.com/blog/agent-plugin-engineering/",
+      "titleOriginal": "Agent 插件如何走向工程化：Better Harness 的五个实践",
+      "titleZh": "Skill 进了插件生态之后，它就不再是提示词而是软件",
+      "summaryZh": "作者在 Qoder 做 Agent 插件生态，拿 Better Harness 的开发过程讲一个 Skill 被不同用户、不同项目、不同宿主反复调用之后要补哪些工程环节。规格写成带稳定编号的验收条件（一份边界加固规格拆成 AC-01 到 AC-09），每条分别对应实现、测试和评审证据；评测按同一任务、同一模型做三组对照——不用 Skill、当前版本、候选版本。文中给「已经路由但没有真正执行」单独起了名字（routed-but-not-applied），并把结论限制成一条证据链：已存在 → 已接入 → 已执行 → 有效果证据。",
+      "whyRead": "回答了一个几乎没人写的问题：你怎么证明这次改 SKILL.md 是改好了，而不是改坏了。",
+      "rating": 4,
+      "tools": ["qoder"],
+      "topics": ["skills", "agents-md", "spec-driven", "harness"],
+      "publishedAt": "2026-08-09T06:10:00.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "a70178c16b18c18a",
+      "source": "fenx.work",
+      "kind": "blog",
+      "url": "https://fenx.work/craft-my-first-ios-app-yumlog/",
+      "titleOriginal": "#95 制作我的第一款 iOS App: 干饭手册",
+      "titleZh": "全程用 Cursor 写完第一款 iOS App，顺手把模型账也算了一遍",
+      "summaryZh": "一款记录会做哪些菜的 App，从设计到上架的完整复盘。开发段是重点：前期主要用 Sonnet 4.5、plan 模式偶尔上 Opus 4.5，$20 升到 $60 档仍然每月额外花掉几十美元；中后期换 GPT-5.3-Codex 默认 medium 思考强度，额度多出数倍且效果不差，杂活交给 Composer。作者说因为第一次碰 SwiftUI、想看明白，所以对每个需求都「微管理」，没有放手让 agent loop 跑几小时。后半篇的踩坑清单由 Agent 读聊天记录整理而成，逐条记了 SwiftData + CloudKit 的硬约束、上下文漂移、CKShare 要走 Zone-based 这些坑。",
+      "whyRead": "少见地把「用哪个模型、花了多少钱、什么时候该微管理而不是放手」写成了账，而不是感想。",
+      "rating": 4,
+      "tools": ["cursor"],
+      "topics": ["vibe-coding"],
+      "publishedAt": "2026-08-09T08:40:09.000Z",
+      "author": "",
+      "preScore": 7
+    }
+  ],
+  "reviewed": 22,
+  "dropped": 19,
+  "stats": {
+    "sources": 225,
+    "fetched": 302,
+    "shortlisted": 22,
+    "rejected": 280,
+    "thin": 113,
+    "enriched": 29,
+    "enrichAttempted": 86,
+    "enrichRetryAttempted": 57,
+    "enrichRetried": 0,
+    "failedSources": 1,
+    "feedRetryAttempted": 8,
+    "feedRetried": 7
+  },
+  "errors": [
+    { "source": "东方星痕", "error": "HTTP 503" },
+    { "source": "小众软件论坛搜索", "error": "部分查询失败（15/30）" }
+  ]
+}
