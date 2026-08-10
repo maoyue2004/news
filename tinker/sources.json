@@ -26,7 +26,8 @@
     "kind": "search",
     "enabled": true,
     "limit": 20,
-    "desc": "Appinn 的 Discourse 论坛，桌面工具折腾氛围浓，覆盖 Work Agent 那一侧。",
+    "maxQueries": 8,
+    "desc": "Appinn 的 Discourse 论坛，桌面工具折腾氛围浓，覆盖 Work Agent 那一侧。Discourse 匿名搜索限流，实测第 8 个查询之后一律 429，所以每轮只发 8 个（轮转池每天切片不同，被截掉的词第二天还有机会）。",
     "thread": true
   },
   {
@@ -1812,5 +1813,117 @@
     "kind": "blog",
     "enabled": true,
     "desc": "数学竞赛题解 + LaTeX/Neovim 折腾的混合博客。agent 那部分是「用 Vibe Coding 写一个 VSCode 插件 / Python 版 pdf2svg」这类小而完整的自造工具。"
+  },
+  {
+    "name": "墨然",
+    "url": "https://moran.cc.cd",
+    "feed": "https://moran.cc.cd/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。近 20 篇里 8 篇够上收录线，本轮最高。逐篇试 agent 周边小工具并给出实测数字（RTK 那篇贴了 rtk gain 的逐命令省 token 统计，还老实写明 grep 只省了 0.9%）。feed 只给摘要，正文靠补全。"
+  },
+  {
+    "name": "Wangxinyang",
+    "url": "https://wangxinyang.top",
+    "feed": "https://wangxinyang.top/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。近 20 篇里 7 篇够格，补 Work Agent 那一侧：用 WorkBuddy 修 Win11 UWP 全家打不开，正文是真的 PowerShell 排查链（Get-AppxPackage 报 DependencyIssue → 追依赖到 VCLibs NeedsRemediation）。另一半是「保姆级教程」体，靠评审挡。"
+  },
+  {
+    "name": "1874's BLOG",
+    "url": "https://blog.1874.cool",
+    "feed": "https://blog.1874.cool/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。近 20 篇 5 篇够格且全在靶心上：Hermes Agent 折腾日志、用 fork 接管 Hermes 更新、Codex + Claude Code 省钱工作流、OpenClaw 多 Agent 架构。2026 年起才转到这个主题，之前是 HomeLab。"
+  },
+  {
+    "name": "JiaoYuan",
+    "url": "https://jiaoyuan.org",
+    "feed": "https://jiaoyuan.org/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。生信研究者的个人博客，agent 密度低但全是一手：在生信工作中使用 agent、在曙光服务器上公共部署 Claude Code、Vibe Coding 了一个博客框架。典型的「月更博主一年出几篇好文」。"
+  },
+  {
+    "name": "LOTUS BLOG",
+    "url": "https://blog.lotusssb.com",
+    "feed": "https://blog.lotusssb.com/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。SRE / 云原生方向，主线是「【云原生踩坑实录】」系列（K3s 网络丢包、rm 遇到 EBUSY 的 Pod 假死）。agent 那部分是套娃安装 OpenClaw、Gemini CLI 初体验。更新慢。"
+  },
+  {
+    "name": "loli.fj.cn",
+    "url": "https://loli.fj.cn",
+    "feed": "https://loli.fj.cn/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。「【笔记】」体的日更备忘本，主体是 Webpack，但有一整串「Codex 配置 X 的 MCP」（Blender / Unity / IDEA / Wireshark / Brave），一条一条写清楚怎么配通的。密度低、单篇短，但那串是一手的。"
+  },
+  {
+    "name": "柒言",
+    "url": "https://qiyec.site",
+    "feed": "https://qiyec.site/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现（只被 1 个博主挂过）。近 20 篇 14 篇够上收录线，创刊以来单站最高。整站按【Claude Code系列】【AI Coding】【Hermes Agent】分栏：Superpowers、OpenSpec SDD 工作流、Claude Code Skills、WSL2+AI Coding。抽的那篇 Hermes 多 Profile 有完整目录树和四种创建姿势，还写「改炸了还能回滚」——是自己用出来的。"
+  },
+  {
+    "name": "hejunjie",
+    "url": "https://hejunjie.life",
+    "feed": "https://hejunjie.life/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。自造工具型个人博客：「Skill 使用心得：从四处找插件到建立自己的数字工具箱」「从网页聊天到 Claude Code：一个 Skill 改变了什么」「我把每天的键盘输入变成了一张热力图」。Go / PHP 背景，每篇都是自己做完再复盘。"
+  },
+  {
+    "name": "xuezhao.space",
+    "url": "https://xuezhao.space",
+    "feed": "https://xuezhao.space/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。有一整套 OpenClaw 系列 01-07（部署与第一次对话 / 多 Agent 架构 / 记忆系统 / Provider 与成本 / 思源笔记联动 / Heartbeat 与 Cron / Claude Code 集成）。近期在写年度总结和读书笔记，agent 是间歇性主题。"
+  },
+  {
+    "name": "Ruyut 鹿有鹿",
+    "url": "https://www.ruyut.com",
+    "feed": "https://www.ruyut.com/feeds/posts/default",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现，**繁中**，补台港这块一直偏薄的覆盖。短实践笔记为主：「codex 使用量分享 / token 統計方式｜$20 美金等於多少 API 用量」「GitHub Copilot 2026 年 6 月計費方案大改版 體驗」，以及 WSL2 / Docker 的排错记录。"
+  },
+  {
+    "name": "oskyla",
+    "url": "https://oskyla.com",
+    "feed": "https://oskyla.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。Linux / K8s 运维方向（openFuyao、Ascend 310P NPU-Operator 故障排查这类硬活），agent 那部分是「Hermes Agent 在 K3s / K8s 中运行指南」「Linux 裸机部署 Moltbot 并集成飞书」。更新慢。"
+  },
+  {
+    "name": "blueke",
+    "url": "https://blog.blueke.top",
+    "feed": "https://blog.blueke.top/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。活跃的短文博客，agent 那部分集中在记忆系统：「使用 LLM Wiki 作为 Hermes Agent 的记忆系统」「使用 Obsidian 作为 Hermes Agent 的记忆数据库」。feed 只给几十字摘要，正文靠补全。"
+  },
+  {
+    "name": "eebk",
+    "url": "https://www.eebk.com",
+    "feed": "https://www.eebk.com/feeds/posts/default",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。生活与技术混写，但技术那几篇正中靶心：「OpenViking 记忆提取挂了三天，最后发现是模型太聪明」（近 3000 字的排查故事）、「Hermes Mini App 监控面板开发实录」。"
+  },
+  {
+    "name": "tsio",
+    "url": "https://blog.tsio.top",
+    "feed": "https://blog.tsio.top/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "友链页发现。后端工程方向的「【实践记录】」系列（Tailscale DERP 在阿里云的 HTTP reset、N+1 查询跨地域超时、一次 SQL 空格引发的排查）。agent 密度低，命中的是思源笔记 API-MCP 知识库方案。"
   }
 ]

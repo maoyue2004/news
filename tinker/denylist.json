@@ -153,5 +153,65 @@
     "name": "80aj",
     "reason": "自动化资讯改写站，不是个人博客。20 篇跨度不到 6 小时，同一秒内连发三条（18:13:44/45/46），标题清一色「引发争议：」「研究称」「开发者反馈：」的通稿腔，内容是英文社区帖的中译摘要。撞 --min-span 那条闸（媒体节奏），也撞「翻译或转载国外文章而无本人补充」。",
     "date": "2026-08-10"
+  },
+  {
+    "feed": "https://blog.528688.cn/rss.xml",
+    "name": "HaoUp（blog.528688.cn）",
+    "reason": "数码资讯 / 软件推荐站的形状：标题清一色「全网炸锅！Claude Code Cli内部核心代码全部流出」「终端党狂喜！这款 AI 编程工具不花一分钱」「这工具吹爆」，页面挂赞助位。抽的那篇 macOS 外接屏黑屏确实是本人经历，但落点是资讯改写而不是折腾记录，和 08-02 否掉 wangjun.dev 同一把尺子。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://blog.lusyoe.com/rss/feed.xml",
+    "name": "blog.lusyoe.com",
+    "reason": "真人博客，但主线是一人企业 / 小程序增长运营（召回策略、签到邀请任务中心、邮件营销）。近 20 篇里够格的只有「通过 Hermes 搭建 AI 驱动的全自动安全封禁系统」一条。准入标准从严，不收。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://www.halo.run/rss.xml",
+    "name": "Halo 官网博客",
+    "reason": "开源产品 Halo CMS 的官网营销博客：「Halo 和 WordPress / Ghost / Hexo / Hugo / Strapi 对比」成套 SEO 稿 + 建站入门科普。和「大厂官方技术号」是同一类机器判不出来的源——文章确实像实践文，但它是产品方自己在推自己。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://homulilly.com/atom.xml",
+    "name": "homulilly.com",
+    "reason": "Hexo 主题作者的个人博客（手办、明日方舟、主题开发）。命中的两条 n8n 是 2025 年的部署报错记录，和 coding / work agent 无关。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://blog.luhua.site/rss.xml",
+    "name": "blog.luhua.site",
+    "reason": "「2026 AI 开发工具完全指南」「Prompt 提示词优化指南：让 LLM 输出质量翻倍的实用技巧」这类清单体，是内容农场的形状而不是个人折腾；109 天没更新；feed 只给 150 字摘要。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://ooo.run/atom.xml",
+    "name": "ooo.run",
+    "reason": "AI / 前端资讯日更站：「OpenAI 发布 GPT-5.6 与 ChatGPT Work，重塑 AI 工作模式」「Sonnet 5 已发布，值得用吗？」「Vercel Services 发布」。20 篇只跨 21 天，刚好越过 --min-span 14 那道媒体节奏闸——**这条闸对 20 条窗口来说太松了**，记一笔。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://qmye.com/feed",
+    "name": "奇妙的Ye（qmye.com）",
+    "reason": "1Panel 部署教程站：「零基础搭建」「手把手打造 24h 在线私人 AI 助手」「进阶篇」，中间夹着申请美国原生手机号、eSIM 写卡、限免领取。是保姆级教程 + 薅羊毛的形状，不是折腾记录；94 天没更。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://fqzlr.com/rss.xml",
+    "name": "fqzlr.com",
+    "reason": "建站教程博客（域名注册一年 6 元、零成本搭博客、图床、Waline 评论迁移、主题对比）。命中的两条是「用 Codex / Qoder / Trae 一键改博客主题」和 Obsidian 写博客，主线仍是建站 SEO 教程。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://gooseforum.online/rss.xml",
+    "name": "GooseForum",
+    "reason": "是论坛不是博客，且是这个论坛程序自己的官方站：feed 里大半是「功能建议」「安装网站问题」「来都来了～」这类几十字的站务帖，还夹着「住宅IP免费送」。",
+    "date": "2026-08-11"
+  },
+  {
+    "feed": "https://openlang.cn/rss.xml",
+    "name": "openlang.cn",
+    "reason": "全站只有 7 篇，清一色「完全指南 / 完整教程」体（OpenClaw 从中级到高级完整教程、Skills 概念完全指南、OpenCode 完全指南），是照着文档铺主题而不是记录自己踩的坑；92 天没更。",
+    "date": "2026-08-11"
   }
 ]

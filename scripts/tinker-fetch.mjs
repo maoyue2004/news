@@ -275,10 +275,10 @@ async function main() {
 
   const fetchOne = async (source) => {
     if (isSearchSource(source)) {
-      const { items: raw, failures } = await fetchSearchItems({
+      const { items: raw, failures, attempted } = await fetchSearchItems({
         source, queries, ua: BROWSER_UA, afterDate: daysAgo(today, 21),
       });
-      if (failures.length) partials.set(source.name, { source: source.name, message: `部分查询失败（${failures.length}/${queries.length}）`, partial: true });
+      if (failures.length) partials.set(source.name, { source: source.name, message: `部分查询失败（${failures.length}/${attempted}）`, partial: true });
       else partials.delete(source.name);
       return collectRaw({ source, raw, seen, today, now });
     }

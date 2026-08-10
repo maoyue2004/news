@@ -481,3 +481,39 @@ test('thin 名额切在配额之前，腾出的席位让能读的条目补进来
   const { shortlist } = triage(items, { cap: 60, quota: 8 });
   assert.equal(shortlist.filter((it) => !it.thin).length, 6, '6 条能读的全部进名单');
 });
+
+test('规格驱动开发认得 SDD 和「规范驱动」两种写法', () => {
+  // 2026-08-11：947 条语料里讲这件事的 14 条，旧别名只认出 6 条。
+  // SDD 是三字母缩写（危险的形状），加之前逐条查过 10 条命中，没有一条是别的意思。
+  assert.deepEqual(matchTopics('再见 SDD——Spec 驱动开发为何不适合大多数项目'), ['spec-driven']);
+  assert.deepEqual(matchTopics('试试这套 SDD 规范驱动工作流'), ['spec-driven']);
+  assert.deepEqual(matchTopics('Spec Kit 入门：规格驱动开发实践'), ['spec-driven']);
+});
+
+test('worktree 认得 git worktree 这个固定搭配，但仍不收裸 worktree', () => {
+  // 旧别名要求限定词紧挨着 worktree，于是「我用 git worktree 让多个 Agent 互不打架」
+  // 这种把限定词放在句子里的写法全部漏掉：19 条提到 worktree 的只认出 4 条。
+  assert.deepEqual(matchTopics('多个 AI Agent 同时改一个项目，我用 git worktree 让它们互不打架'), ['worktree']);
+  assert.deepEqual(matchTopics('面向 Coding Agent 的多仓库 Git Worktree'), ['worktree']);
+  // 裸 worktree 仍然不收：讲分支管理的文章会误伤。
+  assert.deepEqual(matchTopics('worktree 是个被低估的功能'), []);
+});
+
+test('Agent 记忆认得「长期记忆」，Agent Skills 认得单数写法', () => {
+  assert.deepEqual(matchTopics('AI Agent 长期记忆怎么存？'), ['agent-memory']);
+  assert.ok(matchTopics('把 OpenSpec 做成一个 Agent Skill').includes('skills'));
+  assert.ok(matchTopics('Claude Code 的 agent skills 目录怎么组织').includes('skills'));
+});
+
+test('Graph Engineering 只收英文写法，「图工程」不收', () => {
+  assert.deepEqual(matchTopics('Loop Engineering 之后是什么？Graph Engineering 完整拆解').sort(), ['graph-engineering', 'loop-engineering']);
+  // 三个字，是「制图工程」「地图工程」的一段——和「心流 → 核心流程」同类。
+  assert.deepEqual(matchTopics('我们院的制图工程专业'), []);
+});
+
+test('ai coding 是泛 agent 词，能单独把条目从「没命中任何词」里救出来', () => {
+  // 表里一直有 `ai 编程` / `coding agent`，唯独漏了同样常用的这个英文写法（语料里 24 条）。
+  const r = scoreItem({ title: '一篇 AI Coding 生态发展的自省记述', excerpt: '我折腾了三个月的记录。' });
+  assert.ok(!r.reasons.includes('没有命中任何 agent 相关词'));
+  assert.ok(r.reasons.some((x) => x.startsWith('泛 agent 词')));
+});

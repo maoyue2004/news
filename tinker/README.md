@@ -42,6 +42,8 @@ feed 源（个人博客/周刊/论坛）┐
 - `scripts/tinker-retriage.mjs` — 用 `data/_raw.json` 离线重放筛选规则，改规则时用它对比
 - `scripts/tinker-build.mjs` — 构建 `dist/tinker.html`，构建期校验字段
 - `scripts/tinker-probe.mjs` — 探测候选站点的 feed 地址
+- `scripts/tinker-harvest.mjs` — 从社区索引（OPML / CSV / Markdown 名录）批量筛博客
+- `scripts/tinker-blogroll.mjs` — 从**已收录博客的友链页**发现新博客，判据复用 harvest 的评分器
 - `lib/tinker/vocab.mjs` — 工具名、经验词、反向词、搜索查询库。**最该被反复修改的文件**
 - `lib/tinker/relevance.mjs` — 规则打分与按源配额裁剪
 - `lib/tinker/search-adapters.mjs` — 掘金 / V2EX(sov2ex) / Discourse 的搜索接入
@@ -77,6 +79,14 @@ dry-run 忽略 `seen`（否则日更刚跑完，重放只剩零条；忽略之�
 
     node scripts/tinker-probe.mjs https://某站点.com
     node scripts/tinker-probe.mjs --file tinker/candidates.txt
+
+两条**发现**通道（都要人工过一遍命中列表再并入，否决当场写进 `denylist.json`）：
+
+    node scripts/tinker-harvest.mjs --index <id>        # 社区索引，六个已扫完，边际产出趋零
+    node scripts/tinker-blogroll.mjs --evaluate \
+      --min-links 2 --cache /tmp/blogroll.json          # 已收录博客的友链页
+
+`--cache` 把「爬友链页」那十几分钟的结果存下来，之后调 `--min-links` 不用重爬。
 
 探测器会报出 feed 地址、条目数、最新文章距今多少天、有正文的占比。
 **最新文章超过 365 天的不要加**——那是死站。

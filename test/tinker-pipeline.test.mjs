@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, cpSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { collectRaw } from '../lib/tinker/collect.mjs';
-import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault } from '../lib/tinker/search-adapters.mjs';
+import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault, fetchSearchItems } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate } from '../scripts/tinker-build.mjs';
 import { needsEnrich, enrich, fetchAllSources, threadBodyHtml } from '../scripts/tinker-fetch.mjs';
@@ -381,4 +381,40 @@ test('抓取重试：前两次都被 reset、第三次才通的源要能救回�
   assert.equal(res.retried, 1, '第三轮救回来了');
   assert.deepEqual(res.failed, [], '不该再记 failure');
   assert.deepEqual(ok, [['大 feed 被 reset', 1]], '救回来的条目要真的进入结果');
+});
+
+test('maxQueries 截断每轮查询数，且「整源失败」按实际发出的条数判', async () => {
+  // 小众软件论坛搜索从创刊起天天记「30 个查询挂 15 个」，一直被当成站点抽风。
+  // 实测是 Discourse 匿名搜索限流：连发 30 个，第 8 个前后开始一律 HTTP 429，
+  // 当轮 23 个查询是发出去就注定被拒的。截断之后不再白发。
+  const sent = [];
+  const original = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    sent.push(url);
+    return { ok: true, status: 200, text: async () => JSON.stringify({ posts: [], topics: [] }) };
+  };
+  try {
+    const queries = Array.from({ length: 30 }, (_, i) => `词${i}`);
+    const source = { search: 'discourse', origin: 'https://meta.example.net', maxQueries: 8, delayMs: 0 };
+    const { attempted } = await fetchSearchItems({ source, queries, ua: 'ua' });
+    assert.equal(sent.length, 8, `只该发 8 个查询，实际 ${sent.length}`);
+    assert.equal(attempted, 8, 'attempted 要报实际发出的条数，供上层算失败比例');
+
+    // 没写 maxQueries 的源不受影响：全发。
+    sent.length = 0;
+    const { attempted: full } = await fetchSearchItems({ source: { ...source, maxQueries: undefined }, queries, ua: 'ua' });
+    assert.equal(sent.length, 30);
+    assert.equal(full, 30);
+  } finally { globalThis.fetch = original; }
+});
+
+test('截断之后全挂的源仍然按整源失败抛出，不会被当成部分失败混过去', async () => {
+  // 分母必须是实际发出的条数：拿轮转池总数当分母，8 发 8 挂只算「8/30 部分失败」。
+  const original = globalThis.fetch;
+  globalThis.fetch = async () => { throw new Error('HTTP 429'); };
+  try {
+    const queries = Array.from({ length: 30 }, (_, i) => `词${i}`);
+    const source = { search: 'discourse', origin: 'https://meta.example.net', maxQueries: 8, delayMs: 0 };
+    await assert.rejects(() => fetchSearchItems({ source, queries, ua: 'ua' }), /全部 8 个查询失败/);
+  } finally { globalThis.fetch = original; }
 });

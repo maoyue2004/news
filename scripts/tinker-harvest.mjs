@@ -194,7 +194,7 @@ async function get(url, ua) {
  *      判据和日常筛选完全一致，不再是另一套近似标准。
  *   2) 近 20 篇的时间跨度不能太短。媒体日更十几条，个人博客不会。
  */
-function evaluate(xml) {
+export function evaluate(xml) {
   const parsed = parseFeed(xml);
   const { items = [] } = parsed;
   if (!items.length) return { ok: false, why: '0 条' };
