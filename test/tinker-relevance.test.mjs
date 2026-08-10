@@ -398,6 +398,24 @@ test('Superpowers 只认复数，单数是普通英文词', () => {
   assert.deepEqual(matchTools('大模型是每个开发者的 superpower'), []);
 });
 
+test('TRAE Work 不算 Trae：名字被整个包住时，光拆词条不够，要靠 not 遮罩', () => {
+  // 2026-08-11：555 条语料里 `trae work` 命中 15 条、14 条在标题，
+  // 而 `trae` 全部 26 条标题命中里这批占了一多半——页面上「Trae」筛选器
+  // 点进去过半是字节的办公 agent。和 workbuddy / cowork 是同一类「认错人」，
+  // 但那次两个名字不共字，拆开就完了；这次 TRAE Work 里带着 Trae。
+  const promo = matchTools('AntiGravity平替对比：TRAE Work能否胜任AI开发与办公混合场景？');
+  assert.ok(promo.includes('trae-work'));
+  assert.ok(!promo.includes('trae'), 'TRAE Work 稿不该同时挂到 Trae 的筛选器上');
+  // 遮罩只抹掉被排除的那几个字，剩下的裸 Trae 照常算数
+  const both = matchTools('TRAE Work vs Trae：办公和写代码到底该用哪个');
+  assert.ok(both.includes('trae') && both.includes('trae-work'));
+  assert.ok(matchTools('TRAE_初体验，拿它写了个 Chrome 插件').includes('trae'));
+  // 连写形式也要认出来
+  assert.ok(matchTools('WorkBuddy 与 TraeWork：微信遥控电脑的 AI 办公新范式').includes('trae-work'));
+  // 词条加了，但不派生查询词——它的中文语料几乎全是投稿稿
+  assert.deepEqual(rotatingQueries().filter((q) => /trae\s*work/i.test(q)), []);
+});
+
 test('聚合站 AI 摘要页整源不进名单，但照常打分并留在 rejected 里', () => {
   // BestBlogs.dev 那类源：条目本身分数很高（它就是在筛 agent 好文），
   // 但落地页是站方生成的摘要而不是作者原文，评审那一步一律不收。
