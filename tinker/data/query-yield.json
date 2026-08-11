@@ -1,44 +1,44 @@
 {
   "Claude Code 实践": {
-    "runs": 8,
-    "items": 85,
+    "runs": 9,
+    "items": 88,
     "shortlisted": 28,
-    "lastRun": "2026-08-11",
+    "lastRun": "2026-08-12",
     "lastShortlist": "2026-08-11"
   },
   "Claude Code 踩坑": {
-    "runs": 8,
-    "items": 35,
-    "shortlisted": 10,
-    "lastRun": "2026-08-11",
-    "lastShortlist": "2026-08-07"
+    "runs": 9,
+    "items": 41,
+    "shortlisted": 11,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
   },
   "Codex CLI 体验": {
-    "runs": 8,
-    "items": 39,
-    "shortlisted": 7,
-    "lastRun": "2026-08-11",
-    "lastShortlist": "2026-08-11"
+    "runs": 9,
+    "items": 47,
+    "shortlisted": 10,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
   },
   "Cursor 工作流": {
-    "runs": 8,
-    "items": 27,
+    "runs": 9,
+    "items": 28,
     "shortlisted": 8,
-    "lastRun": "2026-08-11",
+    "lastRun": "2026-08-12",
     "lastShortlist": "2026-08-06"
   },
   "AI 编程 踩坑": {
-    "runs": 8,
-    "items": 52,
+    "runs": 9,
+    "items": 58,
     "shortlisted": 3,
-    "lastRun": "2026-08-11",
+    "lastRun": "2026-08-12",
     "lastShortlist": "2026-08-10"
   },
   "agent 编程 心得": {
-    "runs": 8,
-    "items": 23,
+    "runs": 9,
+    "items": 29,
     "shortlisted": 2,
-    "lastRun": "2026-08-11",
+    "lastRun": "2026-08-12",
     "lastShortlist": "2026-08-08"
   },
   "Augment Code 踩坑": {
@@ -712,5 +712,173 @@
     "shortlisted": 4,
     "lastRun": "2026-08-11",
     "lastShortlist": "2026-08-11"
+  },
+  "氛围编程 体验": {
+    "runs": 1,
+    "items": 7,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "规格驱动开发 实践": {
+    "runs": 1,
+    "items": 19,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "Loop Engineering": {
+    "runs": 1,
+    "items": 17,
+    "shortlisted": 2,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "Context Engineering 实践": {
+    "runs": 1,
+    "items": 7,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "上下文工程 实践": {
+    "runs": 1,
+    "items": 18,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "agent 记忆 方案": {
+    "runs": 1,
+    "items": 24,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "subagent 并行": {
+    "runs": 1,
+    "items": 13,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "git worktree agent": {
+    "runs": 1,
+    "items": 12,
+    "shortlisted": 2,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "多个 agent 协作 开发": {
+    "runs": 1,
+    "items": 26,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "agent 并行 开发": {
+    "runs": 1,
+    "items": 13,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "AI 写代码 一个月": {
+    "runs": 1,
+    "items": 26,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "智能体 折腾": {
+    "runs": 1,
+    "items": 18,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "AI 编程 工作流": {
+    "runs": 1,
+    "items": 13,
+    "shortlisted": 2,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "AI 编程 成本": {
+    "runs": 1,
+    "items": 16,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "token 消耗 编程": {
+    "runs": 1,
+    "items": 17,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "AI 编程 额度 用完": {
+    "runs": 1,
+    "items": 12,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "AI 写代码 翻车": {
+    "runs": 1,
+    "items": 16,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "agent 失控": {
+    "runs": 1,
+    "items": 19,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "AI 编程 幻觉 踩坑": {
+    "runs": 1,
+    "items": 11,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "AI 重构 回滚": {
+    "runs": 1,
+    "items": 19,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "AI 编程 不适合": {
+    "runs": 1,
+    "items": 15,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "agent 用了三个月": {
+    "runs": 1,
+    "items": 16,
+    "shortlisted": 1,
+    "lastRun": "2026-08-12",
+    "lastShortlist": "2026-08-12"
+  },
+  "Manus 体验": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
+  },
+  "Warp 终端 体验": {
+    "runs": 1,
+    "items": 3,
+    "shortlisted": 0,
+    "lastRun": "2026-08-12",
+    "lastShortlist": null
   }
 }

@@ -20,6 +20,10 @@ const ENRICH_CONCURRENCY = 5;
 const ENRICH_RETRY_DELAY_MS = Number(process.env.TINKER_ENRICH_RETRY_DELAY_MS ?? 60000);
 /** 抓取第二轮开始前的等待。见 `RETRYABLE_FETCH_ERROR` 的注释。 */
 const FEED_RETRY_DELAY_MS = Number(process.env.TINKER_FEED_RETRY_DELAY_MS ?? 20000);
+/** 补全熔断：一个源在一轮里发够这么多个请求，就检查一次它的产出。见 `enrichPass()`。 */
+const ENRICH_PROBE = 40;
+/** 探针窗口里成功率低于这个数，判定这个源本轮在限流，剩下的不再发。 */
+const ENRICH_MIN_YIELD = 0.05;
 
 /**
  * 值得重试一次的抓取失败。
@@ -144,10 +148,45 @@ export function threadBodyHtml(url, html) {
   return m ? m[1] : '';
 }
 
+/**
+ * 一轮正文补全，带**按源熔断**。
+ *
+ * 2026-08-12：掘金 285 条原始条目里 284 条抓不到正文，第一轮 285 个请求换回 1 条正文，
+ * 第二轮 291 个请求换回 0 条——**一个源吃掉了当轮 85% 的补全预算，产出接近零**。
+ * 这不是新问题（LESSONS 早写了掘金返回的是 `HTTP 200 + x-tt-system-error: 3`
+ * 的 2397 字节限流页），新的是量级：以前掘金一天几十条，现在两百多条，
+ * 于是「明知在限流还是一条条问完」的代价从几十个请求涨到了几百个。
+ * 而 LESSONS 同一条还写着「同一轮里接着重放两遍，两遍都是 0 收获，**限流被打得更死**」——
+ * 也就是说这几百个必然失败的请求不只是白花时间，它们本身在加深限流。
+ *
+ * 所以给每个源加一道探针：先发 `ENRICH_PROBE` 个，如果这个窗口里的成功率
+ * 低于 `ENRICH_MIN_YIELD`，就判定这个源本轮在限流，剩下的目标直接跳过。
+ * 形状和 appinn 那次的 `maxQueries` 是同一个（见 LESSONS「部分查询失败长期稳定在
+ * 某个比例，先怀疑限流」），区别是这里的额度不是固定值而是「先证明你还给货」。
+ *
+ * **熔断只在一轮之内生效，不跨轮。** 这是刻意的：LESSONS 里「限流类故障的恢复是
+ * 概率性的，别拿连着几天零产出判它永远不会有产出」那条说的就是这个源——
+ * 08-08/09/10 连续三天 `enrichRetried: 0`，08-11 它救回 5 条。
+ * 所以第二轮（等 60 秒之后）照样从零开始探，只是同样探不到货就同样提前收手。
+ *
+ * 阈值取得很松：40 个请求里一条都补不回来（<5%）才熔断。
+ * 08-06 那种 96/125 的正常日子永远不会触发，掘金 1/285 这种必然触发。
+ */
 async function enrichPass(targets, concurrency) {
   let ok = 0;
+  let skipped = 0;
+  /** 源名 → { attempted, ok, dead } */
+  const perSource = new Map();
+  const stateOf = (item) => {
+    const key = item.source;
+    if (!perSource.has(key)) perSource.set(key, { attempted: 0, ok: 0, dead: false });
+    return perSource.get(key);
+  };
   for (let i = 0; i < targets.length; i += concurrency) {
     await Promise.all(targets.slice(i, i + concurrency).map(async (item) => {
+      const state = stateOf(item);
+      if (state.dead) { skipped += 1; return; }
+      state.attempted += 1;
       const before = item.excerpt.length;
       try {
         const html = await get(item.url, { ua: BROWSER_UA, accept: 'text/html,*/*' });
@@ -156,15 +195,19 @@ async function enrichPass(targets, concurrency) {
           : extractArticleText(scoped, EXCERPT_CHARS);
         if (text.length >= THIN_THRESHOLD && text.length >= before * 2) {
           item.excerpt = text;
+          state.ok += 1;
           ok += 1;
         }
       } catch {
         // 抓不到原文页很常见（反爬、超时、登录墙）。保留 feed 给的摘要继续走，
         // 绝不因为补全失败就丢掉条目。
       }
+      if (state.attempted >= ENRICH_PROBE && state.ok / state.attempted < ENRICH_MIN_YIELD) {
+        state.dead = true;
+      }
     }));
   }
-  return ok;
+  return { ok, skipped, muted: [...perSource].filter(([, s]) => s.dead).map(([name]) => name) };
 }
 
 /**
@@ -183,20 +226,30 @@ async function enrichPass(targets, concurrency) {
  * 两遍都是 0 收获——限流被打得更死了。所以只补一轮，先等 `ENRICH_RETRY_DELAY_MS`
  * 让限流窗口过去，并且用一半的并发。
  */
-export async function enrich(items, { retryDelayMs = ENRICH_RETRY_DELAY_MS } = {}) {
+export async function enrich(items, { retryDelayMs = ENRICH_RETRY_DELAY_MS, log = () => {} } = {}) {
   const targets = items.filter((it) => needsEnrich(it));
-  let ok = await enrichPass(targets, ENRICH_CONCURRENCY);
+  const first = await enrichPass(targets, ENRICH_CONCURRENCY);
+  let ok = first.ok;
 
   const retry = targets.filter((it) => it.excerpt.length < THIN_THRESHOLD);
   let retried = 0;
+  let second = { ok: 0, skipped: 0, muted: [] };
   if (retry.length) {
     await sleep(retryDelayMs);
-    retried = await enrichPass(retry, Math.max(1, Math.floor(ENRICH_CONCURRENCY / 2)));
+    second = await enrichPass(retry, Math.max(1, Math.floor(ENRICH_CONCURRENCY / 2)));
+    retried = second.ok;
     ok += retried;
   }
 
+  const muted = [...new Set([...first.muted, ...second.muted])];
+  const skipped = first.skipped + second.skipped;
+  if (muted.length) log(`补全熔断：${muted.join('、')}（探针窗口零产出，本轮跳过 ${skipped} 个请求）`);
+
   for (const it of items) it.thin = it.excerpt.length < THIN_THRESHOLD;
-  return { attempted: targets.length, enriched: ok, retryAttempted: retry.length, retried };
+  return {
+    attempted: targets.length, enriched: ok, retryAttempted: retry.length, retried,
+    enrichSkipped: skipped, enrichMuted: muted,
+  };
 }
 
 /**
@@ -313,7 +366,8 @@ async function main() {
   for (const it of items) if (!byId.has(it.id)) byId.set(it.id, it);
   const unique = [...byId.values()];
 
-  const { attempted, enriched, retryAttempted, retried } = await enrich(unique);
+  const { attempted, enriched, retryAttempted, retried, enrichSkipped, enrichMuted } =
+    await enrich(unique, { log: (m) => console.error(`\n${m}\n`) });
 
   mkdirSync(DATA_DIR, { recursive: true });
   // 补全后、筛选前的完整快照。规则要长期调，每次改完都重抓一遍要两分半钟、
@@ -348,6 +402,8 @@ async function main() {
       enrichAttempted: attempted,
       enrichRetryAttempted: retryAttempted,
       enrichRetried: retried,
+      enrichSkipped,
+      enrichMuted,
       failedSources: errors.filter((e) => !e.partial).length,
       feedRetryAttempted: feedRetryAttempted,
       feedRetried,
@@ -371,6 +427,7 @@ async function main() {
   const s = { fetched: unique.length, shortlisted: shortlist.length, rejected: rejected.length };
   console.log(`\n${today}：抓到 ${s.fetched} 条，规则入围 ${s.shortlisted} 条，筛掉 ${s.rejected} 条`);
   console.log(`正文补全：尝试 ${attempted}，成功 ${enriched}（第二轮重试 ${retryAttempted} 条，救回 ${retried} 条）`);
+  if (enrichSkipped) console.log(`补全熔断：${enrichMuted.join('、')} 探针窗口零产出，跳过 ${enrichSkipped} 个请求`);
   if (feedRetryAttempted) console.log(`抓取重试：${feedRetryAttempted} 个源，救回 ${feedRetried} 个`);
   console.log(`今日查询词（${queries.length}）：${queries.join('、')}`);
   if (errors.length) {

@@ -298,6 +298,79 @@ test('【修复】补全失败要重试一轮：掘金限流页是 HTTP 200，�
   }
 });
 
+test('【新】补全熔断：一个源探针窗口零产出就停发，剩下的不再问', async () => {
+  // 2026-08-12：掘金 285 条里 284 条抓不到正文，第一轮 285 个请求换回 1 条，
+  // 第二轮 291 个换回 0 条——一个源吃掉当轮 85% 的补全预算，产出接近零。
+  // 而 LESSONS 记着「同一轮里接着重放，限流被打得更死」，所以这些必然失败的
+  // 请求不只是白花时间，它们本身在加深限流。
+  const throttled = '<html><body>Please wait...</body></html>';
+  let calls = 0;
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async () => { calls += 1; return new Response(throttled, { status: 200 }); };
+  try {
+    const items = Array.from({ length: 200 }, (_, i) => (
+      { source: '掘金搜索', url: `https://juejin.cn/post/${i}`, excerpt: '短', thin: true }
+    ));
+    const res = await enrich(items, { retryDelayMs: 0 });
+    assert.equal(res.attempted, 200);
+    assert.ok(calls < 200, `熔断后不该问完 200 个，实际发了 ${calls} 个`);
+    assert.ok(res.enrichSkipped > 300, '两轮加起来该跳过三百多个请求');
+    assert.deepEqual(res.enrichMuted, ['掘金搜索']);
+    assert.ok(items.every((it) => it.thin === true), '跳过的仍然是 thin，不影响后续判定');
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test('补全熔断只按源算，一个源被熔断不牵连另一个源', async () => {
+  const body = '<html><body><article>' + '正文内容足够长。'.repeat(60) + '</article></body></html>';
+  const throttled = '<html><body>Please wait...</body></html>';
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => new Response(
+    String(url).includes('juejin') ? throttled : body, { status: 200 },
+  );
+  try {
+    const items = [
+      ...Array.from({ length: 120 }, (_, i) => (
+        { source: '掘金搜索', url: `https://juejin.cn/post/${i}`, excerpt: '短', thin: true }
+      )),
+      ...Array.from({ length: 120 }, (_, i) => (
+        { source: '博客园首页', url: `https://www.cnblogs.com/x/p/${i}`, excerpt: '短', thin: true }
+      )),
+    ];
+    const res = await enrich(items, { retryDelayMs: 0 });
+    assert.deepEqual(res.enrichMuted, ['掘金搜索'], '只有零产出的那个源该被熔断');
+    assert.equal(res.enriched, 120, '正常的源一条都不能少');
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test('补全熔断不跨轮：第二轮从零开始探，限流恢复是概率性的', async () => {
+  // LESSONS：掘金补全的重试 08-08/09/10 连续三天 0，08-11 救回 5 条。
+  // 所以第一轮熔断了，第二轮（等过限流窗口之后）仍然要给它机会。
+  const body = '<html><body><article>' + '这是一篇真正的正文内容。'.repeat(40) + '</article></body></html>';
+  const throttled = '<html><body>Please wait...</body></html>';
+  let pass = 1;
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async () => new Response(pass === 1 ? throttled : body, { status: 200 });
+  try {
+    const items = Array.from({ length: 60 }, (_, i) => (
+      { source: '掘金搜索', url: `https://juejin.cn/post/${i}`, excerpt: '短', thin: true }
+    ));
+    const res = await enrich(items, {
+      retryDelayMs: 0,
+      // 用等待那一刻当「限流窗口过去了」的开关
+    });
+    assert.ok(res.enrichSkipped > 0, '第一轮该熔断');
+    pass = 2;
+    const again = await enrich(items, { retryDelayMs: 0 });
+    assert.equal(again.enriched, 60, '窗口过去之后该全部补回来，不能被上一轮的熔断记忆挡住');
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
 test('补全第一轮就成功的条目不会被重试第二次（重试要克制，别把限流打得更死）', async () => {
   const body = '<html><body><article>' + '正文内容足够长。'.repeat(60) + '</article></body></html>';
   const hits = new Map();

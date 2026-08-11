@@ -1,0 +1,59 @@
+{
+  "date": "2026-08-12",
+  "generatedAt": "2026-08-11T22:40:00.000Z",
+  "dailyNote": "今天只有两篇。掘金 285 条原始条目里 284 条抓不到正文，最大的供给源整个变成了只有标题的名单，评审这边等于凭空少了一半候选。剩下能读的里面，SegmentFault 那五条有四条是内容农场和推销稿——把 Loop / Graph Engineering 讲得头头是道，结尾拐去卖 Token 套餐。先读多仓库 worktree 那篇：两个 Agent 会话同时算出同一个需求编号，作者没有另写一套锁，而是让编号参与分支命名，用 git「同名分支建不出第二次」当互斥，还老老实实写明这招只在同一台机器上成立。",
+  "items": [
+    {
+      "id": "0186443dde43b1ac",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048124731",
+      "titleOriginal": "面向 Coding Agent 的多仓库 Git Worktree",
+      "titleZh": "两个 Agent 同时算出 REQ-31：用 git 分支名当并发锁的多仓库 worktree 工作流",
+      "summaryZh": "把 worktree 并行开发从单仓库搬到 Git Submodule 多仓库时冒出来的一串问题。父仓库 worktree 建完子模块目录还是空的，得补 submodule sync/update，于是写了 wt.sh 把创建、子模块初始化、端口分配（后端 9000+N、前端 4000+N）固化成确定性流程，再包一层 worktree-manager Agent 放在需求设计 Agent 之前。真正的坑在并发：两个会话分别进 worktree，读到同样的目录状态，都把下一个编号算成 REQ-31，合并回父仓库时目录路径必然撞车。解法是让编号参与分支命名，把 git worktree add -b feat/<REQ-ID>「同名分支建不出第二次」当成预占，失败的一方重新扫描分配，实测跑出 REQ-42 / REQ-43 没有冲突。作者还写明这套互斥只在同一台机器的同一份 Git 引用空间成立，跨机器得换中心化服务。",
+      "whyRead": "复用 git 已有的互斥保护当锁，比自己实现一套省事，而且文中把它失效的边界也写清楚了",
+      "rating": 5,
+      "tools": ["claude-code", "codex"],
+      "topics": ["worktree", "subagent", "skills", "harness"],
+      "publishedAt": "2026-08-06T06:25:57.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "0a1ad700b9e90fc1",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/rossiXYZ/p/22350905",
+      "titleOriginal": "【OpenClaw具身硬件】MiniClaw 阅读笔记---(1)基础 - 罗西的思考",
+      "titleZh": "把整个 Agent 栈塞进 5 美元芯片：MiniClaw 源码笔记（一）",
+      "summaryZh": "MiniClaw 是纯 C + FreeRTOS 在 ESP32-S3 上重写的 OpenClaw，没有 Linux、没有 Node.js 运行时。这篇是逐段读代码的笔记：双核明确分工，Core 0 只管 Telegram / WebSocket 的网络 IO，Core 1 跑 agent loop，LLM 调用要 3-15 秒，期间 Core 1 阻塞在 esp_tls 而 Core 0 仍能继续收消息排队；记忆不建数据库，直接是 SPIFFS 上的 MEMORY.md 加每日笔记，技能也是 Markdown 文件，靠系统提示词教模型主动读写。两处为资源做的妥协值得单独看：不做流式解析，攒齐 32KB 响应缓冲一次性解析；历史窗口硬上限 20 条，避免撑爆 PSRAM。文中贴了 context_build_system_prompt() 的完整实现和启动序列。",
+      "whyRead": "去掉操作系统和运行时之后，Agent Loop、记忆和技能会被砍成什么形状，这篇是逐行对着代码看的",
+      "rating": 4,
+      "tools": ["openclaw"],
+      "topics": ["agent-memory", "skills"],
+      "publishedAt": "2026-08-11T12:54:00.000Z",
+      "author": "",
+      "preScore": 6
+    }
+  ],
+  "reviewed": 28,
+  "dropped": 26,
+  "stats": {
+    "sources": 239,
+    "fetched": 639,
+    "shortlisted": 28,
+    "rejected": 611,
+    "thin": 360,
+    "enriched": 43,
+    "enrichAttempted": 334,
+    "enrichRetryAttempted": 291,
+    "enrichRetried": 0,
+    "failedSources": 2,
+    "feedRetryAttempted": 6,
+    "feedRetried": 5
+  },
+  "errors": [
+    { "source": "酷酷的白", "message": "HTTP 403" },
+    { "source": "jax - 走在路上", "message": "HTTP 503" }
+  ]
+}

@@ -213,5 +213,23 @@
     "name": "openlang.cn",
     "reason": "全站只有 7 篇，清一色「完全指南 / 完整教程」体（OpenClaw 从中级到高级完整教程、Skills 概念完全指南、OpenCode 完全指南），是照着文档铺主题而不是记录自己踩的坑；92 天没更。",
     "date": "2026-08-11"
+  },
+  {
+    "feed": "https://www.cccode.dev/rss.xml",
+    "name": "Claude Code 教程（cccode.dev）",
+    "reason": "教程站不是博客：rss 里 35 条全是同一天（2026-02-09）发布的课程目录（安装 Claude Code / 第一次对话 / 基础命令详解 / CLAUDE.md 入门…），是照着文档铺出来的章节，不是谁踩过的坑。同一轮 WebSearch 里和 claude-code-hub.org 一类 SEO 镜像站扎堆出现。",
+    "date": "2026-08-12"
+  },
+  {
+    "feed": "https://ccclub.club/rss.xml",
+    "name": "Claude Code Club（ccclub.club）",
+    "reason": "自称「中国最专业的 Claude Code 中文社区/论坛」，但 /latest.rss /feed /rss.xml /atom.xml /index.xml 全 404，没有可订阅入口；首页 19KB 是营销页。",
+    "date": "2026-08-12"
+  },
+  {
+    "feed": "https://claudecode.xyz/rss.xml",
+    "name": "claudecode.xyz",
+    "reason": "全站 301 跳转，无内容；与 claude-cn.org / claude-code-hub.org / claudecn.com 同属「Claude Code 中文站」SEO 镜像站群。",
+    "date": "2026-08-12"
   }
 ]
