@@ -193,6 +193,28 @@ test('连载章节体标题被扣分，正文里提到章节的正常文章不�
   assert.ok(!normal.reasons.includes('连载章节体标题'));
 });
 
+test('连载罚分在正文经验词够多时减半，教学连载不受影响', () => {
+  // 2026-08-13：iT 邦幫忙铁人赛赛季里，那个平台上**所有**连载都叫 Day N，
+  // 包括真折腾。分开两者的不是标题形状而是正文经验词密度：
+  // 191 篇实测样本里教学连载是 1-3 个，被误杀的那篇实录是 4 个。
+  const tutorial = scoreItem({
+    title: 'Day 01｜什麼是Vibe Coding？當寫程式變成一場自然語言的對話',
+    excerpt: '本篇介紹 Vibe Coding 的概念與由來，並示範一次最簡單的對話式開發流程。'.repeat(20),
+  });
+  assert.ok(tutorial.reasons.includes('连载章节体标题'));
+  assert.ok(!tutorial.reasons.includes('连载章节体标题（正文够实，减半）'));
+
+  const hands0n = scoreItem({
+    title: 'Day 13：我的 AI 沒有資料庫全 Markdown 架構的瘋狂與合理',
+    excerpt: ('这半年自己踩的坑是并发写入：两个系统同时写同一份 MEMORY.md 会互相覆盖。'
+      + '实测下来 grep 撑不住之后才换 SQLite，又遇到写入锁冲突，最后拆成两个库。'
+      + 'AGENTS.md 的品质闸道是唯一的软性约束，记录在这里备查。').repeat(6),
+  });
+  assert.ok(hands0n.reasons.includes('连载章节体标题（正文够实，减半）'));
+  // 减半之后总分要比按 4 分罚高出正好 2 分——罚分本身没被取消。
+  assert.ok(hands0n.score > tutorial.score);
+});
+
 test('ACP 只认带限定词的写法，阿里云 ACP 认证不该命中', () => {
   // 和「心流 → 核心流程」同类：中文语料里裸 ACP 压倒性指阿里云认证。
   assert.deepEqual(matchTopics('我考了阿里云 ACP 认证，备考三个月'), []);

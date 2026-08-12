@@ -1925,5 +1925,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "友链页发现。后端工程方向的「【实践记录】」系列（Tailscale DERP 在阿里云的 HTTP reset、N+1 查询跨地域超时、一次 SQL 空格引发的排查）。agent 密度低，命中的是思源笔记 API-MCP 知识库方案。"
+  },
+  {
+    "name": "iT 邦幫忙 · 家用 NAS 自架 Agent 30 天",
+    "url": "https://ithelp.ithome.com.tw/users/20182865/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9049",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。金融业工程师在家用 NAS 上跑了半年的个人 agent 系统实录：全 Markdown 状态层（SOUL.md / MEMORY.md / DREAMS.md）、凌晨三点的 dreaming 机制、两千个 Markdown 的肥大与漂移。近 13 篇里 5 篇过收录线，是本轮探到的最高产系列。"
+  },
+  {
+    "name": "iT 邦幫忙 · Claude Code 陪跑订阅制 SaaS",
+    "url": "https://ithelp.ithome.com.tw/users/20183223/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9180",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。一个人维运一个已上线的订阅制服务，按「十大地雷」逐条写：SQL 字面 % 吃掉正式站、DDL 型别写错导致开机即挂、把地雷清单写进 CLAUDE.md 给 AI 读。"
   }
 ]

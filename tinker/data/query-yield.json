@@ -1,44 +1,44 @@
 {
   "Claude Code 实践": {
-    "runs": 9,
-    "items": 88,
-    "shortlisted": 28,
-    "lastRun": "2026-08-12",
-    "lastShortlist": "2026-08-11"
+    "runs": 10,
+    "items": 105,
+    "shortlisted": 32,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
   },
   "Claude Code 踩坑": {
-    "runs": 9,
-    "items": 41,
+    "runs": 10,
+    "items": 42,
     "shortlisted": 11,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-13",
     "lastShortlist": "2026-08-12"
   },
   "Codex CLI 体验": {
-    "runs": 9,
-    "items": 47,
-    "shortlisted": 10,
-    "lastRun": "2026-08-12",
-    "lastShortlist": "2026-08-12"
+    "runs": 10,
+    "items": 52,
+    "shortlisted": 11,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
   },
   "Cursor 工作流": {
-    "runs": 9,
-    "items": 28,
-    "shortlisted": 8,
-    "lastRun": "2026-08-12",
-    "lastShortlist": "2026-08-06"
+    "runs": 10,
+    "items": 31,
+    "shortlisted": 9,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
   },
   "AI 编程 踩坑": {
-    "runs": 9,
-    "items": 58,
+    "runs": 10,
+    "items": 62,
     "shortlisted": 3,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-13",
     "lastShortlist": "2026-08-10"
   },
   "agent 编程 心得": {
-    "runs": 9,
-    "items": 29,
+    "runs": 10,
+    "items": 30,
     "shortlisted": 2,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-13",
     "lastShortlist": "2026-08-08"
   },
   "Augment Code 踩坑": {
@@ -378,38 +378,38 @@
     "lastShortlist": "2026-08-09"
   },
   "Cline 体验": {
-    "runs": 1,
-    "items": 5,
+    "runs": 2,
+    "items": 7,
     "shortlisted": 1,
-    "lastRun": "2026-08-06",
+    "lastRun": "2026-08-13",
     "lastShortlist": "2026-08-06"
   },
   "Roo Code 实践": {
-    "runs": 1,
-    "items": 0,
+    "runs": 2,
+    "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-06",
+    "lastRun": "2026-08-13",
     "lastShortlist": null
   },
   "Roo Code 踩坑": {
-    "runs": 1,
-    "items": 15,
+    "runs": 2,
+    "items": 20,
     "shortlisted": 2,
-    "lastRun": "2026-08-06",
+    "lastRun": "2026-08-13",
     "lastShortlist": "2026-08-06"
   },
   "Roo Code 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 3,
     "shortlisted": 1,
-    "lastRun": "2026-08-06",
+    "lastRun": "2026-08-13",
     "lastShortlist": "2026-08-06"
   },
   "Kilo Code 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-06",
+    "lastRun": "2026-08-13",
     "lastShortlist": null
   },
   "Kilo Code 踩坑": {
@@ -880,5 +880,138 @@
     "shortlisted": 0,
     "lastRun": "2026-08-12",
     "lastShortlist": null
+  },
+  "Factory Droid 体验": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "iFlow CLI 实践": {
+    "runs": 1,
+    "items": 17,
+    "shortlisted": 5,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
+  },
+  "iFlow CLI 踩坑": {
+    "runs": 1,
+    "items": 9,
+    "shortlisted": 1,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
+  },
+  "iFlow CLI 体验": {
+    "runs": 1,
+    "items": 4,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "Qwen Code 实践": {
+    "runs": 1,
+    "items": 8,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "Qwen Code 踩坑": {
+    "runs": 1,
+    "items": 8,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "Qwen Code 体验": {
+    "runs": 1,
+    "items": 12,
+    "shortlisted": 1,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
+  },
+  "OpenHands 实践": {
+    "runs": 1,
+    "items": 6,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "OpenHands 踩坑": {
+    "runs": 1,
+    "items": 4,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "OpenHands 体验": {
+    "runs": 1,
+    "items": 3,
+    "shortlisted": 1,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
+  },
+  "SWE-agent 实践": {
+    "runs": 1,
+    "items": 7,
+    "shortlisted": 1,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
+  },
+  "SWE-agent 踩坑": {
+    "runs": 1,
+    "items": 4,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "SWE-agent 体验": {
+    "runs": 1,
+    "items": 1,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "Cursor 踩坑": {
+    "runs": 1,
+    "items": 5,
+    "shortlisted": 1,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
+  },
+  "Cursor 体验": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "Windsurf 实践": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "Windsurf 踩坑": {
+    "runs": 1,
+    "items": 3,
+    "shortlisted": 1,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
+  },
+  "Cline 实践": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-13",
+    "lastShortlist": null
+  },
+  "Cline 踩坑": {
+    "runs": 1,
+    "items": 8,
+    "shortlisted": 2,
+    "lastRun": "2026-08-13",
+    "lastShortlist": "2026-08-13"
   }
 }
