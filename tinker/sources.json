@@ -1941,5 +1941,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "2026 铁人赛系列。一个人维运一个已上线的订阅制服务，按「十大地雷」逐条写：SQL 字面 % 吃掉正式站、DDL 型别写错导致开机即挂、把地雷清单写进 CLAUDE.md 给 AI 读。"
+  },
+  {
+    "name": "raven.tw",
+    "url": "https://raven.tw",
+    "feed": "https://raven.tw/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "台湾一位独立创作者的 AI 工作流实录：把 OpenCLI 接进电子报发布全流程、四个开源抓取工具实测对比、Claude Desktop 免终端发 WordPress。近 8 篇里 7 篇过收录线，是本轮命中率最高的候选。站点挂着社群与电子报导流，但都在导航栏层级，正文落点仍在自己怎么搭。"
+  },
+  {
+    "name": "imzlp 循迹",
+    "url": "https://imzlp.com",
+    "feed": "https://imzlp.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "虚幻引擎工具开发者的个人博客，主线是 UE 插件与热更新，偶尔写自托管折腾（Homelab、MEMOS）。近期那篇「从 Vibe Coding 到 AI Agent：一个喂养系统的完整实践」是本轮探到的最高分单篇。低频，按月更博主留着。"
   }
 ]

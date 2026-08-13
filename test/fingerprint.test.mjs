@@ -22,6 +22,18 @@ test('忽略末尾斜杠、大小写主机名、hash 与 utm 参数', () => {
   assert.equal(itemId('https://example.com/a?utm_source=rss&utm_medium=feed'), base);
 });
 
+test('【修复】同一篇文章从不同 feed 进来（?sc= 来源标记）算出同一个 id', () => {
+  // iT 邦幫忙全站 feed 打 ?sc=rss.qu，铁人赛系列 feed 打 ?sc=rss.iron。
+  // 不归一化的话同一篇文章有两个 id，seen.json 挡不住，会隔天重复收录。
+  const a = 'https://ithelp.ithome.com.tw/articles/10402000?sc=rss.qu';
+  const b = 'https://ithelp.ithome.com.tw/articles/10402000?sc=rss.iron';
+  const bare = 'https://ithelp.ithome.com.tw/articles/10402000';
+  assert.equal(itemId(a), itemId(b));
+  assert.equal(itemId(a), itemId(bare));
+  // spm 同理（阿里系站点的来源标记）
+  assert.equal(itemId('https://example.com/a?spm=1001.2014'), itemId('https://example.com/a'));
+});
+
 test('保留非 utm 的查询参数', () => {
   assert.notEqual(itemId('https://example.com/a?id=1'), itemId('https://example.com/a'));
 });

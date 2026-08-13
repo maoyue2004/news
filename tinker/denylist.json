@@ -231,5 +231,19 @@
     "name": "claudecode.xyz",
     "reason": "全站 301 跳转，无内容；与 claude-cn.org / claude-code-hub.org / claudecn.com 同属「Claude Code 中文站」SEO 镜像站群。",
     "date": "2026-08-12"
+  },
+  {
+    "feed": "https://grenade.tw/feed",
+    "name": "Grenade 手榴弹",
+    "reason": "近 20 篇跨 6 天，是币圈/美股日更媒体节奏；AI 内容是「Grok 4.6 完整介紹｜功能、價格比較」这类 SEO 稿。evaluate() 直接判「像媒体不像个人博客」。",
+    "date": "2026-08-14",
+    "scope": "domain"
+  },
+  {
+    "feed": "https://frankchiu.io/feed/",
+    "name": "Frank Chiu",
+    "reason": "evaluate() 判够格（3/10），但标题清一色「X 是什麼？價格、功能、用法與新手教學」，是 SEO 教程农场的形状而非个人折腾——LESSONS 里「独立博客不等于个人折腾」那条的又一例。",
+    "date": "2026-08-14",
+    "scope": "domain"
   }
 ]

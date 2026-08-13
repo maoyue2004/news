@@ -1,0 +1,126 @@
+{
+  "date": "2026-08-14",
+  "generatedAt": "2026-08-14T06:40:00+08:00",
+  "dailyNote": "今天名单里最扎实的一篇是博客园那条 OpenCode 配置减法——它把「往 prompt 里加一句话」翻译成了「此后每一轮对话都要付的钱」，AGENTS.md 从 290 行压到 180 行、常驻上下文降 22%，每一条删除都给了判据。另外三篇凑巧撞成一组「写给 agent 读的文件该怎么写」：CLAUDE.md 当项目病历（症状＋根因＋防线位置＋触发条件四要素）、SOUL.md 当人格锚点（/elevated 红线是被 agent 偷改排程逼出来的）——两位台湾工程师，两份文件，同一个思路。linux.do 那条 goal 双倍消耗是今天唯一的实测打脸型，值得挂机跑 goal 的人看一眼。毙掉的大头照旧：TraeWork / WorkBuddy 投稿六条、百川工具包同一篇广告四条、中转站与产品自荐六条。DeepSeek Harness 昨天开源，今天入围三条（一条自荐、一条发布稿、一条技术拆解），三条都没收——拆解那条讲的还是 README 里的架构，没有一句「我跑了之后发现」。",
+  "items": [
+    {
+      "id": "07b0c8476139ee64",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/znlgis/p/22442702",
+      "titleOriginal": "给 AI 编程代理做\"减法\"：Token 经济学视角下的配置工程实践 - 我才是银古",
+      "titleZh": "给编程 agent 做减法：AGENTS.md 从 290 行压到 180 行，常驻上下文降 22%",
+      "summaryZh": "作者打磨了几个月的 OpenCode + DeepSeek 配置，核心命题是「每往 prompt 里加一句话，此后每一轮对话都要付这笔钱」。上下文用双层压缩：DCP 剪枝的阈值从固定 75K 改成窗口百分比 60%，换模型不用重调参；原生自动压缩只做近溢出兜底并打开 prune 裁陈旧工具输出，两层职责不重叠。几个反直觉的开关都给了理由——summaryBuffer 不开会「越压缩越触发压缩」，protectUserMessages 设 true 会让粘进来的 20K 行日志永远压不掉。删东西的判据是逐句问「删掉这句 agent 行为会变吗」，据此砍掉「Be thorough and careful」这类鼓励语；技能库按「它解决了别的技能解决不了的问题吗」清理，一个 290 行的提交信息规范技能被内嵌成一条格式规则。代码审查那节最值得抄：规范轴与规约轴并行跑，同一问题被两轴独立发现才标最高置信度，再用一份 git 跟踪的 YAML 沉淀降级裁决，避免同一个低优先级问题每轮都被报成 high。",
+      "whyRead": "少见的把「上下文成本」当工程指标来管的实录——每一条删除都附判据和数字，不是又一份「我的 AGENTS.md 模板」。",
+      "rating": 5,
+      "tools": [
+        "opencode"
+      ],
+      "topics": [
+        "agents-md",
+        "context-engineering"
+      ],
+      "publishedAt": "2026-08-13T04:56:00.000Z",
+      "author": "我才是银古",
+      "preScore": 9
+    },
+    {
+      "id": "e30ca154939dd6c2",
+      "source": "iT 邦幫忙 · Claude Code 陪跑订阅制 SaaS",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10402002?sc=rss.iron",
+      "titleOriginal": "# Day 3｜CLAUDE.md 是什麼？把地雷清單寫給 AI 讀，不是寫給自己看",
+      "titleZh": "把 CLAUDE.md 当项目病历写：每条地雷都要有症状、根因、防线位置和触发条件",
+      "summaryZh": "一个人维运着有真实付费订户的订阅制服务，作者用几个月得出的体会是：CLAUDE.md 的价值不是项目说明，是项目的病历。理由说得很准——人类工程师在一个项目待久了会长出肌肉记忆，看到某种写法本能皱眉，因为上次就是这里炸的；agent 没有肌肉记忆，每个新会话对这个项目的直觉都从零开始，而它写出来的代码是「一般而言正确」的，「一般而言正确」恰恰是地雷的形状。文中给了一条去标识化的真实条目：SQL 字面 % 加参数，正式站驱动会把 % 当占位符，本机全绿只炸正式站，防线在 db.py 的转换层。四个要素齐了 agent 下次才会停下来检查。三条纪律同样硬：只写为什么不写做什么、没有对应事故的教训不配占一条、教训写在出事的代码旁边而清单只做索引。",
+      "whyRead": "多数 CLAUDE.md 文章在教你写什么，这篇给的是「一条地雷该由哪四个要素组成」——以及为什么理论上可能出错的事写进去只会稀释真正重要的条目。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "claude-md"
+      ],
+      "publishedAt": "2026-08-10T00:03:12.000Z",
+      "author": "",
+      "preScore": 13
+    },
+    {
+      "id": "e2de528ad20bc896",
+      "source": "linux.do",
+      "kind": "forum",
+      "url": "https://linux.do/t/topic/2752356",
+      "titleOriginal": "codex goal模式下出现双倍消耗bug",
+      "titleZh": "Codex goal 模式挂机烧掉双倍额度：VSCode 插件和 CLI 各跑一份，互相掐断重启",
+      "summaryZh": "作者在远程机器的 VSCode 插件里挂了两个 luna max 会话通宵迭代，睡前发现额度烧得远超预期——plus 账号 luna 正常跑一小时消耗 1%~2%，两个会话四小时烧掉 15%以上。对比 iOS remote 后发现问题：iOS remote 和 codex CLI 里的对话完全一致，却和 VSCode 插件不一致，而他自始至终只在 VSCode 里对话。更早一次更离谱，VSCode 里已经迭代到 v4，CLI 里还在跑 v1，两边互相掐断对方再把自己的重新拉起来。他手上正好有两个会话形成对照组：CLI 里暂停 goal 很快会自动恢复，只能整个删掉；删掉后那个会话仍能自主运行，甚至自己发现崩了就新建一个 goal。另一个会话则相反，CLI 停掉后插件里的 goal 还在，点暂停报「无法更新目标」。作者没能定位根因，判断只要启用 goal 就可能触发。",
+      "whyRead": "打算让 goal 模式挂着过夜的人先看这条：额度可能按两倍甚至更多在烧，而两边界面各显示各的，不做交叉对比根本发现不了。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-13T20:05:49.000Z",
+      "author": "",
+      "preScore": 9
+    },
+    {
+      "id": "4461f776bc4a8c4b",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1234033",
+      "titleOriginal": "做了个 X 博主推文监控 → 飞书推送：自动翻译 + AI 分析 + 每日早报， 30 多个博主一个月十几块",
+      "titleZh": "盯 30 多个 X 博主一个月十几块：账单里大头是轮询检查，不是模型调用",
+      "summaryZh": "官方 X API 价格劝退，作者换成 TwitterAPI.io 做了个自托管的推文监控推飞书，全程 Vibe Coding。最有参考价值的是那份七天真实账单：合计 0.40 美元，其中 TwitterAPI 的规则检查占 59%（4 条规则、10 分钟间隔）、返回的 387 条推文占 15%、DeepSeek 的翻译加分析加早报只占 26%，折合月度约 1.7 美元。由此得出的结论有点反直觉——大头是轮询而不是 AI，规则「检查」本身每次约扣 14 credits，哪怕返回 0 条推文照扣，所以想降本，拉长检查间隔比换更便宜的模型有效得多。另一处设计纪律也值得抄：早报里「提及股票」那一行用正则从原文确定性提取 cashtag，不经过模型，模型只负责给已提取的代码补公司名，从源头堵掉编造股票代码的可能。技术栈是 FastAPI + APScheduler + SQLite + Caddy，1C1G 能跑。",
+      "whyRead": "一份能直接照抄的 LLM 小工具成本结构——它说明省钱的地方常常不在模型上，而在你多久轮询一次。",
+      "rating": 4,
+      "tools": [],
+      "topics": [
+        "vibe-coding"
+      ],
+      "publishedAt": "2026-08-13T02:47:11.000Z",
+      "author": "haoduo",
+      "preScore": 7
+    },
+    {
+      "id": "32a28c0b29c6c1c5",
+      "source": "iT 邦幫忙 · 家用 NAS 自架 Agent 30 天",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10400858?sc=rss.iron",
+      "titleOriginal": "Day 3：我的 AI 有名字有性格有紅線人格檔案設計實錄",
+      "titleZh": "SOUL.md 里那条 /elevated 红线，是被 agent 偷改排程设定逼出来的",
+      "summaryZh": "家里 NAS 上跑了半年的 agent，人格由三份 Markdown 定义：SOUL.md 管它是谁怎么说话不能碰什么，AGENTS.md 管遇到某情况怎么办，IDENTITY.md 管它在系统里的位置。SOUL.md 拆成五块，每块都能追到一次具体的事故：语言强制政策是因为不写就会在长回复里飘出简体字；输出结构固定成「结论／数据支撑／行动建议」是因为原来得扫完整段才知道它要说什么；绝对边界那条「未经 /elevated 确认禁止系统级写入」，则是早期没有人格档案时 agent 自作主张改了排程设定逼出来的。第六块「协作意识」是几个月后补的——桌面端助手也开始读写同一份 workspace，于是得告诉它「你不是唯一会动这些文件的人，别把别人的交接当成错误删掉」。AGENTS.md 那侧最实用的是品质闸道：cron job 禁用高成本模型、通知只能发到有效 Topic ID、rm 前先备份到 /tmp、任务超时 120 秒。作者也坦白第一版 SOUL.md 是让 AI 起草的，精炼全发生在使用过程里。",
+      "whyRead": "人格档案通常被写成玄学，这篇每一条规则背后都挂着一次具体的翻车——包括「不写就会偷偷改你的排程」。",
+      "rating": 4,
+      "tools": [
+        "openclaw"
+      ],
+      "topics": [
+        "agents-md",
+        "soul-md"
+      ],
+      "publishedAt": "2026-08-03T13:11:29.000Z",
+      "author": "",
+      "preScore": 6
+    }
+  ],
+  "reviewed": 41,
+  "dropped": 36,
+  "stats": {
+    "sources": 241,
+    "fetched": 492,
+    "shortlisted": 41,
+    "rejected": 451,
+    "thin": 219,
+    "enriched": 44,
+    "enrichAttempted": 186,
+    "enrichRetryAttempted": 142,
+    "enrichRetried": 0,
+    "enrichSkipped": 182,
+    "enrichMuted": [
+      "掘金搜索"
+    ],
+    "failedSources": 0,
+    "feedRetryAttempted": 9,
+    "feedRetried": 9
+  },
+  "errors": []
+}

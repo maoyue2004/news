@@ -13,14 +13,21 @@
       "summaryZh": "读 MiniClaw（跑在 $5 的 ESP32-S3 上、纯 C、无 Linux 的 OpenClaw）的源码笔记第二篇。前半算钉核账：两个 Xtensa LX7 核硬件上完全对称，但 WiFi/lwIP 默认绑 Core 0（CONFIG_ESP_WIFI_TASK_CORE_ID），HTTPS + cJSON 是唯一能打满一个核的活，所以 agent_loop 独占 Core 1。后半把 16KB 的上下文预算逐段摊开：静态指令 3KB、SOUL.md + USER.md 1KB、MEMORY.md 4KB、近期日记 4KB、Skills 目录页 2KB，只剩 2KB 给对话。出厂 SOUL.md 只有 11 行 250 字节，作者由此讨论极简人格的四失四得，并给出分层 SOUL、few-shot 取代形容词等折中。",
       "whyRead": "云端 agent 谈上下文工程是抽象的，这里每一条策略后面都跟着一个字节数——省下的 1KB 直接换成 PSRAM 余量。",
       "rating": 5,
-      "tools": ["openclaw"],
-      "topics": ["context-engineering", "soul-md", "skills", "agent-memory"],
+      "tools": [
+        "openclaw"
+      ],
+      "topics": [
+        "context-engineering",
+        "soul-md",
+        "skills",
+        "agent-memory"
+      ],
       "publishedAt": "2026-08-12T12:42:00.000Z",
       "author": "",
       "preScore": 8
     },
     {
-      "id": "ed00d74ab9ff565e",
+      "id": "0f338e64dd1974f7",
       "source": "iT 邦幫忙",
       "kind": "aggregator",
       "url": "https://ithelp.ithome.com.tw/articles/10402000?sc=rss.qu",
@@ -30,7 +37,11 @@
       "whyRead": "难得有人把自己文章的结论按自己给的判据推翻一半——状态层至今零数据库，但给人看的仪表板踩到了三条信号里的两条。",
       "rating": 5,
       "tools": [],
-      "topics": ["agents-md", "soul-md", "agent-memory"],
+      "topics": [
+        "agents-md",
+        "soul-md",
+        "agent-memory"
+      ],
       "publishedAt": "2026-08-13T00:29:20.000Z",
       "author": "",
       "preScore": 7
@@ -45,8 +56,21 @@
       "summaryZh": "作者写了个同步工具，但文章真正的内容是「为什么不能直接 cp -r」。第一关是 MCP 配置各家不同：Claude 是 mcpServers、OpenCode 根字段叫 mcp 还要 type 和 enabled、command 得拍成数组，Codex 直接是 TOML 的 mcp_servers，环境变量引用从 ${VAR} 变成 {env:VAR}。第二关最硬：Codex 的 args 是静态字符串数组、不做变量展开，解法是转成 sh -lc 里 exec，无变量参数用单引号锁死、有变量的才用双引号放行。第三关是 agent frontmatter 各认各的，转过去会丢 tools 和 model。文末给了七家的配置路径和 MCP 字段对照表，并说明 Rules 与 Hooks 不同步的理由。",
       "whyRead": "同时用两家以上 CLI 的人都手动搬过配置，这篇把七家的差异列成了可以直接照抄的对照表，还写清了哪两类硬转出来是跑不起来的壳子。",
       "rating": 4,
-      "tools": ["claude-code", "codex", "opencode", "cursor", "codebuddy", "gemini-cli", "iflow"],
-      "topics": ["mcp", "skills", "claude-md", "agents-md"],
+      "tools": [
+        "claude-code",
+        "codex",
+        "opencode",
+        "cursor",
+        "codebuddy",
+        "gemini-cli",
+        "iflow"
+      ],
+      "topics": [
+        "mcp",
+        "skills",
+        "claude-md",
+        "agents-md"
+      ],
       "publishedAt": "2026-07-23T15:31:47.000Z",
       "author": "寅时码",
       "preScore": 14
@@ -61,8 +85,13 @@
       "summaryZh": "把 Wiki.js、Dify、GitLab 这些内部系统收进一个自建 MCP Server，让所有 agent 只连一个地址。开局就撞上 SDK 断代：mcp 2.0.0 把 FastMCP 换成了 MCPServer、模块整个搬家，照网上教程写必然 ModuleNotFoundError；接着是 initialize 少了 clientInfo 一律 -32602。部署三坑分别用本地镜像当 base、--entrypoint 覆盖镜像自带的 Web UI、--network host 打通分散在不同 Docker 网络的 agent 容器解决。最隐蔽的一个是配置持久化：容器每次启动都 cp -f 源文件覆盖 config.yaml，MCP 配置一重启就没。",
       "whyRead": "「一域一 Server」是给开源社区分工用的建议，私有系统一个 Server 全包更省事——这篇给出了做这个决定之后会依次撞上的每一堵墙。",
       "rating": 4,
-      "tools": ["dify", "hermes"],
-      "topics": ["mcp"],
+      "tools": [
+        "dify",
+        "hermes"
+      ],
+      "topics": [
+        "mcp"
+      ],
       "publishedAt": "2026-07-31T16:38:28.000Z",
       "author": "智体工坊",
       "preScore": 13
@@ -77,7 +106,9 @@
       "summaryZh": "拿一个已经开发了一阵的小项目继续迭代，试 Codex 的 /goal 和 /plan。作者原本设想 Goal 定方向、Plan 一轮轮推进，实际是 Goal 一提交 Codex 立刻开始读代码、改文件、跑 TypeScript 检查和测试，第一条 /plan 还没来得及输入。第一轮结果不合格：目标里那个数码管对比度没解决，还新增了一段风感说明把面板撑高、桌面首屏放不下。于是用 /plan 收窄范围重来，第二轮改完 UI 仍然没有明显改善。结论是 Goal 写得越具体（含基线、禁改项、验收方式），它自主推进的边界才越清楚。",
       "whyRead": "两轮都没把 UI 改好还照实写出来，比那些「一句话交付」的演示可信得多；顺带说清了 /goal 是会自己开工的，不是排期表。",
       "rating": 4,
-      "tools": ["codex"],
+      "tools": [
+        "codex"
+      ],
       "topics": [],
       "publishedAt": "2026-08-12T05:36:00.000Z",
       "author": "",
@@ -93,7 +124,9 @@
       "summaryZh": "开了 3 个 Codex 20X 账号、烧掉约 200 亿 token 做一个英文计算器站。作者的意外结论是公式最听话——输入输出确定、错了能写测试抓出来；真正磨人的是上线前那些不可测的事：预览环境会不会被搜索引擎抓走、查询参数和尾斜杠让同一个页面出现多个版本、noindex 页面不能顺手在 robots.txt 里挡掉（爬虫得先抓到才能看见 noindex）。部署用 Cloudflare Worker + Static Assets，run_worker_first 决定请求先交给谁，重定向规则分散在两层会多跳甚至绕出循环。最后 325 个页面进 sitemap、63 个保持 noindex，上线前跑了 4800 个测试。",
       "whyRead": "agent 时代「哪部分工作变便宜了」的一个具体答案：能写测试的部分便宜了，判断「这个页面现在值不值得被收录」的部分没有。",
       "rating": 4,
-      "tools": ["codex"],
+      "tools": [
+        "codex"
+      ],
       "topics": [],
       "publishedAt": "2026-08-12T19:07:05.000Z",
       "author": "",
@@ -113,14 +146,25 @@
     "enrichRetryAttempted": 116,
     "enrichRetried": 56,
     "enrichSkipped": 71,
-    "enrichMuted": ["掘金搜索"],
+    "enrichMuted": [
+      "掘金搜索"
+    ],
     "failedSources": 2,
     "feedRetryAttempted": 4,
     "feedRetried": 3
   },
   "errors": [
-    { "source": "酷酷的白", "error": "HTTP 403" },
-    { "source": "jax - 走在路上", "error": "HTTP 503" },
-    { "source": "掘金搜索", "error": "部分查询失败（2/30）" }
+    {
+      "source": "酷酷的白",
+      "error": "HTTP 403"
+    },
+    {
+      "source": "jax - 走在路上",
+      "error": "HTTP 503"
+    },
+    {
+      "source": "掘金搜索",
+      "error": "部分查询失败（2/30）"
+    }
   ]
 }

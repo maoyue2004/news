@@ -1,44 +1,44 @@
 {
   "Claude Code 实践": {
-    "runs": 10,
-    "items": 105,
-    "shortlisted": 32,
-    "lastRun": "2026-08-13",
-    "lastShortlist": "2026-08-13"
+    "runs": 11,
+    "items": 116,
+    "shortlisted": 35,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "Claude Code 踩坑": {
-    "runs": 10,
-    "items": 42,
+    "runs": 11,
+    "items": 49,
     "shortlisted": 11,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-12"
   },
   "Codex CLI 体验": {
-    "runs": 10,
-    "items": 52,
-    "shortlisted": 11,
-    "lastRun": "2026-08-13",
-    "lastShortlist": "2026-08-13"
+    "runs": 11,
+    "items": 54,
+    "shortlisted": 12,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "Cursor 工作流": {
-    "runs": 10,
-    "items": 31,
-    "shortlisted": 9,
-    "lastRun": "2026-08-13",
-    "lastShortlist": "2026-08-13"
+    "runs": 11,
+    "items": 36,
+    "shortlisted": 10,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "AI 编程 踩坑": {
-    "runs": 10,
-    "items": 62,
+    "runs": 11,
+    "items": 66,
     "shortlisted": 3,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-10"
   },
   "agent 编程 心得": {
-    "runs": 10,
-    "items": 30,
+    "runs": 11,
+    "items": 33,
     "shortlisted": 2,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-08"
   },
   "Augment Code 踩坑": {
@@ -756,129 +756,129 @@
     "lastShortlist": "2026-08-12"
   },
   "subagent 并行": {
-    "runs": 1,
+    "runs": 2,
     "items": 13,
     "shortlisted": 0,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": null
   },
   "git worktree agent": {
-    "runs": 1,
-    "items": 12,
+    "runs": 2,
+    "items": 16,
     "shortlisted": 2,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-12"
   },
   "多个 agent 协作 开发": {
-    "runs": 1,
-    "items": 26,
-    "shortlisted": 1,
-    "lastRun": "2026-08-12",
-    "lastShortlist": "2026-08-12"
+    "runs": 2,
+    "items": 38,
+    "shortlisted": 3,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "agent 并行 开发": {
-    "runs": 1,
-    "items": 13,
-    "shortlisted": 1,
-    "lastRun": "2026-08-12",
-    "lastShortlist": "2026-08-12"
+    "runs": 2,
+    "items": 21,
+    "shortlisted": 2,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "AI 写代码 一个月": {
-    "runs": 1,
-    "items": 26,
-    "shortlisted": 1,
-    "lastRun": "2026-08-12",
-    "lastShortlist": "2026-08-12"
+    "runs": 2,
+    "items": 38,
+    "shortlisted": 2,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "智能体 折腾": {
-    "runs": 1,
-    "items": 18,
-    "shortlisted": 0,
-    "lastRun": "2026-08-12",
-    "lastShortlist": null
+    "runs": 2,
+    "items": 21,
+    "shortlisted": 1,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "AI 编程 工作流": {
-    "runs": 1,
-    "items": 13,
-    "shortlisted": 2,
-    "lastRun": "2026-08-12",
-    "lastShortlist": "2026-08-12"
+    "runs": 2,
+    "items": 23,
+    "shortlisted": 5,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "AI 编程 成本": {
-    "runs": 1,
-    "items": 16,
+    "runs": 2,
+    "items": 19,
     "shortlisted": 1,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-12"
   },
   "token 消耗 编程": {
-    "runs": 1,
-    "items": 17,
-    "shortlisted": 0,
-    "lastRun": "2026-08-12",
-    "lastShortlist": null
+    "runs": 2,
+    "items": 22,
+    "shortlisted": 2,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
   },
   "AI 编程 额度 用完": {
-    "runs": 1,
-    "items": 12,
+    "runs": 2,
+    "items": 17,
     "shortlisted": 0,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": null
   },
   "AI 写代码 翻车": {
-    "runs": 1,
-    "items": 16,
+    "runs": 2,
+    "items": 17,
     "shortlisted": 1,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-12"
   },
   "agent 失控": {
-    "runs": 1,
-    "items": 19,
+    "runs": 2,
+    "items": 22,
     "shortlisted": 0,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": null
   },
   "AI 编程 幻觉 踩坑": {
-    "runs": 1,
-    "items": 11,
+    "runs": 2,
+    "items": 14,
     "shortlisted": 0,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": null
   },
   "AI 重构 回滚": {
-    "runs": 1,
-    "items": 19,
+    "runs": 2,
+    "items": 23,
     "shortlisted": 1,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-12"
   },
   "AI 编程 不适合": {
-    "runs": 1,
-    "items": 15,
+    "runs": 2,
+    "items": 16,
     "shortlisted": 0,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": null
   },
   "agent 用了三个月": {
-    "runs": 1,
-    "items": 16,
+    "runs": 2,
+    "items": 21,
     "shortlisted": 1,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": "2026-08-12"
   },
   "Manus 体验": {
-    "runs": 1,
-    "items": 0,
+    "runs": 2,
+    "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": null
   },
   "Warp 终端 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 3,
     "shortlisted": 0,
-    "lastRun": "2026-08-12",
+    "lastRun": "2026-08-14",
     "lastShortlist": null
   },
   "Factory Droid 体验": {
@@ -1013,5 +1013,47 @@
     "shortlisted": 2,
     "lastRun": "2026-08-13",
     "lastShortlist": "2026-08-13"
+  },
+  "Claude Desktop 用法": {
+    "runs": 1,
+    "items": 8,
+    "shortlisted": 0,
+    "lastRun": "2026-08-14",
+    "lastShortlist": null
+  },
+  "AI 自动化 办公 实践": {
+    "runs": 1,
+    "items": 26,
+    "shortlisted": 2,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
+  },
+  "agent 处理 文档 实践": {
+    "runs": 1,
+    "items": 25,
+    "shortlisted": 4,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
+  },
+  "AI 做 周报 自动化": {
+    "runs": 1,
+    "items": 27,
+    "shortlisted": 3,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
+  },
+  "AI 整理 资料 工作流": {
+    "runs": 1,
+    "items": 25,
+    "shortlisted": 2,
+    "lastRun": "2026-08-14",
+    "lastShortlist": "2026-08-14"
+  },
+  "Devin 体验": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-14",
+    "lastShortlist": null
   }
 }
