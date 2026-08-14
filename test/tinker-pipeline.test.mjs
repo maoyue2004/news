@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, cpSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { collectRaw } from '../lib/tinker/collect.mjs';
-import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault, fetchSearchItems } from '../lib/tinker/search-adapters.mjs';
+import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault, searchVocus, vocusTagsFor, fetchSearchItems } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate } from '../scripts/tinker-build.mjs';
 import { needsEnrich, enrich, fetchAllSources, threadBodyHtml } from '../scripts/tinker-fetch.mjs';
@@ -158,6 +158,41 @@ test('searchSegmentFault 在页面结构变了时抛错，而不是当成搜到 
   globalThis.fetch = async () => ({ ok: true, status: 200, text: async () => '<html>改版了</html>' });
   try {
     await assert.rejects(() => searchSegmentFault('x'), /__NEXT_DATA__/);
+  } finally { globalThis.fetch = original; }
+});
+
+test('vocusTagsFor 把查询词还原成标签，带空格的名字同时给紧凑写法', () => {
+  // 标签是用户手打的：`Claude Code` 只有 4 条而 `ClaudeCode` 有 15 条，两种都得发。
+  assert.deepEqual(vocusTagsFor('Claude Code 踩坑', ['Claude Code', 'Codex CLI']), ['Claude Code', 'ClaudeCode']);
+  // 最长优先：同时出现两个名字时，取更长的那个。
+  assert.deepEqual(vocusTagsFor('MCP 实践', ['MCP', 'MCP Server']), ['MCP']);
+  assert.deepEqual(vocusTagsFor('MCP Server 实践', ['MCP', 'MCP Server']), ['MCP Server', 'MCPServer']);
+  // 认不出名字的手写长尾词直接跳过，而不是拿整句当标签发出去。
+  assert.deepEqual(vocusTagsFor('AI 编程 踩坑', ['Claude Code']), []);
+});
+
+test('searchVocus 跳过付费文章，按 contentId 组 URL', async () => {
+  const payload = { contents: [
+    { contentId: 'a1', _id: 'x1', title: '免费的', isPay: false, publishAt: '2026-08-14T00:00:00.000Z', pageview: 7, article: { abstract: '摘要' }, tags: ['Codex'] },
+    { contentId: 'b2', _id: 'x2', title: '付费的', isPay: true, publishAt: '2026-08-14T00:00:00.000Z', article: {} },
+  ] };
+  const restore = stubFetch(payload);
+  try {
+    const items = await searchVocus('Codex 体验', { vocabNames: ['Codex'] });
+    assert.equal(items.length, 1, '付费文章不进来：正文补全拿不到，读者点过去也是一堵墙');
+    assert.equal(items[0].link, 'https://vocus.cc/article/a1');
+    assert.equal(items[0].contentHtml, '摘要');
+    assert.equal(items[0].metrics.views, 7);
+  } finally { restore(); }
+});
+
+test('searchVocus 对认不出标签的查询词返回空，且不发请求', async () => {
+  let called = 0;
+  const original = globalThis.fetch;
+  globalThis.fetch = async () => { called += 1; return { ok: true, status: 200, text: async () => '{}' }; };
+  try {
+    assert.deepEqual(await searchVocus('AI 编程 踩坑', { vocabNames: ['Codex'] }), []);
+    assert.equal(called, 0);
   } finally { globalThis.fetch = original; }
 });
 

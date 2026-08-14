@@ -1,45 +1,45 @@
 {
   "Claude Code 实践": {
-    "runs": 11,
-    "items": 116,
-    "shortlisted": 35,
-    "lastRun": "2026-08-14",
-    "lastShortlist": "2026-08-14"
+    "runs": 12,
+    "items": 125,
+    "shortlisted": 39,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "Claude Code 踩坑": {
-    "runs": 11,
-    "items": 49,
+    "runs": 12,
+    "items": 50,
     "shortlisted": 11,
-    "lastRun": "2026-08-14",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-12"
   },
   "Codex CLI 体验": {
-    "runs": 11,
-    "items": 54,
-    "shortlisted": 12,
-    "lastRun": "2026-08-14",
-    "lastShortlist": "2026-08-14"
+    "runs": 12,
+    "items": 56,
+    "shortlisted": 13,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "Cursor 工作流": {
-    "runs": 11,
-    "items": 36,
-    "shortlisted": 10,
-    "lastRun": "2026-08-14",
-    "lastShortlist": "2026-08-14"
+    "runs": 12,
+    "items": 38,
+    "shortlisted": 11,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "AI 编程 踩坑": {
-    "runs": 11,
-    "items": 66,
-    "shortlisted": 3,
-    "lastRun": "2026-08-14",
-    "lastShortlist": "2026-08-10"
+    "runs": 12,
+    "items": 70,
+    "shortlisted": 4,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "agent 编程 心得": {
-    "runs": 11,
-    "items": 33,
-    "shortlisted": 2,
-    "lastRun": "2026-08-14",
-    "lastShortlist": "2026-08-08"
+    "runs": 12,
+    "items": 37,
+    "shortlisted": 5,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "Augment Code 踩坑": {
     "runs": 4,
@@ -378,38 +378,38 @@
     "lastShortlist": "2026-08-09"
   },
   "Cline 体验": {
-    "runs": 2,
+    "runs": 3,
     "items": 7,
     "shortlisted": 1,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-06"
   },
   "Roo Code 实践": {
-    "runs": 2,
+    "runs": 3,
     "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "Roo Code 踩坑": {
-    "runs": 2,
+    "runs": 3,
     "items": 20,
     "shortlisted": 2,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-06"
   },
   "Roo Code 体验": {
-    "runs": 2,
+    "runs": 3,
     "items": 3,
     "shortlisted": 1,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-06"
   },
   "Kilo Code 实践": {
-    "runs": 2,
+    "runs": 3,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "Kilo Code 踩坑": {
@@ -882,136 +882,136 @@
     "lastShortlist": null
   },
   "Factory Droid 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "iFlow CLI 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 17,
     "shortlisted": 5,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-13"
   },
   "iFlow CLI 踩坑": {
-    "runs": 1,
-    "items": 9,
-    "shortlisted": 1,
-    "lastRun": "2026-08-13",
-    "lastShortlist": "2026-08-13"
+    "runs": 2,
+    "items": 13,
+    "shortlisted": 3,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "iFlow CLI 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 4,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "Qwen Code 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 8,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "Qwen Code 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 8,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "Qwen Code 体验": {
-    "runs": 1,
-    "items": 12,
+    "runs": 2,
+    "items": 13,
     "shortlisted": 1,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-13"
   },
   "OpenHands 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 6,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "OpenHands 踩坑": {
-    "runs": 1,
-    "items": 4,
+    "runs": 2,
+    "items": 6,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "OpenHands 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 3,
     "shortlisted": 1,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-13"
   },
   "SWE-agent 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 7,
     "shortlisted": 1,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-13"
   },
   "SWE-agent 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 4,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "SWE-agent 体验": {
-    "runs": 1,
+    "runs": 2,
     "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "Cursor 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 5,
     "shortlisted": 1,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-13"
   },
   "Cursor 体验": {
-    "runs": 1,
-    "items": 0,
-    "shortlisted": 0,
-    "lastRun": "2026-08-13",
-    "lastShortlist": null
+    "runs": 2,
+    "items": 7,
+    "shortlisted": 4,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "Windsurf 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 0,
     "shortlisted": 0,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": null
   },
   "Windsurf 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 3,
     "shortlisted": 1,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-13"
   },
   "Cline 实践": {
-    "runs": 1,
-    "items": 0,
-    "shortlisted": 0,
-    "lastRun": "2026-08-13",
-    "lastShortlist": null
+    "runs": 2,
+    "items": 1,
+    "shortlisted": 1,
+    "lastRun": "2026-08-15",
+    "lastShortlist": "2026-08-15"
   },
   "Cline 踩坑": {
-    "runs": 1,
+    "runs": 2,
     "items": 8,
     "shortlisted": 2,
-    "lastRun": "2026-08-13",
+    "lastRun": "2026-08-15",
     "lastShortlist": "2026-08-13"
   },
   "Claude Desktop 用法": {

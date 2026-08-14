@@ -1,0 +1,169 @@
+{
+  "date": "2026-08-15",
+  "generatedAt": "2026-08-14T22:30:19.836Z",
+  "dailyNote": "DeepSeek Harness 开源第二天，入围名单里 dsh 相关的有 8 条，一条都没收：插件精选列表、拉群写指南、内测体验、把提示词贴出来说效果惊艳——发布周的标准形状，落点全在「你也来用/来加我」，不在「我踩了什么」。唯一带真踩坑的那篇 V2EX 速查（包名带 @ 作用域、必须先选 workspace）也只有三条，且大半篇在向别人提问，按 3 分处理。真正的好东西今天在别处：Headroom 那篇把跨 agent 记忆的四层作用域和 learn 的流水线拆到了源码层，还带一条自己撞出来的 403；NAS 那篇给出「按重启频率切容器而不是按功能切」这条能搬到别处去的判据。另外两篇是算账的——Codex 重置到底多大力度、DeepSeek 新价对 agent 用法涨了几倍，都是自己动手把数字算出来而不是转述。",
+  "items": [
+    {
+      "id": "9aab7465c9860645",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7673411634811650088",
+      "titleOriginal": "学习 Headroom 的跨 agent 记忆与失败学习",
+      "publishedAt": "2026-08-14T00:14:20.000Z",
+      "author": "日习一技",
+      "preScore": 9,
+      "titleZh": "拆 Headroom 的跨 agent 记忆：四层作用域、重要性上浮，以及 learn 从 207 个会话里挖出的循环",
+      "whyRead": "同一份记忆怎么在 Claude Code / Codex / Cursor 之间搬——顺带一个第一次跑 headroom learn 就撞上的 403。",
+      "summaryZh": "顺着源码讲 Headroom 的两块记忆能力。跨 agent 记忆按 user → session → agent → turn 四层作用域组织，重要性到阈值（默认 0.7）就复制一份上浮到 user 级、从此跨会话可见；检索同时走向量索引（sqlite-vec / hnswlib）和 FTS5 全文。回写各家 markdown 时用标记块圈定边界、只动自己那一段，Claude Code 的写入器把预算压在 2000 token，因为 MEMORY.md 只有前 200 行常驻上下文。headroom learn 是 Scanner → Digest → 一次 LLM 调用 → 建议的流水线，作者实跑扫了 207 个会话、8614 次工具调用、486 次失败（5.6%），产出 10 条建议；它把「循环」单独检出，靠把 grep foo | head -50 和 head -100 折叠成同一签名来数重复次数。第一次跑还撞了个 403——learn 对 claude 模型会绕过 ANTHROPIC_BASE_URL 直连官方 API，改 --model claude-cli 才通。",
+      "rating": 5,
+      "tools": [
+        "headroom",
+        "claude-code",
+        "codex"
+      ],
+      "topics": [
+        "agent-memory",
+        "claude-md",
+        "context-engineering"
+      ]
+    },
+    {
+      "id": "6b6506a06f2be0ed",
+      "source": "iT 邦幫忙 · 家用 NAS 自架 Agent 30 天",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10400775?sc=rss.iron",
+      "titleOriginal": "Day 2：為什麼一份 image 要跑兩個容器？我裝完半年才懂官方的設計",
+      "publishedAt": "2026-08-02T10:09:43.000Z",
+      "preScore": 6,
+      "titleZh": "一份 image 跑两个容器，切的不是功能是重启频率",
+      "whyRead": "装完半年才想明白官方为什么这么切；那条判据在任何有状态的系统上都成立，不是 agent 专属。",
+      "summaryZh": "家用 NAS 上那套 OpenClaw agent 的第二天，讲 Gateway（对外通讯，无状态，Telegram webhook 和 Bot API 走这里）和 CLI（Agent Runtime、cron、三层记忆、SQLite 与全 Markdown 的 Workspace）为什么要拆成两个容器。作者的结论是这个切法不是按功能切的，是按重启频率切：对外通讯层要面对 webhook 掉线、凭证更新、网络抖动，注定重启得勤，而排程和记忆是有状态的长时任务，最怕被打断，所以把「常重启的」和「怕被打断的」分开。他后来自己加容器时照此办理——md-server 做成无状态可随时重启，唯一有状态的 SQLite 挂在 volume 上。已知坑也写了：Gateway 重启后 CLI 的 WebSocket 不会自动重连，表现是 Telegram 发消息没有任何回应，得 docker restart 或调自建 MCP 的 restart_containers，而那个工具本身就是踩了这个坑之后补的。",
+      "rating": 5,
+      "tools": [
+        "openclaw"
+      ],
+      "topics": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "b2cc105800484365",
+      "source": "imzlp 循迹",
+      "kind": "blog",
+      "url": "https://imzlp.com/posts/84248/",
+      "titleOriginal": "从Vibe Coding到AI Agent：一个喂养系统的完整实践",
+      "publishedAt": "2026-08-13T14:05:07.000Z",
+      "preScore": 14,
+      "titleZh": "给娃写了个喂养记录系统，再让 agent 用 Webhook 主动催我",
+      "whyRead": "为什么这个需求喂不进 agent 的定时任务：提醒的时机得从上一次喂养的时间戳推出来。",
+      "summaryZh": "半年前用 Claude Code + Opus 4.6 起了一个婴儿喂养记录系统（Next.js + SQLite + PWA，后来用 DeepSeek / GPT5.6 迭代了二十多个版本，已记录 3600 条数据），这篇写的是它怎么从一个 Web 应用长成 agent 的一只手。做法是给每个操作都补上 HTTP API 和 API KEY，再写一个 SKILL 挂到 Hermes 上，接进 QQ 和微信用自然语言记录与查询。SKILL 的三条经验很具体：别把内容全塞进 SKILL，拆成能渐进加载的引用文档；确定的部分拆成脚本让 AI 执行，拿确定性结果；系统更新时用版本号标记。最值钱的一段是 Webhook——喂养提醒的时机要从上次喂养的时间戳推算，交给 agent 的定时任务要么不够及时要么得高频触发烧 token，所以改成系统达到条件时主动推给 agent。另一条老实话：AI 能把功能实现出来，但高频操作的交互好不好用，还是他老婆的吐槽说了算。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "hermes"
+      ],
+      "topics": [
+        "vibe-coding",
+        "skills"
+      ]
+    },
+    {
+      "id": "1518c7e9249ba6cb",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7673332128335708170",
+      "titleOriginal": "Pi 扩展机制初探：从零跑通 pi-agent 的 /hello 命令",
+      "publishedAt": "2026-08-13T10:06:52.000Z",
+      "author": "Vuji",
+      "preScore": 7,
+      "titleZh": "从零写第一个 Pi 扩展：Extension 改运行时，Skill 改认知",
+      "whyRead": "官方示例注册的是 tool 不是 command——两者给谁用，是这套扩展机制的第一个岔路口。",
+      "summaryZh": "把 earendil-works 的 Pi 拉下来（Node 20+，npm install 334 个包，构建出 0.84.1），从零写一个 /hello 命令的全过程，代码都能跑、结论都标了源码位置。开篇先分清两个容易混的概念：Extension 是 TypeScript 代码，用 pi.registerTool / registerCommand / pi.on 注册，改的是 pi 的运行时行为；Skill 是 SKILL.md，靠文本注入上下文，改的是模型的认知，不涉及执行。作者踩的第一个岔路是官方示例 hello.ts 注册的是 tool——那是给模型自己判断要不要调用的，而想要用户输入 /hello 就得用 registerCommand，还能挂 getArgumentCompletions 做 Tab 补全。扩展的加载位置分全局 ~/.pi/agent/extensions/ 和项目级 .pi/extensions/，学习项目用后者方便隔离。",
+      "rating": 4,
+      "tools": [
+        "pi"
+      ],
+      "topics": [
+        "skills"
+      ]
+    },
+    {
+      "id": "2f795ecd89045beb",
+      "source": "linux.do",
+      "kind": "forum",
+      "url": "https://linux.do/t/topic/2757095",
+      "titleOriginal": "新版CPA接Codex后VS Code里的Claude Code不显示Thinking，附解决方案",
+      "publishedAt": "2026-08-14T21:41:21.000Z",
+      "preScore": 10,
+      "titleZh": "CPA 转 Codex 之后，VS Code 里的 Claude Code 不显示思维链了",
+      "whyRead": "一次小版本升级悄悄改掉的默认值，补一行 payload 配置就能拿回来。",
+      "summaryZh": "CPA 从 v7.2.112 起改了 Claude → Codex 这条链路的请求转换：以前会自动给 Codex 请求带上 reasoning.summary = auto，之后改成跟随客户端显式传入的摘要显示意图。而 Claude Code 的 showThinkingSummaries 目前只对交互式 CLI 生效，VS Code 扩展不受这项设置控制，于是转出去的请求里没有 reasoning.summary，CPA 也就收不到可以转成 Claude Thinking 的摘要，表现就是思维链整段消失。作者给的解法是在 payload 的 default 段里对 gpt-* 补一个默认值：用 default 而不是强制覆盖，只在请求本身没带的时候才补，客户端以后自己传就不会被盖掉；想只针对单个模型就把 gpt-* 换成具体模型名。用 CPA Manager Plus 的话，可视化配置里逐个字段怎么填也列出来了。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "codex"
+      ],
+      "topics": []
+    },
+    {
+      "id": "9bdf0708399ebc76",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "url": "https://www.v2ex.com/t/1234515#reply0",
+      "titleOriginal": "Codex 重置是什么力度的活动？可能没有想象的那么多",
+      "publishedAt": "2026-08-14T16:08:24.000Z",
+      "preScore": 9,
+      "titleZh": "把 Codex 重置算了一遍：额外压力可能不到 50%",
+      "whyRead": "与其吵重置力度大不大，不如用历史重置数据和一个用量分布函数算给你看。",
+      "summaryZh": "每次 Codex 硬重置都有人喊血赚、有人喊血亏，作者花两小时 vibe 了一个网页部署到 Cloudflare，把这件事算了一遍。模型不复杂：假设所有用户都会在一周内用完额度，那么「什么时候用完」在这一周里服从某个概率密度分布，拖动参数就能表示不同的用户倾向（拿到就光速蹬完，还是均匀用完）；再套上 codex-reset.com 的历史重置数据，就能算出相对于全部自然重置，多提供了多少服务。默认参数（预告后 1 天、正常使用 4 天时 80% 的用户已用完额度）下的结论是：最近一个月的硬重置给 OpenAI 带来的额外压力可能不到 50%，和 Claude 直接给 50% boost 差不多，区别只是不定时带来的惊喜感更强。作者自己列了没考虑的部分：不同模型的成本差异、banked reset、以及分布函数的形态本来就有别的选法。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [
+        "vibe-coding"
+      ]
+    },
+    {
+      "id": "8f651cb85ee7d0a2",
+      "source": "东东's Blog",
+      "kind": "blog",
+      "url": "https://blog.yasking.org/a/1786674900",
+      "titleOriginal": "Memos: DeepSeek 在我的轻量使用场景下 API 价格涨幅近 4 倍",
+      "publishedAt": "2026-08-14T02:35:00.000Z",
+      "preScore": 7,
+      "titleZh": "按自己 30 天的账单重算 DeepSeek 新价：涨了近 4 倍",
+      "whyRead": "agent 用法的账单里缓存命中占 97%，所以涨价怎么算，全看这一档的价格。",
+      "summaryZh": "作者把过去 30 天的 DeepSeek 账单拉出来算了一遍自己的成本结构：缓存命中 96.88%、缓存未命中 2.55%、输出 0.56%，圆整成 97 / 2.5 / 0.5，据此拟合出一个有效价格公式 0.97H + 0.025M + 0.005O。把这 3.5 亿 token 按新价重算（假设 60% 落在峰时），旧账单 29.64 元变成约 116 元，涨幅接近 4 倍。比结论更值得记的是这个结构本身：轻量但高频的 agent 用法几乎全部落在缓存命中那一档，所以官方调价里「缓存命中价」那一栏才是决定账单的那个数，输出 token 涨多少反而无关紧要。他的应对是转去用套餐，并提到评论区有人指出 OpenCode 的 DS V4 Flash 目前免费。",
+      "rating": 4,
+      "tools": [
+        "opencode"
+      ],
+      "topics": []
+    }
+  ],
+  "reviewed": 35,
+  "dropped": 28,
+  "stats": {
+    "sources": 243,
+    "fetched": 322,
+    "shortlisted": 35,
+    "rejected": 287,
+    "thin": 100,
+    "enriched": 30,
+    "enrichAttempted": 50,
+    "enrichRetryAttempted": 24,
+    "enrichRetried": 4,
+    "enrichSkipped": 0,
+    "enrichMuted": [],
+    "failedSources": 1,
+    "feedRetryAttempted": 7,
+    "feedRetried": 6
+  },
+  "errors": [
+    {
+      "source": "jax - 走在路上",
+      "message": "HTTP 503"
+    }
+  ]
+}

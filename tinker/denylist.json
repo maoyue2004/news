@@ -245,5 +245,17 @@
     "reason": "evaluate() 判够格（3/10），但标题清一色「X 是什麼？價格、功能、用法與新手教學」，是 SEO 教程农场的形状而非个人折腾——LESSONS 里「独立博客不等于个人折腾」那条的又一例。",
     "date": "2026-08-14",
     "scope": "domain"
+  },
+  {
+    "feed": "https://frankknow.com/feed/",
+    "name": "犬哥網站 frankknow.com",
+    "reason": "SEO 教學站，和 8-14 否掉的 frankchiu.io 同一形状：标题清一色「X 是什麼？教學／推薦」，近 10 篇里 7 篇是 SEO 課程、Google 廣告、CMS 這類獲客內容，scoreItem 只放过 1 篇。",
+    "date": "2026-08-15"
+  },
+  {
+    "feed": "https://www.guccidgi.com/feed/",
+    "name": "追日Gucci",
+    "reason": "美股投資與生活博客，AI 內容是「OpenClaw 能做什麼？20+ 個實戰應用場景完整指南」這類清單稿加報告解讀，近 5 篇只有 1 篇是真的第一手（Claude Code 剪片工作流）。属 LESSONS 里「独立博客不等于个人折腾」那一类。",
+    "date": "2026-08-15"
   }
 ]
