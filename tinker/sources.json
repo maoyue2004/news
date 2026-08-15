@@ -1952,6 +1952,14 @@
     "desc": "2026 铁人赛系列。一个人维运一个已上线的订阅制服务，按「十大地雷」逐条写：SQL 字面 % 吃掉正式站、DDL 型别写错导致开机即挂、把地雷清单写进 CLAUDE.md 给 AI 读。"
   },
   {
+    "name": "iT 邦幫忙 · 一個人的 IT 部門",
+    "url": "https://ithelp.ithome.com.tw/users/20181284/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9176",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。没有维运团队的一个人，用 Claude Code 从裸机装起一整座 AI 机房：网域 DNS 与固定 IP、把 agent 当「同事」装进机台。D02「AI 的記憶會過期，而且它不知道自己過期了」按 scoreItem 拿 7 分，是目前 5 篇里唯一过线的一篇。"
+  },
+  {
     "name": "raven.tw",
     "url": "https://raven.tw",
     "feed": "https://raven.tw/rss.xml",

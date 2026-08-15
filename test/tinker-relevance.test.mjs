@@ -162,6 +162,35 @@ test('产品自荐帖被重扣，真折腾长文不受影响', () => {
   assert.ok(promo.reasons.includes('疑似产品自荐帖'));
 });
 
+test('课程 / 教练营销文被扣分，同题材的真实践文不受影响', () => {
+  const coach = scoreItem({
+    title: 'Vibe Coding 重點是 Vibe 還是 Coding？一位 AI 賦能師的告白',
+    excerpt:
+      '身為擁有 600 天實戰經驗、輔導超過 30 位企業主的 AI 賦能師，我昨天在一家會計事務所帶學員用 Claude Code '
+      + '完成了一整套系統。每天為自己贖回 2 小時！歡迎按愛心、收藏並分享給身邊的創業夥伴。',
+  });
+  assert.ok(coach.reasons.includes('疑似课程 / 教练营销文'));
+
+  // 同一个平台、同一种繁体写法、同样在讲用 agent 干活，但落点是自己踩的坑——不能被误伤
+  const real = scoreItem({
+    title: '我花三天測試 OpenClaw：最後還是 GitHub Actions 和 Cursor 比較好用',
+    excerpt:
+      '我花了三天、約 15 美元在 Zeabur 上部署 OpenClaw，重啟 4 次，成功完成的實際任務是 0。'
+      + '最後把流程改成 GitHub Actions 直接寄 Email，幾分鐘就跑通了，成本 0。',
+  });
+  assert.ok(!real.reasons.includes('疑似课程 / 教练营销文'));
+  assert.ok(real.score > coach.score);
+});
+
+test('繁体写法的自荐招呼语也要扣到', () => {
+  const trad = scoreItem({
+    title: '我做了一個 Claude Code 的 statusline 外掛',
+    excerpt: '核心功能有：1. 顯示 token 用量 2. 顯示分支。歡迎試用，也歡迎大家給我回饋。',
+    thread: true,
+  });
+  assert.ok(trad.reasons.includes('疑似产品自荐帖'));
+});
+
 test('论坛短帖扣分，但长度不是硬门槛', () => {
   const args = { title: '我把 Claude Code 的 statusline 折腾成了可版本化仓库', excerpt: '踩坑记录。' };
   const short = scoreItem({ ...args, thread: true });

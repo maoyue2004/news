@@ -257,5 +257,11 @@
     "name": "追日Gucci",
     "reason": "美股投資與生活博客，AI 內容是「OpenClaw 能做什麼？20+ 個實戰應用場景完整指南」這類清單稿加報告解讀，近 5 篇只有 1 篇是真的第一手（Claude Code 剪片工作流）。属 LESSONS 里「独立博客不等于个人折腾」那一类。",
     "date": "2026-08-15"
+  },
+  {
+    "feed": "https://chihhung.github.io/Blog/index.xml",
+    "name": "Eric 個人部落格",
+    "reason": "独立域名上跑内容农场的形状：近 20 篇标题清一色「XX 教學手冊」（Copilot / Spring Boot / Maven / Cognee 一路铺过去），scoreItem 近 20 篇只过 1 篇。选题赶热点，落点不在自己踩了什么。",
+    "date": "2026-08-16"
   }
 ]
