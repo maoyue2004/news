@@ -2000,5 +2000,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "2026 铁人赛系列。让 Codex 从空 repo 把一只 LINE 定位 Bot 做到上线，逐天记卡住的地方：Vertex AI 的 ADC 工作证、五个 Maps 来源不等于五间店、查地图要等 30 秒时的 Loading Animation 与后端可靠性。近 5 篇 1 篇过收录线（Day 2 拿 12 分）。"
+  },
+  {
+    "name": "Kuhung 谷粒",
+    "url": "https://kuhung.me/",
+    "feed": "https://kuhung.me/posts/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "独立开发者的实践博客，选题集中在把 agent 当生产工具用之后的账和管理：161 个 Claude Code 会话、934 条指令的成本审计（缓存写入占 2.9% token 却吃掉 31.5% 成本），跨 agent 的 Skills 管理，Codex /goal 从 0 到 1 验证产品。近 20 篇 6 篇过收录线，span 95 天，是个人节奏不是媒体节奏。"
   }
 ]

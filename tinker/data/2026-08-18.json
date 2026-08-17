@@ -1,0 +1,185 @@
+{
+  "date": "2026-08-18",
+  "generatedAt": "2026-08-17T22:21:29.730Z",
+  "dailyNote": "今天的入围名单被 DeepSeek Harness 的发布周整个盖住了——57 条里十几条是 DSH，形状高度一致：官方文档改写的「完全指南」、三款 Harness 的 SEO 对比稿，以及 V2EX 上一批「我写了个 DSH 插件 / 客户端 / 目录站，欢迎大佬拍砖」。这类东西看着最像折腾，落点却都在让你去装它，所以只留了一篇真把它跑到服务器上、写清三处坑的部署记录。八篇里建议先读那位医院资讯人的 Day 1：AI 把数据库密码写进设定档只是开头，真正扎人的是他自曝容器防火墙少写两个引号，里面的 AI 因此能自己重建整道白名单墙，而画面照样印着「已验证」。想看钱的账，就去看那篇拿 161 个会话对出来的成本审计。",
+  "items": [
+    {
+      "id": "667668701f3adae4",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1234919",
+      "titleOriginal": "如何最大化 Claude Code Session 的价值",
+      "titleZh": "拿 161 个 Claude Code 会话对账：缓存写入只占 2.9% 的 token，却吃掉 31.5% 的钱",
+      "summaryZh": "Anthropic 8 月 14 日发了《Maximizing the value of your Claude Code sessions》，作者没有全篇复述，而是划出几条容易被忽视的机制：输出价约为输入的 5 倍，差在 Prefill 是计算密集、Decode 是内存带宽受限；首次写入缓存最高 2 倍输入价，是「贵一次省后面所有轮」；启动时加 MAX_THINKING_TOKENS=0 比 /effort low 更激进一档。然后拿自己的操作日志对账：161 个会话、36 个项目、934 条指令，1.51B token、1,638 美元，每条指令中位数 1.35 美元、P90 4.28 美元，平均跑 11.8 轮。构成上缓存读取占 96.4% 的 token 但只占 50.5% 的成本，缓存写入占 2.9% 的 token 却占 31.5% 的成本。据此列的 7 项改进合计约省 20%。",
+      "whyRead": "官方那篇最佳实践只讲机制，他读完回头把自己 36 个项目、934 条指令的真实账单审计了一遍。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "context-engineering"
+      ],
+      "publishedAt": "2026-08-17T03:07:19.000Z",
+      "author": "kuhung",
+      "preScore": 10
+    },
+    {
+      "id": "663252cb5c294d94",
+      "source": "Innei",
+      "kind": "blog",
+      "url": "https://innei.in/posts/tinkering/ai-era-dev-workflow-review-and-verify",
+      "titleOriginal": "AI 时代我的开发工作流：从踩坑复盘到多项目并行验证",
+      "titleZh": "从踩坑复盘到多项目并行验证：一个人同时推进四五个项目的工作流",
+      "summaryZh": "作者同时维护 mx-space、afilmory 等五个项目，年初每月消耗 50 亿到 60 亿 token，到八月两天就能用掉这么多，翻了 15 倍。文章讲两件事。一是怎么把「踩坑会话」变成资产：他给自己的网站写了 CLI，因为 AI 操作 CLI 比直接操作 MCP 和调接口方便得多；再用一份 Skill 把长对话自动收成一篇技术文章外加一个 Skill。那份 Skill 是分层的，SKILL.md 只有 368 行、只负责判断要不要做，references/ 1041 行按需加载不进默认上下文，scripts/ 只放确定性操作，为的是避免规则一次性堆进上下文导致注意力丢失。二是多项目并行靠自动化验证兜底。他还坦白网站上最近五六篇技术文完全由 AI 生成，并专门加了「无 AI 写作」筛选。",
+      "whyRead": "年初一个月烧 50 亿 token，八月两天就烧掉同样的量；他干脆把踩坑会话直接沉淀成文章和 Skill。",
+      "rating": 5,
+      "tools": [],
+      "topics": [
+        "skills",
+        "mcp",
+        "context-engineering"
+      ],
+      "publishedAt": "2026-08-16T16:32:40.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "ec30add61f172d04",
+      "source": "iT 邦幫忙 · 一個人的 IT 部門",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10401880?sc=rss.iron",
+      "titleOriginal": "D02   AI 的記憶會過期，而且它不知道自己過期了",
+      "titleZh": "AI 的記憶會過期，而且它不知道自己過期了",
+      "summaryZh": "一台机器的收发件系统，Claude 照着几个月前写进长期记忆的资料表名回答，一查表名根本不是那个，错了好几个月没人发现。作者由此立规则：记忆只能当线索，凡涉及档案、资料表、参数名称一律重新查证过才能写进结论。文章还记了几笔具体的坑：Whisper 服务重开机不会自己回来，Claude 连着遇到三次才承认「这是这台机器的个性」，于是写成标准流程存进记忆；远端写 root 档案时用管线把密码喂过去，指令会成功、档案会建立，然后密码就躺在文件第一行；多个 session 同在一个仓库时，Claude 真的把另一个 session 改到一半的东西提交上去过。全域 CLAUDE.md 最后被他砍到只剩四条。",
+      "whyRead": "长期记忆里那个资料表名错了好几个月都没人发现——于是他定下「记忆只能当线索，不能当事实」。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "agent-memory",
+        "claude-md",
+        "subagent"
+      ],
+      "publishedAt": "2026-08-13T20:22:25.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "92d3edf61d3cf3fa",
+      "source": "iT 邦幫忙 · AI Code Reviewer 養成",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10402218?sc=rss.iron",
+      "titleOriginal": "Day 1｜一場演講講不完的事：它很好心地幫我把資料庫密碼寫進設定檔",
+      "titleZh": "它很好心地幫我把資料庫密碼寫進設定檔：一名醫院資訊人的 AI Code Review 實錄",
+      "summaryZh": "作者在医院资讯部任职。五月他请 AI 整理一份设定档，AI 自己把数据库密码找出来填了进去，准备 commit——「它没有做错任何一个步骤」。由此盘出五种常态：指引被忘记、架构歪掉、测试变得不可信、机密外泄、供应链投毒。文中给了实际数字：每周经手 40~50 个 MR、跑 150~200 次审查，单次审查等值 API 成本中位数 5.75 美金（统计自 64 次实际审查），年化约省 1,200 到 1,600 小时。最扎人的是他自曝的三件演讲里一句话带过的事：那份 skill 现在有二十几个文件五千多行；容器防火墙少写两个引号，AI 因此能自己重建整道白名单墙而画面照样显示已验证；把当时 16 条规则逐条盘一次，结果一条都没退役。",
+      "whyRead": "他自曝容器防火墙配置少写了两个引号，里面的 AI 因此能自己把任意域名加进白名单、把整道墙重建，而画面照样印出「防火牆已驗證」。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "skills",
+        "subagent"
+      ],
+      "publishedAt": "2026-08-09T19:17:30.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "5b5d1bb3fffe800b",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/yonlin/p/22518708",
+      "titleOriginal": "【解决方案】Codex Cli 复制多行提示词到输入框，可能截断提示词，导致提示词不完整的解决方案 - yonlin",
+      "titleZh": "Codex CLI 粘贴多行提示词会被截断，而 Shift+Insert 那个答案是无效的",
+      "summaryZh": "在 PowerShell / Windows Terminal 里用 Codex CLI，把多行提示词粘贴进输入框可能被截断，导致提示词不完整。作者说他搜到的最简单方案是改用 Shift + Insert 粘贴，但实测【无效】。他改走 Codex 自带的外部编辑器入口：把 VISUAL 和 EDITOR 指向 Notepad++，在 Codex 里按 Ctrl+G 就会开一个编辑器窗口，写完保存关闭，内容自动回到输入框。文章给了完整步骤——先用 Test-Path 确认 exe 路径，再用 $env: 临时配置测试通过之后，才用 [Environment]::SetEnvironmentVariable 写进用户级环境变量并重开终端验证。参数建议带上 -multiInst -nosession，让 Codex 每次开的是独立实例，不会污染你正在用的 Notepad++ 工作区。",
+      "whyRead": "搜到的最简单解法他实测不管用，改走 Ctrl+G 外部编辑器，附 Windows 下 VISUAL / EDITOR 的完整配置和验证步骤。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-17T05:22:00.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "3aea60e33ee8f8a7",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1234815",
+      "titleOriginal": "把 DSH（DeepSeek Harness）部署到服务器：手机、电脑实时同步，云端开发",
+      "titleZh": "把 DeepSeek Harness 部署到服务器：nginx 反代和认证插件的三处坑",
+      "summaryZh": "基于 DSH 0.1.0-rc.6 加 Ubuntu 22.04/24.04、nginx、pm2 的实际部署记录。DSH 的 Web 界面默认只监听 127.0.0.1:3080，而且 CLI 直接禁止 --host 0.0.0.0（报错说明是防止把远程代码执行能力暴露到公网），所以只能走 nginx 反代加 dsh-webui-auth 插件做登录。作者记了三处不试一遍不会知道的地方：目录选择器默认按服务器环境自动选 native，弹出的对话框在服务器自己的屏幕上，远程访问必须用 ~/.dsh/patch.yml 固定成浏览器浏览模式；手机上内容区太小，用 nginx sub_filter 把 viewport 改成 initial-scale=0.7，改的时候要先关掉压缩请求头；manifest.webmanifest 永远返回 302，因为认证插件拦截所有未认证请求，只能在 nginx 里直出。",
+      "whyRead": "dsh web 直接禁止 --host 0.0.0.0，而认证插件会把 manifest 请求全部 302 掉，PWA 一直装不上。",
+      "rating": 4,
+      "tools": [
+        "dsh"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-16T15:36:42.000Z",
+      "author": "longbill",
+      "preScore": 10
+    },
+    {
+      "id": "16e8248e4ff99832",
+      "source": "雷蒙三十",
+      "kind": "blog",
+      "url": "https://raymondhouch.com/lifehacker/digital-workflow/codex-youtube-thumbnail-workflow/",
+      "titleOriginal": "如何用 Codex 製作 YouTube 封面？從 AI 初稿、人物去背到 Figma 定稿",
+      "titleZh": "用 Codex 做 YouTube 封面：前期交給 AI，定稿一定要回 Figma",
+      "summaryZh": "团队用 Codex（ChatGPT 桌面版）分析影片、找出适合的画面切角、提出标题方向并生成几版封面初稿，但刻意不让 AI 画完整张。原因是每重新生成一次，人物就可能出现细微但致命的变化：脸型五官变掉、手指数量不对、衣服上的 logo 变形，甚至前后两张图身材比例都不一致；缩小成封面后观众未必看得出，但整张图就是有一种「这个人不像本人」的感觉。所以流程拆成三段：Codex 负责出方向、清除概念稿的标题与前景只留干净背景；人物交给 ChatGPT 网页版从原始截图取出再去背（他们的经验是网页版比 Codex 更少让人物变形），去背后逐项检查发丝白边、手指边缘和残留阴影；最后回 Figma 做标题、描边和品牌元素，因为 AI 图里的中文字容易错字缺字。",
+      "whyRead": "整张封面全交给 AI，人物的五官、手指和衣服 logo 会在每次重绘里悄悄走样——所以他把人物和背景拆开处理。",
+      "rating": 4,
+      "tools": [
+        "codex",
+        "chatgpt-desktop"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-16T05:23:42.000Z",
+      "author": "",
+      "preScore": 11
+    },
+    {
+      "id": "de68498d5b3ef025",
+      "source": "Tw93",
+      "kind": "blog",
+      "url": "https://tw93.fun/2026-08-16/mole-mac.html",
+      "titleOriginal": "Mole 出 Mac 版后，用户教会了我做产品",
+      "titleZh": "全天开着 Claude Code 和 Codex 之后，Mac 上多出来的三类垃圾",
+      "summaryZh": "作者几乎全天开着 Claude Code 和 Codex 写东西，发现 AI 留下的垃圾和以前的软件很不一样，分三类：编译产物（一个下午让 agent 跑十几轮、每轮都编译，Rust 的 target、前端 .next/dist、Xcode DerivedData 涨得很快，他一次清出 86G）；AI 命令行工具的旧版本（自动更新是把新版本整个下到新目录，一个版本约 250MB，几个月积十几个）；模型文件（Ollama、LM Studio、HuggingFace 缓存常常几十 G）。前两类清，第三类一个字节都不碰，~/.ollama/models、~/.cache/huggingface 在代码里是写死的保护名单，~/.codex/sessions、~/.claude/projects 和 memories、plans、skills 同样永不清理。最蠢的一次是把 com.apple.e5rt.e5bundlecache 当缓存清了，那其实是苹果神经引擎编译好的模型，用户那边所有识别功能全挂。",
+      "whyRead": "一次清出 86G 编译产物；而 ~/.claude/projects 和 ~/.codex/sessions 是他在代码里写死的、永远不清的保护名单。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "codex",
+        "cursor",
+        "copilot-cli"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-16T00:00:00.000Z",
+      "author": "",
+      "preScore": 9
+    }
+  ],
+  "reviewed": 57,
+  "dropped": 49,
+  "stats": {
+    "sources": 247,
+    "fetched": 444,
+    "shortlisted": 57,
+    "rejected": 387,
+    "thin": 115,
+    "enriched": 75,
+    "enrichAttempted": 101,
+    "enrichRetryAttempted": 26,
+    "enrichRetried": 0,
+    "enrichSkipped": 0,
+    "enrichMuted": [],
+    "failedSources": 0,
+    "feedRetryAttempted": 6,
+    "feedRetried": 6
+  },
+  "errors": []
+}

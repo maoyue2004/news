@@ -224,6 +224,35 @@ test('繁体写法的自荐招呼语也要扣到', () => {
   assert.ok(trad.reasons.includes('疑似产品自荐帖'));
 });
 
+test('自荐招呼语的三种漏写法：全角方括号、欢迎大佬、征求意见', () => {
+  // 2026-08-18：DSH 发布周当天 57 个入围席位里 13 席是自荐帖，这张表一条都没扣到。
+  // 三条各对应一种漏法，都不是新判据，是同一套招呼语的写法没写全。
+  const cases = [
+    // 全角方括号：`[开源]` 早就在表里，linux.do 写的是「【开源】」
+    { title: '【开源】codex 浏览器插件平替，可以无缝接入 opencode 等工具中', excerpt: '装上就能用。' },
+    // V2EX 的节点名，那个节点本来就是发自己作品的地方
+    {
+      title: '[分享创造] 我把我的一人公司跑成了一块 kanban board',
+      excerpt: '公司只有我一个创始人，另外 8 个员工全是 AI agent，用 Hermes 跑，靠 board 协作。',
+    },
+    // 「欢迎大家」写成了「欢迎大佬」
+    { title: '装 DSH 插件时发现疑似后门，于是我连夜手搓两个 Plugins，欢迎大佬提提意见', excerpt: '安装前我顺手翻了下源码。' },
+    // 征求意见的招呼语整类没有
+    { title: '我写了个 DeepSeek Harness 的插件，请大家锐评一下', excerpt: '让 dsh 记住这个项目里什么命令成功过。' },
+  ];
+  for (const c of cases) {
+    const r = scoreItem({ ...c, source: 'V2EX 搜索', kind: 'search' });
+    assert.ok(r.reasons.includes('疑似产品自荐帖'), `没扣到：${c.title}`);
+  }
+
+  // 同一天收录的条目一条都不能被这几个词误伤
+  const real = scoreItem({
+    title: '把 DSH（DeepSeek Harness）部署到服务器：手机、电脑实时同步',
+    excerpt: 'dsh web 默认只监听 127.0.0.1:3080，而且 CLI 直接禁止 --host 0.0.0.0，所以只能走 nginx 反代。',
+  });
+  assert.ok(!real.reasons.includes('疑似产品自荐帖'));
+});
+
 test('论坛短帖扣分，但长度不是硬门槛', () => {
   const args = { title: '我把 Claude Code 的 statusline 折腾成了可版本化仓库', excerpt: '踩坑记录。' };
   const short = scoreItem({ ...args, thread: true });
