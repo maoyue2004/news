@@ -58,6 +58,17 @@ const WRITE = flag('write', null);
  * 这正是 harvest 那条「静默跑很久」的坑再走一遍。
  */
 const CACHE = flag('cache', null);
+/**
+ * 只拿名字/域名匹配这个正则的已收录博客当种子。
+ *
+ * LESSONS 里那条「友链有传递性，但同一片圈子往外再走一步走不远」是拿
+ * **友链自己的产物**当种子测出来的（207 → 221 个种子，净新增候选只有 94 个），
+ * 而那测的是圈子的直径，不是这条通道的产能。要检验「换个圈子还能不能出货」，
+ * 得挑一批**不是从友链来的**种子——2026-08-17 用的是繁中那一批
+ * （WebSearch 探到的 raven.tw / imzlp、iT 邦幫忙、vocus 带出来的作者），
+ * 它们和简中博客圈基本不互相挂友链。
+ */
+const SEED_MATCH = flag('seed-match', null);
 /** 单个候选站点最多花多久。默认比 probe.mjs 的 15 秒短——这里要探上千个，死站不值得等。 */
 const PROBE_TIMEOUT_MS = Number(flag('probe-timeout', 6000));
 
@@ -70,8 +81,16 @@ const LINK_PATHS = [
   'links.html', 'friends.html', 'links/index.html', 'blogroll', 'blogroll/',
 ];
 
-/** 导航里指向友链页的锚文本。穷举路径漏掉的（自定义路径）靠它捡回来。 */
-const LINK_ANCHOR = /友链|友情链接|朋友们|link exchange|blogroll/i;
+/**
+ * 导航里指向友链页的锚文本。穷举路径漏掉的（自定义路径）靠它捡回来。
+ *
+ * 繁体那几个写法是 2026-08-17 补的，和 08-16 给 `SELF_PROMO` 补繁体招呼语
+ * 是同一个洞：这张表照着简中博客圈写，而台港那边写「友情連結」「友站」「朋友們」。
+ * 后果不是少几个候选，是**这条通道在繁中圈整个失灵**——只剩穷举路径那一半，
+ * 而自定义路径（`/friend-links`、`/about/links`）全靠锚文本捡。
+ * 不收裸的「連結」：那是「相關連結」「下載連結」的一段，页面上遍地都是。
+ */
+const LINK_ANCHOR = /友链|友情链接|朋友们|友情連結|友站|朋友們|部落格連結|link exchange|blogroll/i;
 
 /**
  * 不可能是个人博客的域名。友链页里混着大量这类链接：备案查询、
@@ -220,8 +239,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     }
     console.error(`从缓存 ${CACHE} 读回 ${inbound.size} 个站外域名，跳过爬取`);
   } else {
+    const seedRe = SEED_MATCH ? new RegExp(SEED_MATCH, 'i') : null;
     const seeds = sources
       .filter((s) => s.kind === 'blog' && s.enabled !== false && s.url)
+      .filter((s) => !seedRe || seedRe.test(`${s.name} ${s.url}`))
       .map((s) => ({ name: s.name, url: s.url }));
     console.error(`${seeds.length} 个已收录博客，开始找友链页…`);
     for (let i = 0; i < seeds.length; i += CONCURRENCY) {

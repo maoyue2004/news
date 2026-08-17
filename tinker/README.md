@@ -83,8 +83,10 @@ dry-run 忽略 `seen`（否则日更刚跑完，重放只剩零条；忽略之�
 两条**发现**通道（都要人工过一遍命中列表再并入，否决当场写进 `denylist.json`）：
 
     node scripts/tinker-harvest.mjs --index <id>        # 社区索引，六个已扫完，边际产出趋零
+                                                        # （但词表大改之后重扫会有新命中，见 LESSONS）
     node scripts/tinker-blogroll.mjs --evaluate \
       --min-links 2 --cache /tmp/blogroll.json          # 已收录博客的友链页
+    node scripts/tinker-blogroll.mjs --seed-match <正则> # 只拿匹配的已收录博客当种子，用来换个圈子试
 
 `--cache` 把「爬友链页」那十几分钟的结果存下来，之后调 `--min-links` 不用重爬。
 

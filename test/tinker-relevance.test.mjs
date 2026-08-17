@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD, QUOTA_RELAX, THIN_FLOOR } from '../lib/tinker/relevance.mjs';
-import { matchTools, matchTopics, matchVocab, queriesForDate, rotatingQueries, CORE_QUERIES, TOOLS } from '../lib/tinker/vocab.mjs';
+import { matchTools, matchTopics, matchVocab, queriesForDate, rotationSlice, rotatingQueries, CORE_QUERIES, TOOLS } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
 
@@ -126,6 +126,39 @@ test('长尾词轮转，两周内能覆盖全池', () => {
   }
   const total = rotatingQueries().length + CORE_QUERIES.length;
   assert.ok(seen.size >= total * 0.95, `14 天只覆盖了 ${seen.size}/${total}`);
+});
+
+test('每个轮转词每个周期恰好跑一次', () => {
+  const pool = Array.from({ length: 254 }, (_, i) => `词${i}`);
+  const counts = new Map();
+  // cycle = ceil(254/24) = 11
+  for (let d = 0; d < 11; d += 1) {
+    const date = new Date(Date.UTC(2026, 7, 17 + d)).toISOString().slice(0, 10);
+    const slice = rotationSlice(pool, date, 24);
+    assert.ok(slice.length <= 24, `${date} 一天发了 ${slice.length} 个，超过额度`);
+    for (const q of slice) counts.set(q, (counts.get(q) ?? 0) + 1);
+  }
+  assert.equal(counts.size, pool.length, '一个周期没覆盖全池');
+  assert.deepEqual([...new Set(counts.values())], [1], '有词在同一周期里跑了不止一次');
+});
+
+test('池子中途变长，覆盖不会被重新洗牌', () => {
+  // 这条是照着真实故障写的：原来的实现按 `(days * rotating) % pool.length` 取窗口起点，
+  // days 是两万多的大数，池子每加一个词，起点就跳到不相干的位置。
+  // 后果是 2026-08-17 量到的那个驼峰——13 天 312 个查询槽只碰到 145/254 个词，
+  // 尾部 61 个（含全部 TOPICS 派生词）一次都没跑过。
+  // 所以断言的不是「某个具体切片」，而是**词表在演化过程中每个词仍然轮得到**。
+  const base = Array.from({ length: 200 }, (_, i) => `词${i}`);
+  const seen = new Map();
+  for (let d = 0; d < 20; d += 1) {
+    // 每两天往池子中间插一个新词，模拟词表被反复修改。
+    const pool = [...base];
+    for (let k = 0; k < Math.floor(d / 2); k += 1) pool.splice(50 + k, 0, `新词${k}`);
+    const date = new Date(Date.UTC(2026, 7, 17 + d)).toISOString().slice(0, 10);
+    for (const q of rotationSlice(pool, date, 24)) seen.set(q, (seen.get(q) ?? 0) + 1);
+  }
+  const missed = base.filter((q) => !seen.has(q));
+  assert.deepEqual(missed, [], `20 天里有 ${missed.length} 个词一次都没跑过`);
 });
 
 test('查询词从词表自动派生，加了工具就自动有搜索覆盖', () => {
@@ -585,4 +618,54 @@ test('ai coding 是泛 agent 词，能单独把条目从「没命中任何词」
   const r = scoreItem({ title: '一篇 AI Coding 生态发展的自省记述', excerpt: '我折腾了三个月的记录。' });
   assert.ok(!r.reasons.includes('没有命中任何 agent 相关词'));
   assert.ok(r.reasons.some((x) => x.startsWith('泛 agent 词')));
+});
+
+test('裸 harness 收了，但 DeepSeek Harness 的名字不许再被数第二遍', () => {
+  // 2026-08-17：把 `DeepSeek Harness` 抹掉之后仍出现裸 harness 的 52 条语料，
+  // 逐条看完全部是 agent 语境；反例（test harness / wire harness / 线束）0 条。
+  assert.deepEqual(matchTopics('Matt Pocock 的 AI 工程工作流：与其追模型，不如造 harness'), ['harness']);
+  assert.deepEqual(matchTopics('AI 写代码老跑偏？我给 Agent 套了层 Harness 缰绳'), ['harness']);
+  // 但 DSH 稿只算 dsh 一次：产品名整个包住了话题词，不遮罩就等于同一个名字加两遍分。
+  const dshOnly = matchVocab('DeepSeek Harness 桌面端开源：一切皆插件');
+  assert.deepEqual(dshOnly.tools, ['dsh']);
+  assert.deepEqual(dshOnly.topics, []);
+  // 同时提到两者的标题仍然两个都命中（遮罩只抹掉被包住的那一处写法）。
+  const both = matchVocab('DeepSeek Harness 和别的 harness 到底该怎么选');
+  assert.ok(both.tools.includes('dsh') && both.topics.includes('harness'));
+});
+
+test('Agent Skills 收裸英文 skill，但中文「技能」仍然不收', () => {
+  // 153 条含裸英文 skill 的语料里，soft skill / skill tree / 技能树这类反例 0 条；
+  // 而中文的「技能要求」「技能包括」在招聘帖里满地都是，中文没有词边界，收不得。
+  assert.ok(matchTopics('我写了一个 300 行的 AI 开发流程 Skill：先找现成轮子').includes('skills'));
+  assert.ok(matchTopics('给 Codex 接了个 Everything 文件搜索 Skill').includes('skills'));
+  assert.deepEqual(matchTopics('岗位要求：技能包括熟悉分布式系统'), []);
+});
+
+test('「低价」是「低价值」的一段，不该按营销词毙掉', () => {
+  // 2026-08-17 的误杀：作者把 qwen-code-dev-bot/oh-my-cli 拉下来数了 841 次提交、
+  // 把人类那 13 次逐条点开，只因为正文里有一句「不允许发明低价值工作」被扣 4 分。
+  const r = scoreItem({
+    title: 'AI 写了一个月代码，人类只提交 13 次',
+    excerpt: '我把那个仓库拉下来读了一遍。841 次提交里人类占 13 次，实测下来人类没写一行业务代码。'
+      + '原文写着：空的待办列表意味着「空闲」，而不是「允许发明低价值工作」。',
+  });
+  assert.ok(!r.reasons.some((x) => x.includes('营销词')), r.reasons.join('；'));
+  // 真的黑产帖仍然拦得住——它们每一条都同时命中「中转」这类精确得多的词
+  // （标题里的中转是硬毙，正文里的算营销词）。
+  assert.equal(scoreItem({ title: 'Claude Code 低价中转，稳定不掉线', excerpt: '低价出，欢迎联系。' }).verdict, 'reject');
+  const inBody = scoreItem({
+    title: '我用 Claude Code 折腾了一周的配置',
+    excerpt: '实测下来还是走中转便宜，低价渠道我试了三家，踩坑记录如下。',
+  });
+  assert.ok(inBody.reasons.some((x) => x.includes('营销词')));
+});
+
+test('新词条：Reasonix / Prime Agent / MEMORY.md', () => {
+  assert.ok(matchTools('Reasonix 安装配置教程：DeepSeek 编程 Agent 入门指南').includes('reasonix'));
+  assert.ok(matchTools('DeepSeek-Reasonix：99.82% 的缓存命中砍掉 5 倍成本').includes('reasonix'));
+  assert.ok(matchTools('Prime Agent 这个「会自我进化的编码 Agent」到底什么来头').includes('prime-agent'));
+  // 裸 prime 是 Prime Video / 素数 / Amazon Prime，不收。
+  assert.deepEqual(matchTools('Amazon Prime 会员值不值'), []);
+  assert.ok(matchTopics('人格、记忆全是纯文本：SOUL.md 管语气，MEMORY.md 管记忆').sort().includes('memory-md'));
 });

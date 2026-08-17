@@ -564,8 +564,10 @@
     "url": "https://mobius.blog",
     "feed": "https://mobius.blog/feed/",
     "kind": "blog",
-    "enabled": true,
-    "desc": "中文个人博客，更新勤。"
+    "enabled": false,
+    "desc": "中文个人博客，更新勤。",
+    "disabledOn": "2026-08-17",
+    "disabledReason": "文学随笔博客（「中式番茄炒鸡蛋吃多了也会腻」「宝可梦能够被神圣化吗」）。21 天 10 篇、命中 agent 词表 0 篇、入围 0、16 天日文件里收录 0。日更博主的 10 篇比月更博主的 30 天更能说明问题，见 REVIEW 2026-08-17。"
   },
   {
     "name": "浮云翩迁之间",
@@ -1974,5 +1976,29 @@
     "kind": "blog",
     "enabled": true,
     "desc": "虚幻引擎工具开发者的个人博客，主线是 UE 插件与热更新，偶尔写自托管折腾（Homelab、MEMOS）。近期那篇「从 Vibe Coding 到 AI Agent：一个喂养系统的完整实践」是本轮探到的最高分单篇。低频，按月更博主留着。"
+  },
+  {
+    "name": "阿尔的代码屋",
+    "url": "https://blog.algieba12.cn",
+    "feed": "https://blog.algieba12.cn/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "全栈「排坑笔记」体个人博客，主线是 Flutter / VS Code / npm / micromamba 的具体故障（EHOSTUNREACH 与 IPv6 阻断、xcodebuild exit code 70、Isar 并发死锁）。agent 那部分只有一篇但正中靶心：Android Termux 里装 Hermes Agent，带 cryptography 46.0.7 编译崩溃、psutil 平台拒绝的原文报错。典型的「月更博主一年出几篇好文」。"
+  },
+  {
+    "name": "iT 邦幫忙 · AI Code Reviewer 養成",
+    "url": "https://ithelp.ithome.com.tw/users/20124338/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9187",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。把 AI Code Review 做成一份 Skill 的全过程：九面向审查、两道闸、报告统一写进 report JSON。Day 1 是「它很好心地幫我把資料庫密碼寫進設定檔」，Day 8 记了两个 AI 审同一个 repo 时互相 git checkout 踩掉对方工作目录。近 8 篇 2 篇过收录线。"
+  },
+  {
+    "name": "iT 邦幫忙 · Codex 做 LINE Bot 上线",
+    "url": "https://ithelp.ithome.com.tw/users/20177581/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9202",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。让 Codex 从空 repo 把一只 LINE 定位 Bot 做到上线，逐天记卡住的地方：Vertex AI 的 ADC 工作证、五个 Maps 来源不等于五间店、查地图要等 30 秒时的 Loading Animation 与后端可靠性。近 5 篇 1 篇过收录线（Day 2 拿 12 分）。"
   }
 ]

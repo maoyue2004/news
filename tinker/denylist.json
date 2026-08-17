@@ -263,5 +263,23 @@
     "name": "Eric 個人部落格",
     "reason": "独立域名上跑内容农场的形状：近 20 篇标题清一色「XX 教學手冊」（Copilot / Spring Boot / Maven / Cognee 一路铺过去），scoreItem 近 20 篇只过 1 篇。选题赶热点，落点不在自己踩了什么。",
     "date": "2026-08-16"
+  },
+  {
+    "feed": "https://dfine.tech/atom.xml",
+    "name": "阁子",
+    "reason": "harvest 第五轮命中最高（4/20，1 天前还在更），但它是「每天拆一个新项目」的架构解读专栏：Cordis / DeepSeek Harness / Agency Agents / Harvey LAB / PromptCache 一路铺过去。抽了两篇看正文，Cordis 那篇自己写着「现在代码拿到了，从头读了一遍」——通篇是读代码写架构，没有一次自己装、自己跑、自己撞的记录。和否掉 rowkey.cn（照着官方架构讲一遍）、zhaozhiming（转述文档）、Zongsoft 同一把尺子。",
+    "date": "2026-08-17"
+  },
+  {
+    "feed": "https://datashare-duo.github.io/datashare-blog/rss.xml",
+    "name": "DataShare 数据人阿多",
+    "reason": "Python / 机器学习教程博客（协方差、polars、装饰器、uv 部署），agent 那部分是「VibeCoding完全指南：2026年，我们用“感觉”写代码」「OpenClaw使用体验」这类清单与指南体，够格 2/20 全靠这两篇。准入是严标准，不进。",
+    "date": "2026-08-17"
+  },
+  {
+    "feed": "https://wulu.zone/feed/post.xml",
+    "name": "Wulu",
+    "reason": "树莓派 / Home Assistant / 效率工具博客，104 天没更新。全站与 agent 有关的只有「在 Antigravity 使用 VS Code 应用扩展商店」一篇加两条「开放课程推荐」。够格 2/20 里另一条是 pi 的命中，本身就在树莓派语境里。",
+    "date": "2026-08-17"
   }
 ]
