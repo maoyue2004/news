@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { extractArticleText } from '../lib/enrich.mjs';
 import {
   loadSeen, saveSeen, loadStatus, saveStatus, recordSuccess, recordFailure,
@@ -7,7 +7,7 @@ import {
 } from '../lib/store.mjs';
 import { collectFeed, collectRaw } from '../lib/tinker/collect.mjs';
 import { fetchSearchItems, isSearchSource } from '../lib/tinker/search-adapters.mjs';
-import { triage } from '../lib/tinker/relevance.mjs';
+import { triage, titleKey } from '../lib/tinker/relevance.mjs';
 import { queriesForDate } from '../lib/tinker/vocab.mjs';
 import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
 
@@ -310,6 +310,25 @@ export async function fetchAllSources({
   };
 }
 
+/**
+ * 已收录条目的标题集合，用来挡同一篇文章从另一个源再来一次的转帖。
+ * 读的是历史日文件（`tinker/data/YYYY-MM-DD.json`），不是 seen——
+ * seen 里装的是「看过的一切」，这里要的是「已经出过刊的那些」。
+ */
+function loadPublishedTitles() {
+  const titles = new Set();
+  for (const name of readdirSync(DATA_DIR)) {
+    if (!/^\d{4}-\d{2}-\d{2}\.json$/.test(name)) continue;
+    try {
+      for (const item of JSON.parse(readFileSync(`${DATA_DIR}/${name}`, 'utf8')).items ?? []) {
+        titles.add(titleKey(item.titleOriginal));
+      }
+    } catch { /* 半截文件不该拖垮当天的抓取 */ }
+  }
+  titles.delete('');
+  return titles;
+}
+
 async function main() {
   const all = JSON.parse(readFileSync(SOURCES, 'utf8'));
   const sources = all.filter((s) => s.enabled);
@@ -375,7 +394,7 @@ async function main() {
   // 能离线重放当天的筛选并和上一版对比。不进 git（体积大且每天变）。
   writeFileSync(`${DATA_DIR}/_raw.json`, JSON.stringify({ date: today, items: unique }, null, 2) + '\n');
 
-  const { shortlist, rejected } = triage(unique, { cap: SHORTLIST_CAP });
+  const { shortlist, rejected } = triage(unique, { cap: SHORTLIST_CAP, publishedTitles: loadPublishedTitles() });
 
   if (DRYRUN) {
     console.log(`\n${today}（DRYRUN）：抓到 ${unique.length} 条，规则入围 ${shortlist.length} 条，筛掉 ${rejected.length} 条`);

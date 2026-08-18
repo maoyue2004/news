@@ -2008,5 +2008,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "独立开发者的实践博客，选题集中在把 agent 当生产工具用之后的账和管理：161 个 Claude Code 会话、934 条指令的成本审计（缓存写入占 2.9% token 却吃掉 31.5% 成本），跨 agent 的 Skills 管理，Codex /goal 从 0 到 1 验证产品。近 20 篇 6 篇过收录线，span 95 天，是个人节奏不是媒体节奏。"
+  },
+  {
+    "name": "刘春龙的博客",
+    "url": "https://php.js.cn/",
+    "feed": "https://php.js.cn/rss/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "成都开发者刘春龙（V2EX @longbill）的个人站，从 2012 年写到现在。近期是把 DSH 部署到服务器做手机/电脑实时同步（默认只听 127.0.0.1:3080、CLI 禁 --host 0.0.0.0 这些坑都是自己趟出来的）、A100 32G 上部署 Qwen3.8-27B、小米 Mimo 2.5 Pro 与 DeepSeek V4 Flash 的实战对比。近 20 篇 2 篇过收录线，正文 100% 抓得到。"
+  },
+  {
+    "name": "ZhiJun Blog",
+    "url": "https://blog.zhijun.io/",
+    "feed": "https://blog.zhijun.io/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "个人博客，选题几乎全压在「把 agent 工程化」这一件事上：Superpowers 为什么总想先拦住你、GSD 框架怎么解 context rot、Agent Skills 装成工程化工作流、mattpocock/skills 管的是做事顺序而不是提示词。近 10 篇 6 篇过收录线；最近一次更新是 5 月底，按留存标准留着看它会不会回来。"
   }
 ]

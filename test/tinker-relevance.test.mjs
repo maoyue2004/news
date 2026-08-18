@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreItem, triage, cjkRatio, SHORTLIST_THRESHOLD, QUOTA_RELAX, THIN_FLOOR } from '../lib/tinker/relevance.mjs';
+import { scoreItem, triage, titleKey, cjkRatio, SHORTLIST_THRESHOLD, QUOTA_RELAX, THIN_FLOOR } from '../lib/tinker/relevance.mjs';
 import { matchTools, matchTopics, matchVocab, queriesForDate, rotationSlice, rotatingQueries, CORE_QUERIES, TOOLS } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
@@ -697,4 +697,36 @@ test('新词条：Reasonix / Prime Agent / MEMORY.md', () => {
   // 裸 prime 是 Prime Video / 素数 / Amazon Prime，不收。
   assert.deepEqual(matchTools('Amazon Prime 会员值不值'), []);
   assert.ok(matchTopics('人格、记忆全是纯文本：SOUL.md 管语气，MEMORY.md 管记忆').sort().includes('memory-md'));
+});
+
+test('已收录条目的转帖不占入围席位（严格同题）', () => {
+  // 2026-08-19 实测到的两例都是同一个形状：作者先发平台、我们从平台收了，
+  // 之后他的个人站被接进 sources.json，同一篇又以另一个 URL 回来一次。
+  // seen.json 按 id/url 去重，对这种情况完全无效。
+  const mk = (i, source, title) => ({
+    id: `id${i}`, source, url: `https://${source}.example/${i}`,
+    titleOriginal: title,
+    excerpt: '踩坑记录，实测配置，工作流复盘。',
+  });
+  const items = [
+    mk(1, 'v2ex', '如何最大化 Claude Code Session 的价值'),
+    mk(2, 'blog', '如何最大化 Claude Code Session ​的价值'), // 全角空格 + 零宽字符也算同题
+    mk(3, 'blog', '如何最大化 Codex Session 的价值'), // 换了工具名就是另一篇
+  ];
+  const published = new Set([titleKey('如何最大化 Claude Code Session 的价值')]);
+  const { shortlist, rejected } = triage(items, { cap: 60, quota: 8, publishedTitles: published });
+  assert.deepEqual(shortlist.map((it) => it.id).sort(), ['id3']);
+  assert.equal(shortlist.length + rejected.length, items.length, '被判转帖的也要留在 rejected 里');
+  assert.ok(rejected.every((r) => r.id === 'id3' || r.reasons.some((x) => x.includes('转帖'))));
+  // 不传 publishedTitles 时行为不变。
+  assert.equal(triage(items, { cap: 60, quota: 8 }).shortlist.length, 3);
+});
+
+test('新话题词：Agent Loop（不收连写的 agentloop——那是阿里云的产品名）', () => {
+  assert.ok(matchTopics('Pi 与 DeepSeek Harness：Agent Loop 该由谁组织').includes('agent-loop'));
+  assert.ok(matchTopics('把 agent 循环拆开看：工具调用之前发生了什么').includes('agent-loop'));
+  assert.ok(matchTopics('智能体循环的本质是什么').includes('agent-loop'));
+  assert.ok(!matchTopics('阿里云 AgentLoop 三城沙龙报名').includes('agent-loop'));
+  // 裸「主循环」是游戏 / 事件主循环的常用说法，不收。
+  assert.ok(!matchTopics('用 SDL 写一个游戏主循环').includes('agent-loop'));
 });

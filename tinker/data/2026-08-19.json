@@ -1,0 +1,202 @@
+{
+  "date": "2026-08-19",
+  "generatedAt": "2026-08-18T22:22:28.739Z",
+  "dailyNote": "DSH 发布周进入第二阶段：官方文档改写的「完全指南」退潮，接力的是一整排「我给 DSH 做了个 X」——插件目录站两个、精选榜一个、桌面发行版一个、社区发行版一个、额度查询 CLI 一个，落点都在让你去用它，一条没收。今天真正好看的是三篇不追热点的：犀利豆把 Claude Code 散在四个工具里的 background 机制拼成一张图，结论是它根本不是工具而是执行模式；lqhl 拿 Worse is Better 那套框架把 Pi 和 DSH 摆到一起，最后给 DSH 开了张举证清单；罗西读到 MiniClaw 的 C 文件里，把具身 agent 的护栏（GPIO 19/20 永久禁用、写文件走路径白名单）挖了出来。另外两篇是老实的翻车记录：V2EX 那位四个月五轮试错、被 mock 假数据坑了很久，zelikk 让 agent 改 Telegram 客户端第一版编译出来是无效的。毙掉的大头除了自荐帖，还有一篇博客园的「私有化部署丝滑体验」——对比表做得像实测，但把 vLLM 的 --enable-prefix-caching 记在了 Harness 头上，属于说得像实测的伪深度文。",
+  "items": [
+    {
+      "id": "fcc6343666d4de18",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/08/15/claude-code-tools-background/",
+      "titleOriginal": "Claude Code Tools 研究系列（十四）—— Background：一种正交的执行模式",
+      "titleZh": "Claude Code 里没有 Background 这个工具，因为它是一种执行模式",
+      "summaryZh": "犀利豆「Claude Code Tools 研究系列」第十四篇，也是系列第一篇专题：不拆某个工具，而是把散在 Bash、Agent、Monitor、Cron、TaskStop 里的 background 能力放到同一张图上看。结论是 Claude Code 里没有一个独立叫 Background 的工具，这不是遗漏而是设计选择——它是一个执行模式参数，三类后台任务（一次性完成通知、定时触发、持续事件流）共用同一套 task_id 与 TaskStop 接口，形状对应 Unix 的 fork/wait。文章逐条引工具描述原文，指出 Bash 的 run_in_background 默认 false 而 Agent 默认 true 反映的是典型用法差异，点出「不许 sleep 轮询、harness 会自己发通知」这条行为规则，也挑明 Task 一词同时指待办事项和后台实例造成的语义碰撞。约八千字，无任何推广。",
+      "whyRead": "同一个 run_in_background，Bash 默认关、Agent 默认开——两个相反的默认值，作者给出了理由。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "subagent",
+        "harness",
+        "agent-loop"
+      ],
+      "publishedAt": "2026-08-15T10:00:00.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "de45ea0da5c75843",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/rossiXYZ/p/22432402",
+      "titleOriginal": "【OpenClaw具身硬件】MiniClaw 阅读笔记---(3) 接口 & 混合智能 - 罗西的思考",
+      "titleZh": "读 MiniClaw 的接口层：端侧 agent 的护栏是硬编码在 C 文件里的",
+      "summaryZh": "「OpenClaw 具身硬件」阅读笔记第三篇，读的是 MiniClaw 跑在 ESP32-S3 上的感知/执行接口与端云协同。感知接口分 Push（推送式）和 Pull（拉取式）两种范式并给出分工，执行接口则统一成「万物皆 tool」且对 LLM 完全对称，回复是隐式的默认执行。作者强调两侧的不对称：感知更自由、执行更受限，感知有 Push+Pull 两路而执行只有一路，感知数据可以积累而执行结果一锤定音。护栏部分点到具体实现——gpio_policy.c 里 GPIO 19/20（USB Serial/JTAG）永久禁用，tool_files.c 对写入做路径校验，还列了 MIMI_GPIO_ALLOWED_CSV、MIMI_CRON_MAX_JOBS=16 这类配置项。后半讲端云协同的四层智能架构与「信息密度沿流向单调递增」的设计原则。",
+      "whyRead": "GPIO 19/20 永久禁止、写文件走路径白名单——具身 agent 的安全边界长什么样，这里有实现级的答案。",
+      "rating": 4,
+      "tools": [
+        "openclaw"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-18T13:23:00.000Z",
+      "author": "",
+      "preScore": 7
+    },
+    {
+      "id": "eeba046ebc52b3fc",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/lulight/p/22554886",
+      "titleOriginal": "【Azure APIM】在 Azure API Management 中配置 SSE Transport 的 MCP Server：从 App Service 到 APIM 的一次实践 - 编码者卢布",
+      "titleZh": "APIM 门户里没有 SSE 这个选项：直接打 Management REST API 挂 MCP Server",
+      "summaryZh": "作者把一个 MCP SSE 服务部署到 Azure App Service 并用 MCP Inspector 验证通过，接下来想让 API Management 当统一入口透传 MCP 请求，却发现 APIM 门户里根本没有把 Transport Type 设成 SSE 的 UI 控件，只能直接调 Management REST API 创建 MCP API。文章把两处卡点的报错原样贴出：只配 serviceUrl 不配 backendId 会得到「Either BackendId or MCP tools must be set, but not both for MCP API」；在 Azure 中国区用 2025-09-01-preview 会得到 NoRegisteredProviderFound，错误信息里列出的可用版本是 2024-10-01-preview，改用它才通。最后给出替换占位符即可执行的 CMD 脚本，整条链路是 MCP Inspector → APIM Gateway → App Service 上的 MCP SSE Server。",
+      "whyRead": "两个把人卡住的报错原文都贴了，包括中国区不支持 2025-09-01-preview 那条。",
+      "rating": 4,
+      "tools": [],
+      "topics": [
+        "mcp"
+      ],
+      "publishedAt": "2026-08-18T11:44:00.000Z",
+      "author": "",
+      "preScore": 12
+    },
+    {
+      "id": "0a5cf0e7a3ed0748",
+      "source": "ICDYCT我能你也行",
+      "kind": "blog",
+      "url": "https://zelikk.blogspot.com/2026/08/forkgramtdesktop-by-hermes.html",
+      "titleOriginal": "修改 forkgram/tdesktop 实现 屏蔽音频/视频按钮功能 by Hermes 对接 opencode/deepseek-v4-flash-free",
+      "titleZh": "让 agent 改 Telegram 桌面客户端：第一版编译出来功能是无效的",
+      "summaryZh": "作者不用 Telegram 的音视频功能，想把输入框最右边那个音频/视频按钮禁掉，于是把 forkgram/tdesktop 这个 C++ 桌面客户端交给 Hermes（对接 opencode/deepseek-v4-flash-free）改。全文由他发给 agent 的自然语言原文和截图串起来：他先描述按钮位置并配图说明，agent 改完第一版编译出来功能无效——消息窗口未输入文字时按钮照旧显示，他把测试结果原样反馈回去，agent 又忙了一通才说这次对了；接着他追加要求，把这个功能做成 Fork Settings 菜单里的开关项。最终效果是文本框为空时显示发送按钮而不是音视频按钮，仓库和 release 都挂在文末。改别人的大型 C++ 客户端正是 agent 容易翻车的场景，这篇的价值在于翻在哪一步是可见的。",
+      "whyRead": "完整贴出了发给 agent 的自然语言原文，包括那句「我测试你的编译结果，没有实现我想要的功能」。",
+      "rating": 4,
+      "tools": [
+        "opencode",
+        "hermes"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-18T09:00:26.000Z",
+      "author": "",
+      "preScore": 7
+    },
+    {
+      "id": "ba02035b8c967adc",
+      "source": "LQ's Blog",
+      "kind": "blog",
+      "url": "https://lqhl.me/blog/two-paths-to-agent-friendly-systems/",
+      "titleOriginal": "Pi 与 DeepSeek Harness：Agent-Friendly 的两种组合方式",
+      "titleZh": "Pi 与 DeepSeek Harness：复杂性该放进框架，还是留给文件和进程",
+      "summaryZh": "两个项目都在回答「怎样的软件更适合 Agent 使用和修改」：Pi 默认只给模型 read/write/edit/bash 四个工具，把后台任务交给 tmux、工作流交给脚本、持久化交给文件；DSH 建在 Cordis 上，把模型、工具、会话、沙箱乃至 Agent Loop 全做成 Plugin，由统一的 Service、Event 和生命周期机制连接。作者借 Gabriel 的 Worse is Better 与 MIT Approach 给两者定位，列出对照表（组合发生在哪、状态持久化在哪、失败怎么恢复、复杂性由谁承担），核心判断是统一机制不消灭复杂性、只重新安排复杂性：加一个 Provider 更容易了，理解一次完整执行却更难。他更看好 Pi——让记忆长寿、让进程短命，重启比在运行时里正确卸载组件更容易推理。结尾给 DSH 列了五条举证责任。",
+      "whyRead": "同一个问题的两种相反答案，作者站 Pi，并给 DSH 开了一张需要用真实使用来回答的举证清单。",
+      "rating": 4,
+      "tools": [
+        "dsh",
+        "pi",
+        "cordis"
+      ],
+      "topics": [
+        "agents-md",
+        "agent-memory",
+        "harness",
+        "agent-loop"
+      ],
+      "publishedAt": "2026-08-18T06:57:23.000Z",
+      "author": "",
+      "preScore": 11
+    },
+    {
+      "id": "429f07f2d55ffcbd",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1235223",
+      "titleOriginal": "Vibe Coding 近四个月有感",
+      "titleZh": "Vibe Coding 四个月五轮试错：从照搬大厂流程到「代码只是业务的耗材」",
+      "summaryZh": "作者从搜广推转到 web 后端，用五段复盘写完这四个月。Round 1 拿大厂设计先行的流程套新工具，代码写出来自己看不懂，结论是不够快；Round 2 干脆把 PRD 直接丢给 Claude 全权代劳，快，但业务逻辑被直译成面向过程的代码，改的时候无从下手，还踩到 WorkBuddy 悄悄 mock 假数据、很后面才发现，形容是在屎山里刨屎；Round 3 才悟出规矩得自己定：硬看代码，把重复出现的部分让 AI 抽成框架、组件和工具包，之后定位问题才变得迅速清晰；Round 4 是视角转换——他给的数字是大厂项目里真正对着编辑器写代码只占 20-30%，其余在设计文档，而 startup 只要快，屎山影响到业务再动不迟。全文无推广。",
+      "whyRead": "最贵的一课是 AI 悄悄给他 mock 了假数据，直到很后面才发现。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "cursor",
+        "workbuddy"
+      ],
+      "topics": [
+        "vibe-coding",
+        "harness"
+      ],
+      "publishedAt": "2026-08-18T02:46:56.000Z",
+      "author": "pursuit",
+      "preScore": 12
+    },
+    {
+      "id": "f3a88a146b380d3a",
+      "source": "Kuhung 谷粒",
+      "kind": "blog",
+      "url": "https://kuhung.me/posts/how-to-manage-skills-for-agent/",
+      "titleOriginal": "从单 Agent 到跨 Agent 的 Skills 管理",
+      "titleZh": "六十多个 skill 散在三个 agent 里：他没做同步工具，只用了软链",
+      "summaryZh": "作者同时用 Claude Code、Codex 和 Cursor（之前还有 Gemini CLI），各家 skill 目录攒到六十多个之后遇到的麻烦不是别人说的召回打架，而是 skill 没有全局安装——在 Claude Code 里用顺手的 grill-me（动手前先让 AI 把方案问透）切到 Codex 就得重装。他的解法分两层：32 个通用 skill 放进两个 git 管理的仓库，软链到 ~/.agents/skills/ 再挂进各家目录，改一次源文件全 agent 生效；另外二十来个和具体 agent 强绑定的留在原生目录里不动。文章明说这是折中——各家「支持 skill」不等于「保持同步」，与其做一个注定跟不上的大一统工具，不如把共享层和专用层划清楚。",
+      "whyRead": "跨 agent 的 skill 问题不是上下文腐败，是换个工具就要重装一遍。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "codex",
+        "gemini-cli",
+        "cursor"
+      ],
+      "topics": [
+        "skills"
+      ],
+      "publishedAt": "2026-08-05T03:41:14.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "5d197461fcf9a8b0",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7668909646717173806",
+      "titleOriginal": "从 Codex + Obsidian 到本地 RAG：我的私人知识库实践",
+      "titleZh": "把 Codex 接到 Obsidian 目录上：先跑通一次，再 Skill 化，最后才定时",
+      "summaryZh": "作者让 Codex 直接读写 Obsidian 的本地 Markdown 目录，不搬进任何封闭系统。知识库只留两层：收集箱保存原文和出处，wiki 保存综合多份材料后的当前结论。规则按层级拆开——AGENTS.md 当项目宪法（目录职责、来源标准、一次只改一个文件、写完立即复读），整理动作写成 $organize-knowledge-base Skill 固定顺序，最后才加每日定时唤醒。关键设计是内容指纹：整理开始和结束都对收集箱做快照，没变化立即退出，有变化也要等页面、索引、来源、链接全部验证通过才提交新指纹，中途失败则保留已完成文件、旧指纹不动。他的顺序结论是先做出一次可接受结果、再 Skill 化、最后才自动化，因为过早自动化会把重复页和无来源结论一起放大。Wiki 稳定后才补上本地 RAG。",
+      "whyRead": "自动整理最容易制造的假忙碌是「没有新材料也重写一遍」，他用内容指纹把这条路堵死。",
+      "rating": 4,
+      "tools": [
+        "codex",
+        "obsidian"
+      ],
+      "topics": [
+        "skills",
+        "agents-md"
+      ],
+      "publishedAt": "2026-08-01T12:55:44.000Z",
+      "author": "石榴",
+      "preScore": 14
+    }
+  ],
+  "reviewed": 60,
+  "dropped": 52,
+  "stats": {
+    "sources": 248,
+    "fetched": 513,
+    "shortlisted": 60,
+    "rejected": 453,
+    "thin": 151,
+    "enriched": 135,
+    "enrichAttempted": 210,
+    "enrichRetryAttempted": 139,
+    "enrichRetried": 64,
+    "enrichSkipped": 0,
+    "enrichMuted": [],
+    "failedSources": 0,
+    "feedRetryAttempted": 6,
+    "feedRetried": 6
+  },
+  "errors": [
+    {
+      "source": "掘金搜索",
+      "message": "部分查询失败（1/30）",
+      "partial": true
+    }
+  ]
+}
