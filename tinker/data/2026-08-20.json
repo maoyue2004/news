@@ -1,0 +1,132 @@
+{
+  "date": "2026-08-20",
+  "generatedAt": "2026-08-19T22:23:06.310Z",
+  "dailyNote": "DSH 发布周走到第三阶段：前两天是官方文档改写和「我给 DSH 做了个 X」，今天入围名单里最有货的一批换成了拆仓库的人。四篇里三篇是读代码——罗西那篇拆 5 美元芯片上的 OpenClaw 怎么用一个 read_file 换掉整套 RAG，还给了六种会塌的场景和临界值，是今天最该先读的一篇；另两篇一篇翻 DSH 的 .agents/ 目录，一篇从包结构讲它的插件化到底兑现在哪。剩下那篇是把连载八天的 Code Review 规则交给 Claude Code 生成 Skill 的实录，17 道反问逐条列了表。毙掉的大头仍然是自荐：36 个入围席位里 8 席是「我做了个插件/框架/启动器，来用」，其中最难判的是 V2EX 那篇《影分身之术》——主会话想清楚、Fork 出去写代码、Receipt 自动回传，工作流复盘写得相当扎实，但结尾落在自家仓库和 B 站视频的收藏数上，按同一把尺子不收。另外整类不收的还有 SegmentFault 那两篇「10 个落地场景」「架构深度对比」——原料是官方文档和社区讨论，不是作者的手。",
+  "items": [
+    {
+      "id": "6c1bfeb748b008ed",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/rossiXYZ/p/22432445",
+      "titleOriginal": "【OpenClaw具身硬件】MiniClaw 阅读笔记---(4) 文件读写 - 罗西的思考",
+      "publishedAt": "2026-08-19T13:37:00.000Z",
+      "author": "",
+      "preScore": 8,
+      "titleZh": "5 美元芯片上的 OpenClaw：用 LLM 自己 read_file 换掉整套 RAG，以及它什么时候会塌",
+      "whyRead": "把「不建索引、让模型自己读文件」这个选择拆到能判断的粒度——六种失效场景各带触发条件和临界值，不是泛泛地说 RAG 过时了。",
+      "summaryZh": "MiniClaw 是跑在 5 美元 ESP32-S3 上的 OpenClaw 实现：纯 C，没有 Linux 和 Node，记忆全存本地 Flash。这篇阅读笔记盯住它最反直觉的一处设计——不做 embedding、不建向量库，只注册一个 read_file 工具，让 LLM 按目录页自己决定读哪份文件。作者先说清它为什么能成立（上下文里始终有一张「地图」、prompt 协议要求先读目录再精读、文件系统当扁平知识库），再逐个拆六种崩塌场景：文件数超过目录页极限、文件名不再语义自描述、换成不够强的小模型、延迟敏感的实时控制、多用户并发写同一份记忆、知识是连续长文而非离散文档。每种都给了触发条件、补变手段和临界值（单文档超过 8KB 的 tool_result 上限就必须切分，32KB 基本只能回到经典 RAG），最后归成一张「出现什么信号该补什么、多紧迫」的决策表。",
+      "rating": 5,
+      "tools": [
+        "openclaw"
+      ],
+      "topics": [
+        "agent-memory",
+        "agent-loop",
+        "skills"
+      ]
+    },
+    {
+      "id": "6638936644cbcd0a",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7674828652658425896",
+      "titleOriginal": "DeepSeek Harness 发布后，我没急着跑 Demo，先把 `.agents/` 翻了一遍",
+      "publishedAt": "2026-08-17T09:32:33.000Z",
+      "author": "小u",
+      "preScore": 10,
+      "titleZh": "DeepSeek Harness 的 .agents/ 目录：11 个 Skill、684 份决策记录，仓库自己在教 agent 怎么改自己",
+      "whyRead": "它把规则、流程、当初为什么这么定拆成三种文件分开放，是一套能直接照搬到自己仓库的 AGENTS.md 分层法。",
+      "summaryZh": "作者说他没急着跑 demo，先把 DSH 仓库的 .agents/ 翻了一遍：11 个 Skill、684 份英文 Agent Note，多数还配着中文版本。他梳理出四层分工——根目录 AGENTS.md 放长期有效的仓库规则，各子目录自己的 AGENTS.md 放附加规则，.agents/skills/ 放「这类任务该怎么做」的按需加载流程，.agents/notes/ 放「当初为什么这么选」，再由 scripts、hooks 和 CI 检查有没有做到。文中摘的硬规则里最值得抄的是 Model-visible <=> logged：凡是进入模型请求的内容都必须有对应的 Session Event，否则代码、聊天记录和模型真正看到的上下文对不上，排查只能靠猜；这条能直接拿来做代码评审的判据。CLAUDE.md 则链到同一份 AGENTS.md，避免两套规范过几个月必然漂移。作者也主动说明，仓库并没有声称代码全部由 AI 生成。",
+      "rating": 5,
+      "tools": [
+        "dsh",
+        "claude-code",
+        "codex"
+      ],
+      "topics": [
+        "agents-md",
+        "claude-md",
+        "skills",
+        "hooks",
+        "agent-loop"
+      ]
+    },
+    {
+      "id": "6ad98812be3657ee",
+      "source": "iT 邦幫忙 · AI Code Reviewer 養成",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10403765?sc=rss.iron",
+      "titleOriginal": "Day 11｜第一份 Skill：交由 LLM 開工！Claude Code 26 分鐘生出整份 Skill",
+      "publishedAt": "2026-08-19T08:47:01.000Z",
+      "author": "",
+      "preScore": 8,
+      "titleZh": "把连载 8 天的 Code Review 规则交给 Claude Code：26 分钟生出一份 Skill，中间被反问了 17 题",
+      "whyRead": "完整贴出了初始 prompt，其中「素材里哪些是规格、哪些只是叙事」这条硬性要求，是拿旧文章喂 Skill 生成时最容易漏写的一条。",
+      "summaryZh": "作者把自己前八天连载写下的 Code Review 规则当素材，让 Claude Code 生成一份叫 nathan-code-review 的 Skill。初始 prompt 的硬性要求写得很细：Skill 正文用英文、与使用者的交互报告用繁中、SKILL.md 只留触发判定和流程骨架、九面向细则和 GitLab API 参考放 references/ 按需加载、每个外部工具（trivy、opengrep、ruff）都要定义「不存在时跳过并在报告里揭露」的分支；最关键的一条是素材来自连载文章，必须区分规格与叙事——流程、判准、豁免情境要完整编入，演进故事、科普比喻、安装教学和「明天待续」一律不得写入，分不清的要在讨论阶段列出来问，不许自行猜测。模型读完素材先报告它把刀切在哪，再分八组提出 18 个待裁决问题（实际问了 17 个，有两题因前一题已答被合并），每题三个选项、标出建议并附一个预览方框；文中把 17 题和作者的决定逐条列成表。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "skills",
+        "subagent",
+        "harness"
+      ]
+    },
+    {
+      "id": "d9e51ca44451ddc3",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7673465077635186707",
+      "titleOriginal": "AI 深度技能之-解读DeepSeek Harness（一）- 初见",
+      "publishedAt": "2026-08-14T03:55:37.000Z",
+      "author": "茶马古道的搬运工",
+      "preScore": 9,
+      "titleZh": "读 DeepSeek Harness 源码：没有特权内核，连 Agent 循环本身都是一个插件",
+      "whyRead": "把「一切皆插件」这句口号落到代码结构上——工具执行的六道关、七种 subagent 实现、沙箱按平台换 provider，每一处都点到具体包名。",
+      "summaryZh": "拆的是 dsh 仓库本身，作者数出 1247 个 TS 源文件和 684 个测试文件，技术栈是 pnpm workspace 加 Cordis 框架。文章按五个痛点组织：核心不可改——agent-loop 自己就是插件，挂一个自己的循环就能替换，其他插件不动；工具策略是后补——工具执行是三层 waterfall 事件加一层 monotonic guard，从 pre-execute 的权限与沙箱拦截，到 post-execute 的 accept/block/replace，一次调用过六道关；会话状态漂移——Session Log 是唯一真相源，想给模型塞一个新的可见输入必须先发明一个 session event；subagent 实现五花八门——同进程、fork 会话、委托 Codex、委托 Claude Code、走 ACP 等七种统一成一个 provider 接口；沙箱不可移植——Landlock、Seatbelt、E2B 抽象成 ctx.sandbox，原生 Landlock 还写了 C 扩展。",
+      "rating": 4,
+      "tools": [
+        "dsh",
+        "cordis",
+        "claude-code",
+        "codex"
+      ],
+      "topics": [
+        "harness",
+        "agent-loop",
+        "subagent",
+        "acp"
+      ]
+    }
+  ],
+  "reviewed": 36,
+  "dropped": 32,
+  "stats": {
+    "sources": 250,
+    "fetched": 320,
+    "shortlisted": 36,
+    "rejected": 284,
+    "thin": 94,
+    "enriched": 44,
+    "enrichAttempted": 65,
+    "enrichRetryAttempted": 21,
+    "enrichRetried": 0,
+    "enrichSkipped": 0,
+    "enrichMuted": [],
+    "failedSources": 1,
+    "feedRetryAttempted": 7,
+    "feedRetried": 7
+  },
+  "errors": [
+    {
+      "source": "Phodal 黄峰达",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "掘金搜索",
+      "message": "部分查询失败（1/30）",
+      "partial": true
+    }
+  ]
+}

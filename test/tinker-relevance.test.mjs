@@ -730,3 +730,40 @@ test('新话题词：Agent Loop（不收连写的 agentloop——那是阿里云
   // 裸「主循环」是游戏 / 事件主循环的常用说法，不收。
   assert.ok(!matchTopics('用 SDL 写一个游戏主循环').includes('agent-loop'));
 });
+
+test('结尾判据量的是正文真正的结尾（tail），不是被截断的 excerpt 的腰', () => {
+  // 2026-08-20：excerpt 截在 2500 字符，当天 36 个入围条目里 19 条被截断，
+  // 对它们来说 excerpt.slice(-400) 取的是正文的腰，而自荐帖的招呼语压在最后一段。
+  const args = {
+    title: '我给 DeepSeek Harness 做了个不产生计费的联网搜索插件',
+    excerpt: `实测下来单次搜索延迟 10-20 秒，踩了反爬的坑，改了 UA 才稳定。${'正文。'.repeat(900)}`,
+  };
+  const blind = scoreItem(args);
+  assert.ok(!blind.reasons.includes('结尾落在推广语上'), '截断的 excerpt 里没有招呼语');
+  const withTail = scoreItem({ ...args, tail: 'GitHub：https://github.com/x/y（MIT 协议开源，欢迎 star、贡献）' });
+  assert.ok(withTail.reasons.includes('结尾落在推广语上'));
+  assert.equal(withTail.score, blind.score - 3);
+
+  // 没传 tail 时行为完全不变：正文没被截断的话，excerpt 自己的尾巴就是真尾巴
+  // （招呼语要落在开头 400 字符之外，否则命中的是更重的那条「疑似产品自荐帖」）
+  const short = scoreItem({
+    title: 'Claude Code 折腾记录',
+    excerpt: `${'踩了三个坑，实测记录。'.repeat(50)}代码在 GitHub，欢迎 star。`,
+  });
+  assert.ok(short.reasons.includes('结尾落在推广语上'));
+  assert.ok(!short.reasons.includes('疑似产品自荐帖'));
+});
+
+test('自荐词表：欢迎 star 和求 star 是同一个意思', () => {
+  const r = scoreItem({
+    title: 'FutureOS：用 Rust 写了一个通用 AI Agent',
+    excerpt: '核心是一个 agent 循环，欢迎star、贡献，README 有完整安装说明。',
+  });
+  assert.ok(r.reasons.includes('疑似产品自荐帖'));
+  // 「关注我」是站点级签名档，不是落点，不能算自荐（LESSONS：站点级页脚广告不算软文）
+  const sig = scoreItem({
+    title: '用 Claude Code 重写了备份脚本，踩了三个坑',
+    excerpt: '我把实测过程记下来：第一次跑挂在权限上，第二次是路径。关注我，和 AI 一起成长～',
+  });
+  assert.ok(!sig.reasons.includes('疑似产品自荐帖'));
+});

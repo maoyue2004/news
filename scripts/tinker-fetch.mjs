@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
-import { extractArticleText } from '../lib/enrich.mjs';
+import { extractArticleParts } from '../lib/enrich.mjs';
 import {
   loadSeen, saveSeen, loadStatus, saveStatus, recordSuccess, recordFailure,
   loadQueryYield, saveQueryYield, recordQueryYield,
@@ -191,10 +191,13 @@ async function enrichPass(targets, concurrency) {
       try {
         const html = await get(item.url, { ua: BROWSER_UA, accept: 'text/html,*/*' });
         const scoped = item.thread ? threadBodyHtml(item.url, html) : null;
-        const text = scoped === null ? extractArticleText(html, EXCERPT_CHARS)
-          : extractArticleText(scoped, EXCERPT_CHARS);
+        // 带回正文真正的结尾：excerpt 截在 2500 字符，而「落点」字面上就在最后一段，
+        // 只看被截断的 excerpt 等于永远量不到它（见 lib/enrich.mjs 的注释）。
+        const { text, tail } = scoped === null ? extractArticleParts(html, EXCERPT_CHARS)
+          : extractArticleParts(scoped, EXCERPT_CHARS);
         if (text.length >= THIN_THRESHOLD && text.length >= before * 2) {
           item.excerpt = text;
+          if (tail) item.tail = tail; else delete item.tail;
           state.ok += 1;
           ok += 1;
         }

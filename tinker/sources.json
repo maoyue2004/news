@@ -2024,5 +2024,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "个人博客，选题几乎全压在「把 agent 工程化」这一件事上：Superpowers 为什么总想先拦住你、GSD 框架怎么解 context rot、Agent Skills 装成工程化工作流、mattpocock/skills 管的是做事顺序而不是提示词。近 10 篇 6 篇过收录线；最近一次更新是 5 月底，按留存标准留着看它会不会回来。"
+  },
+  {
+    "name": "日习一技",
+    "url": "https://i-study-everyday.online/",
+    "feed": "https://i-study-everyday.online/feed/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "一个人按天啃开源 agent 项目源码的连载站（掘金同名作者 @日习一技 的自建站，GitHub aneasystone）：一个项目拆成十来篇，Headroom 从整体架构一路写到三大压缩器、CCR 可逆压缩、跨 agent 记忆与失败学习、输出 token 优化，之后换 OpenMontage 的 12 条流水线和工具发现打分器。近 10 篇 8 篇过收录线，span 32 天。"
   }
 ]

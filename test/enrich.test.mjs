@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { extractArticleText } from '../lib/enrich.mjs';
+import { extractArticleText, extractArticleParts } from '../lib/enrich.mjs';
 
 test('优先取 <article> 的内容，忽略页面其它部分', () => {
   const html = `
@@ -83,4 +83,16 @@ test('贪婪匹配在 </article> 处停止，不吸入其后未被判定为噪�
   const html = '<article>正文内容。</article><div class="related">你可能还喜欢：其它文章推荐</div>';
   const text = extractArticleText(html);
   assert.doesNotMatch(text, /其它文章推荐/);
+});
+
+test('extractArticleParts 带回正文真正的结尾，正文没被截断时不重复存', () => {
+  const body = `<article><p>${'折腾记录。'.repeat(200)}</p><p>项目地址在 GitHub，欢迎 star。</p></article>`;
+  const { text, tail } = extractArticleParts(body, 300, 40);
+  assert.equal(Array.from(text).length, 300, 'text 仍然按 maxChars 截断，和 extractArticleText 一致');
+  assert.equal(text, extractArticleText(body, 300), '不改变原有取值');
+  assert.ok(tail.includes('欢迎 star'), '结尾要来自正文最后一段，而不是被截断处');
+  assert.equal(Array.from(tail).length, 40);
+
+  // 正文本来就短：excerpt 自己的尾巴就是真尾巴，不必多存一份
+  assert.equal(extractArticleParts('<article><p>短正文，欢迎 star。</p></article>', 300, 40).tail, '');
 });

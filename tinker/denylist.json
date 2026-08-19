@@ -293,5 +293,17 @@
     "name": "KimYx Blog（老金）",
     "reason": "模型资讯 + 薅额度自媒体号：「老金教你 20 美元 Plus 当 100 美元 Pro 用」「DeepSeek V4 Pro 暴涨近 50 分，我却更想押 GLM-5.3」。日更评论稿，落点是渠道和权益，不是自己动手。",
     "date": "2026-08-19"
+  },
+  {
+    "feed": "https://mingcy.cn/rss.xml",
+    "name": "茗辰原",
+    "reason": "2026-08-20 从 WebSearch 捞到，探测 84 条、4 天前更新，但近 20 篇只有 1 篇过收录线，且 agent 相关的那篇是《DeepSeek Harness 安装使用及美化教程》——安装 + 换皮肤的教程形状，不是折腾记录。",
+    "date": "2026-08-20"
+  },
+  {
+    "feed": "https://www.heyuan110.com/index.xml",
+    "name": "heyuan110",
+    "reason": "2026-08-20 从 WebSearch 捞到，209 条正文 99% 抓得到，但近 20 篇 0 篇过收录线：内容是《Codex CLI 完全指南（2026）：从安装到进阶的 20+ 实战技巧》这类按目录铺开的指南体，落点是覆盖功能而不是记录踩坑。",
+    "date": "2026-08-20"
   }
 ]
