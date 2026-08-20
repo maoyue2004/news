@@ -2032,5 +2032,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "一个人按天啃开源 agent 项目源码的连载站（掘金同名作者 @日习一技 的自建站，GitHub aneasystone）：一个项目拆成十来篇，Headroom 从整体架构一路写到三大压缩器、CCR 可逆压缩、跨 agent 记忆与失败学习、输出 token 优化，之后换 OpenMontage 的 12 条流水线和工具发现打分器。近 10 篇 8 篇过收录线，span 32 天。"
+  },
+  {
+    "name": "echoVic",
+    "url": "https://www.echovic.com/",
+    "feed": "https://www.echovic.com/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "自己写 agent runtime 的人的工程日志（V2EX @echoVic 的个人站）：Orca 的一个 Goal 为什么跑了 5 小时（463 次 update_goal 失败到 v0.2.46）、删掉 64 轮上限之后重新理解 runtime、把任务真相从 TUI 收回 Runtime 走 ACP、多智能体并行编码的符号级冲突预防，以及对着 dsh-v0.1.0-rc.7 的提交号读 DSH 插件契约。近 20 篇 4 篇过收录线，span 52 天，feed 不带正文要补全。"
   }
 ]

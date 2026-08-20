@@ -4,11 +4,56 @@
 //   node scripts/tinker-retriage.mjs            列出入围名单
 //   node scripts/tinker-retriage.mjs --rejected 列出被毙的高分条目（查误杀）
 //   node scripts/tinker-retriage.mjs --write    把重筛结果覆盖回 _pending.json
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+//   node scripts/tinker-retriage.mjs --probe '欢迎\s*star'   量一个候选词表条目
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { triage } from '../lib/tinker/relevance.mjs';
 
 const RAW = 'tinker/data/_raw.json';
 const PENDING = 'tinker/data/_pending.json';
+const DATA_DIR = 'tinker/data';
+
+/**
+ * `--probe <正则>`：给「要不要把这个词加进词表」这个问题一份数据。
+ *
+ * LESSONS 定的规矩是「加词前先量唯一命中数和误伤」，但一直没有工具，
+ * 于是每次都手写一段一次性脚本——2026-08-21 那次就手写错了：
+ * 拿 `excerpt` 当语料量「结尾挂仓库链接」这个形状，得到 0 误伤，
+ * 换成 `tail` 才看见误伤的是当天的 5 分精选。
+ * 原因就是 08-20 记下的那条：**excerpt 截在 2500 字符，被截掉的那一半正好是结尾**，
+ * 拿它量结尾判据等于把误伤藏起来。
+ *
+ * 所以这里把三个取样口径分开报，并且自动拿已发布的日文件对一遍——
+ * 命中里只要有已收录条目，就是误伤，不用自己去比对。
+ */
+function probe(pattern, items) {
+  const re = new RegExp(pattern, 'i');
+  const published = new Map();
+  for (const f of readdirSync(DATA_DIR).filter((n) => /^\d{4}-\d{2}-\d{2}\.json$/.test(n))) {
+    for (const it of JSON.parse(readFileSync(`${DATA_DIR}/${f}`, 'utf8')).items ?? []) {
+      published.set(it.url, `${it.rating} 分 ${f.slice(0, 10)}`);
+    }
+  }
+  const scopes = {
+    '标题+开头 400': (it) => `${it.titleOriginal ?? ''}\n${(it.excerpt ?? '').slice(0, 400)}`,
+    '真结尾 tail': (it) => it.tail ?? '',
+    '全文 excerpt': (it) => it.excerpt ?? '',
+  };
+  const haveTail = items.filter((it) => it.tail).length;
+  console.log(`\n=== 量 /${pattern}/ ===（语料 ${items.length} 条，其中带真结尾的 ${haveTail} 条）`);
+  for (const [name, pick] of Object.entries(scopes)) {
+    const pool = name === '真结尾 tail' ? items.filter((it) => it.tail) : items;
+    const hits = pool.filter((it) => re.test(pick(it)));
+    const bad = hits.filter((it) => published.has(it.url));
+    console.log(`${name.padEnd(14)} 命中 ${String(hits.length).padStart(3)} / ${String(pool.length).padStart(3)}`
+      + `，其中已收录条目 ${bad.length} 条${bad.length ? '  ← 误伤' : ''}`);
+    for (const it of hits.slice(0, 12)) {
+      const tag = published.get(it.url);
+      console.log(`    ${tag ? `★${tag}` : '      '}  ${(it.titleOriginal ?? '').slice(0, 52)}`);
+    }
+    if (hits.length > 12) console.log(`    …… 另有 ${hits.length - 12} 条`);
+  }
+  console.log('\n判据（LESSONS）：逐条看完命中、0 误伤、样本量够，三条都成立才加。');
+}
 
 if (!existsSync(RAW)) {
   console.error(`没有 ${RAW}。先跑一次 npm run tinker:fetch。`);
@@ -16,8 +61,20 @@ if (!existsSync(RAW)) {
 }
 
 const { date, items } = JSON.parse(readFileSync(RAW, 'utf8'));
+const argv = process.argv.slice(2);
+const probeAt = argv.indexOf('--probe');
+if (probeAt !== -1) {
+  const pattern = argv[probeAt + 1];
+  if (!pattern) {
+    console.error("用法：node scripts/tinker-retriage.mjs --probe '欢迎\\s*star'");
+    process.exit(1);
+  }
+  probe(pattern, items);
+  process.exit(0);
+}
+
 const { shortlist, rejected } = triage(items);
-const flags = new Set(process.argv.slice(2));
+const flags = new Set(argv);
 
 const bySource = new Map();
 for (const it of shortlist) bySource.set(it.source, (bySource.get(it.source) ?? 0) + 1);

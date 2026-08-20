@@ -1,45 +1,45 @@
 {
   "Claude Code 实践": {
-    "runs": 16,
-    "items": 182,
-    "shortlisted": 55,
-    "lastRun": "2026-08-20",
-    "lastShortlist": "2026-08-20"
+    "runs": 17,
+    "items": 193,
+    "shortlisted": 59,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
   },
   "Claude Code 踩坑": {
-    "runs": 16,
-    "items": 66,
+    "runs": 17,
+    "items": 70,
     "shortlisted": 14,
-    "lastRun": "2026-08-20",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-19"
   },
   "Codex CLI 体验": {
-    "runs": 16,
-    "items": 76,
+    "runs": 17,
+    "items": 78,
     "shortlisted": 20,
-    "lastRun": "2026-08-20",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-20"
   },
   "Cursor 工作流": {
-    "runs": 16,
-    "items": 41,
+    "runs": 17,
+    "items": 44,
     "shortlisted": 13,
-    "lastRun": "2026-08-20",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-19"
   },
   "AI 编程 踩坑": {
-    "runs": 16,
-    "items": 92,
+    "runs": 17,
+    "items": 96,
     "shortlisted": 9,
-    "lastRun": "2026-08-20",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-19"
   },
   "agent 编程 心得": {
-    "runs": 16,
-    "items": 45,
-    "shortlisted": 6,
-    "lastRun": "2026-08-20",
-    "lastShortlist": "2026-08-19"
+    "runs": 17,
+    "items": 48,
+    "shortlisted": 7,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
   },
   "Augment Code 踩坑": {
     "runs": 4,
@@ -105,11 +105,11 @@
     "lastShortlist": "2026-08-10"
   },
   "CodeBuddy 踩坑": {
-    "runs": 4,
-    "items": 9,
-    "shortlisted": 2,
-    "lastRun": "2026-08-10",
-    "lastShortlist": "2026-08-10"
+    "runs": 5,
+    "items": 13,
+    "shortlisted": 3,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
   },
   "CodeBuddy 体验": {
     "runs": 4,
@@ -210,10 +210,10 @@
     "lastShortlist": null
   },
   "Flowith 踩坑": {
-    "runs": 2,
-    "items": 0,
+    "runs": 3,
+    "items": 3,
     "shortlisted": 0,
-    "lastRun": "2026-08-08",
+    "lastRun": "2026-08-21",
     "lastShortlist": null
   },
   "Flowith 体验": {
@@ -287,10 +287,10 @@
     "lastShortlist": "2026-08-05"
   },
   "Dify 实践": {
-    "runs": 2,
-    "items": 0,
+    "runs": 3,
+    "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-09",
+    "lastRun": "2026-08-21",
     "lastShortlist": null
   },
   "Dify 踩坑": {
@@ -364,11 +364,11 @@
     "lastShortlist": null
   },
   "NanoClaw 体验": {
-    "runs": 2,
-    "items": 0,
-    "shortlisted": 0,
-    "lastRun": "2026-08-09",
-    "lastShortlist": null
+    "runs": 3,
+    "items": 2,
+    "shortlisted": 1,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
   },
   "Kimi Code 实践": {
     "runs": 2,
@@ -441,10 +441,10 @@
     "lastShortlist": "2026-08-07"
   },
   "Continue.dev 体验": {
-    "runs": 3,
-    "items": 7,
+    "runs": 4,
+    "items": 8,
     "shortlisted": 0,
-    "lastRun": "2026-08-10",
+    "lastRun": "2026-08-21",
     "lastShortlist": null
   },
   "Augment Code 实践": {
@@ -469,10 +469,10 @@
     "lastShortlist": null
   },
   "Grok Build 体验": {
-    "runs": 1,
-    "items": 9,
+    "runs": 2,
+    "items": 18,
     "shortlisted": 0,
-    "lastRun": "2026-08-08",
+    "lastRun": "2026-08-21",
     "lastShortlist": null
   },
   "Warp 踩坑": {
@@ -483,10 +483,10 @@
     "lastShortlist": null
   },
   "Warp 体验": {
-    "runs": 1,
-    "items": 0,
+    "runs": 2,
+    "items": 1,
     "shortlisted": 0,
-    "lastRun": "2026-08-08",
+    "lastRun": "2026-08-21",
     "lastShortlist": null
   },
   "Claude Desktop 实践": {
@@ -616,10 +616,10 @@
     "lastShortlist": null
   },
   "Qoder 体验": {
-    "runs": 2,
-    "items": 8,
+    "runs": 3,
+    "items": 9,
     "shortlisted": 3,
-    "lastRun": "2026-08-16",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-16"
   },
   "CodeBuddy 使用": {
@@ -693,11 +693,11 @@
     "lastShortlist": "2026-08-16"
   },
   "MCP 实践": {
-    "runs": 2,
-    "items": 18,
-    "shortlisted": 1,
-    "lastRun": "2026-08-16",
-    "lastShortlist": "2026-08-16"
+    "runs": 3,
+    "items": 22,
+    "shortlisted": 3,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
   },
   "MCP 折腾": {
     "runs": 2,
@@ -770,10 +770,10 @@
     "lastShortlist": "2026-08-20"
   },
   "多个 agent 协作 开发": {
-    "runs": 3,
-    "items": 42,
+    "runs": 4,
+    "items": 51,
     "shortlisted": 3,
-    "lastRun": "2026-08-16",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-14"
   },
   "agent 并行 开发": {
@@ -847,11 +847,11 @@
     "lastShortlist": "2026-08-20"
   },
   "AI 重构 回滚": {
-    "runs": 2,
-    "items": 23,
-    "shortlisted": 1,
-    "lastRun": "2026-08-14",
-    "lastShortlist": "2026-08-12"
+    "runs": 3,
+    "items": 37,
+    "shortlisted": 2,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
   },
   "AI 编程 不适合": {
     "runs": 2,
@@ -924,10 +924,10 @@
     "lastShortlist": null
   },
   "Qwen Code 体验": {
-    "runs": 2,
-    "items": 13,
+    "runs": 3,
+    "items": 18,
     "shortlisted": 1,
-    "lastRun": "2026-08-15",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-13"
   },
   "OpenHands 实践": {
@@ -1001,10 +1001,10 @@
     "lastShortlist": "2026-08-13"
   },
   "Cline 实践": {
-    "runs": 2,
+    "runs": 3,
     "items": 1,
     "shortlisted": 1,
-    "lastRun": "2026-08-15",
+    "lastRun": "2026-08-21",
     "lastShortlist": "2026-08-15"
   },
   "Cline 踩坑": {
@@ -1279,5 +1279,75 @@
     "shortlisted": 0,
     "lastRun": "2026-08-20",
     "lastShortlist": null
+  },
+  "Claude Code skills": {
+    "runs": 1,
+    "items": 17,
+    "shortlisted": 4,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
+  },
+  "Cursor 规则": {
+    "runs": 1,
+    "items": 6,
+    "shortlisted": 2,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
+  },
+  "Copilot CLI 实践": {
+    "runs": 1,
+    "items": 7,
+    "shortlisted": 0,
+    "lastRun": "2026-08-21",
+    "lastShortlist": null
+  },
+  "Headroom 实践": {
+    "runs": 1,
+    "items": 7,
+    "shortlisted": 1,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
+  },
+  "Claudian 体验": {
+    "runs": 1,
+    "items": 0,
+    "shortlisted": 0,
+    "lastRun": "2026-08-21",
+    "lastShortlist": null
+  },
+  "DeepAgents 踩坑": {
+    "runs": 1,
+    "items": 5,
+    "shortlisted": 1,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
+  },
+  "Agent Skills 实践": {
+    "runs": 1,
+    "items": 11,
+    "shortlisted": 3,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
+  },
+  "Agent SDK 怎么用": {
+    "runs": 1,
+    "items": 20,
+    "shortlisted": 1,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
+  },
+  "Agent Harness 怎么用": {
+    "runs": 1,
+    "items": 20,
+    "shortlisted": 3,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
+  },
+  "Agent Loop 实践": {
+    "runs": 1,
+    "items": 12,
+    "shortlisted": 1,
+    "lastRun": "2026-08-21",
+    "lastShortlist": "2026-08-21"
   }
 }

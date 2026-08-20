@@ -305,5 +305,29 @@
     "name": "heyuan110",
     "reason": "2026-08-20 从 WebSearch 捞到，209 条正文 99% 抓得到，但近 20 篇 0 篇过收录线：内容是《Codex CLI 完全指南（2026）：从安装到进阶的 20+ 实战技巧》这类按目录铺开的指南体，落点是覆盖功能而不是记录踩坑。",
     "date": "2026-08-20"
+  },
+  {
+    "url": "https://bear.best/",
+    "name": "Bear.best",
+    "reason": "「已收录作者的个人站」通道（V2EX @bearbest）探到。近 10 篇 0 篇过收录线，选题是 macOS 升级、生活随笔和自家产品 Bear.Save 的推广，不是 agent 折腾。",
+    "date": "2026-08-21"
+  },
+  {
+    "url": "https://yuhang.ch/",
+    "name": "yuhangch",
+    "reason": "同一通道（V2EX @yuhangch）探到，feed 40 条但最新一篇 594 天前，早过 365 天活跃线。",
+    "date": "2026-08-21"
+  },
+  {
+    "url": "https://blog.hikarilan.life/",
+    "name": "HikariLan 贺兰星辰",
+    "reason": "同一通道（V2EX @HikariLan）探到。有一篇很对口（四个从翻车里长出来的 Claude Code skill），但近 20 篇只有这 1 篇过收录线，其余是游记、生日总结、校招职业选择，按严准入标准不收；那一篇本来就能从搜索源进来。",
+    "date": "2026-08-21"
+  },
+  {
+    "url": "https://umate.ai/",
+    "name": "umate.ai",
+    "reason": "同一通道（V2EX @Loocor）探到，是产品站不是个人博客，首页 302、探不到任何 feed。",
+    "date": "2026-08-21"
   }
 ]

@@ -1,0 +1,210 @@
+{
+  "date": "2026-08-21",
+  "generatedAt": "2026-08-20T22:36:41.000Z",
+  "dailyNote": "DeepSeek Harness 的热度还在，但今天名单里那批「一文讲明白 dsh」「命令大全」「已经 150k star 了」全是转述和播报，一条没收。真有货的是两条把工具当账本算的：银古被 DeepSeek 涨价 3~5 倍逼着重构了整套 OpenCode 配置，Flash-First 重分配、审查预算封顶、thinking 从 Agent 层下沉到 Provider 层，净减 3400 行；另一条把 Docker Sandboxes 支持的 10 个 Agent 逐个起了一遍 sandbox 用 mount 核对，出了一张官方文档没有的表——五个挂、四个不挂、全是读写。日习一技的 Headroom 连载今天来了四篇，按「同一系列别包场」只留了最不重叠的两篇：三大压缩器（输入侧最深的一层）和输出 token 优化（唯一讲模型写回来那一头的）。毙掉的大头仍是产品自荐和文档改写，另有一条掘金的「猫狗搭档法」把配图指令原样留在了正文里，是标准的 AI 编造伪深度文。",
+  "items": [
+    {
+      "id": "fa61243e7b4ea8ad",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/znlgis/p/22593954",
+      "titleOriginal": "OpenCode × DeepSeek 配置优化实战：一次「费用 和 Token 效率优先」的深度重构 - 我才是银古",
+      "titleZh": "DeepSeek 涨价 3~5 倍之后，我把整套 OpenCode 配置重构了一遍",
+      "summaryZh": "DeepSeek API 价格实际上涨 3 到 5 倍，作者把自己那套 OpenCode × DeepSeek 双模型配置从头审了一遍，做了三件事。一是 Flash-First 重分配：orchestrator、planner、consultant、ui-builder 全部从 Pro 降到 Flash，Pro 只留深度推理、根因分析、代码审查和重型多文件实现，纪律是「Flash 代理必须自己识别歧义或失败并升级，绝不输出降级答案」。二是审查瘦身：双轴并行改成单遍覆盖，深度按「有效规模」定（≤8 个逻辑文件且 ≤300 有效行走精简路径），预算封成一次初审加最多两次复审。三是把 thinking 从 Agent 的 variant 字段下沉到 Provider 层，Flash 关思考、Pro 默认开，一次性请求因此不再污染 Pro 的 prompt-cache 前缀。技能也砍：gh-cli 649→300 行。净效果 31 个文件、+551/−3932 行。",
+      "whyRead": "涨价当天的完整应对：哪些角色从 Pro 降到 Flash、代码审查砍成什么样、thinking 开关该放在哪一层——最后配置净减 3400 行。",
+      "rating": 5,
+      "tools": [
+        "opencode"
+      ],
+      "topics": [
+        "agents-md",
+        "context-engineering",
+        "skills"
+      ],
+      "publishedAt": "2026-08-20T07:19:00.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "7c16de38af5cf0f6",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048176558",
+      "titleOriginal": "Docker Sandboxes 的隔离例外：共享 Skills 与宿主机 MCP",
+      "titleZh": "Docker Sandboxes 的两个口子：共享 Skills 是读写挂载，本地 MCP 跑在你的 Mac 上",
+      "summaryZh": "Docker 给 sandbox 划了五层隔离，这篇讲的是设计上主动开放、不算穿透的两处例外。一是共享 Skills store：sbx skills import 把技能拷进宿主机的持久化存储，作者导进 11 个 skill，再把 sbx run 支持的 10 个 Agent 逐个起了一遍 sandbox 用 mount 核对——claude、codex、copilot、cursor、droid 五个各自挂在自己的原生路径而不是统一路径，且全部 rw，多个 sandbox 因此共用同一份能互相改写的技能；opencode、shell、gemini、kiro 四个完全不挂，而前两家的官方文档明明写着会扫 ~/.agents/skills，那正是 Docker 已经挂给 codex 的目录。二是宿主机侧的 MCP Gateway：本地 stdio 类型的 MCP Server 实际跑在你的 Mac 上，不在 microVM 里。文末还留了个没测完的口子：SSH_AUTH_SOCK 会转发进 sandbox。",
+      "whyRead": "他把 sbx run 支持的 10 个 Agent 逐个起了一遍 sandbox、用 mount 核对，出了一张官方文档里没有的「谁挂、挂哪、什么权限」的表。",
+      "rating": 5,
+      "tools": [
+        "codex",
+        "opencode",
+        "gemini-cli",
+        "cursor",
+        "kiro"
+      ],
+      "topics": [
+        "mcp",
+        "skills"
+      ],
+      "publishedAt": "2026-08-19T01:05:58.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "7fdc55f49535b906",
+      "source": "V2EX 搜索",
+      "kind": "search",
+      "url": "https://www.v2ex.com/t/1235980",
+      "titleOriginal": "一念成仙，做自己项目的人肉 harness",
+      "titleZh": "不用 Claude Code 也不用 Codex：我给自己的百万行项目当人肉 harness",
+      "summaryZh": "作者是独立开发者，项目「一念成仙」从 2021 年写到现在、百万行级代码、60 万用户，2023 年开始引入 GPT 网页版，但至今没用过 Claude Code 或 Codex，每月只付 160 多块的网页版订阅。他的做法是：收到一条用户反馈，先自己定位到出问题的那一块，把它从底层 SQL 到 DAO 再到具体函数及其关联函数整条抽出来，在备忘录里拼成一段上下文，写上「这里我觉得有什么问题、那里要观测什么」，连同日志一起发给模型，只要一段可搜索可定位的小改动；模型回来的一两万字边界对齐他会全部读完，比对哪一点和自己的预期不同，再要一次修正。他说自己后来才意识到，这套活正是现在的 harness 在做的事，而他一直在当那个人肉 harness。前提写得很清楚：只有当开发者对项目的了解精细到某个函数、某一行时才做得成，好处是可控度高于 agent 自带的 harness，代价是这份掌握力本身不能丢。",
+      "whyRead": "一个反潮流的对照样本：他坚持只用 GPT 网页版，把「抽上下文、读完全部边界对齐、要一段手术刀 diff」这套活自己干了三年。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "codex"
+      ],
+      "topics": [
+        "harness"
+      ],
+      "publishedAt": "2026-08-20T12:27:02.000Z",
+      "author": "darkway",
+      "preScore": 13
+    },
+    {
+      "id": "047ee5f4e0f35fa6",
+      "source": "日习一技",
+      "kind": "blog",
+      "url": "https://i-study-everyday.online/archives/2026/08/headroom-output-reduction.html",
+      "titleOriginal": "学习Headroom 的输出 token 优化",
+      "titleZh": "同一个系列的另一头：Headroom 怎么压模型写回来的东西",
+      "summaryZh": "同一个 Headroom 连载里唯一讲输出侧的一篇。前提是这个代理本身不生成任何输出 token，它只是透明反向代理，能动的只有发出去的请求。输出侧的浪费归成三类：回答前后的寒暄与收尾语、把你刚发过去的代码/diff/工具输出原样再抄一遍、对机械步骤过度 thinking（thinking 同样按输出 token 计费，而输出单价在 Opus 级模型上约是输入的 5 倍）。对应模块叫 Output Shaper，默认关闭，HEADROOM_OUTPUT_SHAPER=1 打开，配置全走环境变量：VERBOSITY_LEVEL 是 0~4 的详略级别（默认 2，4 是电报体），EFFORT_ROUTER 默认开着、负责给机械续写的轮次降档，MECHANICAL_EFFORT 决定降到哪一档（默认 low，填错会回退到 low）。文章顺着 shape_request 的主干把详略引导和努力档位路由两根杠杆逐个读了一遍。",
+      "whyRead": "大多数人只盯着「输入烧了多少 token」，而输出侧在 Opus 级别的模型上单价大约是输入的 5 倍——这篇讲一个只能改请求的代理怎么去影响模型愿意写多少。",
+      "rating": 4,
+      "tools": [
+        "headroom"
+      ],
+      "topics": [
+        "context-engineering"
+      ],
+      "publishedAt": "2026-08-14T00:58:00.000Z",
+      "author": "",
+      "preScore": 9
+    },
+    {
+      "id": "ebb6b05cf69bd0ab",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7673211015651213352",
+      "titleOriginal": "30 分钟的重复工作，我写了 Claude Code Skill 变成了 8 秒",
+      "titleZh": "七套语言文案的搬运工作，我用两个 Claude Code Skill 换成了 8 秒",
+      "summaryZh": "项目要维护 7 套国际语言的 JSON 文案，每次迭代的流程是：开发写进一批新的 i18n key，人工逐行翻代码比对新旧 JSON 挑出新增项，整理成表格交产品经理翻译，拿回表格再手动填回 7 个语种。作者把这条链子做成了两个 Claude Code Skill。第一个 /export-diff-to-csv 接一个历史 commit 号，拉出那个版本的基准中文文案文件和当前工作区做深度对比，筛出本次新增的键值，按 RFC 4180 转义生成带日期命名的 CSV；原来翻代码挑 key 要 10 分钟，现在 5 秒。第二个 /convert-excel-to-json 读约定的三类文案 Excel，拆出 7 个语种列，增量合并写回对应 JSON，明确保留历史译文、不做覆盖，也支持 --file 和 --sheets 指定临时表格。整条流程的账是：手动模式 10+5+10+5 共 30 分钟，Skill 模式两条命令合计 8 秒。",
+      "whyRead": "一个小到可以照抄的自动化闭环：按 Git 提交差异导出增量文案 CSV，翻译回来再增量合并，全程不覆盖历史译文。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "skills"
+      ],
+      "publishedAt": "2026-08-13T07:14:04.000Z",
+      "author": "坚强小橙",
+      "preScore": 14
+    },
+    {
+      "id": "e232a594b4fa555a",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7672692746055368750",
+      "titleOriginal": "Claude Code的进阶用法2——避开错误用法",
+      "titleZh": "Claude Code 进阶用法（二）：哪些去年的最佳实践今年该扔了",
+      "summaryZh": "作者四个月前写过一篇 Claude Code 进阶用法，回头看已经不合时宜，于是重写了一篇「避开错误用法」。核心判断是模型和 agent 自身变强之后，去年那批重型外挂开始变成负担：superpowers 内置 13 个技能、token 消耗明显增大，简单问题也会不知不觉触发它，建议换成需要手动触发的 openspec，只留 /brainstorming 和 /writing-plans；只有用 MiniMax M3 这类较弱模型时才值得留全套。他自己的组合是 grill-me + openspec + 高性能模型。另外几条：改代码不必再动全局配置，直接在对话框选 Bypass permissions；回退改动用原生 Checkpointing（连按两次 Esc 或 /rewind）；everything-claude-code 会一次拉上百个 skill，多数是旧时代产物，白占上下文还可能拉低产出质量。",
+      "whyRead": "一篇把「过期的正确答案」逐条点名的短文：superpowers 太重、everything-claude-code 别再用、改全局配置不如直接切 Bypass permissions。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "codex",
+        "superpowers",
+        "openspec"
+      ],
+      "topics": [
+        "skills",
+        "claude-md"
+      ],
+      "publishedAt": "2026-08-11T11:36:31.000Z",
+      "author": "圊妖",
+      "preScore": 12
+    },
+    {
+      "id": "64e1dc47b76dc263",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048124022",
+      "titleOriginal": "实战从零开始构建一个Coding Agent：Violin ｜得物技术",
+      "titleZh": "用 Zig 从零写一个 Coding Agent：Violin 的分层与 Agent Loop",
+      "summaryZh": "作者每天用 coding agent，想弄明白原理，于是自己写了一个叫 Violin 的：架构借鉴 Pi 的三层分离（模型适配层 / 内核层 / 产品层）、EventBus 事件驱动、工具注册表和插件系统，但引擎侧从 TypeScript 换成 Zig，客户端用 Python 搭终端 UI，两者走 TCP + JSON line 协议——他的技术栈恰好是 Zig + Python，不会 JS 也不熟 Rust。分层的理由讲得具体：ai 层把各家供应商对工具调用、推理内容、缓存、错误、OAuth、流式协议的不同表达拍平成统一事件，上层就不必知道面对的是 Anthropic 的 tool_use 还是 OpenAI 的 function call。Agent Loop 的核心代码也贴了：一个带 max_turns 上限的 while 循环，在问模型和执行工具之间来回切，工具结果 append 回 messages，并按错误种类区分能不能重试。",
+      "whyRead": "照着 Pi 的三层架构自己重写一遍，换成 Zig + Python 双语言，把「Agent Loop 到底是个什么循环」摊到能读的代码量。",
+      "rating": 4,
+      "tools": [
+        "pi",
+        "claude-code",
+        "codex",
+        "opencode",
+        "qoder"
+      ],
+      "topics": [
+        "agent-loop",
+        "skills"
+      ],
+      "publishedAt": "2026-08-06T02:58:06.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "e61944dc6c18407d",
+      "source": "日习一技",
+      "kind": "blog",
+      "url": "https://i-study-everyday.online/archives/2026/08/headroom-compressors.html",
+      "titleOriginal": "学习 Headroom 的三大压缩器",
+      "titleZh": "Headroom 的三大压缩器：JSON 数组怎么被统计着压掉",
+      "summaryZh": "啃 Headroom 源码的连载之一，讲 ContentRouter 分流之后的三个压缩器：处理 JSON 的 SmartCrusher、基于 tree-sitter 做 AST 感知的 CodeAwareCompressor，以及作者自训、本地推理的文本压缩模型 Kompress。重点在 SmartCrusher，它的 Python 实现已整个搬到 Rust。它不是上来就压：先逐个字段统计出 FieldStats（类型、出现次数、unique_ratio、是否恒定，数值字段另记方差和变化点），据此把数组判成 time_series / logs / search_results / generic，再由 select_strategy 映射到四种压缩策略。两个门槛值得看：元素少于 min_items_to_analyze 直接不压；认出 logs 还不够，还要 message 字段 unique_ratio < 0.5 才真走聚类，因为聚类压的就是重复模板。",
+      "whyRead": "不是转述文档——他直接翻到 Rust 那边的 FieldStats 和 select_strategy，把「数组认成什么类型就用什么策略」这张映射表连门槛条件一起抄了出来。",
+      "rating": 4,
+      "tools": [
+        "headroom"
+      ],
+      "topics": [
+        "context-engineering"
+      ],
+      "publishedAt": "2026-08-03T07:09:00.000Z",
+      "author": "",
+      "preScore": 9
+    }
+  ],
+  "reviewed": 35,
+  "dropped": 27,
+  "stats": {
+    "sources": 251,
+    "fetched": 448,
+    "shortlisted": 35,
+    "rejected": 413,
+    "thin": 167,
+    "enriched": 90,
+    "enrichAttempted": 179,
+    "enrichRetryAttempted": 89,
+    "enrichRetried": 0,
+    "enrichSkipped": 41,
+    "enrichMuted": [
+      "掘金搜索"
+    ],
+    "failedSources": 1,
+    "feedRetryAttempted": 8,
+    "feedRetried": 7
+  },
+  "errors": [
+    {
+      "source": "码农刚子的开发笔记",
+      "message": "HTTP 503"
+    }
+  ]
+}
