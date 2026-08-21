@@ -68,6 +68,15 @@ export function publishedAuthors(dir = DATA_DIR) {
  * 而这条通道的产物是要写进账本、以后不再重查的。把一次出口抖动记成
  * 「这个作者没有个人站」，等于让错误永久留在账本里、再也无法自我纠正。
  * 所以网络类失败重试两轮，仍然失败就抛，由上层跳过写账本。
+ *
+ * 反过来也要防：**永久性的 404 不是失败，是答案。** 2026-08-22 查出来的——
+ * sutree900 / xdlkc 两个 V2EX 作者连着两天记成「请求失败，下轮重查」，
+ * 手动 curl 才看见是 `HTTP 404 {"status":"error","message":"Object Not Found"}`
+ * （同一轮 timeance 返回 200，响应里的 rate_limit 是 used 1 / quota 600，
+ * 所以既不是限流也不是 1.5 秒间隔太密，是这两个用户名查不到人）。
+ * 把它当成瞬时失败的后果和把瞬时失败当成结论恰好相反：账本永远收敛不了，
+ * 每天白发两个必然 404 的请求，而且「失败 2 个」这行会一直挂在汇报里。
+ * 所以 404 / 410 直接判为结论（definitive），不重试、照常落账。
  */
 async function getJson(url) {
   let last;
@@ -75,11 +84,43 @@ async function getJson(url) {
     if (i) await new Promise((r) => setTimeout(r, 2000 * i));
     try {
       const res = await fetch(url, { headers: { 'user-agent': UA, accept: 'application/json' } });
+      if (res.status === 404 || res.status === 410) {
+        const e = new Error(`HTTP ${res.status}`); e.definitive = true; throw e;
+      }
       if (!res.ok) { last = new Error(`HTTP ${res.status}`); continue; }
       return await res.json();
-    } catch (e) { last = e; }
+    } catch (e) { if (e.definitive) throw e; last = e; }
   }
   throw last;
+}
+
+/** 账本里这一条还要不要再查：没查过要查，pending 的没攒够轮次要查，已成结论的不查。 */
+export const MAX_LOOKUP_ATTEMPTS = 3;
+export function needsQuery(entry, maxAttempts = MAX_LOOKUP_ATTEMPTS) {
+  if (!entry) return true;
+  if (!entry.pending) return false;
+  return (entry.attempts ?? 1) < maxAttempts;
+}
+
+/**
+ * 一次查询结果该怎么记账。返回 null 表示「这次是失败」——一个字都不写，下轮重查。
+ *
+ * pending 这一档是 2026-08-22 加的第三态，管的是掘金那条
+ * 「搜索接口反查不到 user_id」：文章当天发出来、搜索还没建索引时它必然反查不到，
+ * 而旧版把这个直接写成结论，等于永久判定这个作者没有个人站。
+ * 但也不能永远重查（那就成了每天白发请求的僵尸条目），
+ * 所以攒够 MAX_LOOKUP_ATTEMPTS 轮仍然反查不到才落成结论。
+ */
+export function ledgerEntry(author, result, prev, maxAttempts = MAX_LOOKUP_ATTEMPTS) {
+  if (result.failed) return null;
+  const base = {
+    platform: author.platform, author: author.author, site: result.site ?? null,
+    github: result.github ?? null, note: result.note ?? null, checkedFrom: author.firstSeen,
+  };
+  if (!result.pending) return base;
+  const attempts = (prev?.attempts ?? 0) + 1;
+  if (attempts >= maxAttempts) return { ...base, attempts, note: `${result.note}（连续 ${attempts} 轮，按结论落账）` };
+  return { ...base, pending: true, attempts };
 }
 
 /** 掘金：标题 → user_id（搜索接口带 aid），user_id → profile（用户接口不带 aid）。 */
@@ -101,7 +142,8 @@ async function juejinSite(author, titles) {
   }
   if (!userId) {
     if (errored === tried.length) return { failed: '搜索接口全部请求失败' };
-    return { site: null, note: '搜索接口反查不到 user_id' };
+    // 当天刚发的文章可能还没进搜索索引，这不是「这个人没有站」的结论，先挂 pending。
+    return { site: null, pending: true, note: '搜索接口反查不到 user_id' };
   }
   // aid=2608 在这里必须去掉，带上会返回 data: null。
   let prof;
@@ -116,7 +158,10 @@ async function juejinSite(author, titles) {
 async function v2exSite(author) {
   let u;
   try { u = await getJson(`https://www.v2ex.com/api/members/show.json?username=${encodeURIComponent(author)}`); }
-  catch { return { failed: 'members/show 请求失败' }; }
+  catch (e) {
+    if (e.definitive) return { site: null, note: 'members/show 404（用户名查不到人）' };
+    return { failed: 'members/show 请求失败' };
+  }
   if (!u) return { site: null, note: 'members/show 无数据' };
   return { site: u.website || null, github: u.github || null };
 }
@@ -149,9 +194,10 @@ const failed = [];
 
 for (const a of authors) {
   const key = `${a.platform}:${a.author}`;
-  if (!recheck && ledger[key]) continue;
+  if (!recheck && !needsQuery(ledger[key])) continue;
   const r = a.platform === 'juejin' ? await juejinSite(a.author, a.titles) : await v2exSite(a.author);
-  if (r.failed) {
+  const entry = ledgerEntry(a, r, ledger[key]);
+  if (!entry) {
     failed.push(`${a.platform}:${a.author}`);
     console.log(`${a.platform.padEnd(6)} ${a.author.padEnd(22)} ✗ ${r.failed}（不写账本，下轮重查）`);
     await new Promise((r2) => setTimeout(r2, 1500));
@@ -159,11 +205,9 @@ for (const a of authors) {
   }
   const h = r.site ? host(r.site) : null;
   const usable = h && !PLATFORM.test(h) && !known.has(h);
-  ledger[key] = {
-    platform: a.platform, author: a.author, site: r.site ?? null,
-    github: r.github ?? null, note: r.note ?? null, checkedFrom: a.firstSeen,
-  };
-  console.log(`${a.platform.padEnd(6)} ${a.author.padEnd(22)} ${r.site || '—'}${r.note ? `  (${r.note})` : ''}${usable ? '   ← 新候选' : ''}`);
+  ledger[key] = entry;
+  const state = entry.pending ? `  (${entry.note}，第 ${entry.attempts}/${MAX_LOOKUP_ATTEMPTS} 轮)` : entry.note ? `  (${entry.note})` : '';
+  console.log(`${a.platform.padEnd(6)} ${a.author.padEnd(22)} ${r.site || '—'}${state}${usable ? '   ← 新候选' : ''}`);
   if (usable) { fresh.push(r.site); known.add(h); }
   await new Promise((r2) => setTimeout(r2, 1500));
 }

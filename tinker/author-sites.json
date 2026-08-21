@@ -286,5 +286,37 @@
     "github": null,
     "note": null,
     "checkedFrom": "2026-08-21"
+  },
+  "v2ex:sutree900": {
+    "platform": "v2ex",
+    "author": "sutree900",
+    "site": null,
+    "github": null,
+    "note": "members/show 404（用户名查不到人）",
+    "checkedFrom": "2026-08-01"
+  },
+  "v2ex:xdlkc": {
+    "platform": "v2ex",
+    "author": "xdlkc",
+    "site": null,
+    "github": null,
+    "note": "members/show 404（用户名查不到人）",
+    "checkedFrom": "2026-08-01"
+  },
+  "juejin:Java编程爱好者": {
+    "platform": "juejin",
+    "author": "Java编程爱好者",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-22"
+  },
+  "juejin:两万五千个小时": {
+    "platform": "juejin",
+    "author": "两万五千个小时",
+    "site": null,
+    "github": "kakaCat",
+    "note": null,
+    "checkedFrom": "2026-08-22"
   }
 }

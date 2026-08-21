@@ -105,6 +105,24 @@ test('triage 把没进名单的 passed 条目也记进 rejected，不静默丢�
   assert.ok(rejected.some((r) => r.reasons.includes('超出当日入围上限，未进入人工评审')));
 });
 
+test('名单没满而某个源被配额挡住时，落选理由要说的是配额不是上限', () => {
+  // 2026-08-22 的真实分布：掘金一家 38 条候选，名单 49/60（没满），
+  // 22 条被 quota * QUOTA_RELAX 挡在门外，理由却写「超出当日入围上限」。
+  const items = Array.from({ length: 30 }, (_, i) => ({
+    id: `j${i}`, source: '掘金搜索', url: `https://juejin.cn/post/${i}`,
+    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目`,
+    excerpt: '踩坑记录，配置心得，实测下来的结论。',
+  }));
+  const { shortlist, rejected } = triage(items, { cap: 60, quota: 8 });
+  assert.ok(shortlist.length < 60, `名单不该被一个源占满，实际 ${shortlist.length}`);
+  const cut = rejected.filter((r) => r.reasons.some((x) => x.includes('未进入人工评审')));
+  assert.ok(cut.length > 0);
+  for (const r of cut) {
+    assert.ok(r.reasons.some((x) => x.includes('单源配额已满')), `理由应指向配额：${r.reasons.join('；')}`);
+    assert.ok(!r.reasons.some((x) => x.includes('超出当日入围上限')), '名单没满时不该说是上限');
+  }
+});
+
 test('入围线是常量而不是魔数，改动会被测试看见', () => {
   assert.equal(SHORTLIST_THRESHOLD, 6);
 });

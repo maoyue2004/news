@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { publishedAuthors } from '../scripts/tinker-authorsites.mjs';
+import { publishedAuthors, needsQuery, ledgerEntry, MAX_LOOKUP_ATTEMPTS } from '../scripts/tinker-authorsites.mjs';
 
 /** 造一份只有两天的日文件目录，避免测试跟着真实 tinker/data 一起变。 */
 function fixture(days) {
@@ -34,6 +34,41 @@ test('按平台和作者归并，同一个人的多篇合成一条', () => {
   // firstSeen 记的是第一次出现的那天，账本靠它说明这条是从哪天的收录来的。
   assert.equal(jia.firstSeen, '2026-08-01');
   assert.equal(rows.find((r) => r.author === 'lee').platform, 'v2ex');
+});
+
+const 甲 = { platform: 'juejin', author: '甲', firstSeen: '2026-08-01' };
+
+test('网络类失败一个字都不写账本，下轮重查', () => {
+  assert.equal(ledgerEntry(甲, { failed: 'profile 接口请求失败' }, undefined), null);
+  // 而失败之后账本里没有这一条，所以下一轮还会查。
+  assert.equal(needsQuery(undefined), true);
+});
+
+test('查到结论（有站 / 明确没有站）就落账，不再重查', () => {
+  const hit = ledgerEntry(甲, { site: 'https://example.com', github: 'jia' }, undefined);
+  assert.equal(hit.site, 'https://example.com');
+  assert.equal(hit.checkedFrom, '2026-08-01');
+  assert.equal(needsQuery(hit), false);
+  // 404 是答案不是失败：用户名查不到人，照常落账。
+  const gone = ledgerEntry(甲, { site: null, note: 'members/show 404（用户名查不到人）' }, undefined);
+  assert.equal(gone.pending, undefined);
+  assert.equal(needsQuery(gone), false);
+});
+
+test('反查不到 user_id 先挂 pending，攒够轮次才落成结论', () => {
+  const miss = { site: null, pending: true, note: '搜索接口反查不到 user_id' };
+  let entry;
+  for (let i = 1; i < MAX_LOOKUP_ATTEMPTS; i += 1) {
+    entry = ledgerEntry(甲, miss, entry);
+    assert.equal(entry.attempts, i);
+    assert.equal(entry.pending, true, `第 ${i} 轮应仍然可重查`);
+    assert.equal(needsQuery(entry), true);
+  }
+  entry = ledgerEntry(甲, miss, entry);
+  assert.equal(entry.attempts, MAX_LOOKUP_ATTEMPTS);
+  assert.equal(entry.pending, undefined);
+  assert.match(entry.note, /连续 3 轮/);
+  assert.equal(needsQuery(entry), false);
 });
 
 test('没有 profile 接口的平台和缺作者名的条目一律跳过，不进账本', () => {

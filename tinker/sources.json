@@ -2002,6 +2002,14 @@
     "desc": "2026 铁人赛系列。让 Codex 从空 repo 把一只 LINE 定位 Bot 做到上线，逐天记卡住的地方：Vertex AI 的 ADC 工作证、五个 Maps 来源不等于五间店、查地图要等 30 秒时的 Loading Animation 与后端可靠性。近 5 篇 1 篇过收录线（Day 2 拿 12 分）。"
   },
   {
+    "name": "iT 邦幫忙 · Claude Code 下班之後",
+    "url": "https://ithelp.ithome.com.tw/users/20183634/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9253",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。作者把 Claude Code 当常驻 runtime 养了五个月：把 CLI 当 runtime 要付的过路费、会话之间「醒来但不记得昨天」怎么补、最小可行常驻怎么让 agent 自己醒来、以及「帮我修 bug」和「帮我看着这件事」的差别。近 5 篇里 2 篇过收录线。"
+  },
+  {
     "name": "Kuhung 谷粒",
     "url": "https://kuhung.me/",
     "feed": "https://kuhung.me/posts/index.xml",
