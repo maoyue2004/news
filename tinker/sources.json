@@ -2010,6 +2010,14 @@
     "desc": "2026 铁人赛系列。作者把 Claude Code 当常驻 runtime 养了五个月：把 CLI 当 runtime 要付的过路费、会话之间「醒来但不记得昨天」怎么补、最小可行常驻怎么让 agent 自己醒来、以及「帮我修 bug」和「帮我看着这件事」的差别。近 5 篇里 2 篇过收录线。"
   },
   {
+    "name": "iT 邦幫忙 · 三個介面一套工作流",
+    "url": "https://ithelp.ithome.com.tw/users/20161310/ironman/9237",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9237",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。同一个模型摆在 claude.ai、Claude Desktop、Claude Code 三个介面下做同一件事，逐天比差在哪：三个介面各自记得住什么、用 Claude Desktop 做本机硬体诊断、让 Claude 写一份不给 Claude 用的提示词。近 8 篇 2 篇过收录线，题目是实验形而不是教学连载。"
+  },
+  {
     "name": "Kuhung 谷粒",
     "url": "https://kuhung.me/",
     "feed": "https://kuhung.me/posts/index.xml",

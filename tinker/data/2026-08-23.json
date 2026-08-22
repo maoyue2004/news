@@ -1,0 +1,112 @@
+{
+  "date": "2026-08-23",
+  "generatedAt": "2026-08-22T23:10:00.000Z",
+  "dailyNote": "掘金今天占了入围名单一多半（16/29），但真读下来几乎全是横评、上手教程和「我做了个 X」，一条能读的都要往下翻。今天最该先读的是 iT 邦幫忙那篇《我讓 Claude Code 自己跑了五個月》——把「有人盯着」和「没人盯着」之间那条线画了出来：改共用白名单漏掉一个变量，下游 agent 不报错也不停，自动退回假后端跑完全程还回报一切正常。同一个系列的 Day 3 接着把触发层写完，连排程全灭三天、锁档路径跟着工作目录漂移这种最难察觉的坑都摊开了；两篇同源同作者，但一篇是账、一篇是实作，都留下了。另外两条是掘金那篇 SDD 实录（六天里让 AI 把自己写的规格推翻四次，拦下两个提权陷阱）和犀利豆拆并行调度的第三篇。毙掉的主要是产品对比稿和方法论稿：后者最费判断，通篇都是「AI 承担 70%-80% 的文档工作量」这种表格，读起来像经验，但作者一次手都没动过。另有一条 linux.do 讲 Codex 的 Office 插件之间搬登录态的帖子，技术含量在今天的论坛帖里最高，但落点是把官号登录态复制给没登录的人，不收——不是质量问题。",
+  "items": [
+    {
+      "id": "079069cf953f3116",
+      "source": "iT 邦幫忙 · Claude Code 下班之後",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10403459?sc=rss.iron",
+      "titleOriginal": "我讓 Claude Code 自己跑了五個月",
+      "titleZh": "我让 Claude Code 自己跑了五个月：没人盯着的时候，它出错的样子是「一切正常」",
+      "summaryZh": "作者从 3 月起把 Claude Code 当底层 runtime 写一个常驻平台，155 天、905 次 commit、53 万行 Rust。但他要讲的跟这些数字关系不大：他改共用的环境变量白名单时漏掉一个，下游 agent 因此拿不到真凭证——它没报错也没停，自动退回去用测试用的假后端把整轮跑完并回报一切正常，整条链没有一处亮红灯，他是为了别的事翻纪录才看见的。从「claude -p 丢进 cron」这一行往后有五件事在等：它不记得昨天，每次都是全新对话；每次醒来先付一笔过路费——空资料夹里叫它回一句 OK 固定吃掉 51,673 个 token、0.335 美元，一天叫醒 100 次光开机就烧 517 万 token；拿它的自我回报当验收等于让考生自己改考卷；--dangerously-skip-permissions 会把本该停下来问的地方一起关掉；以及最难的静默失败——程式坏掉会喷 stack trace，agent 坏掉常常什么都不喷，只是换一条路走完。",
+      "whyRead": "五个月连续 log 换来的五类故障，每一类都只在没人看的时候发生；顺带一个空资料夹里量出来的数字：叫醒它说一句 OK，开机费 51,673 token。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "harness"
+      ],
+      "publishedAt": "2026-08-17T13:22:53.000Z",
+      "preScore": 12
+    },
+    {
+      "id": "42d562091e0af944",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7674123634785763364",
+      "titleOriginal": "实践6｜SDD 实战：AI 写的规格被推翻了四次",
+      "titleZh": "让 AI 回去读代码把自己写的规格推翻：六天四次，拦下两个提权陷阱",
+      "summaryZh": "技术经理视角的改造实录：三套 B 端后台分属三个独立 git 仓，认证分属三个代际（自研 Interceptor、Spring Security、Shiro），要一起接集团统一 IAM 的单点登录。作者用 grill-me 拷问需求、to-spec 出 PRD，再进 OpenSpec 拆成四个 change，前后六天约两个人天。他的结论是整套流程最关键的动作不是任何一次生成，而是让 AI 回去读代码、读 DDL，把自己写的规格推翻——六天推翻四次，每次拦下一个会上线的错误：两个提权陷阱、一条断言了不存在的数据库列的验收标准、一个放错模块的架构决策。摸现状那步用三个 agent 各读一个仓，耗时 8 / 23 / 29 分钟；关键是先踩点五分钟、把确切文件路径写进 prompt 再派工。其中一个 agent 报出某 JWT 类对固定 token 跳过验证直接返回超管 userId 却标注「不确定」，作者核源码确认无环境判断，再对比同仓验证码跳过逻辑有 profile 守卫，才升级成 P0。",
+      "whyRead": "把「AI 写的规格」当成待推翻的假设而不是待执行的清单——四次推翻各拦下一个会上线的错误，其中一个是同仓另一处代码反证出来的万能 token。",
+      "rating": 5,
+      "tools": [
+        "openspec",
+        "cursor"
+      ],
+      "topics": [
+        "spec-driven",
+        "skills",
+        "subagent"
+      ],
+      "publishedAt": "2026-08-16T10:17:53.000Z",
+      "author": "小狼183",
+      "preScore": 12
+    },
+    {
+      "id": "c17dc9dbc93cc7d0",
+      "source": "iT 邦幫忙 · Claude Code 下班之後",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10403815?sc=rss.iron",
+      "titleOriginal": "最小可行常駐：讓 agent 自己醒來",
+      "titleZh": "让 agent 自己醒来：排程全灭三天、一行错误日志都没有之后重写的触发层",
+      "summaryZh": "同一系列的 Day 3，讲 harness 里最不性感、坏掉却最难察觉的触发层。作者的排程有一次全灭三天，没有任何任务跑起来，也没有任何一行错误日志；事后查出两个原因叠在一起：事件汇流排上没有订阅者，事件送出去就掉进虚空；锁档路径跟着工作目录漂移，两个行程各自拿到自己的锁，谁也没挡住谁，真正该跑的分支反被跳过。他把醒来方式分成 cron/interval、事件、讯号三种，最后都收敛成同一个队列，并发控制与执行纪录才有单一的地方可做。系统 cron 用两周就换掉：PATH 只有很基本几个目录，终端里打得出 claude 的人在 cron 里会 command not found；cron 只说有没有执行、不说执行到哪；没有并发控制，两个任务同时到期就开两个。文中给了一段 which_claude() 探测函式（Homebrew、Bun、Volta、asdf、pipx，NVM 还要扫版本目录），他改过四次，每次都因为使用者环境跟他想的不一样。",
+      "whyRead": "「没有纪录的自动化等于没有自动化」——三天全灭却零错误日志的两个成因，加一段被真实用户环境逼着改了四次的 CLI 路径探测。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "harness"
+      ],
+      "publishedAt": "2026-08-19T15:02:34.000Z",
+      "preScore": 7
+    },
+    {
+      "id": "4414bd770d45b504",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/08/22/claude-code-agent-loop-03-parallel-dispatch/",
+      "titleOriginal": "Claude Code Agent Loop 研究系列（03）—— 从读文件到并行调度",
+      "titleZh": "一个 Edit 会把后面所有并行切断：Claude Code 的工具批次调度",
+      "summaryZh": "系列第三篇，讲权限批准和 hooks 两层拦截都通过之后，一次 assistant 消息里声明的多个 tool_use 怎么执行。并行更快，但两个工具都要改同一个文件时会互相覆盖，所以 Claude Code 走混合策略：允许 LLM 声明任意多个 tool_use，并行还是串行由 harness 决定。判断依据不是 harness 内部维护一张「Read 能并行、Edit 不能」的表，而是每个 tool 自己声明「我这次能不能安全并行」——Read / Grep / Glob 永远说能，Edit / Write 永远说不能，Bash 视命令而定（git status 可以，rm 必须串行），因为只有 tool 自己知道自己的副作用，新增命令也不用改调度器。打批规则是按声明顺序从头扫，把连续的、都说「能」的打成一批，遇到说「不能」的就切断：Read、Read、Edit、Read 会切成三批，最后那个 Read 虽然能并行，也因被 Edit 隔开而单独成批。批间串行、批内并行。",
+      "whyRead": "并行不是 LLM 说了算，是每个工具自己申报的；顺序也算数——夹在中间的一个 Edit 会把它后面本可以并行的读操作全部切成单独一批。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "agent-loop",
+        "harness"
+      ],
+      "publishedAt": "2026-08-22T10:00:00.000Z",
+      "preScore": 8
+    }
+  ],
+  "reviewed": 29,
+  "dropped": 25,
+  "stats": {
+    "sources": 253,
+    "fetched": 379,
+    "shortlisted": 29,
+    "rejected": 350,
+    "thin": 153,
+    "enriched": 59,
+    "enrichAttempted": 141,
+    "enrichRetryAttempted": 83,
+    "enrichRetried": 1,
+    "enrichSkipped": 38,
+    "enrichMuted": [
+      "掘金搜索"
+    ],
+    "failedSources": 1,
+    "feedRetryAttempted": 8,
+    "feedRetried": 8
+  },
+  "errors": [
+    "酷酷的白 — HTTP 403",
+    "SegmentFault 搜索 — 部分查询失败（1/29）"
+  ]
+}

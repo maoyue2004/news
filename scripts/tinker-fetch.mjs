@@ -4,11 +4,13 @@ import { extractArticleParts } from '../lib/enrich.mjs';
 import {
   loadSeen, saveSeen, loadStatus, saveStatus, recordSuccess, recordFailure,
   loadQueryYield, saveQueryYield, recordQueryYield,
+  loadDeferred, saveDeferred,
 } from '../lib/store.mjs';
 import { collectFeed, collectRaw } from '../lib/tinker/collect.mjs';
 import { fetchSearchItems, isSearchSource } from '../lib/tinker/search-adapters.mjs';
 import { triage, titleKey } from '../lib/tinker/relevance.mjs';
 import { queriesForDate } from '../lib/tinker/vocab.mjs';
+import { planSeen } from '../lib/tinker/defer.mjs';
 import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
 
 const SOURCES = 'tinker/sources.json';
@@ -405,9 +407,23 @@ async function main() {
     return;
   }
 
-  // 只有真正写进 _pending 的才记 seen。被规则毙掉的也要记——
-  // 否则每天都会把同一批噪声重新抓一遍、重新扣一遍分。
-  for (const it of unique) seen[it.id] = today;
+  /*
+   * 记 seen 之前先分一次「这是结论」还是「这是没排上队」。
+   *
+   * 被**规则**毙掉的要记 seen，否则每天都会把同一批噪声重新抓一遍、重新扣一遍分。
+   * 但被**名额**挡掉的（单源配额 / 入围上限 / thin 名额）不是对这条内容的判断，
+   * 记了等于永久出局——2026-08-23 名单只有 29 条、空着 31 席，却有 19 条
+   * 6-10 分的掘金条目被单源闸挡下并就此再也不会被抓。判据和账本三态见 defer.mjs。
+   */
+  const gatedIds = new Set(rejected.filter((r) => r.gated).map((r) => r.id));
+  const plan = planSeen({
+    ids: unique.map((it) => it.id),
+    gatedIds,
+    deferred: loadDeferred(DATA_DIR),
+    today,
+  });
+  for (const id of plan.seenIds) seen[id] = today;
+  saveDeferred(DATA_DIR, plan.deferred);
 
   mkdirSync(DATA_DIR, { recursive: true });
   writeFileSync(`${DATA_DIR}/_pending.json`, JSON.stringify({
@@ -451,6 +467,11 @@ async function main() {
   console.log(`正文补全：尝试 ${attempted}，成功 ${enriched}（第二轮重试 ${retryAttempted} 条，救回 ${retried} 条）`);
   if (enrichSkipped) console.log(`补全熔断：${enrichMuted.join('、')} 探针窗口零产出，跳过 ${enrichSkipped} 个请求`);
   if (feedRetryAttempted) console.log(`抓取重试：${feedRetryAttempted} 个源，救回 ${feedRetried} 个`);
+  const stillDeferred = Object.keys(plan.deferred).length;
+  if (stillDeferred || plan.promoted.length) {
+    console.log(`名额待定：${gatedIds.size} 条被名额挡下不记 seen（账本共 ${stillDeferred} 条），`
+      + `其中 ${plan.promoted.length} 条攒满轮次落成结论`);
+  }
   console.log(`今日查询词（${queries.length}）：${queries.join('、')}`);
   if (errors.length) {
     console.log(`\n抓取失败 ${errors.length} 个源：`);

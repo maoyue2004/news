@@ -318,5 +318,15 @@
     "github": "kakaCat",
     "note": null,
     "checkedFrom": "2026-08-22"
+  },
+  "juejin:小狼183": {
+    "platform": "juejin",
+    "author": "小狼183",
+    "site": null,
+    "github": null,
+    "note": "搜索接口反查不到 user_id",
+    "checkedFrom": "2026-08-23",
+    "pending": true,
+    "attempts": 1
   }
 }

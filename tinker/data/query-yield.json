@@ -1,51 +1,51 @@
 {
   "Claude Code 实践": {
-    "runs": 18,
-    "items": 200,
-    "shortlisted": 63,
-    "lastRun": "2026-08-22",
-    "lastShortlist": "2026-08-22"
+    "runs": 19,
+    "items": 204,
+    "shortlisted": 64,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
   },
   "Claude Code 踩坑": {
-    "runs": 18,
-    "items": 74,
-    "shortlisted": 14,
-    "lastRun": "2026-08-22",
-    "lastShortlist": "2026-08-19"
+    "runs": 19,
+    "items": 76,
+    "shortlisted": 15,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
   },
   "Codex CLI 体验": {
-    "runs": 18,
-    "items": 80,
+    "runs": 19,
+    "items": 82,
     "shortlisted": 22,
-    "lastRun": "2026-08-22",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-22"
   },
   "Cursor 工作流": {
-    "runs": 18,
+    "runs": 19,
     "items": 45,
     "shortlisted": 13,
-    "lastRun": "2026-08-22",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-19"
   },
   "AI 编程 踩坑": {
-    "runs": 18,
-    "items": 96,
+    "runs": 19,
+    "items": 99,
     "shortlisted": 9,
-    "lastRun": "2026-08-22",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-19"
   },
   "agent 编程 心得": {
-    "runs": 18,
-    "items": 50,
-    "shortlisted": 7,
-    "lastRun": "2026-08-22",
-    "lastShortlist": "2026-08-21"
+    "runs": 19,
+    "items": 51,
+    "shortlisted": 8,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
   },
   "Augment Code 踩坑": {
-    "runs": 4,
+    "runs": 5,
     "items": 8,
     "shortlisted": 0,
-    "lastRun": "2026-08-10",
+    "lastRun": "2026-08-23",
     "lastShortlist": null
   },
   "Augment Code 体验": {
@@ -119,10 +119,10 @@
     "lastShortlist": "2026-08-10"
   },
   "通义灵码 实践": {
-    "runs": 4,
-    "items": 4,
+    "runs": 5,
+    "items": 5,
     "shortlisted": 0,
-    "lastRun": "2026-08-10",
+    "lastRun": "2026-08-23",
     "lastShortlist": null
   },
   "通义灵码 踩坑": {
@@ -224,10 +224,10 @@
     "lastShortlist": null
   },
   "Skywork 实践": {
-    "runs": 3,
+    "runs": 4,
     "items": 1,
     "shortlisted": 1,
-    "lastRun": "2026-08-09",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-05"
   },
   "Skywork 踩坑": {
@@ -301,10 +301,10 @@
     "lastShortlist": "2026-08-05"
   },
   "Dify 体验": {
-    "runs": 2,
-    "items": 2,
+    "runs": 3,
+    "items": 4,
     "shortlisted": 0,
-    "lastRun": "2026-08-09",
+    "lastRun": "2026-08-23",
     "lastShortlist": null
   },
   "Coze 实践": {
@@ -378,10 +378,10 @@
     "lastShortlist": "2026-08-09"
   },
   "Cline 体验": {
-    "runs": 3,
+    "runs": 4,
     "items": 7,
     "shortlisted": 1,
-    "lastRun": "2026-08-15",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-06"
   },
   "Roo Code 实践": {
@@ -497,10 +497,10 @@
     "lastShortlist": "2026-08-22"
   },
   "Claude Desktop 踩坑": {
-    "runs": 1,
-    "items": 5,
+    "runs": 2,
+    "items": 15,
     "shortlisted": 1,
-    "lastRun": "2026-08-08",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-08"
   },
   "Claude Desktop 体验": {
@@ -539,11 +539,11 @@
     "lastShortlist": null
   },
   "Kimi Code 踩坑": {
-    "runs": 1,
-    "items": 6,
-    "shortlisted": 3,
-    "lastRun": "2026-08-09",
-    "lastShortlist": "2026-08-09"
+    "runs": 2,
+    "items": 12,
+    "shortlisted": 4,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
   },
   "Cursor 实践": {
     "runs": 2,
@@ -553,11 +553,11 @@
     "lastShortlist": null
   },
   "Gemini CLI 体验": {
-    "runs": 1,
-    "items": 5,
-    "shortlisted": 1,
-    "lastRun": "2026-08-11",
-    "lastShortlist": "2026-08-11"
+    "runs": 2,
+    "items": 8,
+    "shortlisted": 3,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
   },
   "Copilot CLI 使用": {
     "runs": 1,
@@ -630,11 +630,11 @@
     "lastShortlist": "2026-08-16"
   },
   "通义灵码 体验": {
-    "runs": 2,
-    "items": 12,
-    "shortlisted": 0,
-    "lastRun": "2026-08-16",
-    "lastShortlist": null
+    "runs": 3,
+    "items": 23,
+    "shortlisted": 1,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
   },
   "Antigravity 体验": {
     "runs": 2,
@@ -707,11 +707,11 @@
     "lastShortlist": "2026-08-22"
   },
   "vibe coding 实践": {
-    "runs": 2,
-    "items": 46,
-    "shortlisted": 9,
-    "lastRun": "2026-08-16",
-    "lastShortlist": "2026-08-16"
+    "runs": 3,
+    "items": 52,
+    "shortlisted": 10,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
   },
   "氛围编程 体验": {
     "runs": 2,
@@ -784,10 +784,10 @@
     "lastShortlist": "2026-08-22"
   },
   "AI 写代码 一个月": {
-    "runs": 2,
-    "items": 38,
+    "runs": 3,
+    "items": 57,
     "shortlisted": 2,
-    "lastRun": "2026-08-14",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-14"
   },
   "智能体 折腾": {
@@ -861,10 +861,10 @@
     "lastShortlist": "2026-08-22"
   },
   "agent 用了三个月": {
-    "runs": 2,
-    "items": 21,
+    "runs": 3,
+    "items": 22,
     "shortlisted": 1,
-    "lastRun": "2026-08-14",
+    "lastRun": "2026-08-23",
     "lastShortlist": "2026-08-12"
   },
   "Manus 体验": {
@@ -938,10 +938,10 @@
     "lastShortlist": null
   },
   "OpenHands 踩坑": {
-    "runs": 2,
+    "runs": 3,
     "items": 6,
     "shortlisted": 0,
-    "lastRun": "2026-08-15",
+    "lastRun": "2026-08-23",
     "lastShortlist": null
   },
   "OpenHands 体验": {
@@ -1419,5 +1419,75 @@
     "shortlisted": 2,
     "lastRun": "2026-08-22",
     "lastShortlist": "2026-08-22"
+  },
+  "Claude Code 插件": {
+    "runs": 1,
+    "items": 7,
+    "shortlisted": 0,
+    "lastRun": "2026-08-23",
+    "lastShortlist": null
+  },
+  "Claude Code 体验": {
+    "runs": 1,
+    "items": 14,
+    "shortlisted": 1,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
+  },
+  "Copilot CLI 体验": {
+    "runs": 1,
+    "items": 1,
+    "shortlisted": 0,
+    "lastRun": "2026-08-23",
+    "lastShortlist": null
+  },
+  "Headroom 体验": {
+    "runs": 1,
+    "items": 2,
+    "shortlisted": 0,
+    "lastRun": "2026-08-23",
+    "lastShortlist": null
+  },
+  "Muse Code 踩坑": {
+    "runs": 1,
+    "items": 12,
+    "shortlisted": 2,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
+  },
+  "Obsidian 踩坑": {
+    "runs": 1,
+    "items": 8,
+    "shortlisted": 1,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
+  },
+  "OpenSpec 实践": {
+    "runs": 1,
+    "items": 9,
+    "shortlisted": 3,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
+  },
+  "AGENTS.md 实践": {
+    "runs": 1,
+    "items": 9,
+    "shortlisted": 1,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
+  },
+  "Vibe Coding 怎么用": {
+    "runs": 1,
+    "items": 15,
+    "shortlisted": 3,
+    "lastRun": "2026-08-23",
+    "lastShortlist": "2026-08-23"
+  },
+  "Agent Client Protocol 怎么用": {
+    "runs": 1,
+    "items": 11,
+    "shortlisted": 0,
+    "lastRun": "2026-08-23",
+    "lastShortlist": null
   }
 }
