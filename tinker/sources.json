@@ -2018,6 +2018,14 @@
     "desc": "2026 铁人赛系列。同一个模型摆在 claude.ai、Claude Desktop、Claude Code 三个介面下做同一件事，逐天比差在哪：三个介面各自记得住什么、用 Claude Desktop 做本机硬体诊断、让 Claude 写一份不给 Claude 用的提示词。近 8 篇 2 篇过收录线，题目是实验形而不是教学连载。"
   },
   {
+    "name": "iT 邦幫忙 · IT 診斷 Agent 開發實錄",
+    "url": "https://ithelp.ithome.com.tw/users/20156847/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9045",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。把二十年的机房排障经验做成一个 IT Diagnostic Agent，逐天记的是自己撞的墙：对话里下的指令下一轮就被覆盖、用 Claude 稽核自己的工具反而查出一个 Prompt 漏洞、静态决策树怎么用结构取代 LLM 自律、如果明天 Claude 涨价怎么办。近 20 篇 4 篇过收录线（Day 15 拿 14 分、Day 21 拿 10 分）。"
+  },
+  {
     "name": "Kuhung 谷粒",
     "url": "https://kuhung.me/",
     "feed": "https://kuhung.me/posts/index.xml",

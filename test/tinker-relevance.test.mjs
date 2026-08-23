@@ -547,6 +547,26 @@ test('TRAE Work 不算 Trae：名字被整个包住时，光拆词条不够，�
   assert.deepEqual(rotatingQueries().filter((q) => /trae\s*work/i.test(q)), []);
 });
 
+test('裸 Claude 是独立产品，但要被四个同名产品和 CLAUDE.md 让开', () => {
+  // 2026-08-24 加的。动机是「规则层结构性看不见的一类作者」：iT 邦幫忙那批繁中系列
+  // 通篇只写「Claude」不写产品全名，工具命中恒为 0，分数上不去。
+  assert.ok(matchTools('讓 Claude 寫一份不給 Claude 用的提示詞').includes('claude'));
+  assert.ok(matchTools('用 claude.ai 网页版把一段说明做成可以玩的页面').includes('claude'));
+  // 被整个包住的四个产品名要让开，否则每篇 Claude Code 稿都白送一个 claude 标签
+  for (const t of ['我用 Claude Code 重写了整个模块', 'Claude Desktop 的 Cowork mode 能碰本机档案',
+    '从 Claude Code 到 Claude Tag，Agent 走到了组织这一层']) {
+    assert.ok(!matchTools(t).includes('claude'), t);
+  }
+  // 同时提到两者时两个都算，和 TRAE Work / Trae 一致
+  const both = matchTools('同一件事在 Claude Code 里做和在 Claude 网页版里做，差在哪');
+  assert.ok(both.includes('claude') && both.includes('claude-code'));
+  // CLAUDE.md 是话题不是产品：`claude` 后面跟的 `.` 不是拉丁字母，词边界拦不住，只能靠遮罩
+  assert.deepEqual(matchTools('我给项目写了 CLAUDE.md'), []);
+  assert.ok(matchTopics('我给项目写了 CLAUDE.md').includes('claude-md'));
+  // 名字太泛，不派生查询词（「Claude 实践」搜出来是官网、新闻和中转站）
+  assert.deepEqual(rotatingQueries().filter((q) => /^claude\s*(实践|踩坑|体验)$/i.test(q)), []);
+});
+
 test('聚合站 AI 摘要页整源不进名单，但照常打分并留在 rejected 里', () => {
   // BestBlogs.dev 那类源：条目本身分数很高（它就是在筛 agent 好文），
   // 但落地页是站方生成的摘要而不是作者原文，评审那一步一律不收。
