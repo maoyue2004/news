@@ -1,0 +1,416 @@
+{
+  "date": "2026-08-23",
+  "generatedAt": "2026-08-23T00:12:24.026Z",
+  "items": [
+    {
+      "id": "f9b7a526816221dc",
+      "source": "Machine Learning Street Talk",
+      "type": "video",
+      "lang": "en",
+      "url": "https://www.youtube.com/watch?v=gasgivVCl2U",
+      "titleOriginal": "Stealing Reasoning Traces from Proprietary LLM APIs — Ilia Shumailov & Alexander Panfilov",
+      "publishedAt": "2026-08-22T20:22:07.000Z",
+      "brief": true,
+      "thin": false,
+      "titleZh": "从专有LLM API中窃取推理轨迹——对话Ilia Shumailov与Alexander Panfilov",
+      "summaryZh": "提供商为支持对话续接返回加密推理状态，但密文可在用户间重放，小模型能诱导服务端解密并复述隐藏思维链，构成可复用越狱。访谈还谈及数据泄露、投毒轨迹与防御方案，主张用可控实验区分该攻击与普通蒸馏。"
+    },
+    {
+      "id": "0d1dd11794b6c3a8",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/DafkCDZpwzQf4yLLF/claude-and-performative-uncertainty",
+      "titleOriginal": "Claude and Performative Uncertainty",
+      "publishedAt": "2026-08-22T19:43:39.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "Claude与\"表演性不确定\"",
+      "summaryZh": "作者认为Claude或许并非真对是否有主观体验感到不确定，而是被训练成表现出不确定，这与“诚实”训练目标相冲突，可能损害其自我报告可信度。文章援引研究：模型在持续自我指涉提示下更倾向声称有主观体验，建议Anthropic做测试验证。"
+    },
+    {
+      "id": "4b550e11255a5576",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/ga8c5MWynhLuDm4mD/when-would-you-leave-anthropic-notes-from-a-chat-with-a",
+      "titleOriginal": "When would you leave Anthropic? Notes from a chat with a capabilities researcher",
+      "publishedAt": "2026-08-22T18:00:37.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "你什么情况下会离开Anthropic？与一位能力研究员的对话笔记",
+      "summaryZh": "作者在派对上目睹朋友当面指责一名Anthropic能力研究员\"作恶\"，对方\"产品有用、别人也会做\"的辩护显得单薄。作者由此提议：前沿实验室研究者或许该定期公开写下自己的\"个人红线\"——什么情况会让自己离职，而不是一次性、可复制粘贴的空洞声明。"
+    },
+    {
+      "id": "0283c7d3fdc884b5",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/q3RFhX57srWFZBc8T/study-2-registration-exploring-representational-counterparts",
+      "titleOriginal": "Study 2 Registration: Exploring representational counterparts of welfare-relevant indicators under post-training quantization",
+      "publishedAt": "2026-08-22T18:00:31.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "研究预注册：训练后量化如何影响福利相关指标的内部表征",
+      "summaryZh": "这是“量化是否改变开放权重模型福利指标”系列的第二项预注册，聚焦量化是否改变模型内部激活中与痛苦、边界侵蚀相关方向的位置与稳定性。第一项研究测文本行为指标得到零结果，本研究转向内部表征，辨析压缩改变的是表达还是内在表征。"
+    },
+    {
+      "id": "2bb1601e121714ae",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/h99Wi5vfFbPasCFh5/farm-strength-vs-breath-awareness",
+      "titleOriginal": "\"Farm strength\" vs \"breath awareness\"",
+      "publishedAt": "2026-08-22T17:30:08.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "\"干活练出的力气\"与\"刻意撸铁\"",
+      "summaryZh": "文章对比两种练力量方式：专门去健身房练，还是直接做需要力气的真实工作（如农活）。后者反馈回路更紧，哪块肌肉不够用就精准获得锻炼信号，还顺带练出协调技巧；只练“看起来强壮”的肌肉易掉入古德哈特陷阱，练出的只是中看不中用的“健身房肌肉”。"
+    },
+    {
+      "id": "ad9caeec9b293e4d",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/3CdKcgo8vrb2hxEFd/5-things-i-learned-about-people-from-doing-stand-up-comedy-1",
+      "titleOriginal": "5 Things I Learned About People From Doing Stand-Up Comedy",
+      "publishedAt": "2026-08-22T15:45:45.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "从两个月单口喜剧里，我学到的5件关于人的事",
+      "summaryZh": "作者辞去AI政策工作转行说单口喜剧两个月，总结出几点观察：观众本能地想把讲者归到某个\"标签\"里才能安心发笑，讲者的外貌、口音常被用作开场素材来快速建立这种归类；舞台上未被处理的异常情况（\"loop\"）会让观众分心，讲者需尽快\"收口\"。"
+    },
+    {
+      "id": "90f4b8e5e1b4e7dd",
+      "source": "The Cognitive Revolution",
+      "type": "podcast",
+      "lang": "en",
+      "url": "https://www.cognitiverevolution.ai/ai-in-the-am-weekly-highlights-relaunch-week-aug-17-20-2026/",
+      "titleOriginal": "AI in the AM — Weekly Highlights: Relaunch Week (Aug 17–20, 2026)",
+      "publishedAt": "2026-08-22T14:21:20.000Z",
+      "brief": true,
+      "thin": false,
+      "titleZh": "《AI in the AM》周精选：重启周（8月17日-20日）",
+      "summaryZh": "本期用AI克隆主持人声音串联四天直播，核心线索：今夏智能体安全事故后，OpenAI引入METR、Redwood等外部机构评估前沿模型；FAR.AI的Adam Gleave指出，攻防双方都已高度依赖智能体自动响应，人类正被动退出决策回路。"
+    },
+    {
+      "id": "aa8d609a27eb5ec6",
+      "source": "Exponential View",
+      "type": "newsletter",
+      "lang": "en",
+      "url": "https://www.exponentialview.co/p/the-problem-with-petards",
+      "titleOriginal": "🏦 The problem with petards",
+      "publishedAt": "2026-08-22T13:23:14.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "佩塔德的难题：AI巨头被自己的\"炸药\"炸伤",
+      "summaryZh": "作者借莎士比亚\"作茧自缚\"的典故，比喻AI实验室多年叙事中的矛盾：一边承诺AI将带来巨大经济增长、治愈疾病，一边警告这项技术太危险只能交给少数人掌控，还需在失控前抢先建成。这种\"太重要所以别管我们\"的说辞，如今在美国政治博弈中反噬了自身。"
+    },
+    {
+      "id": "2ea30ec7a5e03746",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/F4pWwtMFTebKZzxFL/the-instrumental-convergence-of-crowds",
+      "titleOriginal": "The Instrumental Convergence of Crowds",
+      "publishedAt": "2026-08-22T13:20:06.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "群体的工具性趋同",
+      "summaryZh": "作者提出：当目标不同但不冲突的智能体数量和多样性增加时，它们能达成共识的“共同子目标”会越来越少、越通用——这些正是工具性趋同的对象。因此足够大且多元的智能体群体，最终会自发协作追求这些抽象通用子目标，即使无法就具体目标达成一致。"
+    },
+    {
+      "id": "8e288baa8649715c",
+      "source": "晚点LatePost",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzU3Mjk1OTQ0Ng==&mid=2247538260&idx=1&sn=59c4bc015b9630018623b43a23f8e640",
+      "titleOriginal": "对话珀莱雅接班人侯亚孟：在新手区，学做全球品牌丨晚点周末",
+      "publishedAt": "2026-08-22T12:42:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "对话珀莱雅接班人侯亚孟：在新手区，学做全球品牌丨晚点周末",
+      "summaryZh": "侯亚孟2024年接班珀莱雅总经理，提出未来十年跻身全球美妆前十的“双十”战略，但2025年公司上市九年来首次营收利润双降，主品牌与竞品差距缩小。他谈接班决策、组织诊断与消费者洞察部门改革，大单品迭代、收购花知晓仍在验证，半年报是关键节点。"
+    },
+    {
+      "id": "9d2e81fc294ed4ce",
+      "source": "晚点LatePost",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzU3Mjk1OTQ0Ng==&mid=2247538260&idx=2&sn=843e3ecf2d2d69e9e64d68c2776d4d79",
+      "titleOriginal": "当具身处在它的 Bert 时代，GPT 时刻不会凭空发生",
+      "publishedAt": "2026-08-22T12:42:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "当具身处在它的Bert时代，GPT时刻不会凭空发生",
+      "summaryZh": "多位从LLM转投具身智能的专家在播客中讨论：当前具身智能像Transformer后先经历的“Bert时代”——范式、训练方法和数据都未统一；北京人形发布“Pelican-Unify”模型尝试走向统一表征。嘉宾认为具身的“GPT时刻”不会自动发生，仍需持续探索。"
+    },
+    {
+      "id": "342e120a93a4840e",
+      "source": "智东西",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://zhidx.com/p/587381.html",
+      "titleOriginal": "AI4S八年积累迎来新节点，北京再落一子，抢跑科研范式变革下半场",
+      "publishedAt": "2026-08-22T12:13:25.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "AI4S八年积累迎来新节点，北京再落一子，抢跑科研范式变革下半场",
+      "summaryZh": "2026科学智能大会在北京召开，近50位院士与会，议题从模型方法扩展到科学数据、自主实验室与产业落地；会上发布全国首批16个AI赋能科研案例，12个落地海淀，海淀同时揭牌AI4S产业集聚区。文章回顾AI4S概念自2018年由鄂维南提出后在海淀的积累，称行业已进入范式变革下半场。"
+    },
+    {
+      "id": "ec1dae1d3407b62b",
+      "source": "Ahead of AI",
+      "type": "blog",
+      "lang": "en",
+      "url": "https://magazine.sebastianraschka.com/p/claude-watermarking",
+      "titleOriginal": "How Claude Watermarks AI-Generated Text",
+      "publishedAt": "2026-08-22T11:11:39.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "Claude如何为AI生成文本加水印",
+      "summaryZh": "作者制作了一段48分钟讲解视频（原计划仅10分钟、10页幻灯片，最终扩展到50余页），详细拆解Anthropic近期公布的Claude文本水印机制，包括token采样如何嵌入水印、水印如何被检测，以及水印可能被如何移除或失效。"
+    },
+    {
+      "id": "02cd926645e6e9d0",
+      "source": "a16z Podcast",
+      "type": "podcast",
+      "lang": "en",
+      "url": "https://a16z.simplecast.com/episodes/martin-casado-on-where-the-value-is-going-in-ai-750ULKGM",
+      "titleOriginal": "Martin Casado on Where the Value Is Going in AI",
+      "publishedAt": "2026-08-22T10:00:00.000Z",
+      "brief": true,
+      "thin": false,
+      "titleZh": "Martin Casado谈AI价值正流向何处",
+      "summaryZh": "a16z合伙人Martin Casado探讨这轮AI周期与以往浪潮的本质不同：风投已变成“规模化资本游戏”，小团队也能高效部署巨额资金。他认为开源、垂直模型和应用层正获取越来越多价值，称这可能是1990年代以来最大的一次财富解锁。"
+    },
+    {
+      "id": "f3693fce4533d94d",
+      "source": "Latent Space",
+      "type": "podcast",
+      "lang": "en",
+      "url": "https://www.latent.space/p/ainews-10-worse-100x-cheaper-10000x",
+      "titleOriginal": "[AINews] 10% worse, 100x cheaper, 10000x faster: Why Simulation is taking over",
+      "publishedAt": "2026-08-22T07:36:00.000Z",
+      "brief": true,
+      "thin": false,
+      "titleZh": "【AINews】差10%、便宜100倍、快10000倍：为什么\"模拟\"正在接管一切",
+      "summaryZh": "文章梳理AI流水线自2022年起持续“合成化”：先是奖励信号变成模型打分（RLHF、Constitutional AI），2023年训练数据也变LLM合成（如Phi教科书数据）。作者认为这趋势的本质是越来越激进的“人类模拟”——效果差一成，成本降100倍、速度快万倍。"
+    },
+    {
+      "id": "2532df4561249703",
+      "source": "Latent Space",
+      "type": "podcast",
+      "lang": "en",
+      "url": "https://www.latent.space/p/attention-interface",
+      "titleOriginal": "The Evolution of the Agent Harness",
+      "publishedAt": "2026-08-22T07:30:52.000Z",
+      "brief": true,
+      "thin": false,
+      "titleZh": "智能体\"外壳\"（Harness）的演化",
+      "summaryZh": "作者认为2025年圣诞前后智能体突然“变好用”，并非单纯因模型变强，而是模型能力与外围工具（harness）改进曲线恰好交叉重合。从2022年ChatGPT纯文本预测的“缸中之脑”，到工具、检索、推理逐步被吸收进模型权重、外壳随之精简，外壳最终会变成面向人类注意力而非模型的东西。"
+    },
+    {
+      "id": "645686b68e0ee491",
+      "source": "karminski-牙医",
+      "type": "blog",
+      "lang": "zh",
+      "url": "https://www.sina.cn/news/detail/5334717156034832.html",
+      "titleOriginal": "回复@大风起兮kk:切割成多个。然后中间做一点滑动窗口。//@大风起兮kk:API限制 48 兆怎么办，视频帧数比较多？",
+      "publishedAt": "2026-08-22T06:12:00.000Z",
+      "brief": false,
+      "thin": true,
+      "titleZh": "回复@大风起兮kk:切割成多个。然后中间做一点滑动窗口。//@大风起兮kk:API限制 48 兆怎么办，视频帧数比较多？",
+      "summaryZh": "针对\"API限制48兆、视频帧数较多怎么办\"的提问，作者建议将内容切割成多份处理，并在分段之间加入一点滑动窗口，以此规避单次调用的体积上限。"
+    },
+    {
+      "id": "80f478c1f24ef4b2",
+      "source": "机器之心",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651051744&idx=1&sn=22c2857fcc9f3c5976d2bca19c597075",
+      "titleOriginal": "对话维他动力秦海龙：具身智能真正难题不是让机器人「学会」，而是跨本体「继承」",
+      "publishedAt": "2026-08-22T06:00:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "对话维他动力秦海龙：具身智能真正难题不是让机器人「学会」，而是跨本体「继承」",
+      "summaryZh": "维他动力联创秦海龙谈“具身基因组”理念：交互理解层可100%跨本体（四足到人形）继承，策略与空间理解层高度复用，底层运控因关节结构不同需专属适配。他认为真正稀缺的不是遥操专家数据，而是机器人在真实场景中失败、遇到意外时产生的问题数据。"
+    },
+    {
+      "id": "e1edaac6d66d67c3",
+      "source": "机器之心",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651051744&idx=2&sn=953e88352552dfb0214f61c96b3258d9",
+      "titleOriginal": "谷歌TPU创始负责人加入Anthropic",
+      "publishedAt": "2026-08-22T06:00:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "谷歌TPU创始负责人加入Anthropic",
+      "summaryZh": "彭博社报道，Anthropic组建芯片团队，挖来谷歌前TPU负责人Amir Salek，推动自研芯片以降低对英伟达、谷歌TPU、AWS的依赖，此举与OpenAI的Jalapeño项目路径相似。"
+    },
+    {
+      "id": "cde153e792220cca",
+      "source": "机器之心",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651051744&idx=3&sn=2adfa49d951362117407be4da2b67d22",
+      "titleOriginal": "ECCV 2026｜光照改了，人却变了？美图影像研究院提出一致特征传输重打光新方案CFT",
+      "publishedAt": "2026-08-22T06:00:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "ECCV 2026｜光照改了，人却变了？美图影像研究院提出一致特征传输重打光新方案CFT",
+      "summaryZh": "美图影像研究院提出CFT方法，将人像重打光表述为“光照一致的特征传输”问题，在Rectified Flow框架下学习源图与目标图间的光照变换，用同光照、不同内容的图像对监督。成果已被ECCV 2026录用，保真度和光照一致性均优于现有方法。"
+    },
+    {
+      "id": "fe410b6d0d12069a",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/bbDiNKrckvLevKxrx/humans-are-alignment-generators",
+      "titleOriginal": "Humans Are Alignment Generators",
+      "publishedAt": "2026-08-22T04:07:29.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "人类是\"对齐\"的生成器",
+      "summaryZh": "作者回应Softmax CEO Emmett Shear的观点“人类是对齐生成器”——人类不仅能彼此协作，还能驯化、协调与自己完全不同的物种，这种跨物种对齐能力是驾驭比自己更强大生物的关键。作者认为这与自己“人类需先彼此对齐才能造出对齐AI”的观点相呼应。"
+    },
+    {
+      "id": "df9d8feaefd84f15",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/JNp5FkYyDGBcfiY5B/selection-for-selectability-inductive-biases-in-evolution",
+      "titleOriginal": "Selection for Selectability: Inductive Biases in Evolution and in Neural Networks",
+      "publishedAt": "2026-08-22T04:02:27.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "可选择性的选择：进化与神经网络中的归纳偏置",
+      "summaryZh": "文章类比进化与深度学习：自然选择不仅筛选“好的基因型”，还会长期塑造基因组结构本身，使随机突变更容易沿环境反复变化的方向产生表现型变化——这一“基因组-环境对齐”数学上类似神经网络中的核对齐。作者称这是系列的最小类比版本。"
+    },
+    {
+      "id": "eeb1cb432d11933d",
+      "source": "硅星人",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkyNjU2ODM2NQ==&mid=2247632076&idx=1&sn=d13126e4860111b295c4428c9b45ea42",
+      "titleOriginal": "本周AI项目推荐｜Mirendil、INT21、rekursiv.ai ……最热门RSI 公司都在“自我改进”什么",
+      "publishedAt": "2026-08-22T03:27:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "本周AI项目推荐｜Mirendil、INT21、rekursiv.ai……最热门RSI公司都在\"自我改进\"什么",
+      "summaryZh": "文章梳理今年最密集的创业方向“递归自我改进”（RSI），半年内相关公司融资超10亿美元。作者提出框架：AI改进AI可拆成提出改法、执行、验证、保留四步，差别在于AI接管哪几步、验证信号多硬。以INT21为例，用GPU计时做验证，生成的Kernel反超专家手写版本。"
+    },
+    {
+      "id": "6f9b129a3a52f8c0",
+      "source": "硅星人",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzkyNjU2ODM2NQ==&mid=2247632076&idx=2&sn=db319804655d5e77b1f01316891518c7",
+      "titleOriginal": "接管科研“体力活”，深势科技发布玻尔·科学空间——人类与AI科学家的协作科研空间",
+      "publishedAt": "2026-08-22T03:27:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "接管科研\"体力活\"，深势科技发布玻尔·科学空间——人类与AI科学家的协作科研空间",
+      "summaryZh": "深势科技发布“玻尔·科学空间”公测版，提供与内置多学科AI科学家协作的桌面环境，覆盖调研、假设生成、实验设计与执行全流程。内置BioMaster、PharmMaster等专家模型，目标是让研究者只需提问确认，检索、复现、跑实验等“体力活”交给AI完成。"
+    },
+    {
+      "id": "c6de64b1b72c4b4d",
+      "source": "少数派",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://sspai.com/post/113675",
+      "titleOriginal": "线下活动｜Echoes Remain：迈克尔杰克逊 68 周年诞辰唱片展",
+      "publishedAt": "2026-08-22T03:00:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "线下活动｜Echoes Remain：迈克尔杰克逊68周年诞辰唱片展",
+      "summaryZh": "少数派广州线下店将于8月21日至9月20日举办迈克尔·杰克逊诞辰68周年唱片展，陈列其跨越五十余年的黑胶、CD、DVD等实体唱片并配文字注解，同期播放演唱会影像、设唱片交换试听区及线上知识问答互动，少数派会员到店可享精酿优惠。"
+    },
+    {
+      "id": "bfc1d4cf7a062c90",
+      "source": "Founder Park",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=MzY5ODQwMTkxNA==&mid=2247516653&idx=1&sn=8e24fefde627ddb724fce87eb13ea642",
+      "titleOriginal": "宇树往事",
+      "publishedAt": "2026-08-22T02:30:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "宇树往事",
+      "summaryZh": "张鹏回顾陪伴宇树科技九年的历程：2017年他在杭州一间简陋“车库”办公室第一次见到王兴兴，彼时具身智能尚未成热词、机构投资人普遍不看好。宇树近日上市、市值超4000亿，张鹏借此提炼这段历程中对创业者仍有价值的经验。"
+    },
+    {
+      "id": "79c2eb816f67c8ba",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/MWTQoa4Xo2AGyZiXe/rogue-scalpel-activation-steering-breaks-refusal-even-with",
+      "titleOriginal": "Rogue Scalpel: Activation steering breaks refusal, even with benign directions",
+      "publishedAt": "2026-08-22T00:02:51.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "流氓手术刀：激活转向即便用良性方向也会破坏拒答机制",
+      "summaryZh": "研究发现，用激活转向即便注入“葡萄牙”“品牌身份”这类良性概念方向，也可能削弱模型拒答能力，使其顺从原本会拒绝的有害请求；纯随机噪声方向甚至也能让拒答率从0%升至2%-27%。作者在Llama-3等开源模型测试后提醒，转向需更谨慎检查副作用。"
+    },
+    {
+      "id": "4075c024d61402c3",
+      "source": "暗涌Waves",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://mp.weixin.qq.com/s?__biz=Mzk0MDMyNDUxOQ==&mid=2247498193&idx=1&sn=b64f33353610e17b002be1ff11dfcf60",
+      "titleOriginal": "中国版Moderna崛起：9年潜伏，10亿重金，神秘科技大佬浮出水面",
+      "publishedAt": "2026-08-21T10:53:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "中国版Moderna崛起：9年潜伏，10亿重金，神秘科技大佬浮出水面",
+      "summaryZh": "Moderna与默沙东联合开发的mRNA肿瘤疫苗联合Keytruda在黑色素瘤三期临床获阳性结果，Moderna股价单日涨约177%。文章讲述昆仑万维创始人周亚辉自2017年起押注国内mRNA公司新合生物，9年投入个人资金约10亿元，如今出任其董事长兼CEO。"
+    }
+  ],
+  "errors": [
+    {
+      "source": "Andrej Karpathy",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "The Rundown AI",
+      "message": "rundown adapter 没有解析出任何条目"
+    },
+    {
+      "source": "42章经",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "卫诗婕｜漫谈 Light the Star",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "屠龙之术",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "十字路口 Crossing",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "AI Odyssey",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "OnBoard!",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "AI局内人｜AGI Insider",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "乱翻书",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "量子位",
+      "message": "HTTP 503"
+    }
+  ]
+}
