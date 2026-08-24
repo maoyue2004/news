@@ -52,7 +52,38 @@ test('短工具名按词边界匹配，不吃子串', () => {
   assert.deepEqual(matchTools('I realized something'), []);
   // 中英混排仍然要能命中
   assert.ok(matchTools('用Zed写代码的体验').includes('zed'));
-  assert.ok(matchTools('试了下 Amp 这个 agent').includes('amp'));
+});
+
+test('bareName: false 的词条只认带限定词的写法', () => {
+  // 2026-08-24：裸 `amp` 是嫌疑别名里第一个真被量到误命中的。
+  // 词边界拦得住 example，拦不住「前级余量（Pre-amp）控制器」和「MXR micro amp(M133)」——
+  // `-` 和空格都不是拉丁字母，它们是合法边界。这类名字的问题不是「被谁包住了」
+  // （那是 `not` 遮罩管的），是这个词本身就不唯一，所以关掉从 name 派生的那个匹配器。
+  assert.deepEqual(matchTools('前级余量（Pre-amp）控制器'), []);
+  assert.deepEqual(matchTools('MXR micro amp(M133) 效果器'), []);
+  assert.deepEqual(matchTools('试了下 Amp 这个 agent'), []);
+  // 带限定词的写法照常命中
+  assert.ok(matchTools('用 sourcegraph amp 写了一周代码').includes('amp'));
+  assert.ok(matchTools('Amp Code 的子 agent 怎么配').includes('amp'));
+  // 只影响标了这个字段的词条，别的裸词条不受牵连
+  assert.ok(matchTools('用Zed写代码的体验').includes('zed'));
+});
+
+test('ZCode 是产品词条，Z-code 虚拟机不算', () => {
+  assert.ok(matchTools('我目前使用的 AI 工具是 Zcode，搭配 OpenCode Go').includes('zcode'));
+  // Infocom 的 Z-machine 字节码和微软的翻译模型都写作带连字符的 Z-code，不收
+  assert.deepEqual(matchTools('用 Z-code 虚拟机跑 Zork'), []);
+});
+
+test('WebMCP 是独立话题，不是 MCP 的一段', () => {
+  // `webmcp` 里的 mcp 前面跟着拉丁字母 b，词边界不认——
+  // 加这一条之前「WebMCP 适配教程」这个标题一个话题词都命中不到。
+  assert.ok(matchTopics('WebMCP适配教程：让网页向 AI 提供工具').includes('webmcp'));
+  assert.ok(!matchTopics('WebMCP适配教程：让网页向 AI 提供工具').includes('mcp'));
+  // 拆开写的「web mcp」不算这个话题：那基本是在讲「Web 上的 MCP 服务」，
+  // 该由 mcp 自己去认（它本来也认得出来）。
+  assert.ok(!matchTopics('搭一个 web mcp 服务').includes('webmcp'));
+  assert.ok(matchTopics('搭一个 web mcp 服务').includes('mcp'));
 });
 
 test('HTML 实体 &amp; 不能被当成 Amp', () => {
@@ -421,6 +452,16 @@ test('没有薪资数字的招聘帖也要毙掉', () => {
     kind: 'blog',
   });
   assert.equal(notJd.verdict, 'shortlist');
+
+  // 2026-08-24：岗位词不一定紧挨着「招」，中文招聘帖的正常语序是「招 <技术栈> <岗位>」。
+  // 这条以前拿 6 分进了入围名单，因为「招」和「工程师」之间隔着 15 个字符。
+  const stack = scoreItem({
+    title: '[深圳] AI 智能硬件 + App 海外产品，招 Ruby on Rails 工程师',
+    excerpt: '团队在用 Claude Code，有 agent 实践经验优先。'.repeat(10),
+    thread: true,
+  });
+  assert.equal(stack.verdict, 'reject');
+  assert.ok(stack.reasons.includes('招聘 / 接单帖'));
 });
 
 test('单边薪资的招聘帖要毙掉，但 token / 上下文的数字区间不能误伤', () => {

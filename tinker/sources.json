@@ -354,10 +354,10 @@
   {
     "name": "x-cmd",
     "url": "https://x-cmd.com/blog/",
-    "feed": "https://x-cmd.com/feed.xml",
+    "feed": "https://cn.x-cmd.com/feed.xml",
     "kind": "blog",
     "enabled": true,
-    "desc": "命令行工具项目的中文博客，更新极勤，CLI 生态覆盖广。"
+    "desc": "命令行工具项目的博客，每天一条技术摘要。2026-08-24 周更体检发现订的是 x-cmd.com/feed.xml——那是英文站，21 天 20 条中文占比全 0，被 MIN_CJK_RATIO 硬毙，入围 0 收录 0；同一个站有 cn.（简中）/ hk.（繁中）两个子域，换成 cn. 之后近 20 篇 2 篇过收录线。形状偏「TLDR + 阅读原文」的转述摘要，若 30 天仍零收录按留存标准停用。"
   },
   {
     "name": "Owen Young",
@@ -2064,5 +2064,53 @@
     "kind": "blog",
     "enabled": true,
     "desc": "自己写 agent runtime 的人的工程日志（V2EX @echoVic 的个人站）：Orca 的一个 Goal 为什么跑了 5 小时（463 次 update_goal 失败到 v0.2.46）、删掉 64 轮上限之后重新理解 runtime、把任务真相从 TUI 收回 Runtime 走 ACP、多智能体并行编码的符号级冲突预防，以及对着 dsh-v0.1.0-rc.7 的提交号读 DSH 插件契约。近 20 篇 4 篇过收录线，span 52 天，feed 不带正文要补全。"
+  },
+  {
+    "name": "暗无天日",
+    "url": "https://www.lujun9972.win",
+    "feed": "https://www.lujun9972.win/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "harvest 第六轮命中。Emacs / Linux 老 hacker 的手记，TIL 体加源码笔记。agent 那部分是自己动手的：EMCP（他写的让 agent 操控 Emacs 的 MCP server）、「AI 编程助手 Skill 写作的六条检查项」。近 20 篇 2 篇过收录线，写作是爆发式的（10 条跨 15 天，然后安静一个月）。"
+  },
+  {
+    "name": "道轲",
+    "url": "https://dorck.cn",
+    "feed": "https://dorck.cn/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "harvest 第六轮命中。Android 工程师，2026 年只发了三篇，两篇是 skill 落地实录（把发掘金做成可复用的 juejin-skill、Jekyll 博客自动发文的 blog-post skill 怎么从一次性脚本变成可维护的技能）。典型的「月更博主一年出几篇好文」，留存成本是每天一次 HTTP。"
+  },
+  {
+    "name": "SRE运维博客",
+    "url": "https://www.cnsre.cn",
+    "feed": "https://www.cnsre.cn/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "harvest 第六轮命中，本轮够格数最高（4/20）。两篇是第一人称配置实录（「我现在这套 OpenCode 配置，如何把插件、MCP、Skills 变成稳定产能」「我的 OpenCode 使用心得：把博客写作做成稳定闭环」），另两篇是「入门教程 / 完全指南」的教程形状。风险写在这里：agent 内容停在 2026-02，近期产出是 AWS/K8s 运维笔记加自家「SRE日报」聚合产品的推广，30 天后按留存标准复查。"
+  },
+  {
+    "name": "weii.dev",
+    "url": "https://weii.dev",
+    "feed": "https://weii.dev/rss/",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "台港友链通道（ivonblog 部落滾页）发现。季更，但每篇都是硬折腾：在 RG476H 掌机上用 Termux + proot Debian 跑 Hermes Agent 做常驻 agent、Loop Engineering 范式笔记、home-lab 2.0 五篇采购到 Talos K8s。近 15 篇 3 篇过收录线，span 589 天。"
+  },
+  {
+    "name": "高見龍 kaochenlong",
+    "url": "https://kaochenlong.com",
+    "feed": "https://kaochenlong.com/feed.rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "台港友链通道发现。2026-08 起在写「从零手写一个 coding agent」的 Day N 连载（Day 01 Claude Code 其实就只是一个 while 循环、Day 02 侧录 Claude Code、Day 10 write_file 的防呆、Day 14 把 rm -rf 拦下来、Day 15 把 agent 关在工作目录）；再往前是 OpenSpec / Superpowers 的设计取舍和他自己给 OpenSpec 做的图形介面 Spectra。近 20 篇 3 篇过收录线。他也卖 Ruby 课程，评审时按落点判。"
+  },
+  {
+    "name": "pjwu.me",
+    "url": "https://pjwu.me",
+    "feed": "https://pjwu.me/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "台港友链通道发现。生活与技术混着写的繁中个人站，agent 那几篇是少见的「退一步」视角：Vibe coding 两个月心得、「没有用 Claude Code 的一个月」、透过 vibe coding 做三个小工具学到什么。近 20 篇 2 篇过收录线，月更。"
   }
 ]

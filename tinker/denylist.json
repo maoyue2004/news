@@ -329,5 +329,53 @@
     "name": "umate.ai",
     "reason": "同一通道（V2EX @Loocor）探到，是产品站不是个人博客，首页 302、探不到任何 feed。",
     "date": "2026-08-21"
+  },
+  {
+    "url": "https://imsuk.cn/",
+    "name": "SukのBlog",
+    "reason": "harvest 第六轮命中（2/20）。薅羊毛 / 撸号站：「如何成为玻利维亚人之 GPT/Claude 便宜订阅」「claude 狂欢，随便开 x20MAX！！！详细教程」「Grok 注册机」「K12bugGPT 注册」。它是靠 08-24 新加的裸 `claude` 词条才够格的——新词条的噪声成本在选源那一端也会现形。",
+    "date": "2026-08-24"
+  },
+  {
+    "url": "https://fuwari.oh1.top/",
+    "name": "yCENzh's Blog",
+    "reason": "harvest 第六轮命中（2/20）。主体是绕过 GFW、一键 dd 重装、QQ 邀请链接教程；两篇 agent 文里一篇是「Claude Code 保姆级入门」教程形状，只有 Termux 上跑 OpenCode 那篇是真折腾。按严准入不收。",
+    "date": "2026-08-24"
+  },
+  {
+    "url": "https://soulminingrig.com/",
+    "name": "soulminingrig",
+    "reason": "台港友链通道探到（2/20 够格）。**是日文站不是中文站**（「自宅用エージェントにkimakiでOpenCode無料枠」）；汉字多的日文标题能过 MIN_CJK_RATIO——那道闸量的是 CJK 字符占比，不区分中日。",
+    "date": "2026-08-24"
+  },
+  {
+    "url": "https://wiwi.blog/",
+    "name": "Wiwi.Blog",
+    "reason": "台港友链通道探到（1/20）。每日一则的生活随笔短文（「大富翁 2」「存錢的目標」「夜市彈珠檯」），924 篇里 agent 只有「離線 AI 根本是奇蹟」一篇。",
+    "date": "2026-08-24"
+  },
+  {
+    "url": "https://eddielv.com/",
+    "name": "Eddie Lv",
+    "reason": "台港友链通道探到（1/20）。**音乐 / 街头艺人博客**，够格那一篇是「MXR micro amp(M133)」——被裸 `amp` 误命中的吉他效果器。同一轮已把裸 `amp` 关掉（见 vocab.mjs）。",
+    "date": "2026-08-24"
+  },
+  {
+    "url": "https://noefly.cc/",
+    "name": "noefly",
+    "reason": "台港友链通道探到（1/20）。个人日记站，够格那篇是 SITCON 2026 与会心得，其余是梦文和 CMS 搭建记录。",
+    "date": "2026-08-24"
+  },
+  {
+    "url": "https://www.zaqizaba.xyz/",
+    "name": "zaqizaba",
+    "reason": "台港友链通道探到（1/20）。VPS / NAS / 刷机折腾站，方向对但 agent 只有「使用 VPS 搭建 openclaw」一篇，20 篇里 1 篇，低于准入线。",
+    "date": "2026-08-24"
+  },
+  {
+    "url": "https://ivonblog.com/",
+    "name": "Ivon 的部落格",
+    "reason": "台港扩源的**种子**，不是候选源：它的 /blogroll/（「部落滾」）是这一轮 44 个台港候选的来源。站本身近 20 篇是越狱、刷机、Root、Mastodon，0 篇过收录线，所以不订它的 feed；但这个页面值得每季度回来看一次。",
+    "date": "2026-08-24"
   }
 ]
