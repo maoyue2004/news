@@ -377,5 +377,19 @@
     "name": "Ivon 的部落格",
     "reason": "台港扩源的**种子**，不是候选源：它的 /blogroll/（「部落滾」）是这一轮 44 个台港候选的来源。站本身近 20 篇是越狱、刷机、Root、Mastodon，0 篇过收录线，所以不订它的 feed；但这个页面值得每季度回来看一次。",
     "date": "2026-08-24"
+  },
+  {
+    "feed": "https://blog.chiukaun.com/feed",
+    "name": "blog.chiukaun.com",
+    "reason": "「部落卷」页候选，evaluate() 判 2/20 够格，但两条命中是《如何超速学习任何新工具》和《如何用 AI 解读神谕》——通用学习方法与生活向内容，不是 agent 折腾。人工过滤那一步毙掉。",
+    "date": "2026-08-25",
+    "scope": "domain"
+  },
+  {
+    "feed": "https://blog.anna-yufeng.com/rss.xml",
+    "name": "blog.anna-yufeng.com",
+    "reason": "「部落卷」页候选，evaluate() 判 2/20 够格，但两条命中是富士 X-E5 相机开箱和「学习焦虑自救心法」，只是顺带提到 AI。同上，人工过滤毙掉。",
+    "date": "2026-08-25",
+    "scope": "domain"
   }
 ]

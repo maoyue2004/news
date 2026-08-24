@@ -357,7 +357,8 @@
     "feed": "https://cn.x-cmd.com/feed.xml",
     "kind": "blog",
     "enabled": true,
-    "desc": "命令行工具项目的博客，每天一条技术摘要。2026-08-24 周更体检发现订的是 x-cmd.com/feed.xml——那是英文站，21 天 20 条中文占比全 0，被 MIN_CJK_RATIO 硬毙，入围 0 收录 0；同一个站有 cn.（简中）/ hk.（繁中）两个子域，换成 cn. 之后近 20 篇 2 篇过收录线。形状偏「TLDR + 阅读原文」的转述摘要，若 30 天仍零收录按留存标准停用。"
+    "desc": "命令行工具项目 x-cmd 的官网博客。2026-08-24 周更体检换成 cn. 子域给了一次机会，08-25 逐条看完它近 20 篇：16 篇是「TLDR + 阅读原文」的他人文章摘要卡，4 篇是 x-cmd 自家功能公告（x codex ds / x keyring / x repo），**没有一篇是作者自己动手的记录**。和 BestBlogs 同一个形状——不是内容质量问题，是页面性质，整源不进评审名单。留着照抓照打分进 rejected 留痕，它的落选条目就是「该去接哪个原文源」的线索表。",
+    "summaryPage": true
   },
   {
     "name": "Owen Young",
@@ -2112,5 +2113,29 @@
     "kind": "blog",
     "enabled": true,
     "desc": "台港友链通道发现。生活与技术混着写的繁中个人站，agent 那几篇是少见的「退一步」视角：Vibe coding 两个月心得、「没有用 Claude Code 的一个月」、透过 vibe coding 做三个小工具学到什么。近 20 篇 2 篇过收录线，月更。"
+  },
+  {
+    "name": "yurenju.blog",
+    "url": "https://yurenju.blog",
+    "feed": "https://yurenju.blog/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "台港友链通道第二个种子池（wiwi.blog 的「部落卷」页）发现。g0v 圈的繁中开发者，写的都是自己动手的那一类：Prompt Injection 历劫归来、让 Claude Code 自己做验收测试、在 Claude Desktop 里直接买卖代币、OpenClaw 所开启的大门。近 20 篇 5 篇过收录线，span 607 天。"
+  },
+  {
+    "name": "Wildsky's Blog",
+    "url": "https://blog.wildsky.cc",
+    "feed": "https://blog.wildsky.cc/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "同上「部落卷」页发现。繁中个人站，agent 那批选题很野：叫 Claude Code 在执行指令前先「翻译翻译」、用手机叫 AI 帮他发博客文（跑在树莓派上的笔记系统）、Agent View 用久之后对 Vim 的反思、为什么决定自架一个 AI Agent。近 20 篇 5 篇过收录线，span 367 天。"
+  },
+  {
+    "name": "Kyo Huang",
+    "url": "https://blog.kyomind.tw",
+    "feed": "https://blog.kyomind.tw/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "同上「部落卷」页发现。繁中月更博客，近期整片在写 agent 工具链：Hermes Agent 的 10 个设定、给 AI Agent 挂 Hooks、我退订了 GitHub Copilot。近 10 篇 3 篇过收录线，span 117 天；更新慢（上一篇 44 天前），按留存标准留观察。"
   }
 ]

@@ -86,6 +86,20 @@ test('WebMCP 是独立话题，不是 MCP 的一段', () => {
   assert.ok(matchTopics('搭一个 web mcp 服务').includes('mcp'));
 });
 
+test('GSD 收裸缩写，因为限定词写法会漏掉正常语序', () => {
+  // 2026-08-25：904 篇语料里裸 `gsd` 命中 4 条、4 条全是 get-shit-done 这个框架。
+  // 只收 `gsd agent` 这类限定写法的话，4 条里认得出 2 条——
+  // Day 22 正文里就是裸的「GSD 的规划文件」，和 worktree / spec-driven 那两次
+  // 「限定词贴得太紧于是漏掉正常语序」是同一个形状。
+  assert.ok(matchTools('Claude Code + GSD agent：我的實際開發流程').includes('gsd'));
+  assert.ok(matchTools('GSD 的规划文件被下一轮覆盖了').includes('gsd'));
+  assert.ok(matchTools('看不上 GSD、BMAD、Spec-Kit 那种重型框架').includes('gsd'));
+  assert.ok(matchTools('装了 get-shit-done 之后重跑一遍').includes('gsd'));
+  // 词边界还在：贴着拉丁字母的不算
+  assert.deepEqual(matchTools('变量名叫 gsdConfig'), []);
+  assert.deepEqual(matchTools('文件 xgsd.log 里有报错'), []);
+});
+
 test('HTML 实体 &amp; 不能被当成 Amp', () => {
   // feed 正文里 &amp; 遍地都是，前后都不是拉丁字母，纯词边界规则拦不住。
   assert.deepEqual(matchTools('查询参数 a&amp;b 拼接'), []);

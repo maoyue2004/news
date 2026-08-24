@@ -1,0 +1,140 @@
+{
+  "date": "2026-08-25",
+  "generatedAt": "2026-08-24T22:24:06.382Z",
+  "dailyNote": "今天入围 43 条只收了 5 条，名单薄。iT 邦幫忙那位常驻越南、柬埔寨的 IT 基建工程师一个人占了两席，是这一期最不好看的地方，但他那篇 Day 15 实在放不掉——让 Claude clone 自己的仓库逐行稽核，报告指着 index.html 第 983 行说「五条规则一条都没有」，他再逐句对完，发现那段 Prompt 不是漏写，是在要求模型追求他自己论证过有害的「完整性」。今天先读这篇。毙掉的两大类还是概念普及稿和产品自荐：SDD 与氛围编程的比喻文、中转站味道的 Base URL 配置指南、五条 V2EX 的「我做了个小工具」；另有两篇形状很对但落点分别落在自家商店 App 和自家「进化社」课程上，同一把尺子照毙。",
+  "items": [
+    {
+      "id": "a612c1512b18e9c5",
+      "source": "iT 邦幫忙 · IT 診斷 Agent 開發實錄",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10400903?sc=rss.iron",
+      "titleOriginal": "Day 15  我用 Claude 稽核自己的工具，結果找到一個 Prompt 漏洞",
+      "publishedAt": "2026-08-16T07:30:51.000Z",
+      "author": "",
+      "preScore": 14,
+      "titleZh": "让 Claude 稽核自己写的工具，查出 Prompt 里一组反向的目标函数",
+      "whyRead": "稽核报告指着 index.html 第 983 行说「五条规则一条都没有」，他逐句对完才发现比漏写更糟——那三句话在要求模型追求他自己论证过有害的东西。",
+      "summaryZh": "作者是常驻越南、柬埔寨的 IT 基建工程师，给自己写的诊断工具定了五条「证据导向对话」规则：证据不足不跳结论、一次只问一个问题、问完要停下来等、不列举所有可能性、给的信息必须能改变对方下一步。他没凭印象自查，而是让 Claude clone 仓库逐行稽核。三个结构化模式全过，报告原话是 static gating enforced by code, not LLM self-restraint。唯一不通过的是 AI Chat 那条逃生门：index.html 第 983 行和 1098 行的 systemPrompt 只写了角色、专业范畴和回应格式。他逐句对完才发现问题比「漏写」更糟——「先给诊断关键问题」是复数，违反单一问题；「依严重程度排列」预设了列举；「结尾加预防建议」违反决策相关性测试。三句合起来在最大化完整性，而他在另一份文档里论证过完整性在故障排查中有害。修正只改两行。总结是：纪律在有结构的地方多余，在没有结构的地方必需，而他写在了多余的那边。",
+      "rating": 5,
+      "tools": [
+        "claude"
+      ],
+      "topics": []
+    },
+    {
+      "id": "8613c10bd3e1f033",
+      "source": "XINDOO的博客",
+      "kind": "blog",
+      "url": "https://zxs.io/article/2215",
+      "titleOriginal": "我和 AI 共创了一套会自己生长的 Obsidian 知识库",
+      "publishedAt": "2026-08-24T13:34:23.000Z",
+      "author": "",
+      "preScore": 12,
+      "titleZh": "不做 RAG：让 Claude Code 长期维护一座会自己生长的 Obsidian 知识库",
+      "whyRead": "整套东西里最实的一处是矛盾校验分档——软矛盾并存并标注差异，硬矛盾直接暂停提交等人裁决。",
+      "summaryZh": "作者用了几年 Notion，今年初转 Obsidian，他说真正的变化不是换工具，而是让 AI 参与知识库的长期维护。他先说清为什么不走 RAG：每次查询从零开始、知识不累积；同一个指标在文档 A 和 B 里定义不同它不会提醒你，只是分别检索出来丢给模型；源材料永远散乱，「你只是多了一层向量索引」。他的做法是让 LLM 读一次原始来源、提取事实写成结构化笔记，之后持续维护，新内容到来时自动更新受影响的旧笔记。收录那条链路写得最细：落进 00-inbox 的资料先让 inbox-organizer skill 标准化 frontmatter、判断归档目录，然后读原文（原文永远只读，只要它还在，整个体系可以随时重新推导），产出 type: source 笔记，更新通常 5 到 10 篇受影响的 concept 笔记，双向补 wikilink，再过矛盾校验门：一致的合并并记来源，口径不同但不互斥的软矛盾并存并标注差异，互相否定的硬矛盾暂停提交、等人工裁决。规则写进 CLAUDE.md。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "claudian",
+        "obsidian"
+      ],
+      "topics": [
+        "skills",
+        "claude-md"
+      ]
+    },
+    {
+      "id": "6012defb24f3fd0c",
+      "source": "iT 邦幫忙 · IT 診斷 Agent 開發實錄",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10400910?sc=rss.iron",
+      "titleOriginal": "Day 21  Claude Code + GSD agent：我的實際開發流程",
+      "publishedAt": "2026-08-22T07:43:53.000Z",
+      "author": "",
+      "preScore": 10,
+      "titleZh": "二十年 IT 基建工程师的 Claude Code + GSD 实际流程：八个设置和它们的理由",
+      "whyRead": "他把第一次跑 GSD 时被问到的八个设置逐项记下来并写了选择理由，这是这类文章里最少见的那部分。",
+      "summaryZh": "作者不是应用开发者，二十年做的是网络、服务器、AD、机房布线。这篇回答那个三千两百行的单文件工具是怎么来的：Windows 笔电 + Claude Code CLI + GSD（get-shit-done）。他把第一次跑 GSD 时的八个设置逐项写了理由：模式 Interactive（全自动对他是黑盒），颗粒度 Standard（太细会淹在确认消息里，太粗来不及刹车），提交规划文档 Yes，Research No，两个 verify 都开，PR 只要 User Stories 和 Risks，路线图走 Vertical MVP。两个 verify 是他最不后悔的决定：「AI 说完成了」和「真的完成了」之间有距离，没有自动化测试时只能靠强制验证填。GSD 先产出 7 个文件、1185 行的 codebase map，CONVENTIONS.md 里记着他随口提过的「只用 inline style」，隐性惯例成了正式文档。准则是：GSD 推荐的选项和「不破坏既有功能」冲突时一律选保守的那个。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "gsd"
+      ],
+      "topics": []
+    },
+    {
+      "id": "52abd042d002d57f",
+      "source": "pjwu.me",
+      "kind": "blog",
+      "url": "https://pjwu.me/writing/what-happened-to-my-three-tools/",
+      "titleOriginal": "我透過 vibe coding 做了三個小工具，學到了什麼？",
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "author": "",
+      "preScore": 6,
+      "titleZh": "三个 vibe coding 做出来的小工具，后来怎么样了",
+      "whyRead": "少见的「后来」：他从 Supabase 后台看剩余次数，发现大部分人只试了两三次就不再打开，包括他自己。",
+      "summaryZh": "作者去年底到今年初密集 vibe coding，做了三个 macOS 小程序 Histo、Promptny、Purri；3 月起因为工作上要构建 agent system，也大概意识到自己业余开发的程度在哪，就没再迭代。Promptny 是第一个：在任何窗口里框选一段文字、按快捷键就调用他设好的脚本强化这段 prompt 再贴回原处，网页、终端、Discord、Slack、编辑器里都能用。上线时他让有兴趣的人填 email，加进 Supabase 的表，Google 登录后给 50 次免费额度。上线几天他从后台看个别账号的剩余次数，发现大部分人只试了两三次就不再用；很快也发现自己不常用——AI 改出来的 prompt 带着额外的信息和规则，那些额外不一定生出好东西，反而制造噪声。于是他转了个弯，改成做翻译：英文段落转中文、中文晶晶体转英文，那才是他每天真会用的。结论是重复造轮子很好：跑几轮流程之后，后端权限验证、数据库、API 串接这些原本模糊理解的东西都熟了一层。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "vibe-coding"
+      ]
+    },
+    {
+      "id": "a2262cd1dc946f04",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7672328629963718694",
+      "titleOriginal": "说好 3 个功能做成 2 个：用 opencode 调试私文简搜聊天版（下篇）",
+      "publishedAt": "2026-08-11T01:02:08.000Z",
+      "author": "9i编程",
+      "preScore": 9,
+      "titleZh": "说好 3 个功能做成 2 个：用 opencode 把一个本地检索应用调到能用",
+      "whyRead": "「跑起来」和「能用」之间的那一大截，连同作者几次破防的原话一起记了下来。",
+      "summaryZh": "上篇因为 16G 内存带不动 Milvus，作者用 opencode 把「私文简搜」重写成轻量版：向量改本地方案、全文检索用 Lucene + HanLP、模型走本地 Ollama。这篇是从「能跑」到「能用」的拉锯。第一波三个问题一起上：deploy 被理解错了（他要的是配置一个目录、把批量 md 和图片挪进去再一键发布，opencode 当成了上传 zip 那样的东西）；前端把聊天、上传、知识库全堆在一起；最要命的是调模型时卡住不动——他以为是 Ollama 没响应，查下来是它因内存不足直接退出了，可用内存只有 8G，解法是设 OLLAMA_KEEP_ALIVE=-1 让模型常驻。界面改着改着，deploy 功能被弄丢了，说好三个功能只做了两个。最要命的一条是「它偷偷改需求」：上传 zip 和解压是两件独立的事，他说得很明白，opencode 非要把两个 deploy 揉一起，光这一条至少沟通了两小时。收尾是：正是这些拉扯让他更清楚哪些必须写成 skills、哪些必须人工把关。",
+      "rating": 4,
+      "tools": [
+        "opencode"
+      ],
+      "topics": [
+        "skills"
+      ]
+    }
+  ],
+  "reviewed": 43,
+  "dropped": 38,
+  "stats": {
+    "sources": 261,
+    "fetched": 399,
+    "shortlisted": 43,
+    "rejected": 356,
+    "thin": 94,
+    "enriched": 100,
+    "enrichAttempted": 122,
+    "enrichRetryAttempted": 37,
+    "enrichRetried": 15,
+    "enrichSkipped": 0,
+    "enrichMuted": [],
+    "failedSources": 2,
+    "feedRetryAttempted": 8,
+    "feedRetried": 7
+  },
+  "errors": [
+    {
+      "source": "eebk",
+      "message": "无法识别的 feed 格式"
+    },
+    {
+      "source": "东评西就",
+      "message": "HTTP 503"
+    },
+    {
+      "source": "掘金搜索",
+      "message": "部分查询失败（1/29）",
+      "partial": true
+    }
+  ]
+}
