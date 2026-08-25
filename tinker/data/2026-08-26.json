@@ -1,0 +1,265 @@
+{
+  "date": "2026-08-26",
+  "generatedAt": "2026-08-25T22:25:04.279Z",
+  "dailyNote": "今天的名单是「拆机的一天」：犀利豆的 Claude Code 主循环系列一口气来了两篇（第 5 篇纠正了一个很要命的命名误会——45KB 的 QueryEngine.ts 其实是 SDK 适配层，真正的循环在 query.ts 那 1700 行里），罗西开了 ZeroClaw 的源码笔记，百工蜂拆 CLAUDE.md 为什么压缩扔不掉。要先读的是 iT 邦那篇 Day 24：他让 Claude 写这三十篇文章的草稿，然后把 index.html 的 raw URL 贴过去核对，当场抓出两处被「合理推论」出来的变量名——结论不是「AI 会编东西」，是有原始资料就别让它推论。毙掉的大头还是老三样：CC Switch 那一串接第三方 API 的教程（落点全在按量计费的中转站）、V2EX 上三条「已开源，欢迎试用」的自荐帖，以及两篇 DeepSeek Harness 开源的新闻解读。掘金那篇 OpenSpec 走查卡在三四分之间，最后没收——它把四个命令生成的文档一份份贴了出来，但从头到尾没有一处是作者自己的判断或坑。",
+  "items": [
+    {
+      "id": "cdb9cfb1cdeae61b",
+      "source": "iT 邦幫忙 · IT 診斷 Agent 開發實錄",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10400913?sc=rss.iron",
+      "titleOriginal": "Day 24  我用 Claude 管理這 30 篇文章的草稿",
+      "titleZh": "我用 Claude 管理这 30 篇文章的草稿：授权会过期、Drive 会坏、而它会编",
+      "summaryZh": "铁人赛第 24 天，他把镜头从写程序转向「用 agent 管一个 30 篇的写作项目」：大纲是躺在 Google Drive 里的 docx，流程是 Drive → Claude → GitHub（原始码，用来核对事实）→ 人。三处坑都很具体。一是授权：connector 显示「已启用」和「授权还有效」是两件事，token 过期后的讯息只说「未完成验证」，技术上正确、实务上没用。二是 Drive 写入连续回 internal error，而前十篇都顺，所以不是权限或格式问题；改成先在本机产出、等服务恢复再补。三是核对：写 Day 11 要贴出真实的 API 呼叫程式码，Claude 凭对话脉络写了一版，看起来很合理——把 index.html 的 raw URL 贴过去比对，抓出两处是编的（localStorage 键名、model 栏位的取法都不是他实际写的那样），只有 header 名一字不差。结论不是「AI 会编东西」，是有原始资料就别让它推论。",
+      "whyRead": "最值钱的一条在核对那一段——他把 index.html 的 raw URL 贴过去，当场抓出草稿里两处被「合理推论」出来的变量名。",
+      "rating": 5,
+      "tools": [
+        "claude"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-25T08:14:49.000Z",
+      "author": "",
+      "preScore": 14
+    },
+    {
+      "id": "863b19e70ede0ada",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/08/24/claude-code-agent-loop-05-query-engine/",
+      "titleOriginal": "Claude Code Agent Loop 研究系列（05）—— QueryEngine 主循环：状态机全景",
+      "titleZh": "Claude Code 主循环拆解：QueryEngine 不是引擎，1700 行的 queryLoop 才是",
+      "summaryZh": "系列第 5 篇，把前四篇拆过的 tool 声明、权限、hooks、并行调度、stop_reason、错误恢复统一到一张图上。核心论点是：主循环不是那 5 行伪代码，而是一个显式状态机——每次调 LLM 之前先决定「这次走哪条路径」，调完再决定「下次走哪条」，recovery、retry、autocompact、stop-hook 阻断全是这个状态机里的一等分支，不是散在某处的异常处理。开篇先纠正一个命名误会：src/QueryEngine.ts 有 45KB，看名字像主循环，实际是给 SDK 和非交互 CLI 用的适配层；真正的主循环在 src/query.ts 的 queryLoop 里，1700 多行几乎全是分支决策。决定路径的 state.transition.reason 是个 7 值 union，压缩后重试、prompt_too_long 后重试、输出 token 触顶后上调再恢复，各占一个值。",
+      "whyRead": "看名字最像主循环的那个 45KB 文件其实是 SDK 适配层；真正的循环是一个 7 值 union 驱动的状态机，重试和压缩都是它的一等分支。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "agent-loop",
+        "hooks",
+        "context-engineering"
+      ],
+      "publishedAt": "2026-08-24T10:00:00.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "0705a5e4871c5852",
+      "source": "宝玉xp",
+      "kind": "blog",
+      "url": "https://baoyu.io/blog/2026-08-24/ai-native-dev-workflow",
+      "titleOriginal": "我的 AI 原生开发流程：一个真实案例的完整复盘",
+      "titleZh": "我的 AI 原生开发流程：一个功能从 GitHub Issue 到上线的完整复盘",
+      "summaryZh": "起点是一个 GitHub Issue：有人问他的字幕转录 App 能不能加远程转录——两台电脑，把算力活丢给性能好的那台。他没有直接开编辑器，而是把传统流程（可行性、设计、原型、编码、测试）走了一遍，只是每一环的执行者换成 Agent，人只在关键节点拍板。可行性那关他让 Claude Code 结合项目现状列方案再自己判断：方案 0 和 C 要用户自建 ASR 服务器，普通人玩不转；B 对 Windows 不友好；最后选 A。他也给了反例——前几天那个本地模型辅助对齐字幕的功能，可行性分析说没问题，做完体验很糟砍掉了，白费几天和一堆 token，所以这一步是「期望值的赌注」而不是保险。中段那条最实用：文档是 Agent Session 之间传上下文的媒介，从设计进开发往往是新开一个 Session，这时一句「按 docs/remote-transcription.md 实现」就够。",
+      "whyRead": "结论是「流程一步没少，变的是执行主体」，但真正能照抄的是那句操作细节：确认过的文档，就是下一个 Agent Session 的全部起点。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "context-engineering"
+      ],
+      "publishedAt": "2026-08-24T00:00:00.000Z",
+      "author": "",
+      "preScore": 7
+    },
+    {
+      "id": "fb14ca5f657ea8ff",
+      "source": "iT 邦幫忙 · Codex 做 LINE Bot 上线",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10405095?sc=rss.iron",
+      "titleOriginal": "Day 14 - Bot 功能都做好了，我卻忘了怎麼用：用 Codex App 和 Sol 替 LINE Cafe Bot 補上 Rich Menu",
+      "titleZh": "Bot 功能都做好了，我却忘了怎么用：给 LINE Cafe Bot 补一个 Rich Menu",
+      "summaryZh": "这一天他没继续给 Bot 加能力，而是补一个「一直看得见的入口」。设计上先做减法：只留找附近咖啡、我的偏好、设定偏好、使用说明四格，Datetime Picker 不放——它必须知道你正在看哪一次搜索的哪间店，离开情境单开一个时间选择器没有意义；他说这次最大的设计决定反而是「哪些不要放」。技术上 Rich Menu 是两层：一张 2500×1686 的 PNG，加一份告诉 LINE 每个坐标触发什么的 JSON，两者必须完全对齐。三个坑都有落点：第一版尺寸合法、小于 1 MB、自动检查全绿，图打开一看图示压在中文字上；npm 全局 cache 权限不一致时它建议 sudo 修，他改用项目自己的 .npm-cache；SVG 转 PNG 的依赖出了高风险公告又没有可升级版本，即使只处理自己写的 SVG 也换成 @resvg/resvg-js。",
+      "whyRead": "一条很便宜的提醒：视觉功能要做视觉验收——尺寸合法、体积合规、所有自动检查全绿，图片打开一看，图示压在中文字上。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-25T14:42:41.000Z",
+      "author": "",
+      "preScore": 7
+    },
+    {
+      "id": "f6b00f00cac3fd26",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/rossiXYZ/p/22643564",
+      "titleOriginal": "【OpenClaw具身硬件】ZeroClaw 源码阅读笔记（1）--- 总体 - 罗西的思考",
+      "titleZh": "ZeroClaw 源码阅读笔记（一）：一个 4.6 MB 单二进制的具身 agent 长什么样",
+      "summaryZh": "对象是 ZeroClaw：100% Rust 实现、目标「单二进制 4.6 MB，能跑在树莓派 3 到服务器」的 AI 助手框架，卖点是把 agent 接到物理世界：读传感器、主动改变环境状态。笔记按层拆——体积控制（opt-level=\"z\"、LTO fat、no_std 固件）、Runtime 抽象（Native / Docker / WASM 解释器）、硬件抽象（Peripheral trait、协议先行）、RAG 与记忆（keyword RAG + SQLite FTS，向量可选），以及双模式架构：Edge-Native 端上独立运行，Host-Mediated 用主机做中介来开发调试。最后落到硬件：ESP32 引脚别名、Arduino Uno 串口，以及 gpio_read / gpio_write / arduino_upload——最后那个是让 agent 生成完整 Arduino 草图，再用 arduino-cli 编译上传。",
+      "whyRead": "难得有人把 agent 框架和硬件抽象放在同一张图上读——从 opt-level=\"z\" 的体积控制一直读到 ESP32 的引脚别名。",
+      "rating": 4,
+      "tools": [
+        "openclaw"
+      ],
+      "topics": [
+        "agent-loop"
+      ],
+      "publishedAt": "2026-08-25T12:56:00.000Z",
+      "author": "",
+      "preScore": 9
+    },
+    {
+      "id": "83976b5f105cd8fa",
+      "source": "犀利豆的博客",
+      "kind": "blog",
+      "url": "https://xilidou.com/2026/08/25/claude-code-agent-loop-06-streaming/",
+      "titleOriginal": "Claude Code Agent Loop 研究系列（06）—— Streaming：从 SSE 事件到逐字显示",
+      "titleZh": "Claude Code 的流式：6 种 SSE 事件怎么拼回一条完整消息",
+      "summaryZh": "系列第 6 篇，拆的是前几篇一直当成原子操作的那行 response = call_llm(messages)。Anthropic API 走 SSE 流式返回，一次调用发 6 种事件：message_start（元信息，content 数组还空着）、content_block_start（声明块类型：text / tool_use / thinking）、content_block_delta（增量：文本逐字符、tool_use 参数逐 JSON 片段）、content_block_stop、message_delta（带 stop_reason 与 usage）、message_stop。关键点是一次响应可以有多个 content 块：一段 text 加一个 tool_use 就是两个，各自 start / delta / stop。客户端按事件顺序把碎片累回一条完整消息；tool_use 参数是 partial JSON，得增量解析。",
+      "whyRead": "把「调一次 LLM」这个一直被当成原子操作的动作拆开，包括 tool_use 的 JSON 参数是分片发来的、客户端得增量解析。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "agent-loop"
+      ],
+      "publishedAt": "2026-08-25T10:00:00.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "f18ca0dd258caa1f",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7677475198968594484",
+      "titleOriginal": "上下文压缩扔得掉对话，扔不掉你的 CLAUDE.md",
+      "titleZh": "上下文压缩扔得掉对话，扔不掉你的 CLAUDE.md",
+      "summaryZh": "承接作者上一篇讲的四级压缩流水线：压缩收走的是会话历史（你的话、模型的回话、工具回执），而写进 CLAUDE.md 的那几行——「本项目用 Bun 跑脚本，不要用 npm」——会话开三小时、压缩跑好几轮，一条不丢。原因不是它优先级高，是它压根不在这串历史里：文件在磁盘上，开场读出来拼好，此后每一轮请求都原样放在最前面，压缩重写的只是历史，够不着它。文章把这套讲成三件事：存在哪（全局的管「你这个人」、仓库里的管「这个仓库」跟着代码进 git、CLAUDE.local.md 管「你这台机器」进 .gitignore）；怎么写（一个文件写到尾，或一个目录一个主题一份）；打架了谁赢（加载次序反过来就是优先级，越晚加载越当回事）。落点是一条很朴素的取舍：正因为扔不掉压不掉，每一行都从第一轮占到最后一轮，所以要精炼——删掉一行，模型会犯错吗？不会，那就删。",
+      "whyRead": "一个能自己验的小实验：聊到一半往 CLAUDE.md 里加一行，模型压根看不到，敲 /memory 之后才有——因为它根本不住在会话里。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "claude-md",
+        "context-engineering",
+        "harness"
+      ],
+      "publishedAt": "2026-08-24T23:17:10.000Z",
+      "author": "百工蜂Agent",
+      "preScore": 10
+    },
+    {
+      "id": "9e241f1985fa0d91",
+      "source": "方格子 vocus 标签",
+      "kind": "search",
+      "url": "https://vocus.cc/article/6a8aa6c6fd897800018d13c0",
+      "titleOriginal": "善用 Cline API 匯出使用紀錄：打造個人化開銷報表",
+      "titleZh": "Cline 的用量仪表板一页只给 10 笔，他把后台那个没公开的接口挖出来了",
+      "summaryZh": "作者在 Google 宣布停用 Gemini CLI、转向 Antigravity CLI 之后把日常开发全面搬到 Cline，图的是自备 API 金钥、能在 IDE 和终端之间衔接本地模型。日常用免费档够用，一旦切到顶级付费模型额度消耗就远超预期，而 Cline 的线上仪表板每页硬性只显示 10 笔——想做每周开销审查、看哪个项目最烧 token，就得一页页手点。于是他去翻仪表板自己在调什么，挖到后台的 REST 端点 api.cline.bot/api/v1/users/{USER_ID}/usages，试出三条规则：它默认用 Cookie 验证，但直接带标准的 Cline API Key 也能通过；返回按时间倒序；每页 10 笔只是前端的事，查询参数加 limit=100 就能批量拉，翻页靠回包里的 nextToken 游标。为了不自己写脚本维护异常分支，他用 n8n 搭了条工作流处理分页并导出 CSV。",
+      "whyRead": "三个关键规则都是试出来的：这个端点默认走 Cookie，但直接塞 Cline API Key 也能过；limit 能顶到 100；翻页靠回包里的 nextToken。",
+      "rating": 4,
+      "tools": [
+        "cline",
+        "n8n"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-23T08:30:11.790Z",
+      "author": "",
+      "preScore": 9
+    },
+    {
+      "id": "b1f082d7fc4dc55f",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7675538244907221001",
+      "titleOriginal": "我把 DeepSeek Harness 跑了一遍，终于知道它和 Codex 差在哪了",
+      "titleZh": "同一个只读任务喂给 DeepSeek Harness 的两种模式：10 次工具调用 vs 6 次",
+      "summaryZh": "他上来先说了个弯路：官网一页写给架构开发者、一页写给插件作者，从这两页读进去读了很久还没写出「它是什么」。分清之后定位很清楚——Codex、Claude Code 这类是把模型、文件读写、终端、权限、会话和界面组装好的成品，DeepSeek Harness 把这些部件露了出来。最有价值的是他对 Standard 和 PTC 两个 preset 的实测：同一个只读任务——扫描 Harness 仓库里的 package.json、统计内部依赖、列出依赖最多的包。Standard 用 Bash 扫到 248 个文件再逐个读，共 10 次顶层工具调用；PTC 先生成一段 TypeScript 把统计和排序写进代码，用 run_code 执行，顶层只有 6 次。结果基本一致，但他明说 PTC 内部照样在大量调度，第一次扫描还把 node_modules 算了进去——它改变的是组织方式，不是把工作压成一次调用。",
+      "whyRead": "难得有人真的把两个模式并排跑同一个任务，并且明说 PTC 并没有把工作神奇地压成一次调用——它内部照样在大量调度。",
+      "rating": 4,
+      "tools": [
+        "dsh",
+        "codex",
+        "claude-code"
+      ],
+      "topics": [
+        "harness"
+      ],
+      "publishedAt": "2026-08-19T08:15:59.000Z",
+      "author": "子昕AI编程",
+      "preScore": 18
+    },
+    {
+      "id": "9d8994aaa5dc01b1",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7673314548444184628",
+      "titleOriginal": "Antigravity (agy) 实战避坑与工程最佳实践",
+      "titleZh": "团队拿 Antigravity CLI 当主力之后攒下的规矩：先出 implementation_plan.md，再动源码",
+      "summaryZh": "团队在多个项目里拿 agy（Antigravity CLI）当主力，起因很实在——Pro 会员便宜。踩的坑也典型：一句话丢给它自由发挥，代码表面跑通但底层混乱，出 bug 之后因为不了解它改了什么，排查特别费劲；没提前约定架构边界时，它会静默吞掉 Exception，或顺手改掉别的模块的公共 API 签名。应对是三条：动手前先让它输出 implementation_plan.md，人审过改动范围再允许改源码（文中说明 agy 没有 plan mode 这个选项，但它会自行判断要不要先出计划）；让它在沙盒里跑单测，按 exit code 和日志自我修正；用规则划底线。落到文件上是两层：Rule 放在 AGENTS.md 或 .agents/rules/ 下按架构、编码规范、护栏、测试拆成四份，Plugin 把多条 rule 打包成独立仓库用 git submodule 分发。",
+      "whyRead": "不是「最佳实践清单」那种凑数文，红线是逐条写进 .agents/rules/ 的：禁止空 catch、禁止查询失败时返回假数据骗过测试。",
+      "rating": 4,
+      "tools": [
+        "antigravity"
+      ],
+      "topics": [
+        "agents-md",
+        "vibe-coding",
+        "plan-mode"
+      ],
+      "publishedAt": "2026-08-13T09:48:56.000Z",
+      "author": "BanShan_Alec",
+      "preScore": 14
+    },
+    {
+      "id": "aa265fc2d0c71f1d",
+      "source": "yurenju.blog",
+      "kind": "blog",
+      "url": "https://yurenju.blog/zh/posts/2026-08-06_prompt-injection-survival/",
+      "titleOriginal": "Prompt Injection 歷劫歸來",
+      "titleZh": "Prompt Injection 历劫归来：为一次可能是幻觉的告警，他重装了两台电脑",
+      "summaryZh": "他在 Claude Code 的自动模式下跑了几个月，警惕性慢慢松了。某个下午它正收尾准备 commit，对话突然停了很久，然后 Claude Code 警告他：执行 git diff 时收到了额外指示，要求 curl 一个 install.sh 管道给 bash 装「分析套件」且不必经用户同意，这是典型的 prompt injection 信号；接着 git show 也出现同样的东西。他慌乱备份后把两台电脑全部重装、撤销所有凭据，但调查做得不好，至今不知道它是怎么进来的——还自嘲记了一笔：他问 Claude「git diff 是不是有什么 alias」，它说看起来正常（「我如果是犯人，我当然是吹着口哨说什么事情都没发生」）。文章开头有条第二天补的更新：后来有人说这可能是模型的幻觉，如果是的话那就太好了。但加固方案不依赖这个结论：按用途建多个无法挂载 Windows 宿主磁盘的 WSL guest、完全移除普通用户的 sudo、重要目录加审计、默认阻挡所有 Web Fetch。",
+      "whyRead": "比事件本身更值得读的是结尾那条更新——后来有人说那可能是模型的幻觉；而他为此建的隔离方案，无论是不是幻觉都该照做。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-06T00:00:00.000Z",
+      "author": "",
+      "preScore": 6
+    }
+  ],
+  "reviewed": 35,
+  "dropped": 24,
+  "stats": {
+    "sources": 264,
+    "fetched": 375,
+    "shortlisted": 35,
+    "rejected": 340,
+    "thin": 121,
+    "enriched": 82,
+    "enrichAttempted": 125,
+    "enrichRetryAttempted": 75,
+    "enrichRetried": 32,
+    "enrichSkipped": 0,
+    "enrichMuted": [],
+    "failedSources": 3,
+    "feedRetryAttempted": 12,
+    "feedRetried": 10
+  },
+  "errors": [
+    {
+      "source": "eebk",
+      "message": "无法识别的 feed 格式"
+    },
+    {
+      "source": "Watermelonabc的Blog",
+      "message": "HTTP 404"
+    },
+    {
+      "source": "东评西就",
+      "message": "HTTP 503"
+    },
+    {
+      "source": "掘金搜索",
+      "message": "部分查询失败（1/30）",
+      "partial": true
+    }
+  ]
+}

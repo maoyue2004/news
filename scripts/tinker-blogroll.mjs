@@ -89,8 +89,35 @@ const LINK_PATHS = [
  * 后果不是少几个候选，是**这条通道在繁中圈整个失灵**——只剩穷举路径那一半，
  * 而自定义路径（`/friend-links`、`/about/links`）全靠锚文本捡。
  * 不收裸的「連結」：那是「相關連結」「下載連結」的一段，页面上遍地都是。
+ *
+ * 「部落卷 / 部落滾 / 部落滚」是 2026-08-26 补的，来源是三个独立的台港友链页
+ * （ivonblog 的「部落滾」、wiwi.blog 和伊果的「部落卷」）——**这是台港圈给 blogroll
+ * 起的名字，而这张表里原来一个都没有**。过了「它是不是某个常用词的一段」那一问：
+ * 这三个词在中文里不构成任何常用词的子串。加简体的「部落滚」是照
+ * 「每加一个新字形的源，回头把所有中文正则查一遍」那条老规矩顺手补的。
  */
-const LINK_ANCHOR = /友链|友情链接|朋友们|友情連結|友站|朋友們|部落格連結|link exchange|blogroll/i;
+const LINK_ANCHOR = /友链|友情链接|朋友们|友情連結|友站|朋友們|部落格連結|部落卷|部落滾|部落滚|link exchange|blogroll/i;
+
+/**
+ * 种子池不只是 `sources.json`——挂着一整页友链的那个人，自己未必够格被收录。
+ *
+ * 这条通道原来只拿已收录博客当种子，于是它在繁中圈看起来是「失灵」的
+ * （2026-08-17：11 个繁中源只爬出 9 个站外域名，八成来自唯一一个简中风格的博主）。
+ * 08-24 和 08-25 两轮证明失灵的不是判据也不是字形，是**我们手上没有那个圈子的种子**：
+ * ivonblog 的「部落滾」（70 个台港站，并入 3 个）和 wiwi.blog 的「部落卷」
+ * （129 个域名、和上一轮只重合 2 个，并入 3 个）都是搜出来的，**两个都不在 sources.json 里**，
+ * 所以永远当不上种子。08-26 又搜到第三个：伊果的「部落卷」61 个站，
+ * 而且那一页还列着另外 8 个友链页——**繁中友链页本身就互相挂着**，
+ * 找到一个就等于找到一批入口。
+ *
+ * 所以这里单开一份「不够格被收录、但值得当入口」的种子。判据只有一条：
+ * 这个页面挂着一整页别人的站。
+ */
+const EXTRA_SEEDS = [
+  { name: '部落滾（Ivon的部落格）', url: 'https://ivonblog.com/' },
+  { name: '部落卷（官大為 Wiwi.Blog）', url: 'https://wiwi.blog/' },
+  { name: '部落卷（伊果的沒人看筆記本）', url: 'https://igouist.github.io/' },
+];
 
 /**
  * 不可能是个人博客的域名。友链页里混着大量这类链接：备案查询、
@@ -240,10 +267,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.error(`从缓存 ${CACHE} 读回 ${inbound.size} 个站外域名，跳过爬取`);
   } else {
     const seedRe = SEED_MATCH ? new RegExp(SEED_MATCH, 'i') : null;
-    const seeds = sources
-      .filter((s) => s.kind === 'blog' && s.enabled !== false && s.url)
-      .filter((s) => !seedRe || seedRe.test(`${s.name} ${s.url}`))
-      .map((s) => ({ name: s.name, url: s.url }));
+    const seeds = [
+      ...sources
+        .filter((s) => s.kind === 'blog' && s.enabled !== false && s.url)
+        .map((s) => ({ name: s.name, url: s.url })),
+      ...EXTRA_SEEDS,
+    ].filter((s) => !seedRe || seedRe.test(`${s.name} ${s.url}`));
     console.error(`${seeds.length} 个已收录博客，开始找友链页…`);
     for (let i = 0; i < seeds.length; i += CONCURRENCY) {
       await Promise.all(seeds.slice(i, i + CONCURRENCY).map(async (seed) => {

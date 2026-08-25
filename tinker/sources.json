@@ -2137,5 +2137,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "同上「部落卷」页发现。繁中月更博客，近期整片在写 agent 工具链：Hermes Agent 的 10 个设定、给 AI Agent 挂 Hooks、我退订了 GitHub Copilot。近 10 篇 3 篇过收录线，span 117 天；更新慢（上一篇 44 天前），按留存标准留观察。"
+  },
+  {
+    "name": "弦而時習之",
+    "url": "https://blog.aotoki.me",
+    "feed": "https://blog.aotoki.me/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "台港友链通道第三个种子池（伊果的「部落卷」页）发现。繁中个人站，Kobako 系列写 Ruby/mruby/WebAssembly，agent 那一支全是自己动手的安全与边界题：打造 AI 时代的沙盒、用 Coding Agent 时测试能做多少防护、让 Agent 安全地操作 Rails、当 Claude Code 持续运行数小时、Agent Skills 需要多少内容。近 10 篇 2 篇过收录线，span 147 天。"
+  },
+  {
+    "name": "針織拙見",
+    "url": "https://blog.mickzh.com",
+    "feed": "https://blog.mickzh.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "同上「部落卷」页发现。繁中个人站，OpenClaw（他叫龙虾）那一片是全库最细的实操记录：Cron Job 的 Delivery Mode 扫雷、Heartbeat Cron vs Isolated Cron 怎么选、用 Tailscale 从任何设备存取家里的龙虾；另有一台电脑上跑多个 Claude Code Profile、不让 Claude Code 下班的 Ralph Wiggum Plugin。近 20 篇 6 篇过收录线，span 235 天；更新慢（上一篇 57 天前），按留存标准留观察。"
   }
 ]

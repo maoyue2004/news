@@ -57,8 +57,54 @@ test('攒够 DEFER_ROUNDS 轮仍没排上队就落成结论', () => {
   }
   const last = planSeen({ ids: ['b'], gatedIds: new Set(['b']), deferred, today: TODAY });
   assert.deepEqual(last.seenIds, ['b']);
-  assert.deepEqual(last.promoted, ['b']);
+  assert.deepEqual(last.promoted.map((p) => p.id), ['b']);
   assert.equal(last.deferred.b, undefined, '落成结论后要从待定账本里清掉');
+});
+
+test('闸门分开记：被三道不同的闸各挡一次，不是同一件事被记了三遍', () => {
+  // 2026-08-26 加的。原来账本只有 attempts，「配额挡两次 + thin 挡一次」和
+  // 「同一道闸连挡三次」落进去是同一个 attempts: 3，于是「这批永久出局的条目
+  // 主要死在哪道闸上」这个问题——也就是下次该调 cap 还是调配额的唯一依据——答不出来。
+  const gates = ['quota', 'thin', 'cap'];
+  let deferred = {};
+  for (const gate of gates.slice(0, DEFER_ROUNDS - 1)) {
+    const r = planSeen({ ids: ['b'], gatedIds: new Map([['b', gate]]), deferred, today: TODAY });
+    deferred = r.deferred;
+  }
+  assert.deepEqual(deferred.b.gates, { quota: 1, thin: 1 });
+  assert.equal(deferred.b.last, 'thin');
+
+  const last = planSeen({ ids: ['b'], gatedIds: new Map([['b', 'cap']]), deferred, today: TODAY });
+  assert.deepEqual(last.promoted, [{ id: 'b', gates: { quota: 1, thin: 1, cap: 1 } }]);
+});
+
+test('同一道闸连挡，计数累加在同一个键上', () => {
+  let deferred = {};
+  for (let round = 1; round < DEFER_ROUNDS; round += 1) {
+    deferred = planSeen({ ids: ['b'], gatedIds: new Map([['b', 'quota']]), deferred, today: TODAY }).deferred;
+  }
+  assert.deepEqual(deferred.b.gates, { quota: DEFER_ROUNDS - 1 });
+});
+
+test('传 Set 仍然可用，只是记不出闸门', () => {
+  // 向后兼容：老账本里的条目没有 gates 字段，不能因此崩掉或凭空造一个闸门出来。
+  const r = planSeen({ ids: ['b'], gatedIds: new Set(['b']), deferred: {}, today: TODAY });
+  assert.equal(r.deferred.b.attempts, 1);
+  assert.equal(r.deferred.b.gates, undefined, '没有闸门信息时不要编一个');
+});
+
+test('triage 给每条名额落选标出是哪道闸', () => {
+  const items = Array.from({ length: 40 }, (_, i) => item(i, '掘金搜索'));
+  const { rejected } = triage(items, { cap: 60 });
+  const gated = rejected.filter((r) => r.gated);
+  assert.ok(gated.length > 0);
+  for (const r of gated) {
+    assert.ok(['quota', 'forum-share', 'cap', 'thin'].includes(r.gate), `未知闸门：${r.gate}`);
+    // 机器读的 gate 和人读的 reasons 必须说同一件事，否则就是 2026-08-22 那一脚。
+    if (r.gate === 'quota') assert.match(r.reasons.at(-1), /单源配额已满/);
+    if (r.gate === 'cap') assert.match(r.reasons.at(-1), /超出当日入围上限/);
+  }
+  assert.ok(gated.some((r) => r.gate === 'quota'), '单源供给压倒性多时该由配额闸挡下');
 });
 
 test('中途排上队（不再 gated）就按结论记 seen', () => {

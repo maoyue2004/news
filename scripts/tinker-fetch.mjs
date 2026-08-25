@@ -415,7 +415,7 @@ async function main() {
    * 记了等于永久出局——2026-08-23 名单只有 29 条、空着 31 席，却有 19 条
    * 6-10 分的掘金条目被单源闸挡下并就此再也不会被抓。判据和账本三态见 defer.mjs。
    */
-  const gatedIds = new Set(rejected.filter((r) => r.gated).map((r) => r.id));
+  const gatedIds = new Map(rejected.filter((r) => r.gated).map((r) => [r.id, r.gate ?? 'unknown']));
   const plan = planSeen({
     ids: unique.map((it) => it.id),
     gatedIds,
@@ -469,8 +469,18 @@ async function main() {
   if (feedRetryAttempted) console.log(`抓取重试：${feedRetryAttempted} 个源，救回 ${feedRetried} 个`);
   const stillDeferred = Object.keys(plan.deferred).length;
   if (stillDeferred || plan.promoted.length) {
-    console.log(`名额待定：${gatedIds.size} 条被名额挡下不记 seen（账本共 ${stillDeferred} 条），`
+    const tally = (pairs) => Object.entries(pairs.reduce((acc, g) => {
+      acc[g] = (acc[g] ?? 0) + 1;
+      return acc;
+    }, {})).sort((a, b) => b[1] - a[1]).map(([g, n]) => `${g} ${n}`).join('，');
+    const today = tally([...gatedIds.values()]);
+    console.log(`名额待定：${gatedIds.size} 条被名额挡下不记 seen（${today}；账本共 ${stillDeferred} 条），`
       + `其中 ${plan.promoted.length} 条攒满轮次落成结论`);
+    // 落成结论 = 永久出局。它们死在哪道闸上，是下次该调 cap 还是调配额的唯一依据。
+    if (plan.promoted.length) {
+      const gates = plan.promoted.flatMap((p) => Object.entries(p.gates).flatMap(([g, n]) => Array(n).fill(g)));
+      console.log(`  永久出局的这 ${plan.promoted.length} 条累计被挡：${tally(gates) || '闸门未记录'}`);
+    }
   }
   console.log(`今日查询词（${queries.length}）：${queries.join('、')}`);
   if (errors.length) {

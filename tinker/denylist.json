@@ -391,5 +391,26 @@
     "reason": "「部落卷」页候选，evaluate() 判 2/20 够格，但两条命中是富士 X-E5 相机开箱和「学习焦虑自救心法」，只是顺带提到 AI。同上，人工过滤毙掉。",
     "date": "2026-08-25",
     "scope": "domain"
+  },
+  {
+    "feed": "https://www.ernestchiang.com/zh/index.xml",
+    "name": "拆解整合的旅人 Ernest Chiang",
+    "reason": "evaluate() 判 4/20 够格，人工扫标题否决：整站是「拆解」体的商业与演讲笔记（Palantir MMDP、Ramp 的护城河、家族办公室收费、黄仁勳 GTC keynote），AI 那几篇也是拆解别人的说法（OpenAI 首席科学家重新定义持续学习），不是本人动手的记录。",
+    "date": "2026-08-26",
+    "scope": "domain"
+  },
+  {
+    "feed": "https://blog.user.today/feed/",
+    "name": "要改的地方太多了",
+    "reason": "evaluate() 判 2/20 够格，人工扫标题否决：站长/行销向的工具评测（AI 广告影片制作指南、皮克敏 GPS 修改器实测、SEO 新战场），沾 agent 的两三篇也是「该用什么服务」而不是「我做了什么」。",
+    "date": "2026-08-26",
+    "scope": "domain"
+  },
+  {
+    "feed": "https://www.huanlintalk.com/feeds/posts/default",
+    "name": "Huan-Lin 學習筆記",
+    "reason": "evaluate() 判 2/20 够格，人工扫标题否决：扎实的 .NET/C# 技术博客（作者写书），但主题是并发、async、集合运算式，agent 只偶尔出现一篇（用 CodeGraph 节省 Token）。不是质量问题，是选题不对口。",
+    "date": "2026-08-26",
+    "scope": "domain"
   }
 ]
