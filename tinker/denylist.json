@@ -412,5 +412,11 @@
     "reason": "evaluate() 判 2/20 够格，人工扫标题否决：扎实的 .NET/C# 技术博客（作者写书），但主题是并发、async、集合运算式，agent 只偶尔出现一篇（用 CodeGraph 节省 Token）。不是质量问题，是选题不对口。",
     "date": "2026-08-26",
     "scope": "domain"
+  },
+  {
+    "feed": "https://life.huli.tw/atom.xml",
+    "name": "Huli 的生活部落格",
+    "reason": "evaluate() 判 2/20 够格，但它是 blog.huli.tw（已收录）那位作者刻意分出来的生活博客——命中的 cursor / obsidian / vibe-coding 都只是生活记录里顺带提到。技术那一半我们已经订了，这一半是同一个人的非技术篇，收它等于给同一个作者两个席位去发不对口的东西。上一篇 88 天前。",
+    "date": "2026-08-27"
   }
 ]

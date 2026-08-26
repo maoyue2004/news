@@ -114,6 +114,67 @@ test('中途排上队（不再 gated）就按结论记 seen', () => {
   assert.equal(second.deferred.b, undefined);
 });
 
+test('源被补全熔断那一轮的 thin 落选不计轮次', () => {
+  // 2026-08-27 加的。掘金当轮熔断（探针 40 发 0 中），它的 47 条条目因此 thin、
+  // 因此被 thin 名额挡下。这一轮记的不是「它没排上队」，是「我们根本没读到它」——
+  // 连挡三轮就永久出局的话，它会在一次都没被读过的情况下死掉。
+  const muted = new Set(['掘金搜索']);
+  const sourceOf = () => '掘金搜索';
+  let deferred = {};
+  for (let round = 0; round < DEFER_ROUNDS + 2; round += 1) {
+    const r = planSeen({
+      ids: ['b'], gatedIds: new Map([['b', 'thin']]), deferred, today: TODAY, sourceOf, mutedSources: muted,
+    });
+    assert.deepEqual(r.seenIds, [], '熔断轮不该把它判死');
+    assert.deepEqual(r.stalled, ['b']);
+    deferred = r.deferred;
+  }
+  assert.equal(deferred.b.attempts, 0, '熔断轮一轮都不该计');
+  assert.equal(deferred.b.stalls, DEFER_ROUNDS + 2, '但要留下痕迹：这几轮是被熔断跳过的');
+  assert.deepEqual(deferred.b.gates, { thin: DEFER_ROUNDS + 2 }, '闸门照记，否则诊断又糊了');
+});
+
+test('源恢复供货之后，同一条 thin 落选照常计轮次', () => {
+  // 熔断保护的是「没读到」，不是 thin 本身。源今天给货了，它还是 thin，
+  // 那就是这一条自己抓不到正文——这是对它的结论，该照常攒轮次。
+  let deferred = {};
+  const sourceOf = () => '掘金搜索';
+  for (let round = 1; round < DEFER_ROUNDS; round += 1) {
+    deferred = planSeen({
+      ids: ['b'], gatedIds: new Map([['b', 'thin']]), deferred, today: TODAY, sourceOf, mutedSources: new Set(),
+    }).deferred;
+  }
+  assert.equal(deferred.b.attempts, DEFER_ROUNDS - 1);
+  const last = planSeen({
+    ids: ['b'], gatedIds: new Map([['b', 'thin']]), deferred, today: TODAY, sourceOf, mutedSources: new Set(),
+  });
+  assert.deepEqual(last.seenIds, ['b']);
+});
+
+test('熔断只保护 thin：同一轮里被单源配额挡下的照常计轮次', () => {
+  // 熔断说明的是「正文没读到」，它对「名单里挤不挤得下」这件事没有任何解释力。
+  const muted = new Set(['掘金搜索']);
+  const sourceOf = () => '掘金搜索';
+  const r = planSeen({
+    ids: ['b'], gatedIds: new Map([['b', 'quota']]), deferred: {}, today: TODAY, sourceOf, mutedSources: muted,
+  });
+  assert.equal(r.deferred.b.attempts, 1);
+  assert.deepEqual(r.stalled, []);
+});
+
+test('熔断的保护有 TTL：挂过窗口的条目照常计轮次', () => {
+  // 否则一个永远在限流的源会把尾巴永远挂在账本上——从「永远不再来」翻到「永远重来」。
+  const muted = new Set(['掘金搜索']);
+  const sourceOf = () => '掘金搜索';
+  const old = { b: { first: '2026-07-01', attempts: 2, stalls: 9, gates: { thin: 11 } } };
+  const r = planSeen({
+    ids: ['b'], gatedIds: new Map([['b', 'thin']]), deferred: old, today: TODAY, sourceOf, mutedSources: muted,
+  });
+  assert.deepEqual(r.stalled, [], `超过 ${DEFER_TTL_DAYS} 天就不再保护`);
+  assert.deepEqual(r.seenIds, ['b'], '第三轮到了，落成结论');
+  assert.equal(r.promoted[0].stalls, 9, '判死时要说清它有几轮是熔断跳过的');
+});
+
 test('这一轮没再出现的待定条目留在账本里，超过窗口才清', () => {
   const fresh = { x: { first: '2026-08-22', attempts: 1 } };
   const kept = planSeen({ ids: [], gatedIds: new Set(), deferred: fresh, today: TODAY });

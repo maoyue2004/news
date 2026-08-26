@@ -860,3 +860,22 @@ test('自荐词表：欢迎 star 和求 star 是同一个意思', () => {
   });
   assert.ok(!sig.reasons.includes('疑似产品自荐帖'));
 });
+
+test('claude 裸词条：`_` 和 `/` 也是合法词边界，别把 Claude Code 的东西认成聊天产品', () => {
+  // 2026-08-27。裸 `claude` 的 not 表原来只挡了 `.`（CLAUDE.md），
+  // 而环境变量 `CLAUDE_CODE_MAX_RETRIES`、配置目录 `~/.claude/settings.json`、
+  // `claude_desktop_config.json` 里的分隔符是 `_` 和 `/`——同样不是拉丁字母，
+  // 同样是词边界，于是三样都被判成了 claude.ai 那个聊天产品。
+  const cases = [
+    '可以用环境变量 CLAUDE_CODE_MAX_RETRIES 覆盖默认的重试次数',
+    '把模块装进项目的 .claude/skills/ 目录下就能用',
+    '注册表在 ~/.claude/sessions/ 里，每次会话一条',
+    '改 claude_desktop_config.json 里的 mcpServers 就行',
+  ];
+  for (const text of cases) {
+    assert.ok(!matchTools(text).includes('claude'), `不该认成聊天产品：${text}`);
+  }
+  // 反面：拿斜杠当顿号的列举说的确实是这个聊天产品，不能一起挡掉
+  assert.ok(matchTools('把 Google Veo 接进 Claude/Cursor：一份上手指南').includes('claude'));
+  assert.ok(matchTools('我在 claude.ai 网页版上试了一下').includes('claude'));
+});

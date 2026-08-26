@@ -2153,5 +2153,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "同上「部落卷」页发现。繁中个人站，OpenClaw（他叫龙虾）那一片是全库最细的实操记录：Cron Job 的 Delivery Mode 扫雷、Heartbeat Cron vs Isolated Cron 怎么选、用 Tailscale 从任何设备存取家里的龙虾；另有一台电脑上跑多个 Claude Code Profile、不让 Claude Code 下班的 Ralph Wiggum Plugin。近 20 篇 6 篇过收录线，span 235 天；更新慢（上一篇 57 天前），按留存标准留观察。"
+  },
+  {
+    "name": "Wei 自己寫點什麼",
+    "url": "https://weiblog.me",
+    "feed": "https://weiblog.me/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "从 blogblog.club「同樂會」这份台港博客名录里捞到的。繁中个人站，agent 那一支全是自己动手的记录：《從 Roo Code 到 Opencode：當 AI 工具開始不只是寫程式》《第一次用 Pi Agent 就踩雷》，另有 NiFi on K8s 节点连不上、AAD Token 太大让 nginx HTTP/2 直接 GOAWAY 这类排障笔记。近 20 篇 3 篇过收录线，span 98 天，两天前还在更；一半篇幅是读后心得，按单篇打分自然沉底。"
+  },
+  {
+    "name": "姓王者的博客",
+    "url": "https://xingwangzhe.fun",
+    "feed": "https://xingwangzhe.fun/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "从 JN 的「部落卷」友链页捞到的简中个人站。写自己站上的折腾：《Astro 7.2.0 实验性增量构建：从 0 命中到 1254 个 restored 的踩坑实录》《Astro 博客主题 Stalux 集成 WebMCP：纯前端注册 7 个工具，让 AI 代理直接用你的博客》《我用 Is Agentic 给博客做了一次体检》。近 20 篇 2 篇过收录线，span 536 天，四天前更新；夹着离散数学课堂笔记和自家 npm 包发布稿，靠打分挡。"
   }
 ]

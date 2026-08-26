@@ -416,11 +416,18 @@ async function main() {
    * 6-10 分的掘金条目被单源闸挡下并就此再也不会被抓。判据和账本三态见 defer.mjs。
    */
   const gatedIds = new Map(rejected.filter((r) => r.gated).map((r) => [r.id, r.gate ?? 'unknown']));
+  /*
+   * 一个源本轮被补全熔断时，它的条目 thin 不是「没排上 thin 名额」，是「没人读过它」。
+   * 那样的一轮不该往判死的计数里记——判据见 defer.mjs 顶部 2026-08-27 那一段。
+   */
+  const sourceById = new Map(unique.map((it) => [it.id, it.source]));
   const plan = planSeen({
     ids: unique.map((it) => it.id),
     gatedIds,
     deferred: loadDeferred(DATA_DIR),
     today,
+    sourceOf: (id) => sourceById.get(id),
+    mutedSources: new Set(enrichMuted),
   });
   for (const id of plan.seenIds) seen[id] = today;
   saveDeferred(DATA_DIR, plan.deferred);
@@ -476,6 +483,10 @@ async function main() {
     const today = tally([...gatedIds.values()]);
     console.log(`名额待定：${gatedIds.size} 条被名额挡下不记 seen（${today}；账本共 ${stillDeferred} 条），`
       + `其中 ${plan.promoted.length} 条攒满轮次落成结论`);
+    // 源被熔断那一轮的 thin 不算一轮：我们根本没读到它，那是一次失败不是一次排队。
+    if (plan.stalled.length) {
+      console.log(`  其中 ${plan.stalled.length} 条不计轮次（源 ${enrichMuted.join('、')} 本轮补全熔断，没读到正文）`);
+    }
     // 落成结论 = 永久出局。它们死在哪道闸上，是下次该调 cap 还是调配额的唯一依据。
     if (plan.promoted.length) {
       const gates = plan.promoted.flatMap((p) => Object.entries(p.gates).flatMap(([g, n]) => Array(n).fill(g)));
