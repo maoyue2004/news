@@ -2169,5 +2169,69 @@
     "kind": "blog",
     "enabled": true,
     "desc": "从 JN 的「部落卷」友链页捞到的简中个人站。写自己站上的折腾：《Astro 7.2.0 实验性增量构建：从 0 命中到 1254 个 restored 的踩坑实录》《Astro 博客主题 Stalux 集成 WebMCP：纯前端注册 7 个工具，让 AI 代理直接用你的博客》《我用 Is Agentic 给博客做了一次体检》。近 20 篇 2 篇过收录线，span 536 天，四天前更新；夹着离散数学课堂笔记和自家 npm 包发布稿，靠打分挡。"
+  },
+  {
+    "name": "atbug.com",
+    "url": "https://atbug.com",
+    "feed": "https://atbug.com/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "Addo Zhang 的个人站，云原生出身转写 agent 工作流。近期是 Docker Sandboxes 的连载（网络策略、凭证转发、隔离例外、工作区接法），以及「Anthropic 删了 80% 提示词，但你不能照做」这类拿官方做法回头量自己的文章。"
+  },
+  {
+    "name": "zhangtielei.com",
+    "url": "http://zhangtielei.com",
+    "feed": "http://zhangtielei.com/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "张铁蕾的个人博客，写 agent 架构层面的思考（agent 与 workflow 为什么能融进同一个架构、两栖模式构建 agent）。他自己也在做开源 agent，发布稿按单篇的落点判即可。"
+  },
+  {
+    "name": "blog.einverne.info",
+    "url": "https://blog.einverne.info",
+    "feed": "https://blog.einverne.info/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "Einverne 的工具笔记站，十年老博客。agent 那一支是自己动手的体验（Orca ADE 用 worktree 让一群 agent 并行、Obsidian 自托管），夹着 chezmoi / mise / Syncthing 这类 dotfiles 与排障笔记。"
+  },
+  {
+    "name": "blog.grtsinry43.com",
+    "url": "https://blog.grtsinry43.com",
+    "feed": "https://blog.grtsinry43.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "个人博客，agent 那一支是「手搓系列」（深入浅出 Agent Skills：架构、实现与思考）和「我是怎样使用 AI Agent 写代码的」，其余是生活随笔，靠打分自然沉底。"
+  },
+  {
+    "name": "xxchan.me",
+    "url": "https://xxchan.me",
+    "feed": "https://xxchan.me/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "中英双语个人站，选题很正：Agents Need Names、让 agent 自己比较 MCP tools 质量、用 Local Coding Agents 疯狂并发开发。英文那一半会被 MIN_CJK_RATIO 挡掉，收的是中文版。"
+  },
+  {
+    "name": "liam.page",
+    "url": "https://liam.page",
+    "feed": "https://liam.page/atom.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "Liam Huang 的个人站，强项是源码级排障实录（在 tmux 里让 Claude Code 连上 VSCode、一条 113 字节的路径引发 Remote-SSH 反复重连），另有 C++ 与 TeX 的深水区文章。"
+  },
+  {
+    "name": "www.liaocaoxuezhe.com",
+    "url": "https://www.liaocaoxuezhe.com",
+    "feed": "https://www.liaocaoxuezhe.com/rss/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "效率与知识管理向的个人站，一手实测占一半（记了 2 万条笔记后放弃 Obsidian 双向链接、实测 Kimi K2.7 Code 高速版、有了 Agent 帮我干活以后我更累了）；另一半是「一文讲透」「清单」这种 SEO 形状，按单篇的落点毙。"
+  },
+  {
+    "name": "1991421.cn",
+    "url": "https://1991421.cn",
+    "feed": "https://1991421.cn/index.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "个人开发者的站（自己做 iOS 客户端 Multica），agent 那一支多是配置实录（Codex 接 Kimi / 接 DeepSeek 的踩坑），教程形状的按单篇判。"
   }
 ]

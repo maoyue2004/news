@@ -418,5 +418,23 @@
     "name": "Huli 的生活部落格",
     "reason": "evaluate() 判 2/20 够格，但它是 blog.huli.tw（已收录）那位作者刻意分出来的生活博客——命中的 cursor / obsidian / vibe-coding 都只是生活记录里顺带提到。技术那一半我们已经订了，这一半是同一个人的非技术篇，收它等于给同一个作者两个席位去发不对口的东西。上一篇 88 天前。",
     "date": "2026-08-27"
+  },
+  {
+    "feed": "https://xdash.me/index.xml",
+    "name": "xdash.me",
+    "reason": "卖课/卖书。近 20 篇里「预告的预告：《我如何实践打造私人 AI 贾维斯助手》课程预售」「我又开源了一本书」「一本 FDE 开源书的意外爆火」占主线，落点是来买我的书和课，正是 COACH_PROMO 那一类。scoreItem 判 3/20 够格，机器分不出来。",
+    "date": "2026-08-28"
+  },
+  {
+    "feed": "https://louiscard.com/feed",
+    "name": "louiscard.com",
+    "reason": "周报型新闻播报。近 20 篇一多半是「2026 CW#34 ｜ 安全减速、速度分层、Agent Runtime、Skills API、Codex 组织化」这种一周资讯汇总，选题密度高所以 scoreItem 判 2/20 够格，但它是转述别人的发布，不是自己动手。",
+    "date": "2026-08-28"
+  },
+  {
+    "feed": "https://pinchlime.com/atom.xml",
+    "name": "pinchlime.com",
+    "reason": "已收录作者搬家之后的旧站。feed 里明写「網站搬家完成，pjwu.me 正式上線！」，而 pjwu.me 早在 sources.json 里（2026-08-24 从 ivonblog 友链页并入）。和 life.huli.tw 那条同族：不是这个站不够格，是这个人我们已经订了——只是那次分的是技术/生活两半，这次分的是搬家前后。查法一样便宜：候选站的 feed 里搜一下有没有「搬家 / 新站 / 正式上線」。",
+    "date": "2026-08-28"
   }
 ]

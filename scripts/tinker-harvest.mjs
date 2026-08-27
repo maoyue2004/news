@@ -24,7 +24,7 @@ import { parseFeed } from '../lib/feed-parse.mjs';
 import { htmlToText } from '../lib/html-text.mjs';
 import { matchVocab } from '../lib/tinker/vocab.mjs';
 import { scoreItem } from '../lib/tinker/relevance.mjs';
-import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
+import { UA, BROWSER_UA, declaredFeeds, gradeFeed } from '../lib/tinker/probe.mjs';
 
 /**
  * 候选池。加新索引只要往这里加一条：给出 url 和把正文变成候选列表的解析函数。
@@ -78,6 +78,25 @@ const INDEXES = [
     url: 'https://raw.githubusercontent.com/shidenggui/bloghub/master/backend/assets/blogs-original.csv',
     parse: parseCsv,
   },
+  /**
+   * 第七个索引，2026-08-28 加：qianguyihao/blog-list（中文博客琅琊榜，605 站）。
+   * LESSONS 里它从 2026-08-06 起就挂着「待接」，一直没接。
+   *
+   * 接它有两个理由和前六个都不同：
+   *   1) 收录标准是「持续更新、高质量、阅读体验良好」，而且**明确不接受自荐**——
+   *      timqian 那份是自荐 PR 攒出来的，两者的偏差方向天然不同。
+   *   2) 它**按主题分了目录**，有一页就叫「五、人工智能」。前六个索引全是一锅端，
+   *      这是第一个能只订它的相关分区的名录。
+   * 所以这里只接三个分区（人工智能 / 技术博客 / 数字花园），别的（人间烟火、
+   * 经典重温、术业专攻）不碰——它们不是这个项目要的东西，扫了也是白扫。
+   *
+   * 但接它之前先撞上了一件事，见 parseSiteList 的注释：**这份索引列的是站点，不是 feed。**
+   */
+  ...['05-人工智能', '06-技术博客', '04-数字花园'].map((page) => ({
+    id: `qianguyihao-${page.slice(0, 2)}`,
+    url: `https://raw.githubusercontent.com/qianguyihao/blog-list/master/${encodeURIComponent(page)}.md`,
+    parse: parseSiteList,
+  })),
 ];
 const SOURCES = 'tinker/sources.json';
 /**
@@ -158,6 +177,44 @@ export function parseMarkdown(text) {
   return out;
 }
 
+/**
+ * 不属于任何人的博客的域名：平台、商店、社交、公司官网、工具站。
+ * 站点列表型索引里这些混得比 feed 列表型多得多——正文里随手引一个链接就进来了。
+ */
+const NOT_A_BLOG = /(^|\.)(github|githubusercontent|gitee|gitlab|twitter|x|zhihu|juejin|csdn|cnblogs|segmentfault|oschina|bilibili|weibo|douban|jianshu|medium|substack|youtube|youtu|wikipedia|apple|google|microsoft|baidu|jd|taobao|tmall|amazon|instagram|facebook|linkedin|telegram|discord|npmjs|w3|mozilla|vercel|netlify|cloudflare|notion|figma|okjike|okjk|xiaoyuzhoufm|ximalaya|visualstudio|gohugo|astro|hexo|wordpress|typora|16personalities|openart|gaoding)\.[a-z.]+$/i;
+
+/**
+ * 站点列表：一份索引可以列 feed，也可以只列**主页**。
+ *
+ * 2026-08-28 接 qianguyihao/blog-list 时撞上的：那份索引 605 个站，正文里几乎全是
+ * `- https://example.com/` 这样的主页地址，只有少数条目额外附一行「RSS 订阅」。
+ * 拿 parseMarkdown（只认 URL 形态像 feed 的）去读它三个分区的结果是
+ * **217 个域名里只抽出 8 条**——96% 静默丢掉，而且丢掉的方式和「这个索引没什么增量」
+ * 长得一模一样：命中数低，日志上一句话都不会多说。
+ * （形状同 LESSONS 那条「凡是靠『返回空』判断结束的循环都要交叉验证」：
+ * 解析器读不动和索引真的没货，输出是同一个数字。）
+ *
+ * 所以这里返回 `feed: null`，把「这个站的 feed 在哪」推迟到下游去探。
+ */
+export function parseSiteList(text) {
+  /** host → { origin, feed }。同一个站在索引里常出现好几次（主页、某篇文章、RSS 那一行）。 */
+  const byHost = new Map();
+  for (const m of text.matchAll(/https?:\/\/[^\s"'<>)\]]+/g)) {
+    const raw = m[0].replace(/[.,;、）]+$/, '');
+    let u;
+    try { u = new URL(raw); } catch { continue; }
+    const h = u.hostname.replace(/^www\./, '');
+    if (NOT_A_BLOG.test(h)) continue;
+    // 索引里同一个人可能既给主页又给某篇文章的深链，一律退回站点根——
+    // 探 feed 要的是站点，不是那一篇。
+    const row = byHost.get(h) ?? { name: '', url: u.origin, feed: null, tags: '技术' };
+    // 显式写出来的 RSS 地址永远优于我们猜的，哪怕它排在主页后面才出现。
+    if (FEED_LIKE.test(raw) && !row.feed) row.feed = raw;
+    byHost.set(h, row);
+  }
+  return [...byHost.values()];
+}
+
 function parseCsv(text) {
   const rows = [];
   for (const line of text.split('\n').slice(1)) {
@@ -179,6 +236,45 @@ async function get(url, ua) {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return await res.text();
+}
+
+/** 探 feed 时先试站点自己声明的，再试这几条常见路径。顺序即优先级。 */
+const QUICK_FEED_PATHS = ['feed', 'atom.xml', 'index.xml', 'rss.xml', 'feed.xml'];
+const PROBE_TIMEOUT_MS = Number(process.env.HARVEST_PROBE_TIMEOUT_MS ?? 6000);
+
+/**
+ * 给一个只有主页的候选找 feed。找不到就返回 null，调用方直接跳过——
+ * 「探不到 feed」和「feed 不够格」在这条管线里是同一个结果，不必区分。
+ */
+async function resolveFeed(siteUrl) {
+  const attempts = [];
+  try {
+    const html = await fetch(siteUrl, {
+      headers: { 'user-agent': BROWSER_UA, accept: 'text/html,*/*' },
+      redirect: 'follow',
+      signal: AbortSignal.timeout(PROBE_TIMEOUT_MS),
+    }).then((r) => (r.ok ? r.text() : ''));
+    attempts.push(...declaredFeeds(html, siteUrl));
+  } catch {
+    // 首页挂了仍然试常见路径：有的站首页是 JS 壳，feed 却是静态文件。
+  }
+  const base = siteUrl.endsWith('/') ? siteUrl : `${siteUrl}/`;
+  for (const p of QUICK_FEED_PATHS) {
+    try { attempts.push(new URL(p, base).toString()); } catch { /* ignore */ }
+  }
+  const tried = [...new Set(attempts)].slice(0, 6);
+  const hits = await Promise.all(tried.map(async (url) => {
+    try {
+      const xml = await fetch(url, {
+        headers: { 'user-agent': UA, accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml, */*' },
+        redirect: 'follow',
+        signal: AbortSignal.timeout(PROBE_TIMEOUT_MS),
+      }).then((r) => (r.ok ? r.text() : ''));
+      return gradeFeed(xml).ok ? url : null;
+    } catch { return null; }
+  }));
+  // 保持 tried 的顺序：声明的 feed 排在穷举的前面，站点主 feed 优先。
+  return hits.find(Boolean) ?? null;
 }
 
 /**
@@ -249,8 +345,9 @@ for (const idx of INDEXES) {
     console.error(`索引 ${idx.id} 拉取失败：${err.message}`);
   }
 }
+// 键要能容下 feed 为 null 的行（站点列表型索引），否则第一条之后全被当成重复丢掉。
 const byFeed = new Map();
-for (const r of all) if (!byFeed.has(r.feed)) byFeed.set(r.feed, r);
+for (const r of all) { const k = r.feed ?? r.url; if (!byFeed.has(k)) byFeed.set(k, r); }
 const candidates = [...byFeed.values()];
 console.error(`合计 ${all.length} 条，去重后 ${candidates.length} 个候选，开始抓 feed…`);
 
@@ -274,7 +371,18 @@ const existingHosts = new Set(current.filter((s) => s.url).map((s) => host(s.url
 const results = [];
 for (let i = 0; i < candidates.length; i += CONCURRENCY) {
   await Promise.all(candidates.slice(i, i + CONCURRENCY).map(async (row) => {
-    if (existing.has(row.feed) || existingHosts.has(host(row.url))) return;
+    if (existingHosts.has(host(row.url))) return;
+    if (deniedHosts.has(host(row.url))) return;
+    // 只列主页的索引：先探一次 feed 在哪。用的是 blogroll 那套「首页拿
+    // <link rel=alternate>，拿不到就试几条常见路径」的快探法，而不是
+    // probeSite()——后者串行试十来条路径、每条 15 秒超时，一个死站三分多钟
+    // （LESSONS：探上千个候选时不能用 probeSite）。
+    if (!row.feed) {
+      const found = await resolveFeed(row.url);
+      if (!found) return;
+      row = { ...row, feed: found };
+    }
+    if (existing.has(row.feed)) return;
     if (denied.has(row.feed) || deniedHosts.has(host(row.feed))) return;
     if (PODCAST_HOST.test(row.feed)) return;
     let xml;
