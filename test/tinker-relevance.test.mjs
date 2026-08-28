@@ -401,7 +401,7 @@ test('论坛/搜索源整体占比封顶，不只是按单源配额', () => {
   // 按源配额只防单个源淹没名单；4 个论坛源各拿 8 席合起来仍是 32 席。
   const mk = (i, source, thread) => ({
     id: `${source}${i}`, source, thread, url: `https://e.com/${source}${i}`,
-    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    titleOriginal: `我用 Claude Code 在 ${source} 折腾了第 ${i} 个项目的实践记录`,
     excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(80),
   });
   const items = [
@@ -521,9 +521,11 @@ test('自荐帖的招呼语压在结尾时也要扣分，但比标题/开头轻'
   assert.ok(headPromo.score < tailPromo.score, '标题/开头的自荐比结尾更能说明落点，扣得更重');
 });
 
+// 标题里带上 source：这些 fixture 测的是配额分配，不是同题去重。
+// 不带的话，不同源的同序号条目会构成「严格同题」而被判成同一篇（2026-08-29 加的那道闸）。
 const mkItem = (i, source, thread) => ({
   id: `${source}${i}`, source, thread, url: `https://e.com/${source}${i}`,
-  titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+  titleOriginal: `我用 Claude Code 在 ${source} 折腾了第 ${i} 个项目的实践记录`,
   excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(80),
 });
 
@@ -662,7 +664,7 @@ test('抓不到正文的条目按名额封顶，不吃掉能读的席位', () =>
   const mk = (i, thin) => ({
     id: `${thin ? 't' : 'r'}${i}`, source: thin ? '搜索源' : `博客${i}`,
     url: `https://e.com/${thin ? 't' : 'r'}${i}`,
-    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    titleOriginal: `我用 Claude Code ${thin ? '抓不到正文地' : '完整地'}折腾了第 ${i} 个项目的实践记录`,
     excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
     ...(thin ? { thin: true } : {}),
   });
@@ -696,7 +698,7 @@ test('thin 名额切在配额之前，腾出的席位让能读的条目补进来
   // 顺序很关键：先切 thin 再分配额，被单源配额挤出去的能读条目才补得回来。
   const mk = (i, thin) => ({
     id: `${thin ? 't' : 'r'}${i}`, source: '掘金搜索', url: `https://e.com/${thin ? 't' : 'r'}${i}`,
-    titleOriginal: `我用 Cursor 折腾了第 ${i} 个项目的实践记录`,
+    titleOriginal: `我用 Cursor ${thin ? '抓不到正文地' : '完整地'}折腾了第 ${i} 个项目的实践记录`,
     excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
     ...(thin ? { thin: true } : {}),
   });
@@ -811,8 +813,9 @@ test('已收录条目的转帖不占入围席位（严格同题）', () => {
   assert.deepEqual(shortlist.map((it) => it.id).sort(), ['id3']);
   assert.equal(shortlist.length + rejected.length, items.length, '被判转帖的也要留在 rejected 里');
   assert.ok(rejected.every((r) => r.id === 'id3' || r.reasons.some((x) => x.includes('转帖'))));
-  // 不传 publishedTitles 时行为不变。
-  assert.equal(triage(items, { cap: 60, quota: 8 }).shortlist.length, 3);
+  // 不传 publishedTitles 时那两条不再算「已出刊的转帖」，但它们仍然是同一篇：
+  // 2026-08-29 起本轮之内的严格同题也只留一条，所以是 2 不是 3。
+  assert.equal(triage(items, { cap: 60, quota: 8 }).shortlist.length, 2);
 });
 
 test('新话题词：Agent Loop（不收连写的 agentloop——那是阿里云的产品名）', () => {
@@ -878,4 +881,60 @@ test('claude 裸词条：`_` 和 `/` 也是合法词边界，别把 Claude Code 
   // 反面：拿斜杠当顿号的列举说的确实是这个聊天产品，不能一起挡掉
   assert.ok(matchTools('把 Google Veo 接进 Claude/Cursor：一份上手指南').includes('claude'));
   assert.ok(matchTools('我在 claude.ai 网页版上试了一下').includes('claude'));
+});
+
+test('本轮之内的严格同题只留一条，且优先留能读的那条', () => {
+  // 2026-08-29：474 条原始条目里 7 组严格同题、多吃 11 个席位，
+  // 最大一组是掘金作者「好的999」把同一个标题发了 6 遍，4 条进了入围名单。
+  // publishedTitles 挡的是「已出刊的那篇又来一次」，挡不住同一轮内的同一篇。
+  const mk = (i, extra = {}) => ({
+    id: `d${i}`, source: '掘金搜索', url: `https://e.com/d${i}`,
+    publishedAt: `2026-08-2${i}T00:00:00Z`,
+    titleOriginal: '5.28 文章改写：用 Claude Code 接入 GLM-5.1 的完整配置指南',
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
+    ...extra,
+  });
+  // 分最高的那条是 thin：能读的要赢它。
+  const items = [mk(1, { thin: true, excerpt: '踩坑心得，配置工作流，实测有效，agent 折腾记录。'.repeat(40) }), mk(2), mk(3), mk(4)];
+  const { shortlist, rejected } = triage(items, { cap: 60, quota: 8 });
+
+  assert.equal(shortlist.length, 1, '同一篇只占一个评审席位');
+  assert.equal(shortlist[0].thin, undefined, 'thin 的那条留下来只是个打不开的标题，要让给能读的');
+  const dropped = rejected.filter((r) => r.reasons.includes('与本轮另一条严格同题，判为同一篇，只留最好的一条'));
+  assert.equal(dropped.length, 3, '落选的三条要留痕，理由要能一眼看出是哪条规则挡的');
+  assert.equal(shortlist.length + rejected.length, items.length, '总数必须守恒');
+});
+
+test('严格同题不比作者——跨源转帖两边的 author 常常一边有一边空', () => {
+  // 那 7 组里有 2 组是这个形状：《HelloGitHub》第 125 期同时来自 V2EX 和
+  // HelloGitHub 自己的 feed，一边带作者一边不带。要求同作者会恰好漏掉它们。
+  const base = {
+    titleOriginal: '我用 Claude Code 折腾了一个月的实践记录',
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
+  };
+  const items = [
+    { id: 'a', source: 'V2EX 搜索', url: 'https://v2ex.com/t/1', author: 'xueweihan', ...base },
+    { id: 'b', source: '某博客', url: 'https://blog.example.com/1', author: '', ...base },
+  ];
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  assert.equal(shortlist.length, 1, '作者字段一边有一边空，仍然是同一篇');
+});
+
+test('标题不同的条目一条都不许被同题去重误伤', () => {
+  const items = Array.from({ length: 5 }, (_, i) => ({
+    id: `u${i}`, source: '掘金搜索', url: `https://e.com/u${i}`,
+    titleOriginal: `我用 Claude Code 折腾了第 ${i} 个项目的实践记录`,
+    excerpt: '踩坑心得，配置工作流，实测有效。'.repeat(40),
+  }));
+  const { shortlist } = triage(items, { cap: 60, quota: 8 });
+  assert.equal(shortlist.length, 5, '只差一个字也是两篇，不能按相似度合并');
+});
+
+test('新工具词：Docker Sandboxes（sbx）', () => {
+  assert.ok(matchTools('Docker Sandboxes 上手：从安装到第一次跑 Agent').includes('docker-sandboxes'));
+  assert.ok(matchTools('把 Coding Agent 丢进 docker sandbox 里跑').includes('docker-sandboxes'));
+  assert.ok(matchTools('sbx run opencode 之后模型登录才是麻烦事').includes('docker-sandboxes'));
+  // 通用说法不收：中文写沙箱不写 sandbox，「用 Docker 做沙箱」不是这个产品。
+  assert.ok(!matchTools('用 Docker 沙箱隔离构建环境').includes('docker-sandboxes'));
+  assert.ok(!matchTools('sandbox 里跑测试').includes('docker-sandboxes'));
 });

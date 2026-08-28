@@ -436,5 +436,11 @@
     "name": "pinchlime.com",
     "reason": "已收录作者搬家之后的旧站。feed 里明写「網站搬家完成，pjwu.me 正式上線！」，而 pjwu.me 早在 sources.json 里（2026-08-24 从 ivonblog 友链页并入）。和 life.huli.tw 那条同族：不是这个站不够格，是这个人我们已经订了——只是那次分的是技术/生活两半，这次分的是搬家前后。查法一样便宜：候选站的 feed 里搜一下有没有「搬家 / 新站 / 正式上線」。",
     "date": "2026-08-28"
+  },
+  {
+    "feed": "https://alexhsu.com/rss.xml",
+    "name": "Alex Hsu（兔子週刊）",
+    "reason": "繁中个人博客，但写的是出版、冥想、遊戲和情歌——近 20 篇里只有 1 篇过 scoreItem() 的入围线（跨度 72 天，是他完整产出的切片，不是窄窗口）。和 Mobius 同形：这个博客整个不在这个领域。从 Pront Log 的友链页扫出来。",
+    "date": "2026-08-29"
   }
 ]

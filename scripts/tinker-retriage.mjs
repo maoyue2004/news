@@ -6,7 +6,7 @@
 //   node scripts/tinker-retriage.mjs --write    把重筛结果覆盖回 _pending.json
 //   node scripts/tinker-retriage.mjs --probe '欢迎\s*star'   量一个候选词表条目
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
-import { triage } from '../lib/tinker/relevance.mjs';
+import { triage, titleKey } from '../lib/tinker/relevance.mjs';
 
 const RAW = 'tinker/data/_raw.json';
 const PENDING = 'tinker/data/_pending.json';
@@ -73,7 +73,34 @@ if (probeAt !== -1) {
   process.exit(0);
 }
 
-const { shortlist, rejected } = triage(items);
+/**
+ * 已收录条目的标题集合，和 `tinker-fetch` 用同一份口径。
+ *
+ * 2026-08-29 补的：这个脚本原来直接 `triage(items)`，不传 `publishedTitles`，
+ * 于是它给出的名单和管线真正会产出的名单**不是同一份**——当天离线重放时
+ * atbug 那篇《Docker Sandboxes 的隔离例外》堂堂正正出现在名单里，
+ * 而它 08-21 就已经从 SegmentFault 收过、还是当天的 5 分精选，
+ * 管线里被「严格同题」那道闸挡得好好的。差点照着这份名单把它再发一次。
+ *
+ * 形状是 LESSONS 那条「选源判据要用系统自己的评分器」「量别名要用系统自己的
+ * 匹配器」的第三次复发，只是这次犯规的是**诊断工具**而不是判据：
+ * 一个和管线口径不一致的离线工具，报出来的差异有一部分是它自己造的。
+ */
+function loadPublishedTitles() {
+  const titles = new Set();
+  for (const name of readdirSync(DATA_DIR)) {
+    if (!/^\d{4}-\d{2}-\d{2}\.json$/.test(name)) continue;
+    try {
+      for (const item of JSON.parse(readFileSync(`${DATA_DIR}/${name}`, 'utf8')).items ?? []) {
+        titles.add(titleKey(item.titleOriginal));
+      }
+    } catch { /* 半截文件不该拖垮离线重放 */ }
+  }
+  titles.delete('');
+  return titles;
+}
+
+const { shortlist, rejected } = triage(items, { publishedTitles: loadPublishedTitles() });
 const flags = new Set(argv);
 
 const bySource = new Map();

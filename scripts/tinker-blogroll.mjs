@@ -117,6 +117,13 @@ const EXTRA_SEEDS = [
   { name: '部落滾（Ivon的部落格）', url: 'https://ivonblog.com/' },
   { name: '部落卷（官大為 Wiwi.Blog）', url: 'https://wiwi.blog/' },
   { name: '部落卷（伊果的沒人看筆記本）', url: 'https://igouist.github.io/' },
+  // 2026-08-29 加的两个。08-27 的结论是「这条通道的产能上限不是还能找到几个友链页，
+  // 是还有几个工程师在维护友链页」——`blogblog.club/party/` 那种全圈名录命中率只有 0.65%，
+  // 而 wiwi / ivonblog / 伊果本人都是工程师，他们的友链自带同频筛选。
+  // 这两个是照那条判据挑的：Pront Log 的友链页里介绍的是「前 Meta 工程师、
+  // 独立 App 开发者」这类人，不是生活写作站。
+  { name: '部落卷（Pront Log）', url: 'https://prontlin.com/' },
+  { name: '部落卷（贾某人的 blog）', url: 'https://www.jyhblog.xyz/' },
 ];
 
 /**
