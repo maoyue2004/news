@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { collectRaw } from '../lib/tinker/collect.mjs';
 import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault, searchVocus, vocusTagsFor, fetchSearchItems } from '../lib/tinker/search-adapters.mjs';
 import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
-import { buildHtml, validate } from '../scripts/tinker-build.mjs';
+import { buildHtml, validate, summaryLengthReport, SUMMARY_MIN, SUMMARY_MAX } from '../scripts/tinker-build.mjs';
 import { needsEnrich, enrich, fetchAllSources, threadBodyHtml } from '../scripts/tinker-fetch.mjs';
 
 const src = { name: '测试源', kind: 'blog' };
@@ -234,6 +234,29 @@ test('validate 拒绝越界或非整数的 rating', () => {
   assert.throws(() => validate(day(6)), /rating 必须是 1-5/);
   assert.throws(() => validate(day(3.5)), /rating 必须是 1-5/);
   assert.doesNotThrow(() => validate(day(3)));
+});
+
+test('summaryLengthReport 按全部字符计数，并逐条点名超区间的', () => {
+  // 单位必须是「全部字符」而不是「汉字」：这两种读法在同一批条目上给出相反的结论
+  // （08-29 那批按全部字符中位数 503、按汉字 239），手册里那个没有单位的「字」
+  // 正是五天复盘反复量同一件事却不收敛的原因。
+  const mk = (n, extra = '') => '摘'.repeat(n - extra.length) + extra;
+  const days = [{
+    date: '2026-08-01',
+    items: [
+      { titleZh: '刚好在下限', summaryZh: mk(SUMMARY_MIN) },
+      // 400 个字符里有一半是 ASCII——按汉字数它只有 200，会被误判成太短
+      { titleZh: '半数是命令和版本号', summaryZh: mk(400, 'Add-AppxPackage -Path x.msix '.repeat(7)) },
+      { titleZh: '超上限', summaryZh: mk(SUMMARY_MAX + 1) },
+      { titleZh: '不到下限', summaryZh: mk(SUMMARY_MIN - 1) },
+    ],
+  }];
+  const r = summaryLengthReport(days, '2026-08-01');
+  assert.equal(r.count, 4);
+  assert.equal(r.min, SUMMARY_MIN - 1);
+  assert.equal(r.max, SUMMARY_MAX + 1);
+  assert.deepEqual(r.outliers.map((o) => o.titleZh ?? o.title), ['超上限', '不到下限']);
+  assert.equal(summaryLengthReport(days, '2026-08-02'), null);
 });
 
 test('buildHtml 产出的页面内嵌数据可解析，且切断了 </script>', () => {

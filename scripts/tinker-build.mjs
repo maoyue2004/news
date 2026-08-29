@@ -35,6 +35,50 @@ export function validate(days) {
 }
 
 /**
+ * 摘要字数的账。手册的区间改过三次（80-160 → 150-260 → 250-450），
+ * 每一次都是拿实测分布去对齐实践，而每一次改完仍然对不上，
+ * REVIEW 为此连记了五天，最后一天（08-29）的结论是「超区间的 8 条全是机制型，
+ * 下一轮把上限抬到 500」。
+ *
+ * 2026-08-30 拿已提交的日文件复量，发现这五天量的根本不是同一个东西：
+ * 手册只写了「250-450 字」，没写一个「字」是什么。同一批 08-29 的条目，
+ * 按**全部字符**数中位数是 503，按**汉字**数中位数是 239——
+ * 前一种读法说「几乎每条都超上限」，后一种读法说「几乎每条都不到下限」，
+ * 同一份语料，两个相反的结论。而 08-29 的 REVIEW 里记下的那串数字
+ * （476/481/462/…）和这两种读法都对不上，也就是说它量的是第三种口径。
+ * 这正是 LESSONS 那条「量一件事要用系统自己的那把尺」的又一例，
+ * 只是这次没有尺——手册给的是一个没有单位的数。
+ *
+ * 所以这里做两件事，而不是再改一次数字：
+ *   1. 把单位钉死为 `[...s].length`（全部字符，含数字、英文、标点）。
+ *      理由是摘要里的版本号、报错原文和命令占的是同样的阅读带宽。
+ *   2. 让构建把当天的分布直接打出来，超区间的逐条点名。
+ *      一条每天靠记性重新量一遍的规矩，五天里被重新量了五次也没收敛；
+ *      交给机器之后它才会停止被重新讨论。
+ *
+ * 区间按同一把尺子重取：近 14 天 96 条的 P10 是 369、中位 436、P75 是 486，
+ * 取整成 350-500。下限从来没有构成过约束（最短一条 302），
+ * 留着它是防「干了什么 + 结论 + 数字」装不下；真正被撞的一直是上限。
+ * 超出只警告不报错——机制型选题（要装下多组数字或多段机制）确实会到 550 上下，
+ * 但它应该是一天里的一两条，而不是默认值，所以要被点名一次。
+ */
+export const SUMMARY_MIN = 350;
+export const SUMMARY_MAX = 500;
+
+export function summaryLengthReport(days, date) {
+  const day = days.find((d) => d.date === date);
+  if (!day || !(day.items ?? []).length) return null;
+  const rows = day.items.map((it) => ({ n: [...(it.summaryZh ?? '')].length, title: it.titleZh ?? it.url }));
+  const lens = rows.map((r) => r.n).sort((a, b) => a - b);
+  const mid = lens.length % 2 ? lens[(lens.length - 1) / 2]
+    : Math.round((lens[lens.length / 2 - 1] + lens[lens.length / 2]) / 2);
+  return {
+    date, count: lens.length, min: lens[0], median: mid, max: lens[lens.length - 1],
+    outliers: rows.filter((r) => r.n < SUMMARY_MIN || r.n > SUMMARY_MAX),
+  };
+}
+
+/**
  * 一个把成品页塞进窄 iframe 的预览页。
  *
  * 为什么需要它：浏览器窗口 resize 在这套工具链下不生效（试过，innerWidth 不变），
@@ -82,10 +126,17 @@ export function buildHtml({ root = '.', today = todayInShanghai() } = {}) {
     dayCount: days.length,
     itemCount: days.reduce((n, d) => n + (d.items?.length ?? 0), 0),
     bytes: Buffer.byteLength(html, 'utf8'),
+    summary: summaryLengthReport(days, today),
   };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const r = buildHtml();
   console.log(`已生成 dist/tinker.html：${r.dayCount} 天 / ${r.itemCount} 篇 / ${(r.bytes / 1024).toFixed(0)} KB`);
+  if (r.summary) {
+    const s = r.summary;
+    console.log(`摘要字数（全部字符）：${s.count} 条，最短 ${s.min}，中位 ${s.median}，最长 ${s.max}`
+      + `　区间 ${SUMMARY_MIN}-${SUMMARY_MAX}`);
+    for (const o of s.outliers) console.log(`  ⚠ ${o.n} 字　${o.title}`);
+  }
 }

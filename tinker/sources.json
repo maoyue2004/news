@@ -2003,6 +2003,22 @@
     "desc": "2026 铁人赛系列。让 Codex 从空 repo 把一只 LINE 定位 Bot 做到上线，逐天记卡住的地方：Vertex AI 的 ADC 工作证、五个 Maps 来源不等于五间店、查地图要等 30 秒时的 Loading Animation 与后端可靠性。近 5 篇 1 篇过收录线（Day 2 拿 12 分）。"
   },
   {
+    "name": "iT 邦幫忙 · 30 天拆解 AI Agent",
+    "url": "https://ithelp.ithome.com.tw/users/20183246/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9121",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列，逐个拆真实 agent 的架构而不是讲概念：Claude Code 的 Coding Harness、Hermes 的长期 Context、mini-swe-agent 的极简 Harness，再往前是 Worktree（两个 Agent 改同一份代码）、Loop Engineering、Graph Engineering、Error Recovery、Observability。近 20 篇 8 篇过收录线，是 08-30 这轮报名表里命中率最高的系列。"
+  },
+  {
+    "name": "iT 邦幫忙 · DBA 的 AI 自动化三代开发实录",
+    "url": "https://ithelp.ithome.com.tw/users/20183576/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9274",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列。一位 DBA 把自用工具做成中心四个科在用的自动化底座，写的是项目日志不是教程：「功能从 1 个变成 12 个后我开始怕改 A 坏 B」「为了少一次开单我决定重做整个单据流程」「UI 不只是 Prompt：Pencil MCP 如何让我先把画面讲清楚」。目前 6 篇 2 篇过收录线，赛季刚过五分之一。"
+  },
+  {
     "name": "iT 邦幫忙 · Claude Code 下班之後",
     "url": "https://ithelp.ithome.com.tw/users/20183634/ironman",
     "feed": "https://ithelp.ithome.com.tw/rss/series/9253",

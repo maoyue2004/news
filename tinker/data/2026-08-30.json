@@ -1,0 +1,89 @@
+{
+  "date": "2026-08-30",
+  "generatedAt": "2026-08-29T22:40:00.000Z",
+  "dailyNote": "今天供给塌了一半：掘金 112 条正文一条都没抓到（限流熔断，第二轮重试也是零），入围名单只剩 12 条，是创刊以来最短的一天。这 12 条里三条是掘金的「只有标题」条目，按不许编造那条一律不看；再毙掉五条同一族的东西——把 GitHub 仓库 README 做成中文整理的、正文反复指回同一家云厂商的「五平台实操对比」、转述 Anthropic 那篇 Warp 文章的读后感、结尾在拉公众号和技术群的 Skill 评测、V2EX 的插件自荐帖。最后收了 4 篇，四个平台各一篇，全是 4 分，没有精选。最值得先读的是铁人赛那篇 Codex CLI 与 App 之争：终端明明白白打印「生成成功、405615 字节、尺寸正确」，在 App 里把图打开才看见图标压在中文字上——所有技术检查都过了的东西，仍然可能是不能交付的。",
+  "items": [
+    {
+      "id": "338dc4a64ea737c4",
+      "source": "方格子 vocus 标签",
+      "kind": "search",
+      "url": "https://vocus.cc/article/6a92e5cbfd89780001000aab",
+      "titleOriginal": "從 SDGs 知識圖卡到 YouTube 影片：練習設計一條 AI 教材工作流",
+      "titleZh": "12 张图卡做成 4 分钟影片再上架 YouTube：「每张精准 20 秒」是怎么锁住的",
+      "summaryZh": "一位老师把备课流程整条交给 AI 走了一遍：先用 ChatGPT 把 SDGs 里的「大麦克指数」拆成 12 张知识图卡（ChatGPT 单次绘图不得超过 10 张，所以分两次画），再让 Claude Code 把图卡做成一支 4 分钟的简报影片。最值得看的是它怎么满足「每张 20 秒」这个 PechaKucha 式的硬约束：Claude Code 先用 PowerPoint 把 12 张投影片输出成 PNG 并逐张看图理解内容（投影片里的文字只是页码，内容全在图上），写完繁中旁白后用 edge-tts 的台湾女声 zh-TW-HsiaoChen 配音，实测每段语音长度后压进 19.6 秒、只做 1.05–1.14 倍的轻微调速，剩下的时间补静音，再用 ffmpeg（经 imageio-ffmpeg 免安装取得）逐段合成串接，最后按语音实际节奏切出 74 句 SRT。上架那一步先用 Chrome 里的 Claude 扩充程序，遇到连接问题后改用 Claude 内建浏览器才走完，公开状态和标题都是它反问作者后填的。",
+      "whyRead": "「20 秒一张」这种硬时间约束怎么真的落地，全篇最实的就是那一段：语音压到 19.6 秒、只敢调速 1.05–1.14 倍、其余补静音。",
+      "rating": 4,
+      "tools": ["claude-code", "claude"],
+      "topics": [],
+      "publishedAt": "2026-08-29T15:23:51.817Z",
+      "author": "",
+      "preScore": 7
+    },
+    {
+      "id": "2da04fdb2e5af8ff",
+      "source": "iT 邦幫忙 · Codex 做 LINE Bot 上线",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10405902?sc=rss.iron",
+      "titleOriginal": "Day 18 - Codex CLI 和 App 該怎麼選？從只看終端輸出，到真正看見成品",
+      "titleZh": "Codex CLI 和 App 怎么选：终端说「生成成功」，把图打开才发现图标压住了中文",
+      "summaryZh": "作者在铁人赛第 18 天插播一篇工具选型。他做 LINE Cafe Bot 的 Rich Menu 时，程序生成了一张符合规格的 PNG，终端打印的是 Generated rich-menu.png (405615 bytes)，尺寸正确、小于 1 MB，TypeScript 构建和单元测试全过；改用 Codex App 把图直接打开，才看见咖啡杯和问号图示压在中文字上——一张技术上合格、视觉上不能交付的图差点就部署出去了。由此他给出的分法不是初阶／进阶，而是两种验收视野：在 CLI 里他自然会问「指令成功没有、测试过没有、部署状态正常没有」，而且终端里的操作留得下可重复的指令，还能用 codex exec --json 把过程输出成 JSONL 接进脚本和 CI；到了 App 他会多问一层「画面看起来对吗、这次改了哪些档案、成品和需求一致吗」，因为对话、档案、终端结果、Git diff 和视觉预览都在同一个空间里。他现在的做法是先在 CLI 快速确认环境和问题，等进入需要视觉验收的阶段再回 App。",
+      "whyRead": "不是功能对比，是一次「所有技术检查都通过但成品不能交付」的实例——它把「看得见成品」论证成了开发流程的一部分，而不是最后补做的动作。",
+      "rating": 4,
+      "tools": ["codex"],
+      "topics": [],
+      "publishedAt": "2026-08-29T11:36:53.000Z",
+      "author": "",
+      "preScore": 7
+    },
+    {
+      "id": "9660a9dfec59dba1",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/grey-wolf/p/22749811",
+      "titleOriginal": "windows codex更新失败如何处理 - 三国梦回",
+      "titleZh": "Windows 上 Codex 更新不动：应用内更新报错、商店装不上，最后靠 MSIX 手装",
+      "summaryZh": "一次很小但很完整的排查记录。作者家里那台电脑改过注册表、禁掉了各种自动更新，Codex 的应用内更新直接报错；转去 Microsoft Store 网页下载，拿到的是 ChatGPT Installer.exe，打开只提示「已经安装了」。参考别人的文章找到官方 MSIX 包地址 persistent.oaistatic.com/codex-app-prod/ChatGPT-x64.msix（下下来约 780 MB），他没有直接装——先查了这个域名，又在官方的 learn.chatgpt.com Windows 部署文档里找到一模一样的地址才敢用，这一段是全篇最值得抄的谨慎。双击 MSIX 点更新之后界面毫无反应（他吃完饭回来还是原样），改用 PowerShell 跑 Add-AppxPackage -Path <msix> 才拿到真正的失败原因：老版本进程还开着。用 Get-Process ChatGPT,Codex 找出来关掉再装即可，文末还留了一段下载加安装的一键脚本。",
+      "whyRead": "图形界面点了更新没反应、也不报错，换成 Add-AppxPackage 才看见真正的原因是老进程没关——这条命令是全篇的关键。",
+      "rating": 4,
+      "tools": ["codex"],
+      "topics": [],
+      "publishedAt": "2026-08-29T01:03:00.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "b11251320ba6b8c8",
+      "source": "Joway's Blog",
+      "kind": "blog",
+      "url": "https://blog.joway.io/posts/software-engineering-with-ai-coding/",
+      "titleOriginal": "尽职编程：AI Coding 时代的个体产出差异的来源",
+      "titleZh": "都用一样的模型和 Agent，代码产出的方差为什么反而更大了",
+      "summaryZh": "作者的观察是：大家用着近乎相同的模型、设备和 Agent，代码产出水平的方差反而比以前更大。他把差异归到一种他称为「尽职编程」的工作方法——AI 有能力做完一百件子事，但没能力决定该做哪一百件，那部分上下文在老板的沟通里、在你的工作经验里、甚至在常识和对未来的预判里，而你给它的提示词只有几十个字。他见过最可怕的做法，是让 AI 自己决定要做哪一百件事然后全做完；他自己的判据是「代码不是你写的，但技术评审时别人提的问题你得答得出来」。为此他每天大部分时间花在理解 AI 的设计上：让 AI 画架构图、写设计文档，尤其是让它写一份「面向产品经理」的文档，这样连技术语言都不用读就能理解实现，还能顺手丢给产品经理。最后他给了一个把主观努力变成客观痕迹的办法：在主仓库加一个 Codex 自动 Review 插件，会把代码库 clone 下来结合上下文看修改的副作用，而且它的 Agent 上下文和你自己的完全独立——你执意要在 GET 接口里改数据，Claude Code 会顺着你，这个 Review Agent 不知道你的固执，所以不会。",
+      "whyRead": "他给「靠谱」下了个能执行的定义，还给出一个把它变成客观痕迹的办法：一个上下文和你完全独立、因此不会顺着你的 Review Agent。",
+      "rating": 4,
+      "tools": ["claude-code", "codex"],
+      "topics": [],
+      "publishedAt": "2026-08-29T00:00:00.000Z",
+      "author": "",
+      "preScore": 7
+    }
+  ],
+  "reviewed": 12,
+  "dropped": 8,
+  "stats": {
+    "sources": 276,
+    "fetched": 339,
+    "shortlisted": 12,
+    "rejected": 327,
+    "thin": 171,
+    "enriched": 19,
+    "enrichAttempted": 137,
+    "enrichSkipped": 143,
+    "enrichMuted": ["掘金搜索"],
+    "failedSources": 2
+  },
+  "errors": [
+    "Watermelonabc的Blog — HTTP 404（连续第 5 天）",
+    "犀利豆的博客 — The operation was aborted due to timeout"
+  ]
+}
