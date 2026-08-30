@@ -9,7 +9,7 @@ import {
 import { collectFeed, collectRaw } from '../lib/tinker/collect.mjs';
 import { fetchSearchItems, isSearchSource } from '../lib/tinker/search-adapters.mjs';
 import { triage, titleKey } from '../lib/tinker/relevance.mjs';
-import { queriesForDate } from '../lib/tinker/vocab.mjs';
+import { queriesForDate, rotatingQueries, CORE_QUERIES } from '../lib/tinker/vocab.mjs';
 import { planSeen } from '../lib/tinker/defer.mjs';
 import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
 
@@ -508,12 +508,30 @@ async function main() {
 
   // 跑够 5 轮还一条都没入围的查询词——周更体检据此换词。轮转池一周才转一圈，
   // 所以门槛按「跑过几次」而不是「过了几天」算。
-  const barren = Object.entries(loadQueryYield(DATA_DIR))
-    .filter(([, v]) => v.runs >= 5 && v.shortlisted === 0)
-    .sort((a, b) => b[1].runs - a[1].runs);
+  //
+  // 2026-08-31：**只报还在池子里的那些**。账本是累计的，一个词进了 UNQUERYABLE
+  // 之后它的计数就永远冻在退役那一刻，而这行输出照旧天天把它印出来——
+  // 今天那 5 条里有 2 条是 `Augment Code 踩坑 / 体验`，而 `augment` 08-24 就已经退役了，
+  // 数字（14 轮 / 11 条 / 0 入围）和 LESSONS 里记的一字不差，因为它根本没再跑过。
+  // 症状和「落选理由写错了会把手术做在错的地方」是同一族：这行输出的用途是
+  // 「下一轮该换掉哪个词」，而已退役的词是**没有手术对象**的，
+  // 把它们混在里面等于每天在待办清单顶上挂几件早就做完的事。
+  // 池子要用 `rotatingQueries()`（手写长尾词 + 词表派生词）加核心词，
+  // **不是 `SEARCH_QUERIES`**——后者只是手写的那一半（73 条），
+  // 拿它当池子会把「Kilo Code 体验」这类还在天天跑的派生词误判成已退役而藏起来。
+  // 又一次「量一件事要用系统自己的那把尺」，差一点就用错了尺。
+  const pool = new Set([...CORE_QUERIES, ...rotatingQueries()]);
+  const yields = Object.entries(loadQueryYield(DATA_DIR)).filter(([, v]) => v.runs >= 5 && v.shortlisted === 0);
+  const barren = yields.filter(([q]) => pool.has(q)).sort((a, b) => b[1].runs - a[1].runs);
+  const retired = yields.filter(([q]) => !pool.has(q));
   if (barren.length) {
     console.log(`\n跑够 5 轮仍零入围的查询词（${barren.length}）：`);
     for (const [q, v] of barren.slice(0, 20)) console.log(`  ${q} — ${v.runs} 轮，捞回 ${v.items} 条，入围 0`);
+  }
+  if (retired.length) {
+    // 单独列一行而不是直接丢掉：账本里留着这些数字是有用的（下次想把某个工具放回池子时
+    // 要看它当初为什么退役），只是它们不该混进「该换掉哪个词」那份清单。
+    console.log(`\n（另有 ${retired.length} 条零入围的查询词已退役、不在轮转池里：${retired.map(([q]) => q).join('、')}）`);
   }
 }
 

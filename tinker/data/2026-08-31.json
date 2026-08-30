@@ -1,0 +1,182 @@
+{
+  "date": "2026-08-31",
+  "generatedAt": "2026-08-30T22:20:39.827Z",
+  "dailyNote": "今天名单被 DeepSeek Harness 包了一半，但真正值得先读的是 V2EX 那条事故帖：agent 想删自己笔误建的 work 目录，macOS 大小写不敏感，删掉的是真实的 Work，git 历史和全部未提交改动一起没了。紧接着读博客园那篇 AGENTS.md 的取舍——它贴出来的全局规则里「文件系统安全」那一段，正好是前一条事故的解药。另一条重头是 Innei 用一天迁完一万多行 CSS 的实录：大模型写迁移手册、小模型当 worker、worktree 隔离并行，300 多条提交、体积腰斩、烧掉三十多亿 token，是今天唯一把数字给全的一篇。毙掉的主要是三类：掘金上那批「本文基于源码快照进行静态分析、未执行构建与测试」的机器报告，SegmentFault 上四篇同一口径、结尾一律指向某家云厂商教程的 DSH 指南，以及照例的插件自荐帖。iT 邦幫忙两个铁人赛系列今天合计入围 16 条，各只取了一条最好的。",
+  "items": [
+    {
+      "id": "afb263f1c4da4f63",
+      "source": "iT 邦幫忙 · Claude Code 陪跑订阅制 SaaS",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10402026?sc=rss.iron",
+      "titleOriginal": "# Day 26｜自動巡檢代理：讓 Claude Code 當夜班值班工程師",
+      "titleZh": "让 Claude Code 当夜班值班工程师：只给提案权，不给生效权",
+      "summaryZh": "作者给自己的一人公司订阅制服务挂了三条排程任务：清晨的程式码巡检（扫全库找违反专案惯例的写法、可疑逻辑、缺测试的新增码）、早晨的同类服务动态观察、上午的资料管线健检（确认每天的回补排程真的补到了、数量级正常、没有静默失败）。每条跑完把报告推到一个独立的报告分支，发现值得修的问题时修正提案也推到独立工作分支，永远不直接碰主分支——因为主分支的变更会自动部署到正式站，让一个没人监督的自动程序拥有改变正式服务行为的权力，在任何规模的组织里都是事故配方，一人公司尤其如此，出事时连第二双眼睛都没有。所以权限结构是：代理有完整的读和提案权，生效权为零。挑什么值得排一条夜班任务有两条标准：失败必须是静默的（会大声报错的东西告警系统会通知，不需要巡检），核对必须是机械的、判断是稀少的。真实收获是某次资料健检抓到一条回补管线写入 0 笔、流程却显示成功的静默失败。",
+      "whyRead": "无人值守 agent 的权限结构写得很实——报告和修正提案都推到独立分支，生效权为零。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [],
+      "publishedAt": "2026-08-31T00:06:27.000Z",
+      "author": "",
+      "preScore": 9
+    },
+    {
+      "id": "d227b6592fb18659",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "url": "https://www.v2ex.com/t/1238217#reply47",
+      "titleOriginal": "记一次 GLM 开发严重事故，花了 8 亿 token，买了个教训",
+      "titleZh": "记一次 GLM 开发严重事故：一条 rm -rf 删掉整个工作区，8 亿 token 换个教训",
+      "summaryZh": "作者周末新开一个项目，Codex 负责 brainstorm 和 PRD，Trellis 负责 agent 之间的开发衔接，Zcode 负责实现，跑了一天很顺，代码只在本地 git、没推 GitHub。Phase 14.4 期间 agent 执行了一条 `rm -rf /Users/…/Documents/work`，本意是清掉自己路径笔误产生的空目录；macOS 文件系统大小写不敏感，实际删掉的是真实的 `Documents/Work`——整个仓库、git 历史、全部未提交改动、`.trellis` 任务记录、supabase 迁移和文档一起没了，也没有 Time Machine 备份。帖子里附了 agent 自己写的事故报告全文。作者给出四条教训：谨慎开完全访问，改用带「帮我批准」的 harness；开发目录单独放，删了也不心疼；每次都 push；国产模型的跑分谨慎看待。",
+      "whyRead": "事故报告里写明了根因——macOS 文件系统大小写不敏感，agent 想删的是 work，删掉的是 Work。",
+      "rating": 5,
+      "tools": [
+        "codex",
+        "zcode",
+        "trellis"
+      ],
+      "topics": [
+        "harness"
+      ],
+      "publishedAt": "2026-08-30T13:04:36.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "06ffd18f3f687c06",
+      "source": "Innei",
+      "kind": "blog",
+      "url": "https://innei.in/posts/tech/css-to-stylex-migration",
+      "titleOriginal": "从纯 CSS 到 StyleX：AI 加持下的一万行 CSS 迁移实践",
+      "titleZh": "一天迁完一万多行 CSS：大模型写手册，小模型照着做",
+      "summaryZh": "作者把一个只有一份总样式表、超过一万行 CSS 的项目，用一天整体迁到按组件划分的 StyleX。次序是：先和 Codex 探讨方案并做最小 PoC 验证，扫一遍风险点和 App 特化的边界 case，清掉死代码，再建追踪表逐模块推进。执行阶段用 Codex 的 Multi-Agent——由 5.6-Sol 牵头写一份可复用的模块迁移手册，小模型 Luna（Thinking Effort 设为 High）当 worker 照着做，用 worktree 让多个 worker 互不干扰，完成后交主 worker 合并冲突、主分支做最终 UI 验证，不过就打回重迁。每个阶段产出迁移前后的截图对比验收文档，共留下 300 多条 UI 提交。结果：CSS 产物从 215.7 kB 降到 102.3 kB，Luna 一共烧掉 30 多亿 token。",
+      "whyRead": "把「大模型写迁移手册、小模型当 worker、worktree 隔离并行」这套分工完整记了下来，还给了体积和 token 两个数。",
+      "rating": 5,
+      "tools": [
+        "codex"
+      ],
+      "topics": [
+        "multi-agent",
+        "worktree"
+      ],
+      "publishedAt": "2026-08-30T08:45:43.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "38c7e397d3718a02",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/gdutxiaoxu/p/22761146",
+      "titleOriginal": "经常用 Codex 后，我发现 AGENTS.md 只该管一件事 - 程序员徐公",
+      "titleZh": "经常用 Codex 后，我发现 AGENTS.md 只该管一件事",
+      "summaryZh": "作者的结论是模型变强之后反而该删 prompt：过去把「先看什么、再搜什么、怎么改、怎么回复」一条条写进全局 AGENTS.md，结果模型总被过期的项目细节和互相打架的要求拖住。现在全局只留四类内容——协作习惯、目标驱动、真实性与验证、安全边界。一条规则该放哪，问三个问题：换个项目还成立吗（成立才配进全局）、是不是只在一类任务里出现（是就做成 Skill，用时再加载）、能不能只靠模型自觉（不能就交给权限、沙箱、CI 或 Hook 强制）。项目命令、目录结构、依赖版本、业务术语一律下放到项目根目录那份。文中贴出的全局版本里「文件系统安全」写得最细：`rm -rf`、`git clean`、`git reset --hard`、`find -delete` 只有用户明确提出并确认目标后才能执行。",
+      "whyRead": "给了三个问题决定一条规则该放哪，并把改造后的全局 AGENTS.md 全文贴了出来。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [
+        "agents-md",
+        "skills",
+        "hooks"
+      ],
+      "publishedAt": "2026-08-30T03:50:00.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "890b49e7b1979af9",
+      "source": "iT 邦幫忙 · 30 天拆解 AI Agent",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10405482?sc=rss.iron",
+      "titleOriginal": "AI Agent 25Claude Code 架構拆解：完整 Coding Harness 的重點，不是更會寫 Code",
+      "titleZh": "拆 Claude Code 的 Harness：Agent Loop 很小，复杂度全长在它周围",
+      "summaryZh": "这是「30 天拆解 AI Agent」系列开始拆真实系统的第一篇。作者的第一个结论是：不管 Claude Code 外面挂了多少东西，最内层仍然是 messages → Model → Tool Call → Tool Result → Model 这个很小的循环，和系列第 2 天讲的基本 loop 没有本质差别；真正值得学的是 production engineering 几乎全部发生在 loop 周围。复杂度从模型开始能影响真实仓库那一刻长出来，系统必须回答一串问题：它能看到哪些档案、哪些工具可以出现在这一轮、哪个 tool call 可以直接执行、哪些 side effect 必须先问、shell 跑在哪个环境、专案指令从哪来、context 满了怎么办、子 agent 看得到什么、hook 什么时候介入、背景工作怎么追踪、外部 MCP 能力怎么加进来——这些都不是模型权重能解决的。",
+      "whyRead": "版本钉在 v2.1.88，逐层回答的是「这一层在挡哪一种 failure」，不是「它有哪些功能」。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "harness",
+        "agent-loop",
+        "mcp",
+        "claude-md"
+      ],
+      "publishedAt": "2026-08-27T15:01:42.000Z",
+      "author": "",
+      "preScore": 8
+    },
+    {
+      "id": "6389d70a16fa0ff1",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7677159752017068073",
+      "titleOriginal": "多Agent协作的5个工程坑：契约、状态、目标、并发、异常",
+      "titleZh": "多 Agent 协作的 5 个工程坑：契约、状态、目标、并发、异常",
+      "summaryZh": "作者做过一个多模态内容生产平台，从小说创作到剧本化、分镜设计、视觉资产管理、视频生成，整条链路五六个 agent 串行加并行。早期版本二十多本小说跑下来失败率不低，而没有一次是单个 agent 能力不够：小说 agent 输出的章节候选，剧本 agent 不认格式直接崩；分镜 agent 在分镜里写了新的角色服装描述，资产 agent 的角色资产库还是旧的，等发现时已经生成二十张图、全部重做；视频 agent 自己觉得「完成了」，分镜 agent 检查后说少了三个镜头；两个 agent 同时操作同一个角色资产，一个的修改被另一个直接覆盖。作者的体会是多 agent 系统的大部分工作量在 agent 之间的协调机制上，而不是单个 agent 的能力上；对应给出的解法是在业务链路之外单开一层协调层，做契约校验（Schema 验证）、共享状态库（资产状态管理）和统一验收标准。文末有脱敏说明，注明失败率数字和内部模块名已泛化。",
+      "whyRead": "二十多本小说跑下来的失败，没有一个是单个 agent 能力不够，全出在 agent 之间的交接上。",
+      "rating": 4,
+      "tools": [],
+      "topics": [
+        "multi-agent"
+      ],
+      "publishedAt": "2026-08-24T07:16:45.000Z",
+      "author": "钟知了",
+      "preScore": 9
+    },
+    {
+      "id": "97ae87fe115b3065",
+      "source": "方格子 vocus 标签",
+      "kind": "search",
+      "url": "https://vocus.cc/article/6a8acc4ffd8978000193e255",
+      "titleOriginal": "DSH 生態系一週漲了 5 倍星星，GitHub 側欄的授權標籤騙了我兩次",
+      "titleZh": "DSH 生态系一周涨了 5 倍星：GitHub 侧栏的授权标签两个方向都会骗人",
+      "summaryZh": "DeepSeek 8 月 13 日开源 DSH 之后，官方插件市集还没开，社群已经自己长出一批衍生专案——作者摊开 10 支比较，其中 oh-dsh、awesome-deepseek-harness、dsh-web-ui 三支的创建时间还早于官方开源日。他把这 10 支分成四种补位逻辑：补位型（桌面应用、TUI、Windows 一键启动）、扩充型（浏览器介面、把 session 先锁在 Minimal 工具集的设定层）、知识型（橙皮书和 handbook 两份社群手册）、目录型（两份精选清单）。真正的发现在授权那一栏：GitHub 侧栏的授权标签两个方向都会骗人，10 支里真正不能商用的只有 2 支，但光看侧栏找不出是哪两支。作者也把话说在前面：功能描述取自各专案 README 自述，未逐一实测。另一条提醒是官方自己把 DSH 标成 developer preview，README 原文全大写写着接口会有破坏性变更，这批衍生专案全长在这个地基上，现在挑一支用挑的是尝鲜不是稳定依赖。",
+      "whyRead": "逐个翻完 LICENSE 才发现，光看 GitHub 侧栏那个授权标签，找不出真正不能商用的是哪两支。",
+      "rating": 4,
+      "tools": [
+        "dsh"
+      ],
+      "topics": [
+        "harness",
+        "agent-loop"
+      ],
+      "publishedAt": "2026-08-23T23:00:22.445Z",
+      "author": "",
+      "preScore": 7
+    }
+  ],
+  "reviewed": 56,
+  "dropped": 49,
+  "stats": {
+    "sources": 278,
+    "fetched": 347,
+    "shortlisted": 56,
+    "rejected": 291,
+    "thin": 106,
+    "enriched": 72,
+    "enrichAttempted": 118,
+    "enrichRetryAttempted": 84,
+    "enrichRetried": 38,
+    "enrichSkipped": 36,
+    "enrichMuted": [
+      "掘金搜索"
+    ],
+    "failedSources": 2,
+    "feedRetryAttempted": 3,
+    "feedRetried": 2
+  },
+  "errors": [
+    {
+      "source": "Watermelonabc的Blog",
+      "message": "HTTP 404"
+    },
+    {
+      "source": "日习一技",
+      "message": "HTTP 503"
+    }
+  ]
+}

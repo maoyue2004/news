@@ -442,5 +442,23 @@
     "name": "Alex Hsu（兔子週刊）",
     "reason": "繁中个人博客，但写的是出版、冥想、遊戲和情歌——近 20 篇里只有 1 篇过 scoreItem() 的入围线（跨度 72 天，是他完整产出的切片，不是窄窗口）。和 Mobius 同形：这个博客整个不在这个领域。从 Pront Log 的友链页扫出来。",
     "date": "2026-08-29"
+  },
+  {
+    "feed": "https://baijunyao.com/feed",
+    "name": "baijunyao.com（白俊遥博客）",
+    "reason": "PHP / Docker 教程连载站，选题不沾 agent；且 feed 里近 200 条的 pubDate 全部写成抓取当天（近 20 篇跨 1 天），evaluate() 判「像媒体」。它的 /sites 页是一份简中友链名录，留作 blogroll 种子，但站本身不收。",
+    "date": "2026-08-31"
+  },
+  {
+    "feed": "https://pyf-labrary.github.io/marginalia/feed.xml",
+    "name": "marginalia（pyf-labrary）",
+    "reason": "日更「AI 晨报」的资讯汇总站，10 篇跨 9 天全是当日新闻摘要。和 BestBlogs / x-cmd 同形：落地页在结构上不可能是作者的一手记录。",
+    "date": "2026-08-31"
+  },
+  {
+    "feed": "https://wooxin.github.io/rss.xml",
+    "name": "《书集》wooxin.github.io",
+    "reason": "繁忙的 Linux/Nix/Rust 折腾博客，写得不错但 agent 只出现在两篇「2026 年中横评」里，近 20 篇 0 篇过 scoreItem() 入围线；最新一篇 77 天前。",
+    "date": "2026-08-31"
   }
 ]

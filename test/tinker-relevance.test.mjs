@@ -86,6 +86,18 @@ test('WebMCP 是独立话题，不是 MCP 的一段', () => {
   assert.ok(matchTopics('搭一个 web mcp 服务').includes('mcp'));
 });
 
+test('多智能体协作是独立话题，但「更多 agent」不算', () => {
+  // 2026-08-31：subagent 说的是「一个 agent 派出去的下级」，
+  // 这一条说的是几个对等 agent 怎么把同一个目标兜起来。
+  assert.ok(matchTopics('多Agent协作的5个工程坑：契约、状态、目标、并发、异常').includes('multi-agent'));
+  assert.ok(matchTopics('从 ReAct 到 Multi-Agent：别急着上多智能体').includes('multi-agent'));
+  assert.ok(matchTopics('每個 Agents 都做完自己那份了，最後誰負責兜起來？ － Multi-Agent Coordination').includes('multi-agent'));
+  // 中文没有词边界，`多 agent` 是「更多 agent」的一段——这是 `心流` → 核心流程那一族。
+  assert.ok(!matchTopics('这个版本给 Harness 加了更多 agent 能力').includes('multi-agent'));
+  assert.ok(!matchTopics('市面上越来越多 agent 框架都在抄这套设计').includes('multi-agent'));
+  assert.ok(!matchTopics('这个版本加了更多Agent能力').includes('multi-agent'));
+});
+
 test('GSD 收裸缩写，因为限定词写法会漏掉正常语序', () => {
   // 2026-08-25：904 篇语料里裸 `gsd` 命中 4 条、4 条全是 get-shit-done 这个框架。
   // 只收 `gsd agent` 这类限定写法的话，4 条里认得出 2 条——
@@ -276,6 +288,31 @@ test('课程 / 教练营销文被扣分，同题材的真实践文不受影响',
   });
   assert.ok(!real.reasons.includes('疑似课程 / 教练营销文'));
   assert.ok(real.score > coach.score);
+});
+
+test('自述「未运行过」的源码静态分析报告被扣分，真读过源码的拆解不受影响', () => {
+  // 2026-08-31：掘金「GitHub每日热评｜X 源码解析」那一批。选题极对口、数字看着很硬，
+  // 但它自己在开头和结尾写明没有跑过——按定义就不是「作者自己动手」。
+  const report = scoreItem({
+    title: 'GitHub每日热评｜OpenAI Codex 源码解析：一个 Rust 工具型项目是如何组织 CLI、工作流与测试的',
+    excerpt:
+      '本文基于 openai/codex 的指定源码快照进行静态分析，重点观察项目结构、工程化组织、测试布局和自动化流程。'
+      + '本文未执行 Codex 源码、测试、构建、依赖漏洞扫描或生产环境部署。本次静态扫描得到的主要信息如下：'
+      + '扫描范围内文件数 6432，主要实现语言 Rust，测试文件线索 647。',
+    tail: '重点分析文件：codex-rs/tui/。本文结论类型：源码静态观察，未执行项目构建、测试、性能测试和安全审计。',
+  });
+  assert.ok(report.reasons.includes('自述未运行过的源码静态分析报告'));
+
+  // 对照：同样是拆 Codex/Claude Code 的架构，但作者真的跑过、钉了版本号——不能被误伤
+  const real = scoreItem({
+    title: '拆 Claude Code 的 Harness：Agent Loop 很小，复杂度全长在它周围',
+    excerpt:
+      '我把版本钉在 v2.1.88 逐层读了一遍，最内层仍然是 messages → Model → Tool Call → Tool Result 这个很小的循环。'
+      + '真正的复杂度是模型开始能改真实仓库之后：哪些 tool call 可以直接执行、哪些 side effect 必须先问、'
+      + '我实测 context 满了之后 compaction 会把哪一段丢掉。',
+  });
+  assert.ok(!real.reasons.includes('自述未运行过的源码静态分析报告'));
+  assert.ok(real.score > report.score);
 });
 
 test('繁体写法的自荐招呼语也要扣到', () => {
