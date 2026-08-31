@@ -975,3 +975,44 @@ test('新工具词：Docker Sandboxes（sbx）', () => {
   assert.ok(!matchTools('用 Docker 沙箱隔离构建环境').includes('docker-sandboxes'));
   assert.ok(!matchTools('sandbox 里跑测试').includes('docker-sandboxes'));
 });
+
+test('繁体经验词：iT 邦 / vocus 那批作者不该因为字形被系统性降权', () => {
+  // 2026-08-31 周更体检：`EXPERIENCE_MARKERS` 从创刊起是照简中语料写的，
+  // 而繁中源（iT 邦八个铁人赛系列 + vocus + 台港博客）现在占入围名单四分之一。
+  // 1396 条语料上逐对量：記錄 55、小時 47、教訓 28、實測 27、體驗 18、從零 18……
+  const trad = scoreItem({
+    title: 'Day 14｜Skill 的評測：竟在 Benchmark 實測中拿了最後一名',
+    excerpt: '這次我把三份 Skill 丟進同一組題目跑，記錄每一輪的輸出。實測下來最後一名的那份，'
+      + '問題不在提示詞而在入口枚舉；從零重寫之後的對比放在文末，總結成三條教訓。',
+  });
+  assert.ok(trad.reasons.some((x) => x.includes('标题经验词')), trad.reasons.join('；'));
+  assert.ok(trad.reasons.some((x) => x.includes('正文经验词')), trad.reasons.join('；'));
+
+  // 「我讓」是简体「我让」的另一种字形，同一个句式值同样的 4 分。
+  const let_ = scoreItem({ title: '我讓 Claude Code 自己跑了五個月', excerpt: '記錄一下這五個月。' });
+  assert.ok(let_.reasons.some((x) => x.includes('我+动作')), let_.reasons.join('；'));
+});
+
+test('繁体反向词：「繁中轉譯」不是中转，「免費額度」不是黑产', () => {
+  // 补繁体反向词那一轮被数据挡回来的两个。前者是「心流 → 核心流程」在新字形上的复发：
+  // `中轉` 在这份语料里的 2 条唯一命中**全部**是「繁中轉譯」；
+  // 后者误伤了两篇 5 分——免费额度用完正是那两篇的题眼。
+  const relay = scoreItem({
+    title: 'Day 4 - 五個 Maps 來源不等於五間店：繁中轉譯來源卡片與 placeId 去重',
+    excerpt: '我把 Google Maps Grounding 的繁中轉譯接進來之後，發現五個來源其實指向同一間店。',
+  });
+  assert.ok(!relay.reasons.some((x) => x.includes('营销词')), relay.reasons.join('；'));
+
+  const quota = scoreItem({
+    title: 'Day 22：睡一覺醒來，我的 AI 刷了 $40 美金',
+    excerpt: '免費額度昨晚就用完了，而我沒有設上限。這一覺醒來帳單是 40 美金，我把當時的排程逐條翻了一遍。',
+  });
+  assert.ok(!quota.reasons.some((x) => x.includes('营销词')), quota.reasons.join('；'));
+
+  // 但真的繁体黑产 / 营销词照扣。
+  const promo = scoreItem({
+    title: '我用 Claude Code 搭了一套工作流',
+    excerpt: '限時優惠期間我開了車隊，共享帳號批發價，訓練營報名請私訊。',
+  });
+  assert.ok(promo.reasons.some((x) => x.includes('营销词')), promo.reasons.join('；'));
+});

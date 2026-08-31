@@ -24,7 +24,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { declaredFeeds, gradeFeed, UA } from '../lib/tinker/probe.mjs';
-import { evaluate, PODCAST_HOST, looksLikeAudio } from './tinker-harvest.mjs';
+import { evaluate, PODCAST_HOST, looksLikeAudio, deniedHostsFrom } from './tinker-harvest.mjs';
 
 const SOURCES = 'tinker/sources.json';
 const DENYLIST = 'tinker/denylist.json';
@@ -79,6 +79,16 @@ const PROBE_TIMEOUT_MS = Number(flag('probe-timeout', 6000));
 const LINK_PATHS = [
   'links', 'links/', 'friends', 'friends/', 'link', 'link/', 'friend', 'friend/',
   'links.html', 'friends.html', 'links/index.html', 'blogroll', 'blogroll/',
+  // 2026-08-31 周更体检补 `sites`。白俊遥博客那一页（80+ 个简中站）
+  // **两条发现通道同时漏掉了它**：路径不在上面这张表里，而它的首页导航里
+  // 根本没有任何一个指向 /sites 的链接（导航只有分类、文档、福利专区），
+  // 所以锚文本那一半也捡不回来。症状是脚本报「0 个站外域名」——
+  // 和 LESSONS 那条「解析器读不动和名录真的没货长得一模一样」逐字吻合，
+  // 而查法也是那条：拿「页面上有多少个域名」（手工 curl 数出 80+）
+  // 对一遍「解析器抽出多少条」（0）。
+  // 不加 `site`（单数）：那是「本站 / site map」这类页面的常见路径，
+  // 而 `sites` 复数在中文博客圈基本只用来列别人的站。
+  'sites', 'sites/',
 ];
 
 /**
@@ -124,6 +134,14 @@ const EXTRA_SEEDS = [
   // 独立 App 开发者」这类人，不是生活写作站。
   { name: '部落卷（Pront Log）', url: 'https://prontlin.com/' },
   { name: '部落卷（贾某人的 blog）', url: 'https://www.jyhblog.xyz/' },
+  // 2026-08-31 日更留的建议 #7，周更这轮执行。前五个种子全是繁中圈，
+  // 而繁中友链那条通道 08-27 就收尾了（0.65% 命中率）；简中这边上一轮
+  // （08-11）用的种子**全部**是已收录博客，也就是 LESSONS 那条
+  // 「拿友链的产物当下一轮的种子，测的是圈子的直径不是这条通道的产能」。
+  // 白俊遥这一页是简中圈少见的、由一个还在更新的工程师维护的友链名录，
+  // 而**他本人不在 `sources.json` 里**（08-31 已落 denylist：PHP/Docker 教程连载，
+  // 不沾 agent）——正是「种子池不等于 sources.json」那条要的形状。
+  { name: '友链名录（白俊遥博客）', url: 'https://baijunyao.com/' },
 ];
 
 /**
@@ -259,7 +277,10 @@ async function quickProbe(siteUrl) {
 if (import.meta.url === `file://${process.argv[1]}`) {
   const sources = JSON.parse(readFileSync(SOURCES, 'utf8'));
   const denylist = existsSync(DENYLIST) ? JSON.parse(readFileSync(DENYLIST, 'utf8')) : [];
-  const deniedHosts = new Set(denylist.filter((d) => d.scope !== 'feed').map((d) => host(d.feed)).filter(Boolean));
+  // 用 harvest 那份实现，不在这里重写一遍——2026-08-31 修的那个洞
+  // （denylist 里两种 key 并存，只读 `feed` 漏掉 12/75 条）成因正是
+  // 「同一个判据在两个脚本里各写了一遍，其中一个没跟上」。
+  const deniedHosts = deniedHostsFrom(denylist);
   const knownHosts = new Set();
   for (const s of sources) {
     for (const u of [s.url, s.feed]) { const h = host(u); if (h) knownHosts.add(h); }

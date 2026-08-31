@@ -668,11 +668,11 @@
   },
   {
     "name": "远飞闲记",
-    "url": "https://leonhe.cn",
-    "feed": "https://leonhe.cn/index.xml",
+    "url": "https://heyuanfei.com",
+    "feed": "https://heyuanfei.com/index.xml",
     "kind": "blog",
     "enabled": true,
-    "desc": "中文独立博客，近 20 篇里有 8 篇写到 agent（claude-code/opencode/cursor）。"
+    "desc": "何元飞的个人站。agent 那一支密度很高：给 DeepSeek Harness 套 macOS 外壳、从月花 1k 刀换到 DeepSeek V4 Pro、Claude Code 换回 OpenCode、OpenClaw 和 Hermes 为什么不火了、Hermes 接瑞幸点单 / 接 AgentlyMail / 做多 Agent 任务编排 / 做知识管理 RAG、「你喂给模型的每行废话都在烧钱」。2026-08-31 周更用 evaluate() 复量是 **15/20 够格**，创刊以来单站第二高（仅次于 qiyec.site 的 14/20 那次口径）。\n**域名改了一次**：原来订的是 `leonhe.cn/index.xml`，而 `heyuanfei.com/index.xml` 和它**字节数完全相同（188722，113 条）**、每一条 <link> 指向的都是 heyuanfei.com——同一个站的两个域名，heyuanfei.com 是正的那个。改过来是为了让 harvest 的「已收录」判断能认出它：那道闸按 `url` 的主机名比，两个域名不同名，于是它这一轮被当成新候选提名了一遍。"
   },
   {
     "name": "翔宇工作流",
@@ -935,8 +935,10 @@
     "url": "https://watermelonabc.top",
     "feed": "https://watermelonabc.top/atom.xml",
     "kind": "blog",
-    "enabled": true,
-    "desc": "中文独立博客，近 20 篇里有 4 篇写到 agent（chatgpt-desktop）。"
+    "enabled": false,
+    "desc": "中文独立博客，近 20 篇里有 4 篇写到 agent（chatgpt-desktop）。",
+    "disabledOn": "2026-08-31",
+    "disabledReason": "连续 6 天 HTTP 404（404 是 definitive 错误，不是出口抖动）。**停用理由不是那个计数，是站点本身已经不存在了**：手册的门槛是连续失败 ≥14 天，今天才第 6 天，但那条门槛是「拿不到东西时判死活」的代理指标，而这里有直接证据——首页 200，返回的是 Astro v7 starter 模板的个人主页（「如你所见，这是一个使用 Astro Starter 模板构建的简陋的个人主页」），`sitemap-index.xml → sitemap-0.xml` 里**一共只有三个 URL**（`/`、`/about/`、`/services/`），一篇文章都没有；atom.xml / rss.xml / feed.xml / index.xml / feed 五条路径全部 404，首页也没有任何 <link rel=alternate>。也就是说博客被整站换掉了，不是 feed 搬了家。LESSONS 里「判死活的唯一可靠信号是重试之后仍然失败」防的是「出口抖动被当成站点死了」，这里的证据是正向的：站还活着，博客没了。"
   },
   {
     "name": "东东's Blog",
@@ -2249,5 +2251,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "个人开发者的站（自己做 iOS 客户端 Multica），agent 那一支多是配置实录（Codex 接 Kimi / 接 DeepSeek 的踩坑），教程形状的按单篇判。"
+  },
+  {
+    "name": "极客兔兔",
+    "url": "https://geektutu.com",
+    "feed": "https://geektutu.com/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "harvest 第八轮命中（4/20，本轮最高，一天前更新，span 2083 天）。「7天用Go从零实现Web框架/分布式缓存」那一系的作者，2026-08-20 起开了《从零实现 GeekAgent》：REPL 地基 → 工具调用循环 → Bash 工具 → 文件工具与注册表 → 历史压缩 → 多会话持久化 → TUI 与用量面板 → 权限与回滚 → 任务规划与子 Agent → 项目指令与长期记忆。抽 Day8 看过正文，是实现而不是概念科普（符号链接绕过目录隔离、未注册工具默认 deny、脱敏放在工具统一出口、只为真正发生的写入备份，还带「本章明确没做」和净增行数）。**风险注记**：标题是「Day N」编号体，每篇都会吃 SERIAL_TITLE 罚分；且它是连载教程的形状，LESSONS 里铁人赛那次量过「Day N 和教学连载强相关」。09-30 按留存标准复查一次：如果十来篇下来入围有、收录零，就按 BestBlogs 那条前移到规则层。"
   }
 ]

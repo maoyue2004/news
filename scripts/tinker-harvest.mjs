@@ -97,6 +97,44 @@ const INDEXES = [
     url: `https://raw.githubusercontent.com/qianguyihao/blog-list/master/${encodeURIComponent(page)}.md`,
     parse: parseSiteList,
   })),
+  /**
+   * 第八个索引，2026-08-31 周更体检加：fuxiaoai/tidings-rss（718 源的目录，
+   * 分 14 类，README 里就是一张全表，`Catalog last checked: 2026-08-20`）。
+   *
+   * LESSONS 写着「社区索引这条路已经榨干，别再接第七个了」——那条结论 08-28 接
+   * qianguyihao 时就已经被数据推翻过一次（174 个候选并入 8 个，命中率 4.6%，
+   * 比友链页收尾那轮高一个量级）。这里是第二次：判据不是「还能不能找到名录」，
+   * 是**这份名录是不是另一拨人按另一套标准挑的**。
+   *
+   * 先过 LESSONS 那两道准入问：
+   *   1) **按字节数比一遍，确认不是镜像**（`awesome-rss-feeds` 那次的教训）：
+   *      README 153356 字节，和在用的 `awesome-rss-feeds-list/LIST.md`（216297）
+   *      不是同一份文件，格式也完全不同（这份是带 tag 列的 Markdown 表）。
+   *   2) **它是不是只是同一批人**：470 行带 `chinese` 标签，其中 61 行归在
+   *      `Personal Blogs`、279 行归在 `Engineering & Technology`；抽出来的
+   *      373 个非公众号域名里有 watermelonabc / geofftools / ystyle / innei /
+   *      dorck / mingnify / ryanuo / tw93 / sjdhome 这些**已经在 sources.json 里**的，
+   *      说明重叠是真的存在，但那也正说明这份表的口味对得上。
+   *
+   * **只取带 `chinese` 标签的行**，理由和 qianguyihao 只接三个分区不同：
+   * 那次筛的是主题（而 LESSONS 提醒过「分区选的是名录作者的分类法，不是你的」），
+   * 这次筛的是**语种**——这份刊物是中文的，英文源进来一律撞 `MIN_CJK_RATIO`，
+   * 扫它们只是白花四百次请求。语种不是口味判断，没有那条坑。
+   *
+   * 用 `parseSiteList` 不用 `parseMarkdown`：表里每行既有主页链接又有 `[RSS](…)`，
+   * 前者按 host 归并、显式 RSS 优先，正是 08-28 那条「索引有两种形状」要的形状。
+   * 顺带把 wechat2rss 那批公众号行一起滤掉——LESSONS 里
+   * 「微信公众号（wechat2rss 免费列表）」是已探明不通的路。
+   */
+  {
+    id: 'tidings',
+    url: 'https://raw.githubusercontent.com/fuxiaoai/tidings-rss/main/README.md',
+    parse: (text) => parseSiteList(
+      text.split('\n')
+        .filter((l) => l.startsWith('|') && /(^|[ ,|])chinese([ ,|]|$)/.test(l) && !/wechat/i.test(l))
+        .join('\n'),
+    ),
+  },
 ];
 const SOURCES = 'tinker/sources.json';
 /**
@@ -329,6 +367,48 @@ export function evaluate(xml) {
   };
 }
 
+/**
+ * denylist → 被否决的域名集合。
+ *
+ * 否决要按**域名**生效，不能只认那一条 feed URL：api.xgo.ing 这类 RSS 网关
+ * 每个用户一条 `/rss/user/<hash>`，2026-08-03 否掉的是 `.../user/5b632b7f…`，
+ * 2026-08-04 harvest 拿着 `.../user/665fc884…` 又提名了一次——同一个站能生成
+ * 无限条互不相同的 URL，逐条记永远追不上。
+ * 例外是 wechat2rss 这种一个域名下挂几百个互不相干公众号的聚合网关：
+ * 那里否的是某个号不是整个域名，用 `scope: "feed"` 标出来单独放行。
+ *
+ * **2026-08-31 周更体检修的那半：只读 `d.feed` 会漏掉 denylist 里 16% 的条目。**
+ * 这份账本有两种写法——早期（wechat2rss 那批）记 `feed`，而从 08-21 起凡是
+ * 「探到一个站点、判它不够格」落下来的都记 `url`（75 条里 12 条），
+ * 因为落盘那一刻手上根本没有 feed 地址。两个 key 一直并存，而读的人只认前一个，
+ * 于是那 12 条**从写下那天起就没生效过**。
+ * 症状今天当场量到：本轮 harvest 4 个命中里有 2 个（imsuk.cn、fuwari.oh1.top）
+ * 是 08-24 亲手否掉并写进 denylist 的，命中列表里一字不差地又提名了一遍。
+ * 这是 LESSONS 那条「否决要记到机器会读的地方」的第四次复发，
+ * 前三次错在**没记**，这次错在**记了、读的人只读了一半**——
+ * 08-21 写 `tinker-authorsites.mjs` 时用的就是 `d.feed ?? d.url ?? d.domain`，
+ * 只是没有人回头把先写的两个发现脚本一起改。
+ *
+ * 所以这里导出一份实现给 `tinker-blogroll.mjs` 共用：这个洞的成因正是
+ * 「同一个判据在两个脚本里各写了一遍，其中一个没跟上」。
+ */
+export function deniedHostsFrom(denylist) {
+  const h = (u) => {
+    const s = String(u ?? '').trim();
+    if (!s) return null;
+    try { return new URL(s).hostname.replace(/^www\./, ''); } catch { /* 不是完整 URL，往下走 */ }
+    // `domain` 那一类记的是裸主机名（`c.com`），`new URL()` 会直接抛。
+    // 只认「像主机名」的形状，免得把随手写的一句话变成一个假域名混进集合。
+    return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(s) ? s.toLowerCase().replace(/^www\./, '') : null;
+  };
+  return new Set(
+    (denylist ?? [])
+      .filter((d) => d.scope !== 'feed')
+      .map((d) => h(d.feed ?? d.url ?? d.domain ?? ''))
+      .filter(Boolean),
+  );
+}
+
 if (import.meta.url !== `file://${process.argv[1]}`) {
   // 被 import（测试）时只暴露解析函数，不跑抓取。
 } else {
@@ -354,20 +434,26 @@ console.error(`合计 ${all.length} 条，去重后 ${candidates.length} 个候�
 /** 同一个博客常有多个 feed 地址（/feed.xml 和 /zh/index.xml），按域名再去一次重。 */
 const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
 const denylist = existsSync(DENYLIST) ? JSON.parse(readFileSync(DENYLIST, 'utf8')) : [];
-const denied = new Set(denylist.map((d) => d.feed));
-/**
- * 否决也要按域名生效，不能只认那一条 feed URL。
- *
- * api.xgo.ing 这类 RSS 网关每个用户一条 `/rss/user/<hash>`，2026-08-03 否掉的是
- * `.../user/5b632b7f…`，2026-08-04 harvest 拿着 `.../user/665fc884…` 又提名了一次——
- * 同一个站能生成无限条互不相同的 URL，逐条记 denylist 永远追不上。
- * 例外是 wechat2rss 这种一个域名下挂着几百个互不相干的公众号的聚合网关：
- * 那里否的是某个号，不是整个域名，所以按 `scope: "feed"` 标出来单独放行。
- */
-const deniedHosts = new Set(denylist.filter((d) => d.scope !== 'feed').map((d) => host(d.feed)));
+const denied = new Set(denylist.map((d) => d.feed ?? d.url).filter(Boolean));
+/** 否决按域名生效，两种 key 都读。判据和理由见 `deniedHostsFrom` 的注释。 */
+const deniedHosts = deniedHostsFrom(denylist);
 const current = JSON.parse(readFileSync(SOURCES, 'utf8'));
 const existing = new Set(current.map((s) => s.feed).filter(Boolean));
-const existingHosts = new Set(current.filter((s) => s.url).map((s) => host(s.url)));
+/**
+ * 「已经收录了」也按域名比，而且 `url` 和 `feed` 两边都要比。
+ *
+ * 2026-08-31 周更体检量到的：本轮最高分候选 heyuanfei.com（15/20）其实**早就在
+ * sources.json 里**，只是订的是 `leonhe.cn`——同一个站的两个域名，两份 feed
+ * 字节数完全相同（188722，113 条），每一条 <link> 指向的都是 heyuanfei.com。
+ * 这道闸原来只比 `s.url` 的主机名，两个域名不同名，于是它被当成新候选提名了一遍，
+ * 差一点就把同一个作者收成两个源（LESSONS 里「同一个人被拆成两个站」那一族的第四个变体：
+ * 前三个是按主题分站、按时间搬家、同一个平台报两次名，这次是**一个站挂两个域名**）。
+ * 治本的一半已经做了（把那条源的 url/feed 改成正的那个域名），
+ * 这里是治标的一半：两个字段的主机名都进集合，下次换个字段写也拦得住。
+ */
+const existingHosts = new Set(
+  current.flatMap((s) => [s.url, s.feed]).filter(Boolean).map((u) => host(u)).filter(Boolean),
+);
 const results = [];
 for (let i = 0; i < candidates.length; i += CONCURRENCY) {
   await Promise.all(candidates.slice(i, i + CONCURRENCY).map(async (row) => {

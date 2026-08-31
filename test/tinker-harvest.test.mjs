@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseOpml, parseMarkdown, parseSiteList, looksLikeAudio, PODCAST_HOST } from '../scripts/tinker-harvest.mjs';
+import { parseOpml, parseMarkdown, parseSiteList, looksLikeAudio, PODCAST_HOST, deniedHostsFrom } from '../scripts/tinker-harvest.mjs';
 
 test('parseOpml 取 xmlUrl，忽略没有 feed 的分组节点', () => {
   const opml = `<opml><body>
@@ -69,4 +69,25 @@ test('播客源被挡在门外：靠 URL 认托管商，靠 enclosure 认自建'
   assert.ok(looksLikeAudio('<item><enclosure url="x.mp3" type="audio/mpeg"/></item>'));
   assert.ok(looksLikeAudio('<rss xmlns:itunes="..."><itunes:author>x</itunes:author></rss>'));
   assert.equal(looksLikeAudio('<item><title>普通文章</title></item>'), false);
+});
+
+test('denylist 的两种 key 都要读，否则否决过的站会被重新提名', () => {
+  // 2026-08-31 周更体检抓到的真 bug：这份账本早期记 `feed`（wechat2rss 那批），
+  // 从 08-21 起「探到站点、判它不够格」那一类记的是 `url`——落盘那一刻手上还没有
+  // feed 地址。75 条里 12 条是后者，而 harvest / blogroll 都只读 `feed`，
+  // 于是那 12 条从写下那天起就没生效过。症状：本轮 4 个命中里 2 个
+  // （imsuk.cn、fuwari.oh1.top）是 08-24 亲手否掉并写进 denylist 的。
+  const hosts = deniedHostsFrom([
+    { feed: 'https://a.com/feed.xml', name: '记 feed 的老条目' },
+    { url: 'https://imsuk.cn/', name: '记 url 的新条目' },
+    { domain: 'c.com', name: '只有域名的' },
+    // 聚合网关：一个域名下几百个互不相干的号，否的是号不是域名。
+    { feed: 'https://wechat2rss.xlab.app/feed/abc.xml', name: '某公众号', scope: 'feed' },
+    { name: '两个 key 都没有的脏数据' },
+  ]);
+  assert.ok(hosts.has('a.com'));
+  assert.ok(hosts.has('imsuk.cn'), '只读 feed 的话这一条会被静默丢掉');
+  assert.ok(hosts.has('c.com'));
+  assert.ok(!hosts.has('wechat2rss.xlab.app'), 'scope:feed 的聚合网关不能按域名整个否掉');
+  assert.equal(hosts.size, 3, '脏数据不该变成一个空 host 混进集合');
 });
