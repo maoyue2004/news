@@ -11,6 +11,7 @@ import { fetchSearchItems, isSearchSource } from '../lib/tinker/search-adapters.
 import { triage, titleKey } from '../lib/tinker/relevance.mjs';
 import { queriesForDate, rotatingQueries, CORE_QUERIES } from '../lib/tinker/vocab.mjs';
 import { planSeen } from '../lib/tinker/defer.mjs';
+import { readabilityLines } from '../lib/tinker/corpus.mjs';
 import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
 
 const SOURCES = 'tinker/sources.json';
@@ -472,6 +473,9 @@ async function main() {
   const s = { fetched: unique.length, shortlisted: shortlist.length, rejected: rejected.length };
   console.log(`\n${today}：抓到 ${s.fetched} 条，规则入围 ${s.shortlisted} 条，筛掉 ${s.rejected} 条`);
   console.log(`正文补全：尝试 ${attempted}，成功 ${enriched}（第二轮重试 ${retryAttempted} 条，救回 ${retried} 条）`);
+  // 「今天有多少语料能给读正文的规则读」——评审时判「某条规则 0 命中」是模板变了
+  // 还是根本没读到正文，靠的就是这几行。见 lib/tinker/corpus.mjs。
+  for (const line of readabilityLines(unique)) console.log(line);
   if (enrichSkipped) console.log(`补全熔断：${enrichMuted.join('、')} 探针窗口零产出，跳过 ${enrichSkipped} 个请求`);
   if (feedRetryAttempted) console.log(`抓取重试：${feedRetryAttempted} 个源，救回 ${feedRetried} 个`);
   const stillDeferred = Object.keys(plan.deferred).length;

@@ -52,3 +52,8 @@ https://shenjing.me/
 https://johnworker.bearblog.dev/
 https://www.jaron.tw/
 https://lonepatient.top/
+
+# 2026-09-01 日更：WebSearch 那一轮（第十次复现「搜索引擎发现不了博客」）挑出的唯一
+# 非平台域名。探测无 feed，不进 sources.json，也不进 denylist——它不是被否掉的，
+# 是今天探不出东西。URL 照例留着，免得从作者个人站那条通道再被提名一遍。
+https://yuluyao.com/

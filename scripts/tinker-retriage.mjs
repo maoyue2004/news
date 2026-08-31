@@ -7,6 +7,7 @@
 //   node scripts/tinker-retriage.mjs --probe '欢迎\s*star'   量一个候选词表条目
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { triage, titleKey } from '../lib/tinker/relevance.mjs';
+import { readabilityLines } from '../lib/tinker/corpus.mjs';
 
 const RAW = 'tinker/data/_raw.json';
 const PENDING = 'tinker/data/_pending.json';
@@ -40,8 +41,13 @@ function probe(pattern, items) {
   };
   const haveTail = items.filter((it) => it.tail).length;
   console.log(`\n=== 量 /${pattern}/ ===（语料 ${items.length} 条，其中带真结尾的 ${haveTail} 条）`);
+  // 分母要是**可读语料**，不是全部条目：thin 条目没有正文可给这条规则读，
+  // 混进分母之后「模板换了」和「今天没读到正文」会得到同一个 0。见 corpus.mjs。
+  for (const line of readabilityLines(items)) console.log(line);
   for (const [name, pick] of Object.entries(scopes)) {
-    const pool = name === '真结尾 tail' ? items.filter((it) => it.tail) : items;
+    const pool = name === '真结尾 tail'
+      ? items.filter((it) => it.tail)
+      : name === '全文 excerpt' ? items.filter((it) => !it.thin) : items;
     const hits = pool.filter((it) => re.test(pick(it)));
     const bad = hits.filter((it) => published.has(it.url));
     console.log(`${name.padEnd(14)} 命中 ${String(hits.length).padStart(3)} / ${String(pool.length).padStart(3)}`

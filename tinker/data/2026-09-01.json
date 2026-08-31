@@ -1,0 +1,139 @@
+{
+  "date": "2026-09-01",
+  "generatedAt": "2026-08-31T22:17:57.985Z",
+  "dailyNote": "今天名单被 Harness 这个题包了半张：昨天刚收过一篇拆 Claude Code 的，今天又来两篇——一篇从 Cordis 的插件树讲 DSH 的运行时组合，一篇从「我自己做的 agent 为什么没那几个产品稳」问起。两篇角度不撞，就都留了。真正建议先读的是 Mayx 那篇：全程只用国内免费模型，最后靠替换浏览器的 WebSocket 对象把一款关服游戏整个搬进了网页。毙掉的还是老三样——掘金的对比评测型推广稿、SegmentFault 上一水儿的 DSH 上手指南、以及两条落点写得明明白白的插件自荐帖（其中一条把多 agent 的管理痛点写得很好，可惜结尾是「欢迎试一下我的 Agent TUI Manager」）。",
+  "items": [
+    {
+      "id": "7dbd028619689481",
+      "source": "Mayx的博客",
+      "kind": "blog",
+      "url": "https://mabbs.github.io/2026/09/01/vibe-coding2.html",
+      "titleOriginal": "Vibe Coding 新体验（2）",
+      "publishedAt": "2026-08-31T16:00:00.000Z",
+      "author": "",
+      "preScore": 12,
+      "titleZh": "用免费混元把关服麻将搬进浏览器：连 .proto 都是 AI 逆出来的",
+      "whyRead": "最狠的一步是替换掉浏览器的 WebSocket 对象，让客户端以为自己连上了真服务器，游戏和服务端一起跑在网页里。",
+      "summaryZh": "作者全程只用腾讯混元 Hy3 这类国内免费模型，一口气做了两件事。一是把博客的功能提成 JS 函数挂进浏览器控制台，再按 WebMCP 规范包一层交给 AI 调用；过程中撞上 Chrome 的 registerTool 并不像文档说的那样返回 Promise，AI 严格照文档写的 .then() 当场报错，只能手动套一层 Promise 才跑通。二是给一款即将关服的 Unity3D 立直麻将做离线快照：AI 认出它走 WebSocket+Protobuf，先只按编码规则用 Python 把服务端重放出来，接着把服务端整个搬进浏览器——替换掉浏览器的 WebSocket 对象，让客户端以为自己连上了真服务器。作者后来又追问客户端里到底有没有 .proto，结果它连接口定义文件都逆了出来，于是顺势往下做完整对局引擎和人机。",
+      "rating": 5,
+      "tools": [],
+      "topics": [
+        "vibe-coding",
+        "webmcp"
+      ]
+    },
+    {
+      "id": "f66704445c2c5253",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048214398",
+      "titleOriginal": "我让本地 Qwen3.8 27B 搭了一个内网穿透服务",
+      "publishedAt": "2026-08-26T17:34:31.000Z",
+      "author": "",
+      "preScore": 8,
+      "titleZh": "让本地 Qwen3.8 27B 自己打通内网穿透：100 分钟，五个坑全在文档里",
+      "whyRead": "全程没用 SSH——它自己发现 ECS 装了云助手，改走 RunCommand 上机，还绕过了 aliyun CLI 官方文档里那个 404 的下载地址。",
+      "summaryZh": "作者把 BF16 的 Qwen3.8 27B 下到本地，用 DeepSeek Harness 调用、推理档位拉到 xhigh，交给它一件真活：用 frp 把本机 SGLang 服务穿透到阿里云 ECS。约 100 分钟后从 ECS 公网口请求 /v1/models 拿到了模型列表。正文是它自己整理并脱敏的操作记录，五个坑都很具体：aliyun CLI 文档里的 latest 裸文件名返回 404，要带 .tgz；ECS 没有可用密钥对，它改走云助手 RunCommand；CreateKeyPair 的私钥字段叫 PrivateKeyBody，认错会解析成空文件；照文档下的 arm64 包在 x86_64 上报 cannot execute binary file；frp 0.70 的配置换成了顶层平铺加 [[proxies]] 数组。",
+      "rating": 5,
+      "tools": [
+        "dsh"
+      ],
+      "topics": []
+    },
+    {
+      "id": "60ba93dbea89e61e",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/ai-old-six/p/22772381",
+      "titleOriginal": "DeepSeek Harness 的价值不在 Loop，而在运行时组合 - AI小老六",
+      "publishedAt": "2026-08-31T04:44:00.000Z",
+      "author": "",
+      "preScore": 9,
+      "titleZh": "DSH 的价值不在那条 Loop，在 Cordis 把配置变成运行中的插件图",
+      "whyRead": "顺手澄清了一条很容易被当成安全边界的东西：Cordis 的 inject 约束不是沙箱，同进程插件照样碰得到 Node API。",
+      "summaryZh": "作者认为 DSH 值得研究的不是那条「组 prompt、调模型、执行工具、回填结果」的四步主循环——做 demo 时那就够了——而是它把 Agent 的组合关系做成了运行时系统：Cordis 管「系统现在由什么组成」，Session Log 管「系统刚才做过什么」，Agent Loop 夹在两条事实线中间。前者把多层配置装配成一棵运行中的插件树，Bundle、Runtime Profile、Patch、Agent Preset 各管一层，再用 Context/Realm 定依赖可见性、Fiber 记一次挂载的资源所有权、Effect 收拢监听器和句柄；后者先追加事实，再由 deriveMessages() 投影出模型可见的历史，流式 chunk 和 turn/step 统计不进上下文，compaction 以 replacement 节点追加。代价也写得直白：日志格式迁移、存储与隐私治理都会变重，而日志只能证明模型请求过一次外部操作，不保证重放安全。",
+      "rating": 4,
+      "tools": [
+        "dsh",
+        "cordis"
+      ],
+      "topics": [
+        "subagent",
+        "context-engineering",
+        "harness",
+        "agent-loop"
+      ]
+    },
+    {
+      "id": "3ca16c6b31adc5d6",
+      "source": "方格子 vocus 标签",
+      "kind": "search",
+      "url": "https://vocus.cc/article/6a92e3c5fd89780001ffb2e8",
+      "titleOriginal": "看起來都只是 while loop，為什麼成熟的 Agent Harness 就是比較會做事？",
+      "publishedAt": "2026-08-30T13:47:33.903Z",
+      "author": "",
+      "preScore": 6,
+      "titleZh": "同样一个 while loop，为什么成熟 Harness 就是更会做事",
+      "whyRead": "作者把自己「工具描述全塞进 system context 反而更差」那次失败，接到了渐进式揭露和时间感知同一条线上。",
+      "summaryZh": "作者从「我接了一样的 LLM、有工具有记忆，Agent loop 看起来也差不多，为什么跑起来就是没有 Codex、Claude Code、Hermes、OpenClaw 稳」这个疑问出发，把 Harness 归到一条 Observation → Action → Environment 的回路上。两处是他自己踩出来的：一是时间感知，模型参数训练完就定型，runtime 不注入 datetime.now() 它连今年是哪年都不知道，搜索结果的新旧也就判不了，而 repo branch、任务进度、外部服务状态其实都是同一类问题；二是他曾把所有工具描述和 SOP 全塞进 system context，以为知道得越多越完整，结果大量无关描述既吃上下文又干扰推理，只好借渐进式揭露的思路，先只暴露有哪些能力、真要用时再加载。结论是 Prompt、Memory、Skill、Tool、Validator 各是这条回路上不同的控制变量，重要的不是挑哪一个。",
+      "rating": 4,
+      "tools": [
+        "claude-code",
+        "codex",
+        "openclaw",
+        "hermes"
+      ],
+      "topics": [
+        "skills",
+        "context-engineering",
+        "harness",
+        "agent-loop"
+      ]
+    },
+    {
+      "id": "0cbfaff945e7fa4b",
+      "source": "极客兔兔",
+      "kind": "blog",
+      "url": "https://geektutu.com/post/geekagent-day10.html",
+      "titleOriginal": "从零实现 GeekAgent —— Day10 项目指令与长期记忆",
+      "publishedAt": "2026-08-29T13:30:00.000Z",
+      "author": "",
+      "preScore": 12,
+      "titleZh": "从零实现 Agent 第 10 天：AGENTS.md 和 memory 到底该各管什么",
+      "whyRead": "一张表把「项目说明书」和「运行时便签」的七项差别摆开——谁写、进不进版本库、占多少上下文，全都不一样。",
+      "summaryZh": "GeekAgent 系列第 10 天补两种跨会话信息，重点全在讲清它们的分工。AGENTS.md 是项目说明书：由人手写、随代码一起提交、每轮请求完整带上，改完下次启动生效，文件多长就占多少上下文。memory 是模型自己调 memory_write 记下的便签：落在 .geekagent/memory.json，已被 gitignore，不提前交给模型，只能用 memory_search 按关键词取回、最多返回 10 条。作者点破的那句是关键——如果把全部 memory 也塞进每次请求，它和 AGENTS.md 就没有区别了，所以一个始终可见、一个按需出现。当天源码相对 Day 9 新增 128 行、删除 13 行，净增 115 行，文末还列了六条验收步骤和三项明确没做的事（不合并多级指令、记忆只能追加、搜索只匹配关键词不理解语义）。",
+      "rating": 4,
+      "tools": [],
+      "topics": [
+        "agents-md",
+        "agent-memory"
+      ]
+    }
+  ],
+  "reviewed": 44,
+  "dropped": 39,
+  "stats": {
+    "sources": 278,
+    "fetched": 406,
+    "shortlisted": 44,
+    "rejected": 362,
+    "thin": 151,
+    "enriched": 95,
+    "enrichAttempted": 177,
+    "enrichRetryAttempted": 82,
+    "enrichRetried": 0,
+    "enrichSkipped": 36,
+    "enrichMuted": [
+      "掘金搜索"
+    ],
+    "failedSources": 1,
+    "feedRetryAttempted": 1,
+    "feedRetried": 1
+  },
+  "errors": [
+    {
+      "source": "酷酷的白",
+      "message": "HTTP 403"
+    }
+  ]
+}

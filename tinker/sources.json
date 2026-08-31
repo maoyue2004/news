@@ -2021,6 +2021,22 @@
     "desc": "2026 铁人赛系列。一位 DBA 把自用工具做成中心四个科在用的自动化底座，写的是项目日志不是教程：「功能从 1 个变成 12 个后我开始怕改 A 坏 B」「为了少一次开单我决定重做整个单据流程」「UI 不只是 Prompt：Pencil MCP 如何让我先把画面讲清楚」。目前 6 篇 2 篇过收录线，赛季刚过五分之一。"
   },
   {
+    "name": "iT 邦幫忙 · SubWise 记帐 Agent 三十天实录",
+    "url": "https://ithelp.ithome.com.tw/users/20178527/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9071",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列，用 ChatGPT + LINE Bot 从零做一个记帐兼订阅续订预警的 Agent，三十天全是项目日志：「不是所有 API 都会乖乖工作：SubWise 的 API 防呆与错误处理」「从你说我记到你拍我记：打造能看懂发票的 LINE 记帐 Agent」「等等，你的订阅快扣款了！让 SubWise 主动替你盯帐单」。赛季已完赛 30 篇，近 20 篇 2 篇过收录线。"
+  },
+  {
+    "name": "iT 邦幫忙 · 英语家教 Skill 设计实录",
+    "url": "https://ithelp.ithome.com.tw/users/20183433/ironman",
+    "feed": "https://ithelp.ithome.com.tw/rss/series/9138",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026 铁人赛系列，做一个面向高中学测的英语家教 Claude Skill 并把它做成 App，写的是踩坑不是教程：「前提错误，推翻重来：低成本 skill 改进」「第一次烧干流量：四大选择题型上线」「最难搞的竟然是分类：标签系统定案与批量题库补充」「智能的尽头是穷举？非选大题功能制作」。近 20 篇 3 篇过收录线。"
+  },
+  {
     "name": "iT 邦幫忙 · Claude Code 下班之後",
     "url": "https://ithelp.ithome.com.tw/users/20183634/ironman",
     "feed": "https://ithelp.ithome.com.tw/rss/series/9253",
