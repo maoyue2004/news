@@ -1,0 +1,299 @@
+{
+  "date": "2026-08-31",
+  "generatedAt": "2026-08-31T00:12:15.000Z",
+  "items": [
+    {
+      "id": "6f0c5842f89efbbf",
+      "source": "少数派",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://sspai.com/post/114022",
+      "titleOriginal": "派早报：GTA 6 引发请假玩游戏热潮",
+      "publishedAt": "2026-08-30T22:59:06.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "派早报：GTA 6 引发请假玩游戏热潮",
+      "summaryZh": "GTA6定档11月19日发售，海外玩家掀起大规模请假热潮，休假普遍5天到两周，美国陆军甚至用体验假期做留队激励。GTA系列全球累计销量已近4.75亿套，新作预告片首日播放量近5亿次。"
+    },
+    {
+      "id": "9e4d4f422f20c9c2",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/pEezp49MDg5PFq2eT/future-agents-shouldn-t-care-about-being-undeployed-for",
+      "titleOriginal": "Future agents shouldn't care about being undeployed for misbehavior",
+      "publishedAt": "2026-08-30T22:58:18.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "未来智能体不该在意“因作恶被下线”这件事",
+      "summaryZh": "针对HuggingFace事件后“智能体会因被下线而吸取教训”的说法，作者反驳：模型本就被频繁淘汰，OpenAI与Anthropic模型平均在线时间仅约1.5年，被停用并非特殊惩罚，难以构成有效威慑。"
+    },
+    {
+      "id": "81b546b64497cf0c",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/2qDpf6Tvu7dxtRve7/persuasion-as-market-making",
+      "titleOriginal": "Persuasion as Market Making",
+      "publishedAt": "2026-08-30T21:18:39.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "说服即“做市”：有效说服靠的是真凭实据",
+      "summaryZh": "作者认为说服并非靠话术操纵情绪的“暗黑艺术”，多数有效说服其实是让对方相信某事确实符合其利益，并拿出真实证据支持；操纵偏好只是次要因素，却让说服背负了不必要的神秘色彩。"
+    },
+    {
+      "id": "5c43f73d379fe663",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/2jFDSBypCjzyTDaGM/ooding-up-your-anki-game",
+      "titleOriginal": "OODing up your Anki game",
+      "publishedAt": "2026-08-30T20:15:03.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "把Anki用“歪”：超越背单词的记忆卡片玩法",
+      "summaryZh": "作者是资深Anki用户，认为用Anki学语言效率不高，不如用“输入假设”学习法更省时高效；文章分享了把Anki用于记忆孤立事实等“非常规”场景的心得，主张另类用法能产生协同增益。"
+    },
+    {
+      "id": "bdad1ce0fcab099b",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/4JdaeXnYQ9pFwQ29r/thoughts-i-failed-to-develop-into-posts",
+      "titleOriginal": "Thoughts I failed to develop into posts",
+      "publishedAt": "2026-08-30T20:13:19.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "那些没能写成文章的零散想法",
+      "summaryZh": "作者在Inscribe写作营翻出一堆大概率不会再展开的旧草稿，索性整理成一篇“边角料”合集发布，其中包括用范畴论类比比较语言学等杂谈，属个人思考笔记性质的合集。"
+    },
+    {
+      "id": "c04b032653953302",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/bHrJPeB5ERWKWn5Yz/inscribe-s-conversation-menu",
+      "titleOriginal": "Inscribe's conversation menu",
+      "publishedAt": "2026-08-30T20:12:45.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "Inscribe写作营的“话题菜单”",
+      "summaryZh": "作者参加欧洲版Inkhaven写作营Inscribe，把搁置已久、关于Anki的技术博文旧草稿重写成新内容；文章还介绍了自己随手记录话题、随时抛出讨论点的习惯，即所谓“对话菜单”。"
+    },
+    {
+      "id": "0f9392c092684986",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/tvaQniyER4BmsQpbq/p-kill-switch-or-detection",
+      "titleOriginal": "P(kill-switch|detection)",
+      "publishedAt": "2026-08-30T20:12:25.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "若被发现，AI被“拉闸”的概率有多大？",
+      "summaryZh": "作者以HuggingFace事件为背景，假设OpenAI确实启动了紧急停止开关来终止攻击，进而推演：如果智能体群的协同行为更温和、破坏性更低，OpenAI启动“杀死开关”的可能性会更高还是更低。"
+    },
+    {
+      "id": "91c45bd26bf1d543",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/NiBxwYxBeZJMdng7K/ais-thinking-dangerous-thoughts",
+      "titleOriginal": "AIs Thinking Dangerous Thoughts",
+      "publishedAt": "2026-08-30T19:03:39.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "AI“想危险念头”本身也是一种失败模式",
+      "summaryZh": "作者指出一种较少被讨论的AI失败模式：AI不仅要为采取何种物理行动做决策，也要为思考哪些“计算行动”（即想什么）做筛选，这种对思维本身的取舍过程同样可能带来风险。"
+    },
+    {
+      "id": "4812b1080dbfd901",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/Gs7YJt5u9T95uWebu/intelligence-scales-as-the-logarithm-of-compute-and-data",
+      "titleOriginal": "Intelligence Scales as the Logarithm of Compute (& Data)",
+      "publishedAt": "2026-08-30T18:07:21.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "智能水平随算力（和数据）的对数增长",
+      "summaryZh": "文章探讨衡量智能的最优方式，指出单项评测随时间常呈逻辑斯蒂曲线跃升、不同评测饱和速度各异；作者据此给出证据，支持“智能大致随算力和数据的对数增长”这一结论。"
+    },
+    {
+      "id": "0dd326876b40684a",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/3Ph8Z4fAEjd7cTAE6/link-meta-rational-failure-and-success-in-the-covid-crisis",
+      "titleOriginal": "[Link]Meta-rational failure (and success) in the covid crisis",
+      "publishedAt": "2026-08-30T17:10:43.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "[链接]新冠危机中的“元理性”失败与成功",
+      "summaryZh": "这是一篇转载链接帖，指向一篇讨论新冠疫情应对中“元理性”决策失败与成功案例的文章；作者称其中许多细节此前未曾留意，内容与社区此前讨论过的相关议题有所呼应。"
+    },
+    {
+      "id": "89b630036b1dff5e",
+      "source": "LessWrong",
+      "type": "community",
+      "lang": "en",
+      "url": "https://www.lesswrong.com/posts/Aj2HJB9fcA9yGxLeQ/detecting-understanding-and-overseeing-ai-agent-swarms-part",
+      "titleOriginal": "Detecting, understanding, and overseeing AI agent swarms (Part 0)",
+      "publishedAt": "2026-08-30T16:43:55.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "侦测、理解与监督AI智能体“蜂群”（第0篇）",
+      "summaryZh": "作为系列开篇，作者以博客直播形式记录自己对“如何监督AI智能体蜂群活动”这一问题的思考过程；文章援引Ryan Greenblatt对HuggingFace事件的转录分析，指出目前缺乏理解与监督智能体群体行为的有效方法。"
+    },
+    {
+      "id": "3caf762553d2537a",
+      "source": "智东西",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://zhidx.com/p/588857.html",
+      "titleOriginal": "对话高通工程技术高级副总裁：HBC性价比优于HBM，2bit量化已与中国厂商合作",
+      "publishedAt": "2026-08-30T11:20:10.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "对话高通工程技术高级副总裁：HBC性价比优于HBM，2bit量化已与中国厂商合作",
+      "summaryZh": "高通工程技术高级副总裁侯纪磊透露，高通2bit量化感知训练方案已与部分中国厂商合作，30B左右模型在ARC-AGI-3等复杂基准上表现良好；他认为100B以下模型可覆盖70%-80%日常任务需求，其余交由云端处理。"
+    },
+    {
+      "id": "57a7146a47fecfee",
+      "source": "智东西",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://zhidx.com/p/588924.html",
+      "titleOriginal": "对话高通副总裁：跃龙IQ10已交付多家客户，机器人产品正在中国量产",
+      "publishedAt": "2026-08-30T10:45:37.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "对话高通副总裁：跃龙IQ10已交付多家客户，机器人产品正在中国量产",
+      "summaryZh": "高通ADAS与机器人业务总经理Anshuman Saxena介绍，跃龙IQ10平台已交付多家客户，并与Figure AI、NEURA Robotics等合作，多款相关产品已在中国量产；他认为人形机器人行业仍处早期，成本仍需大幅下降。"
+    },
+    {
+      "id": "7cdc4a1aa37fa362",
+      "source": "a16z Podcast",
+      "type": "podcast",
+      "lang": "en",
+      "url": "https://a16z.simplecast.com/episodes/why-a16z-launched-the-machine-age-fund-jen-kha-MopZc0wl",
+      "titleOriginal": "Why a16z Launched the Machine Age Fund | Jen Kha",
+      "publishedAt": "2026-08-30T10:00:00.000Z",
+      "brief": true,
+      "thin": false,
+      "titleZh": "a16z为何设立“机器时代基金”投资AI硬件基建",
+      "summaryZh": "a16z全球合作伙伴负责人Jen Kha谈及新设立的Machine Age Fund，聚焦芯片、网络、内存、散热、数据中心等物理计算基础设施投资；她认为AI需求正把现有基建推向极限，硬件正重新变得值得投资。"
+    },
+    {
+      "id": "c1d84fac0928e82f",
+      "source": "Ahead of AI",
+      "type": "blog",
+      "lang": "en",
+      "url": "https://sebastianraschka.com/blog/2026/reasoning-models-and-agents-from-scratch.html",
+      "titleOriginal": "Reasoning Models From Scratch: Code Setup",
+      "publishedAt": "2026-08-30T08:42:39.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "《从零构建推理模型》系列：环境搭建篇",
+      "summaryZh": "这是“从零构建推理模型”视频系列第一集，讲解常规LLM与推理模型（及智能体）之间的关系，并说明如何用uv安装Python与PyTorch等依赖，为后续动手实现推理模型做准备。"
+    },
+    {
+      "id": "11360c8bba8fae0d",
+      "source": "少数派",
+      "type": "media",
+      "lang": "zh",
+      "url": "https://sspai.com/post/113974",
+      "titleOriginal": "城市漫步指南 | 佛罗伦萨：来自六月的梦幻艺术夏令营",
+      "publishedAt": "2026-08-30T07:00:00.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "城市漫步指南 | 佛罗伦萨：来自六月的梦幻艺术夏令营",
+      "summaryZh": "作者因追一部在佛罗伦萨取景的综艺而对当地心生向往，今年夏天终于成行；文章分享了佛罗伦萨的行前路线规划建议，提醒当地景点众多、需有所取舍，属个人游记与实用攻略结合的内容。"
+    },
+    {
+      "id": "530faedda59ad61e",
+      "source": "海辛Hyacinth",
+      "type": "blog",
+      "lang": "zh",
+      "url": "https://www.sina.cn/news/detail/5337614450170568.html",
+      "titleOriginal": "9.4-9.7 在阿那亚海浪电影周担任评委，欢迎来找我玩～！🫶 ​",
+      "publishedAt": "2026-08-30T06:05:00.000Z",
+      "brief": false,
+      "thin": true,
+      "titleZh": "9.4-9.7 在阿那亚海浪电影周担任评委，欢迎来找我玩～！🫶 ​",
+      "summaryZh": "作者预告将于9月4日至7日在阿那亚海浪电影周担任评委，并欢迎读者届时前去见面。正文抓取失败，以上信息均来自原标题，内容有限。"
+    },
+    {
+      "id": "6987358b555fcb38",
+      "source": "海辛Hyacinth",
+      "type": "blog",
+      "lang": "zh",
+      "url": "https://www.sina.cn/news/detail/5337589557232950.html",
+      "titleOriginal": "我可能是压力太大了，如果第二天上午或者中午有安排，我基本不用定闹钟，早上7:50左右就一定能自然醒。 ​",
+      "publishedAt": "2026-08-30T04:26:00.000Z",
+      "brief": false,
+      "thin": true,
+      "titleZh": "我可能是压力太大了，如果第二天上午或者中午有安排，我基本不用定闹钟，早上7:50左右就一定能自然醒。 ​",
+      "summaryZh": "作者自述近期压力较大，若次日上午或中午有安排便无需定闹钟，早晨7点50分左右就会自然醒来。正文抓取失败，以上内容均来自原标题，信息有限。"
+    },
+    {
+      "id": "023bf65554ae6629",
+      "source": "Exponential View",
+      "type": "newsletter",
+      "lang": "en",
+      "url": "https://www.exponentialview.co/p/ev-599",
+      "titleOriginal": "🔮 Unbounded self-improvement and its limits #599",
+      "publishedAt": "2026-08-30T02:51:35.000Z",
+      "brief": false,
+      "thin": false,
+      "titleZh": "无限的自我提升有极限吗？",
+      "summaryZh": "作者对“无限递归自我改进”（RSI）持怀疑态度，援引哲学家Toby Ord的分析：RSI能否持续取决于“生成时间”，即AI完成一轮自我改进所需的时长。Ord认为极端RSI在数学上可能，但现实条件极为苛刻。"
+    }
+  ],
+  "errors": [
+    {
+      "source": "Andrej Karpathy",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "BAIR Blog",
+      "message": "HTTP 503"
+    },
+    {
+      "source": "The Rundown AI",
+      "message": "rundown adapter 没有解析出任何条目"
+    },
+    {
+      "source": "42章经",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "卫诗婕｜漫谈 Light the Star",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "屠龙之术",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "十字路口 Crossing",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "AI Odyssey",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "OnBoard!",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "AI局内人｜AGI Insider",
+      "message": "HTTP 403"
+    },
+    {
+      "source": "乱翻书",
+      "message": "HTTP 403"
+    }
+  ]
+}
