@@ -11,7 +11,7 @@ import { fetchSearchItems, isSearchSource } from '../lib/tinker/search-adapters.
 import { triage, titleKey } from '../lib/tinker/relevance.mjs';
 import { queriesForDate, rotatingQueries, CORE_QUERIES } from '../lib/tinker/vocab.mjs';
 import { planSeen } from '../lib/tinker/defer.mjs';
-import { readabilityLines } from '../lib/tinker/corpus.mjs';
+import { readabilityLines, samplingWindowLines } from '../lib/tinker/corpus.mjs';
 import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
 
 const SOURCES = 'tinker/sources.json';
@@ -476,6 +476,10 @@ async function main() {
   // 「今天有多少语料能给读正文的规则读」——评审时判「某条规则 0 命中」是模板变了
   // 还是根本没读到正文，靠的就是这几行。见 lib/tinker/corpus.mjs。
   for (const line of readabilityLines(unique)) console.log(line);
+  // 「这个源今天这一批覆盖了多长时间」——判一个源「没什么货」之前先看它的窗口有多宽。
+  // NodeSeek 21 分钟、iThome 327 分钟、博客园首页 12.8 小时都是这么量出来的，
+  // 前两次靠人手工量，这次交给机器。见 lib/tinker/corpus.mjs。
+  for (const line of samplingWindowLines(unique)) console.log(line);
   if (enrichSkipped) console.log(`补全熔断：${enrichMuted.join('、')} 探针窗口零产出，跳过 ${enrichSkipped} 个请求`);
   if (feedRetryAttempted) console.log(`抓取重试：${feedRetryAttempted} 个源，救回 ${feedRetried} 个`);
   const stillDeferred = Object.keys(plan.deferred).length;

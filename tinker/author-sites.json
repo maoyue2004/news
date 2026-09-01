@@ -324,9 +324,155 @@
     "author": "小狼183",
     "site": null,
     "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-23"
+  },
+  "v2ex:yyzyfish5": {
+    "platform": "v2ex",
+    "author": "yyzyfish5",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-24"
+  },
+  "v2ex:dongzhimin": {
+    "platform": "v2ex",
+    "author": "dongzhimin",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-24"
+  },
+  "juejin:掘金者阿豪": {
+    "platform": "juejin",
+    "author": "掘金者阿豪",
+    "site": null,
+    "github": null,
     "note": "搜索接口反查不到 user_id",
-    "checkedFrom": "2026-08-23",
+    "checkedFrom": "2026-08-24",
     "pending": true,
     "attempts": 1
+  },
+  "juejin:百工蜂Agent": {
+    "platform": "juejin",
+    "author": "百工蜂Agent",
+    "site": null,
+    "github": null,
+    "note": "搜索接口反查不到 user_id",
+    "checkedFrom": "2026-08-26",
+    "pending": true,
+    "attempts": 1
+  },
+  "juejin:子昕AI编程": {
+    "platform": "juejin",
+    "author": "子昕AI编程",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-26"
+  },
+  "juejin:BanShan_Alec": {
+    "platform": "juejin",
+    "author": "BanShan_Alec",
+    "site": null,
+    "github": null,
+    "note": "搜索接口反查不到 user_id",
+    "checkedFrom": "2026-08-26",
+    "pending": true,
+    "attempts": 1
+  },
+  "juejin:promiseThen": {
+    "platform": "juejin",
+    "author": "promiseThen",
+    "site": null,
+    "github": null,
+    "note": "搜索接口反查不到 user_id",
+    "checkedFrom": "2026-08-27",
+    "pending": true,
+    "attempts": 1
+  },
+  "v2ex:yuiffy": {
+    "platform": "v2ex",
+    "author": "yuiffy",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-28"
+  },
+  "v2ex:HeyMonkeyBro": {
+    "platform": "v2ex",
+    "author": "HeyMonkeyBro",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-28"
+  },
+  "v2ex:codingerj": {
+    "platform": "v2ex",
+    "author": "codingerj",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-28"
+  },
+  "juejin:小小顾同学": {
+    "platform": "juejin",
+    "author": "小小顾同学",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-29"
+  },
+  "juejin:TOTOROSIR": {
+    "platform": "juejin",
+    "author": "TOTOROSIR",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-08-29"
+  },
+  "juejin:word": {
+    "platform": "juejin",
+    "author": "word",
+    "site": null,
+    "github": null,
+    "note": "搜索接口反查不到 user_id",
+    "checkedFrom": "2026-08-29",
+    "pending": true,
+    "attempts": 1
+  },
+  "juejin:钟知了": {
+    "platform": "juejin",
+    "author": "钟知了",
+    "site": null,
+    "github": null,
+    "note": "搜索接口反查不到 user_id",
+    "checkedFrom": "2026-08-31",
+    "pending": true,
+    "attempts": 1
+  },
+  "juejin:张炯炯": {
+    "platform": "juejin",
+    "author": "张炯炯",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-09-02"
+  },
+  "v2ex:wxjback": {
+    "platform": "v2ex",
+    "author": "wxjback",
+    "site": "wxjback.com",
+    "github": "wxjback",
+    "note": null,
+    "checkedFrom": "2026-09-02"
+  },
+  "juejin:Evelyn_": {
+    "platform": "juejin",
+    "author": "Evelyn_",
+    "site": null,
+    "github": null,
+    "note": null,
+    "checkedFrom": "2026-09-02"
   }
 }

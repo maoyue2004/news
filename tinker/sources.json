@@ -2275,5 +2275,29 @@
     "kind": "blog",
     "enabled": true,
     "desc": "harvest 第八轮命中（4/20，本轮最高，一天前更新，span 2083 天）。「7天用Go从零实现Web框架/分布式缓存」那一系的作者，2026-08-20 起开了《从零实现 GeekAgent》：REPL 地基 → 工具调用循环 → Bash 工具 → 文件工具与注册表 → 历史压缩 → 多会话持久化 → TUI 与用量面板 → 权限与回滚 → 任务规划与子 Agent → 项目指令与长期记忆。抽 Day8 看过正文，是实现而不是概念科普（符号链接绕过目录隔离、未注册工具默认 deny、脱敏放在工具统一出口、只为真正发生的写入备份，还带「本章明确没做」和净增行数）。**风险注记**：标题是「Day N」编号体，每篇都会吃 SERIAL_TITLE 罚分；且它是连载教程的形状，LESSONS 里铁人赛那次量过「Day N 和教学连载强相关」。09-30 按留存标准复查一次：如果十来篇下来入围有、收录零，就按 BestBlogs 那条前移到规则层。"
+  },
+  {
+    "name": "博客园 · 罗西的思考",
+    "url": "https://www.cnblogs.com/rossiXYZ",
+    "feed": "https://www.cnblogs.com/rossiXYZ/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "创刊以来收录最多的博客园作者（9 篇，含 08-13 / 08-20 两篇 5 分），逐篇拆 OpenClaw / ZeroClaw / Hermes 的源码与调度。2026-09-02 接他自己的 feed，理由不是他写得多，是`博客园首页`那份全站 feed 固定 20 条、当天只跨 12.8 小时——我们每天只看得见博客园半天的产出，剩下半天里他发的一律看不见。近 20 篇 16 篇过 scoreItem()，span 46 天。"
+  },
+  {
+    "name": "博客园 · 一灰灰",
+    "url": "https://www.cnblogs.com/grey-wolf",
+    "feed": "https://www.cnblogs.com/grey-wolf/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "已收录 3 篇（08-09 / 08-29 / 08-30），写 Codex、CC Switch 这类工具的实际配置与用量账。同上，接子 feed 是为了绕开博客园首页那 12.8 小时的采样窗口。近 20 篇 6 篇过 scoreItem()，span 273 天。"
+  },
+  {
+    "name": "博客园 · 博睿编程日记",
+    "url": "https://www.cnblogs.com/borui-coding-diary",
+    "feed": "https://www.cnblogs.com/borui-coding-diary/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "08-28 收过一篇 5 分。近 13 篇 4 篇过 scoreItem()，span 227 天，选题集中在 Codex / OpenClaw / Cursor 的日常使用。同批接入，理由见「罗西的思考」。"
   }
 ]
