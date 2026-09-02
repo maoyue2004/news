@@ -86,6 +86,45 @@ test('WebMCP 是独立话题，不是 MCP 的一段', () => {
   assert.ok(matchTopics('搭一个 web mcp 服务').includes('mcp'));
 });
 
+test('RAG 是话题，但被别人的名字包住时不算', () => {
+  // 2026-09-03 补：表里一直有 agent-memory（记忆）却没有检索这一半，
+  // 罗西那篇「ZeroClaw 源码阅读笔记（3）--- RAG」一个话题词都挂不上。
+  assert.ok(matchTopics('【OpenClaw具身硬件】ZeroClaw 源码阅读笔记（3）--- RAG').includes('rag'));
+  assert.ok(matchTopics('把检索增强生成接进 agent 的记忆层').includes('rag'));
+  // 三字母裸词靠词边界活着：内嵌在别的单词里一律不算。
+  assert.ok(!matchTopics('dragon storage 的分片策略').includes('rag'));
+  // RAGFlow / GraphRAG 两侧都是拉丁字母，词边界本来就挡住了，不用 not 遮罩。
+  assert.ok(!matchTopics('RAGFlow 的切分策略怎么调').includes('rag'));
+  assert.ok(!matchTopics('GraphRAG 建图要多久').includes('rag'));
+  // 四字的「检索增强」不收：中文没有词边界，正常语序会命中。
+  assert.ok(!matchTopics('把检索增强一下就快了').includes('rag'));
+});
+
+test('只打标签不给分的词条：标签照挂，但不能单靠它进名单', () => {
+  // 2026-09-03：`rag` 的标签是要的（罗西那篇通篇拆 RAG 管线），
+  // 分是不能给的——离线重放里越过入围线的 3 条全是噪声。
+  // 标签这一侧：matchVocab 一个都不滤。
+  assert.ok(matchVocab('ZeroClaw 的 RAG 管线').topics.includes('rag'));
+  // 打分这一侧：只命中 rag、别的 agent 词一个都没有 → 不该当成「这篇在讲 agent」。
+  const only = scoreItem({
+    title: '手把手做一个图 RAG 问答系统：Neo4j + Milvus 的工程实践',
+    excerpt: '把文档切块、算向量、建图，然后调参。'.repeat(30),
+    kind: 'blog',
+  });
+  assert.equal(only.verdict, 'reject');
+  assert.equal(only.reasons[0], '没有命中任何 agent 相关词');
+  // 但标签仍然要留在结果里，页面才挂得上。
+  assert.ok(only.topics.includes('rag'));
+  // 同时命中真正的 agent 词时照常入围，rag 只是不额外加分。
+  const withAgent = scoreItem({
+    title: '我拆了 ZeroClaw 的两套 RAG：HardwareRag 纯关键词，Memory 走三阶段',
+    excerpt: '读了一周源码，把入库和检索两条流水线逐段记下来。'.repeat(30),
+    kind: 'blog',
+  });
+  assert.equal(withAgent.verdict, 'shortlist');
+  assert.ok(withAgent.topics.includes('rag'));
+});
+
 test('多智能体协作是独立话题，但「更多 agent」不算', () => {
   // 2026-08-31：subagent 说的是「一个 agent 派出去的下级」，
   // 这一条说的是几个对等 agent 怎么把同一个目标兜起来。
@@ -513,6 +552,41 @@ test('没有薪资数字的招聘帖也要毙掉', () => {
   });
   assert.equal(stack.verdict, 'reject');
   assert.ok(stack.reasons.includes('招聘 / 接单帖'));
+});
+
+test('标题不招供的招聘帖，靠正文里的 JD 表单结构毙掉', () => {
+  // 2026-09-03：V2EX「AI 工作流工程师/高级 GO/后端---Remote」拿 6 分占了一个入围席位。
+  // 标题里既没有「招」也没有薪资数字，两条只吃标题的判据一条都不命中，
+  // 而正文是一份齐整的 JD。判据换成 JD 的固定小标题，且要命中两个不同的才算。
+  const jd = scoreItem({
+    title: 'AI 工作流工程师/高级 GO/后端---Remote',
+    excerpt: 'AI 工作流工程师 25k-38k 业务方向：在线视频 · 交友 · 出海社交。'
+      + '📌 岗位职责 1. 参与用户体系、视频播放、互动聊天等核心业务模块建设。'
+      + '2. 参与 AI 工作流与 Agent 编排能力的工程化建设，包括流程配置、多模型串联、工具调用。'
+      + '🎯 任职要求 1. 本科及以上学历，5 年以上开发经验。2. 熟练掌握 Go 语言。',
+    thread: true,
+  });
+  assert.equal(jd.verdict, 'reject');
+  assert.ok(jd.reasons.includes('招聘 / 接单帖'));
+
+  // 只命中一个小标题不算——门槛是 2 个，理由是 JOB 硬毙、代价不对称。
+  // 一篇讲「agent 会不会顶掉某个岗位」的正经文章顺口写一次「岗位职责」是可能的。
+  const oneHeading = scoreItem({
+    title: '我让 Claude Code 照着岗位职责写团队规范，然后自己推翻了',
+    excerpt: '把岗位职责那一段丢给 agent 之后踩了几个坑，记录一下实际怎么改的。'.repeat(20),
+    kind: 'blog',
+  });
+  assert.equal(oneHeading.verdict, 'shortlist');
+
+  // JD 的「任职要求」常压在最后，而 excerpt 截在 2500 字符——判据要连 tail 一起读。
+  const inTail = scoreItem({
+    title: 'Go 后端 + Agent 方向',
+    excerpt: `团队在用 Claude Code 做 agent 编排。${'岗位职责：负责服务端开发。'.repeat(40)}`,
+    tail: '任职要求：五年以上经验，熟悉 MCP 与多模型串联。',
+    thread: true,
+  });
+  assert.equal(inTail.verdict, 'reject');
+  assert.ok(inTail.reasons.includes('招聘 / 接单帖'));
 });
 
 test('单边薪资的招聘帖要毙掉，但 token / 上下文的数字区间不能误伤', () => {

@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { collectRaw } from '../lib/tinker/collect.mjs';
 import { searchJuejin, searchV2ex, searchDiscourse, searchSegmentFault, searchVocus, vocusTagsFor, fetchSearchItems } from '../lib/tinker/search-adapters.mjs';
-import { declaredFeeds, candidateFeedUrls, gradeFeed } from '../lib/tinker/probe.mjs';
+import { declaredFeeds, candidateFeedUrls, gradeFeed, normalizeCandidateUrl } from '../lib/tinker/probe.mjs';
 import { buildHtml, validate, summaryLengthReport, SUMMARY_MIN, SUMMARY_MAX } from '../scripts/tinker-build.mjs';
 import { needsEnrich, enrich, fetchAllSources, threadBodyHtml } from '../scripts/tinker-fetch.mjs';
 
@@ -212,6 +212,21 @@ test('candidateFeedUrls 同时试子路径和站点根', () => {
   const urls = candidateFeedUrls('https://e.com/blog/');
   assert.ok(urls.includes('https://e.com/blog/feed'));
   assert.ok(urls.includes('https://e.com/feed'));
+});
+
+test('裸域名的候选站点要补上 scheme 才探得动', () => {
+  // 2026-09-03：`tinker-authorsites.mjs` 从 profile 接口拿到的 website 字段是裸域名，
+  // 照原样写进 candidates.txt；探测脚本交给 new URL() 就报「Failed to parse URL」，
+  // 而这行字和「这个站探不出 feed」长得一模一样——那个候选从来没被真的探过一次。
+  assert.equal(normalizeCandidateUrl('wxjback.com'), 'https://wxjback.com');
+  assert.equal(normalizeCandidateUrl('  example.com/blog/  '), 'https://example.com/blog/');
+  // 已经带 scheme 的一个字符都不许改（http 不能被悄悄升级成 https）
+  assert.equal(normalizeCandidateUrl('https://e.com/'), 'https://e.com/');
+  assert.equal(normalizeCandidateUrl('http://e.com/'), 'http://e.com/');
+  assert.equal(normalizeCandidateUrl(''), '');
+  // 补完之后 candidateFeedUrls 真的能吐出候选（补之前它 catch 住返回空数组）
+  assert.equal(candidateFeedUrls('wxjback.com').length, 0);
+  assert.ok(candidateFeedUrls(normalizeCandidateUrl('wxjback.com')).length > 0);
 });
 
 test('gradeFeed 把解析出 0 条的 feed 判为不可用', () => {

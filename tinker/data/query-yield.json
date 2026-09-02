@@ -1,44 +1,44 @@
 {
   "Claude Code 实践": {
-    "runs": 29,
-    "items": 273,
-    "shortlisted": 80,
-    "lastRun": "2026-09-02",
-    "lastShortlist": "2026-09-02"
+    "runs": 30,
+    "items": 281,
+    "shortlisted": 84,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "Claude Code 踩坑": {
-    "runs": 29,
-    "items": 112,
+    "runs": 30,
+    "items": 117,
     "shortlisted": 23,
-    "lastRun": "2026-09-02",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-08-31"
   },
   "Codex CLI 体验": {
-    "runs": 29,
-    "items": 133,
+    "runs": 30,
+    "items": 139,
     "shortlisted": 34,
-    "lastRun": "2026-09-02",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-09-01"
   },
   "Cursor 工作流": {
-    "runs": 29,
-    "items": 63,
+    "runs": 30,
+    "items": 67,
     "shortlisted": 19,
-    "lastRun": "2026-09-02",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-09-02"
   },
   "AI 编程 踩坑": {
-    "runs": 29,
-    "items": 162,
+    "runs": 30,
+    "items": 166,
     "shortlisted": 12,
-    "lastRun": "2026-09-02",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-08-30"
   },
   "agent 编程 心得": {
-    "runs": 29,
-    "items": 82,
+    "runs": 30,
+    "items": 86,
     "shortlisted": 12,
-    "lastRun": "2026-09-02",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-09-02"
   },
   "Augment Code 踩坑": {
@@ -133,10 +133,10 @@
     "lastShortlist": "2026-08-04"
   },
   "文心快码 实践": {
-    "runs": 3,
+    "runs": 4,
     "items": 2,
     "shortlisted": 0,
-    "lastRun": "2026-08-10",
+    "lastRun": "2026-09-03",
     "lastShortlist": null
   },
   "文心快码 踩坑": {
@@ -259,10 +259,10 @@
     "lastShortlist": null
   },
   "Genspark 体验": {
-    "runs": 4,
-    "items": 1,
+    "runs": 5,
+    "items": 2,
     "shortlisted": 0,
-    "lastRun": "2026-08-26",
+    "lastRun": "2026-09-03",
     "lastShortlist": null
   },
   "n8n 实践": {
@@ -343,11 +343,11 @@
     "lastShortlist": "2026-08-25"
   },
   "OpenClaw 体验": {
-    "runs": 4,
-    "items": 9,
-    "shortlisted": 3,
-    "lastRun": "2026-08-27",
-    "lastShortlist": "2026-08-27"
+    "runs": 5,
+    "items": 11,
+    "shortlisted": 4,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "NanoClaw 实践": {
     "runs": 4,
@@ -441,10 +441,10 @@
     "lastShortlist": "2026-09-02"
   },
   "Continue.dev 体验": {
-    "runs": 4,
-    "items": 8,
+    "runs": 5,
+    "items": 16,
     "shortlisted": 0,
-    "lastRun": "2026-08-21",
+    "lastRun": "2026-09-03",
     "lastShortlist": null
   },
   "Augment Code 实践": {
@@ -525,10 +525,10 @@
     "lastShortlist": "2026-09-02"
   },
   "ChatGPT Desktop 体验": {
-    "runs": 1,
-    "items": 12,
+    "runs": 2,
+    "items": 25,
     "shortlisted": 1,
-    "lastRun": "2026-08-08",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-08-08"
   },
   "Flowith 实践": {
@@ -581,10 +581,10 @@
     "lastShortlist": "2026-09-02"
   },
   "Aider 使用": {
-    "runs": 2,
+    "runs": 3,
     "items": 3,
     "shortlisted": 0,
-    "lastRun": "2026-08-27",
+    "lastRun": "2026-09-03",
     "lastShortlist": null
   },
   "OpenCode 体验": {
@@ -665,10 +665,10 @@
     "lastShortlist": "2026-08-27"
   },
   "Qwen Code 使用": {
-    "runs": 3,
-    "items": 34,
+    "runs": 4,
+    "items": 42,
     "shortlisted": 0,
-    "lastRun": "2026-08-28",
+    "lastRun": "2026-09-03",
     "lastShortlist": null
   },
   "OpenClaw 折腾": {
@@ -742,11 +742,11 @@
     "lastShortlist": null
   },
   "上下文工程 实践": {
-    "runs": 3,
-    "items": 36,
-    "shortlisted": 2,
-    "lastRun": "2026-08-29",
-    "lastShortlist": "2026-08-29"
+    "runs": 4,
+    "items": 46,
+    "shortlisted": 3,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "agent 记忆 方案": {
     "runs": 3,
@@ -826,11 +826,11 @@
     "lastShortlist": "2026-08-29"
   },
   "AI 写代码 翻车": {
-    "runs": 3,
-    "items": 24,
-    "shortlisted": 3,
-    "lastRun": "2026-08-18",
-    "lastShortlist": "2026-08-18"
+    "runs": 4,
+    "items": 54,
+    "shortlisted": 5,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "agent 失控": {
     "runs": 3,
@@ -910,10 +910,10 @@
     "lastShortlist": null
   },
   "Qwen Code 实践": {
-    "runs": 3,
-    "items": 15,
+    "runs": 4,
+    "items": 30,
     "shortlisted": 0,
-    "lastRun": "2026-08-19",
+    "lastRun": "2026-09-03",
     "lastShortlist": null
   },
   "Qwen Code 踩坑": {
@@ -994,10 +994,10 @@
     "lastShortlist": null
   },
   "Windsurf 踩坑": {
-    "runs": 3,
-    "items": 3,
+    "runs": 4,
+    "items": 14,
     "shortlisted": 1,
-    "lastRun": "2026-08-20",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-08-13"
   },
   "Cline 实践": {
@@ -1043,11 +1043,11 @@
     "lastShortlist": "2026-09-02"
   },
   "AI 整理 资料 工作流": {
-    "runs": 2,
-    "items": 35,
-    "shortlisted": 4,
-    "lastRun": "2026-08-19",
-    "lastShortlist": "2026-08-19"
+    "runs": 3,
+    "items": 62,
+    "shortlisted": 7,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "Devin 体验": {
     "runs": 2,
@@ -1106,11 +1106,11 @@
     "lastShortlist": "2026-08-18"
   },
   "MCP 怎么用": {
-    "runs": 1,
-    "items": 5,
-    "shortlisted": 1,
-    "lastRun": "2026-08-18",
-    "lastShortlist": "2026-08-18"
+    "runs": 2,
+    "items": 31,
+    "shortlisted": 5,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "MEMORY.md 实践": {
     "runs": 2,
@@ -1120,11 +1120,11 @@
     "lastShortlist": "2026-08-18"
   },
   "Agent 记忆 怎么用": {
-    "runs": 1,
-    "items": 1,
-    "shortlisted": 0,
-    "lastRun": "2026-08-18",
-    "lastShortlist": null
+    "runs": 2,
+    "items": 22,
+    "shortlisted": 4,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "规划模式 怎么用": {
     "runs": 2,
@@ -1169,10 +1169,10 @@
     "lastShortlist": "2026-08-28"
   },
   "Claudian 实践": {
-    "runs": 1,
+    "runs": 2,
     "items": 1,
     "shortlisted": 1,
-    "lastRun": "2026-08-19",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-08-19"
   },
   "Agent-Reach 体验": {
@@ -1204,11 +1204,11 @@
     "lastShortlist": null
   },
   "Graph Engineering 实践": {
-    "runs": 1,
-    "items": 6,
-    "shortlisted": 0,
-    "lastRun": "2026-08-19",
-    "lastShortlist": null
+    "runs": 2,
+    "items": 10,
+    "shortlisted": 1,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "Claude Code subagent": {
     "runs": 1,
@@ -1225,11 +1225,11 @@
     "lastShortlist": "2026-08-20"
   },
   "Gemini CLI 踩坑": {
-    "runs": 1,
-    "items": 0,
-    "shortlisted": 0,
-    "lastRun": "2026-08-20",
-    "lastShortlist": null
+    "runs": 2,
+    "items": 7,
+    "shortlisted": 2,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   },
   "DeepSeek Harness 体验": {
     "runs": 2,
@@ -1246,10 +1246,10 @@
     "lastShortlist": null
   },
   "DeepAgents 实践": {
-    "runs": 1,
-    "items": 13,
+    "runs": 2,
+    "items": 16,
     "shortlisted": 5,
-    "lastRun": "2026-08-20",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-08-20"
   },
   "子智能体 怎么用": {
@@ -1652,10 +1652,10 @@
     "lastShortlist": "2026-08-26"
   },
   "Agent Harness 实践": {
-    "runs": 1,
-    "items": 6,
+    "runs": 2,
+    "items": 7,
     "shortlisted": 3,
-    "lastRun": "2026-08-26",
+    "lastRun": "2026-09-03",
     "lastShortlist": "2026-08-26"
   },
   "Claude Code 工作流": {
@@ -1827,10 +1827,10 @@
     "lastShortlist": "2026-08-29"
   },
   "SOUL.md 怎么用": {
-    "runs": 1,
-    "items": 4,
+    "runs": 2,
+    "items": 5,
     "shortlisted": 0,
-    "lastRun": "2026-08-29",
+    "lastRun": "2026-09-03",
     "lastShortlist": null
   },
   "Agent 记忆 实践": {
@@ -1860,5 +1860,26 @@
     "shortlisted": 0,
     "lastRun": "2026-09-02",
     "lastShortlist": null
+  },
+  "Docker Sandboxes 实践": {
+    "runs": 1,
+    "items": 3,
+    "shortlisted": 2,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
+  },
+  "Prime Agent 踩坑": {
+    "runs": 1,
+    "items": 1,
+    "shortlisted": 1,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
+  },
+  "ZCode 实践": {
+    "runs": 1,
+    "items": 17,
+    "shortlisted": 2,
+    "lastRun": "2026-09-03",
+    "lastShortlist": "2026-09-03"
   }
 }

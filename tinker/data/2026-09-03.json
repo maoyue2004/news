@@ -1,0 +1,169 @@
+{
+  "date": "2026-09-03",
+  "generatedAt": "2026-09-02T22:29:21.903Z",
+  "dailyNote": "今天名单被两类东西压着：厂商的 Agent 记忆软文（PolarDB-X 一家三条，博客园还有一条百智云）和掘金那 175 条只剩标题的条目，后者第四天补全熔断，一条都没法核实，一律没收。真正的收获在两个「摸边界」的稿子上——Docker Sandboxes 那两篇把云 metadata 端点默认被拒、以及 sbx secret 和 sandbox-persistent.sh 是两种信任模型量了出来，先读网络策略那篇。另一头是 V2EX 那条烧掉 100 刀的多 agent 复盘：它形状最不体面，却是今天唯一一篇写清楚「照搬人类团队流程」贵在哪的。毙掉的里面有两条可惜的——skill 软链接管理器和 dsh 的 Discord 适配器，两篇的踩坑都是真的，但结尾都落在「装一下试试」。",
+  "items": [
+    {
+      "id": "510a06ee5d486258",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048196158",
+      "titleOriginal": "Docker Sandboxes 的网络策略：balanced 挡住了什么，怎么放行一条例外",
+      "publishedAt": "2026-08-24T01:15:04.000Z",
+      "author": "",
+      "preScore": 9,
+      "titleZh": "Docker Sandboxes 的网络策略：balanced 挡住了什么，怎么放行一条例外",
+      "whyRead": "balanced 不是「基本全开」——云平台那个回答「我是谁、我的凭证是什么」的 metadata 端点默认就在拒绝名单里。",
+      "summaryZh": "作者把 Docker Sandboxes 三档网络预设里居中的 balanced 摊开量了一遍：初始化后本机生成 197 条 allow 规则，覆盖模型 API、PyPI、npm、GitHub 和容器 Registry；但默认拒绝的那一半更值得看——宿主机 localhost 直接连不上（curl 返回 000）、example.com 是 403，局域网私有地址、VS Code 与微软的遥测域名，以及云平台通用的 metadata 端点 169.254.169.254 和 metadata.google.internal 全部走 default deny。排查用 sbx policy log，同一个域名会出现两条，一条是 HTTP 层被 403、一条是 DNS 查询本身被切断；放行用 sbx policy allow network --sandbox <name> <host>，立刻生效不必重启。还有一条提醒：kit 会额外加规则，他机器上几个 OpenCode sandbox 各自多一条 kit 的 allow，不算在全局那 197 条里。",
+      "rating": 5,
+      "tools": [
+        "docker-sandboxes",
+        "opencode"
+      ],
+      "topics": []
+    },
+    {
+      "id": "549b646ad222b439",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/rossiXYZ/p/22764207",
+      "titleOriginal": "【OpenClaw具身硬件】ZeroClaw 源码阅读笔记（3）--- RAG - 罗西的思考",
+      "publishedAt": "2026-09-02T13:36:00.000Z",
+      "author": "",
+      "preScore": 9,
+      "titleZh": "ZeroClaw 源码笔记（3）：一个项目里两套 RAG，一套连 embedding 都不要",
+      "whyRead": "硬件数据手册的检索为什么不上向量，作者把这笔省下来的账逐条算给你看。",
+      "summaryZh": "读 ZeroClaw（100% Rust 的具身硬件 AI 框架）源码的第三篇，主题是检索层。第一个发现是项目里其实有两套互不调用的 RAG：HardwareRag 在 src/rag/mod.rs，负责把硬件数据手册切块、解析引脚别名再注入系统提示，纯关键词词频加开发板加分，不带 embedding；Memory 检索管线在 src/memory/，管对话和知识，走 cache → FTS5 → vector 三阶段，embedding 默认是 Noop。工程取舍逐条列了出来：数据手册只有几十到几百个 chunk，关键词够用，省掉启动时跑 embedding 的开销；三阶段按 cache 命中 0ms、FTS 毫秒级、向量几十到几百毫秒排序，先便宜后贵，BM25 已经很高时早停跳过向量；chunker 两边共用，512 token 按标题分段、段落兜底。还点出文件注释写着「可选语义检索」，而 embedding 那条路径在当前代码里并未实现。",
+      "rating": 4,
+      "tools": [
+        "openclaw",
+        "zeroclaw"
+      ],
+      "topics": [
+        "rag",
+        "agent-memory"
+      ]
+    },
+    {
+      "id": "8d2f79cd3c0e0baf",
+      "source": "极客兔兔",
+      "kind": "blog",
+      "url": "https://geektutu.com/post/geekagent-day15.html",
+      "titleOriginal": "从零实现 GeekAgent —— Day15 MCP 工具接入",
+      "publishedAt": "2026-09-02T10:00:00.000Z",
+      "author": "",
+      "preScore": 12,
+      "titleZh": "从零实现 GeekAgent Day15：接 MCP 客户端，顺便说清它和 Skills 差在哪",
+      "whyRead": "Skills 和 MCP 看着都在给 agent 加工具，作者用一张表说清了两者根本不在同一层。",
+      "summaryZh": "从零写 agent 系列的第 15 天，接 MCP 客户端。开篇先拆一个容易混的问题：Day 11 的 Skills 和 MCP 都会改变模型看到的工具清单，但 Skill 是按任务组织目录里已经写明的指令和本地工具，MCP 是连上 server 之后调 tools/list 现问「你有哪些工具」——一个事先知道，一个握手后才知道，所以 server 能独立于 agent 增删工具。实现只走 stdio 传输（Node 的 spawn 起子进程，不碰 OAuth 和远程 HTTP），server 返回的工具按 mcp_<服务名>_<工具名> 注册进 Day 4 那张表，沿用 Day 8 的权限策略默认每次询问。当天源码新增 314 行、删除 3 行，其中 52 行是用来验证协议的教学 server。结尾「没做什么」一节把边界交代得很干净：不接 resources / prompts / sampling，不处理工具热更新和断线重连，server 崩了要重启 agent。",
+      "rating": 4,
+      "tools": [],
+      "topics": [
+        "mcp",
+        "skills"
+      ]
+    },
+    {
+      "id": "06dbd7f2bd3db0c1",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/ahfuzhang/p/22807976",
+      "titleOriginal": "体验向量数据库 qdrant - ahfuzhang",
+      "publishedAt": "2026-09-02T07:37:00.000Z",
+      "author": "",
+      "preScore": 8,
+      "titleZh": "给百万行祖传 C# 建知识库：换掉 weaviate 之前，先看看 codex 到底在用什么检索",
+      "whyRead": "问答助手又慢又差，查下去发现 agent 一直在跑 BM25——因为文档导入时压根没算向量。",
+      "summaryZh": "作者想靠一个企业知识库快速摸清公司百万行 C# 祖传代码，第一版用 weaviate，做出来的问答助手又慢、结果又差；顺着思考过程查下去才发现 codex 是在 weaviate 里用 BM25 检索的——因为他图导入方便把整份文档直接塞了进去，没有先为文档计算向量。换成 qdrant 之后查询速度和质量都明显好转。部署细节给得很全：qdrant v1.15.4 的 docker 跑法（6333 是 http、6334 是 grpc，用 QDRANT__SERVICE__API_KEY 设 key），官方 mcp-server-qdrant 没有现成镜像要自己 clone 了 build，靠内置 FastEmbed 下 BAAI/bge-small-zh-v1.5 算中文向量。他还点出这个官方 MCP 服务的两个问题：不校验 API KEY，部署完等于拿 qdrant 的 key 裸奔；每次启动都重新下模型。两处他都 fork 修了并放出了镜像。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [
+        "mcp",
+        "rag"
+      ]
+    },
+    {
+      "id": "d247af0bbf5cdfce",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "url": "https://www.v2ex.com/t/1238942#reply44",
+      "titleOriginal": "5X 的 Codex 一天半烧完了，晒晒我的智障多 agent 工作流",
+      "publishedAt": "2026-09-02T07:16:15.000Z",
+      "author": "",
+      "preScore": 13,
+      "titleZh": "照大厂流程给五个 agent 排班，100 刀一天半烧完，返工一点没少",
+      "whyRead": "把人类团队那套需求评审验收原样搬给 agent，钱是怎么烧掉的这篇写得很具体。",
+      "summaryZh": "一篇很诚实的失败复盘。作者充了 100 刀 codex，一个项目里塞了产品、测试、运营、后端、桌面端五个 agent，想把流程做得正规一点：需求先丢给运营 agent 调研，产品出方案，测试写用例，齐了后端和桌面端才开始写代码；写完还要挨个过审——测试审一遍、产品审一遍、UI 审一遍、UX 再单独审一遍，UI 和 UX 他当时还拆成了两个 agent。结果这几个 agent 审起来一个比一个能说，「不符合用户心智」「交互路径太长」「边界情况没覆盖」，而它们提的问题最后基本都得他自己动手改：返工没少，他还多了个给 agent 当裁判的活儿。钱主要烧在上下文上，每个 agent 都得喂历史记录，一次几百条 message，光对齐需求就来回好几轮。一天半烧完，项目卡在半路，他自己给出的三个疑问是：到底是这套官僚流程本身有病，是该让 agent 并行干而不是串行开会，还是单纯额度买少了。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [
+        "multi-agent"
+      ]
+    },
+    {
+      "id": "2e0874dc3b9f1041",
+      "source": "方格子 vocus 标签",
+      "kind": "search",
+      "url": "https://vocus.cc/article/6a90dd20fd8978000192fd24",
+      "titleOriginal": "🚀 從 AI 對話到 Todoist 任務建立一條龍！MCP 與 n8n 方法解析與差異比較",
+      "publishedAt": "2026-08-29T12:30:38.823Z",
+      "author": "",
+      "preScore": 10,
+      "titleZh": "同一件事用 n8n 和 MCP 各做一遍：决定成败的却是中间那份「规格书」",
+      "whyRead": "四个灾难都是她自己撞出来的，每一个的解法都落在规格书的一个字段上。",
+      "summaryZh": "把和 AI 讨论出来的目标自动写进 Todoist，作者 n8n 和 Todoist 官方 MCP 两条路都走了一遍，结论是工具怎么换都不是重点，重点是先和 AI 约好一份「规格书」——它的作用不是让 AI 变聪明，而是让产出在真正写进清单之前能被人扫一眼检查。四个灾难都是她自己撞出来的：AI 把「这一季把电子报做起来」整个塞进一条待办的标题，解法是在规格书里定死标题 15 字上限，逼着规划阶段就把事情拆开；增肌计划里一週七天乘四餐，被照字面转成 28 条重复提醒；一次送 3 笔任务 1 成 2 败，工具的逻辑是「能建的先建」而不是整批退回，30 笔的计划建到第 17 笔中断就留下一半半成品；以及 AI 悄悄替她把训练时间预设在晚上七点，解法是加一个 assumptions 栏位，强制它列出所有自行补充的细节。",
+      "rating": 4,
+      "tools": [
+        "n8n"
+      ],
+      "topics": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "43cc2f1c9182dec2",
+      "source": "SegmentFault 搜索",
+      "kind": "search",
+      "url": "https://segmentfault.com/a/1190000048184905",
+      "titleOriginal": "Docker Sandboxes 的凭证：host 代理转发，不进 microVM",
+      "publishedAt": "2026-08-21T00:36:45.000Z",
+      "author": "",
+      "preScore": 8,
+      "titleZh": "Docker Sandboxes 的凭证：Agent 看到的 API Key 是假的，你手写的那个是真的",
+      "whyRead": "同一个 sandbox 里两种信任模型并存，而把它们混用的那条路径正是官方文档教你走的。",
+      "summaryZh": "同一个实测系列里讲凭证隔离这一层。sbx secret 存的 API Key 从不进 microVM：sandbox 里 env 打出来的 ANTHROPIC_API_KEY、OPENAI_API_KEY 一律是固定哨兵值 proxy-managed，GH_TOKEN 是 redacted:gho_... 这种假串，真实请求由宿主机侧代理拿真 Key 签名后转发出去。例外是官方给的那条自定义变量路径——手动 echo 进 /etc/sandbox-persistent.sh 的值是明文，直接躺在 VM 文件系统里；而且 sbx exec <name> <cmd> 不起登录 shell 也就读不到它，要包一层 bash -c 才读得到，这不是 bug 是 sbx exec 本来就不保证。SSH 走另一条路：SSH_AUTH_SOCK 被转发进去，ssh-add -l 能列出宿主机上真实的私钥指纹和路径，agent 拿它签名没问题，但 ~/.ssh 和 /Users 在 sandbox 里根本不存在——能用，摸不到。",
+      "rating": 4,
+      "tools": [
+        "docker-sandboxes"
+      ],
+      "topics": [
+        "mcp"
+      ]
+    }
+  ],
+  "reviewed": 37,
+  "dropped": 30,
+  "stats": {
+    "sources": 283,
+    "fetched": 487,
+    "shortlisted": 37,
+    "rejected": 450,
+    "thin": 241,
+    "enriched": 51,
+    "enrichAttempted": 237,
+    "enrichRetryAttempted": 186,
+    "enrichRetried": 0,
+    "enrichSkipped": 270,
+    "enrichMuted": [
+      "掘金搜索"
+    ],
+    "failedSources": 0,
+    "feedRetryAttempted": 3,
+    "feedRetried": 3
+  },
+  "errors": []
+}

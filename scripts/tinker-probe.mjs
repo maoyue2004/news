@@ -4,18 +4,25 @@
 //   node scripts/tinker-probe.mjs --file candidates.txt
 //   node scripts/tinker-probe.mjs --json            （探测 tinker/candidates.json 里 status=new 的项）
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { probeSite } from '../lib/tinker/probe.mjs';
+import { probeSite, normalizeCandidateUrl } from '../lib/tinker/probe.mjs';
 
 const CANDIDATES = 'tinker/candidates.json';
 const CONCURRENCY = 6;
 
 function urlsFromArgs(argv) {
-  if (argv[0] === '--file') return readFileSync(argv[1], 'utf8').split('\n').map((s) => s.trim()).filter((s) => s && !s.startsWith('#'));
+  if (argv[0] === '--file') {
+    return readFileSync(argv[1], 'utf8').split('\n')
+      .map((s) => s.trim())
+      .filter((s) => s && !s.startsWith('#'))
+      .map(normalizeCandidateUrl);
+  }
   if (argv[0] === '--json') {
     if (!existsSync(CANDIDATES)) return [];
-    return JSON.parse(readFileSync(CANDIDATES, 'utf8')).filter((c) => c.status === 'new').map((c) => c.url);
+    return JSON.parse(readFileSync(CANDIDATES, 'utf8'))
+      .filter((c) => c.status === 'new')
+      .map((c) => normalizeCandidateUrl(c.url));
   }
-  return argv.filter(Boolean);
+  return argv.filter(Boolean).map(normalizeCandidateUrl);
 }
 
 async function mapConcurrent(values, n, fn) {

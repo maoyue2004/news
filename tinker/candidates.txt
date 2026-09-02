@@ -57,7 +57,18 @@ https://lonepatient.top/
 # 非平台域名。探测无 feed，不进 sources.json，也不进 denylist——它不是被否掉的，
 # 是今天探不出东西。URL 照例留着，免得从作者个人站那条通道再被提名一遍。
 https://yuluyao.com/
-wxjback.com
+# （上面那行 09-02 写的裸域名已移到文件末尾并补上 scheme）
 https://wooxin.github.io/
 https://deep-learning-101.github.io/
 https://www.fghrsh.net/
+
+# 2026-09-03 日更：WebSearch 撞到 zh.pipecraft.net/blog-collections/——简中圈的「名录的名录」，
+# 一页列着 14 个独立博客名录（形状同 08-27 那个繁中的 blogblog.club/blogrollroll）。
+# 逐个探了六个，只有 BlogFinder 有 feed：166 条、当天更新、跨 67.8 小时，
+# 但内容是整个简中独立博客圈的流水（25 条里 1 条沾 AI），**不接日更源**——
+# 留给周更 harvest 当索引用，它每天供几百个不同的个人域名。
+# 其余五个：dto / jukebox 无法识别 feed 格式，blog.bj、seekbetter.me 连不上，park.xdbin.com 503。
+https://bf.zzxworld.com/feed.xml
+# wxjback.com 09-02 记的「两轮 502」是假账：探测脚本读不动裸域名（已修）。
+# 今天带 scheme 真探了一次，仍然没有 feed。不进 denylist——不够格 ≠ 被否决。
+https://wxjback.com/
