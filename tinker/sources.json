@@ -2299,5 +2299,21 @@
     "kind": "blog",
     "enabled": true,
     "desc": "08-28 收过一篇 5 分。近 13 篇 4 篇过 scoreItem()，span 227 天，选题集中在 Codex / OpenClaw / Cursor 的日常使用。同批接入，理由见「罗西的思考」。"
+  },
+  {
+    "name": "王树义 · 玉树芝兰",
+    "url": "https://wangshuyi.substack.com",
+    "feed": "https://wangshuyi.substack.com/feed",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026-09-04 接。写「让 Codex 去给 Claude Code 拆台」「做个 Skill 让 AI 自己改字幕」「不写代码搭一个每天盯文献的科研雷达」这类自己动手的记录，读者是要用 agent 干活的研究者和学生，和工程师圈的语料不重叠。近 20 篇 3 篇过 scoreItem()，span 106 天、正文 100%。挂在 Substack 上，但它是一个人的博客，不是 LESSONS 里关掉的那种策展型 newsletter。"
+  },
+  {
+    "name": "knowckx 的技术博客",
+    "url": "https://blog.knowckx.de",
+    "feed": "https://blog.knowckx.de/rss.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026-09-04 从当天收录的 V2EX 那篇「Codex 粘贴两次用 AutoHotkey 解决」反查到的作者站（原帖写着首发个人 Blog）。写 AGENTS.md 怎么写才省 token、PowerShell 和 Codex 打架的提示词这类短记录。近 20 篇 4 篇过 scoreItem()，48 条跨 1225 天，当天有更新。feed 只给一两句摘要，正文靠补全。"
   }
 ]

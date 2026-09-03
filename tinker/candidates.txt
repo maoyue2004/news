@@ -72,3 +72,20 @@ https://bf.zzxworld.com/feed.xml
 # wxjback.com 09-02 记的「两轮 502」是假账：探测脚本读不动裸域名（已修）。
 # 今天带 scheme 真探了一次，仍然没有 feed。不进 denylist——不够格 ≠ 被否决。
 https://wxjback.com/
+
+# 2026-09-04 日更：WebSearch 四组（第十三次复现「搜索引擎发现不了博客」——三组全是
+# CSDN / 知乎 / techug 这类平台页）。唯一有价值的一条不是搜出来的博客，是搜出来的作者：
+# wangshuyi.substack.com（王树义），evaluate() 3/20、span 106 天、正文 100%，已并入 sources.json。
+https://wangshuyi.substack.com/feed
+# 今天真正的产出走的是第五条通道（已收录作者的个人站），且是它一直漏掉的那一半：
+# V2EX 的 members/show 里 website 是空的，站址写在 bio 里（已修 tinker-authorsites.mjs）。
+https://blog.knowckx.de/rss.xml
+# liwenzhou.com：搜到他有 /tags/agent/ 一整页（Agent 架构、记忆系统与 RAG），
+# 但 index.xml 最新一篇是 115 天前、evaluate() 只有 1/20，不接。不进 denylist——不够格 ≠ 被否决。
+# （/posts/index.xml 这条 Hugo 分区 feed 试过，连不上。）
+https://liwenzhou.com/index.xml
+# blogtalk.org「博客说」：又一个简中名录（自称收录 249 个独立博客），/blogs 那页是客户端渲染、
+# 静态 HTML 里一个站外域名都没有，只挂着另一个名录 boyouquan.com「博友圈」。
+# 两个都留给周更 harvest 按「是不是另一拨人按另一套标准挑的」去判，别在日更这一轮花时间。
+https://www.blogtalk.org/blogs
+https://www.boyouquan.com

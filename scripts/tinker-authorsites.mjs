@@ -154,6 +154,31 @@ async function juejinSite(author, titles) {
   return { site: u.blog_address || null, github: u.github_nickname || null, userId };
 }
 
+/**
+ * 一段自我介绍里的第一个个人站地址。
+ *
+ * 2026-09-04 补的。当天收录的「Codex 粘贴两次用 AutoHotkey 解决」作者 knowckx，
+ * `website` 字段是**空的**，而 `bio` 写着「我的个人技术博客 https://blog.knowckx.de」——
+ * 那个站近 20 篇 4 篇过 scoreItem()，当天就并入了 sources.json。
+ * 也就是说这条通道从上线起就漏掉了一整类作者：**把站写在自我介绍里而不是填在字段里的人**，
+ * 而症状是账本上白纸黑字记着「查过了，没有个人站」——和真的没有站长得一模一样。
+ * 更刺眼的是脚本自己的头注释里就写着这个接口给的是 `website / github / bio` 三个字段，
+ * 代码却只读了前两个：LESSONS 那条「记了、读的人只读了一半」的又一次复发。
+ *
+ * 平台域名照旧要滤掉（bio 里贴 GitHub / 知乎主页比贴个人站更常见）。
+ * 取 URL 时**只认 ASCII 的合法 URL 字符**：中文自我介绍里 URL 后面往往紧跟着
+ * 「，欢迎来玩」，按「非空白」去截会把整句话都算进域名里。
+ * 剩下的半角标点（句点、逗号、括号）再从尾部剥一次。
+ */
+export function siteFromBio(bio) {
+  for (const m of String(bio ?? '').matchAll(/https?:\/\/[A-Za-z0-9\-._~:/?#[\]@!$&'()*+,;=%]+/g)) {
+    const url = m[0].replace(/[.,;:!?)\]]+$/, '');
+    const h = host(url);
+    if (h && !PLATFORM.test(h)) return url;
+  }
+  return null;
+}
+
 /** V2EX：用户名直接查 members/show。 */
 async function v2exSite(author) {
   let u;
@@ -163,7 +188,12 @@ async function v2exSite(author) {
     return { failed: 'members/show 请求失败' };
   }
   if (!u) return { site: null, note: 'members/show 无数据' };
-  return { site: u.website || null, github: u.github || null };
+  const fromBio = u.website ? null : siteFromBio(u.bio);
+  return {
+    site: u.website || fromBio || null,
+    github: u.github || null,
+    note: fromBio ? 'website 为空，站址取自 bio' : null,
+  };
 }
 
 function knownHosts() {

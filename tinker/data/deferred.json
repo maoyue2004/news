@@ -1,28 +1,578 @@
 {
-  "34df073979e6c0b9": {
-    "first": "2026-09-02",
-    "attempts": 0,
-    "stalls": 2,
-    "gates": {
-      "thin": 2
-    },
-    "last": "thin"
-  },
   "4c058cffda8a7350": {
     "first": "2026-09-02",
     "attempts": 0,
-    "stalls": 2,
+    "stalls": 3,
     "gates": {
-      "thin": 2
+      "thin": 3
     },
     "last": "thin"
   },
   "0a29686f82490814": {
     "first": "2026-09-01",
     "attempts": 0,
+    "stalls": 4,
+    "gates": {
+      "thin": 4
+    },
+    "last": "thin"
+  },
+  "9d9c7291ec0104df": {
+    "first": "2026-09-02",
+    "attempts": 0,
     "stalls": 3,
     "gates": {
       "thin": 3
+    },
+    "last": "thin"
+  },
+  "08909ab493fa426a": {
+    "first": "2026-09-02",
+    "attempts": 0,
+    "stalls": 3,
+    "gates": {
+      "thin": 3
+    },
+    "last": "thin"
+  },
+  "851e9147d9ecffa4": {
+    "first": "2026-09-01",
+    "attempts": 0,
+    "stalls": 4,
+    "gates": {
+      "thin": 4
+    },
+    "last": "thin"
+  },
+  "2784ef5ef6800698": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "785568bb9fbc065d": {
+    "first": "2026-08-29",
+    "attempts": 2,
+    "stalls": 3,
+    "gates": {
+      "quota": 2,
+      "thin": 3
+    },
+    "last": "thin"
+  },
+  "eed84083e837e102": {
+    "first": "2026-09-01",
+    "attempts": 1,
+    "stalls": 3,
+    "gates": {
+      "quota": 1,
+      "thin": 3
+    },
+    "last": "thin"
+  },
+  "cf9cf33ba6143541": {
+    "first": "2026-08-29",
+    "attempts": 2,
+    "stalls": 3,
+    "gates": {
+      "quota": 2,
+      "thin": 3
+    },
+    "last": "thin"
+  },
+  "e156920c8c9b6e11": {
+    "first": "2026-09-02",
+    "attempts": 1,
+    "stalls": 1,
+    "gates": {
+      "quota": 1,
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "4e67db2c9837bccb": {
+    "first": "2026-09-01",
+    "attempts": 1,
+    "stalls": 2,
+    "gates": {
+      "quota": 1,
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "2d066ea766cee1f2": {
+    "first": "2026-09-01",
+    "attempts": 1,
+    "stalls": 2,
+    "gates": {
+      "quota": 1,
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "da42d9c9bc207737": {
+    "first": "2026-08-26",
+    "attempts": 1,
+    "stalls": 3,
+    "gates": {
+      "thin": 3
+    },
+    "last": "thin"
+  },
+  "87b7cfd37f600ea1": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "b7d4215b42807ebd": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "2b54ac6b1bda2cd1": {
+    "first": "2026-08-27",
+    "attempts": 1,
+    "stalls": 1,
+    "gates": {
+      "quota": 1,
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "242fd4ae836e5edd": {
+    "first": "2026-08-27",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "1f4f2b3d7f79049e": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "9437c9e6a7630217": {
+    "first": "2026-08-27",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "6019a1204bf20160": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "8e1cb26340e37a6f": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "d2437e70cb2bc2fb": {
+    "first": "2026-08-27",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "2a353804e1340a04": {
+    "first": "2026-08-27",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "db8a01c0c74135df": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "7264703f8e142360": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "39414ab90daac23c": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "7bc83aa514d3eb40": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "a1d9c366075604a1": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "31e6c65bde76e1fd": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "baf7f7ca854fad61": {
+    "first": "2026-09-03",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "6f49b99ab562e112": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "371d09c46e65f531": {
+    "first": "2026-09-03",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "296e85894647eb1e": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "aa8162a42289e660": {
+    "first": "2026-09-01",
+    "attempts": 0,
+    "stalls": 3,
+    "gates": {
+      "thin": 3
+    },
+    "last": "thin"
+  },
+  "57c209d4bae9e130": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "9f1c19de0efc1b39": {
+    "first": "2026-09-02",
+    "attempts": 1,
+    "stalls": 2,
+    "gates": {
+      "quota": 1,
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "335912ed640424de": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "4f95ca0838514db3": {
+    "first": "2026-09-02",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "7e9f98a9583a6594": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "e36576ed4b5d3407": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "ae716ab4617d4dad": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "7a79f84f8e4f11e7": {
+    "first": "2026-09-02",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "661caa633af2ab8e": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "c5ed2b92370db054": {
+    "first": "2026-08-27",
+    "attempts": 1,
+    "stalls": 3,
+    "gates": {
+      "thin": 3,
+      "quota": 1
+    },
+    "last": "thin"
+  },
+  "9950cf68ffb8f7e4": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "5f741f7c47229d93": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "80ae266fd98238d8": {
+    "first": "2026-09-02",
+    "attempts": 1,
+    "stalls": 1,
+    "gates": {
+      "quota": 1,
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "4972fdec2714a8b4": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "70596b7928125fc6": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "ccef929f68eec9f5": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "6f466e5cd70ddd0e": {
+    "first": "2026-09-02",
+    "attempts": 1,
+    "stalls": 2,
+    "gates": {
+      "quota": 1,
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "5c031efe0111957d": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "4ee4d12af56d4e03": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "4aa4acac6b42aa2a": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "5280e7818a813f83": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "f71fc6ea570ffbc0": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "8e216a9e0231d846": {
+    "first": "2026-09-02",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "0bb50cf9496c85b4": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "53abec576d3f7e1b": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "2f6d5f3d8307ce3a": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "999188575202dca2": {
+    "first": "2026-09-04",
+    "attempts": 0,
+    "stalls": 1,
+    "gates": {
+      "thin": 1
+    },
+    "last": "thin"
+  },
+  "b32e4e832428f90b": {
+    "first": "2026-09-03",
+    "attempts": 2,
+    "gates": {
+      "thin": 2
+    },
+    "last": "thin"
+  },
+  "34df073979e6c0b9": {
+    "first": "2026-09-02",
+    "attempts": 0,
+    "stalls": 2,
+    "gates": {
+      "thin": 2
     },
     "last": "thin"
   },
@@ -65,42 +615,6 @@
     "last": "thin"
   },
   "2cf8e3131058fb78": {
-    "first": "2026-09-03",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "9d9c7291ec0104df": {
-    "first": "2026-09-02",
-    "attempts": 0,
-    "stalls": 2,
-    "gates": {
-      "thin": 2
-    },
-    "last": "thin"
-  },
-  "08909ab493fa426a": {
-    "first": "2026-09-02",
-    "attempts": 0,
-    "stalls": 2,
-    "gates": {
-      "thin": 2
-    },
-    "last": "thin"
-  },
-  "851e9147d9ecffa4": {
-    "first": "2026-09-01",
-    "attempts": 0,
-    "stalls": 3,
-    "gates": {
-      "thin": 3
-    },
-    "last": "thin"
-  },
-  "2833682be3620f72": {
     "first": "2026-09-03",
     "attempts": 0,
     "stalls": 1,
@@ -314,16 +828,6 @@
     },
     "last": "thin"
   },
-  "9f1c19de0efc1b39": {
-    "first": "2026-09-02",
-    "attempts": 1,
-    "stalls": 1,
-    "gates": {
-      "quota": 1,
-      "thin": 1
-    },
-    "last": "thin"
-  },
   "32da03a9e1440819": {
     "first": "2026-09-03",
     "attempts": 0,
@@ -371,26 +875,7 @@
     },
     "last": "thin"
   },
-  "eed84083e837e102": {
-    "first": "2026-09-01",
-    "attempts": 1,
-    "stalls": 2,
-    "gates": {
-      "quota": 1,
-      "thin": 2
-    },
-    "last": "thin"
-  },
   "f087061793aaa954": {
-    "first": "2026-09-02",
-    "attempts": 0,
-    "stalls": 2,
-    "gates": {
-      "thin": 2
-    },
-    "last": "thin"
-  },
-  "96aee8a1d9c7907f": {
     "first": "2026-09-02",
     "attempts": 0,
     "stalls": 2,
@@ -481,16 +966,6 @@
     "gates": {
       "quota": 1,
       "thin": 2
-    },
-    "last": "thin"
-  },
-  "6f466e5cd70ddd0e": {
-    "first": "2026-09-02",
-    "attempts": 1,
-    "stalls": 1,
-    "gates": {
-      "quota": 1,
-      "thin": 1
     },
     "last": "thin"
   },
@@ -669,15 +1144,6 @@
     },
     "last": "thin"
   },
-  "baf7f7ca854fad61": {
-    "first": "2026-09-03",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
   "2b965d81ffc2c71a": {
     "first": "2026-09-02",
     "attempts": 1,
@@ -689,15 +1155,6 @@
     "last": "thin"
   },
   "d1b06d6dfc08b032": {
-    "first": "2026-09-03",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "371d09c46e65f531": {
     "first": "2026-09-03",
     "attempts": 0,
     "stalls": 1,
@@ -733,74 +1190,10 @@
     },
     "last": "thin"
   },
-  "b32e4e832428f90b": {
-    "first": "2026-09-03",
-    "attempts": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
   "43d24bbc2b177876": {
     "first": "2026-09-02",
     "attempts": 1,
     "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "6750f8848661c444": {
-    "first": "2026-09-02",
-    "attempts": 1,
-    "gates": {
-      "quota": 1
-    },
-    "last": "quota"
-  },
-  "785568bb9fbc065d": {
-    "first": "2026-08-29",
-    "attempts": 2,
-    "stalls": 2,
-    "gates": {
-      "quota": 2,
-      "thin": 2
-    },
-    "last": "thin"
-  },
-  "cf9cf33ba6143541": {
-    "first": "2026-08-29",
-    "attempts": 2,
-    "stalls": 2,
-    "gates": {
-      "quota": 2,
-      "thin": 2
-    },
-    "last": "thin"
-  },
-  "e156920c8c9b6e11": {
-    "first": "2026-09-02",
-    "attempts": 1,
-    "gates": {
-      "quota": 1
-    },
-    "last": "quota"
-  },
-  "4e67db2c9837bccb": {
-    "first": "2026-09-01",
-    "attempts": 1,
-    "stalls": 1,
-    "gates": {
-      "quota": 1,
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "2d066ea766cee1f2": {
-    "first": "2026-09-01",
-    "attempts": 1,
-    "stalls": 1,
-    "gates": {
-      "quota": 1,
       "thin": 1
     },
     "last": "thin"
@@ -849,16 +1242,6 @@
     },
     "last": "thin"
   },
-  "c5ed2b92370db054": {
-    "first": "2026-08-27",
-    "attempts": 1,
-    "stalls": 2,
-    "gates": {
-      "thin": 2,
-      "quota": 1
-    },
-    "last": "thin"
-  },
   "45261c8ed0f765ed": {
     "first": "2026-08-27",
     "attempts": 0,
@@ -886,30 +1269,12 @@
     },
     "last": "quota"
   },
-  "8e216a9e0231d846": {
-    "first": "2026-09-02",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
   "6e7e96e4f8d606bf": {
     "first": "2026-08-29",
     "attempts": 1,
     "stalls": 1,
     "gates": {
       "quota": 1,
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "7a79f84f8e4f11e7": {
-    "first": "2026-09-02",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
       "thin": 1
     },
     "last": "thin"
@@ -1050,15 +1415,6 @@
     },
     "last": "quota"
   },
-  "4f95ca0838514db3": {
-    "first": "2026-09-02",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
   "e0822bb13cc75a10": {
     "first": "2026-09-02",
     "attempts": 1,
@@ -1084,22 +1440,6 @@
       "thin": 1
     },
     "last": "thin"
-  },
-  "80ae266fd98238d8": {
-    "first": "2026-09-02",
-    "attempts": 1,
-    "gates": {
-      "quota": 1
-    },
-    "last": "quota"
-  },
-  "1b49eee9498bd9cf": {
-    "first": "2026-08-24",
-    "attempts": 2,
-    "gates": {
-      "quota": 1
-    },
-    "last": "quota"
   },
   "e839eefa1746ec6e": {
     "first": "2026-09-02",
@@ -1141,15 +1481,6 @@
     "stalls": 1,
     "gates": {
       "thin": 1
-    },
-    "last": "thin"
-  },
-  "aa8162a42289e660": {
-    "first": "2026-09-01",
-    "attempts": 0,
-    "stalls": 2,
-    "gates": {
-      "thin": 2
     },
     "last": "thin"
   },
@@ -1330,15 +1661,6 @@
     "stalls": 1,
     "gates": {
       "thin": 1
-    },
-    "last": "thin"
-  },
-  "da42d9c9bc207737": {
-    "first": "2026-08-26",
-    "attempts": 1,
-    "stalls": 2,
-    "gates": {
-      "thin": 2
     },
     "last": "thin"
   },
@@ -2460,60 +2782,7 @@
     },
     "last": "thin"
   },
-  "2b54ac6b1bda2cd1": {
-    "first": "2026-08-27",
-    "attempts": 1,
-    "gates": {
-      "quota": 1
-    },
-    "last": "quota"
-  },
-  "242fd4ae836e5edd": {
-    "first": "2026-08-27",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "9437c9e6a7630217": {
-    "first": "2026-08-27",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "dfb6f1ef71a170f7": {
-    "first": "2026-08-27",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "d2437e70cb2bc2fb": {
-    "first": "2026-08-27",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
   "039cb140847c6d4d": {
-    "first": "2026-08-27",
-    "attempts": 0,
-    "stalls": 1,
-    "gates": {
-      "thin": 1
-    },
-    "last": "thin"
-  },
-  "2a353804e1340a04": {
     "first": "2026-08-27",
     "attempts": 0,
     "stalls": 1,

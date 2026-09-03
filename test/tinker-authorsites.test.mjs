@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { publishedAuthors, needsQuery, ledgerEntry, MAX_LOOKUP_ATTEMPTS } from '../scripts/tinker-authorsites.mjs';
+import { publishedAuthors, needsQuery, ledgerEntry, siteFromBio, MAX_LOOKUP_ATTEMPTS } from '../scripts/tinker-authorsites.mjs';
 
 /** 造一份只有两天的日文件目录，避免测试跟着真实 tinker/data 一起变。 */
 function fixture(days) {
@@ -81,4 +81,16 @@ test('没有 profile 接口的平台和缺作者名的条目一律跳过，不�
     ],
   });
   assert.deepEqual(publishedAuthors(dir), []);
+});
+
+test('website 为空时从 bio 里捡个人站，平台链接不算', () => {
+  // 2026-09-04 的真实形状：knowckx 的 website 是空的，站址写在自我介绍里。
+  assert.equal(siteFromBio('我的个人技术博客 https://blog.knowckx.de'), 'https://blog.knowckx.de');
+  // 尾随的中文标点不能跟进 URL
+  assert.equal(siteFromBio('博客 https://a.example.com，欢迎来玩'), 'https://a.example.com');
+  // bio 里贴 GitHub / 知乎主页比贴个人站常见得多，这条通道要绕开的正是平台
+  assert.equal(siteFromBio('https://github.com/foo 和 https://www.zhihu.com/people/bar'), null);
+  assert.equal(siteFromBio('先是平台 https://juejin.cn/user/1 然后才是自己的站 https://b.example.com'), 'https://b.example.com');
+  assert.equal(siteFromBio(''), null);
+  assert.equal(siteFromBio(undefined), null);
 });

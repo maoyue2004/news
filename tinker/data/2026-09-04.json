@@ -1,0 +1,160 @@
+{
+  "date": "2026-09-04",
+  "generatedAt": "2026-09-03T22:30:00.000Z",
+  "dailyNote": "今天扎堆的话题是「搬家」：把记忆插件从摘要改成只存事实、把 47 条会话从旧电脑搬到新电脑、把记忆库从第三方插件搬回官方实现，三篇讲的是同一件难事的三个层次。先读陈珙那篇——少见的把 MCP Server 当生产系统写的记录，认证、防注入、token 预算三样各有一段能抄的代码。另外今天补了一个拖了五天的洞：掘金连续五天 100% 抓不到正文（今天入围名单 23 条里有 6 条只有标题），隔了半小时重来一次，60 条里救回 40 条——最后一篇「手写一个最小版 Claude Code」就是这么捞回来的，那 40 条里其余的基本是「Cursor 平替怎么选」这类换五个标题反复发的稿子。毙掉的主要是产品自荐（V2EX 一天三条：EO2Weave、MemAuthority、easy-agent-team），以及一篇顶着「实测提升 90%」标题、通篇却是综述加引用列表的多 Agent 指南。",
+  "items": [
+    {
+      "id": "8ab98036f3780285",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/skychen1218/p/22808174",
+      "titleOriginal": ".NET AI 实战：用 MCP 把 Claude Code 变成数据库 DBA - 陈珙",
+      "titleZh": "把自研 SQL Server 诊断平台开成 MCP 出口：11 个只读工具的设计账",
+      "summaryZh": "作者给自己做的数据库诊断平台 DBPilot 加了一条 MCP 出口，让 Claude Code 直接查慢 SQL、死锁和缺失索引，全文按原理 → Server → Client → 集成 → 演示走完整条链路。代码是 .NET 的 ModelContextProtocol.AspNetCore，注册只有三步（AddMcpServer + WithHttpTransport + MapMcp），工具靠 [McpServerTool] 特性扫描程序集自动登记。值得抄的是几条设计决策：模块默认关闭、ApiKey 为空宁可不注册；认证先各自 SHA256 再 FixedTimeEquals，用定长时间比较堵掉时序侧信道；11 个工具全部只读，列表类只回 SQL 头部 500 字符、单次最多 50 行，让模型自己决定哪条值得再调详情工具取全文；工具的 [Description] 被当成写给 LLM 看的 API 文档，明写「instanceId 从 list_instances 拿」；返回里的 SQL 文本一律当数据不当指令，这条防注入规则有专门的单测守着。",
+      "whyRead": "把 MCP Server 当生产系统写的记录很少见：认证、提示注入、token 预算三件事各有一段具体做法和一行能抄的代码。",
+      "rating": 5,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "mcp"
+      ],
+      "publishedAt": "2026-09-03T08:36:00.000Z",
+      "author": "",
+      "preScore": 11
+    },
+    {
+      "id": "969ee97040fb68a5",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/yolkvat/p/22830956/dsh-project-memory-v030-to-v040-evolution",
+      "titleOriginal": "dsh-project-memory v0.3.0到v0.4.0：从项目记忆到开发工作流记忆的演进 - 风fffff",
+      "titleZh": "记忆插件的减法：把摘要和签名整个删掉，体积 -30%、检索 187ms 变 9ms",
+      "summaryZh": "作者维护的 dsh 项目级记忆插件迭代到 v0.4.0，这篇写三个小版本各解决了什么、方案怎么选。核心结论是摘要型记忆有天然缺陷：20KB 的 README 被 LLM 压成几句话是有损压缩，模型据此判断反而被误导；代码符号层的 summary 字段同样既不保准又和进了上下文的源码重复，「记忆插件在上下文积累的过程中慢慢变成了拖累」。于是符号层只留完整声明行加行号，不存任何解释——存储 -30%、检索从 187ms 降到 9ms。文章还把没选的路各算了一遍账：tree-sitter 全量 AST 每语言 1-2MB WASM、冷启动从 80ms 涨到 500ms+，LSP 要起进程、跨语言各自维护，向量检索加 RAG 混合召回成本高而边际收益低。v0.4.0 的新东西是 TaskBridge，让会话断掉之后模型知道自己上次在做什么。",
+      "whyRead": "同类文章都在讲记忆怎么加，这篇讲的是删：哪一类记忆是在替模型重复思考，删掉之后数字变成什么样。",
+      "rating": 5,
+      "tools": [
+        "dsh"
+      ],
+      "topics": [
+        "agent-memory"
+      ],
+      "publishedAt": "2026-09-03T13:24:00.000Z",
+      "author": "",
+      "preScore": 12
+    },
+    {
+      "id": "8d870c65d3ef6638",
+      "source": "博客园首页",
+      "kind": "aggregator",
+      "url": "https://www.cnblogs.com/ailanlan/p/22827183",
+      "titleOriginal": "WorkBuddy 跨设备迁移实战：47 条会话无缝续接的全流程缝合术 - 慵懒的小景",
+      "titleZh": "换电脑把 47 条 WorkBuddy 会话搬过去：旧路径藏在五层里，光转义就有八种写法",
+      "summaryZh": "一次真实的跨设备迁移记录：旧机用户名 yanjing、工作空间在 D 盘，新机是 Administrator 和 E 盘，47 条历史会话要能续接。作者先把 .workbuddy 目录逐项列出哪些迁哪些不迁——sessions.json 只是 UI 状态不迁，真正的会话索引在 workbuddy.db 的 sessions 表里；整库覆盖会冲掉新机已有的会话（实测踩过，9 条被冲的会话是从 jsonl 里捞回来的）。真正的坑是旧路径残留分布在五层：数据库 cwd 字段、按路径生成的 38 个 projects 目录名、jsonl 正文、pyvenv.cfg、以及技能里的 iconLocalPath。其中 jsonl 那层最脏，同一条路径有标准反斜杠、双反斜杠、正斜杠、小写盘符共八种变体，只替换一种会「怎么清都清不干净」。最后整套缝合流程交给 AI 自己跑完。",
+      "whyRead": "本地优先的 agent 把状态摊在五个地方，这篇把每一层该怎么处理列成了表——换机之前照着走一遍能省一天。",
+      "rating": 4,
+      "tools": [
+        "workbuddy"
+      ],
+      "topics": [
+        "agent-memory",
+        "skills",
+        "mcp"
+      ],
+      "publishedAt": "2026-09-03T08:13:00.000Z",
+      "author": "",
+      "preScore": 12
+    },
+    {
+      "id": "c252b702e28badc3",
+      "source": "zhheo",
+      "kind": "blog",
+      "url": "https://blog.zhheo.com/p/5r2g9ie4.html",
+      "titleOriginal": "OpenClaw 2.0：稳定性提升不少，我还迁移了我的记忆系统",
+      "titleZh": "OpenClaw 8.1 升级实录：会话进了 SQLite，记忆从第三方插件搬回官方实现",
+      "summaryZh": "作者从 RC 阶段就跟着升级 OpenClaw 8.1（官方叫 2.0），这篇记的是升级本身和一次记忆系统搬家。底层最大的改动是会话和 transcript 从文件存储换成 SQLite，官方专门给了降级警告——回滚到旧版本之后新建的 session 在旧版里看不见，升级前必须备份。使用侧的变化是引导式 Onboarding 能直接复用机器上已有的 Codex / ChatGPT / Claude CLI 登录状态，Control UI 重做后长对话不再卡、刷新页面不丢上下文。记忆那一半是重点：他把 memory-lancedb-pro 迁到官方的 memory-core，理由不是插件不好，而是 QMD 退役、官方接管核心路径之后跨对话召回和 session rewind 这些能力第三方追不上。迁移的关键动作是去重——4000 条记忆里六成是重复的，直接倒进去没意义。",
+      "whyRead": "第三方记忆插件比官方好用的时候，什么时候该迁回去？这篇给的理由是「官方接管了核心路径」，不是功能对比。",
+      "rating": 4,
+      "tools": [
+        "openclaw",
+        "codex",
+        "claude-code"
+      ],
+      "topics": [
+        "agent-memory",
+        "memory-md"
+      ],
+      "publishedAt": "2026-09-03T04:20:10.000Z",
+      "author": "",
+      "preScore": 12
+    },
+    {
+      "id": "ccc05e7248769958",
+      "source": "V2EX 技术节点",
+      "kind": "forum",
+      "url": "https://www.v2ex.com/t/1239329#reply0",
+      "titleOriginal": "Codex 按 Ctrl+Shift+V 粘贴两次？用 AutoHotkey 解决",
+      "titleZh": "Codex Desktop 粘贴两次：用 AutoHotkey 接管快捷键，别去伪造修饰键抬起",
+      "summaryZh": "Windows 上的 Codex Desktop 按 Ctrl+Shift+V 会把同一段内容粘两次，Ctrl+V 正常。作者翻到 openai/codex 仓库里两份报告（#26199 仍是 Open、#27161 虽已关闭但 26.831.2377.0 版本仍能复现），成因看起来是这个快捷键同时被分配给了「启动或停止语音模式」。他不等官方修，用 AutoHotkey v2 接管：只在 ChatGPT.exe 窗口激活时生效，先保存完整剪贴板，再把剪贴板赋值给自己以去掉 HTML 和字体格式，然后发一次普通 Ctrl+V，最后恢复原剪贴板。文章值钱的是中间那个坑：触发时物理 Ctrl 和 Shift 还按着，直接 Send 会被输入法当成切换操作；他试过 Send(\"{Ctrl up}{Shift up}\") 伪造抬起，副作用更多，最后改成两行 KeyWait 等你真的松手再粘贴。",
+      "whyRead": "同一个快捷键被两处逻辑抢的经典形状，而绕开它的正确姿势不是伪造按键抬起，是等物理键真的松开。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [],
+      "publishedAt": "2026-09-03T14:29:12.000Z",
+      "author": "",
+      "preScore": 10
+    },
+    {
+      "id": "f6b7cdb7e442f926",
+      "source": "iT 邦幫忙 · Codex 做 LINE Bot 上线",
+      "kind": "blog",
+      "url": "https://ithelp.ithome.com.tw/articles/10407237?sc=rss.iron",
+      "titleOriginal": "Day 23 - 每次站在咖啡店櫃檯前都選不出來：我讓 LINE Bot 看菜單幫我推薦飲料",
+      "titleZh": "让 LINE Bot 看菜单推三杯：需求不写「做 OCR」，写「把选择减到三个」",
+      "summaryZh": "作者和 Codex 一起给自己的 LINE 咖啡机器人加了一个功能：拍一张菜单，Bot 最多回三杯推荐。需求写法是这篇的重点——他没有把需求写成「帮我做 OCR」，而是「看懂这是不是饮品菜单、找出照片里真的存在的品项、最多推荐三杯不同方向的选择、给出品名价格和推荐理由」，因为抄完整张菜单等于让人再读一次，选择困难一点没少；三杯是刚好能比较又不会重新陷入纠结的数量。工程上卡住他的不是相机按钮，是图片在哪：LINE 的 webhook 送来的不是图片本身，只有一条 {\"type\":\"image\",\"id\":...}，真正的内容要拿这个 message ID 再去 Get content 接口取，取回来交给 Gemini 做图像理解。交互上他留了「拍菜單」这个文字入口弹出拍摄和相簿两个按钮，其实直接传图也认——入口只是给第一次用的人看的。",
+      "whyRead": "同一个功能，把需求写成「做 OCR」和写成「帮我把选择减到三个」，做出来完全是两个东西。",
+      "rating": 4,
+      "tools": [
+        "codex"
+      ],
+      "topics": [],
+      "publishedAt": "2026-09-03T12:06:52.000Z",
+      "author": "",
+      "preScore": 6
+    },
+    {
+      "id": "57c209d4bae9e130",
+      "source": "掘金搜索",
+      "kind": "search",
+      "url": "https://juejin.cn/post/7678208515275276315",
+      "titleOriginal": "手写一个最小版 Claude Code：从任务拆解到 Agent Loop 转起来",
+      "titleZh": "手写一个最小版 Claude Code：两个工具、四种消息、一个 while 循环",
+      "summaryZh": "作者用 LangChain 把一个能跑的编程 Agent 从头串了一遍：接到「建个 react+vite 的 todolist」，先让 LLM 自己拆成三步（脚手架、写组件、装依赖跑起来），每步对应一个工具——最小版的工具盘就是 fs 读写文件加 cli 执行命令两个。文章讲清楚了三处容易含糊的地方：bindTools 是那个开关，不绑工具 LLM 只会回一段伪代码；四种 Message 各自代表谁在说话，AIMessage 带 tool_calls、ToolMessage 带 tool_call_id，LLM 靠这个 id 对账「这个结果是我刚才哪个调用产生的」；以及 while 循环怎么把这些接起来转下去。最后留了个自己踩的坑：工具函数是 async 的，忘了 await 拿到的是 Promise 不是数据，而 Agent 里到处是这种地方。",
+      "whyRead": "「Claude Code 拆到底就是 LLM + fs + cli」这句话，这篇把它拆到能照着写一遍的粒度。",
+      "rating": 4,
+      "tools": [
+        "claude-code"
+      ],
+      "topics": [
+        "agent-loop"
+      ],
+      "publishedAt": "2026-08-26T09:23:00.000Z",
+      "author": "两只羊ovo",
+      "preScore": 12
+    }
+  ],
+  "reviewed": 63,
+  "dropped": 56,
+  "stats": {
+    "fetched": 396,
+    "shortlisted": 23,
+    "thin": 180,
+    "enrichMuted": [
+      "掘金搜索"
+    ],
+    "reenriched": 40
+  },
+  "errors": []
+}
