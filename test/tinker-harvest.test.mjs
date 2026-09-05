@@ -1,6 +1,27 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseOpml, parseMarkdown, parseSiteList, looksLikeAudio, PODCAST_HOST, deniedHostsFrom } from '../scripts/tinker-harvest.mjs';
+import { parseOpml, parseMarkdown, parseSiteList, parseBoyouquan, looksLikeAudio, PODCAST_HOST, deniedHostsFrom } from '../scripts/tinker-harvest.mjs';
+
+test('parseBoyouquan 收裸域名的 JSON 索引：补 scheme、按域名去重、feed 留空', () => {
+  const json = JSON.stringify([
+    { blogName: '彼岸临窗', domainName: '023.me' },
+    { blogName: '同一个站', domainName: 'www.023.me' },
+    { blogName: '带了 scheme', domainName: 'https://b.com' },
+    { blogName: '不是博客', domainName: 'zhuanlan.zhihu.com' },
+    { blogName: '空的', domainName: '' },
+  ]);
+  const rows = parseBoyouquan(json);
+  assert.equal(rows.length, 2);
+  const a = rows.find((r) => r.url === 'https://023.me');
+  assert.equal(a.feed, null);
+  assert.equal(a.name, '彼岸临窗');
+  // TECH_TAGS 那道闸按 tags 过滤，站点列表型索引一律标「技术」，否则整份索引会被静默滤光。
+  assert.equal(a.tags, '技术');
+  assert.ok(rows.some((r) => r.url === 'https://b.com'));
+  assert.ok(!rows.some((r) => /zhihu/.test(r.url)));
+  // 拿不到 JSON（接口改了 / 返回 HTML）时返回空数组，不要让整轮 harvest 崩掉。
+  assert.deepEqual(parseBoyouquan('<html>403</html>'), []);
+});
 
 test('parseOpml 取 xmlUrl，忽略没有 feed 的分组节点', () => {
   const opml = `<opml><body>

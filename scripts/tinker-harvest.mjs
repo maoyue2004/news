@@ -135,6 +135,30 @@ const INDEXES = [
         .join('\n'),
     ),
   },
+  /**
+   * 第九个索引，2026-09-06 加：博友圈 `boyouquan.com`，771 个简中个人博客。
+   *
+   * 它 09-04 就被搜到过，当天记的是「`/blogs` 是客户端渲染，静态 HTML 里一个站外
+   * 域名都没有，留给周更」——连着两轮复盘挂在待办里没动。今天照 vocus 那条
+   * 「拿不到搜索接口时，先翻一遍页面自己在调什么」把 `main.<hash>.js` 拉下来 grep
+   * `/api/`，一眼就看见 `/api/blog-intimacies/all-source-blogs`：**一次请求返回全部
+   * 771 条 `{blogName, domainName}`**，比分页的 `/api/blogs`（每页 10 条）便宜得多。
+   * 也就是说这份索引从来不是「拿不到」，只是没人翻过那个 bundle。
+   *
+   * 它列的是**裸域名**（`023.me`，没有 scheme），所以既不能用 parseMarkdown 也不能
+   * 用 parseSiteList——后者靠正则找 `https?://`。这正是 09-03 那条「schema 不只指
+   * 字段名，也指字段值的格式」的第三例，只是这次是在读的那一端提前处理掉。
+   *
+   * 密度预期低：博友圈是「博客人的朋友圈」，不是技术名录，
+   * 按「一个名录的密度由挂它的那个人决定」那条，它更接近 blogblog.club（0.65%）
+   * 而不是工程师的友链页（5-11%）。接它的理由是它是**另一拨人按另一套标准挑的**，
+   * 且和现有 sources 只重合 50 个域名。
+   */
+  {
+    id: 'boyouquan',
+    url: 'https://www.boyouquan.com/api/blog-intimacies/all-source-blogs',
+    parse: parseBoyouquan,
+  },
 ];
 const SOURCES = 'tinker/sources.json';
 /**
@@ -249,6 +273,28 @@ export function parseSiteList(text) {
     // 显式写出来的 RSS 地址永远优于我们猜的，哪怕它排在主页后面才出现。
     if (FEED_LIKE.test(raw) && !row.feed) row.feed = raw;
     byHost.set(h, row);
+  }
+  return [...byHost.values()];
+}
+
+/**
+ * 博友圈的 JSON：`[{ blogName, domainName }]`，domainName 是**裸域名**没有 scheme。
+ * 补上 `https://` 再走和 parseSiteList 一样的口径（退回站点根、过 NOT_A_BLOG、
+ * feed 留给下游探）。名字照收，评估阶段仍会用 feed 自己的 <title> 覆盖它。
+ */
+export function parseBoyouquan(text) {
+  let rows;
+  try { rows = JSON.parse(text); } catch { return []; }
+  if (!Array.isArray(rows)) return [];
+  const byHost = new Map();
+  for (const r of rows) {
+    const domain = String(r?.domainName ?? '').trim();
+    if (!domain) continue;
+    let u;
+    try { u = new URL(`https://${domain.replace(/^https?:\/\//, '')}`); } catch { continue; }
+    const h = u.hostname.replace(/^www\./, '');
+    if (NOT_A_BLOG.test(h)) continue;
+    if (!byHost.has(h)) byHost.set(h, { name: String(r?.blogName ?? ''), url: u.origin, feed: null, tags: '技术' });
   }
   return [...byHost.values()];
 }
