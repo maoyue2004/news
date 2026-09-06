@@ -381,6 +381,33 @@ test('「选型盘点」体被压到入围线下，真的挨个试过的横评�
   assert.ok(!handsOn.reasons.includes('选型盘点体（固定小标题逐个介绍工具）'));
 });
 
+test('小标题和冒号之间隔一个空格照样扣到——去标签之后语料里就是这个样子', () => {
+  // 2026-09-07：原来的五条正则写的是 `适合谁[:：]`，要求冒号紧挨着小标题；
+  // 而小标题在 HTML 里包在 <strong> 里，extractArticleText 去标签之后落到语料里的是
+  // 「适用人群 ：」。当天量到 /适用人群[:：]/ 命中 0 条、/适用人群\s*[:：]/ 命中 3 条，
+  // 同一份 371 条语料同一个词。这个洞最坏的地方是它不报警：
+  // 「这个模板不存在」和「正则少写了两个字符」给出同一个 0。
+  const spaced = scoreItem({
+    title: 'Cursor平替方案有哪些：免费与高性价比替代工具横向对比分析',
+    excerpt:
+      '摘要 ：本文针对 Cursor 订阅费用偏高的问题，从价格、代码生成能力、Agent 能力、'
+      + '中文适配度、迁移成本等维度，横向评测 TRAE、Windsurf、CodeBuddy、通义灵码四款候选平替方案。'
+      + '适用人群 ：独立开发者、学生、小团队技术负责人。更新日期 ：2026年08月31日。'
+      + '下面这张维度对比表汇总了四款工具在各个维度上的表现。',
+  });
+  assert.ok(spaced.reasons.includes('选型盘点体（固定小标题逐个介绍工具）'));
+  assert.ok(spaced.score < 6);
+
+  // 「更新日期」是三条新增里最泛的一条，单独出现不能扣分。
+  const onlyOne = scoreItem({
+    title: '我给自己的 Claude Code 配置写了一份长期维护的笔记',
+    excerpt:
+      '更新日期：2026-09-07。这份笔记记的是我这半年改 CLAUDE.md 踩的坑，'
+      + '每改一次配置就回来补一段，包括那次把权限写太松导致 agent 删了未提交的改动。',
+  });
+  assert.ok(!onlyOne.reasons.includes('选型盘点体（固定小标题逐个介绍工具）'));
+});
+
 test('繁体写法的自荐招呼语也要扣到', () => {
   const trad = scoreItem({
     title: '我做了一個 Claude Code 的 statusline 外掛',

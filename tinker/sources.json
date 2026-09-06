@@ -2347,5 +2347,13 @@
     "kind": "blog",
     "enabled": true,
     "desc": "2026-09-06 从第九个索引（博友圈）并入。近 20 篇 3 篇过 scoreItem()，6 天前更新、span 218 天。作者是设计师不是工程师，写客制化 Agent、常用的 OpenClaw 工作流 Skill、前端设计代码审查 Agent（Argus），和 vocus 那批一样属于「用 agent 干活但不是工程师」的供给。它有期号体的周刊（玄光周刊），那几期按体裁在评审那一步毙。"
+  },
+  {
+    "name": "山外云",
+    "url": "https://www.shanwaiyun.top/",
+    "feed": "https://www.shanwaiyun.top/feed.xml",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026-09-07 从当天 5 分那篇「扣子搭视频生产智能体」反查到的作者站（博客园 @厚德载物_VIP 的自有域名，走「已收录作者的个人站」那条通道）。运维出身，写的是把 agent 塞进具体活里之后卡在哪：剪映草稿的字幕轨层级和 60 多个多余字段、把 Codex 默认模型换成 Kimi K3 的 3 个坑、MySQL 碎片 52G 差点 TRUNCATE 掉在写的表、博客上线 3 天被扫后台后搭的 WAF/安全运营中心。近 20 篇 10 篇过 scoreItem()，span 32 天、当天有更新。**接它的时候就知道有一半是模型发布播报和撸额度**（GLM-5.3 开源、Qwen3.8-Max 登顶、OpenClaw 2.0 发布、送 3 亿 token、夜间免费），那一半靠新闻腔和评审毙；09-14 回访看这一半有没有把入围席位吃干净。"
   }
 ]
