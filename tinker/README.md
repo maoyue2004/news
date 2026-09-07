@@ -44,6 +44,7 @@ feed 源（个人博客/周刊/论坛）┐
 - `scripts/tinker-probe.mjs` — 探测候选站点的 feed 地址
 - `scripts/tinker-harvest.mjs` — 从社区索引（OPML / CSV / Markdown 名录）批量筛博客
 - `scripts/tinker-blogroll.mjs` — 从**已收录博客的友链页**发现新博客，判据复用 harvest 的评分器
+- `scripts/tinker-cnblogs.mjs` — 从**已收录条目的博客园作者**反查他的子 feed（同一个平台里更窄的入口）
 - `lib/tinker/vocab.mjs` — 工具名、经验词、反向词、搜索查询库。**最该被反复修改的文件**
 - `lib/tinker/relevance.mjs` — 规则打分与按源配额裁剪
 - `lib/tinker/search-adapters.mjs` — 掘金 / V2EX(sov2ex) / Discourse 的搜索接入
@@ -87,6 +88,15 @@ dry-run 忽略 `seen`（否则日更刚跑完，重放只剩零条；忽略之�
     node scripts/tinker-blogroll.mjs --evaluate \
       --min-links 2 --cache /tmp/blogroll.json          # 已收录博客的友链页
     node scripts/tinker-blogroll.mjs --seed-match <正则> # 只拿匹配的已收录博客当种子，用来换个圈子试
+
+第三条（2026-09-07 脚本化）问的是**同一个平台里更窄的入口**，不是站外：
+
+    node scripts/tinker-cnblogs.mjs                     # 已收录的博客园作者 → 他的 /rss 子 feed
+    node scripts/tinker-cnblogs.mjs --days 30           # 只看最近 N 天日文件里出现过的作者
+
+理由是 `博客园首页` 那份全站 feed 固定 20 条、只跨 12.8 小时——它是收录量第二高的源，
+而这些作者每天有一半的产出结构上进不来。同样**不提供 `--merge`**：
+2026-09-07 那轮 9 个够格的里人工留 4 个，而**分数最高的两个（11/20）正是该扫掉的**。
 
 `--cache` 把「爬友链页」那十几分钟的结果存下来，之后调 `--min-links` 不用重爬。
 

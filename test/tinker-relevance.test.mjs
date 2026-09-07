@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scoreItem, triage, titleKey, cjkRatio, SHORTLIST_THRESHOLD, QUOTA_RELAX, THIN_FLOOR } from '../lib/tinker/relevance.mjs';
-import { matchTools, matchTopics, matchVocab, queriesForDate, rotationSlice, rotatingQueries, CORE_QUERIES, TOOLS } from '../lib/tinker/vocab.mjs';
+import { matchTools, matchTopics, matchVocab, queriesForDate, rotationSlice, rotatingQueries, CORE_QUERIES, TOOLS, retirableTools } from '../lib/tinker/vocab.mjs';
 
 const pass = (t, e = '') => scoreItem({ title: t, excerpt: e }).verdict === 'shortlist';
 
@@ -15,6 +15,26 @@ test('英文内容被语言门槛挡掉', () => {
   const r = scoreItem({ title: 'How I use Claude Code every day', excerpt: 'I tried it for a week and here is what I learned about the workflow.' });
   assert.equal(r.verdict, 'reject');
   assert.match(r.reasons[0], /中文占比/);
+});
+
+test('中文标题 + 开头整段代码块的文章不再被语言门槛硬毙', () => {
+  // 2026-09-07 周更体检量到的：09-06 的 5 分精选《从 LangSmith 到 AGENTS.md》
+  // 在正文开头贴了整份英文 AGENTS.md（连行号都在），`excerpt` 只取前 2500 字符，
+  // 于是整篇中文文章的 CJK 占比是 2.7%，被硬毙、连分都不打。
+  // 一个真正的英文源标题也是英文的，所以判据改成「标题和正文都不像中文才毙」。
+  const codeFirst = '1 2 3 4 5 6 # Codex Global Working Agreements\n'
+    + 'This file defines durable global guidance for `~/.codex`; repo-local `AGENTS.md` files may add narrower rules.\n'
+    + '- `config.toml`: model, sandbox, MCP, plugin, feature, and agent settings.\n'
+    + '- `skills/`: reusable workflows; `hooks.json`: deterministic lifecycle checks.\n';
+  const r = scoreItem({ title: 'AI协同 | 从 LangSmith 到 AGENTS.md：一次 Agent 上下文优化实践', excerpt: codeFirst });
+  assert.ok(cjkRatio(`${'AI协同 | 从 LangSmith 到 AGENTS.md：一次 Agent 上下文优化实践'}\n${codeFirst}`) < 0.15, '这条语料确实撞得上旧门槛');
+  assert.notEqual(r.verdict, 'reject');
+  assert.ok(r.score >= SHORTLIST_THRESHOLD);
+
+  // 反向：标题也是英文的，照旧硬毙——这道闸挡英文源的本职不能丢。
+  const en = scoreItem({ title: 'From LangSmith to AGENTS.md: a context optimization practice', excerpt: codeFirst });
+  assert.equal(en.verdict, 'reject');
+  assert.match(en.reasons[0], /中文占比/);
 });
 
 test('没有任何 agent 相关词的中文文章不入围', () => {
@@ -230,6 +250,30 @@ test('核心词每天都跑，不参与轮转', () => {
     const q = queriesForDate(date, 24);
     for (const core of CORE_QUERIES) assert.ok(q.includes(core), `${date} 少了核心词 ${core}`);
   }
+});
+
+test('退役判据的粒度是工具，不是查询词', () => {
+  // 08-24 定的口径：**该工具派生的所有查询都跑够轮次、且合计零入围**。
+  // 只看一条零产出的查询就砍掉整个工具会砍错——`通义灵码 实践` 零入围，
+  // 而 `通义灵码 踩坑` / `体验` 各出过一条。
+  const q = (name, tpl) => `${name} ${tpl}`;
+  const full = (name, rows) => Object.fromEntries(
+    ['实践', '踩坑', '体验'].map((tpl, i) => [q(name, tpl), rows[i]]),
+  );
+  const ledger = {
+    ...full('Kilo Code', [{ runs: 9, items: 3, shortlisted: 0 }, { runs: 9, items: 2, shortlisted: 0 }, { runs: 9, items: 7, shortlisted: 0 }]),
+    // 有一条出过入围 → 整个工具不退役
+    ...full('通义灵码', [{ runs: 9, items: 5, shortlisted: 0 }, { runs: 9, items: 8, shortlisted: 1 }, { runs: 9, items: 6, shortlisted: 0 }]),
+    // 有一条轮次不够 → 还没到能下结论的时候
+    ...full('Devin', [{ runs: 9, items: 3, shortlisted: 0 }, { runs: 2, items: 1, shortlisted: 0 }, { runs: 9, items: 4, shortlisted: 0 }]),
+  };
+  const ids = retirableTools(ledger).map((t) => t.id);
+  assert.deepEqual(ids, ['kilo']);
+
+  // 已经在 UNQUERYABLE 里的不该再被报出来——它没有手术对象，
+  // 而它的计数会永远冻在退役那一刻（08-31 的 `augment` 那条）。
+  const retiredLedger = full('Augment Code', [{ runs: 14, items: 11, shortlisted: 0 }, { runs: 14, items: 0, shortlisted: 0 }, { runs: 14, items: 0, shortlisted: 0 }]);
+  assert.deepEqual(retirableTools(retiredLedger), []);
 });
 
 test('长尾词轮转，两周内能覆盖全池', () => {

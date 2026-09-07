@@ -108,8 +108,8 @@
     "url": "https://sspai.com",
     "feed": "https://sspai.com/feed",
     "kind": "aggregator",
-    "enabled": true,
-    "desc": "效率工具与工作流的中文大本营，Work Agent 类实践的主要来源。"
+    "enabled": false,
+    "desc": "效率工具与工作流的中文大本营，Work Agent 类实践的主要来源。 【2026-09-07 周更体检停用】按留存标准「连续 30 天零入选 + feed 中期文章完全不沾 agent」停。创刊 37 天**收录累计 0 条**。量的时候换过一次分母：dry-run 的 21 天重放只给 10 条（它的全站 feed 一共就 10 条，跨 4 天），照那个数会得出「样本太小、不能判」；改用 committed 的 _pending 快照按天累加，23 轮里它进过语料 **88 条**、入围 4 条、收录 0 条，84 个去重标题里命中 agent 词表的只有 3 条（一条升降桌改造、一条 Surface 改造指南、一条「编辑部最近都 vibe 了啥」的购物贴）。近 20 篇是派早报／新玩意／TDS REVIEW／本周看什么／线下活动——它是消费向科技媒体，不是「这个博客安静了一阵子」。窄入口试过：sspai.com/tag/AI/feed 和 /matrix/feed 都 302，没有可用的分类 feed（和 NodeSeek 同形）；站内搜索接口 LESSONS 早就记着已废。真出现好文章仍可从别的源转进来，届时再打开。"
   },
   {
     "name": "小众软件",
@@ -2355,5 +2355,45 @@
     "kind": "blog",
     "enabled": true,
     "desc": "2026-09-07 从当天 5 分那篇「扣子搭视频生产智能体」反查到的作者站（博客园 @厚德载物_VIP 的自有域名，走「已收录作者的个人站」那条通道）。运维出身，写的是把 agent 塞进具体活里之后卡在哪：剪映草稿的字幕轨层级和 60 多个多余字段、把 Codex 默认模型换成 Kimi K3 的 3 个坑、MySQL 碎片 52G 差点 TRUNCATE 掉在写的表、博客上线 3 天被扫后台后搭的 WAF/安全运营中心。近 20 篇 10 篇过 scoreItem()，span 32 天、当天有更新。**接它的时候就知道有一半是模型发布播报和撸额度**（GLM-5.3 开源、Qwen3.8-Max 登顶、OpenClaw 2.0 发布、送 3 亿 token、夜间免费），那一半靠新闻腔和评审毙；09-14 回访看这一半有没有把入围席位吃干净。"
+  },
+  {
+    "name": "博客园 · 我才是银古",
+    "url": "https://www.cnblogs.com/znlgis",
+    "feed": "https://www.cnblogs.com/znlgis/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "创刊以来收录 3 篇、**三篇全是 5 分**（AGENTS.md 从 290 行压到 180 行、DeepSeek 涨价后重构整套 OpenCode 配置、给多代理集群接视觉子代理），是所有博客园作者里单人质量最高的。09-02 量 2/20、09-07 量 3/20 span 17 天，两次都在门槛线附近，接它的理由不是 evaluate 分数而是那三篇 5 分——收录记录比近 20 篇的切片更硬。风险写明：09-01 他一天灌了 13 章《全景地图联动》连载（第 01 章…第 13 章），那批走 SERIAL_TITLE 会被压下去，但仍会占语料；09-21 复查它有没有靠连载吃满席位。"
+  },
+  {
+    "name": "博客园 · 程序员徐公",
+    "url": "https://www.cnblogs.com/gdutxiaoxu",
+    "feed": "https://www.cnblogs.com/gdutxiaoxu/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "08-30 收过一篇 4 分（经常用 Codex 后，我发现 AGENTS.md 只该管一件事）。近 20 篇 11 篇过 scoreItem()、span 606 天。**带风险注记收**：2026 年下半年这三篇是一手的（Codex Reset 小程序的 5 个坑、从 0 到 1 实现），而 2026 年初那批是「狂揽 2.5 万 Star」「12 个实战案例」「10 分钟完成安装」的标题党与教程清单体，2025 年更早还有资源分享站的形状。收的是最近这半年的形状，09-21 复查——再出清单体就照狂师那条落 denylist。"
+  },
+  {
+    "name": "博客园 · 编码者卢布",
+    "url": "https://www.cnblogs.com/lulight",
+    "feed": "https://www.cnblogs.com/lulight/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "微软支持工程师的案例本，标题清一色「【Azure XXX】」。08-19 收过一篇 4 分（APIM 门户里没有 SSE 选项，直接打 Management REST API 挂 MCP Server）。近 20 篇 4 篇过线、span 71 天；agent 那部分是 APIM 公开 API 为 MCP Server 的三篇连续试验，其余是 Key Vault / Container Apps / Terraform 的真实排查。月更一篇 MCP 的形状，属于「同领域技术博客安静一阵子」那一类。"
+  },
+  {
+    "name": "博客园 · 哥本哈士奇",
+    "url": "https://www.cnblogs.com/aspnetx",
+    "feed": "https://www.cnblogs.com/aspnetx/rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "08-11 收过一篇 5 分（全程 vibe coding 搭 Data Vault 数仓：半天、15 个模型、94 个测试全过）。近 20 篇 3 篇过线、span 90 天，主体是「dbt+SQLServer 构建数据仓库」十三篇连载，agent 只占其中两章。接的代价小（不沾词表的那批在规则层就被毙掉、不占席位），买的是他下一次拿 agent 干活时不被博客园首页那 12.8 小时窗口漏掉。"
+  },
+  {
+    "name": "冰冻大西瓜的博客",
+    "url": "https://bddxg.top",
+    "feed": "https://bddxg.top/feed.rss",
+    "kind": "blog",
+    "enabled": true,
+    "desc": "2026-09-07 周更体检从 timqian 索引第六轮扫出来的。前端工程师，近 20 篇 3 篇过 scoreItem()、2 天前更新、span 36 天。agent 那部分是「记一次排查 Pi Agent 不能用某公益站的问题」「程序员友好的 Skills」「关于 Reasonix 桌面端的使用体验报告」三篇，全是自己动手的记录；其余是前端稳定性/构建/Git 的笔记（07-31 一次性导入了一批）。"
   }
 ]

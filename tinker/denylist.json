@@ -498,5 +498,62 @@
     "reason": "2026-09-07 同一轮探到，evaluate() 4/20 过线。不接的理由不是分数：近 20 篇里 OceanBase / seekdb / PowerMem 这类自家生态的实践与操作手册占一块，另一块是访谈转述和观点文（DeepMind CEO 访谈、AI 会催生马克思主义、逛完 WAIC），照「产品方在写自己的产品」和「只有观点没有实践」两条一起看，接进来每天都会白占席位。真正对口的只有 Agent Harness / Graph Engineering 那两篇拆解，走博客园首页照样进得来。",
     "date": "2026-09-07",
     "scope": "feed"
+  },
+  {
+    "feed": "https://www.cnblogs.com/Qiniu-developer/rss",
+    "name": "小七-七牛开发者（博客园）",
+    "date": "2026-09-07",
+    "scope": "feed",
+    "reason": "2026-09-07 周更体检把「博客园作者子 feed」这条通道脚本化之后扫出来的，evaluate() 11/20 是本轮并列最高分。不接的理由是身份不是分数：这是**七牛云的官方开发者号**，而 09-02 接三个博客园作者子 feed 那轮就写明「七牛云那种官方号照旧只在源准入这一层整类不接」。近 20 篇里是论文解读（从经验到 Skill 的能力沉淀机制）、Agent 小知识科普、行业快讯（OpenAI 要从 Cursor 撤模型…）和 dsh 源码拆解连载，一手动手的记录一篇都没有。它的稿子照常经由博客园首页进语料，单篇仍按落点判。"
+  },
+  {
+    "feed": "https://www.cnblogs.com/ai-old-six/rss",
+    "name": "AI小老六（博客园）",
+    "date": "2026-09-07",
+    "scope": "feed",
+    "reason": "2026-09-07 同一轮，evaluate() 11/20 并列最高。日更、近 20 篇标题**全部**是同一个句式模板（「X 不是 Y，而是 Z」：长任务 Coding Agent 的关键不是写代码而是交付链路 / Agent 运行时不是聊天流而是给 LLM 补操作系统 / MoE 的关键不是专家多而是路由稳）。09-04 的日更复盘已经当场毙过他一篇——「DeepSeek Harness 不是银弹」，理由是「通篇分析、一手数据为零（有公开评测提到…数十万级 token），结尾挂五条自家同款深度分析推荐阅读」。他 09-01 有一篇 4 分收录，但那是 20 篇里唯一一篇；接进来等于每天拿 8 席去评一批观点稿。"
+  },
+  {
+    "feed": "https://www.cnblogs.com/hellojackyleon/rss",
+    "name": "厚德载物_VIP（博客园）",
+    "date": "2026-09-07",
+    "scope": "feed",
+    "reason": "2026-09-07 同一轮，evaluate() 7/20。不接的理由既不是分数也不是质量：**这是同一个人的第二个席位**——他的个人站「山外云」shanwaiyun.top 09-07 刚并入 sources.json，两边内容重合（扣子搭视频智能体、GLM-5.3 开源、MySQL 碎片 52G、博客上线三天被扫后台，两边一一对得上）。照 08-27「已收录作者自己划出去的那半个站」那条：判据不是这个站够不够格，是这个作者我们已经订了。落 denylist 是为了让机器记住——跨平台的同一个人， 那道闸按域名比，结构上看不出来，不记就每周重报一次。"
+  },
+  {
+    "url": "https://www.xbstack.com",
+    "name": "XBSTACK（小白）",
+    "date": "2026-09-07",
+    "reason": "2026-09-07 周更体检 timqian 索引第六轮的最高分候选（10/20，1 天前更新、50 篇跨 22 天）。是真人个人站不是内容农场，但版式是问句式 SEO：近 20 篇标题几乎全是「X 是什么？」「X 怎么用？价格、对比、迁移」「X 怎么解决？…实测」，而 About 页写明站主同时在推自己的几个产品（MCP Inspector / Agent Readiness Auditor / Agent Security Auditor），那几篇「MCP Server 上线前怎么检查？用只读 Inspector 验证协议」正是推它们的。**本轮最高分又是该扫掉的那个**，连着第三轮（09-06 飞鲤 10/20、09-07 狂师 12/20）——「自动命中必须人工过一遍，且不要从下往上扫」。单篇仍可经搜索源进来按落点判。"
+  },
+  {
+    "url": "https://libuyan.top",
+    "name": "李不言的博客",
+    "date": "2026-09-07",
+    "reason": "2026-09-07 timqian 第六轮命中（2/20）。领域不对：近 18 篇是新能源投资研究（核电定价逻辑、铜价高位博弈、光伏躺赚时代落幕、绿电投研小程序）加一串「《X》——李不言 AI 制作」的 AI 音乐，agent 那部分是「OpenClaw 2026.8.1 个人 AI 助手的 2.0 时刻」这类版本播报和他自己的 dsh-trading-toolkit。够格数是靠模型发布播报凑的。"
+  },
+  {
+    "url": "https://blog.alliot.tech",
+    "name": "Alliot's blog（旧域名 iots.vip）",
+    "date": "2026-09-07",
+    "reason": "2026-09-07 在 timqian 和 tidings 两个索引里各命中一次（2/20，span 1096 天）。不接的理由是产量：近 20 篇里 2026 年只有两条（09-01 Codex 第三方 API 生图、08-05 域名切换公告），其余全是 2024-2025 的运维备忘（ArgoCD / Cloudflare Tunnel / 雷池 WAF / 中银香港开户），agent 内容约等于一年一篇。**同一个站的两个域名**：tidings 那轮报的 www.iots.vip 和 blog.alliot.tech 的条数/更新时间/工具集完全相同，而他 08-05 那篇标题就是「域名切换到 blog.alliot.tech」——「搬家之后的旧站」那个变体，两个域名一起记。"
+  },
+  {
+    "url": "https://i.lckiss.com",
+    "name": "伪斜杠青年",
+    "date": "2026-09-07",
+    "reason": "2026-09-07 timqian 第六轮命中（2/20），49 天没更新、10 篇跨 216 天。够格的两条是 2026-03 的 Zeroclaw 部署与吐槽，其余一半是消费与生活随笔（又是一年清明、从张雪机车的故事聊人生、过去的 2025 教会了我从流量品牌祛魅）。"
+  },
+  {
+    "feed": "https://leonhe.cn/index.xml",
+    "name": "远飞闲记（旧域名 leonhe.cn）",
+    "date": "2026-09-07",
+    "reason": "2026-09-07 在 timqian 和 tidings 两个索引里又各被提名一次（15/20，本轮最高）——而它**就是 sources.json 里的「远飞闲记」**，只是订的那条记的是 heyuanfei.com。两份 feed 拉下来字节数一字不差（各 188722）。08-31 查出这个「一个站挂两个域名」时的修法是把源的 url/feed 都改成 heyuanfei.com，并让 existingHosts 同时收 url 和 feed 的主机名；**那一刀只堵住了当时被咬的方向**：改完之后 leonhe.cn 从 sources.json 里彻底消失，于是它对发现脚本重新变成一个「没见过的新域名」，两周后原样再被提名两次。判据补一句：**把一个源的域名改掉时，旧域名要当场落进 denylist**——否则治好的是那一次提名，治不好下一次。"
+  },
+  {
+    "url": "https://www.iots.vip",
+    "name": "Alliot's blog 的旧域名",
+    "date": "2026-09-07",
+    "reason": "和 blog.alliot.tech 是同一个站（tidings 那轮两条命中的条数、更新时间、工具集完全相同，而他 2026-08-05 那篇标题就是「域名切换到 blog.alliot.tech」）。两个域名分开记，理由和 leonhe.cn 那条一样：发现脚本按域名比，旧域名不落盘就会被当成没见过的新站再提名一次。"
   }
 ]

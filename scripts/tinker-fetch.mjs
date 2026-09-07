@@ -9,7 +9,7 @@ import {
 import { collectFeed, collectRaw } from '../lib/tinker/collect.mjs';
 import { fetchSearchItems, isSearchSource } from '../lib/tinker/search-adapters.mjs';
 import { triage, titleKey } from '../lib/tinker/relevance.mjs';
-import { queriesForDate, rotatingQueries, CORE_QUERIES } from '../lib/tinker/vocab.mjs';
+import { queriesForDate, rotatingQueries, CORE_QUERIES, retirableTools } from '../lib/tinker/vocab.mjs';
 import { planSeen } from '../lib/tinker/defer.mjs';
 import { readabilityLines, samplingWindowLines } from '../lib/tinker/corpus.mjs';
 import { UA, BROWSER_UA } from '../lib/tinker/probe.mjs';
@@ -535,6 +535,15 @@ async function main() {
   if (barren.length) {
     console.log(`\n跑够 5 轮仍零入围的查询词（${barren.length}）：`);
     for (const [q, v] of barren.slice(0, 20)) console.log(`  ${q} — ${v.runs} 轮，捞回 ${v.items} 条，入围 0`);
+    // 2026-09-07 周更体检加的这两行。上面那份是**查询粒度**的，而能执行的开关
+    // （UNQUERYABLE）是**工具粒度**的，判据是 08-24 定的「该工具派生的所有查询都跑够
+    // 轮次、且合计零入围」。不把换算做进来的后果已经量到了：这份名单在四轮体检里
+    // 被逐个重算了四次，四次的答案都是「一个都不该退役」。
+    const retirable = retirableTools(loadQueryYield(DATA_DIR));
+    console.log(retirable.length
+      ? `  → 按 08-24 口径够得上退役的工具（${retirable.length}）：`
+        + retirable.map((t) => `${t.name}（${t.queries} 条查询 / ${t.runs} 轮 / 原始 ${t.items} 条 / 入围 0）`).join('、')
+      : '  → 按 08-24 口径（该工具派生的所有查询都跑够 5 轮且合计零入围）：**一个都够不上，本轮不用换词**');
   }
   if (retired.length) {
     // 单独列一行而不是直接丢掉：账本里留着这些数字是有用的（下次想把某个工具放回池子时
